@@ -1,9 +1,17 @@
 #include <iostream>
+#include "z/core/string/string.h"
 
 using namespace std;
+using namespace z;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    core::string<wchar_t> wide = L"Wide chars";
+
+    core::string<char> narr = "Narrow chars";
+
+    narr = wide;
+
+    cout << narr.str() << endl;
     return 0;
 }

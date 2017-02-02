@@ -5,42 +5,45 @@
 #include "../string.h"
 #include "char_is_whiteSpace.h"
 
-namespace core
+namespace z
 {
-    template <typename CHAR>
-    string<CHAR> remove_whitespace_R(const string<CHAR>& input)
+    namespace core
     {
-        int pos = input.length() - 1;
+        template <typename CHAR>
+        string<CHAR> remove_whitespace_R(const string<CHAR>& input)
+        {
+            int pos = input.length() - 1;
 
-        while ((pos >= 0) && is_white_space(input[pos]))
-            pos--;
+            while ((pos >= 0) && is_white_space(input[pos]))
+                pos--;
 
-        string<CHAR> output = input.substr(0, pos);
+            string<CHAR> output = input.substr(0, pos);
 
-        return output;
-    }
-
-
-    template <typename CHAR>
-    string<CHAR> remove_whitespace_L(const string<CHAR>& input)
-    {
-        int pos = 0;
-
-        while ((pos < input.length()) && is_white_space(input[pos]))
-            pos++;
-
-        string<CHAR> output = &input.str()[pos];
-
-        return output;
-    }
+            return output;
+        }
 
 
-    template <typename CHAR>
-    string<CHAR> remove_whitespace(const string<CHAR>& input)
-    {
-        string<CHAR> output = remove_whitespace_L(input);
+        template <typename CHAR>
+        string<CHAR> remove_whitespace_L(const string<CHAR>& input)
+        {
+            int pos = 0;
 
-        return remove_whitespace_R(output);
+            while ((pos < input.length()) && is_white_space(input[pos]))
+                pos++;
+
+            string<CHAR> output = &input.str()[pos];
+
+            return output;
+        }
+
+
+        template <typename CHAR>
+        string<CHAR> remove_whitespace(const string<CHAR>& input)
+        {
+            string<CHAR> output = remove_whitespace_L(input);
+
+            return remove_whitespace_R(output);
+        }
     }
 }
 

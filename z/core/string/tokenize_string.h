@@ -5,61 +5,72 @@
 #include "../string.h"
 #include "../array.h"
 
-namespace core
+
+namespace z
 {
-    template <typename CHAR>
-    void tokenize(const array< string<CHAR> >& delims, const string<CHAR>& inString, array< string<CHAR> >& outArray)
+    namespace core
     {
-        outArray.clear();
-
-
-        bool prevNotDelim = false;
-
-        string<CHAR> thisString;
-
-        for (int i=0; i<inString.length(); i++)
+        namespace string
         {
-            for (uint j=0; j<delims.size(); j++)
+            template <typename CHAR>
+            void tokenize(const array< string<CHAR> >& delims,
+                          const string<CHAR>& inString,
+                          array< string<CHAR> >& outArray)
             {
-                if (inString.foundAt(delim[j], j))
+                outArray.clear();
+
+
+                bool prevNotDelim = false;
+
+                string<CHAR> thisString;
+
+                for (int i=0; i<inString.length(); i++)
                 {
-                    if (prevNotDelim)
+                    for (uint j=0; j<delims.size(); j++)
                     {
-                        outArray.append(thisString);
-                        thisString.clear();
+                        if (inString.foundAt(delim[j], j))
+                        {
+                            if (prevNotDelim)
+                            {
+                                outArray.append(thisString);
+                                thisString.clear();
+                            }
+
+                            prevNotDelim = false;
+
+                            i += delim[j].length();
+                        }
+                        else
+                        {
+                            thisString += inString[i];
+                            prevNotDelim = true;
+                        }
                     }
-
-                    prevNotDelim = false;
-
-                    i += delim[j].length();
                 }
-                else
-                {
-                    thisString += inString[i];
-                    prevNotDelim = true;
-                }
+
+                if (thisString.size() > 0)
+                    outArray.append(thisString);
+            }
+
+            template <typename CHAR>
+            void tokenize(const string<CHAR>& delim,
+                          const string<CHAR>& inString,
+                          array< string<CHAR> >& outArray)
+            {
+                array< string<CHAR> > delims;
+                delims.append(delim);
+
+                tokenize(delims, inString, outArray);
+            }
+
+            template <typename CHAR>
+            void tokenize(const CHAR delim, const string<CHAR>& inString, array< string<CHAR> >& outArray)
+            {
+                string<CHAR> delimStr(delim);
+
+                tokenize(delimStr, inString, outArray);
             }
         }
-
-        if (thisString.size() > 0)
-            outArray.append(thisString);
-    }
-
-    template <typename CHAR>
-    void tokenize(const string<CHAR>& delim, const string<CHAR>& inString, array< string<CHAR> >& outArray)
-    {
-        array< string<CHAR> > delims;
-        delims.append(delim);
-
-        tokenize(delims, inString, outArray);
-    }
-
-    template <typename CHAR>
-    void tokenize(const CHAR delim, const string<CHAR>& inString, array< string<CHAR> >& outArray)
-    {
-        string<CHAR> delimStr(delim);
-
-        tokenize(delimStr, inString, outArray);
     }
 }
 
