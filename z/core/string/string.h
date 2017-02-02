@@ -365,22 +365,9 @@ namespace z
 
 
             //string assignment operator
-            void set(const string<CHAR>& other)
+            const string& set(const string<CHAR>& other)
             {
                 assign_data(other.string_array, other.length());
-
-                return *this;
-            }
-
-
-            template <typename OTHER>
-            const string& operator=(const string<OTHER>& other)
-            {
-                string<CHAR> tmp;
-
-                convertStr(tmp, other);
-
-                assign_data(tmp.string_array, tmp.length());
 
                 return *this;
             }
@@ -714,6 +701,10 @@ namespace z
 
                 string_array[0] = null;
             }
+
+
+            template <typename CHAR_2>
+            const string& operator=(const string<CHAR_2>&);
         };
 
 
@@ -807,78 +798,80 @@ namespace z
 
 
 
-        ///functions for narrowing and widening strings
-        const string<char> narrow(const string<wchar_t>& other)
+        ///function for narrowing strings
+        ///THIS ASSUMES THE CHARACTER ARRAYS ARE OF EQUAL LENGTH
+        ///AND THAT input IS NULL_TERMINATED!!
+        void narrow(const wchar_t* input, char* output)
         {
-            string<char> output;
+            int i = 0;
 
-            for (int i=0; i<other.length(); i++)
+            while (input[i] != null)
             {
-                wchar_t code = other[i];
+                wchar_t code = input[i];
 
                 if (code < 128)
-                    output += (char)code;
+                    output[i] = (char)code;
                 else
                 {
-                    output += '?';
+                    output[i] = '?';
 
                     if ((code >= 0xD800) && (code <= 0xD8FF))
                         i++;
                 }
+
+                i++;
             }
-
-
-
-            return output;
         }
 
-        const string<char>& narrow(const string<char>& other)
+        ///function for narrowing strings
+        ///THIS ASSUMES THE CHARACTER ARRAYS ARE OF EQUAL LENGTH
+        ///AND THAT input IS NULL_TERMINATED!!
+        void widen(const char* input, wchar_t* output)
         {
-            return other;
-        }
+            int i = 0;
 
-
-
-        const string<wchar_t> widen(const string<char>& other)
-        {
-            string<wchar_t> output;
-
-            for (int i=0; i<other.length(); i++)
+            while (input[i] != null)
             {
-                output += (wchar_t)other[i];
+                output[i] = (wchar_t)input[i];
             }
-
-
-            return output;
         }
-
-        const string<wchar_t>& widen(const string<wchar_t>& other)
-        {
-            return other;
-        }
-
 
 
         ///Functions for converting between string types
-        void convertStr(string<char>& to, const string<wchar_t>& from)
+        inline void convertStr(string<char>& to, const string<wchar_t>& from)
         {
-            to = narrow(from);
+
+
+            to.set(narrow(from));
         }
 
-        void convertStr(string<char>& to, const string<char>& from)
+        inline void convertStr(string<char>& to, const string<char>& from)
         {
-            to = from;
+            to.set(from);
         }
 
 
-        void convertStr(string<wchar_t>& to, const string<char>& from)
+        inline void convertStr(string<wchar_t>& to, const string<char>& from)
         {
-            to = widen(from);
+            to.set(widen(from));
         }
 
-        void convertStr(string<wchar_t>& to, const string<wchar_t>& from)
+        inline void convertStr(string<wchar_t>& to, const string<wchar_t>& from)
         {
-            to = from;
+            to.set(from);
+        }
+
+
+
+
+
+
+        template <typename CHAR_1, typename CHAR_2>
+        const string<CHAR_1>& string<CHAR_1>::operator=(const string<CHAR_2>& from)
+        {
+            convertStr(*this, from);
+
+            return *this;
         }
     }
 }

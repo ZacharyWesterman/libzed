@@ -4,19 +4,22 @@
 
 #include "../string.h"
 
-namespace core
+namespace z
 {
-    //templates for pad function
-    //pad function creates a string containing n of the given character
-    template <typename CHAR>
-    string<CHAR> padChar(CHAR character, int n)
+    namespace core
     {
-        string<CHAR> str;
+        //templates for pad function
+        //pad function creates a string containing n of the given character
+        template <typename CHAR>
+        string<CHAR> padChar(CHAR character, int n)
+        {
+            string<CHAR> str;
 
-        for (int i=0; i<n; i++)
-            str += character;
+            for (int i=0; i<n; i++)
+                str += character;
 
-        return str;
+            return str;
+        }
     }
 }
 
