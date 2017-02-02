@@ -33,6 +33,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="z/core/string.h" />
+		<Unit filename="z/core/string/convert_char_type.h" />
+		<Unit filename="z/core/string/string.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
