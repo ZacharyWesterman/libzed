@@ -12,6 +12,5 @@ int main()
 
     narr = wide;
 
-    cout << narr.str() << endl;
     return 0;
 }

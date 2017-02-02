@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1486005269 source:c:\users\zachary\documents\github\zlibraries\main.cpp
+	<iostream>
+	"z/core/string/string.h"
+
+1486006044 c:\users\zachary\documents\github\zlibraries\z\core\string\string.h
+	<stdint.h>
+	<stdio.h>
+
