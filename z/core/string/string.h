@@ -8,7 +8,6 @@
     #define null 0
 #endif // null
 
-
 ///Use this for converting numbers to strings
 #include <stdio.h>
 
@@ -21,6 +20,9 @@
 #endif // dtoacs
 
 
+#include "convert_char_type.h"
+
+
 namespace z
 {
     namespace core
@@ -28,7 +30,7 @@ namespace z
         template <typename CHAR>
         class string
         {
-        protected:
+        public:
             int array_length;
             CHAR* string_array;
 
@@ -702,9 +704,34 @@ namespace z
                 string_array[0] = null;
             }
 
+            const string& operator=(const string& other)
+            {
+                assign_data(other.string_array, other.length());
+
+                return *this;
+            }
 
             template <typename CHAR_2>
-            const string& operator=(const string<CHAR_2>&);
+            const string& operator=(const string<CHAR_2>& other)
+            {
+                CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
+                int length = other.length();
+
+                CHAR* this_ptr = NULL;
+
+
+                convertStr(this_ptr, other_ptr, length + 1);
+
+
+                delete[] string_array;
+
+                string_array = this_ptr;
+
+                array_length = length + 1;
+
+
+                return *this;
+            }
         };
 
 
@@ -796,83 +823,6 @@ namespace z
             output = &String[start];
         }
 
-
-
-        ///function for narrowing strings
-        ///THIS ASSUMES THE CHARACTER ARRAYS ARE OF EQUAL LENGTH
-        ///AND THAT input IS NULL_TERMINATED!!
-        void narrow(const wchar_t* input, char* output)
-        {
-            int i = 0;
-
-            while (input[i] != null)
-            {
-                wchar_t code = input[i];
-
-                if (code < 128)
-                    output[i] = (char)code;
-                else
-                {
-                    output[i] = '?';
-
-                    if ((code >= 0xD800) && (code <= 0xD8FF))
-                        i++;
-                }
-
-                i++;
-            }
-        }
-
-        ///function for narrowing strings
-        ///THIS ASSUMES THE CHARACTER ARRAYS ARE OF EQUAL LENGTH
-        ///AND THAT input IS NULL_TERMINATED!!
-        void widen(const char* input, wchar_t* output)
-        {
-            int i = 0;
-
-            while (input[i] != null)
-            {
-                output[i] = (wchar_t)input[i];
-            }
-        }
-
-
-        ///Functions for converting between string types
-        inline void convertStr(string<char>& to, const string<wchar_t>& from)
-        {
-
-
-            to.set(narrow(from));
-        }
-
-        inline void convertStr(string<char>& to, const string<char>& from)
-        {
-            to.set(from);
-        }
-
-
-        inline void convertStr(string<wchar_t>& to, const string<char>& from)
-        {
-            to.set(widen(from));
-        }
-
-        inline void convertStr(string<wchar_t>& to, const string<wchar_t>& from)
-        {
-            to.set(from);
-        }
-
-
-
-
-
-
-        template <typename CHAR_1, typename CHAR_2>
-        const string<CHAR_1>& string<CHAR_1>::operator=(const string<CHAR_2>& from)
-        {
-            convertStr(*this, from);
-
-            return *this;
-        }
     }
 }
 

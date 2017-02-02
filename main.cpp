@@ -10,7 +10,12 @@ int main()
 
     core::string<char> narr = "Narrow chars";
 
+    wide = narr;
+    narr = "bleh";
+
     narr = wide;
+
+    cout << narr.str() << endl;
 
     return 0;
 }
