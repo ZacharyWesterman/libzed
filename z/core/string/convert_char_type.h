@@ -37,6 +37,19 @@ namespace z
         }
 
 
+        void narrow(const wchar_t& input, char& output)
+        {
+            if (input < 128)
+                output = (char)input;
+            else
+                output = '?';
+        }
+
+        void widen(const char& input, wchar_t& output)
+        {
+            output = (wchar_t)input;
+        }
+
 
         ///Functions for converting between string types
         void inline convertStr(char*& to, wchar_t*& from, int length)
@@ -60,6 +73,29 @@ namespace z
         }
 
         void inline convertStr(wchar_t*& to, wchar_t*& from, int length)
+        {
+            to = from;
+        }
+
+
+
+
+        void inline convertChr(char& to, const wchar_t& from)
+        {
+            narrow(from, to);
+        }
+
+        void inline convertChr(char& to, const char& from)
+        {
+            to = from;
+        }
+
+        void inline convertChr(wchar_t& to, const char& from)
+        {
+            widen(from, to);
+        }
+
+        void inline convertChr(wchar_t& to, const wchar_t& from)
         {
             to = from;
         }

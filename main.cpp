@@ -6,14 +6,9 @@ using namespace z;
 
 int main()
 {
-    core::string<wchar_t> wide = L"Wide chars";
+    core::string<wchar_t> wide = 'a';
 
-    core::string<char> narr = "Narrow chars";
-
-    wide = narr;
-    narr = "bleh";
-
-    narr = wide;
+    core::string<char> narr = wide;
 
     cout << narr.str() << endl;
 

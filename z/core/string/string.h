@@ -287,6 +287,32 @@ namespace z
                 }
             }
 
+            template <typename CHAR_2>
+            //constructor using other chars
+            string(const CHAR_2* buffer)
+            {
+                CHAR_2* old_buffer = (CHAR_2*)((void*)buffer);
+
+                array_length = 0;
+                string_array = NULL;
+
+                if (old_buffer)
+                {
+                    int len = 0;
+
+                    while (old_buffer[len] != null)
+                        len++;
+
+                    CHAR* new_buffer = NULL;
+
+                    convertStr(new_buffer, old_buffer, len+1);
+
+                    array_length = len+1;
+                    string_array = new_buffer;
+                }
+            }
+
+
             //copy constructor
             string(const string& other)
             {
@@ -296,14 +322,47 @@ namespace z
                 assign_data(other.string_array, other.array_length);
             }
 
-            string(CHAR character)
+
+            template <typename CHAR_2>
+            //copy constructor for other types
+            string(const string<CHAR_2>& other)
+            {
+                string_array = NULL;
+                array_length = 0;
+
+
+                CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
+                int length = other.length();
+
+                CHAR* this_ptr = NULL;
+
+
+                convertStr(this_ptr, other_ptr, length + 1);
+
+                string_array = this_ptr;
+
+                array_length = length + 1;
+            }
+
+
+            string(char character)
             {
                 array_length = 2;
                 string_array = new CHAR[2];
 
-                string_array[0] = character;
+                convertChr(string_array[0], character);
                 string_array[1] = null;
             }
+
+            string(wchar_t character)
+            {
+                array_length = 2;
+                string_array = new CHAR[2];
+
+                convertChr(string_array[0], character);
+                string_array[1] = null;
+            }
+
 
             string(int number)
             {
