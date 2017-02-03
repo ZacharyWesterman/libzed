@@ -6,7 +6,7 @@ using namespace z;
 
 int main()
 {
-    core::string<wchar_t> wide = 'a';
+    core::string<wchar_t> wide = "Something";
 
     core::string<char> narr = wide;
 
