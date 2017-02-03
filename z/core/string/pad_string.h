@@ -1,3 +1,16 @@
+/**
+ * File:            pad_string.h
+ * Namespace:       z::core
+ *
+ * Description:     A template function to create a string
+ *                  of repeating characters
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef PAD_STRING_H_INCLUDED
 #define PAD_STRING_H_INCLUDED

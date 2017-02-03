@@ -1,3 +1,17 @@
+/**
+ * File:            dePad_string.h
+ * Namespace:       z::core
+ *
+ * Description:     Template functions that remove all
+ *                  consecutive instances of a given
+ *                  character from the end(s) of a string.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef DEPAD_STRING_H_INCLUDED
 #define DEPAD_STRING_H_INCLUDED

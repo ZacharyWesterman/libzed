@@ -1,3 +1,16 @@
+/**
+ * File:            char_is_alphanumeric.h
+ * Namespace:       z::core
+ *
+ * Description:     Template functions that return
+ *                  if a character is alphanumeric.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef CHAR_IS_ALPHANUMERIC_H_INCLUDED
 #define CHAR_IS_ALPHANUMERIC_H_INCLUDED

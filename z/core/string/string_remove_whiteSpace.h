@@ -1,3 +1,16 @@
+/**
+ * File:            string_remove_whiteSpace.h
+ * Namespace:       z::core
+ *
+ * Description:     Template functions to remove bordering
+ *                  white space from strings.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   3 Feb. 2017
+**/
+
 #pragma once
 #ifndef STRING_REMOVE_WHITESPACE_H_INCLUDED
 #define STRING_REMOVE_WHITESPACE_H_INCLUDED
@@ -9,6 +22,8 @@ namespace z
 {
     namespace core
     {
+        ///Removes whitespace from the end (right side) of the string
+        ///and returns the result.
         template <typename CHAR>
         string<CHAR> remove_whitespace_R(const string<CHAR>& input)
         {
@@ -23,6 +38,8 @@ namespace z
         }
 
 
+        ///Removes whitespace from the beginning (left side) of the string
+        ///and returns the result.
         template <typename CHAR>
         string<CHAR> remove_whitespace_L(const string<CHAR>& input)
         {
@@ -37,6 +54,8 @@ namespace z
         }
 
 
+        ///Removes whitespace from both sides of the string
+        ///and returns the result.
         template <typename CHAR>
         string<CHAR> remove_whitespace(const string<CHAR>& input)
         {

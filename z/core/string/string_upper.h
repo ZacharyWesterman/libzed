@@ -1,3 +1,16 @@
+/**
+ * File:            string_upper.h
+ * Namespace:       z::core
+ *
+ * Description:     A template function to convert strings
+ *                  to uppercase.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef STRING_UPPER_H_INCLUDED
 #define STRING_UPPER_H_INCLUDED

@@ -1,3 +1,16 @@
+/**
+ * File:            string_lower.h
+ * Namespace:       z::core
+ *
+ * Description:     A template function to convert strings
+ *                  to lowercase.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef STRING_LOWER_H_INCLUDED
 #define STRING_LOWER_H_INCLUDED
@@ -9,7 +22,7 @@ namespace z
     namespace core
     {
         ///lower() template for strings
-        //template function to return the lowercase of the char string
+        //template function to return the lowercase of the string
         template <typename CHAR>
         string<CHAR> lower(const string<CHAR>& input)
         {

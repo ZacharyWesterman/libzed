@@ -1,3 +1,16 @@
+/**
+ * File:            char_is_whitespace.h
+ * Namespace:       z::core
+ *
+ * Description:     Template function that returns if
+ *                  the given character is white space.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef CHAR_IS_WHITESPACE_H_INCLUDED
 #define CHAR_IS_WHITESPACE_H_INCLUDED

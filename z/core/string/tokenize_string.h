@@ -1,3 +1,18 @@
+/**
+ * File:            tokenize_string.h
+ * Namespace:       z::core
+ *
+ * Description:     A template for splitting strings according
+ *                  to an array of delimiters. Note that this
+ *                  code is not near done, and I haven't tested
+ *                  it, so I am not sure if it works.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef TOKENIZE_STRING_H_INCLUDED
 #define TOKENIZE_STRING_H_INCLUDED

@@ -1,3 +1,16 @@
+/**
+ * File:            eval_string.h
+ * Namespace:       z::core
+ *
+ * Description:     A template function that evaluates a string
+ *                  and returns the found value.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
 #pragma once
 #ifndef EVAL_STRING_H_INCLUDED
 #define EVAL_STRING_H_INCLUDED
@@ -11,7 +24,7 @@ namespace z
     namespace core
     {
         ///template for string evaluation functions
-        // both ignore spaces, and returns numerical_error if non-numerical characters are present
+        // both ignore spaces, and returns 0.f if non-numerical characters are present
         template <typename CHAR>
         double value(const string<CHAR>& input)
         {
