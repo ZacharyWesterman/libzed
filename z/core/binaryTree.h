@@ -1,9 +1,25 @@
+/**
+ * File:            binaryTree.h
+ * Namespace:
+ *
+ * Description:     An old bit of code that uses a binary tree
+ *                  to store script variables.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   ?
+**/
+
 #pragma once
 #ifndef BINARYTREE_H_INCLUDED
 #define BINARYTREE_H_INCLUDED
 
 
-//! CHANGE THIS! IT DOES NOT WORK WITH THE REFACTORED ZENGINE
+//! THIS CODE IS DEPRECATED
+//!
+//! Use 'z/script/variableTree.h' instead!
+//!
 
 //this class defines a binary sorting tree
 //whose data is script variables

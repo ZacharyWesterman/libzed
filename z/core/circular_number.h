@@ -1,5 +1,18 @@
-#ifndef CIRCULAR_NUMBER_H_INCLUDED
-#define CIRCULAR_NUMBER_H_INCLUDED
+/**
+ * File:            circular_number.h
+ * Namespace:       z::core
+ * Description:     An old template that allows you to
+ *                  have numbers automatically loop back
+ *                  to an arbitrary minimum when they reach
+ *                  an arbitrary maximum (like how a clock
+ *                  goes from 1->12 then back to 1).
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   3 Feb. 2017
+**/
+
 
 /// This template can be used to allow data to "loop back on itself",
 /// for example if you wanted an integer whose max value was 8, this
@@ -22,145 +35,142 @@
 /// multiply or divide it.
 
 
-#include <iostream>
+#pragma once
+#ifndef CIRCULAR_NUMBER_H_INCLUDED
+#define CIRCULAR_NUMBER_H_INCLUDED
 
-template <typename T>
-class circular_number
+namespace z
 {
-protected:
-    T value;//stores the number's value
-
-    //Safely set the number's value to something within bounds
-    T setWithinBounds(T new_value)
+    namespace core
     {
-        if (min > max)
+        template <typename T>
+        class circular_number
         {
-            T temp = min
-        }
+        protected:
+            T value;//stores the number's value
 
-        if (new_value >= max)
-        {
-            while (new_value >= max)
-                new_value = new_value - max + min;
-        }
-        else if (new_value < min)
-        {
-            while (new_value < min)
-                new_value = new_value + max - min;
-        }
+            //Safely set the number's value to something within bounds
+            T setWithinBounds(T new_value)
+            {
+                if (min > max)
+                {
+                    T temp = min
+                }
 
-        return new_value;
-    };
+                if (new_value >= max)
+                {
+                    while (new_value >= max)
+                        new_value = new_value - max + min;
+                }
+                else if (new_value < min)
+                {
+                    while (new_value < min)
+                        new_value = new_value + max - min;
+                }
+
+                return new_value;
+            };
 
 
-public:
-    T max;  //Upper limit of number
-    T min;  //Lowest the number can be
+        public:
+            T max;  //Upper limit of number
+            T min;  //Lowest the number can be
 
-    //Default constructor
-    circular_number() {max = 1; min = 0; value = 0;};
+            //Default constructor
+            circular_number() {max = 1; min = 0; value = 0;};
 
-    //returns number's current value
-    T val() {return value;}
+            //returns number's current value
+            T val() {return value;}
 
-    ///
-    ///Assignment operators
+            ///
+            ///Assignment operators
 
-    //When we use the = operator.
-    const T& operator=(const T& arg)
-    {
-        value = setWithinBounds(arg);//make sure the value is within bounds, then set it equal.
+            //When we use the = operator.
+            const T& operator=(const T& arg)
+            {
+                value = setWithinBounds(arg);//make sure the value is within bounds, then set it equal.
 
-        return value;
+                return value;
+            }
+
+            //When we use the += operator
+            const T& operator+=(const T& arg)
+            {
+                T new_value = value + arg;//assign new value,
+
+                value = setWithinBounds(new_value);//and set it within bounds.
+
+                return value;
+            }
+
+            //When we use the -= operator
+            const T& operator-=(const T& arg)
+            {
+                T new_value = value - arg;//assign new value,
+
+                value = setWithinBounds(new_value);//and set it within bounds.
+
+                return value;
+            }
+
+
+            ///
+            ///Addition operators
+
+            //Now for the + operator, if you're adding two circular_number objects.
+            friend const T& operator+(const circular_number& arg1, const circular_number& arg2)
+            {
+                return (arg1.value + arg2.value);
+            }
+
+            //the + operator if you're adding a number of type T on the right.
+            friend const T& operator+(const circular_number& arg1, const T& arg2)
+            {
+                return (arg1.value + arg2);
+            }
+
+            //the + operator if you're adding a number of type T on the left.
+            friend const T& operator+(const T& arg1, const circular_number& arg2)
+            {
+                return (arg2.value + arg1);
+            }
+
+            //and the unary + operator
+            const T& operator++()
+            {
+                return (value + 1);
+            }
+
+
+            ///
+            ///Subtraction operators
+
+            //The - operator, if you're subtracting two circular_number objects.
+            friend T operator-(const circular_number& arg1, const circular_number& arg2)
+            {
+                return (arg1.value - arg2.value);
+            }
+
+            //the - operator if you're subtracting a number of type T on the right.
+            friend T operator-(const circular_number& arg1, const T& arg2)
+            {
+                return (arg1.value - arg2);
+            }
+
+            //the - operator if you're subtracting a number of type T on the left.
+            friend T operator-(const T& arg1, const circular_number& arg2)
+            {
+                return (arg1 - arg2.value);
+            }
+
+            //and the unary - operator
+            T operator-()
+            {
+                return (-value);
+            }
+        };
     }
-
-    //When we use the += operator
-    const T& operator+=(const T& arg)
-    {
-        T new_value = value + arg;//assign new value,
-
-        value = setWithinBounds(new_value);//and set it within bounds.
-
-        return value;
-    }
-
-    //When we use the -= operator
-    const T& operator-=(const T& arg)
-    {
-        T new_value = value - arg;//assign new value,
-
-        value = setWithinBounds(new_value);//and set it within bounds.
-
-        return value;
-    }
-
-
-    ///
-    ///Addition operators
-
-    //Now for the + operator, if you're adding two circular_number objects.
-    friend const T& operator+(const circular_number& arg1, const circular_number& arg2)
-    {
-        return (arg1.value + arg2.value);
-    }
-
-    //the + operator if you're adding a number of type T on the right.
-    friend const T& operator+(const circular_number& arg1, const T& arg2)
-    {
-        return (arg1.value + arg2);
-    }
-
-    //the + operator if you're adding a number of type T on the left.
-    friend const T& operator+(const T& arg1, const circular_number& arg2)
-    {
-        return (arg2.value + arg1);
-    }
-
-    //and the unary + operator
-    const T& operator++()
-    {
-        return (value + 1);
-    }
-
-
-    ///
-    ///Subtraction operators
-
-    //The - operator, if you're subtracting two circular_number objects.
-    friend T operator-(const circular_number& arg1, const circular_number& arg2)
-    {
-        return (arg1.value - arg2.value);
-    }
-
-    //the - operator if you're subtracting a number of type T on the right.
-    friend T operator-(const circular_number& arg1, const T& arg2)
-    {
-        return (arg1.value - arg2);
-    }
-
-    //the - operator if you're subtracting a number of type T on the left.
-    friend T operator-(const T& arg1, const circular_number& arg2)
-    {
-        return (arg1 - arg2.value);
-    }
-
-    //and the unary - operator
-    T operator-()
-    {
-        return (-value);
-    }
-
-
-    //Used for printing the value to the console, or anything else that uses operator<<
-    friend std::ostream& operator<< (std::ostream& stream, const circular_number& object)
-    {
-        stream << object.value; //add value to the stream
-
-        return stream;  //and return.
-    }
-
-};
-
+}
 
 
 #endif // CIRCULAR_NUMBER_H_INCLUDED

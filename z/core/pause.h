@@ -1,3 +1,19 @@
+/**
+ * File:            pause.h
+ * Namespace:       z::core
+ * Description:     The pause() function is meant to be a
+ *                  platform-independent way of allowing the user
+ *                  to put the program to sleep for a little while.
+ *                  Ideally, this could be used to keep the program
+ *                  from taking up too much CPU time when it's not
+ *                  doing anything important.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   3 Feb. 2017
+**/
+
 #pragma once
 #ifndef PAUSE_H_INCLUDED
 #define PAUSE_H_INCLUDED
@@ -6,11 +22,14 @@
 
 #include <unistd.h>
 
-namespace core
+namespace z
 {
-    void pause(double ms)
+    namespace core
     {
-        usleep(ms * 1000);
+        void pause(double ms)
+        {
+            usleep(ms * 1000);
+        }
     }
 }
 
@@ -18,11 +37,14 @@ namespace core
 
 #include <windows.h>
 
-namespace core
+namespace z
 {
-    void pause(double ms)
+    namespace core
     {
-        Sleep(ms);
+        void pause(double ms)
+        {
+            Sleep(ms);
+        }
     }
 }
 
