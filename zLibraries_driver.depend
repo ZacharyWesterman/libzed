@@ -1,10 +1,9 @@
 # depslib dependency file v1.0
-1486086858 source:c:\users\zachary\documents\github\zlibraries\main.cpp
+1486092775 source:c:\users\zachary\documents\github\zlibraries\main.cpp
 	<iostream>
 	"z/core/string/string.h"
 
-1486086842 c:\users\zachary\documents\github\zlibraries\z\core\string\string.h
-	<stdint.h>
+1486092820 c:\users\zachary\documents\github\zlibraries\z\core\string\string.h
 	<stdio.h>
 	"convert_char_type.h"
 
