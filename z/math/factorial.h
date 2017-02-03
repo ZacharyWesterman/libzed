@@ -1,19 +1,35 @@
+/**
+ * File:            factorial.h
+ * Namespace:       z::math
+ *
+ * Description:     A simple function that returns the
+ *                  factorial of the given input.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   3 Feb. 2017
+**/
+
 #pragma once
 #ifndef FACTORIAL_H_INCLUDED
 #define FACTORIAL_H_INCLUDED
 
-namespace math
+namespace z
 {
-    long int fac(int n)
+    namespace math
     {
-        long int output = 1;
-
-        for (long int i=2; i<=(long int)n; i++)
+        long int fac(int n)
         {
-            output *= i;
-        }
+            long int output = 1;
 
-        return output;
+            for (long int i=2; i<=(long int)n; i++)
+            {
+                output *= i;
+            }
+
+            return output;
+        }
     }
 }
 
