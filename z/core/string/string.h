@@ -1,14 +1,31 @@
+/**
+ * File:            string.h
+ * Namespace:       z::core
+ *
+ * Description:     A template for character strings. The two
+ *                  currently supported character types are
+ *                  char and wchar_t. Strings can be created with
+ *                  'z::core::string<TYPE> foo', where 'TYPE' is
+ *                  either char or wchar_t.
+ *                  This class is also type-independent, that is
+ *                  it handles all type conversions automatically.
+ *
+ *
+ * Author:          Zachary Westerman
+ * Email:           zacharywesterman@yahoo.com
+ * Last modified:   2 Feb. 2017
+**/
+
+
 #pragma once
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
-
-#include <stdint.h>
 
 #ifndef null
     #define null 0
 #endif // null
 
-///Use this for converting numbers to strings
+//We use this for converting numbers to strings
 #include <stdio.h>
 
 #ifndef dtowcs
@@ -423,15 +440,6 @@ namespace z
             //get string array pointer
             const CHAR* str() const {return string_array;}
 
-
-
-            //string assignment operator
-            const string& set(const string<CHAR>& other)
-            {
-                assign_data(other.string_array, other.length());
-
-                return *this;
-            }
 
 
 
