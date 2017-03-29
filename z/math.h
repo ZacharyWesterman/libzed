@@ -22,5 +22,7 @@
 #include "math/factorial.h"
 #include "math/fibonacci.h"
 
+///Matrices
+#include "math/matrix.h"
 
 #endif // MATH_H_INCLUDED
