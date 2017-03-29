@@ -15,7 +15,7 @@
 #ifndef STRING_UPPER_H_INCLUDED
 #define STRING_UPPER_H_INCLUDED
 
-#include "../string.h"
+#include "string.h"
 
 namespace z
 {

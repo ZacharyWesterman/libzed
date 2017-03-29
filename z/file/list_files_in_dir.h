@@ -9,15 +9,15 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   3 Mar. 2017
 **/
 
 #pragma once
 #ifndef LIST_FILES_IN_DIR_H_INCLUDED
 #define LIST_FILES_IN_DIR_H_INCLUDED
 
-#include "../core/string.h"
-#include "../core/array.h"
+#include <z/core/string.h>
+#include <z/core/array.h>
 
 #ifdef __linux__
     #error "list_files_in_dir.h" is incompatible with Linux.

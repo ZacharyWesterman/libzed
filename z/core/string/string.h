@@ -13,7 +13,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   2 Feb. 2017
+ * Last modified:   21 Feb. 2017
 **/
 
 
@@ -24,6 +24,9 @@
 #ifndef null
     #define null 0
 #endif // null
+
+//this is for initializing numbers properly
+#include <type_traits>
 
 //We use this for converting numbers to strings
 #include <stdio.h>
@@ -38,7 +41,6 @@
 
 
 #include "convert_char_type.h"
-
 
 namespace z
 {
@@ -381,29 +383,21 @@ namespace z
             }
 
 
-            string(int number)
+
+            template<
+                typename T, //real type
+                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+            >
+            string(T number)
             {
                 string_array = NULL;
                 array_length = 0;
 
                 string String;
 
-                toString(number, String);
+                toString((double)number, String);
 
                 assign_data(String.string_array, String.length());
-            }
-
-            //number assignment constructor
-            string(double number)
-            {
-                string_array = NULL;
-                array_length = 0;
-
-                string String;
-
-                toString(number, String);
-
-                assign_data(String.string_array, String.array_length);
             }
 
 

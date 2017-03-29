@@ -15,7 +15,7 @@
 #ifndef PAD_STRING_H_INCLUDED
 #define PAD_STRING_H_INCLUDED
 
-#include "../string.h"
+#include "string.h"
 
 namespace z
 {

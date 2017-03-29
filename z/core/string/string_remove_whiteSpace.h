@@ -15,7 +15,7 @@
 #ifndef STRING_REMOVE_WHITESPACE_H_INCLUDED
 #define STRING_REMOVE_WHITESPACE_H_INCLUDED
 
-#include "../string.h"
+#include "string.h"
 #include "char_is_whiteSpace.h"
 
 namespace z

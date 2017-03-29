@@ -15,7 +15,7 @@
 #ifndef EVAL_STRING_H_INCLUDED
 #define EVAL_STRING_H_INCLUDED
 
-#include "../string.h"
+#include "string.h"
 #include "char_is_alphanumeric.h"
 
 

@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   21 Feb. 2017
 **/
 
 #pragma once
@@ -15,6 +15,8 @@
 #define ARRAY_H_INCLUDED
 
 #include <vector>
+
+#include "stream.h"
 
 namespace z
 {
@@ -65,6 +67,12 @@ namespace z
             virtual int add(const T&);
             bool insert(const T&, int);
             bool remove(int);
+
+            bool replace(int, int, const T&);
+            bool replace(int, int, const array<T>&);
+
+
+            array subset(int, int);
 
             int size() const;
 
@@ -148,7 +156,7 @@ namespace z
         bool array<T>::insert(const T& object, int index)
         {
             //if invalid index, return false
-            if (index >= (int)array_data.size())
+            if (index > (int)array_data.size())
                 return false;
 
             array_data.insert(array_data.begin() + index, object);
@@ -235,6 +243,109 @@ namespace z
             {
                 return array_data.at(index);
             }
+        }
+
+
+        template <typename T>
+        bool array<T>::replace(int start, int stop, const T& object)
+        {
+            if (stop >= (int)array_data.size())
+                stop = (int)array_data.size() - 1;
+
+            if (start < 0)
+                start = 0;
+
+            if (stop < start)
+            {
+                return false;
+            }
+            else
+            {
+                array_data.erase(array_data.begin() + start, array_data.begin() + stop + 1);
+                array_data.insert(array_data.begin() + start, object);
+
+                return true;
+            }
+        }
+
+
+        template <typename T>
+        bool array<T>::replace(int start, int stop, const array<T>& other)
+        {
+            if (stop >= (int)array_data.size())
+                stop = (int)array_data.size() - 1;
+
+            if (start < 0)
+                start = 0;
+
+            if (stop < start)
+            {
+                return false;
+            }
+            else
+            {
+                array_data.erase(array_data.begin() + start, array_data.begin() + stop + 1);
+
+                for (int i=other.size()-1; i>=0; i--)
+                    array_data.insert(array_data.begin() + start, other[i]);
+
+                return true;
+            }
+        }
+
+
+        template <typename T>
+        array<T> array<T>::subset(int start, int stop)
+        {
+            if (stop >= (int)array_data.size())
+                stop = (int)array_data.size() - 1;
+
+            if (start < 0)
+                start = 0;
+
+
+            array<T> output;
+
+            if (stop >= start)
+            {
+                for (int i=start; i<=stop; i++)
+                    output.array_data.push_back(array_data[i]);
+            }
+
+            return output;
+        }
+
+
+
+        ///Stream output template (from array)
+        template <typename CHAR, typename T>
+        stream<CHAR>& operator<<(stream<CHAR>& arg1, const array<T>& arg2)
+        {
+            arg1.shift_in();
+
+            for (int i=0; i<arg2.size(); i++)
+                arg1 << arg2[i];
+
+            arg1.shift_out();
+
+            return arg1;
+        }
+
+        ///Stream input template (to array)
+        template <typename CHAR, typename T>
+        stream<CHAR>& operator>>(stream<CHAR>& arg1, array<T>& arg2)
+        {
+            stream<CHAR> data = arg1.pop();
+
+            while(!data.isEmpty())
+            {
+                T item;
+                data >> item;
+
+                arg2.add(item);
+            }
+
+            return arg1;
         }
     }
 }

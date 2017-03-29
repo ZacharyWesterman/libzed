@@ -10,7 +10,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   1 Mar. 2017
 **/
 
 
@@ -24,20 +24,21 @@
 /// so using this template with std::string might not be the best idea.
 ///
 /// ALSO, unlike "min", "max" is the upper LIMIT for the number, meaning
-/// it can never get that high (because it resets to "min").
+/// the number can never get that high (although it should be noted that,
+/// when printing the value, it may appear to reach the max value. This
+/// is due to rounding errors with floating-point values, e.g. 0.1).
 ///
 /// By default, min is set to 0, and max is set to 1. You can change this
 /// by calling circular_number.min and circular_number.max respectively,
-/// and min will always be the smaller of the two. However, if min == max,
-/// t
-///
-/// Lastly, because of the nature of this data structure, you can not
-/// multiply or divide it.
+/// and min will always be the smaller of the two.
 
 
 #pragma once
 #ifndef CIRCULAR_NUMBER_H_INCLUDED
 #define CIRCULAR_NUMBER_H_INCLUDED
+
+#include <iostream>
+using namespace std;
 
 namespace z
 {
@@ -49,24 +50,33 @@ namespace z
         protected:
             T value;//stores the number's value
 
+            int last_overflow; //stores the number of times the last operation made the number loop
+
             //Safely set the number's value to something within bounds
             T setWithinBounds(T new_value)
             {
+                last_overflow = 0;
+
                 if (min > max)
                 {
-                    T temp = min
+                    T temp = min;
+
+                    min = max;
+                    max = temp;
                 }
 
-                if (new_value >= max)
+                while (new_value >= max)
                 {
-                    while (new_value >= max)
-                        new_value = new_value - max + min;
+                    new_value = new_value - (max - min);
+                    last_overflow++;
                 }
-                else if (new_value < min)
+
+                while (new_value < min)
                 {
-                    while (new_value < min)
-                        new_value = new_value + max - min;
+                    new_value = new_value + (max - min);
+                    last_overflow--;
                 }
+
 
                 return new_value;
             };
@@ -77,7 +87,26 @@ namespace z
             T min;  //Lowest the number can be
 
             //Default constructor
-            circular_number() {max = 1; min = 0; value = 0;};
+            circular_number(T max = 1, T min = 0, T value = 0)
+            {
+                if (min > max)
+                {
+                    this->max = min;
+                    this->min = max;
+                }
+                else
+                {
+                    this->max = max;
+                    this->min = min;
+                }
+
+
+                if ((value < min) || (value >= max))
+                    this->value = min;
+                else
+                    this->value = value;
+
+            }
 
             //returns number's current value
             T val() {return value;}
@@ -96,9 +125,7 @@ namespace z
             //When we use the += operator
             const T& operator+=(const T& arg)
             {
-                T new_value = value + arg;//assign new value,
-
-                value = setWithinBounds(new_value);//and set it within bounds.
+                value = setWithinBounds(value + arg);
 
                 return value;
             }
@@ -106,9 +133,7 @@ namespace z
             //When we use the -= operator
             const T& operator-=(const T& arg)
             {
-                T new_value = value - arg;//assign new value,
-
-                value = setWithinBounds(new_value);//and set it within bounds.
+                value = setWithinBounds(value - arg);
 
                 return value;
             }
@@ -118,27 +143,29 @@ namespace z
             ///Addition operators
 
             //Now for the + operator, if you're adding two circular_number objects.
-            friend const T& operator+(const circular_number& arg1, const circular_number& arg2)
+            const T operator+(const circular_number& arg2)
             {
-                return (arg1.value + arg2.value);
+                return setWithinBounds(value + arg2.value);
             }
 
             //the + operator if you're adding a number of type T on the right.
-            friend const T& operator+(const circular_number& arg1, const T& arg2)
+            const T operator+(const T& arg2)
             {
-                return (arg1.value + arg2);
+                return setWithinBounds(value + arg2);
             }
 
             //the + operator if you're adding a number of type T on the left.
-            friend const T& operator+(const T& arg1, const circular_number& arg2)
+            friend const T operator+(const T& arg1, const circular_number& arg2)
             {
-                return (arg2.value + arg1);
+                return setWithinBounds(arg2.value + arg1);
             }
 
             //and the unary + operator
-            const T& operator++()
+            const T operator++()
             {
-                return (value + 1);
+                value = setWithinBounds(value + 1);
+
+                return value;
             }
 
 
@@ -146,27 +173,36 @@ namespace z
             ///Subtraction operators
 
             //The - operator, if you're subtracting two circular_number objects.
-            friend T operator-(const circular_number& arg1, const circular_number& arg2)
+            const T operator-(const circular_number& arg2)
             {
-                return (arg1.value - arg2.value);
+                return setWithinBounds(value - arg2.value);
             }
 
             //the - operator if you're subtracting a number of type T on the right.
-            friend T operator-(const circular_number& arg1, const T& arg2)
+            const T operator-(const T& arg2)
             {
-                return (arg1.value - arg2);
+                return setWithinBounds(value - arg2);
             }
 
             //the - operator if you're subtracting a number of type T on the left.
             friend T operator-(const T& arg1, const circular_number& arg2)
             {
-                return (arg1 - arg2.value);
+                return setWithinBounds(arg1.value - arg2.value);
             }
 
             //and the unary - operator
             T operator-()
             {
-                return (-value);
+                return setWithinBounds(-value);
+            }
+
+
+            //how many times the last operation made the number loop
+            //if positive, there was an overflow
+            //if negative, there was an underflow
+            const int overflow()
+            {
+                return last_overflow;
             }
         };
     }

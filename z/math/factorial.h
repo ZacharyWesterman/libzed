@@ -3,7 +3,14 @@
  * Namespace:       z::math
  *
  * Description:     A simple function that returns the
- *                  factorial of the given input.
+ *                  factorial of the given input as an
+ *                  (unsigned long long).
+ *                  Note that this function is only
+ *                  accurate to factorial(64).
+ *
+ *                  This function will return 0 if the
+ *                  given input is negative or out of
+ *                  the accurate range.
  *
  *
  * Author:          Zachary Westerman
@@ -19,16 +26,20 @@ namespace z
 {
     namespace math
     {
-        long int fac(int n)
+        unsigned long long factorial(int n)
         {
-            long int output = 1;
+            if ((n < 0) || (n > 64))
+                return 0;
 
-            for (long int i=2; i<=(long int)n; i++)
+
+            unsigned long long result = 1;
+
+            for (int i=2; i<=n; i++)
             {
-                output *= i;
+                result *= (unsigned long long)i;
             }
 
-            return output;
+            return result;
         }
     }
 }

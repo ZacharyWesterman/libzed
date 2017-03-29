@@ -11,7 +11,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   1 March. 2017
 **/
 
 #pragma once
@@ -26,7 +26,7 @@ namespace z
 {
     namespace core
     {
-        void pause(double ms)
+        inline void pause(double ms)
         {
             usleep(ms * 1000);
         }
@@ -41,7 +41,7 @@ namespace z
 {
     namespace core
     {
-        void pause(double ms)
+        inline void pause(double ms)
         {
             Sleep(ms);
         }

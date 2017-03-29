@@ -16,7 +16,7 @@
 #ifndef DEPAD_STRING_H_INCLUDED
 #define DEPAD_STRING_H_INCLUDED
 
-#include "../string.h"
+#include "string.h"
 
 namespace z
 {
