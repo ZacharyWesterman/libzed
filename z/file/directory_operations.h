@@ -8,7 +8,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   13 Mar. 2017
+ * Last modified:   29 Mar. 2017
 **/
 
 #pragma once
@@ -20,11 +20,10 @@
 namespace z
 {
     namespace file
-    {
-        ///Template for directory shortening function,
+    { /*
+        ///Function for directory shortening function,
         ///which removed extra symbols from a directory string.
         ///(e.g. "C:\a1\b1\..\b2\foo.bar" -> "C:\a1\b2\foo.bar")
-        template <typename char>
         core::string<char> shorten(const core::string<char>& input)
         {
             core::string<char> output = input;
@@ -51,7 +50,7 @@ namespace z
             }
 
             return output;
-        }
+        }*/
     }
 }
 
