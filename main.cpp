@@ -1,5 +1,6 @@
 #include <iostream>
-#include "z/core/string/string.h"
+#include <z/core.h>
+#include <z/math.h>
 
 using namespace std;
 using namespace z;

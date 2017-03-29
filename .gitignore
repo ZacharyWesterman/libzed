@@ -1,0 +1,4 @@
+
+*.o
+
+bin/Debug/zLibraries_driver\.exe
