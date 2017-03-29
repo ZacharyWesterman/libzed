@@ -10,10 +10,13 @@
  *                  This class is also type-independent, that is
  *                  it handles all type conversions automatically.
  *
+ * Required
+ * compiler flag:   -U__STRICT_ANSI__
+ *
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Feb. 2017
+ * Last modified:   23 Feb. 2017
 **/
 
 

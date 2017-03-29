@@ -4,6 +4,8 @@
  * Description:     Timer class. Because this class uses the
  *                  chrono library, it requires AT LEAST C++11.
  *
+ * Required
+ * compiler flag:   -std=c++11
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
