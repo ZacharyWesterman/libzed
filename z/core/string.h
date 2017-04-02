@@ -21,7 +21,7 @@
 
 ///and all string-related functions
 #include "string/char_is_alphanumeric.h"
-#include "string/char_is_whitespace.h"
+#include "string/char_is_whiteSpace.h"
 #include "string/dePad_string.h"
 #include "string/eval_string.h"
 #include "string/pad_string.h"
