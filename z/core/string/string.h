@@ -34,12 +34,17 @@
 //We use this for converting numbers to strings
 #include <stdio.h>
 
+
+#ifndef num_bufsiz
+    #define num_bufsiz 30
+#endif
+
 #ifndef dtowcs
-    #define dtowcs(S,F) swprintf(S, L"%0.9f",F)//numbers have an accuracy of 9 decimal places
+    #define dtowcs(S,F) swprintf(S, num_bufsiz, L"%0.9f",F)//numbers have an accuracy of 9 decimal places
 #endif // dtowcs
 
 #ifndef dtoacs
-    #define dtoacs(S,F) sprintf(S,"%0.9f",F) //numbers have an accuracy of 9 decimal places
+    #define dtoacs(S,F) sprintf(S, "%0.9f",F) //numbers have an accuracy of 9 decimal places
 #endif // dtoacs
 
 
@@ -802,13 +807,13 @@ namespace z
         ///toString() functions for string<char> and string<wchar_t> ONLY
         void toString(double number, string<char>& output)
         {
-            char String[80];
-            for(int i=0; i<80; i++)
+            char String[num_bufsiz];
+            for(int i=0; i<num_bufsiz; i++)
                 String[i] = null;
 
             bool isNeg = false;
 
-            if (number == -0.f)
+            if (number == -0)
             {
                 isNeg = true;
             }
@@ -846,13 +851,13 @@ namespace z
 
         void toString(double number, string<wchar_t>& output)
         {
-            wchar_t String[80];
-            for(int i=0; i<80; i++)
+            wchar_t String[num_bufsiz];
+            for(int i=0; i<num_bufsiz; i++)
                 String[i] = null;
 
             bool isNeg = false;
 
-            if (number == -0.f)
+            if (number == -0)
             {
                 isNeg = true;
             }
@@ -893,5 +898,7 @@ namespace z
 
 #undef dtowcs
 #undef dtoacs
+
+#undef num_bufsiz
 
 #endif // STRING_H_INCLUDED
