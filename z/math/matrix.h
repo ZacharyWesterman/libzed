@@ -37,13 +37,13 @@ namespace z
                 double result=0;
 
 
-                for (int col=0; col<N; col++)
+                for (unsigned int col=0; col<N; col++)
                 {
-                    for (int y=0; y<N-1; y++)
+                    for (unsigned int y=0; y<N-1; y++)
                     {
                         int xoffs = 0;
 
-                        for(int x=0; x<N-1; x++)
+                        for(unsigned int x=0; x<N-1; x++)
                         {
                             if (xoffs == col)
                                 xoffs++;
