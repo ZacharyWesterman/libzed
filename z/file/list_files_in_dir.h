@@ -20,7 +20,7 @@
 #include <z/core/array.h>
 
 #ifdef __linux__
-    #error "list_files_in_dir.h" is incompatible with Linux.
+    #warning "list_files_in_dir.h" is incompatible with Linux.
 #elif _WIN32
 
 #include <windows.h>
@@ -59,7 +59,7 @@ namespace z
 }
 
 #else
-    #error "list_files_in_dir.h" is incompatible with target OS.
+    #warning "list_files_in_dir.h" is incompatible with target OS.
 #endif
 
 #endif // LIST_FILES_IN_DIR_H_INCLUDED
