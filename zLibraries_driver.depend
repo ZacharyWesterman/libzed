@@ -109,3 +109,110 @@
 	"constants.h"
 	<math.h>
 
+1491165155 source:/home/zwesterman/Repos/zLibraries/main.cpp
+	<iostream>
+	<z/core.h>
+	<z/math.h>
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core.h
+	"core/string.h"
+	"core/stream.h"
+	"core/array.h"
+	"core/sorted_array.h"
+	"core/sorted_ref_array.h"
+	"core/dynamicStack.h"
+	"core/circular_number.h"
+	"core/timer.h"
+	"core/pause.h"
+	"core/loadLibrary.h"
+
+1491166326 /home/zwesterman/Repos/zLibraries//z/core/string.h
+	"string/string.h"
+	"string/char_is_alphanumeric.h"
+	"string/char_is_whiteSpace.h"
+	"string/dePad_string.h"
+	"string/eval_string.h"
+	"string/pad_string.h"
+	"string/string_lower.h"
+	"string/string_upper.h"
+	"string/string_remove_whiteSpace.h"
+
+1491167081 /home/zwesterman/Repos/zLibraries//z/core/string/string.h
+	<type_traits>
+	<stdio.h>
+	"convert_char_type.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/convert_char_type.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/char_is_alphanumeric.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/char_is_whiteSpace.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/dePad_string.h
+	"string.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/eval_string.h
+	"string.h"
+	"char_is_alphanumeric.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/pad_string.h
+	"string.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/string_lower.h
+	"string.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/string_upper.h
+	"string.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/string/string_remove_whiteSpace.h
+	"string.h"
+	"char_is_whiteSpace.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/stream.h
+	<type_traits>
+	"string.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/array.h
+	<vector>
+	"stream.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/sorted_array.h
+	"./array.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/sorted_ref_array.h
+	"array.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/dynamicStack.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/circular_number.h
+	<iostream>
+	<iostream>
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/timer.h
+	<chrono>
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/core/pause.h
+	<unistd.h>
+	<windows.h>
+
+1491166366 /home/zwesterman/Repos/zLibraries//z/core/loadLibrary.h
+	"string.h"
+	<stdint.h>
+	<windows.h>
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/math.h
+	"math/constants.h"
+	"math/factorial.h"
+	"math/fibonacci.h"
+	"math/matrix.h"
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/math/constants.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/math/factorial.h
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/math/fibonacci.h
+	"constants.h"
+	<math.h>
+
+1491165155 /home/zwesterman/Repos/zLibraries//z/math/matrix.h
+
