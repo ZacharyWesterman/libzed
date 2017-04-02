@@ -21,7 +21,7 @@
 #include <stdint.h>
 
 #ifdef __linux__
-    #error "loadLibrary.h" is incompatible with Linux.
+    #warning "loadLibrary.h" is incompatible with Linux.
 #elif _WIN32
 
 #include <windows.h>
