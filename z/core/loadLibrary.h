@@ -56,7 +56,7 @@ namespace z
 }
 
 #else
-    #error "loadLibrary.h" is incompatible with target OS.
+    #warning "loadLibrary.h" is incompatible with target OS.
 #endif
 
 #endif // LOADLIBRARY_H_INCLUDED
