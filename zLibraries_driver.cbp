@@ -12,7 +12,10 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="-U__STRICT_ANSI__" />
+					<Add directory="/home/zwesterman/Repos/zLibraries/" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -33,9 +36,39 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="z/core.h" />
+		<Unit filename="z/core/array.h" />
+		<Unit filename="z/core/binaryTree.h" />
+		<Unit filename="z/core/circular_number.h" />
+		<Unit filename="z/core/dynamicStack.h" />
+		<Unit filename="z/core/loadLibrary.h" />
+		<Unit filename="z/core/pause.h" />
+		<Unit filename="z/core/sorted_array.h" />
+		<Unit filename="z/core/sorted_ref_array.h" />
+		<Unit filename="z/core/stream.h" />
 		<Unit filename="z/core/string.h" />
+		<Unit filename="z/core/string/char_is_alphanumeric.h" />
+		<Unit filename="z/core/string/char_is_whiteSpace.h" />
 		<Unit filename="z/core/string/convert_char_type.h" />
+		<Unit filename="z/core/string/dePad_string.h" />
+		<Unit filename="z/core/string/eval_string.h" />
+		<Unit filename="z/core/string/pad_string.h" />
 		<Unit filename="z/core/string/string.h" />
+		<Unit filename="z/core/string/string_lower.h" />
+		<Unit filename="z/core/string/string_remove_whiteSpace.h" />
+		<Unit filename="z/core/string/string_upper.h" />
+		<Unit filename="z/core/string/tokenize_string.h" />
+		<Unit filename="z/core/timer.h" />
+		<Unit filename="z/file.h" />
+		<Unit filename="z/file/directory_operations.h" />
+		<Unit filename="z/file/list_files_in_dir.h" />
+		<Unit filename="z/file/loadFileToMemory.h" />
+		<Unit filename="z/file/saveToFileFromMemory.h" />
+		<Unit filename="z/math.h" />
+		<Unit filename="z/math/constants.h" />
+		<Unit filename="z/math/factorial.h" />
+		<Unit filename="z/math/fibonacci.h" />
+		<Unit filename="z/math/matrix.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

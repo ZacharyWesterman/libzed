@@ -2,6 +2,7 @@
 
 #include <z/core.h>
 #include <z/math.h>
+#include <z/file.h>
 
 using namespace std;
 using namespace z;
@@ -10,7 +11,7 @@ int main()
 {
     core::string<wchar_t> wide;
 
-    math::matrix<3> mat;
+    math::matrix<2> mat;
 
     mat.value[0][0] = 1;
     mat.value[0][1] = 0;
