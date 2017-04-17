@@ -20,6 +20,10 @@
 #define DYNAMICSTACK_H_INCLUDED
 
 
+#ifndef null
+    #define null 0
+#endif // null
+
 namespace z
 {
     namespace core
@@ -39,12 +43,12 @@ namespace z
 
         public:
             //constructor
-            dynamic_stack() {head = NULL;}
+            dynamic_stack() {head = null;}
 
             //destructor
             ~dynamic_stack()
             {
-                while (head != NULL)
+                while (head != null)
                 {
                     ll_node* nodePtr = head->next;
                     delete head;
@@ -67,7 +71,7 @@ namespace z
             //returns whether pop was successful.
             bool pop(T& data)
             {
-                if (head == NULL)
+                if (head == null)
                 {
                     return false;
                 }
@@ -89,12 +93,12 @@ namespace z
             }
 
             //return whether the stack is empty.
-            bool isEmpty() {return (head == NULL);}
+            bool isEmpty() {return (head == null);}
 
 
             void dump()
             {
-                while (head != NULL)
+                while (head != null)
                 {
                     ll_node* nodePtr = head->next;
                     delete head;

@@ -52,7 +52,7 @@ namespace z
                 if (string_array)
                     delete[] string_array;
 
-                string_array = NULL;
+                string_array = null;
                 array_length = 0;
             }
 
@@ -286,7 +286,7 @@ namespace z
             string(const CHAR* buffer)
             {
                 array_length = 0;
-                string_array = NULL;
+                string_array = null;
 
                 int amount = 0;
 
@@ -306,7 +306,7 @@ namespace z
                 CHAR_2* old_buffer = (CHAR_2*)((void*)buffer);
 
                 array_length = 0;
-                string_array = NULL;
+                string_array = null;
 
                 if (old_buffer)
                 {
@@ -315,7 +315,7 @@ namespace z
                     while (old_buffer[len] != null)
                         len++;
 
-                    CHAR* new_buffer = NULL;
+                    CHAR* new_buffer = null;
 
                     convertStr(new_buffer, old_buffer, len+1);
 
@@ -328,7 +328,7 @@ namespace z
             //copy constructor
             string(const string& other)
             {
-                string_array = NULL;
+                string_array = null;
                 array_length = 0;
 
                 assign_data(other.string_array, other.array_length);
@@ -339,14 +339,14 @@ namespace z
             //copy constructor for other types
             string(const string<CHAR_2>& other)
             {
-                string_array = NULL;
+                string_array = null;
                 array_length = 0;
 
 
                 CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
                 int length = other.length();
 
-                CHAR* this_ptr = NULL;
+                CHAR* this_ptr = null;
 
 
                 convertStr(this_ptr, other_ptr, length + 1);
@@ -386,7 +386,7 @@ namespace z
             >
             string(T number)
             {
-                string_array = NULL;
+                string_array = null;
                 array_length = 0;
 
 
@@ -830,7 +830,7 @@ namespace z
                 CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
                 int length = other.length();
 
-                CHAR* this_ptr = NULL;
+                CHAR* this_ptr = null;
 
 
                 convertStr(this_ptr, other_ptr, length + 1);
