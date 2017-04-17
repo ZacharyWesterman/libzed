@@ -10,13 +10,10 @@
  *                  This class is also type-independent, that is
  *                  it handles all type conversions automatically.
  *
- * Required
- * compiler flag:   -U__STRICT_ANSI__
- *
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   23 Feb. 2017
+ * Last modified:   16 Apr. 2017
 **/
 
 
@@ -31,21 +28,9 @@
 //this is for initializing numbers properly
 #include <type_traits>
 
-//We use this for converting numbers to strings
-#include <stdio.h>
 
-
-#ifndef num_bufsiz
-    #define num_bufsiz 30
-#endif
-
-/*#ifndef dtowcs
-    #define dtowcs(S,F) //swprintf(S, num_bufsiz, L"%0.9f",F)//numbers have an accuracy of 9 decimal places
-#endif // dtowcs
-
-#ifndef dtoacs
-    #define dtoacs(S,F) sprintf(S, "%0.9f",F) //numbers have an accuracy of 9 decimal places
-#endif // dtoacs*/
+#define num_bufsiz 30
+#define num_precision 9
 
 
 #include "convert_char_type.h"
@@ -391,7 +376,7 @@ namespace z
             }
 
 
-
+            ///convert a number to a string
             template<
                 typename T, //real type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -401,11 +386,85 @@ namespace z
                 string_array = NULL;
                 array_length = 0;
 
-                string String;
 
-                toString((double)number, String);
+                CHAR buffer[num_bufsiz + num_bufsiz + 3];
+                int buffer_pos = 0;
 
-                assign_data(String.string_array, String.length());
+                long ipart = number;
+                double fpart = number - ipart;
+
+                CHAR inv_ibuf[num_bufsiz];
+                CHAR inv_fbuf[num_bufsiz];
+
+                int ibufsiz = 0;
+                int fbufsiz = 0;
+
+
+                if (number < 0)
+                {
+                    buffer[buffer_pos] = (CHAR)45;
+                    buffer_pos++;
+                }
+
+
+                if (ipart == 0)
+                {
+                    buffer[buffer_pos] = (CHAR)48;
+                    buffer_pos++;
+                }
+                else
+                {
+                    while (ipart != 0)
+                    {
+                         inv_ibuf[ibufsiz] = (CHAR)((ipart % 10) + 48);
+                         ipart /= 10;
+
+                         ibufsiz++;
+                    }
+
+
+                    while ((fpart != 0) && (fbufsiz < num_precision))
+                    {
+                        fpart *= 10;
+
+                        int frac_char = fpart;
+
+                        inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
+
+                        fbufsiz++;
+                        fpart -= frac_char;
+                    }
+                }
+
+
+                for (int i=ibufsiz-1; i>=0; i--)
+                {
+                    buffer[buffer_pos] = inv_ibuf[i];
+                    buffer_pos++;
+                }
+
+                if (fbufsiz)
+                {
+                    buffer[buffer_pos] = (CHAR)46;
+                    buffer_pos++;
+
+                    int frac_len = 0;
+
+                    for (int f=0; f<fbufsiz; f++)
+                    {
+                        buffer[buffer_pos + f] = inv_fbuf[f];
+
+                        if (inv_fbuf[f] > 48)
+                            frac_len = f + 1;
+                    }
+
+                    buffer_pos += frac_len;
+                }
+
+                //buffer is null-terminated
+                buffer[buffer_pos] = (CHAR)0;
+
+                assign_data(buffer, buffer_pos+1);
             }
 
 
@@ -785,102 +844,11 @@ namespace z
             }
         };
 
-
-        ///toString() functions for string<char> and string<wchar_t> ONLY
-        void toString(double number, string<char>& output)
-        {
-            char String[num_bufsiz];
-            for(int i=0; i<num_bufsiz; i++)
-                String[i] = null;
-
-            bool isNeg = false;
-
-            if (number == -0)
-            {
-                isNeg = true;
-            }
-
-            dtoacs(String,number);
-
-            int length = 0;
-            while (String[length] != null)
-                length++;
-
-            int i = length-1;
-            while(String[i] == '0')
-            {
-                String[i] = null;
-                i--;
-            }
-
-            if (String[i] == '.')
-            {
-                if  ((i == 0) || ((i == 1) && isNeg))
-                    String[i] = '0';
-                else
-                    String[i] = null;
-            }
-
-            //we don't want -0
-            int start = 0;
-
-            if (isNeg)
-                start++;
-
-            output = &String[start];
-        }
-
-
-        void toString(double number, string<wchar_t>& output)
-        {
-            wchar_t String[num_bufsiz];
-            for(int i=0; i<num_bufsiz; i++)
-                String[i] = null;
-
-            bool isNeg = false;
-
-            if (number == -0)
-            {
-                isNeg = true;
-            }
-
-            dtowcs(String,number);
-
-            int length = 0;
-            while (String[length] != null)
-                length++;
-
-            int i = length-1;
-            while(String[i] == L'0')
-            {
-                String[i] = null;
-                i--;
-            }
-
-            if (String[i] == L'.')
-            {
-                if ((i == 0) || ((i == 1) && isNeg))
-                    String[i] = L'0';
-                else
-                    String[i] = null;
-            }
-
-            //we don't want -0
-            int start = 0;
-
-            if (isNeg)
-                start++;
-
-            output = &String[start];
-        }
-
     }
 }
 
 
-#undef dtowcs
-#undef dtoacs
-
 #undef num_bufsiz
+#undef num_precision
 
 #endif // STRING_H_INCLUDED
