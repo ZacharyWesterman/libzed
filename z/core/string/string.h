@@ -39,13 +39,13 @@
     #define num_bufsiz 30
 #endif
 
-#ifndef dtowcs
-    #define dtowcs(S,F) swprintf(S, num_bufsiz, L"%0.9f",F)//numbers have an accuracy of 9 decimal places
+/*#ifndef dtowcs
+    #define dtowcs(S,F) //swprintf(S, num_bufsiz, L"%0.9f",F)//numbers have an accuracy of 9 decimal places
 #endif // dtowcs
 
 #ifndef dtoacs
     #define dtoacs(S,F) sprintf(S, "%0.9f",F) //numbers have an accuracy of 9 decimal places
-#endif // dtoacs
+#endif // dtoacs*/
 
 
 #include "convert_char_type.h"
@@ -440,72 +440,54 @@ namespace z
 
 
             //get string array pointer
-            const CHAR* str() const {return string_array;}
+            inline const CHAR* str() const {return string_array;}
 
 
 
 
             //equality operator
-            bool operator==(const string& other) const
+            inline bool operator==(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) == 0)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) == 0);
             }
 
 
             //inequality operator
-            bool operator!=(const string& other) const
+            inline bool operator!=(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) != 0)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) != 0);
             }
 
 
             //greater than operator
-            bool operator>(const string& other) const
+            inline bool operator>(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) == 1)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) == 1);
             }
 
             //greater than / equal to operator
-            bool operator>=(const string& other) const
+            inline bool operator>=(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) != -1)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) != -1);
             }
 
 
             //less than operator
-            bool operator<(const string& other) const
+            inline bool operator<(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) == -1)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) == -1);
             }
 
 
             //less than / equal to operator
-            bool operator<=(const string& other) const
+            inline bool operator<=(const string& other) const
             {
-                if (lessthan_equal_greater(other.string_array, other.array_length) != -1)
-                    return true;
-
-                return false;
+                return (lessthan_equal_greater(other.string_array, other.array_length) != -1);
             }
 
 
             //operator for concatenation of string
-            const string& operator+=(const string& other)
+            inline const string& operator+=(const string& other)
             {
                 append_string(other.string_array, other.array_length);
 
@@ -513,7 +495,7 @@ namespace z
             }
 
             //operator for concatenation of a single character
-            const string& operator+=(CHAR character)
+            inline const string& operator+=(CHAR character)
             {
                 append_char(character);
 
