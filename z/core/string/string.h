@@ -279,7 +279,7 @@ namespace z
 
 
         public:
-            //empty initializers
+            //empty constructor
             string() {array_length = 1; string_array = new CHAR[1]; string_array[0] = null;}
 
             //default constructor
@@ -357,6 +357,7 @@ namespace z
             }
 
 
+            //narrow char constructor
             string(char character)
             {
                 array_length = 2;
@@ -366,6 +367,7 @@ namespace z
                 string_array[1] = null;
             }
 
+            //wide char constructor
             string(wchar_t character)
             {
                 array_length = 2;
@@ -376,7 +378,8 @@ namespace z
             }
 
 
-            ///convert a number to a string
+            //numeric constructor
+            ///converts a number to a string
             template<
                 typename T, //real type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -554,15 +557,15 @@ namespace z
             }
 
             //operator for concatenation of a single character
-            inline const string& operator+=(CHAR character)
+            /*inline const string& operator+=(CHAR character)
             {
                 append_char(character);
 
                 return *this;
-            }
+            }*/
 
             //operator for concatenation of a number (convert to string first)
-            const string& operator+=(double number)
+            /*const string& operator+=(double number)
             {
                 string String;
 
@@ -571,7 +574,7 @@ namespace z
                 append_string(String.string_array, String.array_length);
 
                 return *this;
-            }
+            }*/
 
 
             //addition operator
@@ -584,7 +587,7 @@ namespace z
             }
 
             //addition operator
-            const string operator+(const CHAR*& other) const
+            /*const string operator+(const CHAR*& other) const
             {
                 string output = *this;
                 output += string(other);
@@ -599,7 +602,7 @@ namespace z
                 output += string(other);
 
                 return output;
-            }
+            }*/
 
             //index operator
             //if the index is valid, returns character at that index.
