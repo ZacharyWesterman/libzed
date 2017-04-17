@@ -578,7 +578,7 @@ namespace z
 
 
             //addition operator
-            const string operator+(const string& other) const
+            inline const string operator+(const string& other) const
             {
                 string output = *this;
                 output += other;
