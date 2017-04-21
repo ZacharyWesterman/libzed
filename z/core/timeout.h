@@ -3,6 +3,8 @@
  * Namespace:       z::core
  * Description:     Extended version of the timer class
  *                  which includes a timeout boundary.
+ *                  If the timeout goal is set to a negative value,
+ *                  then it will never time out.
  *
  *
  * Author:          Zachary Westerman
