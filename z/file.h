@@ -7,15 +7,15 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   29 Mar. 2017
+ * Last modified:   21 Apr. 2017
 **/
 
 #pragma once
 #ifndef FILE_H_INCLUDED
 #define FILE_H_INCLUDED
 
-#include "file/list_files_in_dir.h"
-#include "file/directory_operations.h"
+#include "file/listFilesInDir.h"
+#include "file/directoryOperations.h"
 
 #include "file/loadFileToMemory.h"
 #include "file/saveToFileFromMemory.h"
