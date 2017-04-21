@@ -1,20 +1,20 @@
 /**
- * File:            list_files_in_dir.h
+ * File:            listFilesInDir.h
  * Namespace:       z::file
- * Description:     The list_files_in_dir() function is meant to be a
+ * Description:     The listFilesInDir() function is meant to be a
  *                  platform-independent way of allowing the user
- *                  to get a list of all files in the given relative
+ *                  to get a list of all files in the given
  *                  directory with the given file extension.
  *
- * Usage:           list_files_in_dir(path, type, output)
+ * Usage:           listFilesInDir(path, type, output)
  *                  if path is "", it is assumed to be the current working directory.
  *                  if the type is "*", then all types are accepted. otherwise,
- *                  file types are expected to have no leading '.'
+ *                  the file type is expected to have no leading '.'
  *
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Mar. 2017
+ * Last modified:   21 Apr. 2017
 **/
 
 #pragma once
