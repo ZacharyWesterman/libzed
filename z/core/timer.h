@@ -33,7 +33,7 @@ namespace z
             high_resolution_clock::time_point start;
 
         public:
-            timer (bool run = true)
+            inline timer (bool run = true)
             {
                 if (run)
                     reset();

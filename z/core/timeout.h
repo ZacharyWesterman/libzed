@@ -26,7 +26,7 @@ namespace z
             long timeout_goal;
 
         public:
-            timeout(long timeout_micros, bool run = true) : timer(run)
+            inline timeout(long timeout_micros, bool run = true) : timer(run)
             {
                 timeout_goal = timeout_micros;
             }
