@@ -63,7 +63,9 @@
 		<Unit filename="z/file.h" />
 		<Unit filename="z/file/directoryOperations.h" />
 		<Unit filename="z/file/listFilesInDir.h" />
+		<Unit filename="z/file/loadFileTimeout.h" />
 		<Unit filename="z/file/loadFileToMemory.h" />
+		<Unit filename="z/file/saveFileTimeout.h" />
 		<Unit filename="z/file/saveToFileFromMemory.h" />
 		<Unit filename="z/math.h" />
 		<Unit filename="z/math/constants.h" />

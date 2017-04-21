@@ -9,12 +9,26 @@ using namespace z;
 
 int main()
 {
-    core::timeout time(16667); //timeout 1/60th of a second ~16667 micro seconds.
+    core::timer total;
+    core::timeout time(100); //timeout at 100 micros
 
-    for (int i=0; i<3340000; i++);
+    file::writer<wchar_t> fwriter;
+    fwriter.setFileName("test.txt");
+    fwriter.setFileData(L"Հայաստան Россия Österreich Ελλάδα भारत");
 
-    cout << (time.timedOut() ? "Timed out" : "Did not time out") << endl;
-    cout << (double)time.micros()/1000000 << "s\n";
+    int iterations = 1;
+    while (!fwriter.write(time))
+    {
+        iterations++;
+        time.reset();
+    }
+
+    cout << "Writing required " << iterations\
+         << " iteration" << ((iterations==1)?"":"s")\
+         << " and took " << (double)total.micros()/1000000\
+         << " seconds\n";
+
+    //cout << "Contents:\n" << floader.getContents() << endl;
 
     return 0;
 }
