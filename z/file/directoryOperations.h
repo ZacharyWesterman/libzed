@@ -1,5 +1,5 @@
 /**
- * File:            directory_operations.h
+ * File:            directoryOperations.h
  * Namespace:       z::file
  * Description:     Provides methods for directory
  *                  shortening, and separation of
@@ -12,8 +12,8 @@
 **/
 
 #pragma once
-#ifndef DIRECTORY_OPERATIONS_H_INCLUDED
-#define DIRECTORY_OPERATIONS_H_INCLUDED
+#ifndef DIRECTORYOPERATIONS_H_INCLUDED
+#define DIRECTORYOPERATIONS_H_INCLUDED
 
 #include <z/core/string.h>
 
@@ -54,4 +54,4 @@ namespace z
     }
 }
 
-#endif // DIRECTORY_OPERATIONS_H_INCLUDED
+#endif // DIRECTORYOPERATIONS_H_INCLUDED
