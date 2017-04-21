@@ -32,9 +32,9 @@ namespace z
 {
     namespace file
     {
-        void list_files_in_dir(const core::string<char>& dir,
-                               const core::string<char>& file_type,
-                               core::array< core::string<char> >& output)
+        void listFilesInDir(const core::string<char>& dir,
+                            const core::string<char>& file_type,
+                            core::array< core::string<char> >& output)
         {
             core::string<char> search_path = dir;
 
@@ -90,9 +90,9 @@ namespace z
 {
     namespace file
     {
-        void list_files_in_dir(const core::string<char>& dir,
-                               const core::string<char>& file_type,
-                               core::array< core::string<char> >& output)
+        void listFilesInDir(const core::string<char>& dir,
+                            const core::string<char>& file_type,
+                            core::array< core::string<char> >& output)
         {
             core::string<char> search_path = dir;
 
