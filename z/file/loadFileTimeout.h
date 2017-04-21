@@ -1,7 +1,7 @@
 /**
  * File:            loadFileTimeout.h
  * Namespace:       z::file
- * Description:     The loadFileTimeout() class loads as much of
+ * Description:     The file::loader class loads as much of
  *                  a file as possible before the specified timeout.
  *                  If timeout is reached, closes the file. Then
  *                  attempts to reopen file and continue loading at
