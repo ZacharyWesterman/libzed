@@ -6,6 +6,11 @@
  *                  to get a list of all files in the given relative
  *                  directory with the given file extension.
  *
+ * Usage:           list_files_in_dir(path, type, output)
+ *                  if path is "", it is assumed to be the current working directory.
+ *                  if the type is "*", then all types are accepted. otherwise,
+ *                  file types are expected to have no leading '.'
+ *
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
@@ -20,7 +25,63 @@
 #include <z/core/array.h>
 
 #ifdef __linux__
-    #warning "list_files_in_dir.h" is incompatible with Linux.
+
+#include <dirent.h>
+
+namespace z
+{
+    namespace file
+    {
+        void list_files_in_dir(const core::string<char>& dir,
+                               const core::string<char>& file_type,
+                               core::array< core::string<char> >& output)
+        {
+            core::string<char> search_path = dir;
+
+            if (!dir.length())
+                search_path += "./";
+            else
+                search_path += "/";
+
+            bool any_extension;
+
+            any_extension = (file_type == "*");
+
+
+
+            DIR *dpdf;
+            dirent *epdf;
+
+            dpdf = opendir(search_path.str());
+
+            if (dpdf)
+            {
+                while ((epdf = readdir(dpdf)))
+                {
+                    core::string<char> filename (epdf->d_name);
+
+                    if (epdf->d_type != DT_DIR)
+                    {
+                        if (any_extension)
+                        {
+                            output.add(filename);
+                        }
+                        else
+                        {
+
+
+                            if (filename.endsWith(core::string<char>('.') + file_type))
+                                output.add(filename);
+                        }
+                    }
+                }
+            }
+
+            closedir(dpdf);
+        }
+    }
+}
+
 #elif _WIN32
 
 #include <windows.h>
@@ -34,7 +95,14 @@ namespace z
                                core::array< core::string<char> >& output)
         {
             core::string<char> search_path = dir;
+
+            if (!dir.length())
+                search_path += "./";
+            else
+                search_path += "/";
+
             search_path += "/*.";
+
             search_path += file_type;
 
 
