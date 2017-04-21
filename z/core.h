@@ -27,7 +27,10 @@
 ///Misc data structures
 #include "core/dynamicStack.h"
 #include "core/circular_number.h"
+
+///Timers
 #include "core/timer.h"
+#include "core/timeout.h"
 
 ///Misc functions
 #include "core/pause.h"
