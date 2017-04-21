@@ -45,21 +45,21 @@ namespace z
             }
 
 
-            double micros() const
+            long micros() const
             {
-                return (double)(std::chrono::duration_cast<_microseconds>
+                return (long)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();
             }
 
-            double millis() const
+            long millis() const
             {
-                return (double)(std::chrono::duration_cast<_milliseconds>
+                return (long)(std::chrono::duration_cast<_milliseconds>
                         (high_resolution_clock::now() - start)).count();
             }
 
-            double seconds() const
+            long seconds() const
             {
-                return (double)(std::chrono::duration_cast<_seconds>
+                return (long)(std::chrono::duration_cast<_seconds>
                         (high_resolution_clock::now() - start)).count();
             }
         };
