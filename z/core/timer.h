@@ -9,9 +9,10 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   21 Apr. 2017
 **/
 
+#pragma once
 #ifndef TIMER_H_INCLUDED
 #define TIMER_H_INCLUDED
 
@@ -32,7 +33,7 @@ namespace z
             high_resolution_clock::time_point start;
 
         public:
-            explicit timer (bool run = false)
+            timer (bool run = true)
             {
                 if (run)
                     reset();
