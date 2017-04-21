@@ -9,16 +9,12 @@ using namespace z;
 
 int main()
 {
-    core::string<wchar_t> wide;
+    core::timeout time(16667); //timeout 1/60th of a second ~16667 micro seconds.
 
-    math::matrix<2> mat;
+    for (int i=0; i<3340000; i++);
 
-    mat.value[0][0] = 1;
-    mat.value[0][1] = 0;
-    mat.value[1][0] = 0;
-    mat.value[1][1] = 2;
-
-    cout << mat.det() << endl;
+    cout << (time.timedOut() ? "Timed out" : "Did not time out") << endl;
+    cout << (double)time.micros()/1000000 << "s\n";
 
     return 0;
 }

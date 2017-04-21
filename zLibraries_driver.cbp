@@ -58,10 +58,11 @@
 		<Unit filename="z/core/string/string_remove_whiteSpace.h" />
 		<Unit filename="z/core/string/string_upper.h" />
 		<Unit filename="z/core/string/tokenize_string.h" />
+		<Unit filename="z/core/timeout.h" />
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
-		<Unit filename="z/file/directory_operations.h" />
-		<Unit filename="z/file/list_files_in_dir.h" />
+		<Unit filename="z/file/directoryOperations.h" />
+		<Unit filename="z/file/listFilesInDir.h" />
 		<Unit filename="z/file/loadFileToMemory.h" />
 		<Unit filename="z/file/saveToFileFromMemory.h" />
 		<Unit filename="z/math.h" />
