@@ -29,7 +29,7 @@
 #include <type_traits>
 
 
-#define num_bufsiz 30
+#define num_bufsiz 15
 #define num_precision 9
 
 
@@ -643,12 +643,27 @@ namespace z
                 return -1;
             }
 
+            //function to find the position of the LAST occurrence of the given sub-string
+            //returns -1 if it was not found
+            int findLast(const string& sub_string) const
+            {
+                for (int i=array_length-1-sub_string.length(); i>=0; i--)
+                {
+                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                        return (int)i;
+                }
+
+                return -1;
+            }
 
             //function to find the position of the nth occurrence of the given sub-string
             ///n starts at 0
             //returns -1 if it was not found
             int find(const string& sub_string, int n) const
             {
+                if (n < 0)
+                    return -1;
+
                 int amount = -1;
 
                 for (int i=0; i<array_length-1; i++)
@@ -782,10 +797,34 @@ namespace z
                 return true;
             }
 
+            //returns true if the specified sub-string was found at
+            //AND ENDS AT the specified position
+            bool foundEndAt(const string& sub_string, int position) const
+            {
+                if ((position < 0) || (position >= (int)array_length-1))
+                    return false;
+
+                for (int i=sub_string.array_length-2; i>=0; i--)
+                {
+                    if (sub_string[i] != string_array[position])
+                        return false;
+
+                    position--;
+                }
+
+                return true;
+            }
+
             //returns true if specified text was found at the beginning of the string
-            bool beginsWith(const string& sub_string) const
+            inline bool beginsWith(const string& sub_string) const
             {
                 return foundAt(sub_string, 0);
+            }
+
+            //returns true if specified text was found at the end of the string
+            inline bool endsWith(const string& sub_string) const
+            {
+                return foundEndAt(sub_string, array_length-2);
             }
 
             //returns true if specified text was found at the beginning of the string,
