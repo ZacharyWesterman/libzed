@@ -39,7 +39,7 @@ namespace z
 
             inline bool timedOut() const
             {
-                return (this->micros() >= timeout_goal);
+                return ((timeout_goal >= 0) && (this->micros() >= timeout_goal));
             }
         };
     }
