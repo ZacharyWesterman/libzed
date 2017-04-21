@@ -24,5 +24,6 @@
 
 ///Manage file contents with a timeout
 #include "file/loadFileTimeout.h"
+#include "file/saveFileTimeout.h"
 
 #endif // FILE_H_INCLUDED
