@@ -36,10 +36,34 @@ namespace z
 
             core::string<char> file_data;
 
+            long current_index;
+
         public:
+            inline loader()
+            {
+                current_index = 0;
+            }
+
+            void setFileName(const core::string<char>& fileName)
+            {
+                file_name = fileName;
+                file_data.clear();
+                current_index = 0;
+            }
 
 
+            void clear()
+            {
+                file_data.clear();
+                file_name.clear();
+                current_index = 0;
+            }
 
+
+            int load(const core::timeout& time)
+            {
+
+            }
         };
     }
 }
