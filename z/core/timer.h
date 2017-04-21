@@ -39,25 +39,25 @@ namespace z
                     reset();
             }
 
-            void reset()
+            inline void reset()
             {
                 start = high_resolution_clock::now();
             }
 
 
-            long micros() const
+            inline long micros() const
             {
                 return (long)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();
             }
 
-            long millis() const
+            inline long millis() const
             {
                 return (long)(std::chrono::duration_cast<_milliseconds>
                         (high_resolution_clock::now() - start)).count();
             }
 
-            long seconds() const
+            inline long seconds() const
             {
                 return (long)(std::chrono::duration_cast<_seconds>
                         (high_resolution_clock::now() - start)).count();
