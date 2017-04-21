@@ -26,45 +26,185 @@
 #include <fstream>
 #include <stdio.h>
 
+#ifndef null
+    #define null 0
+#endif //null
+
 namespace z
 {
     namespace file
     {
+        template<typename CHAR>
         class loader
         {
             core::string<char> file_name;
 
-            core::string<char> file_data;
+            CHAR* contents_buffer;
+            long bufsiz;
 
             long current_index;
 
+            bool done;
+
         public:
-            inline loader()
+            loader()
             {
+                contents_buffer = null;
                 current_index = 0;
+                bufsiz = 0;
+                done = true;
             }
 
+            ~loader()
+            {
+                if (contents_buffer)
+                    delete[] contents_buffer;
+            }
+
+            ///set the file name and clear the buffer contents
             void setFileName(const core::string<char>& fileName)
             {
                 file_name = fileName;
-                file_data.clear();
                 current_index = 0;
+
+                if (contents_buffer)
+                {
+                    delete[] contents_buffer;
+                    contents_buffer = null;
+                    bufsiz = 0;
+                }
+
+                done = false;
             }
 
 
+            ///clear all buffer contents as well as the file name
             void clear()
             {
-                file_data.clear();
                 file_name.clear();
                 current_index = 0;
+
+                if (contents_buffer)
+                {
+                    delete[] contents_buffer;
+                    contents_buffer = null;
+                    bufsiz = 0;
+                }
+
+                done = true;
             }
 
 
-            int load(const core::timeout& time)
-            {
+            int load(const core::timeout&); //iterative load function prototype
 
+
+            ///return a pointer to the contents buffer
+            const CHAR* getContents() const
+            {
+                return contents_buffer;
             }
         };
+
+
+
+        ///iterative load() function for narrow characters
+        template<>
+        int loader<char>::load(const core::timeout& time)
+        {
+            if (done)
+                return 1;
+
+            std::ifstream file;
+            file.open(file_name.str());
+
+            if (!file)
+                return -1;
+
+
+            if (!contents_buffer) //we haven't started loading the file yet
+            {
+                file.seekg(0, std::ios_base::end);
+
+                //allocate memory for the file
+                bufsiz = file.tellg();
+                contents_buffer = new char[bufsiz+1];
+                contents_buffer[bufsiz] = null;
+
+                file.seekg(0, std::ios_base::beg);
+            }
+
+            //continue where we last left off
+            file.seekg(std::ios_base::beg + current_index);
+
+            while (!time.timedOut() && (current_index < bufsiz) && !file.eof())
+            {
+                contents_buffer[current_index] = file.get();
+                current_index++;
+            }
+            contents_buffer[current_index] = null;
+
+
+            //we are done with this iteration
+            file.close();
+
+
+            if ((current_index >= bufsiz) || file.eof())
+                done = true;
+            else
+                done = !time.timedOut();
+
+            return done;
+        }
+
+
+        ///iterative load function for wide characters
+        template<>
+        int loader<wchar_t>::load(const core::timeout& time)
+        {
+            if (done)
+                return 1;
+
+            std::wifstream file;
+            file.open(file_name.str());
+
+            if (!file)
+                return -1;
+
+
+            if (!contents_buffer) //we haven't started loading the file yet
+            {
+                file.seekg(0, std::ios_base::end);
+
+                //allocate memory for the file
+                bufsiz = file.tellg();
+                contents_buffer = new wchar_t[bufsiz+1];
+                contents_buffer[bufsiz] = null;
+
+                file.seekg(0, std::ios_base::beg);
+            }
+
+            //continue where we last left off
+            file.seekg(std::ios_base::beg + current_index);
+
+            while (!time.timedOut() && (current_index < bufsiz) && !file.eof())
+            {
+                contents_buffer[current_index] = file.get();
+                current_index++;
+            }
+            contents_buffer[current_index] = null;
+
+
+            //we are done with this iteration
+            file.close();
+
+
+            if ((current_index >= bufsiz) || file.eof())
+                done = true;
+            else
+                done = !time.timedOut();
+
+            return done;
+        }
     }
 }
 
