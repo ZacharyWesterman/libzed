@@ -20,10 +20,10 @@
 namespace z
 {
     namespace file
-    { /*
-        ///Function for directory shortening function,
-        ///which removed extra symbols from a directory string.
-        ///(e.g. "C:\a1\b1\..\b2\foo.bar" -> "C:\a1\b2\foo.bar")
+    {
+        ///Directory shortening function,
+        ///which removes extra symbols from a directory string.
+        ///(e.g. "C:/a1/b1/../b2/foo.bar" -> "C:/a1/b2/foo.bar")
         core::string<char> shorten(const core::string<char>& input)
         {
             core::string<char> output = input;
@@ -35,7 +35,20 @@ namespace z
                 if ((output[i] == '\\') ||
                     (output[i] == '/'))
                 {
-                    if (last_slash == i-1)
+                    if (output.foundAt("..", i+1) &&
+                        (last_slash > -1))
+                    {
+                        output.remove(last_slash, i+2);
+                        i--;
+                    }
+                    else if ((output[i+1] == '.') &&
+                             ((output[i+2] == null) ||
+                              (output[i+2] == '\\') ||
+                              (output[i+2] == '/')))
+                    {
+                        output.remove(i+1,i+1);
+                    }
+                    else if (last_slash == i-1)
                     {
                         output.remove(i,i);
                         i--;
@@ -43,14 +56,13 @@ namespace z
 
                     last_slash = i;
                 }
-                else if (output.foundAt(i, ".."))
-                {
-                    output.
-                }
             }
 
+            if (last_slash == output.length() - 1)
+                output.remove(output.length() - 1, output.length() - 1);
+
             return output;
-        }*/
+        }
     }
 }
 
