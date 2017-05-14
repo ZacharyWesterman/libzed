@@ -24,7 +24,7 @@
 #include <z/core/timeout.h>
 
 #include <fstream>
-#include <stdio.h>
+//#include <stdio.h>
 
 #ifndef null
     #define null 0
@@ -136,22 +136,28 @@ namespace z
             //continue where we last left off
             file.seekg(std::ios_base::beg + current_index);
 
-            while (!time.timedOut() && (current_index < bufsiz) && !file.eof())
+
+            do
             {
                 contents_buffer[current_index] = file.get();
                 current_index++;
             }
-            contents_buffer[current_index] = null;
+            while (!time.timedOut() && (current_index < bufsiz) && !file.eof());
 
-
-            //we are done with this iteration
-            file.close();
 
 
             if ((current_index >= bufsiz) || file.eof())
+            {
                 done = true;
+
+                if (current_index)
+                    contents_buffer[current_index-1] = null;
+            }
             else
                 done = !time.timedOut();
+
+            //we are done with this iteration
+            file.close();
 
             return done;
         }
