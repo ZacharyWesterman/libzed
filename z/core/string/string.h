@@ -643,6 +643,21 @@ namespace z
                 return -1;
             }
 
+            //function to find the position of the first occurrence of the given sub-string
+            //after the given index.
+            //returns -1 if it was not found
+            int findAfter(const string& sub_string, int n) const
+            {
+                for (int i=n; i<array_length-1; i++)
+                {
+                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                        return (int)i;
+                }
+
+                return -1;
+            }
+
+
             //function to find the position of the LAST occurrence of the given sub-string
             //returns -1 if it was not found
             int findLast(const string& sub_string) const
