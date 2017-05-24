@@ -24,12 +24,12 @@ namespace z
     namespace core
     {
         ///template for string evaluation functions
-        // both ignore spaces, and returns 0.f if non-numerical characters are present
+        // both ignore spaces, and returns 0.0 if non-numerical characters are present
         template <typename CHAR>
         double value(const string<CHAR>& input)
         {
 
-            double value = 0.f;
+            double value = 0.0;
 
             int start = 0;
             bool isNegative = false;
@@ -57,7 +57,7 @@ namespace z
                 {
                     if (pastDecimal)
                     {
-                        return 0.f;
+                        return 0.0;
                     }
 
                     pastDecimal = true;
@@ -80,7 +80,7 @@ namespace z
                 }
                 else if (input[i] != (CHAR)46)
                 {
-                    return 0.f;
+                    return 0.0;
                 }
             }
 
