@@ -4,12 +4,19 @@
 #include <z/math.h>
 #include <z/file.h>
 
+#include <complex>
+
+
 using namespace std;
 using namespace z;
 
 int main()
 {
-    core::timer total;
+    complex<double> value;
+
+    core::string<char> text = "-0";
+    value = core::complexValue(text);
+    /*core::timer total;
     core::timeout time(100); //timeout at 100 micros
 
     file::writer<wchar_t> fwriter;
@@ -26,9 +33,11 @@ int main()
     cout << "Writing required " << iterations\
          << " iteration" << ((iterations==1)?"":"s")\
          << " and took " << (double)total.micros()/1000000\
-         << " seconds\n";
+         << " seconds\n";*/
 
     //cout << "Contents:\n" << floader.getContents() << endl;
+
+    cout << value << endl;
 
     return 0;
 }
