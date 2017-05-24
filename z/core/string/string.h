@@ -481,7 +481,8 @@ namespace z
             >
             string(const std::complex<T>& number)
             {
-
+                *this = string(number.real()) + string("+");
+                *this += string(number.imag()) + string("i");
             }
 
 
