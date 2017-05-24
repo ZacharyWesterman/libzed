@@ -28,6 +28,8 @@
 //this is for initializing numbers properly
 #include <type_traits>
 
+#include <complex>
+
 
 #define num_bufsiz 15
 #define num_precision 9
@@ -468,6 +470,18 @@ namespace z
                 buffer[buffer_pos] = (CHAR)0;
 
                 assign_data(buffer, buffer_pos+1);
+            }
+
+
+            //complex constructor
+            ///converts a complex number to a string
+            template<
+                typename T, //numeric type
+                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+            >
+            string(const std::complex<T>& number)
+            {
+
             }
 
 
