@@ -358,7 +358,7 @@ namespace z
 
 
             //narrow char constructor
-            string(char character)
+            string(const char& character)
             {
                 array_length = 2;
                 string_array = new CHAR[2];
@@ -368,7 +368,7 @@ namespace z
             }
 
             //wide char constructor
-            string(wchar_t character)
+            string(const wchar_t& character)
             {
                 array_length = 2;
                 string_array = new CHAR[2];
@@ -379,12 +379,12 @@ namespace z
 
 
             //numeric constructor
-            ///converts a number to a string
+            ///converts a real number to a string
             template<
-                typename T, //real type
+                typename T, //numeric type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
             >
-            string(T number)
+            string(const T& number)
             {
                 string_array = null;
                 array_length = 0;
