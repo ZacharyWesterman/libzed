@@ -95,6 +95,31 @@ namespace z
             }
         }
 
+
+        template <typename CHAR>
+        std::complex<double> complexValue(const string<CHAR>& input)
+        {
+            if (input.endsWith("i"))
+            {
+                double real(0), imag;
+
+                int realEnd = input.findLast("+");
+
+                if (realEnd >= 0)
+                {
+                    real = value(input.substr(0, realEnd-1));
+                }
+
+                imag = value(input.substr(realEnd+1, input.length()-2));
+
+                return std::complex<double> (real, imag);
+            }
+            else
+            {
+                return std::complex<double> (value(imput), 0);
+            }
+
+        }
     }
 }
 
