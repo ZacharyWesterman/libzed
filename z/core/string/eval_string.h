@@ -105,18 +105,28 @@ namespace z
 
                 int realEnd = input.findLast("+");
 
+                imag = value(input.substr(realEnd+1, input.length()-2));
+
                 if (realEnd >= 0)
                 {
                     real = value(input.substr(0, realEnd-1));
                 }
+                else
+                {
+                    realEnd = input.findLast("-");
 
-                imag = value(input.substr(realEnd+1, input.length()-2));
+                    if (realEnd >= 0)
+                    {
+                        real = value(input.substr(0, realEnd-1));
+                        imag = -value(input.substr(realEnd+1, input.length()-2));
+                    }
+                }
 
                 return std::complex<double> (real, imag);
             }
             else
             {
-                return std::complex<double> (value(imput), 0);
+                return std::complex<double> (value(input), 0);
             }
 
         }
