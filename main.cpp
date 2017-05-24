@@ -14,7 +14,7 @@ int main()
 {
     complex<double> value;
 
-    core::string<char> text = "-0";
+    core::string<wchar_t> text = L"5+2i";
     value = core::complexValue(text);
     /*core::timer total;
     core::timeout time(100); //timeout at 100 micros
