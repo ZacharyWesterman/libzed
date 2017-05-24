@@ -493,8 +493,9 @@ namespace z
                     delete[] string_array;
             }
 
+
             //get number of characters in the string
-            int length() const
+            int size() const
             {
                 int len = (int)(array_length)-1;
 
@@ -504,16 +505,12 @@ namespace z
                 return len;
             }
 
-            //get number of bytes the string takes up in memory
-            int size() const
+            inline int length() const
             {
-                int sum = 0;
-
-                for (int i=0; i<array_length; i++)
-                    sum += sizeof(string_array[i]);
-
-                return sum;
+                return size();
             }
+
+
 
 
             //get string array pointer
@@ -915,7 +912,6 @@ namespace z
                 return *this;
             }
         };
-
     }
 }
 
