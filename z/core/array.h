@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Feb. 2017
+ * Last modified:   4 Jun. 2017
 **/
 
 #pragma once
@@ -65,6 +65,7 @@ namespace z
             void clear();
 
             virtual int add(const T&);
+            virtual void add(const array&);
             bool insert(const T&, int);
             bool remove(int);
 
@@ -74,7 +75,7 @@ namespace z
 
             array subset(int, int);
 
-            int size() const;
+            inline int size() const;
 
             T& at(const int);
             const T& at(const int) const;
@@ -141,12 +142,21 @@ namespace z
 
 
         ///Function to append an object to the end of the array
+        //returns where the object was placed
         template <typename T>
         int array<T>::add(const T& object)
         {
             array_data.push_back(object);
 
             return ((int)array_data.size() - 1);
+        }
+
+        ///Function to append contents of another array to the end of this array
+        template <typename T>
+        void array<T>::add(const array& other)
+        {
+            for (int i=0; i<other.size(); i++)
+                array_data.push_back(other[i]);
         }
 
 
@@ -181,7 +191,7 @@ namespace z
 
         ///Return the number of objects in the array
         template <typename T>
-        int array<T>::size() const
+        inline int array<T>::size() const
         {
             return (int)array_data.size();
         }
