@@ -27,15 +27,19 @@
 
 //this is for initializing numbers properly
 #include <type_traits>
-
 #include <complex>
-
 
 #define num_bufsiz 15
 #define num_precision 9
 
+//magic number for determining when to round numbers,
+//e.g. at the ~0.5 mark.
+#define num_round_magic 0.49999995862981452821038885758753
+
 
 #include "convert_char_type.h"
+
+#include <iostream>
 
 namespace z
 {
@@ -417,30 +421,60 @@ namespace z
                     buffer[buffer_pos] = (CHAR)48;
                     buffer_pos++;
                 }
-                else
+
+
+                while (ipart != 0)
                 {
-                    while (ipart != 0)
-                    {
-                         inv_ibuf[ibufsiz] = (CHAR)((ipart % 10) + 48);
-                         ipart /= 10;
+                    inv_ibuf[ibufsiz] = (CHAR)((ipart % 10) + 48);
+                    ipart /= 10;
 
-                         ibufsiz++;
-                    }
-
-
-                    while ((fpart != 0) && (fbufsiz < num_precision))
-                    {
-                        fpart *= 10;
-
-                        int frac_char = fpart;
-
-                        inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
-
-                        fbufsiz++;
-                        fpart -= frac_char;
-                    }
+                    ibufsiz++;
                 }
 
+
+                while ((fpart != 0) && (fbufsiz < num_precision))
+                {
+                    fpart *= 10;
+
+                    int frac_char = fpart;
+
+                    inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
+
+                    fbufsiz++;
+                    fpart -= frac_char;
+                }
+
+                //std::cout << 1000*fpart << "#";
+
+                if (fpart >= num_round_magic)
+                {
+                    int i = fbufsiz - 1;
+
+                    inv_fbuf[i]++;
+
+                    while ((i > 0) && (inv_fbuf[i] > (CHAR)57))
+                    {
+                        fbufsiz--;
+                        inv_fbuf[i-1]++;
+
+                        i--;
+                    }
+
+                    if (inv_fbuf[0] > (CHAR)57)
+                    {
+                        //std::cout << "!";
+                        //fbufsiz--;
+                        inv_ibuf[0]++;
+
+                        /*while ((i > 0) && (inv_fbuf[i] > (CHAR)57))
+                        {
+                            fbufsiz--;
+                            inv_fbuf[i-1]++;
+
+                            i--;
+                        }*/
+                    }
+                }
 
                 for (int i=ibufsiz-1; i>=0; i--)
                 {
@@ -481,8 +515,19 @@ namespace z
             >
             string(const std::complex<T>& number)
             {
-                *this = string(number.real()) + string("+");
-                *this += string(number.imag()) + string("i");
+                if (number.imag() == 0)
+                {
+                    *this = string(number.real());
+                }
+                else if (number.real() == 0)
+                {
+                    *this = string(number.imag()) + string("i");
+                }
+                else
+                {
+                    *this = string(number.real()) + string("+")\
+                          + string(number.imag()) + string("i");
+                }
             }
 
 
