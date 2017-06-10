@@ -13,8 +13,9 @@ using namespace z;
 int main()
 {
     //complex<double> value;
+    double value = -0.999999999999;
 
-    core::string<char> text = 9999.99999999959;
+    core::string<char> text = value;
     //value = core::complexValue(text);
     /*core::timer total;
     core::timeout time(100); //timeout at 100 micros
@@ -38,6 +39,7 @@ int main()
     //cout << "Contents:\n" << floader.getContents() << endl;
 
     cout << text.str() << endl;
+    cout << value << endl;
 
     return 0;
 }

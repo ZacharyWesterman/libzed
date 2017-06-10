@@ -400,6 +400,8 @@ namespace z
                 long ipart = number;
                 double fpart = number - ipart;
 
+                //std::cout << fpart << ":" << ipart << std::endl;
+
                 CHAR inv_ibuf[num_bufsiz];
                 CHAR inv_fbuf[num_bufsiz];
 
@@ -407,17 +409,26 @@ namespace z
                 int fbufsiz = 0;
 
 
-                if (number < 0)
+                if (ipart < 0)
                 {
                     buffer[buffer_pos] = (CHAR)45;
                     buffer_pos++;
+
+                    ipart = -ipart;
+                }
+                else if (fpart < 0)
+                {
+                    buffer[buffer_pos] = (CHAR)45;
+                    buffer_pos++;
+
+                    fpart = -fpart;
                 }
 
 
                 if (ipart == 0)
                 {
-                    buffer[buffer_pos] = (CHAR)48;
-                    buffer_pos++;
+                    inv_ibuf[0] = (CHAR)48;
+                    ibufsiz++;
                 }
 
 
@@ -460,7 +471,6 @@ namespace z
 
                     if (inv_fbuf[0] > (CHAR)57)
                     {
-                        //std::cout << "!";
                         fbufsiz--;
                         inv_ibuf[0]++;
 
