@@ -12,10 +12,10 @@ using namespace z;
 
 int main()
 {
-    complex<double> value;
+    //complex<double> value;
 
-    core::string<wchar_t> text = L"5+2i";
-    value = core::complexValue(text);
+    core::string<char> text = 9999.99999999959;
+    //value = core::complexValue(text);
     /*core::timer total;
     core::timeout time(100); //timeout at 100 micros
 
@@ -37,7 +37,7 @@ int main()
 
     //cout << "Contents:\n" << floader.getContents() << endl;
 
-    cout << value << endl;
+    cout << text.str() << endl;
 
     return 0;
 }

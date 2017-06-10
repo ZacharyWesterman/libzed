@@ -34,12 +34,10 @@
 
 //magic number for determining when to round numbers,
 //e.g. at the ~0.5 mark.
-#define num_round_magic 0.49999995862981452821038885758753
+#define num_round_magic 0.499999958629814528210388857587539
 
 
 #include "convert_char_type.h"
-
-#include <iostream>
 
 namespace z
 {
@@ -463,16 +461,31 @@ namespace z
                     if (inv_fbuf[0] > (CHAR)57)
                     {
                         //std::cout << "!";
-                        //fbufsiz--;
+                        fbufsiz--;
                         inv_ibuf[0]++;
 
-                        /*while ((i > 0) && (inv_fbuf[i] > (CHAR)57))
-                        {
-                            fbufsiz--;
-                            inv_fbuf[i-1]++;
+                        i=0;
 
-                            i--;
-                        }*/
+                        while ((i < ibufsiz) && (inv_ibuf[i] > (CHAR)57))
+                        {
+                            inv_ibuf[i] = (CHAR)48;
+
+                            if (i+1 == ibufsiz)
+                            {
+                                if (ibufsiz < num_bufsiz)
+                                {
+                                    inv_ibuf[ibufsiz] = (CHAR)49;
+
+                                    ibufsiz++;
+                                }
+                            }
+                            else
+                            {
+                                inv_ibuf[i+1]++;
+                            }
+
+                            i++;
+                        }
                     }
                 }
 
@@ -963,5 +976,7 @@ namespace z
 
 #undef num_bufsiz
 #undef num_precision
+
+#undef num_round_magic
 
 #endif // STRING_H_INCLUDED
