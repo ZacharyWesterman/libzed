@@ -39,6 +39,146 @@
 
 #include "convert_char_type.h"
 
+//"buffer" is assumed to be 2*num_bufsiz + 3 characters long
+//returns number of characters in resultant string
+template<typename CHAR>
+static int num_to_cstring(const double& number, CHAR* buffer)
+{
+    int buffer_pos = 0;
+
+    long ipart = number;
+                double fpart = number - ipart;
+
+                //std::cout << fpart << ":" << ipart << std::endl;
+
+                CHAR inv_ibuf[num_bufsiz];
+                CHAR inv_fbuf[num_bufsiz];
+
+                int ibufsiz = 0;
+                int fbufsiz = 0;
+
+
+                if (ipart < 0)
+                {
+                    buffer[buffer_pos] = (CHAR)45;
+                    buffer_pos++;
+
+                    ipart = -ipart;
+                }
+                else if (fpart < 0)
+                {
+                    buffer[buffer_pos] = (CHAR)45;
+                    buffer_pos++;
+
+                    fpart = -fpart;
+                }
+
+
+                if (ipart == 0)
+                {
+                    inv_ibuf[0] = (CHAR)48;
+                    ibufsiz++;
+                }
+
+
+                while (ipart != 0)
+                {
+                    inv_ibuf[ibufsiz] = (CHAR)((ipart % 10) + 48);
+                    ipart /= 10;
+
+                    ibufsiz++;
+                }
+
+
+                while ((fpart != 0) && (fbufsiz < num_precision))
+                {
+                    fpart *= 10;
+
+                    int frac_char = fpart;
+
+                    inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
+
+                    fbufsiz++;
+                    fpart -= frac_char;
+                }
+
+                //std::cout << 1000*fpart << "#";
+
+                if (fpart >= num_round_magic)
+                {
+                    int i = fbufsiz - 1;
+
+                    inv_fbuf[i]++;
+
+                    while ((i > 0) && (inv_fbuf[i] > (CHAR)57))
+                    {
+                        fbufsiz--;
+                        inv_fbuf[i-1]++;
+
+                        i--;
+                    }
+
+                    if (inv_fbuf[0] > (CHAR)57)
+                    {
+                        fbufsiz--;
+                        inv_ibuf[0]++;
+
+                        i=0;
+
+                        while ((i < ibufsiz) && (inv_ibuf[i] > (CHAR)57))
+                        {
+                            inv_ibuf[i] = (CHAR)48;
+
+                            if (i+1 == ibufsiz)
+                            {
+                                if (ibufsiz < num_bufsiz)
+                                {
+                                    inv_ibuf[ibufsiz] = (CHAR)49;
+
+                                    ibufsiz++;
+                                }
+                            }
+                            else
+                            {
+                                inv_ibuf[i+1]++;
+                            }
+
+                            i++;
+                        }
+                    }
+                }
+
+                for (int i=ibufsiz-1; i>=0; i--)
+                {
+                    buffer[buffer_pos] = inv_ibuf[i];
+                    buffer_pos++;
+                }
+
+                if (fbufsiz)
+                {
+                    buffer[buffer_pos] = (CHAR)46;
+                    buffer_pos++;
+
+                    int frac_len = 0;
+
+                    for (int f=0; f<fbufsiz; f++)
+                    {
+                        buffer[buffer_pos + f] = inv_fbuf[f];
+
+                        if (inv_fbuf[f] > 48)
+                            frac_len = f + 1;
+                    }
+
+                    buffer_pos += frac_len;
+                }
+
+                //buffer is null-terminated
+                buffer[buffer_pos] = (CHAR)0;
+
+                return buffer_pos;
+}
+
+
 namespace z
 {
     namespace core
@@ -53,7 +193,7 @@ namespace z
             //internal function to clear string data
             void clear_data()
             {
-                if (string_array)
+                if (array_length)
                     delete[] string_array;
 
                 string_array = null;
@@ -390,143 +530,15 @@ namespace z
             >
             string(const T& number)
             {
-                string_array = null;
-                array_length = 0;
-
-
+                //buffer assumed to be AT LEAST (2*num_bufsiz + 3) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 3];
-                int buffer_pos = 0;
 
-                long ipart = number;
-                double fpart = number - ipart;
+                array_length = num_to_cstring((double)number, buffer) + 1;
 
-                //std::cout << fpart << ":" << ipart << std::endl;
+                string_array = new CHAR[array_length];
 
-                CHAR inv_ibuf[num_bufsiz];
-                CHAR inv_fbuf[num_bufsiz];
-
-                int ibufsiz = 0;
-                int fbufsiz = 0;
-
-
-                if (ipart < 0)
-                {
-                    buffer[buffer_pos] = (CHAR)45;
-                    buffer_pos++;
-
-                    ipart = -ipart;
-                }
-                else if (fpart < 0)
-                {
-                    buffer[buffer_pos] = (CHAR)45;
-                    buffer_pos++;
-
-                    fpart = -fpart;
-                }
-
-
-                if (ipart == 0)
-                {
-                    inv_ibuf[0] = (CHAR)48;
-                    ibufsiz++;
-                }
-
-
-                while (ipart != 0)
-                {
-                    inv_ibuf[ibufsiz] = (CHAR)((ipart % 10) + 48);
-                    ipart /= 10;
-
-                    ibufsiz++;
-                }
-
-
-                while ((fpart != 0) && (fbufsiz < num_precision))
-                {
-                    fpart *= 10;
-
-                    int frac_char = fpart;
-
-                    inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
-
-                    fbufsiz++;
-                    fpart -= frac_char;
-                }
-
-                //std::cout << 1000*fpart << "#";
-
-                if (fpart >= num_round_magic)
-                {
-                    int i = fbufsiz - 1;
-
-                    inv_fbuf[i]++;
-
-                    while ((i > 0) && (inv_fbuf[i] > (CHAR)57))
-                    {
-                        fbufsiz--;
-                        inv_fbuf[i-1]++;
-
-                        i--;
-                    }
-
-                    if (inv_fbuf[0] > (CHAR)57)
-                    {
-                        fbufsiz--;
-                        inv_ibuf[0]++;
-
-                        i=0;
-
-                        while ((i < ibufsiz) && (inv_ibuf[i] > (CHAR)57))
-                        {
-                            inv_ibuf[i] = (CHAR)48;
-
-                            if (i+1 == ibufsiz)
-                            {
-                                if (ibufsiz < num_bufsiz)
-                                {
-                                    inv_ibuf[ibufsiz] = (CHAR)49;
-
-                                    ibufsiz++;
-                                }
-                            }
-                            else
-                            {
-                                inv_ibuf[i+1]++;
-                            }
-
-                            i++;
-                        }
-                    }
-                }
-
-                for (int i=ibufsiz-1; i>=0; i--)
-                {
-                    buffer[buffer_pos] = inv_ibuf[i];
-                    buffer_pos++;
-                }
-
-                if (fbufsiz)
-                {
-                    buffer[buffer_pos] = (CHAR)46;
-                    buffer_pos++;
-
-                    int frac_len = 0;
-
-                    for (int f=0; f<fbufsiz; f++)
-                    {
-                        buffer[buffer_pos + f] = inv_fbuf[f];
-
-                        if (inv_fbuf[f] > 48)
-                            frac_len = f + 1;
-                    }
-
-                    buffer_pos += frac_len;
-                }
-
-                //buffer is null-terminated
-                buffer[buffer_pos] = (CHAR)0;
-
-                assign_data(buffer, buffer_pos+1);
+                for (int i=0; i<array_length; i++)
+                    string_array[i] = buffer[i];
             }
 
 
@@ -540,16 +552,56 @@ namespace z
             {
                 if (number.imag() == 0)
                 {
-                    *this = string(number.real());
+                    //buffer assumed to be AT LEAST (2*num_bufsiz + 3) characters long!
+                    CHAR buffer[num_bufsiz + num_bufsiz + 3];
+
+                    array_length = num_to_cstring((double)number.real(), buffer) + 1;
+
+                    string_array = new CHAR[array_length];
+
+                    for (int i=0; i<array_length; i++)
+                        string_array[i] = buffer[i];
                 }
                 else if (number.real() == 0)
                 {
-                    *this = string(number.imag()) + string("i");
+                    //buffer assumed to be AT LEAST (2*num_bufsiz + 3) characters long!
+                    CHAR buffer[num_bufsiz + num_bufsiz + 4];
+
+                    array_length = num_to_cstring((double)number.imag(), buffer) + 2;
+                    //append 'i', since imaginary value.
+                    buffer[array_length-2] = (CHAR)105;
+                    buffer[array_length-1] = (CHAR)0;
+
+                    string_array = new CHAR[array_length];
+
+                    for (int i=0; i<array_length; i++)
+                        string_array[i] = buffer[i];
                 }
                 else
                 {
-                    *this = string(number.real()) + string("+")\
-                          + string(number.imag()) + string("i");
+                    //each buffer assumed to be AT LEAST (2*num_bufsiz + 3) characters long!
+                    CHAR real_buffer[num_bufsiz + num_bufsiz + 4];
+                    CHAR imag_buffer[num_bufsiz + num_bufsiz + 4];
+
+                    int r_array_len = num_to_cstring((double)number.real(), real_buffer) + 1;
+
+                    //append '+', since imaginary value comes next.
+                    real_buffer[r_array_len-1] = (CHAR)43;
+
+
+                    int i_array_len = num_to_cstring((double)number.imag(), imag_buffer) + 2;
+                    //append 'i', since imaginary value.
+                    imag_buffer[i_array_len-2] = (CHAR)105;
+                    imag_buffer[i_array_len-1] = (CHAR)0;
+
+                    array_length = r_array_len + i_array_len;
+                    string_array = new CHAR[array_length];
+
+                    for (int i=0; i<r_array_len; i++)
+                        string_array[i] = real_buffer[i];
+
+                    for (int i=0; i<i_array_len; i++)
+                        string_array[i+r_array_len] = imag_buffer[i];
                 }
             }
 
