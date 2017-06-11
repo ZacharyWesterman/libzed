@@ -37,9 +37,6 @@
 #ifndef CIRCULAR_NUMBER_H_INCLUDED
 #define CIRCULAR_NUMBER_H_INCLUDED
 
-#include <iostream>
-using namespace std;
-
 namespace z
 {
     namespace core
