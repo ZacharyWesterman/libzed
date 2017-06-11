@@ -36,6 +36,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="z/complex.h" />
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/binaryTree.h" />
