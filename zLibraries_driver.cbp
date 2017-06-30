@@ -62,6 +62,7 @@
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
 		<Unit filename="z/file/directoryOperations.h" />
+		<Unit filename="z/file/exists.h" />
 		<Unit filename="z/file/listFilesInDir.h" />
 		<Unit filename="z/file/loadFileTimeout.h" />
 		<Unit filename="z/file/loadFileToMemory.h" />

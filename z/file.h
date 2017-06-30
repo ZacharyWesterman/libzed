@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Apr. 2017
+ * Last modified:   29 Jun. 2017
 **/
 
 #pragma once
@@ -17,6 +17,7 @@
 ///Directory operations
 #include "file/listFilesInDir.h"
 #include "file/directoryOperations.h"
+#include "file/exists.h"
 
 ///Manage entire file contents
 #include "file/loadFileToMemory.h"
