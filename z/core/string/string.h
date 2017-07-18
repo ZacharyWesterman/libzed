@@ -13,7 +13,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   13 May 2017
+ * Last modified:   18 Jul. 2017
 **/
 
 
@@ -21,9 +21,7 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
 
-#ifndef null
-    #define null 0
-#endif // null
+#define null 0
 
 //this is for initializing numbers properly
 #include <type_traits>
@@ -1040,5 +1038,7 @@ namespace z
 #undef num_precision
 
 #undef num_round_magic
+
+#undef null
 
 #endif // STRING_H_INCLUDED
