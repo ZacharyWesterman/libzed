@@ -30,7 +30,7 @@ namespace z
     {
         //template for dynamic stack
         template <typename T>
-        class dynamic_stack
+        class dynamicStack
         {
         private:
             struct ll_node
@@ -43,10 +43,10 @@ namespace z
 
         public:
             //constructor
-            dynamic_stack() {head = null;}
+            dynamicStack() {head = null;}
 
             //destructor
-            ~dynamic_stack()
+            ~dynamicStack()
             {
                 while (head != null)
                 {
