@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <z/core.h>
+//#include <z/core.h>
 #include <z/math.h>
-#include <z/file.h>
+//#include <z/file.h>
 
 
 using namespace std;
@@ -11,33 +11,8 @@ using namespace z;
 int main()
 {
     //complex<double> value;
-    std::complex<double> value = -1;
-
-    core::string<char> text = value;
-    //value = core::complexValue(text);
-    /*core::timer total;
-    core::timeout time(100); //timeout at 100 micros
-
-    file::writer<wchar_t> fwriter;
-    fwriter.setFileName("test.txt");
-    fwriter.setFileData(L"Հայաստան Россия Österreich Ελλάδα भारत");
-
-    int iterations = 1;
-    while (!fwriter.write(time))
-    {
-        iterations++;
-        time.reset();
-    }
-
-    cout << "Writing required " << iterations\
-         << " iteration" << ((iterations==1)?"":"s")\
-         << " and took " << (double)total.micros()/1000000\
-         << " seconds\n";*/
-
-    //cout << "Contents:\n" << floader.getContents() << endl;
-
-    //cout << text.str() << endl;
-    cout << value << endl;
+    //cout << math::remainder(10, 8) << endl;
+    cout << math::remainder(complex<long>(100,0), complex<long>(80, 0)) << endl;
 
     return 0;
 }

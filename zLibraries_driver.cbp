@@ -72,7 +72,9 @@
 		<Unit filename="z/math/constants.h" />
 		<Unit filename="z/math/factorial.h" />
 		<Unit filename="z/math/fibonacci.h" />
+		<Unit filename="z/math/gcd.h" />
 		<Unit filename="z/math/matrix.h" />
+		<Unit filename="z/math/remainder.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
