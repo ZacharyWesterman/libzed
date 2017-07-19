@@ -13,7 +13,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   18 Jul. 2017
+ * Last modified:   19 Jul. 2017
 **/
 
 
@@ -583,8 +583,12 @@ namespace z
 
                     int r_array_len = num_to_cstring((double)number.real(), real_buffer) + 1;
 
-                    //append '+', since imaginary value comes next.
-                    real_buffer[r_array_len-1] = (CHAR)43;
+                    //append '+'(if positive imaginary part),
+                    //since imaginary value comes next.
+                    if (number.imag() >= 0)
+                        real_buffer[r_array_len-1] = (CHAR)43;
+                    else
+                        r_array_len--;
 
 
                     int i_array_len = num_to_cstring((double)number.imag(), imag_buffer) + 2;
