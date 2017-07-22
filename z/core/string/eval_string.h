@@ -41,7 +41,10 @@ namespace z
             }
 
             bool pastDecimal = false;
+            bool pastExponent = false;
             double fracMult = 1.0;
+            int exponent = 0;
+            bool expNegative = false;
 
             int length = input.length();
 
@@ -67,7 +70,12 @@ namespace z
                 //the string evaluates to 0.0 and return.
                 else if (is_numeric(input[i]))
                 {
-                    if (pastDecimal)
+                    if (pastExponent)
+                    {
+                        exponent *= 10;
+                        exponent += (input[i] - (CHAR)48);
+                    }
+                    else if (pastDecimal)
                     {
                         fracMult /= 10.0;
                         value += fracMult * (double)(input[i] - (CHAR)48); //actual value from character
@@ -78,10 +86,32 @@ namespace z
                         value += (double)(input[i] - (CHAR)48); //actual value from character
                     }
                 }
+                else if (input[i] == (CHAR)69)
+                {
+                    pastExponent = true;
+                }
+                else if (pastExponent && (input[i] == (CHAR)45))
+                {
+                    expNegative = true;
+                }
                 else if (input[i] != (CHAR)46)
                 {
                     return 0.0;
                 }
+            }
+
+
+            if (exponent)
+            {
+                long valMult = 1;
+
+                for(int i=0; i<exponent; i++)
+                    valMult *= 10;
+
+                if (expNegative)
+                    value *= (1 / (double)valMult);
+                else
+                    value *= valMult;
             }
 
             //never output "-0"
