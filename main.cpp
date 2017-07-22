@@ -14,7 +14,7 @@ int main()
     //cout << math::remainder(10, 8) << endl;
     //cout << math::remainder(complex<long>(100,0), complex<long>(80, 0)) << endl;
 
-    cout << core::value(core::string<char>("9E-4"));
+    cout << core::value(core::string<char>("2E-4"));
 
     return 0;
 }
