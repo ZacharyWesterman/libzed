@@ -15,31 +15,49 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
+ * Last modified:   19 Jul. 2017
 **/
 
 #pragma once
 #ifndef FACTORIAL_H_INCLUDED
 #define FACTORIAL_H_INCLUDED
 
+#include <cmath>
+
+#define FACTORIAL_MAX_INPUT_INT 21
+#define FACTORIAL_MAX_INPUT_DBL 21.439
+
 namespace z
 {
     namespace math
     {
-        unsigned long long factorial(int n)
+        long factorial(long n)
         {
-            if ((n < 0) || (n > 64))
-                return 0;
+            if ((n < 0) || (n > FACTORIAL_MAX_INPUT_INT))
+                return -1;
 
 
-            unsigned long long result = 1;
+            long result = 1;
 
-            for (int i=2; i<=n; i++)
+            for (long i=2; i<=n; i++)
             {
-                result *= (unsigned long long)i;
+                result *= i;
             }
 
             return result;
+        }
+
+
+
+        double factorial(double x)
+        {
+            if ((x < 0) || (x > FACTORIAL_MAX_INPUT_DBL))
+                return -1;
+
+            if (x == (long)x)
+                return (double)factorial((long)x);
+            else
+                return std::tgamma(x);
         }
     }
 }
