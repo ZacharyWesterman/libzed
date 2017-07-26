@@ -8,7 +8,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   2 Feb. 2017
+ * Last modified:   26 Jul. 2017
 **/
 
 #pragma once
@@ -50,13 +50,26 @@ namespace z
 
 
         template <typename CHAR>
-        bool is_numeric(const CHAR character)
+        int numeral_value(const CHAR character)
         {
             if ((character >= (CHAR)48) &&  //from 0
                 (character <= (CHAR)57))    //to 9
-                return true;
+                return (character - 48);
+            else if ((character >= (CHAR)97) &&  //from a
+                     (character <= (CHAR)122))    //to z
+                return (character - 87);
+            else if ((character >= (CHAR)65) &&  //from A
+                     (character <= (CHAR)90))    //to Z
+                return (character - 55);
             else
-                return false;
+                return -1;
+        }
+
+        template <typename CHAR>
+        inline bool is_numeric(const CHAR character, int base = 10)
+        {
+            int value = numeral_value(character);
+            return ((value < base) && (value > -1));
         }
 
 

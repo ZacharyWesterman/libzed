@@ -8,7 +8,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   2 Feb. 2017
+ * Last modified:   26 Jul. 2017
 **/
 
 #pragma once
@@ -26,7 +26,7 @@ namespace z
         ///template for string evaluation functions
         // both ignore spaces, and returns 0.0 if non-numerical characters are present
         template <typename CHAR>
-        double value(const string<CHAR>& input)
+        double value(const string<CHAR>& input, int base = 10)
         {
 
             double value = 0.0;
@@ -68,22 +68,22 @@ namespace z
 
                 //if a character is not part of a valid number,
                 //the string evaluates to 0.0 and return.
-                else if (is_numeric(input[i]))
+                else if (is_numeric(input[i], base))
                 {
                     if (pastExponent)
                     {
-                        exponent *= 10;
-                        exponent += (input[i] - (CHAR)48);
+                        exponent *= base;
+                        exponent += numeral_value(input[i]);
                     }
                     else if (pastDecimal)
                     {
-                        fracMult /= 10.0;
-                        value += fracMult * (double)(input[i] - (CHAR)48); //actual value from character
+                        fracMult /= (double)base;
+                        value += fracMult * (double)numeral_value(input[i]); //actual value from character
                     }
                     else
                     {
-                        value *= 10.0;
-                        value += (double)(input[i] - (CHAR)48); //actual value from character
+                        value *= (double)base;
+                        value += (double)numeral_value(input[i]); //actual value from character
                     }
                 }
                 else if (input[i] == (CHAR)69)
@@ -106,7 +106,7 @@ namespace z
                 long valMult = 1;
 
                 for(int i=0; i<exponent; i++)
-                    valMult *= 10;
+                    valMult *= base;
 
                 if (expNegative)
                     value *= (1 / (double)valMult);
@@ -130,7 +130,7 @@ namespace z
 
 
         template <typename CHAR>
-        std::complex<double> complexValue(const string<CHAR>& input)
+        std::complex<double> complexValue(const string<CHAR>& input, int base = 10)
         {
             if (input.endsWith("i"))
             {
@@ -138,11 +138,11 @@ namespace z
 
                 int realEnd = input.findLast("+");
 
-                imag = value(input.substr(realEnd+1, input.length()-2));
+                imag = value(input.substr(realEnd+1, input.length()-2), base);
 
                 if (realEnd >= 0)
                 {
-                    real = value(input.substr(0, realEnd-1));
+                    real = value(input.substr(0, realEnd-1), base);
                 }
                 else
                 {
@@ -150,8 +150,8 @@ namespace z
 
                     if (realEnd >= 0)
                     {
-                        real = value(input.substr(0, realEnd-1));
-                        imag = -value(input.substr(realEnd+1, input.length()-2));
+                        real = value(input.substr(0, realEnd-1), base);
+                        imag = -value(input.substr(realEnd+1, input.length()-2), base);
                     }
                 }
 
@@ -159,7 +159,7 @@ namespace z
             }
             else
             {
-                return std::complex<double> (value(input), 0);
+                return std::complex<double> (value(input, base), 0);
             }
 
         }
