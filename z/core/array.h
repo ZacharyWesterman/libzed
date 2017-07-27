@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   4 Jun. 2017
+ * Last modified:   27 Jul. 2017
 **/
 
 #pragma once
@@ -116,6 +116,49 @@ namespace z
 
                 return true;
             }
+
+            bool operator>(const array& other) const
+            {
+                if (array_data.size() != other.array_data.size())
+                    return (array_data.size() > other.array_data.size());
+
+                int gt_count = 0;
+
+                for (int i=0; i<(int)array_data.size(); i++)
+                {
+                    if (array_data.at(i) > other.array_data.at(i))
+                        gt_count++;
+                    else if (array_data.at(i) < other.array_data.at(i))
+                        gt_count--;
+                }
+
+                return gt_count > 0;
+            }
+
+            bool operator<(const array& other) const
+            {
+                if (array_data.size() != other.array_data.size())
+                    return (array_data.size() < other.array_data.size());
+
+                int gt_count = 0;
+
+                for (int i=0; i<(int)array_data.size(); i++)
+                {
+                    if (array_data.at(i) > other.array_data.at(i))
+                        gt_count++;
+                    else if (array_data.at(i) < other.array_data.at(i))
+                        gt_count--;
+                }
+
+                return gt_count < 0;
+            }
+
+            inline bool operator>=(const array& other) const
+            { return !operator<(other); }
+
+            inline bool operator<=(const array& other) const
+            { return !operator>(other); }
+
 
             bool is_valid(int position) const
             {
