@@ -140,7 +140,7 @@ namespace z
             ///Addition operators
 
             //Now for the + operator, if you're adding two circular_number objects.
-            const T operator+(const circular_number& arg2)
+            const T operator+(const circularNumber& arg2)
             {
                 return setWithinBounds(value + arg2.value);
             }
@@ -152,7 +152,7 @@ namespace z
             }
 
             //the + operator if you're adding a number of type T on the left.
-            friend const T operator+(const T& arg1, const circular_number& arg2)
+            friend const T operator+(const T& arg1, const circularNumber& arg2)
             {
                 return setWithinBounds(arg2.value + arg1);
             }
@@ -170,7 +170,7 @@ namespace z
             ///Subtraction operators
 
             //The - operator, if you're subtracting two circular_number objects.
-            const T operator-(const circular_number& arg2)
+            const T operator-(const circularNumber& arg2)
             {
                 return setWithinBounds(value - arg2.value);
             }
@@ -182,7 +182,7 @@ namespace z
             }
 
             //the - operator if you're subtracting a number of type T on the left.
-            friend T operator-(const T& arg1, const circular_number& arg2)
+            friend T operator-(const T& arg1, const circularNumber& arg2)
             {
                 return setWithinBounds(arg1.value - arg2.value);
             }
