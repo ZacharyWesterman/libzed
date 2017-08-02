@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   1 Mar. 2017
+ * Last modified:   2 Aug. 2017
 **/
 
 
@@ -21,12 +21,12 @@
 
 ///Arrays
 #include "core/array.h"
-#include "core/sorted_array.h"
-#include "core/sorted_ref_array.h"
+#include "core/sortedArray.h"
+#include "core/sortedRefArray.h"
 
 ///Misc data structures
 #include "core/dynamicStack.h"
-#include "core/circular_number.h"
+#include "core/circularNumber.h"
 
 ///Timers
 #include "core/timer.h"

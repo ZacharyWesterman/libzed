@@ -10,7 +10,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   1 Mar. 2017
+ * Last modified:   2 Aug. 2017
 **/
 
 
@@ -34,15 +34,15 @@
 
 
 #pragma once
-#ifndef CIRCULAR_NUMBER_H_INCLUDED
-#define CIRCULAR_NUMBER_H_INCLUDED
+#ifndef CIRCULARNUMBER_H_INCLUDED
+#define CIRCULARNUMBER_H_INCLUDED
 
 namespace z
 {
     namespace core
     {
         template <typename T>
-        class circular_number
+        class circularNumber
         {
         protected:
             T value;//stores the number's value
@@ -84,7 +84,7 @@ namespace z
             T min;  //Lowest the number can be
 
             //Default constructor
-            circular_number(T max = 1, T min = 0, T value = 0)
+            circularNumber(T max = 1, T min = 0, T value = 0)
             {
                 if (min > max)
                 {
@@ -206,7 +206,7 @@ namespace z
 }
 
 
-#endif // CIRCULAR_NUMBER_H_INCLUDED
+#endif // CIRCULARNUMBER_H_INCLUDED
 
 
 /// A little example of how to use the code.
@@ -219,7 +219,7 @@ using namespace std;
 int main()
 {
 
-    circular_number<int>(input);
+    circularNumber<int>(input);
 
     input.max = 11;
     input.min = 5;
