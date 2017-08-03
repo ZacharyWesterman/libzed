@@ -10,7 +10,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   19 Jul. 2017
+ * Last modified:   2 Aug. 2017
 **/
 
 #pragma once
@@ -43,39 +43,26 @@ namespace z
             }
 
 
+            #ifdef _GLIBCXX_COMPLEX
 
             const std::complex<long> remainder(std::complex<long> x, std::complex<long> y)
             {
                 if ((y.real() == 0) && (y.imag() == 0))
                     return std::complex<long>();
 
+                long _norm = std::norm(y);
 
-                long norm_x, norm_y;
-
-                norm_x = (x.real()*x.real()) + (x.imag()*x.imag());
-                norm_y = (y.real()*y.real()) + (y.imag()*y.imag());
-
-
-                if (x.real() < 0)
-                    x = std::complex<long>(-x.real(), x.imag());
-                if (x.imag() < 0)
-                    x = std::complex<long>(x.real(), -x.imag());
-                if (y.real() < 0)
-                    y = std::complex<long>(-y.real(), y.imag());
-                if (y.imag() < 0)
-                    y = std::complex<long>(y.real(), -y.imag());
+                long _imag = (x.imag()*y.real() - x.real()*y.imag()) / _norm;
+                long _real = (x.real()*y.real() + x.imag()*y.imag()) / _norm;
 
 
-                while (norm_x >= norm_y)
-                {
-                    x -= y;
+                std::complex<long> _remd = x - (y * std::complex<long>(_real, _imag));
 
-                    norm_x = (x.real()*x.real()) + (x.imag()*x.imag());
-                    norm_y = (y.real()*y.real()) + (y.imag()*y.imag());
-                }
 
-                return x;
+                return _remd;
             }
+
+            #endif // _GLIBCXX_COMPLEX
     }
 }
 

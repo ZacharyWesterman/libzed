@@ -39,12 +39,12 @@
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/binaryTree.h" />
-		<Unit filename="z/core/circular_number.h" />
+		<Unit filename="z/core/circularNumber.h" />
 		<Unit filename="z/core/dynamicStack.h" />
 		<Unit filename="z/core/loadLibrary.h" />
 		<Unit filename="z/core/pause.h" />
-		<Unit filename="z/core/sorted_array.h" />
-		<Unit filename="z/core/sorted_ref_array.h" />
+		<Unit filename="z/core/sortedArray.h" />
+		<Unit filename="z/core/sortedRefArray.h" />
 		<Unit filename="z/core/stream.h" />
 		<Unit filename="z/core/string.h" />
 		<Unit filename="z/core/string/char_is_alphanumeric.h" />
