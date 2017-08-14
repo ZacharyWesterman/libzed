@@ -10,14 +10,12 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   2 Aug. 2017
+ * Last modified:   14 Aug. 2017
 **/
 
 #pragma once
 #ifndef REMAINDER_H_INCLUDED
 #define REMAINDER_H_INCLUDED
-
-#include <complex>
 
 namespace z
 {

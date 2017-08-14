@@ -10,14 +10,12 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   19 Jul. 2017
+ * Last modified:   14 Aug. 2017
 **/
 
 #pragma once
 #ifndef GCD_H_INCLUDED
 #define GCD_H_INCLUDED
-
-#include <complex>
 
 namespace z
 {
@@ -66,6 +64,8 @@ namespace z
             }
 
 
+
+            #ifdef _GLIBCXX_COMPLEX
 
             const std::complex<long> gcd(const std::complex<long>& x, const std::complex<long>& y)
             {
@@ -120,6 +120,8 @@ namespace z
 
                 return hi;
             }
+
+            #endif // _GLIBCXX_COMPLEX
     }
 }
 
