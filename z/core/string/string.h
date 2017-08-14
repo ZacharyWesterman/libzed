@@ -34,8 +34,6 @@
 //e.g. at the ~0.5 mark.
 #define num_round_magic 0.499999958629814528210388857587539
 
-//if a number is >= 1.0e+
-
 
 #include "convert_char_type.h"
 
@@ -205,7 +203,7 @@ namespace z
 
                 if (fbufsiz)
                 {
-                    buffer[buffer_pos] = (CHAR)46;
+                    buffer[buffer_pos] = (CHAR)46; // '.'
                     buffer_pos++;
 
                     int frac_len = 0;
@@ -236,6 +234,28 @@ namespace z
 
                 //buffer is null-terminated
                 buffer[buffer_pos] = (CHAR)0;
+
+                if (buffer[buffer_pos-1] == (CHAR)46) //remove terminal decimals
+                {
+                    //don't allow -0
+                    if ((buffer[0] == (CHAR)45) &&
+                        (buffer[1] == (CHAR)48))
+                    {
+
+                        buffer[0] = (CHAR)48; //'0'
+                        buffer[1] = (CHAR)0;
+
+                        buffer_pos -= 2;
+                    }
+                    else
+                    {
+                        buffer[buffer_pos-1] = (CHAR)0;
+
+                        buffer_pos--;
+                    }
+                }
+
+
 
                 return buffer_pos;
         }
