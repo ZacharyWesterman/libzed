@@ -7,7 +7,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   19 Jul. 2017
+ * Last modified:   21 Aug. 2017
 **/
 
 
@@ -23,6 +23,7 @@
 #include "math/fibonacci.h"
 #include "math/gcd.h"
 #include "math/remainder.h"
+#include "math/zeta.h"
 
 ///Matrices
 #include "math/matrix.h"

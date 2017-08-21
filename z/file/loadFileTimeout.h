@@ -117,7 +117,7 @@ namespace z
             std::ifstream file;
             file.open(file_name.str());
 
-            if (!file)
+            if (!file.good())
                 return -1;
 
 

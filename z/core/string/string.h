@@ -27,8 +27,8 @@
 #include <type_traits>
 #include <complex>
 
-#define num_bufsiz 16
-#define num_precision 9
+#define num_bufsiz 75 //16
+#define num_precision 70 //9
 
 //magic number for determining when to round numbers,
 //e.g. at the ~0.5 mark.
