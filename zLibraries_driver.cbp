@@ -75,6 +75,7 @@
 		<Unit filename="z/math/gcd.h" />
 		<Unit filename="z/math/matrix.h" />
 		<Unit filename="z/math/remainder.h" />
+		<Unit filename="z/math/zeta.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
