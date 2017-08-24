@@ -3,17 +3,21 @@
  * Namespace:       none
  * Description:     Header file which includes all
  *                  z::core functions and datatypes.
+ *                  Also has important type definitions.
  *
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   2 Aug. 2017
+ * Last modified:   24 Aug. 2017
 **/
 
 
 #pragma once
 #ifndef CORE_H_INCLUDED
 #define CORE_H_INCLUDED
+
+///zFloat type
+#include "core/float.h"
 
 ///Strings
 #include "core/string.h"

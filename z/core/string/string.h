@@ -47,44 +47,30 @@ namespace z
         //"buffer" is assumed to be 2*num_bufsiz + 7 characters long
         //returns number of characters in resultant string
         template<typename CHAR>
-        static int num_to_cstring(const double& number, CHAR* buffer)
+        static int num_to_cstring(const zFloat& number, CHAR* buffer)
         {
-            typedef union
-            {
-                double d;
-
-                struct
-                {
-                    unsigned long mantissa : 52;
-                    unsigned long exponent : 11;
-                    unsigned long sign : 1;
-                } part;
-            } double_cast;
-
-
-
-            double_cast dbl_cst = {.d = number};
+            zFloat_cast dbl_cst = {.value = number};
 
             bool use_scientific = (dbl_cst.part.exponent > (1023 + 50)) ||
                                   (dbl_cst.part.exponent < (1023 - 50));
 
             int buffer_pos = 0;
 
-            double fpart;
+            zFloat fpart;
             long ipart;
             long exponent = 0;
 
             if (use_scientific)
             {
-                while (dbl_cst.d >= 10)
+                while (dbl_cst.value >= 10)
                 {
-                    dbl_cst.d /= 10;
+                    dbl_cst.value /= 10;
                     exponent++;
                 }
             }
 
-            ipart = dbl_cst.d;
-            fpart = dbl_cst.d - ipart;
+            ipart = dbl_cst.value;
+            fpart = dbl_cst.value - ipart;
 
                 //std::cout << fpart << ":" << ipart << std::endl;
 
@@ -613,7 +599,7 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                array_length = num_to_cstring((double)number, buffer) + 1;
+                array_length = num_to_cstring((zFloat)number, buffer) + 1;
 
                 string_array = new CHAR[array_length];
 
@@ -635,7 +621,7 @@ namespace z
                     //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                     CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                    array_length = num_to_cstring((double)number.real(), buffer) + 1;
+                    array_length = num_to_cstring((zFloat)number.real(), buffer) + 1;
 
                     string_array = new CHAR[array_length];
 
@@ -647,7 +633,7 @@ namespace z
                     //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                     CHAR buffer[num_bufsiz + num_bufsiz + 8];
 
-                    array_length = num_to_cstring((double)number.imag(), buffer) + 2;
+                    array_length = num_to_cstring((zFloat)number.imag(), buffer) + 2;
                     //append 'i', since imaginary value.
                     buffer[array_length-2] = (CHAR)105;
                     buffer[array_length-1] = (CHAR)0;
@@ -663,7 +649,7 @@ namespace z
                     CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
                     CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
 
-                    int r_array_len = num_to_cstring((double)number.real(), real_buffer) + 1;
+                    int r_array_len = num_to_cstring((zFloat)number.real(), real_buffer) + 1;
 
                     //append '+'(if positive imaginary part),
                     //since imaginary value comes next.
@@ -673,7 +659,7 @@ namespace z
                         r_array_len--;
 
 
-                    int i_array_len = num_to_cstring((double)number.imag(), imag_buffer) + 2;
+                    int i_array_len = num_to_cstring((zFloat)number.imag(), imag_buffer) + 2;
                     //append 'i', since imaginary value.
                     imag_buffer[i_array_len-2] = (CHAR)105;
                     imag_buffer[i_array_len-1] = (CHAR)0;
@@ -781,7 +767,7 @@ namespace z
             }*/
 
             //operator for concatenation of a number (convert to string first)
-            /*const string& operator+=(double number)
+            /*const string& operator+=(zFloat number)
             {
                 string String;
 

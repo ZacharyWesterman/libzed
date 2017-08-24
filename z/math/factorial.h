@@ -49,13 +49,13 @@ namespace z
 
 
 
-        double factorial(double x)
+        zFloat factorial(zFloat x)
         {
             if ((x < 0) || (x > FACTORIAL_MAX_INPUT_DBL))
                 return -1;
 
             if (x == (long)x)
-                return (double)factorial((long)x);
+                return (zFloat)factorial((long)x);
             else
                 return std::tgamma(x);
         }

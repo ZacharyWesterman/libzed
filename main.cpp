@@ -10,7 +10,7 @@ using namespace z;
 
 int main()
 {
-    //complex<double> value;
+    //complex<zFloat> value;
     //cout << math::remainder(10, 8) << endl;
     //cout << math::remainder(complex<long>(9,13), complex<long>(3, 0)) << endl;
     long total_micros = 0;
@@ -24,9 +24,9 @@ int main()
         total_micros += time.micros();
     }
     cout << "Average time to calculate Zeta function:\n"
-         << (double)(total_micros/1000) / 1000.0 << " milliseconds\n";
-    //core::string<char> b ((double)(1.0/5000000000000000000000000.0));
-
+         << (zFloat)(total_micros/1000) / 1000.0 << " milliseconds\n";
+    //core::string<char> b ((zFloat)(1.0/5000000000000000000000000.0));
+    cout << math::zeta(2) << endl;
 
     //math::i_pow(2, 10);
 

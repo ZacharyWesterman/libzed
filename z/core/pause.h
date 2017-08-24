@@ -26,7 +26,7 @@ namespace z
 {
     namespace core
     {
-        inline void pause(double ms)
+        inline void pause(zFloat ms)
         {
             usleep(ms * 1000);
         }
@@ -41,7 +41,7 @@ namespace z
 {
     namespace core
     {
-        inline void pause(double ms)
+        inline void pause(zFloat ms)
         {
             Sleep(ms);
         }

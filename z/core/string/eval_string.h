@@ -26,10 +26,10 @@ namespace z
         ///template for string evaluation functions
         // both ignore spaces, and returns 0.0 if non-numerical characters are present
         template <typename CHAR>
-        double value(const string<CHAR>& input, int base = 10)
+        zFloat value(const string<CHAR>& input, int base = 10)
         {
 
-            double value = 0.0;
+            zFloat value = 0.0;
 
             int start = 0;
             bool isNegative = false;
@@ -42,7 +42,7 @@ namespace z
 
             bool pastDecimal = false;
             bool pastExponent = false;
-            double fracMult = 1.0;
+            zFloat fracMult = 1.0;
             int exponent = 0;
             bool expNegative = false;
 
@@ -77,13 +77,13 @@ namespace z
                     }
                     else if (pastDecimal)
                     {
-                        fracMult /= (double)base;
-                        value += fracMult * (double)numeral_value(input[i]); //actual value from character
+                        fracMult /= (zFloat)base;
+                        value += fracMult * (zFloat)numeral_value(input[i]); //actual value from character
                     }
                     else
                     {
-                        value *= (double)base;
-                        value += (double)numeral_value(input[i]); //actual value from character
+                        value *= (zFloat)base;
+                        value += (zFloat)numeral_value(input[i]); //actual value from character
                     }
                 }
                 else if (input[i] == (CHAR)69)
@@ -109,7 +109,7 @@ namespace z
                     valMult *= base;
 
                 if (expNegative)
-                    value *= (1 / (double)valMult);
+                    value *= (1 / (zFloat)valMult);
                 else
                     value *= valMult;
             }
@@ -130,11 +130,11 @@ namespace z
 
 
         template <typename CHAR>
-        std::complex<double> complexValue(const string<CHAR>& input, int base = 10)
+        std::complex<zFloat> complexValue(const string<CHAR>& input, int base = 10)
         {
             if (input.endsWith("i"))
             {
-                double real(0), imag;
+                zFloat real(0), imag;
 
                 int realEnd = input.findLast("+");
 
@@ -155,11 +155,11 @@ namespace z
                     }
                 }
 
-                return std::complex<double> (real, imag);
+                return std::complex<zFloat> (real, imag);
             }
             else
             {
-                return std::complex<double> (value(input, base), 0);
+                return std::complex<zFloat> (value(input, base), 0);
             }
 
         }

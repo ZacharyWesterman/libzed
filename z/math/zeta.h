@@ -20,12 +20,12 @@ namespace z
     namespace math
     {
         //compute zeta(s) with highest possible precision
-        double zeta(const int s)
+        zFloat zeta(const int s)
         {
-            double result = 1.0;
+            zFloat result = 1.0;
 
             int i = 2;
-            double z_denom = 0.5;
+            zFloat z_denom = 0.5;
 
             while ( (z_denom + result) > result )
             {
@@ -36,7 +36,7 @@ namespace z
                 for (int j=0; j<s; j++)
                     power *= i;
 
-                z_denom = 1.0 / (double)power;
+                z_denom = 1.0 / (zFloat)power;
             }
 
             return result;

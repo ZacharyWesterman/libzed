@@ -25,16 +25,16 @@ namespace z
         class matrix
         {
         public:
-            double value[N][N];
+            zFloat value[N][N];
 
             ///Method for calculating determinant
-            double det()
+            zFloat det()
             {
                 //the determinant of an NxN matrix requires
                 //the determinant of an (N-1)x(N-1) matrix.
                 matrix<N-1> mat;
 
-                double result=0;
+                zFloat result=0;
 
 
                 for (unsigned int col=0; col<N; col++)
@@ -68,7 +68,7 @@ namespace z
 
         ///quickly calculate the determinant of a 2x2 matrix.
         template<>
-        double matrix<2>::det()
+        zFloat matrix<2>::det()
         {
             return (value[0][0]*value[1][1]-value[1][0]*value[0][1]);
         }

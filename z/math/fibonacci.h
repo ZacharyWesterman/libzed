@@ -39,12 +39,12 @@ namespace z
 {
     namespace math
     {
-        double fibonacci(double n)
+        zFloat fibonacci(zFloat n)
         {
-            double PHI_n  = pow(phi, n);
-            double Nphi_n = pow(-phi + 1, n);
+            zFloat PHI_n  = pow(phi, n);
+            zFloat Nphi_n = pow(-phi + 1, n);
 
-            double fib_n  = (PHI_n - Nphi_n) / sqrt5;
+            zFloat fib_n  = (PHI_n - Nphi_n) / sqrt5;
 
             return fib_n;
         }
