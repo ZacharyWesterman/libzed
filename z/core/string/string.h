@@ -13,7 +13,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   19 Jul. 2017
+ * Last modified:   24 Aug. 2017
 **/
 
 
@@ -22,13 +22,16 @@
 #define STRING_H_INCLUDED
 
 #define null 0
+#ifndef NULL
+    #define NULL 0
+#endif // NULL
 
 //this is for initializing numbers properly
 #include <type_traits>
 #include <complex>
 
-#define num_bufsiz 75 //16
-#define num_precision 70 //9
+#define num_bufsiz 16
+#define num_precision 9
 
 //magic number for determining when to round numbers,
 //e.g. at the ~0.5 mark.
@@ -36,8 +39,6 @@
 
 
 #include "convert_char_type.h"
-
-#include <iostream>
 
 namespace z
 {
@@ -51,8 +52,8 @@ namespace z
         {
             zFloat_cast dbl_cst = {.value = number};
 
-            bool use_scientific = (dbl_cst.part.exponent > (1023 + 50)) ||
-                                  (dbl_cst.part.exponent < (1023 - 50));
+            bool use_scientific = (dbl_cst.part.expUnBias() > 50) ||
+                                  (dbl_cst.part.expUnBias() < (-50));
 
             int buffer_pos = 0;
 

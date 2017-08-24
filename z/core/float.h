@@ -31,6 +31,11 @@
             unsigned long mantissa : 52;
             unsigned long exponent : 11;
             unsigned long sign : 1;
+
+            inline long expUnBias()
+            {
+                return (long)exponent - 1023;
+            }
         } part;
     } zFloat_cast;
 
@@ -46,6 +51,11 @@
             unsigned int mantissa : 23;
             unsigned int exponent : 8;
             unsigned int sign : 1;
+
+            inline int expUnBias()
+            {
+                return (int)exponent - 127;
+            }
         } part;
     } zFloat_cast;
 #endif // Z_USE_DOUBLE
