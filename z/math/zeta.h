@@ -22,18 +22,22 @@ namespace z
     namespace math
     {
         //compute zeta(s) with highest possible precision
-        ///for zeta(s), it is assumed that s>1
         zFloat zeta(const int s)
         {
             zFloat result = 1.0;
-            zFloat oldResult = 0.0;
 
             int i = 2;
 
+
+            #ifdef Z_USE_DOUBLE //doubles can cause this computation to take too long.
+            while (i<100000)
+            {
+            #else
+            zFloat oldResult = -1.0;
             while (result != oldResult)
             {
                 oldResult = result;
-
+            #endif // Z_USE_DOUBLE
                 zFloat denomP = 1.0 / (zFloat)i;
 
                 zFloat partial = 1;
@@ -45,7 +49,6 @@ namespace z
                 i++;
             }
 
-            //std::cout << i << std::endl;
 
             return result;
         }
