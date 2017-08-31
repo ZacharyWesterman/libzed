@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['setfiledata',['setFileData',['../classz_1_1file_1_1writer.html#a6c39a510494084ad3a56fb0a48dcd6fc',1,'z::file::writer']]],
-  ['setfilename',['setFileName',['../classz_1_1file_1_1loader.html#ae37db4c1598946b912b52d7d484f4330',1,'z::file::loader::setFileName()'],['../classz_1_1file_1_1writer.html#a1bbf49f3c53bb1915ac021872f0397ba',1,'z::file::writer::setFileName()']]],
-  ['size',['size',['../classz_1_1core_1_1array.html#a9b7a4c3b08597ad69325712df51ab526',1,'z::core::array']]],
-  ['sortedarray',['sortedArray',['../classz_1_1core_1_1sortedArray.html',1,'z::core']]],
-  ['sortedrefarray',['sortedRefArray',['../classz_1_1core_1_1sortedRefArray.html',1,'z::core']]],
-  ['stream',['stream',['../classz_1_1core_1_1stream.html',1,'z::core']]],
-  ['string',['string',['../classz_1_1core_1_1string.html',1,'z::core::string&lt; CHAR &gt;'],['../classz_1_1core_1_1string.html#a58a3c9226c1aa2d2f31deee9741c6eba',1,'z::core::string::string(const T &amp;number)'],['../classz_1_1core_1_1string.html#a5b2578f6260b62e5cc1d6b6c8c37b23c',1,'z::core::string::string(const std::complex&lt; T &gt; &amp;number)']]],
-  ['string_3c_20char_20_3e',['string&lt; char &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]]
+  ['readme',['README',['../md_README.html',1,'']]],
+  ['remove',['remove',['../classz_1_1core_1_1array.html#a334e01bca2d971f23b27eefb8bed0129',1,'z::core::array']]],
+  ['remove_5fwhitespace',['remove_whitespace',['../namespacez_1_1core.html#a2b55daae52ae9276da5490a35d148ba0',1,'z::core']]],
+  ['remove_5fwhitespace_5fl',['remove_whitespace_L',['../namespacez_1_1core.html#a2365d3a9589a81011b906ef3f237e629',1,'z::core']]],
+  ['remove_5fwhitespace_5fr',['remove_whitespace_R',['../namespacez_1_1core.html#abd1123c1be0a77ec364f40695d76bf2a',1,'z::core']]],
+  ['replace',['replace',['../classz_1_1core_1_1string.html#ac54ae32998e82f931d68c1649e7264dd',1,'z::core::string']]]
 ];

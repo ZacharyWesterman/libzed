@@ -1,5 +1,5 @@
 /**
- * @file z/math.h
+ * \file z/math.h
  * \namespace z::math
  * \brief Library of math-related functions, constants, and datatypes.
 **/

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zeta',['zeta',['../namespacez_1_1math.html#a05b6bcbb4297f9aed089308619c91f2a',1,'z::math']]]
+  ['upper',['upper',['../namespacez_1_1core.html#afcf0b4cd172bc11ddc13f159fa1f83a4',1,'z::core']]]
 ];

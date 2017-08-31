@@ -1,14 +1,12 @@
 /**
- * File:            core.h
- * Namespace:       none
- * Description:     Header file which includes all
- *                  z::core functions and datatypes.
- *                  Also has important type definitions.
+ * \file z/core.h
+ * \namespace z::core
+ * \brief Library containing core functions and classes.
  *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   24 Aug. 2017
+ * This library adds core functionality and is
+ * required as it is often referenced by other libraries.
+ * It can be used by itself, however, as it does not
+ * require any libraries besides STL.
 **/
 
 

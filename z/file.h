@@ -1,13 +1,7 @@
 /**
- * File:            file.h
- * Namespace:       none
- * Description:     Header file which includes all
- *                  z::file methods.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   29 Jun. 2017
+ * \file z/file.h
+ * \namespace z::file
+ * \brief Library of file management functions and classes.
 **/
 
 #pragma once
