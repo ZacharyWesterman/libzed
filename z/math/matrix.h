@@ -20,14 +20,17 @@ namespace z
 {
     namespace math
     {
-        ///square matrix is of constant size NxN
+        /**
+         * \class matrix<unsigned int N>
+         * \brief A class for managing square matrices
+         */
         template <unsigned int N>
         class matrix
         {
         public:
             zFloat value[N][N];
 
-            ///Method for calculating determinant
+            ///Method for calculating the determinant of NxN matrix
             zFloat det()
             {
                 //the determinant of an NxN matrix requires
@@ -66,7 +69,7 @@ namespace z
         };
 
 
-        ///quickly calculate the determinant of a 2x2 matrix.
+        ///Default determinant method for 2x2 matrices.
         template<>
         zFloat matrix<2>::det()
         {

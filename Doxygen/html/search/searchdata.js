@@ -3,10 +3,9 @@ var indexSectionsWithContent =
   0: "acdfgilmorstvwz",
   1: "acdlmstvwz",
   2: "z",
-  3: "mz",
+  3: "m",
   4: "acdfgilorswz",
-  5: "z",
-  6: "lr"
+  5: "lr"
 };
 
 var indexSectionNames =
@@ -16,8 +15,7 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "defines",
-  6: "pages"
+  5: "pages"
 };
 
 var indexSectionLabels =
@@ -27,7 +25,6 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Macros",
-  6: "Pages"
+  5: "Pages"
 };
 

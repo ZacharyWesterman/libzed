@@ -1,18 +1,3 @@
-/**
- * File:            zeta.h
- * Namespace:       z::math
- *
- * Description:     Function for approximating the
- *                  reimann-zeta sum. Note that the
- *                  approximation is less accurate for
- *                  single-precision floats.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   24 Aug. 2017
-**/
-
 #pragma once
 #ifndef ZETA_H_INCLUDED
 #define ZETA_H_INCLUDED
@@ -21,7 +6,7 @@ namespace z
 {
     namespace math
     {
-        /** @file
+        /**
          * \fn zFloat zeta(const int s)
          * \param s: an integer greater than 1
          * \return An approximation of zeta(s)
@@ -31,7 +16,6 @@ namespace z
          * Computes zeta(s) with the highest possible precision for
          * the float type used. Note that this approximation is
          * less accurate for single-precision floats.
-         *
          */
         zFloat zeta(const int s)
         {
