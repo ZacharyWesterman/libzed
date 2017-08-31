@@ -1,13 +1,7 @@
 /**
- * File:            math.h
- * Namespace:       none
- * Description:     Header file which includes all
- *                  z::math functions and constants.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Aug. 2017
+ * @file z/math.h
+ * \namespace z::math
+ * \brief Library of math-related functions, constants, and datatypes.
 **/
 
 

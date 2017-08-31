@@ -2,7 +2,7 @@
  * File:            zeta.h
  * Namespace:       z::math
  *
- * Description:     Constexpr function for approximating the
+ * Description:     Function for approximating the
  *                  reimann-zeta sum. Note that the
  *                  approximation is less accurate for
  *                  single-precision floats.
@@ -21,7 +21,18 @@ namespace z
 {
     namespace math
     {
-        //compute zeta(s) with highest possible precision
+        /** @file
+         * \fn zFloat zeta(const int s)
+         * \param s: an integer greater than 1
+         * \return An approximation of zeta(s)
+         *
+         * \brief A function for approximating Reimann-zeta sums
+         *
+         * Computes zeta(s) with the highest possible precision for
+         * the float type used. Note that this approximation is
+         * less accurate for single-precision floats.
+         *
+         */
         zFloat zeta(const int s)
         {
             zFloat result = 1.0;
