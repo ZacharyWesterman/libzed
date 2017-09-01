@@ -50,7 +50,6 @@
 		<Unit filename="z/core/string.h" />
 		<Unit filename="z/core/string/char_is_alphanumeric.h" />
 		<Unit filename="z/core/string/char_is_whiteSpace.h" />
-		<Unit filename="z/core/string/convert_char_type.h" />
 		<Unit filename="z/core/string/dePad_string.h" />
 		<Unit filename="z/core/string/eval_string.h" />
 		<Unit filename="z/core/string/pad_string.h" />
