@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['upper',['upper',['../namespacez_1_1core.html#afcf0b4cd172bc11ddc13f159fa1f83a4',1,'z::core']]]
+  ['value',['value',['../classz_1_1core_1_1string.html#aec0284eea34297153e7bac8ac310b806',1,'z::core::string']]],
+  ['variabletree',['VariableTree',['../classVariableTree.html',1,'']]]
 ];
