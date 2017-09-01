@@ -21,7 +21,7 @@ namespace z
     namespace math
     {
         /**
-         * \class matrix<unsigned int N>
+         *
          * \brief A class for managing square matrices
          */
         template <unsigned int N>

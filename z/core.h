@@ -36,6 +36,7 @@
 
 ///Misc functions
 #include "core/pause.h"
+#include "core/charFunctions.h"
 
 ///Dynamic library loading
 #include "core/loadLibrary.h"

@@ -20,7 +20,7 @@
 #include "string/string.h"
 
 ///and all string-related functions
-#include "string/char_is_alphanumeric.h"
+/*#include "string/char_is_alphanumeric.h"
 #include "string/char_is_whiteSpace.h"
 #include "string/dePad_string.h"
 #include "string/eval_string.h"
@@ -31,7 +31,7 @@
 
 
 ///Those that work anyways
-//#include "string/tokenize_string.h"
+//#include "string/tokenize_string.h"*/
 
 
 #endif // STRING_H_INCLUDED

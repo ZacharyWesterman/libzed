@@ -256,13 +256,6 @@ namespace z
             CHAR* string_array;
 
 
-            //internal function to clear string data
-            //void clear_data();
-
-
-            //internal function to assign new data
-            //void assign_data(const CHAR* buffer, int bufsiz);
-
             //internal function to append a character array
             void append_string(const CHAR* buffer, int bufsiz);
 
@@ -733,52 +726,49 @@ namespace z
 
 
             inline const string<char> narrow()
-            {
-                return string<char>(*this);
-            }
+            { return string<char>(*this); }
 
-            const string<wchar_t> wide()
-            {
-                return string<wchar_t>(*this);
-            }
+            inline const string<wchar_t> wide()
+            { return string<wchar_t>(*this); }
+
+
+            const string<CHAR> upper();
+
+            const string<CHAR> lower();
+
+            //const string<CHAR> camel();
         };
 
 
-        /*
         template <typename CHAR>
-        void string<CHAR>::clear_data()
+        const string<CHAR> string<CHAR>::upper()
         {
-            if (array_length)
-                delete[] string_array;
+            string<CHAR> result (*this);
 
-            string_array = null;
-            array_length = 0;
-        }*/
-
-        /*
-        template <typename CHAR>
-        void string<CHAR>::assign_data(const CHAR* buffer, int bufsiz)
-        {
-            clear_data();
-
-            if (buffer)
-            {
-                array_length = bufsiz+1;
-                string_array = new CHAR[array_length];
-
-                for (int i=0; i<array_length-1; i++)
+            for (int i=0; i<result.length(); i++)
+                if ((string_array[i] >= (CHAR)97) &&
+                    (string_array[i] <= (CHAR)122))
                 {
-                    string_array[i] = buffer[i];
-                    if (buffer[i] == null)
-                    {
-                        array_length = i+1;
-                        break;
-                    }
+                    result.string_array[i] = string_array[i] - (CHAR)97 + (CHAR)65;
                 }
 
-                string_array[array_length-1] = null;
-            }
-        }*/
+            return result;
+        }
+
+        template <typename CHAR>
+        const string<CHAR> string<CHAR>::lower()
+        {
+            string<CHAR> result (*this);
+
+            for (int i=0; i<result.length(); i++)
+                if ((string_array[i] >= (CHAR)65) &&
+                    (string_array[i] <= (CHAR)90))
+                {
+                    result.string_array[i] = string_array[i] - (CHAR)65 + (CHAR)97;
+                }
+
+            return result;
+        }
 
         template <typename CHAR>
         void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
