@@ -13,7 +13,7 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   24 Aug. 2017
+ * Last modified:   31 Aug. 2017
 **/
 
 
@@ -37,8 +37,6 @@
 //e.g. at the ~0.5 mark.
 #define num_round_magic 0.499999958629814528210388857587539
 
-
-#include "convert_char_type.h"
 
 namespace z
 {
@@ -253,19 +251,14 @@ namespace z
         template <typename CHAR>
         class string
         {
-        public:
+        private:
             int array_length;
             CHAR* string_array;
 
-            //internal function to clear string data
-            void clear_data()
-            {
-                if (array_length)
-                    delete[] string_array;
 
-                string_array = null;
-                array_length = 0;
-            }
+            //internal function to clear string data
+            void clear_data();
+
 
             //internal function to assign new data
             void assign_data(const CHAR* buffer, int bufsiz)
@@ -491,100 +484,111 @@ namespace z
 
         public:
             //empty constructor
-            string() {array_length = 1; string_array = new CHAR[1]; string_array[0] = null;}
-
-            //default constructor
-            string(const CHAR* buffer)
+            string()
             {
-                array_length = 0;
-                string_array = null;
-
-                int amount = 0;
-
-                if (buffer)
-                {
-                    while (buffer[amount] != null)
-                        amount++;
-
-                    assign_data(buffer, amount++);
-                }
+                array_length = 1;
+                string_array = new CHAR[1];
+                string_array[0] = null;
             }
 
+
+            //cstring constructor
             template <typename CHAR_2>
-            //constructor using other chars
             string(const CHAR_2* buffer)
             {
-                CHAR_2* old_buffer = (CHAR_2*)((void*)buffer);
-
-                array_length = 0;
-                string_array = null;
-
-                if (old_buffer)
+                if (buffer)
                 {
-                    int len = 0;
+                    array_length = 0;
 
-                    while (old_buffer[len] != null)
-                        len++;
+                    while (buffer[array_length] != null)
+                        array_length++;
 
-                    CHAR* new_buffer = null;
+                    array_length++;
 
-                    convertStr(new_buffer, old_buffer, len+1);
+                    string_array = new CHAR[array_length];
 
-                    array_length = len+1;
-                    string_array = new_buffer;
+                    if (sizeof(CHAR_2) <= sizeof(CHAR))
+                    {
+                        for (int i=0; i<array_length; i++)
+                            string_array[i] = buffer[i];
+
+                    }
+                    else
+                    {
+                        int buf_i = 0;
+
+                        for (int i=0; i<array_length; i++)
+                        {
+                            if (buffer[buf_i] < 128)
+                                string_array[i] = buffer[buf_i];
+                            else
+                            {
+                                string_array[i] = (CHAR)'?';
+
+                                if ((buffer[buf_i] >= 0xD800) &&
+                                    (buffer[buf_i] <= 0xD8FF))
+                                    buf_i++;
+                            }
+
+                            buf_i++;
+                        }
+                    }
                 }
+                else
+                    string();
             }
 
 
             //copy constructor
-            string(const string& other)
-            {
-                string_array = null;
-                array_length = 0;
-
-                assign_data(other.string_array, other.array_length);
-            }
-
-
             template <typename CHAR_2>
-            //copy constructor for other types
             string(const string<CHAR_2>& other)
             {
-                string_array = null;
-                array_length = 0;
+                array_length = other.length()+1;
 
+                string_array = new CHAR[array_length];
 
-                CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
-                int length = other.length();
+                if (sizeof(CHAR_2) <= sizeof(CHAR))
+                {
+                    for (int i=0; i<array_length-1; i++)
+                        string_array[i] = other.str()[i];
 
-                CHAR* this_ptr = null;
+                }
+                else
+                {
+                    int buf_i = 0;
 
+                    for (int i=0; i<array_length-1; i++)
+                    {
+                        if (other.str()[buf_i] < 128)
+                            string_array[i] = other.str()[buf_i];
+                        else
+                        {
+                            string_array[i] = (CHAR)'?';
 
-                convertStr(this_ptr, other_ptr, length + 1);
+                            if ((other.str()[buf_i] >= 0xD800) &&
+                                (other.str()[buf_i] <= 0xD8FF))
+                            buf_i++;
+                        }
 
-                string_array = this_ptr;
-
-                array_length = length + 1;
+                        buf_i++;
+                    }
+                }
             }
 
 
-            //narrow char constructor
-            string(const char& character)
+            //char constructor
+            template <typename CHAR_2>
+            string(const CHAR_2& character)
             {
                 array_length = 2;
                 string_array = new CHAR[2];
 
-                convertChr(string_array[0], character);
-                string_array[1] = null;
-            }
+                if ((sizeof(CHAR_2) > sizeof(CHAR)) &&
+                    (character >= 128))
+                    string_array[0] = (CHAR)'?';
+                else
+                    string_array[0] = character;
 
-            //wide char constructor
-            string(const wchar_t& character)
-            {
-                array_length = 2;
-                string_array = new CHAR[2];
-
-                convertChr(string_array[0], character);
                 string_array[1] = null;
             }
 
@@ -697,9 +701,7 @@ namespace z
             }
 
             inline int length() const
-            {
-                return size();
-            }
+            { return size(); }
 
 
 
@@ -713,41 +715,47 @@ namespace z
             //equality operator
             inline bool operator==(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) == 0);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) == 0);
             }
 
 
             //inequality operator
             inline bool operator!=(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) != 0);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) != 0);
             }
 
 
             //greater than operator
             inline bool operator>(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) == 1);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) == 1);
             }
 
             //greater than / equal to operator
             inline bool operator>=(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) != -1);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) != -1);
             }
 
 
             //less than operator
             inline bool operator<(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) == -1);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) == -1);
             }
 
 
             //less than / equal to operator
             inline bool operator<=(const string& other) const
             {
-                return (lessthan_equal_greater(other.string_array, other.array_length) != -1);
+                return (lessthan_equal_greater(other.string_array,
+                                               other.array_length) != -1);
             }
 
 
@@ -759,27 +767,6 @@ namespace z
                 return *this;
             }
 
-            //operator for concatenation of a single character
-            /*inline const string& operator+=(CHAR character)
-            {
-                append_char(character);
-
-                return *this;
-            }*/
-
-            //operator for concatenation of a number (convert to string first)
-            /*const string& operator+=(zFloat number)
-            {
-                string String;
-
-                toString(number, String);
-
-                append_string(String.string_array, String.array_length);
-
-                return *this;
-            }*/
-
-
             //addition operator
             inline const string operator+(const string& other) const
             {
@@ -789,297 +776,116 @@ namespace z
                 return output;
             }
 
-            //addition operator
-            /*const string operator+(const CHAR*& other) const
-            {
-                string output = *this;
-                output += string(other);
-
-                return output;
-            }
-
-            //addition operator
-            const string operator+(const CHAR other) const
-            {
-                string output = *this;
-                output += string(other);
-
-                return output;
-            }*/
-
-            //index operator
-            //if the index is valid, returns character at that index.
-            //otherwise, returns 0, since no character in the string will be 0.
-            CHAR operator[](int index) const
-            {
-                if (index < 0)
-                    return null;
-                else if (index >= (int)array_length-1)
-                    return null;
-                else
-                    return string_array[index];
-            }
-
 
             //function to get character at given index.
-            //Identical functionality to this->operator[].
-            CHAR at(int index) const
+            //if the index is valid, returns character at that index.
+            //otherwise, returns 0, since no character in the string will be 0.
+            inline CHAR at(int index) const
             {
-                if (index < 0)
-                    return null;
-                else if (index >= (int)array_length-1)
+                if ((index < 0) ||
+                    (index >= (int)array_length-1))
                     return null;
                 else
                     return string_array[index];
             }
+
+            //const index operator
+            //Identical functionality to this->at(index).
+            inline CHAR operator[](int index) const
+            { return at(index); }
+
+
+            //non-const versions of the previous two functions
+            CHAR& at(int index)
+            {
+                if ((index < 0) ||
+                    (index >= (int)array_length-1))
+                    return string_array[array_length-1];
+                else
+                    return string_array[index];
+            }
+
+            inline CHAR& operator[](int index)
+            { return at(index); }
+
 
             //function to find the position of the first occurrence of the given sub-string
             //returns -1 if it was not found
-            int find(const string& sub_string) const
-            {
-                for (int i=0; i<array_length-1; i++)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                        return (int)i;
-                }
-
-                return -1;
-            }
+            int find(const string& sub_string) const;
 
             //function to find the position of the first occurrence of the given sub-string
             //after the given index.
             //returns -1 if it was not found
-            int findAfter(const string& sub_string, int n) const
-            {
-                for (int i=n; i<array_length-1; i++)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                        return (int)i;
-                }
-
-                return -1;
-            }
-
+            int findAfter(const string& sub_string, int n) const;
 
             //function to find the position of the LAST occurrence of the given sub-string
             //returns -1 if it was not found
-            int findLast(const string& sub_string) const
-            {
-                for (int i=array_length-1-sub_string.length(); i>=0; i--)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                        return (int)i;
-                }
-
-                return -1;
-            }
+            int findLast(const string& sub_string) const;
 
             //function to find the position of the nth occurrence of the given sub-string
-            ///n starts at 0
+            //n starts at 0
             //returns -1 if it was not found
-            int find(const string& sub_string, int n) const
-            {
-                if (n < 0)
-                    return -1;
-
-                int amount = -1;
-
-                for (int i=0; i<array_length-1; i++)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                        amount++;
-
-                    if (amount >= n)
-                        return (int)i;
-                }
-
-                return -1;
-            }
+            int find(const string& sub_string, int n) const;
 
 
             //function to replace a sub-string (indexes start_pos to end_pos, inclusive) with some new string
             //no return, as this will always succeed when given correct parameters
-            void replace(int start_pos, int end_pos, const string& new_string)
+            inline void replace(int start_pos, int end_pos, const string& new_string)
             {
-                replace_sub_string_at_with(start_pos, end_pos,
-                                           new_string.string_array, new_string.array_length);
+                replace_sub_string_at_with(start_pos,
+                                           end_pos,
+                                           new_string.string_array,
+                                           new_string.array_length);
             }
 
 
             //function to replace the first occurrence of the first given sub-string with the second one.
             //returns false if the sub-string wasn't in the original string, true otherwise.
-            bool replace(const string& sub_string, const string& new_string)
-            {
-                int found = find(sub_string);
-
-                if (found > -1)
-                {
-                    replace_sub_string_at_with(found, found + sub_string.array_length - 2,
-                                               new_string.string_array, new_string.array_length - 1);
-
-                    return true;
-                }
-
-                return false;
-            }
+            bool replace(const string& sub_string, const string& new_string);
 
 
             //function to replace the nth occurrence of the first given sub-string with the second one.
-            ///n starts at 0
+            //n starts at 0
             //returns false if the sub-string wasn't in the original string, true otherwise.
-            bool replace(const string& sub_string, int n, const string& new_string)
-            {
-                int found = find(sub_string, n);
-
-                if (found > -1)
-                {
-                    replace_sub_string_at_with(found, found + sub_string.array_length - 2,
-                                               new_string.string_array, new_string.array_length - 1);
-
-                    return true;
-                }
-
-                return false;
-            }
+            bool replace(const string& sub_string, int n, const string& new_string);
 
 
             //function to return a substring given two positions
-            const string substr(int start_index, int end_index) const
-            {
-                //make sure start is in bounds
-                if (start_index < 0)
-                    start_index = 0;
-                else if (start_index > (int)array_length-2)
-                    return string();
-
-                //make sure end is in bounds
-                if (end_index < 0)
-                    return string();
-                else if (end_index > (int)array_length-2)
-                    end_index = (int)array_length-2;
-
-                //start must come before end
-                if (start_index > end_index)
-                    return string();
-
-
-                //accumulate data
-                int len = end_index-start_index + 2;
-                CHAR temp[len];
-                for (int i=0; i<len-1; i++)
-                    temp[i] = string_array[i + start_index];
-                temp[len - 1] = null;
-
-                //assign data
-                string sub_string;
-                sub_string.assign_data(temp, len);
-
-                return sub_string;
-            }
+            const string substr(int start_index, int end_index) const;
 
 
             //function to return the number of times the given string appears in this string
-            int count(const string& sub_string) const
-            {
-                int amount = 0;
-
-                for (int i=0; i<array_length-1; i++)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                        amount++;
-                }
-
-                return amount;
-            }
+            int count(const string& sub_string) const;
 
 
             //function to remove the portion of the string within the specified indexes (inclusive)
-            void remove(int start_index, int end_index)
-            {
-                remove_portion(start_index, end_index);
-            }
+            inline void remove(int start_index, int end_index)
+            { remove_portion(start_index, end_index); }
 
 
             //returns true if the specified sub-string was found at the specified position
-            bool foundAt(const string& sub_string, int position) const
-            {
-                if ((position < 0) || (position >= (int)array_length-1))
-                    return false;
+            bool foundAt(const string& sub_string, int position) const;
 
-                for (int i=0; i<sub_string.array_length-1; i++)
-                {
-                    if (sub_string[i] != string_array[i + position])
-                        return false;
-                }
-
-                return true;
-            }
-
-            //returns true if the specified sub-string was found at
+            //returns true if the specified sub-string was found
             //AND ENDS AT the specified position
-            bool foundEndAt(const string& sub_string, int position) const
-            {
-                if ((position < 0) || (position >= (int)array_length-1))
-                    return false;
-
-                for (int i=sub_string.array_length-2; i>=0; i--)
-                {
-                    if (sub_string[i] != string_array[position])
-                        return false;
-
-                    position--;
-                }
-
-                return true;
-            }
+            bool foundEndAt(const string& sub_string, int position) const;
 
             //returns true if specified text was found at the beginning of the string
             inline bool beginsWith(const string& sub_string) const
-            {
-                return foundAt(sub_string, 0);
-            }
+            { return foundAt(sub_string, 0); }
 
             //returns true if specified text was found at the end of the string
             inline bool endsWith(const string& sub_string) const
-            {
-                return foundEndAt(sub_string, array_length-2);
-            }
+            { return foundEndAt(sub_string, array_length-2); }
 
             //returns true if specified text was found at the beginning of the string,
             //after an allowed padding char (e.g. leading spaces)
-            bool beginsWith(const string& sub_string, CHAR pad_char) const
-            {
-                int i = 0;
+            bool beginsWith(const string& sub_string, CHAR pad_char) const;
 
-                while ((string_array[i] == pad_char) && (i < (int)array_length-1))
-                {
-                    if (foundAt(sub_string, i))
-                        return true;
+            //Clears the string
+            void clear();
 
-                    i++;
-                }
-
-                return foundAt(sub_string, i);
-            }
-
-
-            ///Clears the string
-            void clear()
-            {
-                clear_data();
-
-                array_length = 1;
-                string_array = new CHAR[1];
-
-                string_array[0] = null;
-            }
-
-            const string& operator=(const string& other)
-            {
-                assign_data(other.string_array, other.length());
-
-                return *this;
-            }
+            const string& operator=(const string& other);
 
             template <typename CHAR_2>
             const string& operator=(const string<CHAR_2>& other)
@@ -1103,6 +909,228 @@ namespace z
                 return *this;
             }
         };
+
+
+        template <typename CHAR>
+        void string<CHAR>::clear_data()
+        {
+            if (array_length)
+                delete[] string_array;
+
+            string_array = null;
+            array_length = 0;
+        }
+
+        template <typename CHAR>
+        int string<CHAR>::find(const string<CHAR>& sub_string) const
+            {
+                for (int i=0; i<array_length-1; i++)
+                {
+                    if (found_sub_string_at(i, sub_string.string_array,
+                                            sub_string.array_length))
+                        return (int)i;
+                }
+
+                return -1;
+            }
+
+        template <typename CHAR>
+        int string<CHAR>::find(const string<CHAR>& sub_string, int n) const
+        {
+            if (n < 0)
+                return -1;
+
+            int amount = -1;
+
+            for (int i=0; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array,
+                                        sub_string.array_length))
+                    amount++;
+
+                if (amount >= n)
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        template <typename CHAR>
+        int string<CHAR>::findAfter(const string<CHAR>& sub_string, int n) const
+        {
+            for (int i=n; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        template <typename CHAR>
+        int string<CHAR>::findLast(const string<CHAR>& sub_string) const
+        {
+            for (int i=array_length-1-sub_string.length(); i>=0; i--)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::replace(const string<CHAR>& sub_string,
+                                   const string<CHAR>& new_string)
+        {
+            int found = find(sub_string);
+
+            if (found > -1)
+            {
+                replace_sub_string_at_with(found,
+                                           found + sub_string.array_length - 2,
+                                           new_string.string_array,
+                                           new_string.array_length - 1);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
+                                   const string<CHAR>& new_string)
+        {
+            int found = find(sub_string, n);
+
+            if (found > -1)
+            {
+                replace_sub_string_at_with(found,
+                                           found + sub_string.array_length - 2,
+                                           new_string.string_array,
+                                           new_string.array_length - 1);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        template <typename CHAR>
+        const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
+        {
+            //make sure start is in bounds
+            if (start_index < 0)
+                start_index = 0;
+            else if (start_index > (int)array_length-2)
+                return string<CHAR>();
+
+            //make sure end is in bounds
+            if (end_index < 0)
+                return string<CHAR>();
+            else if (end_index > (int)array_length-2)
+                end_index = (int)array_length-2;
+
+            //start must come before end
+            if (start_index > end_index)
+                return string<CHAR>();
+
+
+            //accumulate data
+            int len = end_index-start_index + 2;
+            CHAR temp[len];
+            for (int i=0; i<len-1; i++)
+                temp[i] = string_array[i + start_index];
+            temp[len - 1] = null;
+
+            //assign data
+            string<CHAR> sub_string;
+            sub_string.assign_data(temp, len);
+
+            return sub_string;
+        }
+
+        template <typename CHAR>
+        int string<CHAR>::count(const string<CHAR>& sub_string) const
+        {
+            int amount = 0;
+
+            for (int i=0; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    amount++;
+            }
+
+            return amount;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
+        {
+            if ((position < 0) || (position >= (int)array_length-1))
+                return false;
+
+            for (int i=0; i<sub_string.array_length-1; i++)
+            {
+                if (sub_string[i] != string_array[i + position])
+                    return false;
+            }
+
+            return true;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
+        {
+            if ((position < 0) || (position >= (int)array_length-1))
+                return false;
+
+            for (int i=sub_string.array_length-2; i>=0; i--)
+            {
+                if (sub_string[i] != string_array[position])
+                    return false;
+
+                position--;
+            }
+
+            return true;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
+        {
+            int i = 0;
+
+            while ((string_array[i] == pad_char) && (i < (int)array_length-1))
+            {
+                if (foundAt(sub_string, i))
+                    return true;
+
+                i++;
+            }
+
+            return foundAt(sub_string, i);
+        }
+
+        template <typename CHAR>
+        void string<CHAR>::clear()
+        {
+            clear_data();
+
+            array_length = 1;
+            string_array = new CHAR[1];
+
+            string_array[0] = null;
+        }
+
+        template <typename CHAR>
+        const string<CHAR>& string<CHAR>::operator=(const string<CHAR>& other)
+        {
+            assign_data(other.string_array, other.length());
+
+            return *this;
+        }
     }
 }
 
