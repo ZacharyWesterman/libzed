@@ -1,5 +1,5 @@
 /**
- * File:            char_is_alphanumeric.h
+ * File:            charFunctions.h
  * Namespace:       z::core
  *
  * Description:     Template functions that return
@@ -8,19 +8,19 @@
  *
  * Author:          Zachary Westerman
  * Email:           zacharywesterman@yahoo.com
- * Last modified:   26 Jul. 2017
+ * Last modified:   1 Sep. 2017
 **/
 
 #pragma once
-#ifndef CHAR_IS_ALPHANUMERIC_H_INCLUDED
-#define CHAR_IS_ALPHANUMERIC_H_INCLUDED
+#ifndef CHARFUNCTIONS_H_INCLUDED
+#define CHARFUNCTIONS_H_INCLUDED
 
 namespace z
 {
     namespace core
     {
         template <typename CHAR>
-        bool is_upper_alpha(const CHAR character)
+        bool isUpperAlpha(const CHAR character)
         {
             if ((character >= (CHAR)65) &&  //from A
                 (character <= (CHAR)90))    //to Z
@@ -31,7 +31,7 @@ namespace z
 
 
         template <typename CHAR>
-        bool is_lower_alpha(const CHAR character)
+        bool isLowerAlpha(const CHAR character)
         {
             if ((character >= (CHAR)97) &&  //from a
                 (character <= (CHAR)122))    //to z
@@ -42,15 +42,15 @@ namespace z
 
 
         template <typename CHAR>
-        bool is_alpha(const CHAR character)
+        bool isAlpha(const CHAR character)
         {
-            return (is_lower_alpha(character) || //is uppercase
-                    is_upper_alpha(character));  //or lowercase
+            return (isLowerAlpha(character) || //is uppercase
+                    isUpperAlpha(character));  //or lowercase
         }
 
 
         template <typename CHAR>
-        int numeral_value(const CHAR character)
+        int numeralValue(const CHAR character)
         {
             if ((character >= (CHAR)48) &&  //from 0
                 (character <= (CHAR)57))    //to 9
@@ -66,20 +66,36 @@ namespace z
         }
 
         template <typename CHAR>
-        inline bool is_numeric(const CHAR character, int base = 10)
+        inline bool isNumeric(const CHAR character, int base = 10)
         {
-            int value = numeral_value(character);
+            int value = numeralValue(character);
             return ((value < base) && (value > -1));
         }
 
 
         template <typename CHAR>
-        bool is_alphanumeric(const CHAR character)
+        bool isAlphanumeric(const CHAR character)
         {
-            return (is_alpha(character) ||  //is a letter
-                    is_numeric(character)); //or a number
+            return (isAlpha(character) ||  //is a letter
+                    isNumeric(character)); //or a number
+        }
+
+
+        template <typename CHAR>
+        bool isWhiteSpace(CHAR character)
+        {
+            if ((character == (CHAR)9)  || //tab
+                (character == (CHAR)10) || //newline
+                (character == (CHAR)13) || //carriage return
+                (character == (CHAR)32) || //space
+                (character == (CHAR)12) || //form feed
+                (character == (CHAR)11) || //vertical tab
+                (character == (CHAR)0))    //null
+                return true;
+            else
+                return false;
         }
     }
 }
 
-#endif // CHAR_IS_ALPHANUMERIC_H_INCLUDED
+#endif // CHARFUNCTIONS_H_INCLUDED
