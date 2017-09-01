@@ -37,6 +37,7 @@
 //e.g. at the ~0.5 mark.
 #define num_round_magic 0.499999958629814528210388857587539
 
+#include "../charFunctions.h"
 
 namespace z
 {
@@ -737,7 +738,153 @@ namespace z
             const string<CHAR> lower();
 
             //const string<CHAR> camel();
+
+            zFloat value(int base = 10);
+
+            std::complex<zFloat> complexValue(int base = 10);
         };
+
+
+        ///template for string evaluation functions
+        // both ignore spaces, and returns 0.0 if non-numerical characters are present
+        template <typename CHAR>
+        zFloat string<CHAR>::value(int base)
+        {
+
+            zFloat value = 0.0;
+
+            int start = 0;
+            bool isNegative = false;
+
+            if (string_array[0] == (CHAR)45) //'-' character
+            {
+                start = 1;
+                isNegative = true;
+            }
+
+            bool pastDecimal = false;
+            bool pastExponent = false;
+            zFloat fracMult = 1.0;
+            int exponent = 0;
+            bool expNegative = false;
+
+            int length = array_length - 1;
+
+            for (int i=start; i<length; i++)
+            {
+                //in the rare case that we encounter a null character
+                if (string_array[i] == (CHAR)0)
+                    break;
+
+                //only one decimal point is allowed.
+                //any more, and the string is invalid
+                if (string_array[i] == (CHAR)46) //'.' character
+                {
+                    if (pastDecimal)
+                    {
+                        return 0.0;
+                    }
+
+                    pastDecimal = true;
+                }
+
+                //if a character is not part of a valid number,
+                //the string evaluates to 0.0 and return.
+                else if (is_numeric(string_array[i], base))
+                {
+                    if (pastExponent)
+                    {
+                        exponent *= base;
+                        exponent += numeral_value(string_array[i]);
+                    }
+                    else if (pastDecimal)
+                    {
+                        fracMult /= (zFloat)base;
+                        value += fracMult * (zFloat)numeral_value(string_array[i]); //actual value from character
+                    }
+                    else
+                    {
+                        value *= (zFloat)base;
+                        value += (zFloat)numeral_value(string_array[i]); //actual value from character
+                    }
+                }
+                else if (string_array[i] == (CHAR)69)
+                {
+                    pastExponent = true;
+                }
+                else if (pastExponent && (string_array[i] == (CHAR)45))
+                {
+                    expNegative = true;
+                }
+                else if (string_array[i] != (CHAR)46)
+                {
+                    return 0.0;
+                }
+            }
+
+
+            if (exponent)
+            {
+                long valMult = 1;
+
+                for(int i=0; i<exponent; i++)
+                    valMult *= base;
+
+                if (expNegative)
+                    value *= (1 / (zFloat)valMult);
+                else
+                    value *= valMult;
+            }
+
+            //never output "-0"
+            if (value == -0)
+                return 0;
+
+            if (isNegative)
+            {
+                return -value;
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+
+        template <typename CHAR>
+        std::complex<zFloat> string<CHAR>::complexValue(int base)
+        {
+            if (endsWith("i"))
+            {
+                zFloat real(0), imag;
+
+                int realEnd = findLast("+");
+
+                imag = substr(realEnd+1, length()-2).value(base);
+
+                if (realEnd >= 0)
+                {
+                    real = substr(0, realEnd-1).value(base);
+                }
+                else
+                {
+                    realEnd = findLast("-");
+
+                    if (realEnd >= 0)
+                    {
+                        real = substr(0, realEnd-1).value(base);
+                        imag = -(substr(realEnd+1, length()-2).value(base));
+                    }
+                }
+
+                return std::complex<zFloat> (real, imag);
+            }
+            else
+            {
+                return std::complex<zFloat> (value(base), 0);
+            }
+
+        }
 
 
         template <typename CHAR>
