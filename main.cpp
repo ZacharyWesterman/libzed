@@ -14,7 +14,7 @@ int main()
 {
     core::string<wchar_t> s = L"שלום, זה טקסט: hello þ bepos";
 
-    cout << core::string<char>(s).str() << endl;
+    cout << s.narrow().str() << endl;
 
     /*
     long total_micros = 0;

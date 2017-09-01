@@ -732,7 +732,15 @@ namespace z
             }
 
 
+            inline const string<char> narrow()
+            {
+                return string<char>(*this);
+            }
 
+            const string<wchar_t> wide()
+            {
+                return string<wchar_t>(*this);
+            }
         };
 
 
