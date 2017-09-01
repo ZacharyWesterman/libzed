@@ -377,14 +377,23 @@ namespace z
             }
 
 
-            //char constructor
-            template <typename CHAR_2>
-            string(const CHAR_2& character)
+            //char constructors
+            string(const char& character)
             {
                 array_length = 2;
                 string_array = new CHAR[2];
 
-                if ((sizeof(CHAR_2) > sizeof(CHAR)) &&
+                string_array[0] = character;
+
+                string_array[1] = null;
+            }
+
+            string(const wchar_t& character)
+            {
+                array_length = 2;
+                string_array = new CHAR[2];
+
+                if ((sizeof(CHAR) > sizeof(wchar_t)) &&
                     (character >= 128))
                     string_array[0] = (CHAR)'?';
                 else
@@ -726,29 +735,29 @@ namespace z
             }
 
 
-            inline const string<char> narrow()
+            inline const string<char> narrow() const
             { return string<char>(*this); }
 
-            inline const string<wchar_t> wide()
+            inline const string<wchar_t> wide() const
             { return string<wchar_t>(*this); }
 
 
-            const string<CHAR> upper();
+            const string<CHAR> upper() const;
 
-            const string<CHAR> lower();
+            const string<CHAR> lower() const;
 
             //const string<CHAR> camel();
 
-            zFloat value(int base = 10);
+            zFloat value(int base = 10) const;
 
-            std::complex<zFloat> complexValue(int base = 10);
+            std::complex<zFloat> complexValue(int base = 10) const;
         };
 
 
         ///template for string evaluation functions
         // both ignore spaces, and returns 0.0 if non-numerical characters are present
         template <typename CHAR>
-        zFloat string<CHAR>::value(int base)
+        zFloat string<CHAR>::value(int base) const
         {
 
             zFloat value = 0.0;
@@ -790,22 +799,22 @@ namespace z
 
                 //if a character is not part of a valid number,
                 //the string evaluates to 0.0 and return.
-                else if (is_numeric(string_array[i], base))
+                else if (isNumeric(string_array[i], base))
                 {
                     if (pastExponent)
                     {
                         exponent *= base;
-                        exponent += numeral_value(string_array[i]);
+                        exponent += numeralValue(string_array[i]);
                     }
                     else if (pastDecimal)
                     {
                         fracMult /= (zFloat)base;
-                        value += fracMult * (zFloat)numeral_value(string_array[i]); //actual value from character
+                        value += fracMult * (zFloat)numeralValue(string_array[i]); //actual value from character
                     }
                     else
                     {
                         value *= (zFloat)base;
-                        value += (zFloat)numeral_value(string_array[i]); //actual value from character
+                        value += (zFloat)numeralValue(string_array[i]); //actual value from character
                     }
                 }
                 else if (string_array[i] == (CHAR)69)
@@ -852,7 +861,7 @@ namespace z
 
 
         template <typename CHAR>
-        std::complex<zFloat> string<CHAR>::complexValue(int base)
+        std::complex<zFloat> string<CHAR>::complexValue(int base) const
         {
             if (endsWith("i"))
             {
@@ -888,7 +897,7 @@ namespace z
 
 
         template <typename CHAR>
-        const string<CHAR> string<CHAR>::upper()
+        const string<CHAR> string<CHAR>::upper() const
         {
             string<CHAR> result (*this);
 
@@ -903,7 +912,7 @@ namespace z
         }
 
         template <typename CHAR>
-        const string<CHAR> string<CHAR>::lower()
+        const string<CHAR> string<CHAR>::lower() const
         {
             string<CHAR> result (*this);
 
