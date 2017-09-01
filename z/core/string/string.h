@@ -257,229 +257,36 @@ namespace z
 
 
             //internal function to clear string data
-            void clear_data();
+            //void clear_data();
 
 
             //internal function to assign new data
-            void assign_data(const CHAR* buffer, int bufsiz)
-            {
-                clear_data();
-
-                if (buffer)
-                {
-                    array_length = bufsiz+1;
-                    string_array = new CHAR[array_length];
-
-                    for (int i=0; i<array_length-1; i++)
-                    {
-                        string_array[i] = buffer[i];
-                        if (buffer[i] == null)
-                        {
-                            array_length = i+1;
-                            break;
-                        }
-                    }
-
-                    string_array[array_length-1] = null;
-                }
-            }
+            //void assign_data(const CHAR* buffer, int bufsiz);
 
             //internal function to append a character array
-            void append_string(const CHAR* buffer, int bufsiz)
-            {
-                if (buffer)
-                {
-                    //shift current data
-                    CHAR* temp = string_array;
-                    int tempsiz = array_length;
-
-                    //prep for new data
-                    array_length = tempsiz + bufsiz - 1;
-                    string_array = new CHAR[array_length];
-
-
-                    //copy old data
-                    for (int i=0; i<tempsiz-1; i++)
-                        string_array[i] = temp[i];
-
-                    //copy new data
-                    for (int j=tempsiz-1; j<array_length; j++)
-                        string_array[j] = buffer[j - tempsiz + 1];
-
-                    delete[] temp;
-                }
-            }
+            void append_string(const CHAR* buffer, int bufsiz);
 
             //internal function to append a single character
-            void append_char(CHAR singleChar)
-            {
-                //shift current data
-                CHAR* temp = string_array;
-                int tempsiz = array_length;
-
-                if (!string_array || !array_length)
-                    tempsiz++;
-
-                //prep for new data
-                array_length = tempsiz + 1;
-                string_array = new CHAR[array_length];
-
-                //copy old data
-                for (int i=0; i<tempsiz-1; i++)
-                    string_array[i] = temp[i];
-
-                //append new data
-                string_array[array_length-2] = singleChar;
-                string_array[array_length-1] = null;
-
-                delete[] temp;
-            }
+            void append_char(CHAR singleChar);
 
             //internal function to check if the specified sub-string is at the specified position
-            bool found_sub_string_at(int pos, const CHAR* substr, int substr_len) const
-            {
-                for (int i=0 ; i<substr_len-1; i++)
-                {
-                    //if the string ends before all of the substring was found
-                    if (pos+i >= array_length-1)
-                        return false;
-
-                    //if the exact substring was not found here
-                    if (substr[i] != string_array[i+pos])
-                        return false;
-                }
-
-                return true;
-            }
+            bool found_sub_string_at(int pos, const CHAR* substr, int substr_len) const;
 
             //internal function to replace the substring in the given index range(inclusive) with the given string
-            void replace_sub_string_at_with(int beg_index, int end_index, const CHAR* sub_str, int substr_len)
-            {
-                if (string_array && array_length)
-                {
-                    //make sure start index is within bounds
-                    if (beg_index < 0)
-                        beg_index = 0;
-                    else if (beg_index >= (int)array_length-1)
-                        return;
-
-                    //make sure end index is within bounds
-                    if (end_index < 0)
-                        return;
-                    else if (end_index >= (int)array_length-1)
-                        end_index = (int)array_length-2;
-
-                    //make sure start index is not after end index
-                    if (beg_index > end_index)
-                        return;
-
-
-                    //shift the string data
-                    CHAR* temp = string_array;
-                    int tempsiz = array_length;
-
-                    //prep data
-                    array_length = array_length + substr_len - (end_index - beg_index);
-                    string_array = new CHAR[array_length];
-
-                    int index = 0;
-                    //copy original data until the start position
-                    for (int i=0; i<beg_index; i++)
-                    {
-                        string_array[index] = temp[i];
-                        index++;
-                    }
-
-                    //copy the new substring into place
-                    for (int i=0; i<substr_len-1; i++)
-                    {
-                        string_array[index] = sub_str[i];
-                        index++;
-                    }
-
-                    //copy original data from the end position
-                    for (int i=end_index+1; i<tempsiz; i++)
-                    {
-                        string_array[index] = temp[i];
-                        index++;
-                    }
-
-                    string_array[array_length-1] = null;
-
-                    delete[] temp;
-
-
-                }
-            }
+            void replace_sub_string_at_with(int beg_index,
+                                            int end_index,
+                                            const CHAR* sub_str,
+                                            int substr_len);
 
             //internal function to check string equality
             //returns -1 if this string is less than another,
             //        +1 if it is greater,
             //     and 0 if they are the same.
-            int lessthan_equal_greater(const CHAR* other, int str_size) const
-            {
-                int i = 0;
-
-                while ((i<str_size-1) && (i<array_length-1))
-                {
-                    if (string_array[i] < other[i])
-                        return -1;
-                    else if (string_array[i] > other[i])
-                        return 1;
-                    else if ((string_array[i] == null) && (other[i] == null))
-                        return 0;
-
-                    i++;
-                }
-
-                if (array_length < str_size)
-                    return -1;
-                else if (array_length > str_size)
-                    return 1;
-                else
-                    return 0;
-            }
+            int lessthan_equal_greater(const CHAR* other, int str_size) const;
 
 
             //internal function to remove a section of text from the string (start+end inclusive)
-            void remove_portion(int beg_index, int end_index)
-            {
-                //make sure start index is within bounds
-                if (beg_index < 0)
-                    beg_index = 0;
-                else if (beg_index > (int)array_length-2)
-                    beg_index = (int)array_length-2;
-
-                //make sure end index is within bounds
-                if (end_index < 0)
-                    end_index = 0;
-                else if (end_index > (int)array_length-2)
-                    end_index = (int)array_length-2;
-
-                //make sure start index is not after end index
-                if (beg_index > end_index)
-                    return;
-
-
-                //shift data
-                int tempsiz = array_length;
-                CHAR* temp = string_array;
-
-                //prep new string
-                int section = (end_index - beg_index + 1);
-                array_length = tempsiz - section;
-                string_array = new CHAR[array_length];
-
-                //copy part of old string before removed section
-                for (int i=0; i<beg_index; i++)
-                    string_array[i] = temp[i];
-
-                //copy part of old string after removed section
-                for (int i=end_index+1; i<(int)tempsiz; i++)
-                    string_array[i - section] = temp[i];
-
-                delete[] temp;
-            }
+            void remove_portion(int beg_index, int end_index);
 
 
         public:
@@ -885,32 +692,51 @@ namespace z
             //Clears the string
             void clear();
 
-            const string& operator=(const string& other);
-
             template <typename CHAR_2>
             const string& operator=(const string<CHAR_2>& other)
             {
-                CHAR_2* other_ptr = (CHAR_2*)((void*)other.str());
-                int length = other.length();
-
-                CHAR* this_ptr = null;
-
-
-                convertStr(this_ptr, other_ptr, length + 1);
-
-
                 delete[] string_array;
 
-                string_array = this_ptr;
+                array_length = other.length()+1;
 
-                array_length = length + 1;
+                string_array = new CHAR[array_length];
 
+                if (sizeof(CHAR_2) <= sizeof(CHAR))
+                {
+                    for (int i=0; i<array_length-1; i++)
+                        string_array[i] = other.str()[i];
+
+                }
+                else
+                {
+                    int buf_i = 0;
+
+                    for (int i=0; i<array_length-1; i++)
+                    {
+                        if (other.str()[buf_i] < 128)
+                            string_array[i] = other.str()[buf_i];
+                        else
+                        {
+                            string_array[i] = (CHAR)'?';
+
+                            if ((other.str()[buf_i] >= 0xD800) &&
+                                (other.str()[buf_i] <= 0xD8FF))
+                            buf_i++;
+                        }
+
+                        buf_i++;
+                    }
+                }
 
                 return *this;
             }
+
+
+
         };
 
 
+        /*
         template <typename CHAR>
         void string<CHAR>::clear_data()
         {
@@ -919,7 +745,231 @@ namespace z
 
             string_array = null;
             array_length = 0;
+        }*/
+
+        /*
+        template <typename CHAR>
+        void string<CHAR>::assign_data(const CHAR* buffer, int bufsiz)
+        {
+            clear_data();
+
+            if (buffer)
+            {
+                array_length = bufsiz+1;
+                string_array = new CHAR[array_length];
+
+                for (int i=0; i<array_length-1; i++)
+                {
+                    string_array[i] = buffer[i];
+                    if (buffer[i] == null)
+                    {
+                        array_length = i+1;
+                        break;
+                    }
+                }
+
+                string_array[array_length-1] = null;
+            }
+        }*/
+
+        template <typename CHAR>
+        void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
+        {
+            if (buffer)
+            {
+                //shift current data
+                CHAR* temp = string_array;
+                int tempsiz = array_length;
+
+                //prep for new data
+                array_length = tempsiz + bufsiz - 1;
+                string_array = new CHAR[array_length];
+
+
+                //copy old data
+                for (int i=0; i<tempsiz-1; i++)
+                    string_array[i] = temp[i];
+
+                //copy new data
+                for (int j=tempsiz-1; j<array_length; j++)
+                    string_array[j] = buffer[j - tempsiz + 1];
+
+                delete[] temp;
+            }
         }
+
+        template <typename CHAR>
+        void string<CHAR>::append_char(CHAR singleChar)
+        {
+            //shift current data
+            CHAR* temp = string_array;
+            int tempsiz = array_length;
+
+            if (!string_array || !array_length)
+                tempsiz++;
+
+            //prep for new data
+            array_length = tempsiz + 1;
+            string_array = new CHAR[array_length];
+
+            //copy old data
+            for (int i=0; i<tempsiz-1; i++)
+                string_array[i] = temp[i];
+
+            //append new data
+            string_array[array_length-2] = singleChar;
+            string_array[array_length-1] = null;
+
+            delete[] temp;
+        }
+
+        template <typename CHAR>
+        bool string<CHAR>::found_sub_string_at(int pos, const CHAR* substr, int substr_len) const
+        {
+            for (int i=0 ; i<substr_len-1; i++)
+            {
+                //if the string ends before all of the substring was found
+                if (pos+i >= array_length-1)
+                    return false;
+
+                //if the exact substring was not found here
+                if (substr[i] != string_array[i+pos])
+                    return false;
+            }
+
+            return true;
+        }
+
+        template <typename CHAR>
+        void string<CHAR>::replace_sub_string_at_with(int beg_index,
+                                                      int end_index,
+                                                      const CHAR* sub_str,
+                                                      int substr_len)
+        {
+            if (string_array && array_length)
+            {
+                //make sure start index is within bounds
+                if (beg_index < 0)
+                    beg_index = 0;
+                else if (beg_index >= (int)array_length-1)
+                    return;
+
+                //make sure end index is within bounds
+                if (end_index < 0)
+                    return;
+                else if (end_index >= (int)array_length-1)
+                    end_index = (int)array_length-2;
+
+                //make sure start index is not after end index
+                if (beg_index > end_index)
+                    return;
+
+
+                //shift the string data
+                CHAR* temp = string_array;
+                int tempsiz = array_length;
+
+                //prep data
+                array_length = array_length + substr_len - (end_index - beg_index);
+                string_array = new CHAR[array_length];
+
+                int index = 0;
+                //copy original data until the start position
+                for (int i=0; i<beg_index; i++)
+                {
+                    string_array[index] = temp[i];
+                    index++;
+                }
+
+                //copy the new substring into place
+                for (int i=0; i<substr_len-1; i++)
+                {
+                    string_array[index] = sub_str[i];
+                    index++;
+                }
+
+                //copy original data from the end position
+                for (int i=end_index+1; i<tempsiz; i++)
+                {
+                    string_array[index] = temp[i];
+                    index++;
+                }
+
+                string_array[array_length-1] = null;
+
+                delete[] temp;
+
+
+            }
+        }
+
+        template <typename CHAR>
+        int string<CHAR>::lessthan_equal_greater(const CHAR* other,
+                                                 int str_size) const
+        {
+            int i = 0;
+
+            while ((i<str_size-1) && (i<array_length-1))
+            {
+                if (string_array[i] < other[i])
+                    return -1;
+                else if (string_array[i] > other[i])
+                    return 1;
+                else if ((string_array[i] == null) && (other[i] == null))
+                    return 0;
+
+                i++;
+            }
+
+            if (array_length < str_size)
+                return -1;
+            else if (array_length > str_size)
+                return 1;
+            else
+                return 0;
+        }
+
+        template <typename CHAR>
+        void string<CHAR>::remove_portion(int beg_index, int end_index)
+        {
+            //make sure start index is within bounds
+            if (beg_index < 0)
+                beg_index = 0;
+            else if (beg_index > (int)array_length-2)
+                beg_index = (int)array_length-2;
+
+            //make sure end index is within bounds
+            if (end_index < 0)
+                end_index = 0;
+            else if (end_index > (int)array_length-2)
+                end_index = (int)array_length-2;
+
+            //make sure start index is not after end index
+            if (beg_index > end_index)
+                return;
+
+
+            //shift data
+            int tempsiz = array_length;
+            CHAR* temp = string_array;
+
+            //prep new string
+            int section = (end_index - beg_index + 1);
+            array_length = tempsiz - section;
+            string_array = new CHAR[array_length];
+
+            //copy part of old string before removed section
+            for (int i=0; i<beg_index; i++)
+                string_array[i] = temp[i];
+
+            //copy part of old string after removed section
+            for (int i=end_index+1; i<(int)tempsiz; i++)
+                string_array[i - section] = temp[i];
+
+            delete[] temp;
+        }
+
+
 
         template <typename CHAR>
         int string<CHAR>::find(const string<CHAR>& sub_string) const
@@ -1045,8 +1095,7 @@ namespace z
             temp[len - 1] = null;
 
             //assign data
-            string<CHAR> sub_string;
-            sub_string.assign_data(temp, len);
+            string<CHAR> sub_string (temp);
 
             return sub_string;
         }
@@ -1116,20 +1165,13 @@ namespace z
         template <typename CHAR>
         void string<CHAR>::clear()
         {
-            clear_data();
+            delete[] string_array;
+            //clear_data();
 
             array_length = 1;
             string_array = new CHAR[1];
 
             string_array[0] = null;
-        }
-
-        template <typename CHAR>
-        const string<CHAR>& string<CHAR>::operator=(const string<CHAR>& other)
-        {
-            assign_data(other.string_array, other.length());
-
-            return *this;
         }
     }
 }
