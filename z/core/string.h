@@ -1,22 +1,3 @@
-/**
- * File:            string.h
- * Namespace:       z::core
- *
- * Description:     A template for character strings. The two
- *                  currently supported character types are
- *                  char and wchar_t. Strings can be created with
- *                  'z::core::string<TYPE> foo', where 'TYPE' is
- *                  either char or wchar_t.
- *                  This class is also type-independent, that is
- *                  it handles all type conversions automatically.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   1 Sep. 2017
-**/
-
-
 #pragma once
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
@@ -249,7 +230,15 @@ namespace z
 
 
 
-
+        /**
+         * \brief A template for character strings.
+         *
+         * Strings are expected to be of either \b char or \b wchar_t
+         * types, but other integer types should work.
+         * This class is type-independent, so
+         * it handles all type conversions automatically.
+         *
+         */
         template <typename CHAR>
         class string
         {
@@ -285,7 +274,7 @@ namespace z
 
 
         public:
-            //empty constructor
+            ///Default string constructor
             string()
             {
                 array_length = 1;
@@ -294,7 +283,7 @@ namespace z
             }
 
 
-            //cstring constructor
+            ///Constructor from null-terminated character string
             template <typename CHAR_2>
             string(const CHAR_2* buffer)
             {
@@ -341,7 +330,7 @@ namespace z
             }
 
 
-            //copy constructor
+            ///Copy constructor
             template <typename CHAR_2>
             string(const string<CHAR_2>& other)
             {
@@ -378,7 +367,7 @@ namespace z
             }
 
 
-            //char constructors
+            ///Constructor from single narrow character
             string(const char& character)
             {
                 array_length = 2;
@@ -389,6 +378,7 @@ namespace z
                 string_array[1] = null;
             }
 
+            ///Constructor from single wide character
             string(const wchar_t& character)
             {
                 array_length = 2;
@@ -404,8 +394,15 @@ namespace z
             }
 
 
-            //numeric constructor
-            ///converts a real number to a string
+            /**
+             * \brief Constructor from numeric type
+             *
+             * If the parameter is any numeric type other than
+             * \b char or \b wchar_t, then it is assumed to be
+             * a real number, which is then converted into a string.
+             *
+             * \param number a value in any numeric type.
+             */
             template<
                 typename T, //numeric type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -424,8 +421,18 @@ namespace z
             }
 
 
-            //complex constructor
-            ///converts a complex number to a string
+            /**
+             * \brief Constructor from complex numeric type
+             *
+             * If the parameter is of type  \b std::complex, then
+             * it is converted to a string with the format \b a+bi.
+             * Note that if either the real or imaginary part are
+             * zero, then only the non-zero part is converted. If
+             * both parts are zero, then the resultant string is
+             * \b "0".
+             *
+             * \param number a complex number.
+             */
             template<
                 typename T, //numeric type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -492,7 +499,7 @@ namespace z
             }
 
 
-            //destructor
+            ///Destructor
             ~string()
             {
                 if (string_array)
@@ -500,7 +507,13 @@ namespace z
             }
 
 
-            //get number of characters in the string
+            /**
+             * \brief The length of the string.
+             *
+             * \return The number of characters in the string.
+             *
+             * \see length() const
+             */
             int size() const
             {
                 int len = (int)(array_length)-1;
@@ -511,19 +524,30 @@ namespace z
                 return len;
             }
 
+            /**
+             * \brief The length of the string.
+             *
+             * \return The number of characters in the string.
+             *
+             * \see size() const
+             */
             inline int length() const
             { return size(); }
 
 
 
 
-            //get string array pointer
+            /**
+             * \brief A method to get the address of the current character string.
+             *
+             * \return A const pointer to the string's character array.
+             */
             inline const CHAR* str() const {return string_array;}
 
 
 
 
-            //equality operator
+            ///Equality operator
             inline bool operator==(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
@@ -531,7 +555,7 @@ namespace z
             }
 
 
-            //inequality operator
+            ///Inequality operator
             inline bool operator!=(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
@@ -539,14 +563,14 @@ namespace z
             }
 
 
-            //greater than operator
+            ///Greater than operator
             inline bool operator>(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
                                                other.array_length) == 1);
             }
 
-            //greater than / equal to operator
+            ///Greater than or equal to operator
             inline bool operator>=(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
@@ -554,7 +578,7 @@ namespace z
             }
 
 
-            //less than operator
+            ///Less than operator
             inline bool operator<(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
@@ -562,7 +586,7 @@ namespace z
             }
 
 
-            //less than / equal to operator
+            ///Less than or equal to operator
             inline bool operator<=(const string& other) const
             {
                 return (lessthan_equal_greater(other.string_array,
@@ -570,7 +594,7 @@ namespace z
             }
 
 
-            //operator for concatenation of string
+            ///Operator for string concatenation
             inline const string& operator+=(const string& other)
             {
                 append_string(other.string_array, other.array_length);
@@ -578,7 +602,7 @@ namespace z
                 return *this;
             }
 
-            //addition operator
+            ///Addition operator for returning concatenated string
             inline const string operator+(const string& other) const
             {
                 string output = *this;
@@ -588,10 +612,17 @@ namespace z
             }
 
 
-            //function to get character at given index.
-            //if the index is valid, returns character at that index.
-            //otherwise, returns 0, since no character in the string will be 0.
-            inline CHAR at(int index) const
+            /**
+             * \brief Const function to get the character at the given index.
+             *
+             * \param index the index of the desired character.
+             *
+             * \return The character at the given index, if the
+             * index is valid. Otherwise, \b 0.
+             *
+             * \see operator[](int) const
+             */
+            CHAR at(int index) const
             {
                 if ((index < 0) ||
                     (index >= (int)array_length-1))
@@ -600,13 +631,21 @@ namespace z
                     return string_array[index];
             }
 
-            //const index operator
-            //Identical functionality to this->at(index).
-            inline CHAR operator[](int index) const
-            { return at(index); }
-
-
-            //non-const versions of the previous two functions
+            /**
+             * \brief Function to get a reference to the character
+             * at the given index.
+             *
+             * Unlike the \b const version, this function allows
+             * the character in the string to be modified.
+             *
+             * \param index the index of the desired character.
+             *
+             * \return Reference to the character at the given index,
+             * if the index is valid. Otherwise, the \b terminating
+             * \b character.
+             *
+             * \see operator[](int)
+             */
             CHAR& at(int index)
             {
                 if ((index < 0) ||
@@ -616,27 +655,89 @@ namespace z
                     return string_array[index];
             }
 
+            /**
+             * \brief Const operator to get the character at the given index.
+             *
+             * Identical behavior to at(int) const method, but
+             * allows character indexing like an array.
+             *
+             * \param index the index of the desired character.
+             *
+             * \return The character at the given index, if the
+             * index is valid. Otherwise, \b 0.
+             *
+             * \see at(int) const
+             */
+            inline CHAR operator[](int index) const
+            { return at(index); }
+
+            /**
+             * \brief Operator to get the character at the given index.
+             *
+             * Identical behavior to at(int) method, but
+             * allows character indexing like an array.
+             *
+             * \param index the index of the desired character.
+             *
+             * \return The character at the given index, if the
+             * index is valid. Otherwise, the \b terminating
+             * \b character.
+             *
+             * \see at(int)
+             */
             inline CHAR& operator[](int index)
             { return at(index); }
 
 
-            //function to find the position of the first occurrence of the given sub-string
-            //returns -1 if it was not found
+            /**
+             * \brief Find the first occurrence of the given sub-string.
+             *
+             * \param sub_string the sub-string to locate.
+             *
+             * \return The index of the sub-string's first occurrence,
+             * if found. Otherwise \b -1.
+             *
+             * \see find(const string&, int) const
+             */
             int find(const string& sub_string) const;
 
-            //function to find the position of the first occurrence of the given sub-string
-            //after the given index.
-            //returns -1 if it was not found
+            /**
+             * \brief Find the n<SUP>th</SUP> occurrence of the given sub-string.
+             *
+             * Starting from the beginning of the string, find the index
+             * of the sub-string's n<SUP>th</SUP> occurrence.
+             *
+             * \param sub_string the sub-string to locate.
+             * \param n the number of occurrence to locate.
+             *
+             * \return The index of the sub-string's n<SUP>th</SUP> occurrence,
+             * if found. Otherwise \b -1.
+             *
+             * \see find(const string&) const
+             */
+            int find(const string& sub_string, int n) const;
+
+            /**
+             * \brief Find the first occurrence of the given sub-string
+             * after the given index.
+             *
+             * \param sub_string the sub-string to locate.
+             * \param n the starting index.
+             *
+             * \return The index of the sub-string's first occurrence,
+             * if found. Otherwise \b -1.
+             */
             int findAfter(const string& sub_string, int n) const;
 
-            //function to find the position of the LAST occurrence of the given sub-string
-            //returns -1 if it was not found
+            /**
+             * \brief Find the last occurrence of the given sub-string
+             *
+             * \param sub_string the sub-string to locate.
+             *
+             * \return The index of the sub-string's last occurrence,
+             * if found. Otherwise \b -1.
+             */
             int findLast(const string& sub_string) const;
-
-            //function to find the position of the nth occurrence of the given sub-string
-            //n starts at 0
-            //returns -1 if it was not found
-            int find(const string& sub_string, int n) const;
 
 
             //function to replace a sub-string (indexes start_pos to end_pos, inclusive) with some new string
@@ -693,9 +794,10 @@ namespace z
             //after an allowed padding char (e.g. leading spaces)
             bool beginsWith(const string& sub_string, CHAR pad_char) const;
 
-            //Clears the string
+            ///Clears the string
             void clear();
 
+            ///String assignment operator
             template <typename CHAR_2>
             const string& operator=(const string<CHAR_2>& other)
             {
@@ -755,7 +857,7 @@ namespace z
         };
 
 
-        ///template for string evaluation functions
+        //template for string evaluation functions
         // both ignore spaces, and returns 0.0 if non-numerical characters are present
         template <typename CHAR>
         zFloat string<CHAR>::value(int base) const

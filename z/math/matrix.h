@@ -21,8 +21,11 @@ namespace z
     namespace math
     {
         /**
-         *
          * \brief A class for managing square matrices
+         *
+         * Template class for square matrices
+         * of size at least 2x2.
+         * Includes methods for calculating determinants.
          */
         template <unsigned int N>
         class matrix
