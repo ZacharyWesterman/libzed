@@ -1,6 +1,5 @@
-
 *.o
 
-bin/Debug/zLibraries_driver\.exe
+bin/Debug/zLibraries_driver/
 
-bin/Debug/zLibraries_driver
+Doxygen/
