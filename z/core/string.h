@@ -33,8 +33,8 @@ namespace z
         {
             zFloat_cast dbl_cst = {.value = number};
 
-            bool use_scientific = (dbl_cst.part.expUnBias() > 50) ||
-                                  (dbl_cst.part.expUnBias() < (-50));
+            bool use_scientific = (dbl_cst.expUnBias() > 50) ||
+                                  (dbl_cst.expUnBias() < (-50));
 
             int buffer_pos = 0;
 
