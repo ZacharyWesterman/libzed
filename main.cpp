@@ -12,7 +12,7 @@ using namespace z;
 
 int main()
 {
-    core::string<wchar_t> s = L"שלום, זה טקסט: hello þ bepos";
+    core::string<unsigned char> s = 123.4;
 
     cout << s.narrow().str() << endl;
 

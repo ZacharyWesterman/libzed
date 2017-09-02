@@ -246,619 +246,634 @@ namespace z
             int array_length;
             CHAR* string_array;
 
-
-            //internal function to append a character array
             void append_string(const CHAR* buffer, int bufsiz);
-
-            //internal function to append a single character
             void append_char(CHAR singleChar);
 
-            //internal function to check if the specified sub-string is at the specified position
-            bool found_sub_string_at(int pos, const CHAR* substr, int substr_len) const;
+            bool found_sub_string_at(int pos,
+                                     const CHAR* substr,
+                                     int substr_len) const;
 
-            //internal function to replace the substring in the given index range(inclusive) with the given string
             void replace_sub_string_at_with(int beg_index,
                                             int end_index,
                                             const CHAR* sub_str,
                                             int substr_len);
 
-            //internal function to check string equality
-            //returns -1 if this string is less than another,
-            //        +1 if it is greater,
-            //     and 0 if they are the same.
             int lessthan_equal_greater(const CHAR* other, int str_size) const;
 
-
-            //internal function to remove a section of text from the string (start+end inclusive)
             void remove_portion(int beg_index, int end_index);
 
 
         public:
-            ///Default string constructor
-            string()
-            {
-                array_length = 1;
-                string_array = new CHAR[1];
-                string_array[0] = null;
-            }
+            string();
+            ~string();
 
-
-            ///Constructor from null-terminated character string
             template <typename CHAR_2>
-            string(const CHAR_2* buffer)
+            string(const CHAR_2* buffer);
+
+            template <typename CHAR_2>
+            string(const string<CHAR_2>& other);
+
+            string(const char& character);
+            string(const wchar_t& character);
+
+            template<
+                typename T, //numeric type
+                typename = typename std::enable_if
+                        <std::is_arithmetic<T>::value,T>::type>
+            string(const T& number);
+
+            template<
+                typename T, //numeric type
+                typename = typename std::enable_if
+                        <std::is_arithmetic<T>::value,T>::type>
+            string(const std::complex<T>& number);
+
+
+
+            int size() const;
+            inline int length() const;
+            inline const CHAR* str() const;
+
+
+
+            inline bool operator==(const string& other) const;
+            inline bool operator!=(const string& other) const;
+            inline bool operator>(const string& other) const;
+            inline bool operator>=(const string& other) const;
+            inline bool operator<(const string& other) const;
+            inline bool operator<=(const string& other) const;
+            inline const string& operator+=(const string& other);
+            inline const string operator+(const string& other) const;
+
+
+
+            CHAR at(int index) const;
+            CHAR& at(int index);
+            inline CHAR operator[](int index) const;
+            inline CHAR& operator[](int index);
+
+            int find(const string& sub_string) const;
+            int find(const string& sub_string, int n) const;
+            int findAfter(const string& sub_string, int n) const;
+            int findLast(const string& sub_string) const;
+
+
+            inline void replace(int start_pos,
+                                int end_pos,
+                                const string& new_string);
+
+            bool replace(const string& sub_string,
+                         const string& new_string);
+
+            bool replace(const string& sub_string,
+                         int n,
+                         const string& new_string);
+
+
+            const string substr(int start_index, int end_index) const;
+
+            int count(const string& sub_string) const;
+
+            inline void remove(int start_index, int end_index);
+
+
+            bool foundAt(const string& sub_string, int position) const;
+            bool foundEndAt(const string& sub_string, int position) const;
+
+            inline bool beginsWith(const string& sub_string) const;
+            bool beginsWith(const string& sub_string, CHAR pad_char) const;
+
+            inline bool endsWith(const string& sub_string) const;
+
+
+            void clear();
+
+            template <typename CHAR_2>
+            const string& operator=(const string<CHAR_2>& other);
+
+
+            inline const string<char> narrow() const;
+            inline const string<wchar_t> wide() const;
+
+            const string<CHAR> upper() const;
+            const string<CHAR> lower() const;
+
+            zFloat value(int base = 10) const;
+            std::complex<zFloat> complexValue(int base = 10) const;
+        };
+
+
+        ///Default string constructor
+        template <typename CHAR>
+        string<CHAR>::string()
+        {
+            array_length = 1;
+            string_array = new CHAR[1];
+            string_array[0] = null;
+        }
+
+        ///Destructor
+        template <typename CHAR>
+        string<CHAR>::~string()
+        {
+            if (string_array)
+                delete[] string_array;
+        }
+
+        ///Constructor from null-terminated character string
+        template <typename CHAR>
+        template <typename CHAR_2>
+        string<CHAR>::string(const CHAR_2* buffer)
+        {
+            if (buffer)
             {
-                if (buffer)
-                {
-                    array_length = 0;
+                array_length = 0;
 
-                    while (buffer[array_length] != null)
-                        array_length++;
-
+                while (buffer[array_length] != null)
                     array_length++;
 
-                    string_array = new CHAR[array_length];
-
-                    if (sizeof(CHAR_2) <= sizeof(CHAR))
-                    {
-                        for (int i=0; i<array_length; i++)
-                            string_array[i] = buffer[i];
-
-                    }
-                    else
-                    {
-                        int buf_i = 0;
-
-                        for (int i=0; i<array_length; i++)
-                        {
-                            if (buffer[buf_i] < 128)
-                                string_array[i] = buffer[buf_i];
-                            else
-                            {
-                                string_array[i] = (CHAR)'?';
-
-                                if ((buffer[buf_i] >= 0xD800) &&
-                                    (buffer[buf_i] <= 0xD8FF))
-                                    buf_i++;
-                            }
-
-                            buf_i++;
-                        }
-                    }
-                }
-                else
-                    string();
-            }
-
-
-            ///Copy constructor
-            template <typename CHAR_2>
-            string(const string<CHAR_2>& other)
-            {
-                array_length = other.length()+1;
+                array_length++;
 
                 string_array = new CHAR[array_length];
 
                 if (sizeof(CHAR_2) <= sizeof(CHAR))
                 {
-                    for (int i=0; i<array_length-1; i++)
-                        string_array[i] = other.str()[i];
+                    for (int i=0; i<array_length; i++)
+                        string_array[i] = buffer[i];
 
                 }
                 else
                 {
                     int buf_i = 0;
 
-                    for (int i=0; i<array_length-1; i++)
+                    for (int i=0; i<array_length; i++)
                     {
-                        if (other.str()[buf_i] < 128)
-                            string_array[i] = other.str()[buf_i];
+                        if (buffer[buf_i] < 128)
+                            string_array[i] = buffer[buf_i];
                         else
                         {
                             string_array[i] = (CHAR)'?';
 
-                            if ((other.str()[buf_i] >= 0xD800) &&
-                                (other.str()[buf_i] <= 0xD8FF))
-                            buf_i++;
+                            if ((buffer[buf_i] >= 0xD800) &&
+                                (buffer[buf_i] <= 0xD8FF))
+                                buf_i++;
                         }
 
                         buf_i++;
                     }
                 }
             }
+            else
+                string();
+        }
 
+        ///Copy constructor
+        template <typename CHAR>
+        template <typename CHAR_2>
+        string<CHAR>::string(const string<CHAR_2>& other)
+        {
+            array_length = other.length()+1;
 
-            ///Constructor from single narrow character
-            string(const char& character)
+            string_array = new CHAR[array_length];
+
+            if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                array_length = 2;
-                string_array = new CHAR[2];
+                for (int i=0; i<array_length-1; i++)
+                    string_array[i] = other.str()[i];
 
+            }
+            else
+            {
+                int buf_i = 0;
+
+                for (int i=0; i<array_length-1; i++)
+                {
+                    if (other.str()[buf_i] < 128)
+                        string_array[i] = other.str()[buf_i];
+                    else
+                    {
+                        string_array[i] = (CHAR)'?';
+
+                        if ((other.str()[buf_i] >= 0xD800) &&
+                            (other.str()[buf_i] <= 0xD8FF))
+                        buf_i++;
+                    }
+
+                    buf_i++;
+                }
+            }
+        }
+
+        ///Constructor from single narrow character
+        template <typename CHAR>
+        string<CHAR>::string(const char& character)
+        {
+            array_length = 2;
+            string_array = new CHAR[2];
+
+            string_array[0] = character;
+
+            string_array[1] = null;
+        }
+
+        ///Constructor from single wide character
+        template <typename CHAR>
+        string<CHAR>::string(const wchar_t& character)
+        {
+            array_length = 2;
+            string_array = new CHAR[2];
+
+            if ((sizeof(CHAR) > sizeof(wchar_t)) &&
+                (character >= 128))
+                string_array[0] = (CHAR)'?';
+            else
                 string_array[0] = character;
 
-                string_array[1] = null;
-            }
+            string_array[1] = null;
+        }
 
-            ///Constructor from single wide character
-            string(const wchar_t& character)
-            {
-                array_length = 2;
-                string_array = new CHAR[2];
+        /**
+         * \brief Constructor from numeric type
+         *
+         * If the parameter is any numeric type other than
+         * \b char or \b wchar_t, then it is assumed to be
+         * a real number, which is then converted into a string.
+         *
+         * \param number a value in any numeric type.
+         */
+        template <typename CHAR>
+        template<typename T, typename>
+        string<CHAR>::string(const T& number)
+        {
+            //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
+            CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                if ((sizeof(CHAR) > sizeof(wchar_t)) &&
-                    (character >= 128))
-                    string_array[0] = (CHAR)'?';
-                else
-                    string_array[0] = character;
+            array_length = num_to_cstring((zFloat)number, buffer) + 1;
 
-                string_array[1] = null;
-            }
+            string_array = new CHAR[array_length];
 
+            for (int i=0; i<array_length; i++)
+                string_array[i] = buffer[i];
+        }
 
-            /**
-             * \brief Constructor from numeric type
-             *
-             * If the parameter is any numeric type other than
-             * \b char or \b wchar_t, then it is assumed to be
-             * a real number, which is then converted into a string.
-             *
-             * \param number a value in any numeric type.
-             */
-            template<
-                typename T, //numeric type
-                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-            >
-            string(const T& number)
+        /**
+         * \brief Constructor from complex numeric type
+         *
+         * If the parameter is of type  \b std::complex, then
+         * it is converted to a string with the format \b a+bi.
+         * Note that if either the real or imaginary part are
+         * zero, then only the non-zero part is converted. If
+         * both parts are zero, then the resultant string is
+         * \b "0".
+         *
+         * \param number a complex number.
+         */
+        template<typename CHAR>
+        template<typename T, typename>
+        string<CHAR>::string(const std::complex<T>& number)
+        {
+            if (number.imag() == 0)
             {
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                array_length = num_to_cstring((zFloat)number, buffer) + 1;
+                array_length = num_to_cstring((zFloat)number.real(), buffer) + 1;
 
                 string_array = new CHAR[array_length];
 
                 for (int i=0; i<array_length; i++)
                     string_array[i] = buffer[i];
             }
-
-
-            /**
-             * \brief Constructor from complex numeric type
-             *
-             * If the parameter is of type  \b std::complex, then
-             * it is converted to a string with the format \b a+bi.
-             * Note that if either the real or imaginary part are
-             * zero, then only the non-zero part is converted. If
-             * both parts are zero, then the resultant string is
-             * \b "0".
-             *
-             * \param number a complex number.
-             */
-            template<
-                typename T, //numeric type
-                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-            >
-            string(const std::complex<T>& number)
+            else if (number.real() == 0)
             {
-                if (number.imag() == 0)
-                {
-                    //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
-                    CHAR buffer[num_bufsiz + num_bufsiz + 7];
-
-                    array_length = num_to_cstring((zFloat)number.real(), buffer) + 1;
-
-                    string_array = new CHAR[array_length];
-
-                    for (int i=0; i<array_length; i++)
-                        string_array[i] = buffer[i];
-                }
-                else if (number.real() == 0)
-                {
-                    //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
-                    CHAR buffer[num_bufsiz + num_bufsiz + 8];
-
-                    array_length = num_to_cstring((zFloat)number.imag(), buffer) + 2;
-                    //append 'i', since imaginary value.
-                    buffer[array_length-2] = (CHAR)105;
-                    buffer[array_length-1] = (CHAR)0;
-
-                    string_array = new CHAR[array_length];
-
-                    for (int i=0; i<array_length; i++)
-                        string_array[i] = buffer[i];
-                }
-                else
-                {
-                    //each buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
-                    CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
-                    CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
-
-                    int r_array_len = num_to_cstring((zFloat)number.real(), real_buffer) + 1;
-
-                    //append '+'(if positive imaginary part),
-                    //since imaginary value comes next.
-                    if (number.imag() >= 0)
-                        real_buffer[r_array_len-1] = (CHAR)43;
-                    else
-                        r_array_len--;
-
-
-                    int i_array_len = num_to_cstring((zFloat)number.imag(), imag_buffer) + 2;
-                    //append 'i', since imaginary value.
-                    imag_buffer[i_array_len-2] = (CHAR)105;
-                    imag_buffer[i_array_len-1] = (CHAR)0;
-
-                    array_length = r_array_len + i_array_len;
-                    string_array = new CHAR[array_length];
-
-                    for (int i=0; i<r_array_len; i++)
-                        string_array[i] = real_buffer[i];
-
-                    for (int i=0; i<i_array_len; i++)
-                        string_array[i+r_array_len] = imag_buffer[i];
-                }
-            }
-
-
-            ///Destructor
-            ~string()
-            {
-                if (string_array)
-                    delete[] string_array;
-            }
-
-
-            /**
-             * \brief The length of the string.
-             *
-             * \return The number of characters in the string.
-             *
-             * \see length() const
-             */
-            int size() const
-            {
-                int len = (int)(array_length)-1;
-
-                if (len < 0)
-                    len = 0;
-
-                return len;
-            }
-
-            /**
-             * \brief The length of the string.
-             *
-             * \return The number of characters in the string.
-             *
-             * \see size() const
-             */
-            inline int length() const
-            { return size(); }
-
-
-
-
-            /**
-             * \brief A method to get the address of the current character string.
-             *
-             * \return A const pointer to the string's character array.
-             */
-            inline const CHAR* str() const {return string_array;}
-
-
-
-
-            ///Equality operator
-            inline bool operator==(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) == 0);
-            }
-
-
-            ///Inequality operator
-            inline bool operator!=(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) != 0);
-            }
-
-
-            ///Greater than operator
-            inline bool operator>(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) == 1);
-            }
-
-            ///Greater than or equal to operator
-            inline bool operator>=(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) != -1);
-            }
-
-
-            ///Less than operator
-            inline bool operator<(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) == -1);
-            }
-
-
-            ///Less than or equal to operator
-            inline bool operator<=(const string& other) const
-            {
-                return (lessthan_equal_greater(other.string_array,
-                                               other.array_length) != -1);
-            }
-
-
-            ///Operator for string concatenation
-            inline const string& operator+=(const string& other)
-            {
-                append_string(other.string_array, other.array_length);
-
-                return *this;
-            }
-
-            ///Addition operator for returning concatenated string
-            inline const string operator+(const string& other) const
-            {
-                string output = *this;
-                output += other;
-
-                return output;
-            }
-
-
-            /**
-             * \brief Const function to get the character at the given index.
-             *
-             * \param index the index of the desired character.
-             *
-             * \return The character at the given index, if the
-             * index is valid. Otherwise, \b 0.
-             *
-             * \see operator[](int) const
-             */
-            CHAR at(int index) const
-            {
-                if ((index < 0) ||
-                    (index >= (int)array_length-1))
-                    return null;
-                else
-                    return string_array[index];
-            }
-
-            /**
-             * \brief Function to get a reference to the character
-             * at the given index.
-             *
-             * Unlike the \b const version, this function allows
-             * the character in the string to be modified.
-             *
-             * \param index the index of the desired character.
-             *
-             * \return Reference to the character at the given index,
-             * if the index is valid. Otherwise, the \b terminating
-             * \b character.
-             *
-             * \see operator[](int)
-             */
-            CHAR& at(int index)
-            {
-                if ((index < 0) ||
-                    (index >= (int)array_length-1))
-                    return string_array[array_length-1];
-                else
-                    return string_array[index];
-            }
-
-            /**
-             * \brief Const operator to get the character at the given index.
-             *
-             * Identical behavior to at(int) const method, but
-             * allows character indexing like an array.
-             *
-             * \param index the index of the desired character.
-             *
-             * \return The character at the given index, if the
-             * index is valid. Otherwise, \b 0.
-             *
-             * \see at(int) const
-             */
-            inline CHAR operator[](int index) const
-            { return at(index); }
-
-            /**
-             * \brief Operator to get the character at the given index.
-             *
-             * Identical behavior to at(int) method, but
-             * allows character indexing like an array.
-             *
-             * \param index the index of the desired character.
-             *
-             * \return The character at the given index, if the
-             * index is valid. Otherwise, the \b terminating
-             * \b character.
-             *
-             * \see at(int)
-             */
-            inline CHAR& operator[](int index)
-            { return at(index); }
-
-
-            /**
-             * \brief Find the first occurrence of the given sub-string.
-             *
-             * \param sub_string the sub-string to locate.
-             *
-             * \return The index of the sub-string's first occurrence,
-             * if found. Otherwise \b -1.
-             *
-             * \see find(const string&, int) const
-             */
-            int find(const string& sub_string) const;
-
-            /**
-             * \brief Find the n<SUP>th</SUP> occurrence of the given sub-string.
-             *
-             * Starting from the beginning of the string, find the index
-             * of the sub-string's n<SUP>th</SUP> occurrence.
-             *
-             * \param sub_string the sub-string to locate.
-             * \param n the number of occurrence to locate.
-             *
-             * \return The index of the sub-string's n<SUP>th</SUP> occurrence,
-             * if found. Otherwise \b -1.
-             *
-             * \see find(const string&) const
-             */
-            int find(const string& sub_string, int n) const;
-
-            /**
-             * \brief Find the first occurrence of the given sub-string
-             * after the given index.
-             *
-             * \param sub_string the sub-string to locate.
-             * \param n the starting index.
-             *
-             * \return The index of the sub-string's first occurrence,
-             * if found. Otherwise \b -1.
-             */
-            int findAfter(const string& sub_string, int n) const;
-
-            /**
-             * \brief Find the last occurrence of the given sub-string
-             *
-             * \param sub_string the sub-string to locate.
-             *
-             * \return The index of the sub-string's last occurrence,
-             * if found. Otherwise \b -1.
-             */
-            int findLast(const string& sub_string) const;
-
-
-            //function to replace a sub-string (indexes start_pos to end_pos, inclusive) with some new string
-            //no return, as this will always succeed when given correct parameters
-            inline void replace(int start_pos, int end_pos, const string& new_string)
-            {
-                replace_sub_string_at_with(start_pos,
-                                           end_pos,
-                                           new_string.string_array,
-                                           new_string.array_length);
-            }
-
-
-            //function to replace the first occurrence of the first given sub-string with the second one.
-            //returns false if the sub-string wasn't in the original string, true otherwise.
-            bool replace(const string& sub_string, const string& new_string);
-
-
-            //function to replace the nth occurrence of the first given sub-string with the second one.
-            //n starts at 0
-            //returns false if the sub-string wasn't in the original string, true otherwise.
-            bool replace(const string& sub_string, int n, const string& new_string);
-
-
-            //function to return a substring given two positions
-            const string substr(int start_index, int end_index) const;
-
-
-            //function to return the number of times the given string appears in this string
-            int count(const string& sub_string) const;
-
-
-            //function to remove the portion of the string within the specified indexes (inclusive)
-            inline void remove(int start_index, int end_index)
-            { remove_portion(start_index, end_index); }
-
-
-            //returns true if the specified sub-string was found at the specified position
-            bool foundAt(const string& sub_string, int position) const;
-
-            //returns true if the specified sub-string was found
-            //AND ENDS AT the specified position
-            bool foundEndAt(const string& sub_string, int position) const;
-
-            //returns true if specified text was found at the beginning of the string
-            inline bool beginsWith(const string& sub_string) const
-            { return foundAt(sub_string, 0); }
-
-            //returns true if specified text was found at the end of the string
-            inline bool endsWith(const string& sub_string) const
-            { return foundEndAt(sub_string, array_length-2); }
-
-            //returns true if specified text was found at the beginning of the string,
-            //after an allowed padding char (e.g. leading spaces)
-            bool beginsWith(const string& sub_string, CHAR pad_char) const;
-
-            ///Clears the string
-            void clear();
-
-            ///String assignment operator
-            template <typename CHAR_2>
-            const string& operator=(const string<CHAR_2>& other)
-            {
-                delete[] string_array;
-
-                array_length = other.length()+1;
+                //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
+                CHAR buffer[num_bufsiz + num_bufsiz + 8];
+
+                array_length = num_to_cstring((zFloat)number.imag(), buffer) + 2;
+                //append 'i', since imaginary value.
+                buffer[array_length-2] = (CHAR)105;
+                buffer[array_length-1] = (CHAR)0;
 
                 string_array = new CHAR[array_length];
 
-                if (sizeof(CHAR_2) <= sizeof(CHAR))
-                {
-                    for (int i=0; i<array_length-1; i++)
-                        string_array[i] = other.str()[i];
+                for (int i=0; i<array_length; i++)
+                    string_array[i] = buffer[i];
+            }
+            else
+            {
+                //each buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
+                CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
+                CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
 
-                }
+                int r_array_len = num_to_cstring((zFloat)number.real(), real_buffer) + 1;
+
+                //append '+'(if positive imaginary part),
+                //since imaginary value comes next.
+                if (number.imag() >= 0)
+                    real_buffer[r_array_len-1] = (CHAR)43;
                 else
+                    r_array_len--;
+
+
+                int i_array_len = num_to_cstring((zFloat)number.imag(), imag_buffer) + 2;
+                //append 'i', since imaginary value.
+                imag_buffer[i_array_len-2] = (CHAR)105;
+                imag_buffer[i_array_len-1] = (CHAR)0;
+
+                array_length = r_array_len + i_array_len;
+                string_array = new CHAR[array_length];
+
+                for (int i=0; i<r_array_len; i++)
+                    string_array[i] = real_buffer[i];
+
+                for (int i=0; i<i_array_len; i++)
+                    string_array[i+r_array_len] = imag_buffer[i];
+            }
+        }
+
+        ///String assignment operator
+        template <typename CHAR>
+        template <typename CHAR_2>
+        const string<CHAR>& string<CHAR>::operator=(const string<CHAR_2>& other)
+        {
+            delete[] string_array;
+
+            array_length = other.length()+1;
+
+            string_array = new CHAR[array_length];
+
+            if (sizeof(CHAR_2) <= sizeof(CHAR))
+            {
+                for (int i=0; i<array_length-1; i++)
+                    string_array[i] = other.str()[i];
+
+            }
+            else
+            {
+                int buf_i = 0;
+
+                for (int i=0; i<array_length-1; i++)
                 {
-                    int buf_i = 0;
-
-                    for (int i=0; i<array_length-1; i++)
+                    if (other.str()[buf_i] < 128)
+                        string_array[i] = other.str()[buf_i];
+                    else
                     {
-                        if (other.str()[buf_i] < 128)
-                            string_array[i] = other.str()[buf_i];
-                        else
-                        {
-                            string_array[i] = (CHAR)'?';
+                        string_array[i] = (CHAR)'?';
 
-                            if ((other.str()[buf_i] >= 0xD800) &&
-                                (other.str()[buf_i] <= 0xD8FF))
-                            buf_i++;
-                        }
-
+                        if ((other.str()[buf_i] >= 0xD800) &&
+                            (other.str()[buf_i] <= 0xD8FF))
                         buf_i++;
                     }
-                }
 
-                return *this;
+                    buf_i++;
+                }
             }
 
-
-            inline const string<char> narrow() const
-            { return string<char>(*this); }
-
-            inline const string<wchar_t> wide() const
-            { return string<wchar_t>(*this); }
+            return *this;
+        }
 
 
-            const string<CHAR> upper() const;
+        ///Equality operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator==(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) == 0);
+        }
 
-            const string<CHAR> lower() const;
+        ///Inequality operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator!=(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) != 0);
+        }
 
-            //const string<CHAR> camel();
+        ///Greater than operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator>(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) == 1);
+        }
 
-            zFloat value(int base = 10) const;
+        ///Greater than or equal to operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator>=(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) != -1);
+        }
 
-            std::complex<zFloat> complexValue(int base = 10) const;
-        };
+        ///Less than operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator<(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) == -1);
+        }
+
+        ///Less than or equal to operator
+        template <typename CHAR>
+        inline bool string<CHAR>::operator<=(const string<CHAR>& other) const
+        {
+            return (lessthan_equal_greater(other.string_array,
+                                            other.array_length) != -1);
+        }
+
+        ///Operator for string concatenation
+        template <typename CHAR>
+        inline const string<CHAR>& string<CHAR>::operator+=
+                                    (const string<CHAR>& other)
+        {
+            append_string(other.string_array, other.array_length);
+
+            return *this;
+        }
+
+        ///Addition operator for returning concatenated string
+        template <typename CHAR>
+        inline const string<CHAR> string<CHAR>::operator+
+                                    (const string<CHAR>& other) const
+        {
+            string<CHAR> output = *this;
+            output += other;
+
+            return output;
+        }
+
+        /**
+         * \brief Replace portion of the string with another string.
+         *
+         * Replaces characters in the given range with the given
+         * replacement string. Note that the range is \b inclusive.
+         *
+         * \param start_pos the index of the first character to replace.
+         * \param end_pos the index of the last character to replace.
+         * \param new_string the new string to substitute in.
+         */
+        template <typename CHAR>
+        inline void string<CHAR>::replace(int start_pos,
+                                          int end_pos,
+                                          const string& new_string)
+        {
+            replace_sub_string_at_with(start_pos,
+                                       end_pos,
+                                       new_string.string_array,
+                                       new_string.array_length);
+        }
+
+        /**
+         * \brief Convert string to \b char type.
+         *
+         */
+        template <typename CHAR>
+        inline const string<char> string<CHAR>::narrow() const
+        {
+            return string<char>(*this);
+        }
+
+        /**
+         * \brief Convert string to \b wchar_t type.
+         *
+         */
+        template <typename CHAR>
+        inline const string<wchar_t> string<CHAR>::wide() const
+        {
+            return string<wchar_t>(*this);
+        }
+
+        /**
+         * \brief The length of the string.
+         *
+         * \return The number of characters in the string.
+         *
+         * \see length() const
+         */
+        template <typename CHAR>
+        int string<CHAR>::size() const
+        {
+            int len = (int)(array_length)-1;
+
+            if (len < 0)
+                len = 0;
+
+            return len;
+        }
+
+        /**
+         * \brief The length of the string.
+         *
+         * \return The number of characters in the string.
+         *
+         * \see size() const
+         */
+        template <typename CHAR>
+        inline int string<CHAR>::length() const
+        {
+            return size();
+        }
+
+        /**
+         * \brief A method to get the address of the current character string.
+         *
+         * \return A const pointer to the string's character array.
+         */
+        template <typename CHAR>
+        inline const CHAR* string<CHAR>::str() const
+        {
+            return string_array;
+        }
+
+        /**
+         * \brief Const function to get the character at the given index.
+         *
+         * \param index the index of the desired character.
+         *
+         * \return The character at the given index, if the
+         * index is valid. Otherwise, \b 0.
+         *
+         * \see operator[](int) const
+         */
+        template <typename CHAR>
+        CHAR string<CHAR>::at(int index) const
+        {
+            if ((index < 0) ||
+                (index >= (int)array_length-1))
+                return null;
+            else
+                return string_array[index];
+        }
+
+        /**
+         * \brief Function to get a reference to the character
+         * at the given index.
+         *
+         * Unlike the \b const version, this function allows
+         * the character in the string to be modified.
+         *
+         * \param index the index of the desired character.
+         *
+         * \return Reference to the character at the given index,
+         * if the index is valid. Otherwise, the \b terminating
+         * \b character.
+         *
+         * \see operator[](int)
+         */
+        template <typename CHAR>
+        CHAR& string<CHAR>::at(int index)
+        {
+            if ((index < 0) ||
+                (index >= (int)array_length-1))
+                return string_array[array_length-1];
+            else
+                return string_array[index];
+        }
+
+        /**
+         * \brief Const operator to get the character at the given index.
+         *
+         * Identical behavior to at(int) const method, but
+         * allows character indexing like an array.
+         *
+         * \param index the index of the desired character.
+         *
+         * \return The character at the given index, if the
+         * index is valid. Otherwise, \b 0.
+         *
+         * \see at(int) const
+         */
+        template <typename CHAR>
+        inline CHAR string<CHAR>::operator[](int index) const
+        {
+            return at(index);
+        }
+
+        /**
+         * \brief Operator to get the character at the given index.
+         *
+         * Identical behavior to at(int) method, but
+         * allows character indexing like an array.
+         *
+         * \param index the index of the desired character.
+         *
+         * \return The character at the given index, if the
+         * index is valid. Otherwise, the \b terminating
+         * \b character.
+         *
+         * \see at(int)
+         */
+        template <typename CHAR>
+        inline CHAR& string<CHAR>::operator[](int index)
+        {
+            return at(index);
+        }
 
 
-        //template for string evaluation functions
-        // both ignore spaces, and returns 0.0 if non-numerical characters are present
+        /**
+         * \brief Convert the string to its real number equivalent.
+         *
+         */
         template <typename CHAR>
         zFloat string<CHAR>::value(int base) const
         {
@@ -963,6 +978,10 @@ namespace z
         }
 
 
+        /**
+         * \brief Convert the string to its complex number equivalent.
+         *
+         */
         template <typename CHAR>
         std::complex<zFloat> string<CHAR>::complexValue(int base) const
         {
@@ -999,6 +1018,18 @@ namespace z
         }
 
 
+        /**
+         * \brief Convert string to uppercase.
+         *
+         * If any character in the current string is lowercase,
+         * then it is substituted for the uppercase version
+         * of that character. All other characters are copied
+         * unchanged.
+         *
+         * \return An uppercase copy of the current string.
+         *
+         * \see lower() const
+         */
         template <typename CHAR>
         const string<CHAR> string<CHAR>::upper() const
         {
@@ -1014,6 +1045,18 @@ namespace z
             return result;
         }
 
+        /**
+         * \brief Convert string to lowercase.
+         *
+         * If any character in the current string is uppercase,
+         * then it is substituted for the lowercase version
+         * of that character. All other characters are copied
+         * unchanged.
+         *
+         * \return A lowercase copy of the current string.
+         *
+         * \see upper() const
+         */
         template <typename CHAR>
         const string<CHAR> string<CHAR>::lower() const
         {
@@ -1029,7 +1072,296 @@ namespace z
             return result;
         }
 
+        /**
+         * \brief Find the first occurrence of the given sub-string.
+         *
+         * \param sub_string the sub-string to locate.
+         *
+         * \return The index of the sub-string's first occurrence,
+         * if found. Otherwise \b -1.
+         *
+         * \see find(const string&, int) const
+         */
         template <typename CHAR>
+        int string<CHAR>::find(const string<CHAR>& sub_string) const
+            {
+                for (int i=0; i<array_length-1; i++)
+                {
+                    if (found_sub_string_at(i, sub_string.string_array,
+                                            sub_string.array_length))
+                        return (int)i;
+                }
+
+                return -1;
+            }
+
+        /**
+         * \brief Find the n<SUP>th</SUP> occurrence of the given sub-string.
+         *
+         * Starting from the beginning of the string, find the index
+         * of the sub-string's n<SUP>th</SUP> occurrence.
+         *
+         * \param sub_string the sub-string to locate.
+         * \param n the number of occurrence to locate.
+         *
+         * \return The index of the sub-string's n<SUP>th</SUP> occurrence,
+         * if found. Otherwise \b -1.
+         *
+         * \see find(const string&) const
+         */
+        template <typename CHAR>
+        int string<CHAR>::find(const string<CHAR>& sub_string, int n) const
+        {
+            if (n < 0)
+                return -1;
+
+            int amount = -1;
+
+            for (int i=0; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array,
+                                        sub_string.array_length))
+                    amount++;
+
+                if (amount >= n)
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        /**
+         * \brief Find the first occurrence of the given sub-string
+         * after the given index.
+         *
+         * \param sub_string the sub-string to locate.
+         * \param n the starting index.
+         *
+         * \return The index of the sub-string's first occurrence,
+         * if found. Otherwise \b -1.
+         */
+        template <typename CHAR>
+        int string<CHAR>::findAfter(const string<CHAR>& sub_string, int n) const
+        {
+            for (int i=n; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        /**
+         * \brief Find the last occurrence of the given sub-string
+         *
+         * \param sub_string the sub-string to locate.
+         *
+         * \return The index of the sub-string's last occurrence,
+         * if found. Otherwise \b -1.
+         */
+        template <typename CHAR>
+        int string<CHAR>::findLast(const string<CHAR>& sub_string) const
+        {
+            for (int i=array_length-1-sub_string.length(); i>=0; i--)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    return (int)i;
+            }
+
+            return -1;
+        }
+
+        //function to replace the first occurrence
+        //of the first given sub-string with the second given string.
+        //returns false if the sub-string wasn't in the original string,
+        //true otherwise.
+        template <typename CHAR>
+        bool string<CHAR>::replace(const string<CHAR>& sub_string,
+                                   const string<CHAR>& new_string)
+        {
+            int found = find(sub_string);
+
+            if (found > -1)
+            {
+                replace_sub_string_at_with(found,
+                                           found + sub_string.array_length - 2,
+                                           new_string.string_array,
+                                           new_string.array_length - 1);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        //function to replace the nth occurrence
+        //of the first given sub-string with the second given string.
+        //n starts at 0
+        //returns false if the sub-string wasn't in the original string,
+        //true otherwise.
+        template <typename CHAR>
+        bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
+                                   const string<CHAR>& new_string)
+        {
+            int found = find(sub_string, n);
+
+            if (found > -1)
+            {
+                replace_sub_string_at_with(found,
+                                           found + sub_string.array_length - 2,
+                                           new_string.string_array,
+                                           new_string.array_length - 1);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        //function to return a substring given two positions
+        template <typename CHAR>
+        const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
+        {
+            //make sure start is in bounds
+            if (start_index < 0)
+                start_index = 0;
+            else if (start_index > (int)array_length-2)
+                return string<CHAR>();
+
+            //make sure end is in bounds
+            if (end_index < 0)
+                return string<CHAR>();
+            else if (end_index > (int)array_length-2)
+                end_index = (int)array_length-2;
+
+            //start must come before end
+            if (start_index > end_index)
+                return string<CHAR>();
+
+
+            //accumulate data
+            int len = end_index-start_index + 2;
+            CHAR temp[len];
+            for (int i=0; i<len-1; i++)
+                temp[i] = string_array[i + start_index];
+            temp[len - 1] = null;
+
+            //assign data
+            string<CHAR> sub_string (temp);
+
+            return sub_string;
+        }
+
+        //function to return the number of times the given
+        //sub-string appears in this string
+        template <typename CHAR>
+        int string<CHAR>::count(const string<CHAR>& sub_string) const
+        {
+            int amount = 0;
+
+            for (int i=0; i<array_length-1; i++)
+            {
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                    amount++;
+            }
+
+            return amount;
+        }
+
+        //function to remove the portion of the
+        //string within the specified indices (inclusive)
+        template <typename CHAR>
+        inline void string<CHAR>::remove(int start_index, int end_index)
+        {
+            remove_portion(start_index, end_index);
+        }
+
+        //returns true if the specified sub-string was found at the specified position
+        template <typename CHAR>
+        bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
+        {
+            if ((position < 0) || (position >= (int)array_length-1))
+                return false;
+
+            for (int i=0; i<sub_string.array_length-1; i++)
+            {
+                if (sub_string[i] != string_array[i + position])
+                    return false;
+            }
+
+            return true;
+        }
+
+        //returns true if the specified sub-string was found
+        //AND ENDS AT the specified position
+        template <typename CHAR>
+        bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
+        {
+            if ((position < 0) || (position >= (int)array_length-1))
+                return false;
+
+            for (int i=sub_string.array_length-2; i>=0; i--)
+            {
+                if (sub_string[i] != string_array[position])
+                    return false;
+
+                position--;
+            }
+
+            return true;
+        }
+
+        //returns true if specified text was found at the beginning of the string
+        template <typename CHAR>
+        inline bool string<CHAR>::beginsWith(const string<CHAR>& sub_string) const
+        {
+            return foundAt(sub_string, 0);
+        }
+
+        //returns true if specified text was found at the beginning of the string,
+        //after an allowed padding char (e.g. leading spaces)
+        template <typename CHAR>
+        bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
+        {
+            int i = 0;
+
+            while ((string_array[i] == pad_char) && (i < (int)array_length-1))
+            {
+                if (foundAt(sub_string, i))
+                    return true;
+
+                i++;
+            }
+
+            return foundAt(sub_string, i);
+        }
+
+
+        //returns true if specified text was found at the end of the string
+        template <typename CHAR>
+        inline bool string<CHAR>::endsWith(const string<CHAR>& sub_string) const
+        {
+            return foundEndAt(sub_string, array_length-2);
+        }
+
+        /**
+         * \brief Clear string contents
+         *
+         */
+        template <typename CHAR>
+        void string<CHAR>::clear()
+        {
+            delete[] string_array;
+
+            array_length = 1;
+            string_array = new CHAR[1];
+
+            string_array[0] = null;
+        }
+
+
+                template <typename CHAR>
         void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
         {
             if (buffer)
@@ -1160,6 +1492,10 @@ namespace z
             }
         }
 
+        //internal function to check string equality
+        //returns -1 if this string is less than another,
+        //        +1 if it is greater,
+        //     and 0 if they are the same.
         template <typename CHAR>
         int string<CHAR>::lessthan_equal_greater(const CHAR* other,
                                                  int str_size) const
@@ -1186,6 +1522,8 @@ namespace z
                 return 0;
         }
 
+        //internal function to remove a section of text
+        //from the string (start+end inclusive)
         template <typename CHAR>
         void string<CHAR>::remove_portion(int beg_index, int end_index)
         {
@@ -1227,209 +1565,6 @@ namespace z
         }
 
 
-
-        template <typename CHAR>
-        int string<CHAR>::find(const string<CHAR>& sub_string) const
-            {
-                for (int i=0; i<array_length-1; i++)
-                {
-                    if (found_sub_string_at(i, sub_string.string_array,
-                                            sub_string.array_length))
-                        return (int)i;
-                }
-
-                return -1;
-            }
-
-        template <typename CHAR>
-        int string<CHAR>::find(const string<CHAR>& sub_string, int n) const
-        {
-            if (n < 0)
-                return -1;
-
-            int amount = -1;
-
-            for (int i=0; i<array_length-1; i++)
-            {
-                if (found_sub_string_at(i, sub_string.string_array,
-                                        sub_string.array_length))
-                    amount++;
-
-                if (amount >= n)
-                    return (int)i;
-            }
-
-            return -1;
-        }
-
-        template <typename CHAR>
-        int string<CHAR>::findAfter(const string<CHAR>& sub_string, int n) const
-        {
-            for (int i=n; i<array_length-1; i++)
-            {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                    return (int)i;
-            }
-
-            return -1;
-        }
-
-        template <typename CHAR>
-        int string<CHAR>::findLast(const string<CHAR>& sub_string) const
-        {
-            for (int i=array_length-1-sub_string.length(); i>=0; i--)
-            {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                    return (int)i;
-            }
-
-            return -1;
-        }
-
-        template <typename CHAR>
-        bool string<CHAR>::replace(const string<CHAR>& sub_string,
-                                   const string<CHAR>& new_string)
-        {
-            int found = find(sub_string);
-
-            if (found > -1)
-            {
-                replace_sub_string_at_with(found,
-                                           found + sub_string.array_length - 2,
-                                           new_string.string_array,
-                                           new_string.array_length - 1);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        template <typename CHAR>
-        bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
-                                   const string<CHAR>& new_string)
-        {
-            int found = find(sub_string, n);
-
-            if (found > -1)
-            {
-                replace_sub_string_at_with(found,
-                                           found + sub_string.array_length - 2,
-                                           new_string.string_array,
-                                           new_string.array_length - 1);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        template <typename CHAR>
-        const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
-        {
-            //make sure start is in bounds
-            if (start_index < 0)
-                start_index = 0;
-            else if (start_index > (int)array_length-2)
-                return string<CHAR>();
-
-            //make sure end is in bounds
-            if (end_index < 0)
-                return string<CHAR>();
-            else if (end_index > (int)array_length-2)
-                end_index = (int)array_length-2;
-
-            //start must come before end
-            if (start_index > end_index)
-                return string<CHAR>();
-
-
-            //accumulate data
-            int len = end_index-start_index + 2;
-            CHAR temp[len];
-            for (int i=0; i<len-1; i++)
-                temp[i] = string_array[i + start_index];
-            temp[len - 1] = null;
-
-            //assign data
-            string<CHAR> sub_string (temp);
-
-            return sub_string;
-        }
-
-        template <typename CHAR>
-        int string<CHAR>::count(const string<CHAR>& sub_string) const
-        {
-            int amount = 0;
-
-            for (int i=0; i<array_length-1; i++)
-            {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                    amount++;
-            }
-
-            return amount;
-        }
-
-        template <typename CHAR>
-        bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
-        {
-            if ((position < 0) || (position >= (int)array_length-1))
-                return false;
-
-            for (int i=0; i<sub_string.array_length-1; i++)
-            {
-                if (sub_string[i] != string_array[i + position])
-                    return false;
-            }
-
-            return true;
-        }
-
-        template <typename CHAR>
-        bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
-        {
-            if ((position < 0) || (position >= (int)array_length-1))
-                return false;
-
-            for (int i=sub_string.array_length-2; i>=0; i--)
-            {
-                if (sub_string[i] != string_array[position])
-                    return false;
-
-                position--;
-            }
-
-            return true;
-        }
-
-        template <typename CHAR>
-        bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
-        {
-            int i = 0;
-
-            while ((string_array[i] == pad_char) && (i < (int)array_length-1))
-            {
-                if (foundAt(sub_string, i))
-                    return true;
-
-                i++;
-            }
-
-            return foundAt(sub_string, i);
-        }
-
-        template <typename CHAR>
-        void string<CHAR>::clear()
-        {
-            delete[] string_array;
-            //clear_data();
-
-            array_length = 1;
-            string_array = new CHAR[1];
-
-            string_array[0] = null;
-        }
     }
 }
 
