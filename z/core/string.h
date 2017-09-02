@@ -231,11 +231,13 @@ namespace z
 
 
         /**
-         * \brief A template for character strings.
+         * \brief A template class for character strings.
          *
          * Strings are expected to be of either \b char or \b wchar_t
-         * types, but other integer types should work.
-         * This class is type-independent, so
+         * types, but also works with other integer types. <BR>
+         * Note that all integer types from \b wchar_t and larger
+         * are assumed to have \b UTF-16 encoding. <BR><BR>
+         * Additionally, this class is type-independent, so
          * it handles all type conversions automatically.
          *
          */
@@ -349,7 +351,7 @@ namespace z
             void clear();
 
             template <typename CHAR_2>
-            const string& operator=(const string<CHAR_2>& other);
+            const string<CHAR>& operator=(const string<CHAR_2>& other);
 
 
             inline const string<char> narrow() const;
@@ -591,7 +593,9 @@ namespace z
             }
         }
 
-        ///String assignment operator
+        /**
+         * \brief String assignment operator.
+         */
         template <typename CHAR>
         template <typename CHAR_2>
         const string<CHAR>& string<CHAR>::operator=(const string<CHAR_2>& other)
@@ -633,7 +637,9 @@ namespace z
         }
 
 
-        ///Equality operator
+        /**
+         * \brief String equality operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator==(const string<CHAR>& other) const
         {
@@ -641,7 +647,9 @@ namespace z
                                             other.array_length) == 0);
         }
 
-        ///Inequality operator
+        /**
+         * \brief String inequality operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator!=(const string<CHAR>& other) const
         {
@@ -649,7 +657,9 @@ namespace z
                                             other.array_length) != 0);
         }
 
-        ///Greater than operator
+        /**
+         * \brief Greater than operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator>(const string<CHAR>& other) const
         {
@@ -657,7 +667,9 @@ namespace z
                                             other.array_length) == 1);
         }
 
-        ///Greater than or equal to operator
+        /**
+         * \brief Greater than or equal to operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator>=(const string<CHAR>& other) const
         {
@@ -665,7 +677,9 @@ namespace z
                                             other.array_length) != -1);
         }
 
-        ///Less than operator
+        /**
+         * \brief Less than operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator<(const string<CHAR>& other) const
         {
@@ -673,7 +687,9 @@ namespace z
                                             other.array_length) == -1);
         }
 
-        ///Less than or equal to operator
+        /**
+         * \brief Less than or equal to operator.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::operator<=(const string<CHAR>& other) const
         {
@@ -681,7 +697,9 @@ namespace z
                                             other.array_length) != -1);
         }
 
-        ///Operator for string concatenation
+        /**
+         * \brief Operator for string concatenation.
+         */
         template <typename CHAR>
         inline const string<CHAR>& string<CHAR>::operator+=
                                     (const string<CHAR>& other)
@@ -691,7 +709,9 @@ namespace z
             return *this;
         }
 
-        ///Addition operator for returning concatenated string
+        /**
+         * \brief Addition operator for returning concatenated string.
+         */
         template <typename CHAR>
         inline const string<CHAR> string<CHAR>::operator+
                                     (const string<CHAR>& other) const
@@ -1176,6 +1196,9 @@ namespace z
         //of the first given sub-string with the second given string.
         //returns false if the sub-string wasn't in the original string,
         //true otherwise.
+        /**
+         * \brief Replace the given sub-string with another string.
+         */
         template <typename CHAR>
         bool string<CHAR>::replace(const string<CHAR>& sub_string,
                                    const string<CHAR>& new_string)
@@ -1200,6 +1223,10 @@ namespace z
         //n starts at 0
         //returns false if the sub-string wasn't in the original string,
         //true otherwise.
+        /**
+         * \brief Replace the n<SUP>th</SUP> occurrence of the
+         * given sub-string with another string.
+         */
         template <typename CHAR>
         bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
                                    const string<CHAR>& new_string)
@@ -1219,7 +1246,9 @@ namespace z
             return false;
         }
 
-        //function to return a substring given two positions
+        /**
+         * \brief Get the sub-string within the given range.
+         */
         template <typename CHAR>
         const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
         {
@@ -1253,8 +1282,9 @@ namespace z
             return sub_string;
         }
 
-        //function to return the number of times the given
-        //sub-string appears in this string
+        /**
+         * \brief Count the occurrences of the given sub-string.
+         */
         template <typename CHAR>
         int string<CHAR>::count(const string<CHAR>& sub_string) const
         {
@@ -1271,13 +1301,20 @@ namespace z
 
         //function to remove the portion of the
         //string within the specified indices (inclusive)
+        /**
+         * \brief Remove the characters in the given range from
+         * the current string.
+         */
         template <typename CHAR>
         inline void string<CHAR>::remove(int start_index, int end_index)
         {
             remove_portion(start_index, end_index);
         }
 
-        //returns true if the specified sub-string was found at the specified position
+        /**
+         * \brief Check whether the given sub-string can be found at
+         * the given position.
+         */
         template <typename CHAR>
         bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
         {
@@ -1293,8 +1330,9 @@ namespace z
             return true;
         }
 
-        //returns true if the specified sub-string was found
-        //AND ENDS AT the specified position
+        /**
+         * \brief Check whether the given sub-string ends at the given position.
+         */
         template <typename CHAR>
         bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
         {
@@ -1312,7 +1350,10 @@ namespace z
             return true;
         }
 
-        //returns true if specified text was found at the beginning of the string
+        /**
+         * \brief Check whether the current string begins with the given
+         * sub-string.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::beginsWith(const string<CHAR>& sub_string) const
         {
@@ -1321,6 +1362,10 @@ namespace z
 
         //returns true if specified text was found at the beginning of the string,
         //after an allowed padding char (e.g. leading spaces)
+        /**
+         * \brief Check whether the current string begins with the given
+         * sub-string, but skip over padding characters.
+         */
         template <typename CHAR>
         bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
         {
@@ -1338,7 +1383,10 @@ namespace z
         }
 
 
-        //returns true if specified text was found at the end of the string
+        /**
+         * \brief Check whether the current string ends with the given
+         * sub-string.
+         */
         template <typename CHAR>
         inline bool string<CHAR>::endsWith(const string<CHAR>& sub_string) const
         {
@@ -1361,7 +1409,7 @@ namespace z
         }
 
 
-                template <typename CHAR>
+        template <typename CHAR>
         void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
         {
             if (buffer)
