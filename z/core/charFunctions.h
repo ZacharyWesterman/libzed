@@ -19,6 +19,10 @@ namespace z
 {
     namespace core
     {
+        /**
+         * \brief Check if the given character is an uppercase
+         * alphabetic character.
+         */
         template <typename CHAR>
         bool isUpperAlpha(const CHAR character)
         {
@@ -29,7 +33,10 @@ namespace z
                 return false;
         }
 
-
+        /**
+         * \brief Check if the given character is a lowercase
+         * alphabetic character.
+         */
         template <typename CHAR>
         bool isLowerAlpha(const CHAR character)
         {
@@ -40,7 +47,10 @@ namespace z
                 return false;
         }
 
-
+        /**
+         * \brief Check if the given character is an
+         * alphabetic character.
+         */
         template <typename CHAR>
         bool isAlpha(const CHAR character)
         {
@@ -48,7 +58,10 @@ namespace z
                     isUpperAlpha(character));  //or lowercase
         }
 
-
+        /**
+         * \brief Convert the given character to its
+         * respective numeral value.
+         */
         template <typename CHAR>
         int numeralValue(const CHAR character)
         {
@@ -65,6 +78,10 @@ namespace z
                 return -1;
         }
 
+        /**
+         * \brief Check if the given character is numeric under
+         * the given base.
+         */
         template <typename CHAR>
         inline bool isNumeric(const CHAR character, int base = 10)
         {
@@ -72,15 +89,19 @@ namespace z
             return ((value < base) && (value > -1));
         }
 
-
+        /**
+         * \brief Check if the given character is alphanumeric.
+         */
         template <typename CHAR>
-        bool isAlphanumeric(const CHAR character)
+        inline bool isAlphanumeric(const CHAR character)
         {
             return (isAlpha(character) ||  //is a letter
                     isNumeric(character)); //or a number
         }
 
-
+        /**
+         * \brief Check if the given character is white space.
+         */
         template <typename CHAR>
         bool isWhiteSpace(CHAR character)
         {
