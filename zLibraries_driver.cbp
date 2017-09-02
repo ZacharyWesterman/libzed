@@ -39,6 +39,7 @@
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/binaryTree.h" />
+		<Unit filename="z/core/charFunctions.h" />
 		<Unit filename="z/core/circularNumber.h" />
 		<Unit filename="z/core/dynamicStack.h" />
 		<Unit filename="z/core/float.h" />
@@ -48,16 +49,6 @@
 		<Unit filename="z/core/sortedRefArray.h" />
 		<Unit filename="z/core/stream.h" />
 		<Unit filename="z/core/string.h" />
-		<Unit filename="z/core/string/char_is_alphanumeric.h" />
-		<Unit filename="z/core/string/char_is_whiteSpace.h" />
-		<Unit filename="z/core/string/dePad_string.h" />
-		<Unit filename="z/core/string/eval_string.h" />
-		<Unit filename="z/core/string/pad_string.h" />
-		<Unit filename="z/core/string/string.h" />
-		<Unit filename="z/core/string/string_lower.h" />
-		<Unit filename="z/core/string/string_remove_whiteSpace.h" />
-		<Unit filename="z/core/string/string_upper.h" />
-		<Unit filename="z/core/string/tokenize_string.h" />
 		<Unit filename="z/core/timeout.h" />
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
