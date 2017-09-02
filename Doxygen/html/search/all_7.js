@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['math_2eh',['math.h',['../math_8h.html',1,'']]],
-  ['matrix',['matrix',['../classz_1_1math_1_1matrix.html',1,'z::math']]]
+  ['math_2eh',['math.h',['../a00101.html',1,'']]],
+  ['matrix',['matrix',['../a00176.html',1,'z::math']]]
 ];

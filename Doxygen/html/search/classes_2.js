@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dynamicstack',['dynamicStack',['../classz_1_1core_1_1dynamicStack.html',1,'z::core']]]
+  ['dynamicstack',['dynamicStack',['../a00128.html',1,'z::core']]]
 ];

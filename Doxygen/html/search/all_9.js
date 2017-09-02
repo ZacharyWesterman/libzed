@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readme',['README',['../md_README.html',1,'']]],
-  ['remove',['remove',['../classz_1_1core_1_1array.html#a334e01bca2d971f23b27eefb8bed0129',1,'z::core::array']]]
+  ['readme',['README',['../a00186.html',1,'']]],
+  ['remove',['remove',['../a00112.html#a334e01bca2d971f23b27eefb8bed0129',1,'z::core::array']]]
 ];
