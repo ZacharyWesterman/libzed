@@ -1,17 +1,3 @@
-/**
- * File:            matrix.h
- * Namespace:       z::math
- *
- * Description:     Template class for square matrices
- *                  of size at least 2x2.
- *                  Includes methods for calculating determinants.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   1 Mar. 2017
-**/
-
 #pragma once
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
@@ -31,7 +17,7 @@ namespace z
         class matrix
         {
         public:
-            zFloat value[N][N];
+            zFloat value[N][N]; ///< Array of all elements in the matrix.
 
             ///Method for calculating the determinant of NxN matrix
             zFloat det()

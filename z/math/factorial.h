@@ -31,35 +31,34 @@ namespace z
 {
     namespace math
     {
-        long factorial(long n)
+        /**
+         * \brief Calculate the factorial of the integer \b n.
+         *
+         * \param n a positive integer.
+         *
+         * \return The factorial of \b n, if <B>n>0</B>. \b -1 otherwise.
+         */
+        template<typename INT,
+            typename = typename std::enable_if<std::is_integral<INT>::value>::type>
+        INT factorial(INT n)
         {
-            if ((n < 0) || (n > FACTORIAL_MAX_INPUT_INT))
+            if ((n < 0) )//|| (n > FACTORIAL_MAX_INPUT_INT))
                 return -1;
 
 
-            long result = 1;
+            INT result = 1;
 
-            for (long i=2; i<=n; i++)
+            for (INT i=2; i<=n; i++)
             {
                 result *= i;
             }
 
             return result;
         }
-
-
-
-        zFloat factorial(zFloat x)
-        {
-            if ((x < 0) || (x > FACTORIAL_MAX_INPUT_DBL))
-                return -1;
-
-            if (x == (long)x)
-                return (zFloat)factorial((long)x);
-            else
-                return std::tgamma(x);
-        }
     }
 }
+
+#undef FACTORIAL_MAX_INPUT_INT
+#undef FACTORIAL_MAX_INPUT_DBL
 
 #endif // FACTORIAL_H_INCLUDED
