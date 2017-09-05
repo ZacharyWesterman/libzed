@@ -14,9 +14,6 @@
 #ifndef CORE_H_INCLUDED
 #define CORE_H_INCLUDED
 
-///zFloat type
-#include "core/float.h"
-
 ///Strings
 #include "core/string.h"
 #include "core/stream.h"

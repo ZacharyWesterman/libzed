@@ -4,6 +4,7 @@
 
 #include "constants.h"
 #include <math.h>
+#include <z/float.h>
 
 namespace z
 {
@@ -37,12 +38,12 @@ namespace z
          * \return The value of the n<SUP>th</SUP>
          * number in the Fibonacci sequence.
          */
-        zFloat fibonacci(zFloat n)
+        Float fibonacci(Float n)
         {
-            zFloat PHI_n  = pow(phi, n);
-            zFloat Nphi_n = pow(-phi + 1, n);
+            Float PHI_n  = pow(phi, n);
+            Float Nphi_n = pow(-phi + 1, n);
 
-            zFloat fib_n  = (PHI_n - Nphi_n) / sqrt5;
+            Float fib_n  = (PHI_n - Nphi_n) / sqrt5;
 
             return fib_n;
         }

@@ -2,6 +2,8 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
 
+#include <z/float.h>
+
 namespace z
 {
     namespace math
@@ -17,16 +19,16 @@ namespace z
         class matrix
         {
         public:
-            zFloat value[N][N]; ///< Array of all elements in the matrix.
+            Float value[N][N]; ///< Array of all elements in the matrix.
 
             ///Method for calculating the determinant of NxN matrix
-            zFloat det()
+            Float det()
             {
                 //the determinant of an NxN matrix requires
                 //the determinant of an (N-1)x(N-1) matrix.
                 matrix<N-1> mat;
 
-                zFloat result=0;
+                Float result=0;
 
 
                 for (unsigned int col=0; col<N; col++)
@@ -60,7 +62,7 @@ namespace z
 
         ///Default determinant method for 2x2 matrices.
         template<>
-        zFloat matrix<2>::det()
+        Float matrix<2>::det()
         {
             return (value[0][0]*value[1][1]-value[1][0]*value[0][1]);
         }

@@ -2,7 +2,7 @@
 
 //#define Z_USE_DOUBLE
 
-#include <z/core.h>
+//#include <z/core.h>
 #include <z/math.h>
 //#include <z/file.h>
 
@@ -10,32 +10,17 @@
 using namespace std;
 using namespace z;
 
+typedef unsigned long long ull;
+
 int main()
 {
-    core::string<unsigned char> s = 123.4;
-
-    cout << s.narrow().str() << endl;
-
-    /*
-    long total_micros = 0;
-
-    core::timer time(true);
-
-    int i = 1;
-    for (i=1; i<=1000; i++)
+    for (ull i=0; i<50; i++)
     {
-        time.reset();
-        math::zeta(2);
-        total_micros += time.micros();
-
-        //if (i % 10)
-            //cout << ".";
+        cout << "f(" << i << ") =\t";
+        cout << math::factorial(i) << endl;
     }
-    cout << endl;
-    cout << "Average time to calculate Zeta function:\n"
-         << ((zFloat)total_micros/(zFloat)i) / 1000.0 << " milliseconds\n";
-    core::string<char> z (math::zeta(2));
-    cout << z.str() << endl;*/
+
+    cout << endl << sizeof(ull) << endl;
 
     return 0;
 }

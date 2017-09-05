@@ -18,9 +18,14 @@
 #ifndef FLOAT_H_INCLUDED
 #define FLOAT_H_INCLUDED
 
+namespace z
+{
 
-#ifdef Z_USE_DOUBLE
-    typedef double zFloat;
+    #ifdef Z_USE_DOUBLE
+    typedef double Float;
+    #else
+    typedef float Float;
+    #endif // Z_USE_DOUBLE
 
     /**
      * \brief A union for easily manipulating
@@ -28,52 +33,35 @@
      */
     typedef union
     {
-        double value; ///< The floating-point value.
+        Float value; ///< The floating-point value.
+
 
         struct
         {
+            #ifdef Z_USE_DOUBLE
             unsigned long mantissa : 52; ///< Fractional part.
-            unsigned long exponent : 11; ///< Biased exponent.
+            unsigned int exponent : 11; ///< Biased exponent.
+            #else
+            unsigned int mantissa : 23; ///< Fractional part.
+            unsigned int exponent : 8; ///< Biased exponent.
+            #endif // Z_USE_DOUBLE
             unsigned long sign : 1; ///< Sign.
         };
 
         /**
          * \brief Give the actual exponent.
          */
-        inline long expUnBias()
+        inline int expUnBias()
         {
-            return (long)exponent - 1023;
-        }
-    } zFloat_cast;
-
-#else
-    typedef float zFloat;
-
-    /**
-     * \brief A union for easily manipulating
-     * floating-point numbers.
-     */
-    typedef union
-    {
-        float value; ///< Floating-point value.
-
-        struct
-        {
-            unsigned int mantissa : 23; ///< Fractional part.
-            unsigned int exponent : 8; ///< Biased exponent.
-            unsigned int sign : 1; ///< Sign.
-        };
-
-        /**
-         * \brief Give the actual exponent.
-         */
-        inline long expUnBias()
-        {
+            #ifdef Z_USE_DOUBLE
+            return (int)exponent - 1023;
+            #else
             return (int)exponent - 127;
+            #endif // Z_USE_DOUBLE
         }
-    } zFloat_cast;
-#endif // Z_USE_DOUBLE
 
+    } Float_cast;
 
+}
 
 #endif // FLOAT_H_INCLUDED

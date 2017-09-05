@@ -18,6 +18,8 @@
 #ifndef PAUSE_H_INCLUDED
 #define PAUSE_H_INCLUDED
 
+#include <z/float.h>
+
 #ifdef __linux__
 
 #include <unistd.h>
@@ -26,7 +28,7 @@ namespace z
 {
     namespace core
     {
-        inline void pause(zFloat ms)
+        inline void pause(Float ms)
         {
             usleep(ms * 1000);
         }
@@ -41,7 +43,7 @@ namespace z
 {
     namespace core
     {
-        inline void pause(zFloat ms)
+        inline void pause(Float ms)
         {
             Sleep(ms);
         }

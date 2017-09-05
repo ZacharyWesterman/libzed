@@ -11,6 +11,8 @@
 #include <type_traits>
 #include <complex>
 
+#include <z/float.h>
+
 #include "charFunctions.h"
 
 #define num_bufsiz 16
@@ -29,16 +31,16 @@ namespace z
         //"buffer" is assumed to be 2*num_bufsiz + 7 characters long
         //returns number of characters in resultant string
         template<typename CHAR>
-        static int num_to_cstring(const zFloat& number, CHAR* buffer)
+        static int num_to_cstring(const Float& number, CHAR* buffer)
         {
-            zFloat_cast dbl_cst = {.value = number};
+            Float_cast dbl_cst = {.value = number};
 
             bool use_scientific = (dbl_cst.expUnBias() > 50) ||
                                   (dbl_cst.expUnBias() < (-50));
 
             int buffer_pos = 0;
 
-            zFloat fpart;
+            Float fpart;
             long ipart;
             long exponent = 0;
 
@@ -360,8 +362,8 @@ namespace z
             const string<CHAR> upper() const;
             const string<CHAR> lower() const;
 
-            zFloat value(int base = 10) const;
-            std::complex<zFloat> complexValue(int base = 10) const;
+            Float value(int base = 10) const;
+            std::complex<Float> complexValue(int base = 10) const;
         };
 
 
@@ -510,7 +512,7 @@ namespace z
             //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
             CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-            array_length = num_to_cstring((zFloat)number, buffer) + 1;
+            array_length = num_to_cstring((Float)number, buffer) + 1;
 
             string_array = new CHAR[array_length];
 
@@ -539,7 +541,7 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                array_length = num_to_cstring((zFloat)number.real(), buffer) + 1;
+                array_length = num_to_cstring((Float)number.real(), buffer) + 1;
 
                 string_array = new CHAR[array_length];
 
@@ -551,7 +553,7 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 8];
 
-                array_length = num_to_cstring((zFloat)number.imag(), buffer) + 2;
+                array_length = num_to_cstring((Float)number.imag(), buffer) + 2;
                 //append 'i', since imaginary value.
                 buffer[array_length-2] = (CHAR)105;
                 buffer[array_length-1] = (CHAR)0;
@@ -567,7 +569,7 @@ namespace z
                 CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
                 CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
 
-                int r_array_len = num_to_cstring((zFloat)number.real(), real_buffer) + 1;
+                int r_array_len = num_to_cstring((Float)number.real(), real_buffer) + 1;
 
                 //append '+'(if positive imaginary part),
                 //since imaginary value comes next.
@@ -577,7 +579,7 @@ namespace z
                     r_array_len--;
 
 
-                int i_array_len = num_to_cstring((zFloat)number.imag(), imag_buffer) + 2;
+                int i_array_len = num_to_cstring((Float)number.imag(), imag_buffer) + 2;
                 //append 'i', since imaginary value.
                 imag_buffer[i_array_len-2] = (CHAR)105;
                 imag_buffer[i_array_len-1] = (CHAR)0;
@@ -895,10 +897,10 @@ namespace z
          *
          */
         template <typename CHAR>
-        zFloat string<CHAR>::value(int base) const
+        Float string<CHAR>::value(int base) const
         {
 
-            zFloat value = 0.0;
+            Float value = 0.0;
 
             int start = 0;
             bool isNegative = false;
@@ -911,7 +913,7 @@ namespace z
 
             bool pastDecimal = false;
             bool pastExponent = false;
-            zFloat fracMult = 1.0;
+            Float fracMult = 1.0;
             int exponent = 0;
             bool expNegative = false;
 
@@ -946,13 +948,13 @@ namespace z
                     }
                     else if (pastDecimal)
                     {
-                        fracMult /= (zFloat)base;
-                        value += fracMult * (zFloat)numeralValue(string_array[i]); //actual value from character
+                        fracMult /= (Float)base;
+                        value += fracMult * (Float)numeralValue(string_array[i]); //actual value from character
                     }
                     else
                     {
-                        value *= (zFloat)base;
-                        value += (zFloat)numeralValue(string_array[i]); //actual value from character
+                        value *= (Float)base;
+                        value += (Float)numeralValue(string_array[i]); //actual value from character
                     }
                 }
                 else if (string_array[i] == (CHAR)69)
@@ -978,7 +980,7 @@ namespace z
                     valMult *= base;
 
                 if (expNegative)
-                    value *= (1 / (zFloat)valMult);
+                    value *= (1 / (Float)valMult);
                 else
                     value *= valMult;
             }
@@ -1003,11 +1005,11 @@ namespace z
          *
          */
         template <typename CHAR>
-        std::complex<zFloat> string<CHAR>::complexValue(int base) const
+        std::complex<Float> string<CHAR>::complexValue(int base) const
         {
             if (endsWith("i"))
             {
-                zFloat real(0), imag;
+                Float real(0), imag;
 
                 int realEnd = findLast("+");
 
@@ -1028,11 +1030,11 @@ namespace z
                     }
                 }
 
-                return std::complex<zFloat> (real, imag);
+                return std::complex<Float> (real, imag);
             }
             else
             {
-                return std::complex<zFloat> (value(base), 0);
+                return std::complex<Float> (value(base), 0);
             }
 
         }

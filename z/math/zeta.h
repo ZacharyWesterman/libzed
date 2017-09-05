@@ -2,12 +2,14 @@
 #ifndef ZETA_H_INCLUDED
 #define ZETA_H_INCLUDED
 
+#include <z/float.h>
+
 namespace z
 {
     namespace math
     {
         /**
-         * \fn zFloat zeta(const int s)
+         * \fn Float zeta(const int s)
          * \param s: an integer greater than 1
          * \return An approximation of zeta(s)
          *
@@ -17,9 +19,9 @@ namespace z
          * the float type used. Note that this approximation is
          * less accurate for single-precision floats.
          */
-        zFloat zeta(const int s)
+        Float zeta(const int s)
         {
-            zFloat result = 1.0;
+            Float result = 1.0;
 
             int i = 2;
 
@@ -28,14 +30,14 @@ namespace z
             while (i<100000)
             {
             #else
-            zFloat oldResult = -1.0;
+            Float oldResult = -1.0;
             while (result != oldResult)
             {
                 oldResult = result;
             #endif // Z_USE_DOUBLE
-                zFloat denomP = 1.0 / (zFloat)i;
+                Float denomP = 1.0 / (Float)i;
 
-                zFloat partial = 1;
+                Float partial = 1;
                 for (int j=0; j<s; j++)
                     partial *= denomP;
 
