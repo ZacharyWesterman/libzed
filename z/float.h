@@ -1,6 +1,5 @@
 /**
  * File:            float.h
- * Namespace:       none
  * Description:     Contains struct for manipulating
  *                  floating-point values. By default,
  *                  uses single-precision floats. If

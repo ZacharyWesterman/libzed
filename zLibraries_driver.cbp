@@ -38,11 +38,9 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
-		<Unit filename="z/core/binaryTree.h" />
 		<Unit filename="z/core/charFunctions.h" />
 		<Unit filename="z/core/circularNumber.h" />
 		<Unit filename="z/core/dynamicStack.h" />
-		<Unit filename="z/core/float.h" />
 		<Unit filename="z/core/loadLibrary.h" />
 		<Unit filename="z/core/pause.h" />
 		<Unit filename="z/core/sortedArray.h" />
@@ -59,6 +57,7 @@
 		<Unit filename="z/file/loadFileToMemory.h" />
 		<Unit filename="z/file/saveFileTimeout.h" />
 		<Unit filename="z/file/saveToFileFromMemory.h" />
+		<Unit filename="z/float.h" />
 		<Unit filename="z/math.h" />
 		<Unit filename="z/math/constants.h" />
 		<Unit filename="z/math/factorial.h" />

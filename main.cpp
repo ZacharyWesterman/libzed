@@ -12,7 +12,7 @@ using namespace z;
 
 int main()
 {
-    for (uint64_t i=0; i<65; i++)
+    for (uint64_t i=0; i<100; i++)
     {
         cout << "f(" << i << ") =\t";
         cout << Float(math::factorial(i)) << endl;
