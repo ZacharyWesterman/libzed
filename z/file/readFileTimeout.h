@@ -1,30 +1,11 @@
-/**
- * File:            loadFileTimeout.h
- * Namespace:       z::file
- * Description:     The file::loader class loads as much of
- *                  a file as possible before the specified timeout.
- *                  If timeout is reached, closes the file. Then
- *                  attempts to reopen file and continue loading at
- *                  each subsequent call.
- *                  Returns -1 if unable to open the file at any point.
- *                  Returns  0 if open successful but not done loading.
- *                  Returns  1 if done loading the file.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   14 May 2017
-**/
-
 #pragma once
-#ifndef LOADFILETIMEOUT_H_INCLUDED
-#define LOADFILETIMEOUT_H_INCLUDED
+#ifndef READFILETIMEOUT_H_INCLUDED
+#define READFILETIMEOUT_H_INCLUDED
 
 #include <z/core/string.h>
 #include <z/core/timeout.h>
 
 #include <fstream>
-//#include <stdio.h>
 
 #ifndef null
     #define null 0
@@ -34,8 +15,22 @@ namespace z
 {
     namespace file
     {
+        /**
+         * \brief A class for iterative file loading.
+         *
+         * The file::loader class loads as much of
+         * a file as possible before the specified timeout.
+         * If timeout is reached, closes the file. Then
+         * attempts to reopen file and continue loading at
+         * each subsequent call.
+         *
+         *
+ *                  Returns -1 if unable to open the file at any point.
+ *                  Returns  0 if open successful but not done loading.
+ *                  Returns  1 if done loading the file.
+         */
         template<typename CHAR>
-        class loader
+        class reader
         {
             core::string<char> file_name;
 
@@ -47,7 +42,7 @@ namespace z
             bool done;
 
         public:
-            loader()
+            reader()
             {
                 contents_buffer = null;
                 current_index = 0;
@@ -55,7 +50,7 @@ namespace z
                 done = true;
             }
 
-            ~loader()
+            ~reader()
             {
                 if (contents_buffer)
                     delete[] contents_buffer;
@@ -95,7 +90,8 @@ namespace z
             }
 
 
-            int load(const core::timeout&); //iterative load function prototype
+            /////iterative load function prototype
+            int read(const core::timeout& time = core::timeout(-1));
 
 
             ///return a pointer to the contents buffer
@@ -107,9 +103,11 @@ namespace z
 
 
 
-        ///iterative load() function for narrow characters
+        /**
+         * \brief Default loading function for narrow character set.
+         */
         template<>
-        int loader<char>::load(const core::timeout& time)
+        int reader<char>::read(const core::timeout& time)
         {
             if (done)
                 return 1;
@@ -163,9 +161,11 @@ namespace z
         }
 
 
-        ///iterative load function for wide characters
+        /**
+         * \brief Default loading function for wide character set.
+         */
         template<>
-        int loader<wchar_t>::load(const core::timeout& time)
+        int reader<wchar_t>::read(const core::timeout& time)
         {
             if (done)
                 return 1;
@@ -214,4 +214,4 @@ namespace z
     }
 }
 
-#endif // LOADFILETIMEOUT_H_INCLUDED
+#endif // READFILETIMEOUT_H_INCLUDED

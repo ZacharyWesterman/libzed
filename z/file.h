@@ -18,7 +18,7 @@
 #include "file/saveToFileFromMemory.h"
 
 ///Manage file contents with a timeout
-#include "file/loadFileTimeout.h"
+#include "file/readFileTimeout.h"
 #include "file/saveFileTimeout.h"
 
 #endif // FILE_H_INCLUDED
