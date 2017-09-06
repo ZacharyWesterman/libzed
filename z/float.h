@@ -1,16 +1,8 @@
 /**
- * File:            float.h
- * Description:     Contains struct for manipulating
- *                  floating-point values. By default,
- *                  uses single-precision floats. If
- *                  the compiler flag Z_USE_DOUBLE is
- *                  set, then double-precision is used
- *                  instead.
+ * \file z/float.h
  *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   24 Aug. 2017
+ * Contains default floating-point type and a
+ * struct for manipulating floating-point values.
 **/
 
 #pragma once
@@ -19,7 +11,14 @@
 
 namespace z
 {
-
+    /**
+     * \brief Default floating-point type used by other libraries.
+     *
+     * For some code, very high precision with numbers may be required.
+     * By default, all related libraries use single-precision floats.
+     * However, if the compiler flag \b Z_USE_DOUBLE is set, then
+     * double-precision floats are used instead.
+     */
     #ifdef Z_USE_DOUBLE
     typedef double Float;
     #else
