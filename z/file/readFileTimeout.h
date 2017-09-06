@@ -32,7 +32,7 @@ namespace z
         template<typename CHAR>
         class reader
         {
-            core::string<char> file_name;
+            char* file_name;
 
             CHAR* contents_buffer;
             long bufsiz;
@@ -42,65 +42,97 @@ namespace z
             bool done;
 
         public:
-            reader()
-            {
-                contents_buffer = null;
-                current_index = 0;
-                bufsiz = 0;
-                done = true;
-            }
-
-            ~reader()
-            {
-                if (contents_buffer)
-                    delete[] contents_buffer;
-            }
-
-            ///set the file name and clear the buffer contents
-            void setFileName(const core::string<char>& fileName)
-            {
-                file_name = fileName;
-                current_index = 0;
-
-                if (contents_buffer)
-                {
-                    delete[] contents_buffer;
-                    contents_buffer = null;
-                    bufsiz = 0;
-                }
-
-                done = false;
-            }
+            reader();
+            reader(const core::string<char>&);
+            ~reader();
 
 
-            ///clear all buffer contents as well as the file name
-            void clear()
-            {
-                file_name.clear();
-                current_index = 0;
+            void set(const core::string<char>& fileName);
 
-                if (contents_buffer)
-                {
-                    delete[] contents_buffer;
-                    contents_buffer = null;
-                    bufsiz = 0;
-                }
+            void clear();
 
-                done = true;
-            }
-
-
-            /////iterative load function prototype
             int read(const core::timeout& time = core::timeout(-1));
 
-
-            ///return a pointer to the contents buffer
-            const CHAR* getContents() const
-            {
-                return contents_buffer;
-            }
+            inline const CHAR* getContents() const;
         };
 
+
+        template <typename CHAR>
+        reader<CHAR>::reader(const core::string<char>& fileName)
+        {
+            file_name = new char[fileName.length() + 1];
+            for (int i=0; i<fileName.length()+1; i++)
+                file_name[i] = fileName[i];
+
+            contents_buffer = null;
+            current_index = 0;
+            bufsiz = 0;
+            done = false;
+        }
+
+        template <typename CHAR>
+        reader<CHAR>::reader()
+        {
+            file_name = null;
+
+            contents_buffer = null;
+            current_index = 0;
+            bufsiz = 0;
+            done = true;
+        }
+
+        template <typename CHAR>
+        reader<CHAR>::~reader()
+        {
+            if (contents_buffer)
+                delete[] contents_buffer;
+
+            if (file_name)
+                delete[] file_name;
+        }
+
+
+        ///clear all buffer contents as well as the file name
+        template <typename CHAR>
+        void reader<CHAR>::clear()
+        {
+            delete[] file_name;
+            file_name = null;
+
+            current_index = 0;
+
+            if (contents_buffer)
+            {
+                delete[] contents_buffer;
+                contents_buffer = null;
+                bufsiz = 0;
+            }
+
+            done = true;
+        }
+
+
+        ///set the file name and clear the buffer contents
+        template <typename CHAR>
+        void reader<CHAR>::set(const core::string<char>& fileName)
+        {
+            delete[] file_name;
+
+            file_name = new char[fileName.length() + 1];
+            for (int i=0; i<fileName.length()+1; i++)
+                file_name[i] = fileName[i];
+
+            current_index = 0;
+
+            if (contents_buffer)
+            {
+                delete[] contents_buffer;
+                contents_buffer = null;
+                bufsiz = 0;
+            }
+
+            done = false;
+        }
 
 
         /**
@@ -113,7 +145,7 @@ namespace z
                 return 1;
 
             std::ifstream file;
-            file.open(file_name.str());
+            file.open(file_name);
 
             if (!file.good())
                 return -1;
@@ -171,7 +203,7 @@ namespace z
                 return 1;
 
             std::wifstream file;
-            file.open(file_name.str());
+            file.open(file_name);
 
             if (!file)
                 return -1;
@@ -210,6 +242,15 @@ namespace z
                 done = !time.timedOut();
 
             return done;
+        }
+
+
+
+        ///return a pointer to the contents buffer
+        template <typename CHAR>
+        inline const CHAR* reader<CHAR>::getContents() const
+        {
+            return contents_buffer;
         }
     }
 }

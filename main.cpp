@@ -11,9 +11,13 @@ using namespace z;
 
 int main()
 {
+    file::reader<char> f;
 
+    f.setFileName()
 
-    //cout << endl << sizeof(int8_t) << endl;
+    f.read();
+
+    cout << f.getContents() << endl;
 
     return 0;
 }
