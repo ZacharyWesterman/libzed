@@ -5,22 +5,20 @@
 //#include <z/core.h>
 #include <z/math.h>
 //#include <z/file.h>
-
+#include <stdint.h>
 
 using namespace std;
 using namespace z;
 
-typedef unsigned long long ull;
-
 int main()
 {
-    for (ull i=0; i<50; i++)
+    for (uint64_t i=0; i<65; i++)
     {
         cout << "f(" << i << ") =\t";
-        cout << math::factorial(i) << endl;
+        cout << Float(math::factorial(i)) << endl;
     }
 
-    cout << endl << sizeof(ull) << endl;
+    //cout << endl << sizeof(int8_t) << endl;
 
     return 0;
 }

@@ -36,21 +36,30 @@ namespace z
          *
          * \param n a positive integer.
          *
-         * \return The factorial of \b n, if <B>n>0</B>. \b -1 otherwise.
+         * \return The factorial of \b n, if <B>n>0</B> and
+         * the factorial is able to be represented. \b 0 otherwise.
          */
         template<typename INT,
             typename = typename std::enable_if<std::is_integral<INT>::value>::type>
         INT factorial(INT n)
         {
-            if ((n < 0) )//|| (n > FACTORIAL_MAX_INPUT_INT))
-                return -1;
+            if (n < 0)
+                return 0;
 
 
             INT result = 1;
 
-            for (INT i=2; i<=n; i++)
+            INT i = 2;
+            while (i <= n)
             {
-                result *= i;
+                INT newResult = result * i;
+
+                if ((newResult == result) ||
+                    (newResult <= 0))
+                    return 0;
+
+                result = newResult;
+                i++;
             }
 
             return result;
