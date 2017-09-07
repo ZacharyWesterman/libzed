@@ -50,13 +50,11 @@
 		<Unit filename="z/core/timeout.h" />
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
-		<Unit filename="z/file/directoryOperations.h" />
 		<Unit filename="z/file/exists.h" />
-		<Unit filename="z/file/listFilesInDir.h" />
-		<Unit filename="z/file/loadFileToMemory.h" />
-		<Unit filename="z/file/readFileTimeout.h" />
-		<Unit filename="z/file/saveFileTimeout.h" />
-		<Unit filename="z/file/saveToFileFromMemory.h" />
+		<Unit filename="z/file/listFiles.h" />
+		<Unit filename="z/file/reader.h" />
+		<Unit filename="z/file/shorten.h" />
+		<Unit filename="z/file/writer.h" />
 		<Unit filename="z/float.h" />
 		<Unit filename="z/math.h" />
 		<Unit filename="z/math/constants.h" />
