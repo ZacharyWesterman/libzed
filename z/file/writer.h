@@ -43,14 +43,12 @@ namespace z
          * attempts to reopen file and continue writing at
          * each subsequent call.
          *
-         * Note that this class is only compatible with types
-         * \b char and \b wchar_t.
-         *
+         * \see reader
          */
         template<typename CHAR>
         class writer
         {
-        public:
+        private:
             char* file_name;
             CHAR* data;
 
@@ -61,7 +59,7 @@ namespace z
             bool always_append;
 
         public:
-            writer(bool append = false);
+            writer();
 
             writer(const core::string<char>&,
                    const core::string<CHAR>&,
@@ -78,21 +76,47 @@ namespace z
             void clear();
 
 
+            /**
+             * \brief Write data to the file.
+             *
+             * Attempts to write as much data to the file as
+             * possible. If the timer runs out before that, returns
+             * \b 0 to indicate that it should be called again.
+             * Continues writing data on each subsequent
+             * call. If no parameter is given, then all given data
+             * will be written to the file before returning.
+             *
+             * \param time an optional parameter to pause writing
+             * after a timeout.
+             *
+             * \return \b -1 if unable to open the file at any point,<BR>
+             * \b 0 if open successful but not done writing, and <BR>
+             * \b 1 if done writing to the file.
+             */
             int write(const core::timeout& time = core::timeout(-1));
         };
 
 
+        /**
+         * \brief Default constructor.
+         */
         template <typename CHAR>
-        writer<CHAR>::writer(bool append)
+        writer<CHAR>::writer()
         {
-            always_append = append;
-
             file_name = null;
             data = null;
 
             done = true;
         }
 
+        /**
+         * \brief Constructor with full data.
+         *
+         * \param fileName the name of the file.
+         * \param fileData the data to write to the file.
+         * \param append an optional parameter. If \b true,
+         * the data is appended to the file.
+         */
         template <typename CHAR>
         writer<CHAR>::writer(const core::string<char>& fileName,
                              const core::string<CHAR>& fileData,
@@ -112,7 +136,9 @@ namespace z
             done = false;
         }
 
-
+        /**
+         * \brief Destructor.
+         */
         template <typename CHAR>
         writer<CHAR>::~writer()
         {
@@ -123,7 +149,14 @@ namespace z
                 delete[] data;
         }
 
-        ///set the file name and data to write
+        /**
+         * \brief Set the file name and the data to write.
+         *
+         * \param fileName the name of the file.
+         * \param fileData the data to write to the file.
+         * \param append an optional parameter. If \b true,
+         * the data is appended to the file.
+         */
         template <typename CHAR>
         void writer<CHAR>::set(const core::string<char>& fileName,
                                const core::string<CHAR>& fileData,
@@ -150,7 +183,9 @@ namespace z
         }
 
 
-        ///clear all data and the file name
+        /**
+         * \brief Clear all data as well as the file name.
+         */
         template <typename CHAR>
         void writer<CHAR>::clear()
         {
@@ -166,7 +201,9 @@ namespace z
         }
 
 
-        ///iterative write() function for narrow characters
+        /**
+         * \brief Default writing function for narrow character set.
+         */
         template<>
         int writer<char>::write(const core::timeout& time)
         {
@@ -197,7 +234,9 @@ namespace z
             return done;
         }
 
-        ///iterative write() function for wide characters
+        /**
+         * \brief Default loading function for wide character set.
+         */
         template<typename CHAR>
         int writer<CHAR>::write(const core::timeout& time)
         {

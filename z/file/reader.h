@@ -24,9 +24,7 @@ namespace z
          * attempts to reopen file and continue loading at
          * each subsequent call.
          *
-         * Note that this class is only compatible with types
-         * \b char and \b wchar_t.
-         *
+         * \see writer
          */
         template<typename CHAR>
         class reader
@@ -103,7 +101,7 @@ namespace z
         }
 
         /**
-         * \brief Destructor
+         * \brief Destructor.
          */
         template <typename CHAR>
         reader<CHAR>::~reader()
