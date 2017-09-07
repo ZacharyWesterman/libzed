@@ -2,7 +2,7 @@
 
 //#define Z_USE_DOUBLE
 
-//#include <z/core.h>
+#include <z/core.h>
 #include <z/math.h>
 #include <z/file.h>
 
@@ -11,12 +11,11 @@ using namespace z;
 
 int main()
 {
-    core::array< core::string<char> > files;
+    core::timer t;
 
-    files = file::listFiles("", "*");
+    core::pause(360);
 
-    for (int i=0; i<files.size(); i++)
-        cout << files[i].str() << endl;
+    cout << t.hours() << endl;
 
     return 0;
 }
