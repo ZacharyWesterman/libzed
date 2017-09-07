@@ -356,6 +356,8 @@ namespace z
 
             void clear();
 
+            const string& operator=(const string&);
+
             template <typename CHAR_2>
             const string<CHAR>& operator=(const string<CHAR_2>& other);
 
@@ -622,14 +624,35 @@ namespace z
             }
         }
 
+
         /**
-         * \brief String assignment operator.
+         * \brief String assignment operator from same type.
+         */
+        template <typename CHAR>
+        const string<CHAR>& string<CHAR>::operator=(const string<CHAR>& other)
+        {
+            if (string_array)
+                delete[] string_array;
+
+            array_length = other.array_length;
+
+            string_array = new CHAR[array_length];
+
+            for (int i=0; i<array_length; i++)
+                string_array[i] = other.string_array[i];
+
+            return *this;
+        }
+
+        /**
+         * \brief String assignment operator from other type.
          */
         template <typename CHAR>
         template <typename CHAR_2>
         const string<CHAR>& string<CHAR>::operator=(const string<CHAR_2>& other)
         {
-            delete[] string_array;
+            if (string_array)
+                delete[] string_array;
 
             array_length = other.length()+1;
 
@@ -637,9 +660,8 @@ namespace z
 
             if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                for (int i=0; i<array_length-1; i++)
+                for (int i=0; i<array_length; i++)
                     string_array[i] = other.str()[i];
-
             }
             else
             {
