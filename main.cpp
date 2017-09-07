@@ -11,7 +11,7 @@ using namespace z;
 
 int main()
 {
-    file::writer<int> w ("test.txt", L"hello, boye");
+    file::writer<int> w ("test.txt", L"hello, boye", false);
 
     core::timeout t (0);
 

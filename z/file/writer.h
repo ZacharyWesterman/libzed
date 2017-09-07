@@ -58,17 +58,21 @@ namespace z
 
             bool done;
 
-        public:
-            writer();
+            bool always_append;
 
-            writer(const core::string<char>& fileName,
-                   const core::string<CHAR>& fileData);
+        public:
+            writer(bool append = false);
+
+            writer(const core::string<char>&,
+                   const core::string<CHAR>&,
+                   bool append = false);
 
             ~writer();
 
 
-            void set(const core::string<char>& fileName,
-                     const core::string<CHAR>& fileData);
+            void set(const core::string<char>&,
+                     const core::string<CHAR>&,
+                     bool append = false);
 
 
             void clear();
@@ -79,8 +83,10 @@ namespace z
 
 
         template <typename CHAR>
-        writer<CHAR>::writer()
+        writer<CHAR>::writer(bool append)
         {
+            always_append = append;
+
             file_name = null;
             data = null;
 
@@ -89,7 +95,8 @@ namespace z
 
         template <typename CHAR>
         writer<CHAR>::writer(const core::string<char>& fileName,
-                             const core::string<CHAR>& fileData)
+                             const core::string<CHAR>& fileData,
+                             bool append)
         {
             file_name = new char[fileName.length()+1];
             for(int i=0; i<fileName.length()+1; i++)
@@ -99,9 +106,12 @@ namespace z
             for(int i=0; i<fileData.length()+1; i++)
                 data[i] = fileData[i];
 
+            always_append = append;
+
             current_index = 0;
             done = false;
         }
+
 
         template <typename CHAR>
         writer<CHAR>::~writer()
@@ -116,7 +126,8 @@ namespace z
         ///set the file name and data to write
         template <typename CHAR>
         void writer<CHAR>::set(const core::string<char>& fileName,
-                               const core::string<CHAR>& fileData)
+                               const core::string<CHAR>& fileData,
+                               bool append)
         {
             if (file_name)
                 delete[] file_name;
@@ -131,6 +142,8 @@ namespace z
             data = new CHAR[fileData.length()+1];
             for(int i=0; i<fileData.length()+1; i++)
                 data[i] = fileData[i];
+
+            always_append = append;
 
             current_index = 0;
             done = false;
@@ -161,7 +174,7 @@ namespace z
                 return 1;
 
             std::ofstream file;
-            if (current_index)
+            if (current_index || always_append)
                 file.open(file_name, std::ios::app);
             else
                 file.open(file_name);
@@ -194,7 +207,7 @@ namespace z
             std::locale::global(std::locale(""));
             std::wofstream file;
 
-            if (current_index)
+            if (current_index || always_append)
                 file.open(file_name, std::ios::app);
             else
                 file.open(file_name);
