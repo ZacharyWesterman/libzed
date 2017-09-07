@@ -1,22 +1,3 @@
-/**
- * File:            listFilesInDir.h
- * Namespace:       z::file
- * Description:     The listFilesInDir() function is meant to be a
- *                  platform-independent way of allowing the user
- *                  to get a list of all files in the given
- *                  directory with the given file extension.
- *
- * Usage:           listFilesInDir(path, type, output)
- *                  if path is "", it is assumed to be the current working directory.
- *                  if the type is "*", then all types are accepted. otherwise,
- *                  the file type is expected to have no leading '.'
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Apr. 2017
-**/
-
 #pragma once
 #ifndef LIST_FILES_IN_DIR_H_INCLUDED
 #define LIST_FILES_IN_DIR_H_INCLUDED
@@ -25,23 +6,73 @@
 #include <z/core/array.h>
 
 #ifdef __linux__
-
 #include <dirent.h>
+#elif _WIN32
+#include <windows.h>
+#else
+#warning "list_files_in_dir.h" is incompatible with target OS.
+#endif
 
 namespace z
 {
     namespace file
     {
-        void listFilesInDir(const core::string<char>& dir,
-                            const core::string<char>& file_type,
-                            core::array< core::string<char> >& output)
+        /**
+         * \brief List all files of a given type
+         * in the given directory.
+         *
+         * This function is meant to be a
+         * platform-independent way of allowing the user
+         * to get a list of all files in the given
+         * directory with the given file extension.
+         *
+         * \param dir the working directory. If \b dir is \b "",
+         * then it is assumed to be the current working directory.
+         *
+         * \param file_type the file extension. If the type is \b "*",
+         * then all types are accepted. Otherwise, the file type
+         * is expected to have no leading period.
+         *
+         * \return An array containing the names of all files of
+         * the given type in the given directory.
+         */
+        core::array< core::string<char> >
+            listFilesInDir(const core::string<char>& dir,
+                           const core::string<char>& file_type)
         {
+            core::array< core::string<char> > output;
+
             core::string<char> search_path = dir;
 
             if (!dir.length())
                 search_path += "./";
             else
                 search_path += "/";
+
+
+            #ifdef _WIN32
+            search_path += "/*.";
+
+            search_path += file_type;
+
+
+            WIN32_FIND_DATA fd;
+            HANDLE hFind = FindFirstFile(search_path.str(), &fd);
+
+            if (hFind != INVALID_HANDLE_VALUE)
+            {
+                do
+                {
+                    if(!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+                    {
+                        output.add(core::string<char>(fd.cFileName));
+                    }
+                }
+                while (FindNextFile(hFind, &fd));
+
+                FindClose(hFind);
+            }
+            #else
 
             bool any_extension;
 
@@ -78,56 +109,11 @@ namespace z
             }
 
             closedir(dpdf);
+            #endif
+
+            return output;
         }
     }
 }
-
-#elif _WIN32
-
-#include <windows.h>
-
-namespace z
-{
-    namespace file
-    {
-        void listFilesInDir(const core::string<char>& dir,
-                            const core::string<char>& file_type,
-                            core::array< core::string<char> >& output)
-        {
-            core::string<char> search_path = dir;
-
-            if (!dir.length())
-                search_path += "./";
-            else
-                search_path += "/";
-
-            search_path += "/*.";
-
-            search_path += file_type;
-
-
-            WIN32_FIND_DATA fd;
-            HANDLE hFind = FindFirstFile(search_path.str(), &fd);
-
-            if (hFind != INVALID_HANDLE_VALUE)
-            {
-                do
-                {
-                    if(!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
-                    {
-                        output.add(core::string<char>(fd.cFileName));
-                    }
-                }
-                while (FindNextFile(hFind, &fd));
-
-                FindClose(hFind);
-            }
-        }
-    }
-}
-
-#else
-    #warning "list_files_in_dir.h" is incompatible with target OS.
-#endif
 
 #endif // LIST_FILES_IN_DIR_H_INCLUDED

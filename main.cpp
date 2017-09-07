@@ -11,15 +11,12 @@ using namespace z;
 
 int main()
 {
-    file::writer<int> w ("test.txt", L"hello, boye", false);
+    core::array< core::string<char> > files;
 
-    core::timeout t (0);
+    files = file::listFilesInDir("", "*");
 
-    do
-    {
-        cout << '.';
-    } while(!w.write(t));
-
+    for (int i=0; i<files.size(); i++)
+        cout << files[i].str() << endl;
 
     return 0;
 }

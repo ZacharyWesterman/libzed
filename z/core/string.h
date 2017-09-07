@@ -271,8 +271,12 @@ namespace z
             string();
             ~string();
 
+            string(string&& other);
+
             template <typename CHAR_2>
             string(const CHAR_2* buffer);
+
+            string(const string& other);
 
             template <typename CHAR_2>
             string(const string<CHAR_2>& other);
@@ -384,6 +388,18 @@ namespace z
                 delete[] string_array;
         }
 
+        ///Move constructor
+        template <typename CHAR>
+        string<CHAR>::string(string<CHAR>&& other)
+        {
+            //snag other's resources and clear other
+            array_length = other.array_length;
+            string_array = other.string_array;
+
+            other.string_array = NULL;
+            other.array_length = 0;
+        }
+
         ///Constructor from null-terminated character string
         template <typename CHAR>
         template <typename CHAR_2>
@@ -431,7 +447,19 @@ namespace z
                 string();
         }
 
-        ///Copy constructor
+        ///Copy constructor from same type
+        template <typename CHAR>
+        string<CHAR>::string(const string<CHAR>& other)
+        {
+            array_length = other.array_length;
+
+            string_array = new CHAR[array_length];
+
+            for (int i=0; i<array_length; i++)
+                string_array[i] = other.string_array[i];
+        }
+
+        ///Copy constructor from other type
         template <typename CHAR>
         template <typename CHAR_2>
         string<CHAR>::string(const string<CHAR_2>& other)
@@ -442,9 +470,8 @@ namespace z
 
             if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                for (int i=0; i<array_length-1; i++)
+                for (int i=0; i<array_length; i++)
                     string_array[i] = other.str()[i];
-
             }
             else
             {
