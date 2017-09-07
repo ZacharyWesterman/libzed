@@ -9,7 +9,7 @@
 #define FILE_H_INCLUDED
 
 ///Directory operations
-#include "file/listFilesInDir.h"
+#include "file/listFiles.h"
 #include "file/shorten.h"
 #include "file/exists.h"
 

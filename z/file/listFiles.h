@@ -1,6 +1,6 @@
 #pragma once
-#ifndef LIST_FILES_IN_DIR_H_INCLUDED
-#define LIST_FILES_IN_DIR_H_INCLUDED
+#ifndef LISTFILES_H_INCLUDED
+#define LISTFILES_H_INCLUDED
 
 #include <z/core/string.h>
 #include <z/core/array.h>
@@ -10,7 +10,7 @@
 #elif _WIN32
 #include <windows.h>
 #else
-#warning "list_files_in_dir.h" is incompatible with target OS.
+#warning "z/file/listFiles.h" is incompatible with target OS.
 #endif
 
 namespace z
@@ -37,8 +37,8 @@ namespace z
          * the given type in the given directory.
          */
         core::array< core::string<char> >
-            listFilesInDir(const core::string<char>& dir,
-                           const core::string<char>& file_type)
+            listFiles(const core::string<char>& dir,
+                      const core::string<char>& file_type)
         {
             core::array< core::string<char> > output;
 
@@ -116,4 +116,4 @@ namespace z
     }
 }
 
-#endif // LIST_FILES_IN_DIR_H_INCLUDED
+#endif // LISTFILES_H_INCLUDED
