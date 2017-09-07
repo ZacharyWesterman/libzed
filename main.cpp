@@ -13,7 +13,7 @@ int main()
 {
     core::array< core::string<char> > files;
 
-    files = file::listFilesInDir("", "*");
+    files = file::listFiles("", "*");
 
     for (int i=0; i<files.size(); i++)
         cout << files[i].str() << endl;
