@@ -11,7 +11,7 @@ using namespace z;
 
 int main()
 {
-    file::writer<wchar_t> w ("test.txt", L"שלום, באסקר");
+    file::writer<int> w ("test.txt", L"hello, boye");
 
     core::timeout t (0);
 

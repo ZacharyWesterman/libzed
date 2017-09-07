@@ -224,8 +224,8 @@ namespace z
         /**
          * \brief Default loading function for wide character set.
          */
-        template<>
-        int reader<wchar_t>::read(const core::timeout& time)
+        template<typename CHAR>
+        int reader<CHAR>::read(const core::timeout& time)
         {
             if (done)
                 return 1;
@@ -243,7 +243,7 @@ namespace z
 
                 //allocate memory for the file
                 bufsiz = file.tellg();
-                contents_buffer = new wchar_t[bufsiz+1];
+                contents_buffer = new CHAR[bufsiz+1];
                 contents_buffer[bufsiz] = null;
 
                 file.seekg(0, std::ios_base::beg);
@@ -254,7 +254,7 @@ namespace z
 
             while (!time.timedOut() && (current_index < bufsiz) && !file.eof())
             {
-                contents_buffer[current_index] = file.get();
+                contents_buffer[current_index] = (CHAR)file.get();
                 current_index++;
             }
             contents_buffer[current_index] = null;

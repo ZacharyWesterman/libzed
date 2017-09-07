@@ -185,8 +185,8 @@ namespace z
         }
 
         ///iterative write() function for wide characters
-        template<>
-        int writer<wchar_t>::write(const core::timeout& time)
+        template<typename CHAR>
+        int writer<CHAR>::write(const core::timeout& time)
         {
             if (done)
                 return 1;
@@ -207,7 +207,7 @@ namespace z
             {
                 file.put(data[current_index]);
                 current_index++;
-            } while (!time.timedOut() && data[current_index]);
+            } while (!time.timedOut() && (wchar_t)data[current_index]);
 
 
             //we are done with this iteration
