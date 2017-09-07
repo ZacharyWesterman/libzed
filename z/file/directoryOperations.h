@@ -1,16 +1,3 @@
-/**
- * File:            directoryOperations.h
- * Namespace:       z::file
- * Description:     Provides methods for directory
- *                  shortening, and separation of
- *                  file name and directory.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   14 May 2017
-**/
-
 #pragma once
 #ifndef DIRECTORYOPERATIONS_H_INCLUDED
 #define DIRECTORYOPERATIONS_H_INCLUDED
@@ -21,12 +8,22 @@ namespace z
 {
     namespace file
     {
-        ///Directory shortening function,
-        ///which removes extra symbols from a directory string.
-        ///(e.g. "C:/a1/b1/../b2/foo.bar" -> "C:/a1/b2/foo.bar")
-        core::string<char> shorten(const core::string<char>& input)
+        /**
+         * \brief Shorten the given directory string.
+         *
+         * Removes any extra symbols from the given directory string.
+         * Extra slashes are removed, as well as redundant symbols
+         * like \b "/./". Unnecessary directory backtracking is
+         * also removed.
+         * <BR>(e.g. "C:/a1/b1/../b2/foo.bar" -> "C:/a1/b2/foo.bar")
+         *
+         * \param dir the given directory.
+         *
+         * \return The directory with redundant symbols removed.
+         */
+        core::string<char> shorten(const core::string<char>& dir)
         {
-            core::string<char> output = input;
+            core::string<char> output = dir;
 
             int last_slash = -1;
 
