@@ -34,56 +34,123 @@ namespace z
 {
     namespace file
     {
+        /**
+         * \brief A class for iterative file writing.
+         *
+         * The file::reader class writes as much as
+         * possible to a file before the specified timeout.
+         * If timeout is reached, closes the file. Then
+         * attempts to reopen file and continue writing at
+         * each subsequent call.
+         *
+         * Note that this class is only compatible with types
+         * \b char and \b wchar_t.
+         *
+         */
         template<typename CHAR>
         class writer
         {
-            core::string<char> file_name;
+        public:
+            char* file_name;
+            CHAR* data;
 
-            core::string<CHAR> data;
-
-            long current_index;
+            int current_index;
 
             bool done;
 
         public:
-            writer()
-            {
-                current_index = 0;
-                done = true;
-            }
+            writer();
 
-            ///set the file name
-            void setFileName(const core::string<char>& fileName)
-            {
-                file_name = fileName;
-                current_index = 0;
+            writer(const core::string<char>& fileName,
+                   const core::string<CHAR>& fileData);
 
-                done = false;
-            }
-
-            ///set the data to write
-            void setFileData(const core::string<CHAR>& fileData)
-            {
-                data = fileData;
-                current_index = 0;
-
-                done = false;
-            }
+            ~writer();
 
 
-            ///clear all data and the file name
-            void clear()
-            {
-                file_name.clear();
-                data.clear();
-
-                done = true;
-            }
+            void set(const core::string<char>& fileName,
+                     const core::string<CHAR>& fileData);
 
 
-            int write(const core::timeout&); //iterative load function prototype
+            void clear();
+
+
+            int write(const core::timeout& time = core::timeout(-1));
         };
 
+
+        template <typename CHAR>
+        writer<CHAR>::writer()
+        {
+            file_name = null;
+            data = null;
+
+            done = true;
+        }
+
+        template <typename CHAR>
+        writer<CHAR>::writer(const core::string<char>& fileName,
+                             const core::string<CHAR>& fileData)
+        {
+            file_name = new char[fileName.length()+1];
+            for(int i=0; i<fileName.length()+1; i++)
+                file_name[i] = fileName[i];
+
+            data = new CHAR[fileData.length()+1];
+            for(int i=0; i<fileData.length()+1; i++)
+                data[i] = fileData[i];
+
+            current_index = 0;
+            done = false;
+        }
+
+        template <typename CHAR>
+        writer<CHAR>::~writer()
+        {
+            if (file_name)
+                delete[] file_name;
+
+            if (data)
+                delete[] data;
+        }
+
+        ///set the file name and data to write
+        template <typename CHAR>
+        void writer<CHAR>::set(const core::string<char>& fileName,
+                               const core::string<CHAR>& fileData)
+        {
+            if (file_name)
+                delete[] file_name;
+
+            file_name = new char[fileName.length()+1];
+            for(int i=0; i<fileName.length()+1; i++)
+                file_name[i] = fileName[i];
+
+            if (data)
+                delete[] data;
+
+            data = new CHAR[fileData.length()+1];
+            for(int i=0; i<fileData.length()+1; i++)
+                data[i] = fileData[i];
+
+            current_index = 0;
+            done = false;
+        }
+
+
+        ///clear all data and the file name
+        template <typename CHAR>
+        void writer<CHAR>::clear()
+        {
+            if (file_name)
+                delete[] file_name;
+            file_name = null;
+
+            if (data)
+                delete[] data;
+            data = null;
+
+            done = true;
+        }
 
 
         ///iterative write() function for narrow characters
@@ -94,27 +161,25 @@ namespace z
                 return 1;
 
             std::ofstream file;
-            file.open(file_name.str());
+            if (current_index)
+                file.open(file_name, std::ios::app);
+            else
+                file.open(file_name);
 
-            if (!file)
+            if (!file.good())
                 return -1;
 
-
-            //continue where we last left off
-            file.seekp(std::ios_base::beg + current_index);
-
-            while (!time.timedOut() && (current_index < data.length()))
+            do //append at least 1 character each call.
             {
                 file.put(data[current_index]);
                 current_index++;
-            }
-
+            } while (!time.timedOut() && data[current_index]);
 
             //we are done with this iteration
             file.close();
 
 
-            done = (current_index >= data.length()) || (!time.timedOut());
+            done = !data[current_index];
 
             return done;
         }
@@ -129,30 +194,27 @@ namespace z
             std::locale::global(std::locale(""));
             std::wofstream file;
 
-            if (current_index == 0)
-                file.open(file_name.str(), std::ios::app);
+            if (current_index)
+                file.open(file_name, std::ios::app);
             else
-                file.open(file_name.str());
+                file.open(file_name);
 
 
             if (!file.good())
                 return -1;
 
-            //continue where we last left off
-            //file.seekp(std::ios_base::beg + current_index);
-
-            while (!time.timedOut() && (current_index < data.length()))
+            do //append at least 1 character each call.
             {
                 file.put(data[current_index]);
                 current_index++;
-            }
+            } while (!time.timedOut() && data[current_index]);
 
 
             //we are done with this iteration
             file.close();
 
 
-            done = (current_index >= data.length()) || (!time.timedOut());
+            done = !data[current_index];
 
             return done;
         }

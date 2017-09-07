@@ -11,13 +11,15 @@ using namespace z;
 
 int main()
 {
-    file::reader<char> f;
+    file::writer<wchar_t> w ("test.txt", L"שלום, באסקר");
 
-    f.set("test.txt");
+    core::timeout t (0);
 
-    f.read();
+    do
+    {
+        cout << '.';
+    } while(!w.write(t));
 
-    cout << f.getContents() << endl;
 
     return 0;
 }
