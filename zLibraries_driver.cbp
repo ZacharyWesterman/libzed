@@ -39,7 +39,6 @@
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/charFunctions.h" />
-		<Unit filename="z/core/circularNumber.h" />
 		<Unit filename="z/core/dynamicStack.h" />
 		<Unit filename="z/core/loadLibrary.h" />
 		<Unit filename="z/core/pause.h" />

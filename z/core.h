@@ -25,7 +25,6 @@
 
 ///Misc data structures
 #include "core/dynamicStack.h"
-#include "core/circularNumber.h"
 
 ///Timers
 #include "core/timer.h"
