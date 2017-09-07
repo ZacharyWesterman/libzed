@@ -68,7 +68,7 @@ namespace z
              * \return The number of \b milliseconds that have passed
              * since the timer was last reset.
              */
-            Float millis() const
+            inline Float millis() const
             {
                 Float _micro = (Float)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();
@@ -82,7 +82,7 @@ namespace z
              * \return The number of \b seconds that have passed
              * since the timer was last reset.
              */
-            Float seconds() const
+            inline Float seconds() const
             {
                 Float _micro = (Float)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();
@@ -96,7 +96,7 @@ namespace z
              * \return The number of \b minutes that have passed
              * since the timer was last reset.
              */
-            Float minutes() const
+            inline Float minutes() const
             {
                 Float _micro = (Float)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();
@@ -110,7 +110,7 @@ namespace z
              * \return The number of \b minutes that have passed
              * since the timer was last reset.
              */
-            Float hours() const
+            inline Float hours() const
             {
                 Float _micro = (Float)(std::chrono::duration_cast<_microseconds>
                         (high_resolution_clock::now() - start)).count();

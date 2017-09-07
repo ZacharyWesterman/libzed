@@ -11,7 +11,7 @@ using namespace z;
 
 int main()
 {
-    core::timer t;
+    core::timeout t;
 
     core::pause(360);
 
