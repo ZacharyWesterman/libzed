@@ -24,10 +24,9 @@ namespace z
          * attempts to reopen file and continue loading at
          * each subsequent call.
          *
+         * Note that this class is only compatible with types
+         * \b char and \b wchar_t.
          *
- *                  Returns -1 if unable to open the file at any point.
- *                  Returns  0 if open successful but not done loading.
- *                  Returns  1 if done loading the file.
          */
         template<typename CHAR>
         class reader
@@ -51,12 +50,45 @@ namespace z
 
             void clear();
 
+            /**
+             * \brief Load the file contents.
+             *
+             * Attempts to load as much of the file into memory as
+             * possible. If the timer runs out before that, returns
+             * \b 0 to indicate that it should be called again.
+             * Continues loading file contents on each subsequent
+             * call. If no parameter is given, then the entire file
+             * will be loaded into memory before returning.
+             *
+             * \param time an optional parameter to pause loading
+             * after a timeout.
+             *
+             * \return \b -1 if unable to open the file at any point,<BR>
+             * \b 0 if open successful but not done loading, and <BR>
+             * \b 1 if done loading the file.
+             */
             int read(const core::timeout& time = core::timeout(-1));
 
             inline const CHAR* getContents() const;
         };
 
+        /**
+         * \brief Default constructor.
+         */
+        template <typename CHAR>
+        reader<CHAR>::reader()
+        {
+            file_name = null;
 
+            contents_buffer = null;
+            current_index = 0;
+            bufsiz = 0;
+            done = true;
+        }
+
+        /**
+         * \brief Constructor with a file name.
+         */
         template <typename CHAR>
         reader<CHAR>::reader(const core::string<char>& fileName)
         {
@@ -70,17 +102,9 @@ namespace z
             done = false;
         }
 
-        template <typename CHAR>
-        reader<CHAR>::reader()
-        {
-            file_name = null;
-
-            contents_buffer = null;
-            current_index = 0;
-            bufsiz = 0;
-            done = true;
-        }
-
+        /**
+         * \brief Destructor
+         */
         template <typename CHAR>
         reader<CHAR>::~reader()
         {
@@ -92,7 +116,9 @@ namespace z
         }
 
 
-        ///clear all buffer contents as well as the file name
+        /**
+         * \brief Clear all buffer contents as well as the file name.
+         */
         template <typename CHAR>
         void reader<CHAR>::clear()
         {
@@ -112,7 +138,9 @@ namespace z
         }
 
 
-        ///set the file name and clear the buffer contents
+        /**
+         * \brief Set the file name and clear the buffer contents.
+         */
         template <typename CHAR>
         void reader<CHAR>::set(const core::string<char>& fileName)
         {
@@ -246,7 +274,9 @@ namespace z
 
 
 
-        ///return a pointer to the contents buffer
+        /**
+         * \brief Get a pointer to the contents buffer.
+         */
         template <typename CHAR>
         inline const CHAR* reader<CHAR>::getContents() const
         {
