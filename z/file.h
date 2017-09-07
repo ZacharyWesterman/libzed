@@ -13,11 +13,7 @@
 #include "file/directoryOperations.h"
 #include "file/exists.h"
 
-///Manage entire file contents
-#include "file/loadFileToMemory.h"
-#include "file/saveToFileFromMemory.h"
-
-///Manage file contents with a timeout
+///Manage file contents
 #include "file/reader.h"
 #include "file/writer.h"
 

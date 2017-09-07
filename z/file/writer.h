@@ -1,21 +1,3 @@
-/**
- * File:            saveFileTimeout.h
- * Namespace:       z::file
- * Description:     The file::writer class writes as much of
- *                  a file as possible before the specified timeout.
- *                  If timeout is reached, closes the file. Then
- *                  attempts to reopen file and continue writing at
- *                  each subsequent call.
- *                  Returns -1 if unable to open the file at any point.
- *                  Returns  0 if open successful but not done writing.
- *                  Returns  1 if done writing the file.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Apr. 2017
-**/
-
 #pragma once
 #ifndef WRITER_H_INCLUDED
 #define WRITER_H_INCLUDED
