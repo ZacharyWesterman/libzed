@@ -10,7 +10,7 @@
 
 ///Directory operations
 #include "file/listFilesInDir.h"
-#include "file/directoryOperations.h"
+#include "file/shorten.h"
 #include "file/exists.h"
 
 ///Manage file contents

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DIRECTORYOPERATIONS_H_INCLUDED
-#define DIRECTORYOPERATIONS_H_INCLUDED
+#ifndef SHORTEN_H_INCLUDED
+#define SHORTEN_H_INCLUDED
 
 #include <z/core/string.h>
 
@@ -63,4 +63,4 @@ namespace z
     }
 }
 
-#endif // DIRECTORYOPERATIONS_H_INCLUDED
+#endif // SHORTEN_H_INCLUDED
