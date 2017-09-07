@@ -17,8 +17,8 @@
 **/
 
 #pragma once
-#ifndef SAVEFILETIMEOUT_H_INCLUDED
-#define SAVEFILETIMEOUT_H_INCLUDED
+#ifndef WRITER_H_INCLUDED
+#define WRITER_H_INCLUDED
 
 #include <z/core/string.h>
 #include <z/core/timeout.h>
@@ -159,4 +159,4 @@ namespace z
     }
 }
 
-#endif // SAVEFILETIMEOUT_H_INCLUDED
+#endif // WRITER_H_INCLUDED

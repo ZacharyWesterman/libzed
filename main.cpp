@@ -13,7 +13,7 @@ int main()
 {
     file::reader<char> f;
 
-    f.setFileName()
+    f.set("test.txt");
 
     f.read();
 
