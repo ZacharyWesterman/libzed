@@ -1,6 +1,6 @@
 #pragma once
-#ifndef READFILETIMEOUT_H_INCLUDED
-#define READFILETIMEOUT_H_INCLUDED
+#ifndef READER_H_INCLUDED
+#define READER_H_INCLUDED
 
 #include <z/core/string.h>
 #include <z/core/timeout.h>
@@ -255,4 +255,4 @@ namespace z
     }
 }
 
-#endif // READFILETIMEOUT_H_INCLUDED
+#endif // READER_H_INCLUDED
