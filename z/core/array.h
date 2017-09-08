@@ -22,23 +22,29 @@ namespace z
 {
     namespace core
     {
-        //The array class is a wrapper for the std::vector class
-        //that adds ease of use. Additionally, if I ever decide to
-        //stop using vectors, I won't have to change all of my code,
-        //just this class.
+        /**
+         * \brief A wrapper for std::vector.
+         *
+         * This class is a wrapper for the std::vector class
+         * that adds ease of use. Additionally, if I ever decide to
+         * stop using std::vector, I won't have to change all of my code,
+         * just this class.
+         */
         template <typename T>
         class array
         {
         protected:
+            ///The data in the array.
             std::vector<T> array_data;
 
-            void init(T arg1)
+        private:
+            inline void init(T arg1)
             {
                 array_data.push_back(arg1);
             }
 
             template <typename... Args>
-            void init(T arg1, Args... args)
+            inline void init(T arg1, Args... args)
             {
                 array_data.push_back(arg1);
 
@@ -46,146 +52,258 @@ namespace z
             }
 
         public:
+            ///Default constructor.
             array() {}
+
             array(const array&);
 
-            array(T arg1)
-            {
-                init(arg1);
-            }
+            array(T);
 
             template <typename... Args>
-            array(T arg1, Args... args)
-            {
-                init(arg1, args...);
-            }
+            array(T arg1, Args... args);
 
+            ///Destructor
             ~array() {}
 
-            void clear();
+            inline void clear();
 
             virtual int add(const T&);
             virtual void add(const array&);
             bool insert(const T&, int);
             bool remove(int);
 
-            bool replace(int, int, const T&);
-            bool replace(int, int, const array<T>&);
+            void replace(int, int, const T&);
+            void replace(int, int, const array<T>&);
 
 
             array subset(int, int);
 
             inline int size() const;
 
-            T& at(const int);
-            const T& at(const int) const;
-            T& operator[](const int);
-            const T& operator[](const int) const;
+            inline T& at(const int);
+            inline const T& at(const int) const;
+            inline T& operator[](const int);
+            inline const T& operator[](const int) const;
 
-            ///Function to check if a given object is in the array
-            //linear search (array is unsorted)
-            //returns -1 if the object was not found,
-            //returns the object's index if it was found
-            virtual int find(const T& object) const
-            {
-                for (int i=0; i<(int)array_data.size(); i++)
-                    if (array_data.at(i) == object)
-                        return i;
 
-                return -1;
-            }
+            virtual int find(const T& object) const;
 
-            const array& operator=(const array& other)
-            {
-                clear();
+            const array& operator=(const array& other);
 
-                for (int i=0; i<(int)other.array_data.size(); i++)
-                    array_data.push_back(other.array_data.at(i));
+            bool operator==(const array& other) const;
+            bool operator>(const array& other) const;
+            bool operator<(const array& other) const;
+            inline bool operator>=(const array& other) const;
+            inline bool operator<=(const array& other) const;
 
-                return *this;
-            }
 
-            bool operator==(const array& other) const
-            {
-                if (array_data.size() != other.array_data.size())
+            bool is_valid(int position) const;
+        };
+
+        /**
+         * \brief Constructor with one argument.
+         *
+         * Constructs the array with one
+         * element already contained.<BR>
+         *
+         * \b Syntax: array<T> X (arg1); array<T> X = arg1;
+         *
+         * \param arg1 initializing data.
+         */
+        template <typename T>
+        array<T>::array(T arg1)
+        {
+            init(arg1);
+        }
+
+        /**
+         * \brief List-initialized constructor.
+         *
+         * Constructs the array with an arbitrary
+         * number of elements already contained.<BR>
+         *
+         * \b Syntax: array<T> X {arg1, arg2, ...};
+         * array<T> X = {arg1, arg2, ...};
+         *
+         * \param arg1 initializing data.
+         * \param args cont. initializing data.
+         */
+        template <typename T>
+        template <typename... Args>
+        array<T>::array(T arg1, Args... args)
+        {
+            init(arg1, args...);
+        }
+
+        /**
+         * \brief Array assignment operator.
+         *
+         * Clear the contents of this array and create
+         * a copy of another array's contents into this one.
+         *
+         * \param other the array to copy from.
+         *
+         * \return This array after the operation (for <B>
+         * a=b=c type expressions).
+         */
+        template <typename T>
+        const array<T>& array<T>::operator=(const array<T>& other)
+        {
+            array_data = other.array_data;
+
+            return *this;
+        }
+
+        /**
+         * \brief Check whether two arrays' contents are the same.
+         *
+         * \param other the array to compare with this one.
+         *
+         * \return \b True if both arrays contain the same
+         * contents in the same order, and the same number of
+         * contents. \b False otherwise.
+         */
+        template <typename T>
+        bool array<T>::operator==(const array<T>& other) const
+        {
+            if (array_data.size() != other.array_data.size())
+                return false;
+
+            for (int i=0; i<(int)array_data.size(); i++)
+                if (array_data.at(i) != other.array_data.at(i))
                     return false;
 
-                for (int i=0; i<(int)array_data.size(); i++)
-                    if (array_data.at(i) != other.array_data.at(i))
-                        return false;
+            return true;
+        }
 
-                return true;
-            }
+        /**
+         * \brief Array greater-than operator
+         *
+         * \param other the array to compare with this one.
+         *
+         * \return \b True if the difference between the two arrays'
+         * elements add to a positive number, or this array has more
+         * elements. \b False otherwise.
+         */
+        template <typename T>
+        bool array<T>::operator>(const array<T>& other) const
+        {
+            if (array_data.size() != other.array_data.size())
+                return (array_data.size() > other.array_data.size());
 
-            bool operator>(const array& other) const
+            int gt_count = 0;
+
+            for (int i=0; i<(int)array_data.size(); i++)
             {
-                if (array_data.size() != other.array_data.size())
-                    return (array_data.size() > other.array_data.size());
-
-                int gt_count = 0;
-
-                for (int i=0; i<(int)array_data.size(); i++)
-                {
-                    if (array_data.at(i) > other.array_data.at(i))
-                        gt_count++;
-                    else if (array_data.at(i) < other.array_data.at(i))
-                        gt_count--;
-                }
-
-                return gt_count > 0;
+                if (array_data.at(i) > other.array_data.at(i))
+                    gt_count++;
+                else if (array_data.at(i) < other.array_data.at(i))
+                    gt_count--;
             }
 
-            bool operator<(const array& other) const
+            return gt_count > 0;
+        }
+
+        /**
+         * \brief Array less-than operator
+         *
+         * \param other the array to compare with this one.
+         *
+         * \return \b True if the difference between the two arrays'
+         * elements add to a negative number, or this array has fewer
+         * elements. \b False otherwise.
+         */
+        template <typename T>
+        bool array<T>::operator<(const array& other) const
+        {
+            if (array_data.size() != other.array_data.size())
+                return (array_data.size() < other.array_data.size());
+
+            int gt_count = 0;
+
+            for (int i=0; i<(int)array_data.size(); i++)
             {
-                if (array_data.size() != other.array_data.size())
-                    return (array_data.size() < other.array_data.size());
-
-                int gt_count = 0;
-
-                for (int i=0; i<(int)array_data.size(); i++)
-                {
-                    if (array_data.at(i) > other.array_data.at(i))
-                        gt_count++;
-                    else if (array_data.at(i) < other.array_data.at(i))
-                        gt_count--;
-                }
-
-                return gt_count < 0;
+                if (array_data.at(i) > other.array_data.at(i))
+                    gt_count++;
+                else if (array_data.at(i) < other.array_data.at(i))
+                    gt_count--;
             }
 
-            inline bool operator>=(const array& other) const
-            { return !operator<(other); }
+            return gt_count < 0;
+        }
 
-            inline bool operator<=(const array& other) const
-            { return !operator>(other); }
+        /**
+         * \brief Array greater-than-or-equal operator
+         *
+         * \param other the array to compare with this one.
+         *
+         * \return \b False if the difference between the two arrays'
+         * elements add to a negative number, or this array has fewer
+         * elements. \b True otherwise.
+         */
+        template <typename T>
+        inline bool array<T>::operator>=(const array& other) const
+        {
+            return !operator<(other);
+        }
 
+        /**
+         * \brief Array less-than-or-equal operator
+         *
+         * \param other the array to compare with this one.
+         *
+         * \return \b False if the difference between the two arrays'
+         * elements add to a positive number, or this array has more
+         * elements. \b True otherwise.
+         */
+        template <typename T>
+        inline bool array<T>::operator<=(const array<T>& other) const
+        {
+            return !operator>(other);
+        }
 
-            bool is_valid(int position) const
-            {
-                return ((position < (int)array_data.size()) &&
-                        (position >= 0));
-            }
-        };
+        /**
+         * \brief Check if a given object is in the array.
+         *
+         * \param object the object to search for.
+         *
+         * \return The first index that the object was found at.
+         * \b -1 if it was not found.
+         */
+        template <typename T>
+        int array<T>::find(const T& object) const
+        {
+            for (int i=0; i<(int)array_data.size(); i++)
+                if (array_data.at(i) == object)
+                    return i;
+
+            return -1;
+        }
 
         ///Copy constructor
         template <typename T>
         array<T>::array(const array<T>& other)
         {
-            for (int i=0; i<(int)other.array_data.size(); i++)
-                array_data.push_back(other.array_data.at(i));
+            array_data = other.array_data;
         }
 
-
-        ///Function to empty the array
+        ///Clear the data in the array.
         template <typename T>
-        void array<T>::clear()
+        inline void array<T>::clear()
         {
             array_data.clear();
         }
 
 
-        ///Function to append an object to the end of the array
-        //returns where the object was placed
+        /**
+         * \brief Add an object to the array.
+         *
+         * Appends the given data to the end of the array.
+         *
+         * \param object the data to add to the array.
+         *
+         * \return The index where the inserted object now resides.
+         */
         template <typename T>
         int array<T>::add(const T& object)
         {
@@ -194,7 +312,14 @@ namespace z
             return ((int)array_data.size() - 1);
         }
 
-        ///Function to append contents of another array to the end of this array
+        /**
+         * \brief Add another array to this array.
+         *
+         * Copies the contents of another array and
+         * appends them to the end of this array.
+         *
+         * \param other the array to copy from.
+         */
         template <typename T>
         void array<T>::add(const array& other)
         {
@@ -205,6 +330,15 @@ namespace z
 
         ///Function to insert an object to the given index in the array
         //places the given object in that index(if valid), returning false if invalid index
+        /**
+         * \brief Insert an object into the array.
+         *
+         * Inserts an object into the given index in the array, if possible.
+         *
+         * \param object the data to add to the array.
+         *
+         * \return The index where the inserted object now resides.
+         */
         template <typename T>
         bool array<T>::insert(const T& object, int index)
         {
@@ -218,8 +352,14 @@ namespace z
         }
 
 
-        ///Function to remove an object from the array
-        //removes an object from the given index, returning false if invalid index
+        /**
+         * \brief Remove an object from the array.
+         *
+         * \param index the index of the object to be removed.
+         *
+         * \return \b True if the object was successfully removed.
+         * \b False otherwise.
+         */
         template <typename T>
         bool array<T>::remove(int index)
         {
@@ -239,68 +379,87 @@ namespace z
             return (int)array_data.size();
         }
 
-        ///Functions to get an object from the array, given an index
-        //throw an exception if given an invalid index
+        /**
+         * \brief Function to get the object at the given index.
+         *
+         * \param index the index of the desired object.
+         *
+         * \return The object at the given index.
+         *
+         * \see operator[](int)
+         */
         template <typename T>
-        T& array<T>::at(int index)
+        inline T& array<T>::at(int index)
         {
-            if ((index >= (int)array_data.size()) ||
-                (index < 0))
-            {
-                throw std::bad_alloc();
-            }
-            else
-            {
-                return array_data.at(index);
-            }
+            return array_data.at(index);
         }
 
+        /**
+         * \brief Const function to get the object at the given index.
+         *
+         * \param index the index of the desired object.
+         *
+         * \return The object at the given index.
+         *
+         * \see operator[](int) const
+         */
         template <typename T>
-        const T& array<T>::at(int index) const
+        inline const T& array<T>::at(int index) const
         {
-            if ((index >= (int)array_data.size()) ||
-                (index < 0))
-            {
-                throw std::bad_alloc();
-            }
-            else
-            {
-                return array_data.at(index);
-            }
+           return array_data.at(index);
+        }
+
+        /**
+         * \brief Function to get the object at the given index.
+         *
+         * Identical behavior to at(int), but allows indexing
+         * with square brackets.
+         *
+         * \param index the index of the desired object.
+         *
+         * \return The object at the given index.
+         *
+         * \see at(int)
+         */
+        template <typename T>
+        inline T& array<T>::operator[](int index)
+        {
+            return array_data.at(index);
+        }
+
+        /**
+         * \brief Const function to get the object at the given index.
+         *
+         * Identical behavior to at(int), but allows indexing
+         * with square brackets.
+         *
+         * \param index the index of the desired object.
+         *
+         * \return The object at the given index.
+         *
+         * \see at(int) const
+         */
+        template <typename T>
+        inline const T& array<T>::operator[](int index) const
+        {
+            return array_data.at(index);
         }
 
 
+        /**
+         * \brief Replace all objects in the given range with an object.
+         *
+         * Removes all objects from \b start to \b stop (inclusive),
+         * and replaces them with the given object.
+         *
+         * \param start the index of the first object to replace.
+         * \param stop the index of the last object to replace.
+         * \param object the object to insert into the gap.
+         *
+         * \see replace(int,int,const array&)
+         */
         template <typename T>
-        T& array<T>::operator[](int index)
-        {
-            if ((index >= (int)array_data.size()) ||
-                (index < 0))
-            {
-                throw std::bad_alloc();
-            }
-            else
-            {
-                return array_data.at(index);
-            }
-        }
-
-        template <typename T>
-        const T& array<T>::operator[](int index) const
-        {
-            if ((index >= (int)array_data.size()) ||
-                (index < 0))
-            {
-                throw std::bad_alloc();
-            }
-            else
-            {
-                return array_data.at(index);
-            }
-        }
-
-
-        template <typename T>
-        bool array<T>::replace(int start, int stop, const T& object)
+        void array<T>::replace(int start, int stop, const T& object)
         {
             if (stop >= (int)array_data.size())
                 stop = (int)array_data.size() - 1;
@@ -308,22 +467,27 @@ namespace z
             if (start < 0)
                 start = 0;
 
-            if (stop < start)
-            {
-                return false;
-            }
-            else
+            if (stop >= start)
             {
                 array_data.erase(array_data.begin() + start, array_data.begin() + stop + 1);
                 array_data.insert(array_data.begin() + start, object);
-
-                return true;
             }
         }
 
-
+        /**
+         * \brief Replace all objects in the given range with an array.
+         *
+         * Removes all objects from \b start to \b stop (inclusive),
+         * and replaces them with the objects in a given array.
+         *
+         * \param start the index of the first object to replace.
+         * \param stop the index of the last object to replace.
+         * \param other the array to copy from.
+         *
+         * \see replace(int,int,const T&)
+         */
         template <typename T>
-        bool array<T>::replace(int start, int stop, const array<T>& other)
+        void array<T>::replace(int start, int stop, const array<T>& other)
         {
             if (stop >= (int)array_data.size())
                 stop = (int)array_data.size() - 1;
@@ -331,22 +495,25 @@ namespace z
             if (start < 0)
                 start = 0;
 
-            if (stop < start)
-            {
-                return false;
-            }
-            else
+            if (stop >= start)
             {
                 array_data.erase(array_data.begin() + start, array_data.begin() + stop + 1);
 
                 for (int i=other.size()-1; i>=0; i--)
                     array_data.insert(array_data.begin() + start, other[i]);
-
-                return true;
             }
         }
 
 
+        /**
+         * \brief Get a contiguous subset of the elements in the array.
+         *
+         * \param start the index of the first object to copy.
+         * \param stop the index of the last object to copy.
+         *
+         * \return An array containing the objects from \b start to
+         * \b stop, inclusive.
+         */
         template <typename T>
         array<T> array<T>::subset(int start, int stop)
         {
@@ -369,7 +536,23 @@ namespace z
         }
 
 
+        /**
+         * \brief Check if an index is within the bounds of the array.
+         *
+         * \param index the index to check.
+         *
+         * \return \b True if the given index is within array bounds.
+         * \b False otherwise.
+         */
+        template <typename T>
+        bool array<T>::is_valid(int index) const
+        {
+            return ((index < (int)array_data.size()) &&
+                    (index >= 0));
+        }
 
+
+        /* DEPRECATED- DELETE OR MOVE TO STREAM CLASS
         ///Stream output template (from array)
         template <typename CHAR, typename T>
         stream<CHAR>& operator<<(stream<CHAR>& arg1, const array<T>& arg2)
@@ -400,6 +583,7 @@ namespace z
 
             return arg1;
         }
+        */
     }
 }
 
