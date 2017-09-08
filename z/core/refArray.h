@@ -20,6 +20,7 @@ namespace z
         template <typename T>
         class refArray : public array<T>
         {
+            //only allow this class to work with pointers
             static_assert(std::is_pointer<T>::value,
                           "Template must be of pointer type.");
 

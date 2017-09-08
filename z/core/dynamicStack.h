@@ -1,20 +1,3 @@
-/**
- * File:            dynamicStack.h
- * Namespace:       z::core
- * Description:     Template class for dynamic stack.
- *
- * Methods:         push()      : adds item to the top of the stack
- *                  pop()       : gets item from the top of the stack
- *                  peek()      : returns a copy of the top item
- *                  dump()      : empties the stack
- *                  isEmpty()   : returns whether the stack is empty
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   3 Feb. 2017
-**/
-
 #pragma once
 #ifndef DYNAMICSTACK_H_INCLUDED
 #define DYNAMICSTACK_H_INCLUDED
@@ -28,7 +11,15 @@ namespace z
 {
     namespace core
     {
-        //template for dynamic stack
+        /**
+         * \brief Dynamic stack class template
+         *
+         * This stack uses a singly-linked list to
+         * dynamically lengthen and shorten the stack
+         * in a "first in, last out" order.
+         * While the stack has at least one item on it,
+         * only the top item is accessible.
+         */
         template <typename T>
         class dynamicStack
         {
@@ -42,10 +33,10 @@ namespace z
             ll_node* head;
 
         public:
-            //constructor
+            ///Constructor
             dynamicStack() {head = null;}
 
-            //destructor
+            ///Destructor
             ~dynamicStack()
             {
                 while (head != null)
@@ -56,7 +47,11 @@ namespace z
                 }
             }
 
-            //push an object to the top of the stack.
+            /**
+             * \brief Push an object onto the top of the stack.
+             *
+             * \param data the object to push onto the stack.
+             */
             void push(T data)
             {
                 ll_node* newNode = new ll_node;
@@ -67,8 +62,14 @@ namespace z
                 head = newNode;
             }
 
-            //pop an object from the top of the stack.
-            //returns whether pop was successful.
+            /**
+             * \brief Pop an object from the top of the stack.
+             *
+             * \param data the object to pop from the stack.
+             *
+             * \return \b True if the pop was successful.
+             * \b False if there are no items on the stack.
+             */
             bool pop(T& data)
             {
                 if (head == null)
@@ -87,15 +88,32 @@ namespace z
                 }
             }
 
-            T peek()
+            /**
+             * \brief Look at the item on the top of the stack.
+             *
+             * \return A reference to the top item on the stack.
+             */
+            inline T& peek()
             {
                 return head->data;
             }
 
-            //return whether the stack is empty.
-            bool isEmpty() {return (head == null);}
+            /**
+             * \brief Check whether the stack is empty.
+             *
+             * \return \b True if the stack contains no items.
+             * \b False otherwise.
+             */
+            inline bool isEmpty()
+            {
+                return (head == null);
+            }
 
-
+            /**
+             * \brief Empty the stack.
+             *
+             * Gets rid of all elements on the stack, resetting it.
+             */
             void dump()
             {
                 while (head != null)
