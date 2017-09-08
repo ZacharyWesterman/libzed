@@ -18,6 +18,7 @@ namespace z
          * stop using std::vector, I won't have to change all of my code,
          * just this class.
          *
+         * \see refArray
          * \see sortedArray
          * \see sortedRefArray
          */
@@ -47,7 +48,6 @@ namespace z
             array() {}
 
             array(const array&);
-
             array(const T&);
 
             template <typename... Args>
@@ -90,6 +90,14 @@ namespace z
 
             bool is_valid(int position) const;
         };
+
+
+        ///Copy constructor
+        template <typename T>
+        array<T>::array(const array<T>& other)
+        {
+            array_data = other.array_data;
+        }
 
         /**
          * \brief Constructor with one argument.
@@ -274,12 +282,6 @@ namespace z
             return -1;
         }
 
-        ///Copy constructor
-        template <typename T>
-        array<T>::array(const array<T>& other)
-        {
-            array_data = other.array_data;
-        }
 
         ///Clear the data in the array.
         template <typename T>

@@ -12,7 +12,9 @@ using namespace z;
 
 int main()
 {
-    core::sortedArray<int> a {2,0,4,6,8};
+    core::sortedRefArray<int*> a {new int,new int,new int};
+
+    a.add(new int);
 
     cout << "{";
     for (int i=0; i<a.size(); i++)

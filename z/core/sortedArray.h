@@ -13,6 +13,7 @@ namespace z
          * which attempts to keep all data sorted.
          *
          * \see array
+         * \see refArray
          * \see sortedRefArray
          */
         template <typename T>

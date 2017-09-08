@@ -2,16 +2,14 @@
 #ifndef SORTEDREFARRAY_H_INCLUDED
 #define SORTEDREFARRAY_H_INCLUDED
 
-#include "array.h"
-
-#define refArray array
+#include "refArray.h"
 
 namespace z
 {
     namespace core
     {
         /**
-         * \brief An extension of the \b array class which
+         * \brief An extension of the \b refArray class which
          * attempts to keep all data sorted.
          *
          * Unlike with the <B>sorted array</B>, elements are
@@ -19,6 +17,7 @@ namespace z
          * with this in mind.
          *
          * \see array
+         * \see refArray
          * \see sortedArray
          */
         template <typename T>
@@ -42,21 +41,28 @@ namespace z
             ///Default constructor
             sortedRefArray() {}
 
+            sortedRefArray(const refArray<T>&);
             sortedRefArray(const T);
 
             template <typename... Args>
             sortedRefArray(const T arg1, const Args... args);
 
-            virtual int add(const T);
+            virtual int add(const T&);
             virtual void add(const refArray<T>&);
 
-            virtual int find(const T) const;
-
+            int find(const T&) const;
             int findInsert(const T) const;
 
             virtual void sort();
         };
 
+        ///Copy constructor
+        template <typename T>
+        sortedRefArray<T>::sortedRefArray(const refArray<T>& other)
+        {
+            for (int i=0; i<other.size(); i++)
+                add(other[i]);
+        }
 
         /**
          * \brief Constructor with one argument.
@@ -108,7 +114,7 @@ namespace z
          * \return The index where the inserted pointer now resides.
          */
         template <typename T>
-        int sortedRefArray<T>::add(const T object)
+        int sortedRefArray<T>::add(const T& object)
         {
             int index = findInsert(object);
 
@@ -151,7 +157,7 @@ namespace z
          * \b -1 if it was not found.
          */
         template <typename T>
-        int sortedRefArray<T>::find(const T object) const
+        int sortedRefArray<T>::find(const T& object) const
         {
             if (this->array_data.size() == 0)
                 return -1;

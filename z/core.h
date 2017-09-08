@@ -21,6 +21,7 @@
 ///Arrays
 #include "core/array.h"
 #include "core/sortedArray.h"
+#include "core/refArray.h"
 #include "core/sortedRefArray.h"
 
 ///Misc data structures
