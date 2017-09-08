@@ -33,97 +33,120 @@ namespace z
             ll_node* head;
 
         public:
-            ///Constructor
-            dynamicStack() {head = null;}
+            dynamicStack();
+            ~dynamicStack();
 
-            ///Destructor
-            ~dynamicStack()
-            {
-                while (head != null)
-                {
-                    ll_node* nodePtr = head->next;
-                    delete head;
-                    head = nodePtr;
-                }
-            }
+            void push(T data);
 
-            /**
-             * \brief Push an object onto the top of the stack.
-             *
-             * \param data the object to push onto the stack.
-             */
-            void push(T data)
-            {
-                ll_node* newNode = new ll_node;
+            bool pop(T& data);
 
-                newNode->data = data;
-                newNode->next = head;
+            inline T& peek();
 
-                head = newNode;
-            }
+            inline bool isEmpty();
 
-            /**
-             * \brief Pop an object from the top of the stack.
-             *
-             * \param data the object to pop from the stack.
-             *
-             * \return \b True if the pop was successful.
-             * \b False if there are no items on the stack.
-             */
-            bool pop(T& data)
-            {
-                if (head == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    data = head->data;
-
-                    ll_node* nodePtr = head->next;
-                    delete head;
-                    head = nodePtr;
-
-                    return true;
-                }
-            }
-
-            /**
-             * \brief Look at the item on the top of the stack.
-             *
-             * \return A reference to the top item on the stack.
-             */
-            inline T& peek()
-            {
-                return head->data;
-            }
-
-            /**
-             * \brief Check whether the stack is empty.
-             *
-             * \return \b True if the stack contains no items.
-             * \b False otherwise.
-             */
-            inline bool isEmpty()
-            {
-                return (head == null);
-            }
-
-            /**
-             * \brief Empty the stack.
-             *
-             * Gets rid of all elements on the stack, resetting it.
-             */
-            void dump()
-            {
-                while (head != null)
-                {
-                    ll_node* nodePtr = head->next;
-                    delete head;
-                    head = nodePtr;
-                }
-            }
+            void dump();
         };
+
+        ///Constructor
+        template <typename T>
+        dynamicStack<T>::dynamicStack()
+        {
+            head = null;
+        }
+
+        ///Destructor
+        template <typename T>
+        dynamicStack<T>::~dynamicStack()
+        {
+            while (head != null)
+            {
+                ll_node* nodePtr = head->next;
+                delete head;
+                head = nodePtr;
+            }
+        }
+
+        /**
+         * \brief Push an object onto the top of the stack.
+         *
+         * \param data the object to push onto the stack.
+         */
+        template <typename T>
+        void dynamicStack<T>::push(T data)
+        {
+            ll_node* newNode = new ll_node;
+
+            newNode->data = data;
+            newNode->next = head;
+
+            head = newNode;
+        }
+
+        /**
+         * \brief Pop an object from the top of the stack.
+         *
+         * \param data the object to pop from the stack.
+         *
+         * \return \b True if the pop was successful.
+         * \b False if there are no items on the stack.
+         */
+        template <typename T>
+        bool dynamicStack<T>::pop(T& data)
+        {
+            if (head == null)
+            {
+                return false;
+            }
+            else
+            {
+                data = head->data;
+
+                ll_node* nodePtr = head->next;
+                delete head;
+                head = nodePtr;
+
+                return true;
+            }
+        }
+
+        /**
+         * \brief Look at the item on the top of the stack.
+         *
+         * \return A reference to the top item on the stack.
+         */
+        template <typename T>
+        inline T& dynamicStack<T>::peek()
+        {
+            return head->data;
+        }
+
+        /**
+         * \brief Check whether the stack is empty.
+         *
+         * \return \b True if the stack contains no items.
+         * \b False otherwise.
+         */
+        template <typename T>
+        inline bool dynamicStack<T>::isEmpty()
+        {
+            return (head == null);
+        }
+
+        /**
+         * \brief Empty the stack.
+         *
+         * Gets rid of all elements on the stack, resetting it.
+         */
+        template <typename T>
+        void dynamicStack<T>::dump()
+        {
+            while (head != null)
+            {
+                ll_node* nodePtr = head->next;
+                delete head;
+                head = nodePtr;
+            }
+        }
     }
 }
 
