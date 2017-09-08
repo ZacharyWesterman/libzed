@@ -1,17 +1,3 @@
-/**
- * File:            stream.h
- * Namespace:       z::core
- *
- * Description:     A template class for character streams.
- *                  Allows for condensing multiple objects
- *                  into one string.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   21 Feb. 2017
-**/
-
 #pragma once
 #ifndef STREAM_H_INCLUDED
 #define STREAM_H_INCLUDED
@@ -32,6 +18,14 @@ namespace z
 {
     namespace core
     {
+        /**
+         * \brief A template class for character streams.
+         *
+         * Allows for condensing multiple objects
+         * into one string.<BR>
+         * <B>This class is incomplete</B>
+         *
+         */
         template <typename CHAR>
         class stream
         {
@@ -40,8 +34,14 @@ namespace z
 
         public:
 
+            /**
+             * \brief Get the length of the stream.
+             */
             int length() const {return data.length();}
 
+            /**
+             * \brief Get the stream character array.
+             */
             const CHAR* str() const {return data.str();}
 
 
@@ -60,15 +60,6 @@ namespace z
 
                 return *this;
             }
-
-
-            ///Other stream output operators
-            //friend stream<char> operator<<(const string<char>&, const stream<char>&);
-            //friend stream<wchar_t> operator<<(const string<wchar_t>&, const stream<wchar_t>&);
-
-            //friend stream<char> operator<<(const string<char>&, const string<char>&);
-            //friend stream<wchar_t> operator<<(const string<wchar_t>&, const string<wchar_t>&);
-
 
 
             ///Stream input operator for strings
@@ -134,16 +125,19 @@ namespace z
             }
 
 
+            ///Shift into a scope.
             void shift_in()
             {
                 data += (CHAR)SI;
             }
 
+            ///Shift out of a scope.
             void shift_out()
             {
                 data += (CHAR)SO;
             }
 
+            ///Get the data in the nearest scope.
             stream pop()
             {
                 int start = data.find((CHAR)SI);
@@ -163,63 +157,10 @@ namespace z
                 return output;
             }
 
+            ///Check whether there is any data in the stream.
             bool isEmpty() {return (data.length() == 0);}
         };
 
-
-
-
-
-        /*///Stream output operator when right operand is a string (narrow chars)
-        stream<char> operator<<(const string<char>& arg1, const stream<char>& arg2)
-        {
-            stream<char> output;
-
-            output.data = arg1 + (char)ETX;
-            output.data += arg2.data;
-
-            return output;
-        }
-
-
-        ///Stream output operator when right operand is a string (wide chars)
-        stream<wchar_t> operator<<(const string<wchar_t>& arg1, const stream<wchar_t>& arg2)
-        {
-            stream<wchar_t> output;
-
-            output.data = arg1 + (wchar_t)ETX;
-            output.data += arg2.data;
-
-            return output;
-        }
-
-
-        ///Stream output operator when both operands are strings (narrow chars)
-        stream<char> operator<<(const string<char>& arg1, const string<char>& arg2)
-        {
-            stream<char> output;
-
-            char ETX = 3; //end of text
-
-            output.data = arg1 + ETX;
-            output.data += arg2 + ETX;
-
-            return output;
-        }
-
-
-        ///Stream output operator when both operands are strings (wide chars)
-        stream<wchar_t> operator<<(const string<wchar_t>& arg1, const string<wchar_t>& arg2)
-        {
-            stream<wchar_t> output;
-
-            wchar_t ETX = 3; //end of text
-
-            output.data = arg1 + ETX;
-            output.data += arg2 + ETX;
-
-            return output;
-        }*/
     }
 }
 
