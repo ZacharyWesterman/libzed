@@ -1,15 +1,3 @@
-/**
- * File:            array.h
- * Namespace:       z::core
- *
- * Description:     A wrapper for std::vector.
- *
- *
- * Author:          Zachary Westerman
- * Email:           zacharywesterman@yahoo.com
- * Last modified:   27 Jul. 2017
-**/
-
 #pragma once
 #ifndef ARRAY_H_INCLUDED
 #define ARRAY_H_INCLUDED
@@ -38,13 +26,13 @@ namespace z
             std::vector<T> array_data;
 
         private:
-            inline void init(T arg1)
+            inline void init(const T& arg1)
             {
                 array_data.push_back(arg1);
             }
 
             template <typename... Args>
-            inline void init(T arg1, Args... args)
+            inline void init(const T& arg1, const Args&... args)
             {
                 array_data.push_back(arg1);
 
@@ -57,10 +45,10 @@ namespace z
 
             array(const array&);
 
-            array(T);
+            array(const T&);
 
             template <typename... Args>
-            array(T arg1, Args... args);
+            array(const T& arg1, const Args&... args);
 
             ///Destructor
             ~array() {}
@@ -111,9 +99,9 @@ namespace z
          * \param arg1 initializing data.
          */
         template <typename T>
-        array<T>::array(T arg1)
+        array<T>::array(const T& arg1)
         {
-            init(arg1);
+            array_data.push_back(arg1);
         }
 
         /**
@@ -130,7 +118,7 @@ namespace z
          */
         template <typename T>
         template <typename... Args>
-        array<T>::array(T arg1, Args... args)
+        array<T>::array(const T& arg1, const Args&... args)
         {
             init(arg1, args...);
         }
@@ -143,8 +131,8 @@ namespace z
          *
          * \param other the array to copy from.
          *
-         * \return This array after the operation (for <B>
-         * a=b=c type expressions).
+         * \return This array after the operation (for
+         * \b a=b=c type expressions).
          */
         template <typename T>
         const array<T>& array<T>::operator=(const array<T>& other)
@@ -265,6 +253,9 @@ namespace z
         /**
          * \brief Check if a given object is in the array.
          *
+         * Locates the desired index using a linear search,
+         * as the array is expected to be unsorted.
+         *
          * \param object the object to search for.
          *
          * \return The first index that the object was found at.
@@ -336,6 +327,7 @@ namespace z
          * Inserts an object into the given index in the array, if possible.
          *
          * \param object the data to add to the array.
+         * \param index the index in the array to insert the object.
          *
          * \return The index where the inserted object now resides.
          */
@@ -372,7 +364,11 @@ namespace z
         }
 
 
-        ///Return the number of objects in the array
+        /**
+         * \brief Get the size of the array.
+         *
+         * \return The number of objects in the array.
+         */
         template <typename T>
         inline int array<T>::size() const
         {
