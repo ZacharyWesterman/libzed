@@ -11,6 +11,9 @@ namespace z
         /**
          * \brief An extension of the array class
          * which attempts to keep all data sorted.
+         *
+         * \see array
+         * \see sortedRefArray
          */
         template <typename T>
         class sortedArray : public array<T>
@@ -120,7 +123,12 @@ namespace z
         template <typename T>
         void sortedArray<T>::add(const array<T>& other)
         {
+            for (int i=0; i<other.size(); i++)
+            {
+                int index = findInsert(other[i]);
 
+                this->insert(other[i], index);
+            }
         }
 
         /**
@@ -179,7 +187,7 @@ namespace z
          * \return The first index where the object can be
          * inserted.
          */
-         template <typename T>
+        template <typename T>
         int sortedArray<T>::findInsert(const T& object) const
         {
             if (this->array_data.size() == 0)

@@ -14,9 +14,12 @@ namespace z
          * \brief A wrapper for std::vector.
          *
          * This class is a wrapper for the std::vector class
-         * that adds ease of use. Additionally, if I ever decide to
+         * that adds ease of use.<BR>Additionally, if I ever decide to
          * stop using std::vector, I won't have to change all of my code,
          * just this class.
+         *
+         * \see sortedArray
+         * \see sortedRefArray
          */
         template <typename T>
         class array
