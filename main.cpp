@@ -12,18 +12,11 @@ using namespace z;
 
 int main()
 {
-    core::sortedRefArray<int*> a {new int,new int,new int};
+    core::string<char> a = "ff.ff";
 
-    a.add(new int);
+    cout << a.complexValue(16) << endl;
 
-    cout << "{";
-    for (int i=0; i<a.size(); i++)
-    {
-        if (i)
-            cout << ",";
-        cout << a[i];
-    }
-    cout << "}\n";
+    //cout << (char)46 << endl;
 
     return 0;
 }

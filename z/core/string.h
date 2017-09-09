@@ -709,7 +709,7 @@ namespace z
         }
 
         /**
-         * \brief Greater than operator.
+         * \brief String greater-than operator.
          */
         template <typename CHAR>
         inline bool string<CHAR>::operator>(const string<CHAR>& other) const
@@ -719,7 +719,7 @@ namespace z
         }
 
         /**
-         * \brief Greater than or equal to operator.
+         * \brief String greater-than-or-equal operator.
          */
         template <typename CHAR>
         inline bool string<CHAR>::operator>=(const string<CHAR>& other) const
@@ -729,7 +729,7 @@ namespace z
         }
 
         /**
-         * \brief Less than operator.
+         * \brief String less-than operator.
          */
         template <typename CHAR>
         inline bool string<CHAR>::operator<(const string<CHAR>& other) const
@@ -739,7 +739,7 @@ namespace z
         }
 
         /**
-         * \brief Less than or equal to operator.
+         * \brief String less-than-or-equal operator.
          */
         template <typename CHAR>
         inline bool string<CHAR>::operator<=(const string<CHAR>& other) const
@@ -749,7 +749,7 @@ namespace z
         }
 
         /**
-         * \brief Operator for string concatenation.
+         * \brief Operator for concatenating to this string.
          */
         template <typename CHAR>
         inline const string<CHAR>& string<CHAR>::operator+=
@@ -761,7 +761,7 @@ namespace z
         }
 
         /**
-         * \brief Addition operator for returning concatenated string.
+         * \brief Addition operator for returning a concatenated string.
          */
         template <typename CHAR>
         inline const string<CHAR> string<CHAR>::operator+
@@ -796,7 +796,6 @@ namespace z
 
         /**
          * \brief Convert string to \b char type.
-         *
          */
         template <typename CHAR>
         inline const string<char> string<CHAR>::narrow() const
@@ -806,7 +805,6 @@ namespace z
 
         /**
          * \brief Convert string to \b wchar_t type.
-         *
          */
         template <typename CHAR>
         inline const string<wchar_t> string<CHAR>::wide() const
@@ -944,6 +942,23 @@ namespace z
         /**
          * \brief Convert the string to its real number equivalent.
          *
+         * When converting a string to a number, alphabetic
+         * characters are assumed to represent numbers above \b 9.
+         * So the string \b "2EB0" in base \b 16 would convert to
+         * \b 11952. Valid numeric strings can have up to a single
+         * decimal point. A leading '-' is also allowed for negative
+         * numbers. Additionally, the character \b 'e' or \b 'E'
+         * is assumed to imply some exponent in the given base. This
+         * exponent can also be negative (e.g. <B>2.2e-3.1</B>).
+         * It is important to note bases above \b 14 (such as
+         * hexadecimal) have \b E as a digit, so exponents are only
+         * interpreted for bases less than 15.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return The value of the string as it appears to humans.
+         * \b 0 if there are any invalid characters.
          */
         template <typename CHAR>
         Float string<CHAR>::value(int base) const
@@ -954,7 +969,7 @@ namespace z
             int start = 0;
             bool isNegative = false;
 
-            if (string_array[0] == (CHAR)45) //'-' character
+            if (string_array[0] == (CHAR)'-') //'-' character
             {
                 start = 1;
                 isNegative = true;
@@ -962,6 +977,7 @@ namespace z
 
             bool pastDecimal = false;
             bool pastExponent = false;
+            bool exponentLast = false;
             Float fracMult = 1.0;
             int exponent = 0;
             bool expNegative = false;
@@ -976,7 +992,7 @@ namespace z
 
                 //only one decimal point is allowed.
                 //any more, and the string is invalid
-                if (string_array[i] == (CHAR)46) //'.' character
+                if (string_array[i] == (CHAR)'.')
                 {
                     if (pastDecimal)
                     {
@@ -994,29 +1010,51 @@ namespace z
                     {
                         exponent *= base;
                         exponent += numeralValue(string_array[i]);
+
+                        exponentLast = false;
                     }
                     else if (pastDecimal)
                     {
                         fracMult /= (Float)base;
-                        value += fracMult * (Float)numeralValue(string_array[i]); //actual value from character
+                        value += fracMult * (Float)numeralValue(string_array[i]);
                     }
                     else
                     {
                         value *= (Float)base;
-                        value += (Float)numeralValue(string_array[i]); //actual value from character
+                        value += (Float)numeralValue(string_array[i]);
                     }
                 }
-                else if (string_array[i] == (CHAR)69)
+                else if ((string_array[i] == (CHAR)'E') ||
+                         (string_array[i] == (CHAR)'e'))
                 {
-                    pastExponent = true;
+                    if (pastExponent)
+                        return 0;
+                    else
+                    {
+                        pastExponent = true;
+                        exponentLast = true;
+                    }
                 }
-                else if (pastExponent && (string_array[i] == (CHAR)45))
+                else if (pastExponent &&
+                         (string_array[i] == (CHAR)'-'))
                 {
+                    if (exponentLast)
+                        exponentLast = false;
+                    else
+                        return 0;
+
                     expNegative = true;
                 }
-                else if (string_array[i] != (CHAR)46)
+                else if (string_array[i] == (CHAR)'+')
                 {
-                    return 0.0;
+                    if (exponentLast)
+                        exponentLast = false;
+                    else
+                        return 0;
+                }
+                else if (string_array[i] != (CHAR)'.')
+                {
+                    return 0;
                 }
             }
 
@@ -1052,32 +1090,73 @@ namespace z
         /**
          * \brief Convert the string to its complex number equivalent.
          *
+         * This function splits a numeric string into its real and
+         * imaginary parts according to \b a+bi or \b a-bi, where
+         * the imaginary part is assumed to come after the real part.
+         * If no imaginary part is detected, then it is assumed to be
+         * \b 0. Also, note that if the base is greater than \b 17,
+         * then the complex part is assumed to be \b 0 as well,
+         * because \b I is a digit in that case.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return The complex value of the string as it appears to
+         * humans. <B>0+0i</B> if there are any invalid characters.
+         *
+         * \see value(int)
          */
         template <typename CHAR>
         std::complex<Float> string<CHAR>::complexValue(int base) const
         {
-            if (endsWith("i"))
+            if (array_length-2 <= 0)
+                return std::complex<Float>(0,0);
+
+            if ((base <= 17) &&//doesn't work for bases >17
+                (string_array[array_length-2] == (CHAR)'i'))
             {
-                Float real(0), imag;
+                if (array_length == 2)
+                    return std::complex<Float> (0,1);
 
-                int realEnd = findLast("+");
+                int imag_begin;
 
-                imag = substr(realEnd+1, length()-2).value(base);
-
-                if (realEnd >= 0)
+                int i = array_length-3;
+                bool done = false;
+                bool foundExp = false;
+                while (i && !done)
                 {
-                    real = substr(0, realEnd-1).value(base);
-                }
-                else
-                {
-                    realEnd = findLast("-");
-
-                    if (realEnd >= 0)
+                    if ((string_array[i] == (CHAR)'+') ||
+                         (string_array[i] == (CHAR)'-'))
                     {
-                        real = substr(0, realEnd-1).value(base);
-                        imag = -(substr(realEnd+1, length()-2).value(base));
+                        if ((base <= 14) &&//doesn't work for bases >14
+                            !foundExp &&
+                            (i-1) &&
+                            ((string_array[i-1] == (CHAR)'E') ||
+                             (string_array[i-1] == (CHAR)'e')) )
+                        {
+                            foundExp = true;
+                        }
+                        else
+                        {
+                            done = true;
+                        }
                     }
+
+                    if (!done)
+                        i--;
                 }
+
+                imag_begin = i;
+
+
+                Float imag = substr(imag_begin, array_length-3).value(base);
+
+                Float real;
+
+                if (imag_begin)
+                    real = substr(0, imag_begin-1).value(base);
+                else
+                    real = 0;
 
                 return std::complex<Float> (real, imag);
             }
@@ -1183,10 +1262,10 @@ namespace z
         template <typename CHAR>
         int string<CHAR>::find(const string<CHAR>& sub_string, int n) const
         {
-            if (n < 0)
+            if (n <= 0)
                 return -1;
 
-            int amount = -1;
+            int amount = 0;
 
             for (int i=0; i<array_length-1; i++)
             {
@@ -1243,12 +1322,18 @@ namespace z
             return -1;
         }
 
-        //function to replace the first occurrence
-        //of the first given sub-string with the second given string.
-        //returns false if the sub-string wasn't in the original string,
-        //true otherwise.
+
         /**
          * \brief Replace the given sub-string with another string.
+         *
+         * Replaces the first occurrence of the given sub-string,
+         * and replaces it with the given string.
+         *
+         * \param sub_string the sub-string to search for.
+         * \param new_string the string to substitute in.
+         *
+         * \return \b False if the sub-string wasn't in the
+         * original string. \b True otherwise.
          */
         template <typename CHAR>
         bool string<CHAR>::replace(const string<CHAR>& sub_string,
@@ -1269,14 +1354,16 @@ namespace z
             return false;
         }
 
-        //function to replace the nth occurrence
-        //of the first given sub-string with the second given string.
-        //n starts at 0
-        //returns false if the sub-string wasn't in the original string,
-        //true otherwise.
         /**
          * \brief Replace the n<SUP>th</SUP> occurrence of the
          * given sub-string with another string.
+         *
+         * \param sub_string the sub-string to search for.
+         * \param new_string the string to substitute in.
+         * \param n the numbered occurrence of the sub-string.
+         *
+         * \return \b False if the sub-string wasn't in the
+         * original string. \b True otherwise.
          */
         template <typename CHAR>
         bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
@@ -1299,17 +1386,23 @@ namespace z
 
         /**
          * \brief Get the sub-string within the given range.
+         *
+         * \param start_index the index of the first character to copy.
+         * \param end_index the index of the last character to copy.
+         *
+         * \return A string containing the characters from
+         * \b start_index to \b end_index, inclusive.
          */
         template <typename CHAR>
         const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
         {
-            //make sure start is in bounds
+            //make sure start is within bounds
             if (start_index < 0)
                 start_index = 0;
             else if (start_index > (int)array_length-2)
                 return string<CHAR>();
 
-            //make sure end is in bounds
+            //make sure end is within bounds
             if (end_index < 0)
                 return string<CHAR>();
             else if (end_index > (int)array_length-2)
@@ -1335,6 +1428,11 @@ namespace z
 
         /**
          * \brief Count the occurrences of the given sub-string.
+         *
+         * \param sub_string the sub-string to search for.
+         *
+         * \return The number of times that sub-string occurs
+         * in the full string.
          */
         template <typename CHAR>
         int string<CHAR>::count(const string<CHAR>& sub_string) const
@@ -1350,11 +1448,12 @@ namespace z
             return amount;
         }
 
-        //function to remove the portion of the
-        //string within the specified indices (inclusive)
         /**
          * \brief Remove the characters in the given range from
          * the current string.
+         *
+         * \param start_index the index of the first character to remove.
+         * \param end_index that index of the last character to remove.
          */
         template <typename CHAR>
         inline void string<CHAR>::remove(int start_index, int end_index)
@@ -1365,6 +1464,12 @@ namespace z
         /**
          * \brief Check whether the given sub-string can be found at
          * the given position.
+         *
+         * \param sub_string the sub-string to compare.
+         * \param position the index in the full string to check.
+         *
+         * \return \b True if the given sub-string was found at
+         * the given index. \b False otherwise.
          */
         template <typename CHAR>
         bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
@@ -1383,6 +1488,12 @@ namespace z
 
         /**
          * \brief Check whether the given sub-string ends at the given position.
+         *
+         * \param sub_string the sub-string to compare.
+         * \param position the index in the full string to check.
+         *
+         * \return \b True if the sub-string was found in the full string
+         * and it ends at the given index. \b False otherwise.
          */
         template <typename CHAR>
         bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
@@ -1404,6 +1515,11 @@ namespace z
         /**
          * \brief Check whether the current string begins with the given
          * sub-string.
+         *
+         * \param sub_string the sub-string to compare.
+         *
+         * \return \b True if the full string begins with the given
+         * sub-string. \b False otherwise.
          */
         template <typename CHAR>
         inline bool string<CHAR>::beginsWith(const string<CHAR>& sub_string) const
@@ -1411,11 +1527,16 @@ namespace z
             return foundAt(sub_string, 0);
         }
 
-        //returns true if specified text was found at the beginning of the string,
-        //after an allowed padding char (e.g. leading spaces)
         /**
          * \brief Check whether the current string begins with the given
          * sub-string, but skip over padding characters.
+         *
+         * \param sub_string the sub-string to search for.
+         * \param pad_char the character to skip over.
+         *
+         * \return \b True if the given sub-string was found at the
+         * beginning of the string, after \b 0 or more padding
+         * characters. \b False otherwise.
          */
         template <typename CHAR>
         bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
@@ -1437,6 +1558,11 @@ namespace z
         /**
          * \brief Check whether the current string ends with the given
          * sub-string.
+         *
+         * \param sub_string the sub-string to compare.
+         *
+         * \return \b True if the full string ends with the given
+         * sub-string. \b False otherwise.
          */
         template <typename CHAR>
         inline bool string<CHAR>::endsWith(const string<CHAR>& sub_string) const
@@ -1460,6 +1586,8 @@ namespace z
         }
 
 
+
+        //Append a character buffer to the current buffer
         template <typename CHAR>
         void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
         {
@@ -1486,6 +1614,7 @@ namespace z
             }
         }
 
+        //Append a character to the current buffer
         template <typename CHAR>
         void string<CHAR>::append_char(CHAR singleChar)
         {
@@ -1511,8 +1640,12 @@ namespace z
             delete[] temp;
         }
 
+        //Check whether the characters in the given buffer
+        //are found at the given location.
         template <typename CHAR>
-        bool string<CHAR>::found_sub_string_at(int pos, const CHAR* substr, int substr_len) const
+        bool string<CHAR>::found_sub_string_at(int pos,
+                                               const CHAR* substr,
+                                               int substr_len) const
         {
             for (int i=0 ; i<substr_len-1; i++)
             {
@@ -1528,6 +1661,8 @@ namespace z
             return true;
         }
 
+        //Replace the character in the given range (inclusive)
+        //with the characters in the given buffer.
         template <typename CHAR>
         void string<CHAR>::replace_sub_string_at_with(int beg_index,
                                                       int end_index,
