@@ -11,7 +11,7 @@ namespace z
     namespace core
     {
         /**
-         * \brief An extension of the \b array class which
+         * \brief An extension of the core::array class which
          * assumes all elements to be pointers.
          *
          * \see array

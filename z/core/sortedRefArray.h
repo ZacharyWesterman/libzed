@@ -9,7 +9,7 @@ namespace z
     namespace core
     {
         /**
-         * \brief An extension of the \b refArray class which
+         * \brief An extension of the core::refArray class which
          * attempts to keep all data sorted.
          *
          * Unlike with the <B>sorted array</B>, elements are

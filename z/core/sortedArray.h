@@ -9,7 +9,7 @@ namespace z
     namespace core
     {
         /**
-         * \brief An extension of the array class
+         * \brief An extension of the core::array class
          * which attempts to keep all data sorted.
          *
          * \see array
