@@ -42,6 +42,7 @@
 		<Unit filename="z/core/dynamicStack.h" />
 		<Unit filename="z/core/loadLibrary.h" />
 		<Unit filename="z/core/pause.h" />
+		<Unit filename="z/core/refArray.h" />
 		<Unit filename="z/core/sortedArray.h" />
 		<Unit filename="z/core/sortedRefArray.h" />
 		<Unit filename="z/core/stream.h" />
