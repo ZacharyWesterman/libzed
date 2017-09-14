@@ -1,14 +1,14 @@
-\mainpage Hello, this is some text.
+\mainpage zLibraries Documentation
  
-\section sec_1 Section 1
+\section intro Introduction
 
-This is the first section.
- 
-\section sec_2 Section 2
+A collection of libraries for use with other projects.
 
-This is the second section.
+All libraries will be in the **z** namespace.
+Currently, there are three libraries:
+	-core
+	-file
+	-math
 
-\subsection sub_2_1 Subsection 1
-
-This is a sub-section.
+And one file required by all libraries: **z/float.h**
 
