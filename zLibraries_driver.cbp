@@ -40,7 +40,6 @@
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/charFunctions.h" />
 		<Unit filename="z/core/dynamicStack.h" />
-		<Unit filename="z/core/loadLibrary.h" />
 		<Unit filename="z/core/pause.h" />
 		<Unit filename="z/core/refArray.h" />
 		<Unit filename="z/core/sortedArray.h" />
@@ -51,7 +50,8 @@
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
 		<Unit filename="z/file/exists.h" />
-		<Unit filename="z/file/listFiles.h" />
+		<Unit filename="z/file/library.h" />
+		<Unit filename="z/file/list.h" />
 		<Unit filename="z/file/reader.h" />
 		<Unit filename="z/file/shorten.h" />
 		<Unit filename="z/file/writer.h" />

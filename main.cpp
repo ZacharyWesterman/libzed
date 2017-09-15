@@ -36,7 +36,17 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    strarray arr = file::list("", "*");
+    file::library lib;
+
+    lib.load("./libtest.so");
+
+    void (*f1)();
+
+    f1 = (void (*)())lib.symbol("f1");
+
+    f1();
+
+    /*strarray arr = file::list("", "*");
 
     cout << "files\n+\n";
 
@@ -53,7 +63,7 @@ int main()
             }
         }
         cout << endl;
-    }
+    }*/
 
     return 0;
 }
