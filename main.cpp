@@ -36,7 +36,7 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    strarray arr = file::listFiles("", "*");
+    strarray arr = file::list("", "*");
 
     cout << "files\n+\n";
 
