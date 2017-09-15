@@ -17,4 +17,7 @@
 #include "file/reader.h"
 #include "file/writer.h"
 
+///Dynamic library loading
+#include "file/library.h"
+
 #endif // FILE_H_INCLUDED

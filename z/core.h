@@ -35,7 +35,4 @@
 #include "core/pause.h"
 #include "core/charFunctions.h"
 
-///Dynamic library loading
-#include "core/loadLibrary.h"
-
 #endif // CORE_H_INCLUDED
