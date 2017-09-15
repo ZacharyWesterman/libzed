@@ -17,6 +17,9 @@
 					<Add option="-U__STRICT_ANSI__" />
 					<Add directory="/home/zwesterman/Repos/zLibraries/" />
 				</Compiler>
+				<Linker>
+					<Add option="-ldl" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/zLibraries_driver" prefix_auto="1" extension_auto="1" />
