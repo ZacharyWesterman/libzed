@@ -46,7 +46,11 @@ int main()
 
     f1();*/
 
-    strarray A =
+    core::string<char> s = "hello";
+
+    cout << s.substr(4,0).str() << endl;
+
+    /*strarray A =
     {
         "a", "b", "c", "d", "e"
     };
@@ -60,7 +64,7 @@ int main()
             cout << ",";
         cout << B[i].str();
     }
-    cout << "}\n";
+    cout << "}\n";*/
 
     return 0;
 }

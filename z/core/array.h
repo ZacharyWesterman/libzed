@@ -67,7 +67,7 @@ namespace z
             void replace(int, int, const array<T>&);
 
 
-            array subset(int, int);
+            array subset(int, int) const;
 
             inline int size() const;
 
@@ -521,7 +521,7 @@ namespace z
          * \b stop, inclusive.
          */
         template <typename T>
-        array<T> array<T>::subset(int start, int stop)
+        array<T> array<T>::subset(int start, int stop) const
         {
             array<T> output;
 

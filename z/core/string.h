@@ -1387,6 +1387,10 @@ namespace z
         /**
          * \brief Get the sub-string within the given range.
          *
+         * Copies all characters in the given range, inclusive. If the
+         * \b stop parameter is less than \b start, then the sub-string is
+         * copied in reverse order.
+         *
          * \param start_index the index of the first character to copy.
          * \param end_index the index of the last character to copy.
          *
@@ -1400,24 +1404,37 @@ namespace z
             if (start_index < 0)
                 start_index = 0;
             else if (start_index > (int)array_length-2)
-                return string<CHAR>();
+                start_index = (int)array_length-2;
 
             //make sure end is within bounds
             if (end_index < 0)
-                return string<CHAR>();
+                end_index = 0;
             else if (end_index > (int)array_length-2)
                 end_index = (int)array_length-2;
 
-            //start must come before end
+
+            int direction;
+            int len;
+
+            //check copy direction
             if (start_index > end_index)
-                return string<CHAR>();
+            {
+                direction = -1; //backward
+                len = start_index-end_index + 2;
+            }
+            else
+            {
+                direction = 1; //forward
+                len = end_index-start_index + 2;
+            }
 
 
             //accumulate data
-            int len = end_index-start_index + 2;
             CHAR temp[len];
             for (int i=0; i<len-1; i++)
-                temp[i] = string_array[i + start_index];
+            {
+                temp[i] = string_array[i*direction+start_index];
+            }
             temp[len - 1] = null;
 
             //assign data
