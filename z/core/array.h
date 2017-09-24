@@ -509,6 +509,11 @@ namespace z
         /**
          * \brief Get a contiguous subset of the elements in the array.
          *
+         * Copies all elements in the given range, inclusive. If either
+         * of the parameters is \b -1, gives an empty array. If the
+         * \b stop parameter is less than \b start, then the subset is
+         * copied in reverse order.
+         *
          * \param start the index of the first object to copy.
          * \param stop the index of the last object to copy.
          *
@@ -518,20 +523,31 @@ namespace z
         template <typename T>
         array<T> array<T>::subset(int start, int stop)
         {
-            if (stop >= (int)array_data.size())
-                stop = (int)array_data.size() - 1;
-
-            if (start < 0)
-                start = 0;
-
-
             array<T> output;
 
-            if (stop >= start)
+            if ((stop < 0) || (start < 0))
+                return output;
+
+            int direction;
+
+            if (stop < start)
             {
-                for (int i=start; i<=stop; i++)
-                    output.array_data.push_back(array_data[i]);
+                direction = -1; //backward
+
+                if (start >= (int)array_data.size())
+                    start = (int)array_data.size() - 1;
             }
+            else
+            {
+                direction = 1; //forward
+
+                if (stop >= (int)array_data.size())
+                    stop = (int)array_data.size() - 1;
+            }
+
+
+            for (int i=start; i!=(stop+direction); i+=direction)
+                output.array_data.push_back(array_data[i]);
 
             return output;
         }
