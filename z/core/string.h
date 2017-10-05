@@ -246,6 +246,9 @@ namespace z
         template <typename CHAR>
         class string
         {
+            static_assert(std::is_integral<CHAR>::value,
+                          "Invalid character type");
+
         private:
             int array_length;
             CHAR* string_array;
@@ -273,7 +276,9 @@ namespace z
 
             string(string&& other);
 
-            template <typename CHAR_2>
+            template <typename CHAR_2,
+                      typename = typename std::enable_if
+                        <std::is_integral<CHAR_2>::value,CHAR_2>::type>
             string(const CHAR_2* buffer);
 
             string(const string& other);
@@ -404,7 +409,7 @@ namespace z
 
         ///Constructor from null-terminated character string
         template <typename CHAR>
-        template <typename CHAR_2>
+        template <typename CHAR_2, typename>
         string<CHAR>::string(const CHAR_2* buffer)
         {
             if (buffer)

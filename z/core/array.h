@@ -54,7 +54,7 @@ namespace z
             array(const T& arg1, const Args&... args);
 
             ///Destructor
-            ~array() {}
+            virtual ~array() {}
 
             inline void clear();
 
