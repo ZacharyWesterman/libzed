@@ -38,7 +38,8 @@ namespace z
         #elif __linux__
         #include <dlfcn.h>
 
-        ///Linux requires compiler flag -ldl
+        ///Linux requires linker flag -ldl
+        ///And Z_DYNLIB to be defined.
 
         typedef void* lib_t;
         typedef void* smbl_t;
@@ -80,8 +81,10 @@ namespace z
             if (lib_ptr)
                 FreeLibrary(lib_ptr);
             #elif __linux__
+            #ifdef Z_DYNLIB
             if (lib_ptr)
                 dlclose(lib_ptr);
+            #endif // Z_DYNLIB
             #endif
         }
 
@@ -92,8 +95,12 @@ namespace z
             lib_ptr = LoadLibrary(file_name.str());
             return (bool)lib_ptr;
             #elif __linux__
+            #ifdef Z_DYNLIB
             lib_ptr = dlopen(file_name.str(), RTLD_NOW);
             return (bool)lib_ptr;
+            #else
+            return false;
+            #endif // Z_DYNLIB
             #else
             return false;
             #endif
@@ -104,7 +111,11 @@ namespace z
             #ifdef _WIN32
             return (bool)FreeLibrary(lib_ptr);
             #elif __linux__
+            #ifdef Z_DYNLIB
             return (bool)dlclose(lib_ptr);
+            #else
+            return false;
+            #endif // Z_DYNLIB
             #else
             return false;
             #endif
@@ -130,10 +141,14 @@ namespace z
             else
                 return NULL;
             #elif __linux__
+            #ifdef Z_DYNLIB
             if(lib_ptr)
                 return dlsym(lib_ptr, symbol_name.str());
             else
                 return NULL;
+            #else
+            return NULL;
+            #endif // Z_DYNLIB
             #else
             return NULL;
             #endif
