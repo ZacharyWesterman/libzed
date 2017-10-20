@@ -37,7 +37,7 @@ namespace z
          * the given type in the given directory.
          */
         core::array< core::string<char> >
-            list(const core::string<char>& dir,
+            listFiles(const core::string<char>& dir,
                  const core::string<char>& file_type)
         {
             core::array< core::string<char> > output;
@@ -104,6 +104,92 @@ namespace z
                             if (filename.endsWith(core::string<char>('.') + file_type))
                                 output.add(filename);
                         }
+                    }
+                }
+            }
+
+            closedir(dpdf);
+            #endif
+
+            return output;
+        }
+
+
+
+        /**
+         * \brief List all sub-directories
+         * in the given directory.
+         *
+         * This function is meant to be a
+         * platform-independent way of allowing the user
+         * to get a list of all sub-directories in the given
+         * directory with the given file extension.
+         *
+         * \param dir the working directory. If \b dir is \b "",
+         * then it is assumed to be the current working directory.
+         *
+         * \param showAll flag specifying whether to include
+         * hidden directories in the output.
+         *
+         * \return An array containing the names of all
+         * sub-directories in the given directory.
+         */
+        core::array< core::string<char> >
+            listDirs(const core::string<char>& dir,
+                     bool showAll = false)
+        {
+            core::array< core::string<char> > output;
+
+            core::string<char> search_path = dir;
+
+            if (!dir.length())
+                search_path += "./";
+            else
+                search_path += "/";
+
+
+            #ifdef _WIN32
+            search_path += "/*.";
+
+            search_path += file_type;
+
+
+            WIN32_FIND_DATA fd;
+            HANDLE hFind = FindFirstFile(search_path.str(), &fd);
+
+            if (hFind != INVALID_HANDLE_VALUE)
+            {
+                do
+                {
+                    if(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+                    {
+                        core::string<char> filename = fd.cFileName;
+
+                        if (showAll || (filename[0] != '.'))
+                            output.add(filename);
+                    }
+                }
+                while (FindNextFile(hFind, &fd));
+
+                FindClose(hFind);
+            }
+            #else
+
+            DIR *dpdf;
+            dirent *epdf;
+
+            dpdf = opendir(search_path.str());
+
+            if (dpdf)
+            {
+                while ((epdf = readdir(dpdf)))
+                {
+                    core::string<char> filename (epdf->d_name);
+
+                    if (epdf->d_type == DT_DIR)
+                    {
+                        if (showAll || (filename[0] != '.'))
+                            output.add(filename);
                     }
                 }
             }

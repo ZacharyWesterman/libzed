@@ -36,35 +36,11 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    /*file::library lib;
-
-    lib.load("./libtest.so");
-
-    void (*f1)();
-
-    f1 = (void (*)())lib.symbol("f1");
-
-    f1();*/
-
-    core::string<char> s = "hello";
-
-    cout << s.substr(4,0).str() << endl;
-
-    /*strarray A =
+    for (Float i=-2; i<10; i+= 1)
     {
-        "a", "b", "c", "d", "e"
-    };
-
-    strarray B = A.subset(4,0);
-
-    cout << "{";
-    for (int i=0; i<B.size(); i++)
-    {
-        if (i)
-            cout << ",";
-        cout << B[i].str();
+        cout << "fib(" << i << ")="
+             << math::fibonacci(i) << endl;
     }
-    cout << "}\n";*/
 
     return 0;
 }
