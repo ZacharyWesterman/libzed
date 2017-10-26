@@ -375,6 +375,9 @@ namespace z
 
             Float value(int base = 10) const;
             std::complex<Float> complexValue(int base = 10) const;
+
+            bool isValue(int base = 10) const;
+            bool isComplex(int base = 10) const;
         };
 
 
@@ -1170,6 +1173,151 @@ namespace z
                 return std::complex<Float> (value(base), 0);
             }
 
+        }
+
+
+        template <typename CHAR>
+        bool string<CHAR>::isValue(int base) const
+        {
+            int start = 0;
+            bool isNegative = false;
+
+            if (string_array[0] == (CHAR)'-') //'-' character
+            {
+                start = 1;
+                isNegative = true;
+            }
+
+            bool pastDecimal = false;
+            bool pastExponent = false;
+            bool exponentLast = false;
+            bool expNegative = false;
+
+            int length = array_length - 1;
+
+            for (int i=start; i<length; i++)
+            {
+                //in the rare case that we encounter a null character
+                if (string_array[i] == (CHAR)0)
+                    break;
+
+                //only one decimal point is allowed.
+                //any more, and the string is invalid
+                if (string_array[i] == (CHAR)'.')
+                {
+                    if (pastDecimal)
+                    {
+                        return false;
+                    }
+
+                    pastDecimal = true;
+                }
+
+                //if a character is not part of a valid number,
+                //the string evaluates to 0.0 and return.
+                else if (isNumeric(string_array[i], base))
+                {
+                    if (pastExponent)
+                    {
+                        exponentLast = false;
+                    }
+                }
+                else if ((string_array[i] == (CHAR)'E') ||
+                         (string_array[i] == (CHAR)'e'))
+                {
+                    if (pastExponent)
+                        return false;
+                    else
+                    {
+                        pastExponent = true;
+                        exponentLast = true;
+                    }
+                }
+                else if (pastExponent &&
+                         (string_array[i] == (CHAR)'-'))
+                {
+                    if (exponentLast)
+                        exponentLast = false;
+                    else
+                        return false;
+
+                    expNegative = true;
+                }
+                else if (string_array[i] == (CHAR)'+')
+                {
+                    if (exponentLast)
+                        exponentLast = false;
+                    else
+                        return false;
+                }
+                else if (string_array[i] != (CHAR)'.')
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
+        template <typename CHAR>
+        bool string<CHAR>::isComplex(int base) const
+        {
+            if (array_length-2 <= 0)
+                return std::complex<Float>(0,0);
+
+            if ((base <= 17) &&//doesn't work for bases >17
+                (string_array[array_length-2] == (CHAR)'i'))
+            {
+                if (array_length == 2)
+                    return true;
+
+                int imag_begin;
+
+                int i = array_length-3;
+                bool done = false;
+                bool foundExp = false;
+                while (i && !done)
+                {
+                    if ((string_array[i] == (CHAR)'+') ||
+                         (string_array[i] == (CHAR)'-'))
+                    {
+                        if ((base <= 14) &&//doesn't work for bases >14
+                            !foundExp &&
+                            (i-1) &&
+                            ((string_array[i-1] == (CHAR)'E') ||
+                             (string_array[i-1] == (CHAR)'e')) )
+                        {
+                            foundExp = true;
+                        }
+                        else
+                        {
+                            done = true;
+                        }
+                    }
+
+                    if (!done)
+                        i--;
+                }
+
+                imag_begin = i;
+
+
+                bool imag = substr(imag_begin, array_length-3).isValue(base);
+
+                bool real;
+
+                if (imag_begin)
+                    real = substr(0, imag_begin-1).isValue(base);
+                else
+                    real = true;
+
+                return (real && imag);
+            }
+            else
+            {
+                return isValue(base);
+            }
         }
 
 
