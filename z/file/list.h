@@ -149,9 +149,7 @@ namespace z
 
 
             #ifdef _WIN32
-            search_path += "/*.";
-
-            search_path += file_type;
+            search_path += "/*";
 
 
             WIN32_FIND_DATA fd;

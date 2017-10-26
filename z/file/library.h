@@ -137,7 +137,7 @@ namespace z
         {
             #ifdef _WIN32
             if (lib_ptr)
-                return GetProcAddress(lib_ptr, func_name.str());
+                return GetProcAddress(lib_ptr, symbol_name.str());
             else
                 return NULL;
             #elif __linux__

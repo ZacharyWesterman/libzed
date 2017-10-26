@@ -52,9 +52,11 @@
 		<Unit filename="z/core/timeout.h" />
 		<Unit filename="z/core/timer.h" />
 		<Unit filename="z/file.h" />
+		<Unit filename="z/file/copy.h" />
 		<Unit filename="z/file/exists.h" />
 		<Unit filename="z/file/library.h" />
 		<Unit filename="z/file/list.h" />
+		<Unit filename="z/file/makeDir.h" />
 		<Unit filename="z/file/reader.h" />
 		<Unit filename="z/file/shorten.h" />
 		<Unit filename="z/file/writer.h" />
