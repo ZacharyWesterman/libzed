@@ -36,11 +36,13 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    for (Float i=-2; i<10; i+= 1)
-    {
-        cout << "fib(" << i << ")="
-             << math::fibonacci(i) << endl;
-    }
+    cout << "file '../Debug/zLibraries_driver'";
+    file::exists("../Debug/zLibraries_driver") ? (cout << " exists.\n") :
+                                        (cout << " does not exist.\n");
+
+    cout << "folder '../Debug/'";
+    file::exists("../Debug/") ? (cout << " exists.\n") :
+                               (cout << " does not exist.\n");
 
     return 0;
 }

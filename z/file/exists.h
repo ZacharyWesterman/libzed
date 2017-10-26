@@ -4,31 +4,30 @@
 
 #include <z/core/string.h>
 
-#include <fstream>
+#include <sys/stat.h>
 
 namespace z
 {
     namespace file
     {
         /**
-         * \brief Check whether a file with the given
-         * name exists.
+         * \brief Check whether a file or directory with
+         * the given name exists.
          *
-         * \param filename the full file name, including
-         * directory.
+         * \param pathname the relative or absolute path
+         * of the file or directory.
          *
-         * \return \b True if the file exists. \b False
-         * otherwise.
+         * \return \b True if the file or directory exists.
+         * \b False otherwise.
          */
-        bool exists(const core::string<char>& filename)
+        bool exists(const core::string<char>& pathname)
         {
-            std::ifstream file (filename.str());
+            struct stat info;
 
-            bool can_open = file.good();
-
-            file.close();
-
-            return can_open;
+            if (stat(pathname.str(), &info) != 0)
+                return true; //directory item exists
+            else
+                return false; //does not exist
         }
     }
 }
