@@ -36,13 +36,17 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    cout << "file '../Debug/zLibraries_driver'";
-    file::exists("../Debug/zLibraries_driver") ? (cout << " exists.\n") :
-                                        (cout << " does not exist.\n");
+    core::string<char> path = "../Debug/zLibraries_driver";
 
-    cout << "folder '../Debug/'";
+    file::info inf (path);
+
+    cout << "file '" << path.str() << "'";
+    inf.exists() ? (cout << " exists.\n") :
+                   (cout << " does not exist.\n");
+
+    /*cout << "folder '../Debug/'";
     file::exists("../Debug/") ? (cout << " exists.\n") :
-                               (cout << " does not exist.\n");
+                               (cout << " does not exist.\n");*/
 
     return 0;
 }

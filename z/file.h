@@ -18,6 +18,7 @@
 #include "file/reader.h"
 #include "file/writer.h"
 #include "file/copy.h"
+#include "file/info.h"
 
 ///Dynamic library loading
 #include "file/library.h"

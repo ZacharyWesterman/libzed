@@ -54,6 +54,7 @@
 		<Unit filename="z/file.h" />
 		<Unit filename="z/file/copy.h" />
 		<Unit filename="z/file/exists.h" />
+		<Unit filename="z/file/info.h" />
 		<Unit filename="z/file/library.h" />
 		<Unit filename="z/file/list.h" />
 		<Unit filename="z/file/makeDir.h" />
