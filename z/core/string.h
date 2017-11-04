@@ -480,8 +480,10 @@ namespace z
 
             if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                for (int i=0; i<array_length; i++)
+                for (int i=0; i<array_length-1; i++)
                     string_array[i] = other.str()[i];
+
+                string_array[array_length-1] = 0;
             }
             else
             {
@@ -502,6 +504,8 @@ namespace z
 
                     buf_i++;
                 }
+
+                string_array[array_length-1] = 0;
             }
         }
 

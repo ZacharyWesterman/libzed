@@ -36,17 +36,9 @@ core::string<char> hex(unsigned char _c)
 
 int main()
 {
-    core::string<char> path = "../Debug/zLibraries_driver";
+    core::string<int> test = "1";
 
-    file::info inf (path);
-
-    cout << "file '" << path.str() << "'";
-    inf.exists() ? (cout << " exists.\n") :
-                   (cout << " does not exist.\n");
-
-    /*cout << "folder '../Debug/'";
-    file::exists("../Debug/") ? (cout << " exists.\n") :
-                               (cout << " does not exist.\n");*/
+    cout << "{" << test.narrow().str() << "}\n";
 
     return 0;
 }
