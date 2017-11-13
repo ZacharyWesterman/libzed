@@ -1116,7 +1116,7 @@ namespace z
          * \return The complex value of the string as it appears to
          * humans. <B>0+0i</B> if there are any invalid characters.
          *
-         * \see value(int)
+         * \see value(int) const
          */
         template <typename CHAR>
         std::complex<Float> string<CHAR>::complexValue(int base) const
@@ -1302,7 +1302,7 @@ namespace z
          * \return \b True if the string contains only characters valid
          * for conversion into a complex number. \b False otherwise.
          *
-         * \see isValue(int)
+         * \see isValue(int) const
          */
         template <typename CHAR>
         bool string<CHAR>::isComplex(int base) const
