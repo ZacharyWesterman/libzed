@@ -9,3 +9,7 @@ linux: main.cpp
 
 windows: main.cpp
 	x86_64-w64-mingw32-g++ $(CFLAGS) main.cpp -o $(OUTPUT).exe
+
+docs: Doxyfile
+	rm -rf Doxygen/*
+	doxygen Doxyfile -d Doxygen/

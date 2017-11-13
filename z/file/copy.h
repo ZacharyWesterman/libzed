@@ -9,7 +9,15 @@ namespace z
 {
     namespace file
     {
-        // copy in binary mode
+        /**
+         * \brief Copy data from one file to another.
+         *
+         * \param fileInput the path of the file to copy from.
+         * \param fileOutput the path of the file to copy to.
+         *
+         * \return \b True if the file was copied successfully.
+         * \b False otherwise.
+         */
         bool copy(const core::string<char>& fileInput,
                   const core::string<char>& fileOutput)
         {

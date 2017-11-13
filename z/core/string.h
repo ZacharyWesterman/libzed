@@ -1180,6 +1180,27 @@ namespace z
         }
 
 
+        /**
+         * \brief Check if this string can be converted to a real number.
+         *
+         * When converting a string to a number, alphabetic
+         * characters are assumed to represent numbers above \b 9.
+         * So the string \b "2EB0" in base \b 16 would convert to
+         * \b 11952. Valid numeric strings can have up to a single
+         * decimal point. A leading '-' is also allowed for negative
+         * numbers. Additionally, the character \b 'e' or \b 'E'
+         * is assumed to imply some exponent in the given base. This
+         * exponent can also be negative (e.g. <B>2.2e-3.1</B>).
+         * It is important to note bases above \b 14 (such as
+         * hexadecimal) have \b E as a digit, so exponents are only
+         * interpreted for bases less than 15.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return \b True if the string contains only characters valid
+         * for conversion into a value. \b False otherwise.
+         */
         template <typename CHAR>
         bool string<CHAR>::isValue(int base) const
         {
@@ -1264,6 +1285,25 @@ namespace z
         }
 
 
+        /**
+         * \brief Check if this string can be converted to a complex number.
+         *
+         * This function splits a numeric string into its real and
+         * imaginary parts according to \b a+bi or \b a-bi, where
+         * the imaginary part is assumed to come after the real part.
+         * If no imaginary part is detected, then it is assumed to be
+         * \b 0. Also, note that if the base is greater than \b 17,
+         * then the complex part is assumed to be \b 0 as well,
+         * because \b I is a digit in that case.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return \b True if the string contains only characters valid
+         * for conversion into a complex number. \b False otherwise.
+         *
+         * \see isValue(int)
+         */
         template <typename CHAR>
         bool string<CHAR>::isComplex(int base) const
         {

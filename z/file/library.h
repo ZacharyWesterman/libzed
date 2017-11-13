@@ -32,25 +32,32 @@ namespace z
         #ifdef _WIN32
         #include <windows.h>
 
-        typedef HINSTANCE lib_t;
+        #define lib_t HINSTANCE
         typedef FARPROC smbl_t;
 
         #elif __linux__
         #include <dlfcn.h>
 
-        ///Linux requires linker flag -ldl
-        ///And Z_DYNLIB to be defined.
-
-        typedef void* lib_t;
+        #define lib_t void*
         typedef void* smbl_t;
-
         #else
         #warning "loadLibrary.h" is incompatible with target OS.
 
-        typedef void* lib_t;
+        #define lib_t void*
+
+        ///Typedef for dynamically loaded symbol pointer (typically function pointer).
         typedef void* smbl_t;
         #endif
 
+        /**
+         * \brief A class for loading dynamic libraries.
+         *
+         * This class is meant to allow an easy and
+         * platform-independent way to dynamically load libraries
+         * at run time. Note that if this is compiled for Linux,
+         * it is required that \b Z_DYNLIB is defined as well as
+         * including the linker flag <B>-ldl</B>.
+         */
         class library
         {
         private:
@@ -70,11 +77,17 @@ namespace z
         };
 
 
+        /**
+         * \brief Default empty constructor.
+         */
         library::library()
         {
             lib_ptr = NULL;
         }
 
+        /**
+         * \brief Destructor frees any loaded library.
+         */
         library::~library()
         {
             #ifdef _WIN32
@@ -88,14 +101,25 @@ namespace z
             #endif
         }
 
-
+        /**
+         * \brief Load a dynamic library with the given file name.
+         *
+         * \param file_name the path of the library to load.
+         *
+         * \return \b True if the library loaded successfully.
+         * \b False otherwise.
+         */
         bool library::load(const core::string<char>& file_name)
         {
             #ifdef _WIN32
+            if (lib_ptr)
+                FreeLibrary(lib_ptr);
             lib_ptr = LoadLibrary(file_name.str());
             return (bool)lib_ptr;
             #elif __linux__
             #ifdef Z_DYNLIB
+            if (lib_ptr)
+                dlclose(lib_ptr);
             lib_ptr = dlopen(file_name.str(), RTLD_NOW);
             return (bool)lib_ptr;
             #else
@@ -106,33 +130,68 @@ namespace z
             #endif
         }
 
+        /**
+         * \brief Unload the dynamic library.
+         *
+         * \return \b False if unable to unload previously
+         * loaded library. \b True otherwise.
+         */
         bool library::unload()
         {
             #ifdef _WIN32
-            return (bool)FreeLibrary(lib_ptr);
+            if (lib_ptr)
+                return (bool)FreeLibrary(lib_ptr);
+            else
+                return true;
             #elif __linux__
             #ifdef Z_DYNLIB
-            return (bool)dlclose(lib_ptr);
+            if (lib_ptr)
+                return (bool)dlclose(lib_ptr);
+            else
+                return true;
             #else
-            return false;
+            return true;
             #endif // Z_DYNLIB
             #else
-            return false;
+            return true;
             #endif
         }
 
-
+        /**
+         * \brief Get whether the library has been loaded.
+         *
+         * \return \b True if the library has been loaded.
+         * \b False otherwise.
+         *
+         * \see bad()
+         */
         inline bool library::good()
         {
             return (bool)lib_ptr;
         }
 
+        /**
+         * \brief Get whether the library has not been loaded.
+         *
+         * \return \b False if the library has been loaded.
+         * \b True otherwise.
+         *
+         * \see good()
+         */
         inline bool library::bad()
         {
             return !lib_ptr;
         }
 
-
+        /**
+         * \brief Get a pointer to the symbol with the given name.
+         *
+         * \param symbol_name the name of the symbol to retrieve.
+         *
+         * \return If a symbol with the given name was found, returns
+         * a pointer to the symbol. Otherwise, if the symbol was not
+         * found or the library hasn't been loaded, returns \b NULL.
+         */
         smbl_t library::symbol(const core::string<char>& symbol_name)
         {
             #ifdef _WIN32
@@ -156,5 +215,9 @@ namespace z
 
     }
 }
+
+#ifdef lib_t
+    #undef lib_t
+#endif // lib_t
 
 #endif // LOADLIBRARY_H_INCLUDED
