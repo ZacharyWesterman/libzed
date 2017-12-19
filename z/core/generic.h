@@ -850,6 +850,80 @@ namespace z
             }
         }
 
+        const generic generic::operator+(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return (string() + other.string());
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (complexFloat() + other.complexFloat());
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (complexInt() + other.complexInt());
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (floating() + other.floating());
+                }
+                else//INTEGER
+                {
+                    return (integer() + other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator-(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (complexFloat() - other.complexFloat());
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (complexInt() - other.complexInt());
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (floating() - other.floating());
+                }
+                else//INTEGER
+                {
+                    return (integer() - other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const

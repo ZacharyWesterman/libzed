@@ -36,11 +36,13 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    core::generic foo = Float(-1.3);
+    core::generic foo = core::string<Char>("hello ");
+    core::generic bar = Int(4);
 
-    cout << foo.floating() << endl;
-    cout << (-foo).floating() << endl;
-    cout << foo.floating() << endl;
+    cout << foo.string().narrow().str() << endl;
+    cout << bar.string().narrow().str() << endl;
+    cout << (foo + bar).string().narrow().str() << endl;
+    cout << (foo - bar).string().narrow().str() << endl;
 
     return 0;
 }
