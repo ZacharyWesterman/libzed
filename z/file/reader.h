@@ -36,7 +36,7 @@ namespace z
 
             long current_index;
 
-            bool done;
+            bool is_done;
 
         public:
             reader();
@@ -47,6 +47,8 @@ namespace z
             void set(const core::string<char>& fileName);
 
             void clear();
+
+            CHAR get();
 
             /**
              * \brief Load the file contents.
@@ -67,6 +69,8 @@ namespace z
              */
             int read(const core::timeout& time = core::timeout(-1));
 
+            inline bool done();
+
             inline const CHAR* getContents() const;
         };
 
@@ -81,7 +85,7 @@ namespace z
             contents_buffer = null;
             current_index = 0;
             bufsiz = 0;
-            done = true;
+            is_done = true;
         }
 
         /**
@@ -97,7 +101,7 @@ namespace z
             contents_buffer = null;
             current_index = 0;
             bufsiz = 0;
-            done = false;
+            is_done = false;
         }
 
         /**
@@ -132,7 +136,7 @@ namespace z
                 bufsiz = 0;
             }
 
-            done = true;
+            is_done = true;
         }
 
 
@@ -157,9 +161,99 @@ namespace z
                 bufsiz = 0;
             }
 
-            done = false;
+            is_done = false;
         }
 
+        /**
+         * \brief Get a single (narrow) character from the file stream.
+         *
+         * Does not store the character in the buffer and any
+         * subsequent calls to read() will not put this character
+         * in the buffer.
+         *
+         * \return The next character in the file.
+         */
+        template<>
+        char reader<char>::get()
+        {
+            if (is_done)
+                return null;
+
+            std::ifstream file;
+            file.open(file_name);
+
+            if (!file.good() || file.eof())
+            {
+                is_done = true;
+                return null;
+            }
+
+
+            file.seekg(0, std::ios_base::end);
+
+            int filesiz = file.tellg();
+
+            if (filesiz == current_index+2)
+                is_done = true;
+            else if (filesiz < current_index+2)
+            {
+                is_done = true;
+                return null;
+            }
+
+
+            //continue where we last left off
+            file.seekg(std::ios_base::beg + current_index);
+
+            char character = file.get();
+
+            file.close();
+
+            current_index++;
+
+            return character;
+        }
+
+        /**
+         * \brief Get a single character from the file stream.
+         *
+         * Does not store the character in the buffer and any
+         * subsequent calls to read() will not put this character
+         * in the buffer.
+         *
+         * \return The next character in the file.
+         */
+        template<typename CHAR>
+        CHAR reader<CHAR>::get()
+        {
+            if (is_done)
+                return null;
+
+            std::wifstream file;
+            file.open(file_name);
+
+            if (!file.good() || file.eof())
+            {
+                is_done = true;
+                return null;
+            }
+
+            //continue where we last left off
+            file.seekg(std::ios_base::beg + current_index);
+
+            CHAR character = file.get();
+
+            if (file.eof())
+            {
+                is_done = true;
+            }
+
+            file.close();
+
+            current_index++;
+
+            return character;
+        }
 
         /**
          * \brief Default loading function for narrow character set.
@@ -167,7 +261,7 @@ namespace z
         template<>
         int reader<char>::read(const core::timeout& time)
         {
-            if (done)
+            if (is_done)
                 return 1;
 
             std::ifstream file;
@@ -204,18 +298,18 @@ namespace z
 
             if ((current_index >= bufsiz) || file.eof())
             {
-                done = true;
+                is_done = true;
 
                 if (current_index)
                     contents_buffer[current_index-1] = null;
             }
             else
-                done = !time.timedOut();
+                is_done = !time.timedOut();
 
             //we are done with this iteration
             file.close();
 
-            return done;
+            return is_done;
         }
 
 
@@ -225,7 +319,7 @@ namespace z
         template<typename CHAR>
         int reader<CHAR>::read(const core::timeout& time)
         {
-            if (done)
+            if (is_done)
                 return 1;
 
             std::wifstream file;
@@ -263,14 +357,25 @@ namespace z
 
 
             if ((current_index >= bufsiz) || file.eof())
-                done = true;
+                is_done = true;
             else
-                done = !time.timedOut();
+                is_done = !time.timedOut();
 
-            return done;
+            return is_done;
         }
 
 
+        /**
+         * \brief Get whether all contents of the file have been read.
+         *
+         * \return \b True if we have reached the end of the file.
+         * \b False otherwise.
+         */
+        template <typename CHAR>
+        inline bool reader<CHAR>::done()
+        {
+            return is_done;
+        }
 
         /**
          * \brief Get a pointer to the contents buffer.
