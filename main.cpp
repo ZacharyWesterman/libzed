@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace z;
-
+/*
 typedef core::array<core::string<char> > strarray;
 
 char toHex(char _c)
@@ -33,12 +33,12 @@ core::string<char> hex(unsigned char _c)
 
     return _ret;
 }
-
+*/
 int main()
 {
-    core::string<int> test = "1";
+    core::generic gen;
 
-    cout << "{" << test.narrow().str() << "}\n";
+    //cout << gen.integer() << endl;
 
     return 0;
 }

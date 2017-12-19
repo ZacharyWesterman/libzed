@@ -39,10 +39,12 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="z/char.h" />
 		<Unit filename="z/core.h" />
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/charFunctions.h" />
 		<Unit filename="z/core/dynamicStack.h" />
+		<Unit filename="z/core/generic.h" />
 		<Unit filename="z/core/pause.h" />
 		<Unit filename="z/core/refArray.h" />
 		<Unit filename="z/core/sortedArray.h" />
@@ -62,7 +64,9 @@
 		<Unit filename="z/file/shorten.h" />
 		<Unit filename="z/file/writer.h" />
 		<Unit filename="z/float.h" />
+		<Unit filename="z/int.h" />
 		<Unit filename="z/math.h" />
+		<Unit filename="z/math/complexOps.h" />
 		<Unit filename="z/math/constants.h" />
 		<Unit filename="z/math/factorial.h" />
 		<Unit filename="z/math/fibonacci.h" />
