@@ -6,6 +6,8 @@
 #include <z/int.h>
 #include <z/char.h>
 
+#include <z/math/Operator.h>
+
 #include "string.h"
 #include "array.h"
 
@@ -19,14 +21,12 @@ namespace z
         {
             NONE = 0,
 
-            ERROR,
-
-            VALUE,
             STRING,
             ARRAY,
 
             COMPLEX_FLOAT,
             COMPLEX_INT,
+
             FLOATING,
             INTEGER,
 
@@ -40,39 +40,53 @@ namespace z
 
             type _type;
 
-            union data
+            union
             {
-                std::complex<Float>* ComplexFloat;
-                std::complex<Int>* ComplexInt;
-
                 core::string<Char>* String;
                 core::array<generic>* Array;
 
+                std::complex<Float>* ComplexFloat;
+                std::complex<Int>* ComplexInt;
+
                 Float Floating;
                 Int Integer;
-            };
+            } data;
+
+            void alloc(const generic&);
+            void dealloc();
+
+            bool comparableTo(const generic&) const;
+            void operateOnMe(const generic&, math::Operator*) const;
 
         public:
-            generic()
-            {
-                _type = type::NONE;
-            }
-
+            generic();
             generic(const generic&);
             generic(generic&&);
+            generic(const core::string<Char>&);
+            generic(const core::array<generic>&);
+            generic(const std::complex<Float>&);
+            generic(const std::complex<Int>&);
+            generic(const Float&);
+            generic(const Int&);
+
+            ~generic();
 
 
+            const generic& operator=(const generic&);
 
-            /*template<
-                typename T, //numeric type
-                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-            >
-            generic(const T& _real)
-            {
-                d_type = data::VALUE;
-                d_value = new std::complex<Float>(_real);
-            }
+            const bool operator==(const generic&) const;
+            const bool operator>(const generic&) const;
+            const bool operator<(const generic&) const;
 
+            inline const bool operator!=(const generic& other) const
+            { return !operator==(other); }
+
+            inline const bool operator>=(const generic& other) const
+            { return !operator<(other); }
+
+            inline const bool operator<=(const generic& other) const
+            { return !operator>(other); }
+/*
             template<
                 typename T, //numeric type
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -116,22 +130,10 @@ namespace z
                 d_type = data::NONE;
             }
 
-            const bool operator==(const generic&) const;
-
-            inline const bool operator!=(const generic& other) const
-            { return !operator==(other); }
-
-            const bool operator>(const generic&) const;
-            const bool operator<(const generic&) const;
-
-            inline const bool operator>=(const generic& other) const
-            { return !operator<(other); }
-
-            inline const bool operator<=(const generic& other) const
-            { return !operator>(other); }
 
 
-            const generic& operator=(const generic&);
+
+
 
 
             inline const data_t type() const {return d_type;}
@@ -200,6 +202,236 @@ namespace z
             const generic nxor_bitwise(const generic&) const;
             const generic nxor_logical(const generic&) const;
         };
+
+        generic::generic()
+        {
+            _type = type::NONE;
+        }
+
+        generic::generic(const generic& other)
+        {
+            alloc(other);
+        }
+
+        generic::generic(generic&& other)
+        {
+            _type = other._type;
+            data = other.data;
+        }
+
+        generic::generic(const core::string<Char>& init)
+        {
+            _type = type::STRING;
+            data.String = new core::string<Char>(init);
+        }
+
+        generic::generic(const core::array<generic>& init)
+        {
+            _type = type::ARRAY;
+            data.Array = new core::array<generic>(init);
+        }
+
+        generic::generic(const std::complex<Float>& init)
+        {
+            _type = type::COMPLEX_FLOAT;
+            data.ComplexFloat = new std::complex<Float>(init);
+        }
+
+        generic::generic(const std::complex<Int>& init)
+        {
+            _type = type::COMPLEX_INT;
+            data.ComplexInt = new std::complex<Int>(init);
+        }
+
+        generic::generic(const Float& init)
+        {
+            _type = type::FLOATING;
+            data.Floating = init;
+        }
+
+        generic::generic(const Int& init)
+        {
+            _type = type::INTEGER;
+            data.Integer = init;
+        }
+
+        generic::~generic()
+        {
+            dealloc();
+        }
+
+        void generic::alloc(const generic& other)
+        {
+            _type = other._type;
+
+            if (_type == type::STRING)
+            {
+                data.String =
+                new core::string<Char>(*(other.data.String));
+            }
+            else if (_type == type::ARRAY)
+            {
+                data.Array =
+                new core::array<generic>(*(other.data.Array));
+            }
+            else if (_type == type::COMPLEX_FLOAT)
+            {
+                data.ComplexFloat =
+                new std::complex<Float>(*(other.data.ComplexFloat));
+            }
+            else if (_type == type::COMPLEX_INT)
+            {
+                data.ComplexInt =
+                new std::complex<Int>(*(other.data.ComplexInt));
+            }
+            else
+            {
+                data = other.data;
+            }
+        }
+
+        void generic::dealloc()
+        {
+            if (_type == type::STRING)
+            {
+                delete data.String;
+            }
+            else if (_type == type::ARRAY)
+            {
+                delete data.Array;
+            }
+            else if (_type == type::COMPLEX_FLOAT)
+            {
+                delete data.ComplexFloat;
+            }
+            else if (_type == type::COMPLEX_INT)
+            {
+                delete data.ComplexInt;
+            }
+        }
+
+        bool generic::comparableTo(const generic& other) const
+        {
+            if (_type == other._type)
+                return true;
+
+            if ((_type > type::ARRAY) &&
+                (other._type > type::ARRAY))
+                return true;
+
+            return false;
+        }
+
+        void generic::operateOnMe(const generic& other,
+                                  math::Operator* oper) const
+        {
+            if (_type == other._type)
+            {
+                if (_type == type::COMPLEX_FLOAT)
+                {
+                    *(data.ComplexFloat) =
+                        oper->operate(*(data.ComplexFloat),
+                                      *(other.data.ComplexFloat));
+                }
+                else if (_type == type::COMPLEX_INT)
+                {
+                    *(data.ComplexInt) =
+                        oper->operate(*(data.ComplexInt),
+                                      *(other.data.ComplexInt));
+                }
+                else if (_type == type::FLOATING)
+                {
+                    data.Floating =
+                        oper->operate(data.Floating,
+                                      other.data.Floating);
+                }
+                else //_type == type::INTEGER
+                {
+                    data.Integer =
+                        oper->operate(data.Integer,
+                                      other.data.Integer);
+                }
+            }
+            else
+            {
+                if (_type == type::COMPLEX_FLOAT)
+                {
+                    std::complex<Float> operand;
+                    std::complex<Float> result;
+
+                    if (other._type == type::COMPLEX_FLOAT)
+                    {
+                        operand = *(other.data.ComplexFloat);
+                    }
+                    else if (other._type == type::COMPLEX_INT)
+                    {
+                        operand = *(other.data.ComplexInt);
+                    }
+                    else if (other._type == type::FLOATING)
+                    {
+                        operand = *(other.data.Floating);
+                    }
+                    else //INTEGER
+                    {
+                        operand = *(other.data.Integer);
+                    }
+
+                    *(data.ComplexFloat) =
+                    oper.operate(*(data.ComplexFloat), operand);
+                }
+                else if (_type == type::COMPLEX_INT)
+                {
+
+                }
+                else if (_type == type::FLOATING)
+                {
+
+                }
+                else if (_type == type::INTEGER)
+                {
+
+                }
+            }
+
+            _error = oper.error();
+            delete oper;
+        }
+
+        const generic& generic::operator=(const generic& other)
+        {
+            dealloc();
+
+            alloc(other);
+
+            return *this;
+        }
+
+        const bool generic::operator==(const generic& other) const
+        {
+            if (comparableTo(other))
+            {
+                if (_type == type::STRING)
+                {
+                    return *(data.String) == *(other.data.String);
+                }
+                else if (_type == type::ARRAY)
+                {
+                    return *(data.Array) == *(other.data.Array);
+                }
+                else if (_type == type::NONE)
+                {
+                    return true;
+                }
+                else //numeric type
+                {
+                    int result = compareTo(other);
+
+                    return (result == 0);
+                }
+            }
+
+            return false;
+        }
 
 /*
         template <typename CHAR>

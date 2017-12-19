@@ -21,6 +21,7 @@
 
 ///Operators
 #include "math/complexOps.h"
+#include "math/Operator.h"
 
 ///Matrices
 #include "math/matrix.h"
