@@ -19,6 +19,9 @@
 #include "math/remainder.h"
 #include "math/zeta.h"
 
+///Operators
+#include "math/complexOps.h"
+
 ///Matrices
 #include "math/matrix.h"
 
