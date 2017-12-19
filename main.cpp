@@ -38,7 +38,8 @@ int main()
 {
     core::generic foo = Float(-1.3);
 
-    cout << (foo++).floating() << endl;
+    cout << foo.floating() << endl;
+    cout << (-foo).floating() << endl;
     cout << foo.floating() << endl;
 
     return 0;

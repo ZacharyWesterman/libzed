@@ -80,6 +80,7 @@ namespace z
             generic(const std::complex<Int>&);
             generic(const Float&);
             generic(const Int&);
+            generic(opError);
 
             ~generic();
 
@@ -145,11 +146,17 @@ namespace z
             const generic operator-() const;
             const generic operator+(const generic&) const;
             const generic operator-(const generic&) const;
+            const generic& operator+=(const generic&);
+            const generic& operator-=(const generic&);
 
             const generic operator*(const generic&) const;
             const generic operator/(const generic&) const;
             const generic operator%(const generic&) const;
             const generic int_divide(const generic&) const;
+            const generic& operator*=(const generic&);
+            const generic& operator/=(const generic&);
+            const generic& operator%=(const generic&);
+            const generic& int_divide_equals(const generic&);
 
             const generic operator^(const generic&) const;
             const generic factorial() const;
@@ -228,6 +235,12 @@ namespace z
             _type = type::INTEGER;
             data.Integer = init;
             _error = opError::NO_ERROR;
+        }
+
+        generic::generic(opError err)
+        {
+            _type = type::NONE;
+            _error = err;
         }
 
         generic::~generic()
@@ -803,6 +816,40 @@ namespace z
 
             return oldValue;
         }
+
+
+        const generic generic::operator-() const
+        {
+            if (isNumeric())
+            {
+                if (isComplexFloat())
+                {
+                    return -(*data.ComplexFloat);
+                }
+                else if (isComplexInt())
+                {
+                    return -(*data.ComplexInt);
+                }
+                else if (isFloating())
+                {
+                    return -data.Floating;
+                }
+                else//INTEGER
+                {
+                    return -data.Integer;
+                }
+            }
+            else
+            {
+                if (isString())
+                    return opError::INVALID_STRING_OP;
+                else if (isArray())
+                    return opError::INVALID_ARRAY_OP;
+                else //NULL
+                    return opError::OP_ON_NULL;
+            }
+        }
+
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const
