@@ -10,6 +10,7 @@
 #include "array.h"
 
 #include <complex>
+#include <z/math/complexOps.h>
 
 namespace z
 {
@@ -82,7 +83,15 @@ namespace z
             Float floating() const;
             Int integer() const;
 
-            inline const type type() const {return _type;}
+            inline const bool isString() const {return _type == type::STRING;}
+            inline const bool isArray() const {return _type == type::ARRAY;}
+
+            inline const bool isComplexFloat() const {return _type == type::COMPLEX_FLOAT;}
+            inline const bool isComplexInt() const {return _type == type::COMPLEX_INT;}
+            inline const bool isComplex() const {return isComplexFloat() || isComplexInt();}
+
+            inline const bool isFloating() const {return _type == type::FLOATING;}
+            inline const bool isInteger() const {return _type == type::INTEGER;}
 
 
             const generic& operator=(const generic&);
@@ -94,11 +103,9 @@ namespace z
             inline const bool operator!=(const generic& other) const
             { return !operator==(other); }
 
-            inline const bool operator>=(const generic& other) const
-            { return !operator<(other); }
+            const bool operator>=(const generic& other) const;
 
-            inline const bool operator<=(const generic& other) const
-            { return !operator>(other); }
+            const bool operator<=(const generic& other) const;
 
 
 
@@ -532,6 +539,90 @@ namespace z
                     else//INTEGER
                     {
                         return (integer() == other.integer());
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        const bool generic::operator>(const generic& other) const
+        {
+            if (comparableTo(other))
+            {
+                if (_type == type::STRING)
+                {
+                    return *(data.String) > *(other.data.String);
+                }
+                else if (_type == type::ARRAY)
+                {
+                    return *(data.Array) > *(other.data.Array);
+                }
+                else if (_type == type::NONE)
+                {
+                    return true;
+                }
+                else //numeric type
+                {
+                    type opType = operationType(other);
+
+                    if (opType == type::COMPLEX_FLOAT)
+                    {
+                        return (complexFloat() > other.complexFloat());
+                    }
+                    else if (opType == type::COMPLEX_INT)
+                    {
+                        return (complexInt() > other.complexInt());
+                    }
+                    else if (opType == type::FLOATING)
+                    {
+                        return (floating() > other.floating());
+                    }
+                    else//INTEGER
+                    {
+                        return (integer() > other.integer());
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        const bool generic::operator<(const generic& other) const
+        {
+            if (comparableTo(other))
+            {
+                if (_type == type::STRING)
+                {
+                    return *(data.String) < *(other.data.String);
+                }
+                else if (_type == type::ARRAY)
+                {
+                    return *(data.Array) < *(other.data.Array);
+                }
+                else if (_type == type::NONE)
+                {
+                    return true;
+                }
+                else //numeric type
+                {
+                    type opType = operationType(other);
+
+                    if (opType == type::COMPLEX_FLOAT)
+                    {
+                        return (complexFloat() < other.complexFloat());
+                    }
+                    else if (opType == type::COMPLEX_INT)
+                    {
+                        return (complexInt() < other.complexInt());
+                    }
+                    else if (opType == type::FLOATING)
+                    {
+                        return (floating() < other.floating());
+                    }
+                    else//INTEGER
+                    {
+                        return (integer() < other.integer());
                     }
                 }
             }
