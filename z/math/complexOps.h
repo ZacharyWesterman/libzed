@@ -4,11 +4,7 @@
 
 #include <complex>
 
-namespace z
-{
-    namespace math
-    {
-        /**
+/**
          * \brief Greater-than comparison for complex values.
          *
          * \param arg1 the left-hand operand.
@@ -75,7 +71,4 @@ namespace z
         {
             return !(operator>(arg1, arg2));
         }
-    }
-}
-
 #endif // COMPLEXOPS_H_INCLUDED
