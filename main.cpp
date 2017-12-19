@@ -36,9 +36,10 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    core::generic gen;
+    core::generic foo = Int(1);
+    core::generic bar = Int(1);
 
-    //cout << gen.integer() << endl;
+    cout << (foo == bar) << endl;
 
     return 0;
 }

@@ -6,8 +6,6 @@
 #include <z/int.h>
 #include <z/char.h>
 
-#include <z/math/Operator.h>
-
 #include "string.h"
 #include "array.h"
 
@@ -40,7 +38,7 @@ namespace z
 
             type _type;
 
-            union
+            union data_union
             {
                 core::string<Char>* String;
                 core::array<generic>* Array;
@@ -56,7 +54,9 @@ namespace z
             void dealloc();
 
             bool comparableTo(const generic&) const;
-            void operateOnMe(const generic&, math::Operator*) const;
+            //bool compareToMe(const generic&, math::comparisonOperator*) const;
+            //bool compareToMe(const generic&, math::unaryBoolOperator*);
+            type operationType(const generic&) const;
 
         public:
             generic();
@@ -70,6 +70,19 @@ namespace z
             generic(const Int&);
 
             ~generic();
+
+
+            //Casting methods
+            core::string<Char> string() const;
+            core::array<generic> array() const;
+
+            std::complex<Float> complexFloat() const;
+            std::complex<Int> complexInt() const;
+
+            Float floating() const;
+            Int integer() const;
+
+            inline const type type() const {return _type;}
 
 
             const generic& operator=(const generic&);
@@ -86,77 +99,7 @@ namespace z
 
             inline const bool operator<=(const generic& other) const
             { return !operator>(other); }
-/*
-            template<
-                typename T, //numeric type
-                typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-            >
-            generic(const std::complex<T>& _complex)
-            {
-                d_type = data::VALUE;
-                d_value = new std::complex<Float>(_complex);
-            }
 
-            template <typename CHAR_2>
-            generic(const core::string<CHAR_2>& _string)
-            {
-                d_type = data::STRING;
-                d_string = new core::string<CHAR>(_string);
-            }
-
-            generic(const core::array< generic<CHAR> >&);
-
-            template <typename CHAR_2>
-            generic(const CHAR_2* cstring)
-            {
-                d_type = data::STRING;
-                d_string = new core::string<CHAR>(cstring);
-            }
-
-
-            ~generic() { clear(); }
-
-            void clear()
-            {
-                if (d_type == data::ERROR)
-                    delete d_error;
-                else if (d_type == data::VALUE)
-                    delete d_value;
-                else if (d_type == data::STRING)
-                    delete d_string;
-                else if (d_type == data::ARRAY)
-                    delete d_array;
-
-                d_type = data::NONE;
-            }
-
-
-
-
-
-
-
-            inline const data_t type() const {return d_type;}
-
-
-            const core::string<CHAR> string() const;
-            const std::complex<Float> complex() const;
-            const Float real() const;
-            const Float imag() const;
-
-            inline core::array< generic<CHAR> >& array()
-            { return *d_array; }
-
-            inline const core::array< generic<CHAR> >& array() const
-            { return *d_array; }
-
-            const error err() const
-            {
-                if (d_type == data::ERROR)
-                    return error(*d_error);
-                else
-                    return error();
-            }*/
 
 
             const generic index(const generic&) const;
@@ -260,6 +203,119 @@ namespace z
             dealloc();
         }
 
+        core::string<Char> generic::string() const
+        {
+            if (_type == type::STRING)
+                return *data.String;
+            else if (_type == type::ARRAY)
+            {
+                core::string<Char> r_string = "{";
+
+                for (int i=0; i<(data.Array->size()); i++)
+                {
+                    if (i > 0)
+                        r_string += ",";
+
+                    r_string += (data.Array->at(i)).string();
+                }
+
+                r_string += "}";
+
+                return r_string;
+            }
+            else if (_type == type::COMPLEX_FLOAT)
+                return core::string<Char>(*data.ComplexFloat);
+            else if (_type == type::COMPLEX_INT)
+                return core::string<Char>(*data.ComplexInt);
+            else if (_type == type::FLOATING)
+                return core::string<Char>(data.Floating);
+            else if (_type == type::INTEGER)
+                return core::string<Char>(data.Integer);
+            else
+                return core::string<Char>("[NUL]");
+        }
+
+        core::array<generic> generic::array() const
+        {
+            if (_type == type::ARRAY)
+            {
+                return *data.Array;
+            }
+            else
+                return core::array<generic>();
+        }
+
+        std::complex<Float> generic::complexFloat() const
+        {
+            if (_type == type::STRING)
+                return (*data.String).complexValue();
+            else if (_type == type::COMPLEX_FLOAT)
+                return *data.ComplexFloat;
+            else if (_type == type::COMPLEX_INT)
+                return std::complex<Float>(data.ComplexInt->real(),
+                                           data.ComplexInt->imag());
+            else if (_type == type::FLOATING)
+                return std::complex<Float>(data.Floating);
+            else if (_type == type::INTEGER)
+                return std::complex<Float>(data.Integer);
+            else
+                return std::complex<Float>();
+        }
+
+        std::complex<Int> generic::complexInt() const
+        {
+            if (_type == type::STRING)
+            {
+                std::complex<Float> value = (*data.String).complexValue();
+
+                return std::complex<Int>(value.real(),
+                                         value.imag());
+            }
+            else if (_type == type::COMPLEX_FLOAT)
+                return std::complex<Int>(data.ComplexFloat->real(),
+                                         data.ComplexFloat->imag());
+            else if (_type == type::COMPLEX_INT)
+                return *data.ComplexInt;
+            else if (_type == type::FLOATING)
+                return std::complex<Int>(data.Floating);
+            else if (_type == type::INTEGER)
+                return std::complex<Int>(data.Integer);
+            else
+                return std::complex<Float>();
+        }
+
+        Float generic::floating() const
+        {
+            if (_type == type::STRING)
+                return (*data.String).value();
+            else if (_type == type::COMPLEX_FLOAT)
+                return data.ComplexFloat->real();
+            else if (_type == type::COMPLEX_INT)
+                return data.ComplexInt->real();
+            else if (_type == type::FLOATING)
+                return data.Floating;
+            else if (_type == type::INTEGER)
+                return data.Integer;
+            else
+                return 0;
+        }
+
+        Int generic::integer() const
+        {
+            if (_type == type::STRING)
+                return (*data.String).value();
+            else if (_type == type::COMPLEX_FLOAT)
+                return data.ComplexFloat->real();
+            else if (_type == type::COMPLEX_INT)
+                return data.ComplexInt->real();
+            else if (_type == type::FLOATING)
+                return data.Floating;
+            else if (_type == type::INTEGER)
+                return data.Integer;
+            else
+                return 0;
+        }
+
         void generic::alloc(const generic& other)
         {
             _type = other._type;
@@ -322,32 +378,67 @@ namespace z
             return false;
         }
 
-        void generic::operateOnMe(const generic& other,
-                                  math::Operator* oper) const
+        type generic::operationType(const generic& other) const
         {
+            if ((_type == type::COMPLEX_FLOAT) ||
+                (other._type == type::COMPLEX_FLOAT) ||
+                ((_type == type::COMPLEX_INT) &&
+                 (other._type == type::FLOATING)
+                 ) ||
+                ((other._type == type::COMPLEX_INT) &&
+                 (_type == type::FLOATING)
+                 )
+                )
+            {
+                return type::COMPLEX_FLOAT;
+            }
+            else if ((_type == type::COMPLEX_INT) ||
+                     (other._type == type::COMPLEX_INT)
+                     )
+            {
+                return type::COMPLEX_INT;
+            }
+            else if ((_type == type::FLOATING) ||
+                     (other._type == type::FLOATING)
+                     )
+            {
+                return type::FLOATING;
+            }
+            else //INTEGER & INTEGER
+            {
+                return type::INTEGER;
+            }
+        }
+
+        /*template <typename T>
+        bool generic::compareToMe(const generic& other,
+                                  math::comparisonOperator* oper) const
+        {
+            bool result;
+
             if (_type == other._type)
             {
                 if (_type == type::COMPLEX_FLOAT)
                 {
-                    *(data.ComplexFloat) =
+                    result =
                         oper->operate(*(data.ComplexFloat),
                                       *(other.data.ComplexFloat));
                 }
                 else if (_type == type::COMPLEX_INT)
                 {
-                    *(data.ComplexInt) =
+                    result =
                         oper->operate(*(data.ComplexInt),
                                       *(other.data.ComplexInt));
                 }
                 else if (_type == type::FLOATING)
                 {
-                    data.Floating =
+                    result =
                         oper->operate(data.Floating,
                                       other.data.Floating);
                 }
                 else //_type == type::INTEGER
                 {
-                    data.Integer =
+                    result =
                         oper->operate(data.Integer,
                                       other.data.Integer);
                 }
@@ -369,11 +460,11 @@ namespace z
                     }
                     else if (other._type == type::FLOATING)
                     {
-                        operand = *(other.data.Floating);
+                        operand = (other.data.Floating);
                     }
                     else //INTEGER
                     {
-                        operand = *(other.data.Integer);
+                        operand = (other.data.Integer);
                     }
 
                     *(data.ComplexFloat) =
@@ -393,9 +484,9 @@ namespace z
                 }
             }
 
-            _error = oper.error();
             delete oper;
-        }
+            return result;
+        }*/
 
         const generic& generic::operator=(const generic& other)
         {
@@ -424,9 +515,24 @@ namespace z
                 }
                 else //numeric type
                 {
-                    int result = compareTo(other);
+                    type opType = operationType(other);
 
-                    return (result == 0);
+                    if (opType == type::COMPLEX_FLOAT)
+                    {
+                        return (complexFloat() == other.complexFloat());
+                    }
+                    else if (opType == type::COMPLEX_INT)
+                    {
+                        return (complexInt() == other.complexInt());
+                    }
+                    else if (opType == type::FLOATING)
+                    {
+                        return (floating() == other.floating());
+                    }
+                    else//INTEGER
+                    {
+                        return (integer() == other.integer());
+                    }
                 }
             }
 
