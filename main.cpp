@@ -36,10 +36,10 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    core::generic foo = Int(1);
-    core::generic bar = Int(1);
+    core::generic foo = Float(-1.3);
 
-    cout << (foo <= bar) << endl;
+    cout << (foo++).floating() << endl;
+    cout << foo.floating() << endl;
 
     return 0;
 }

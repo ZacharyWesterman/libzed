@@ -32,10 +32,21 @@ namespace z
             TYPE_COUNT
         };
 
+        enum opError
+        {
+            NO_ERROR = 0,
+            //OVERFLOW,
+            //UNDERFLOW,
+            DIV_BY_ZERO,
+            INVALID_STRING_OP,
+            INVALID_ARRAY_OP,
+            OP_ON_NULL
+        };
+
         class generic
         {
         private:
-            bool _error;
+            opError _error;
 
             type _type;
 
@@ -72,6 +83,7 @@ namespace z
 
             ~generic();
 
+            inline const opError error() const {return _error;}
 
             //Casting methods
             core::string<Char> string() const;
@@ -83,6 +95,8 @@ namespace z
             Float floating() const;
             Int integer() const;
 
+            inline const bool isNull() const {return _type == type::NONE;}
+
             inline const bool isString() const {return _type == type::STRING;}
             inline const bool isArray() const {return _type == type::ARRAY;}
 
@@ -93,9 +107,12 @@ namespace z
             inline const bool isFloating() const {return _type == type::FLOATING;}
             inline const bool isInteger() const {return _type == type::INTEGER;}
 
+            inline const bool isNumeric() const {return _type > type::ARRAY;}
+
 
             const generic& operator=(const generic&);
 
+            //comparison operators
             const bool operator==(const generic&) const;
             const bool operator>(const generic&) const;
             const bool operator<(const generic&) const;
@@ -156,6 +173,7 @@ namespace z
         generic::generic()
         {
             _type = type::NONE;
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const generic& other)
@@ -166,6 +184,7 @@ namespace z
         generic::generic(generic&& other)
         {
             _type = other._type;
+            _error = other._error;
             data = other.data;
         }
 
@@ -173,36 +192,42 @@ namespace z
         {
             _type = type::STRING;
             data.String = new core::string<Char>(init);
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const core::array<generic>& init)
         {
             _type = type::ARRAY;
             data.Array = new core::array<generic>(init);
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const std::complex<Float>& init)
         {
             _type = type::COMPLEX_FLOAT;
             data.ComplexFloat = new std::complex<Float>(init);
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const std::complex<Int>& init)
         {
             _type = type::COMPLEX_INT;
             data.ComplexInt = new std::complex<Int>(init);
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const Float& init)
         {
             _type = type::FLOATING;
             data.Floating = init;
+            _error = opError::NO_ERROR;
         }
 
         generic::generic(const Int& init)
         {
             _type = type::INTEGER;
             data.Integer = init;
+            _error = opError::NO_ERROR;
         }
 
         generic::~generic()
@@ -326,6 +351,7 @@ namespace z
         void generic::alloc(const generic& other)
         {
             _type = other._type;
+            _error = other._error;
 
             if (_type == type::STRING)
             {
@@ -637,6 +663,146 @@ namespace z
             return false;
         }
 
+
+        const generic& generic::operator++()
+        {
+            if (isNumeric())
+            {
+                if (isComplexFloat())
+                {
+                    *data.ComplexFloat += 1;
+                }
+                else if (isComplexInt())
+                {
+                    *data.ComplexInt += 1;
+                }
+                else if (isFloating())
+                {
+                    data.Floating += 1;
+                }
+                else//INTEGER
+                {
+                    data.Integer += 1;
+                }
+            }
+            else
+            {
+                if (isString())
+                    _error = opError::INVALID_STRING_OP;
+                else if (isArray())
+                    _error = opError::INVALID_ARRAY_OP;
+                else //NULL
+                    _error = opError::OP_ON_NULL;
+            }
+
+            return *this;
+        }
+
+        const generic& generic::operator--()
+        {
+            if (isNumeric())
+            {
+                if (isComplexFloat())
+                {
+                    *data.ComplexFloat -= 1;
+                }
+                else if (isComplexInt())
+                {
+                    *data.ComplexInt -= 1;
+                }
+                else if (isFloating())
+                {
+                    data.Floating -= 1;
+                }
+                else//INTEGER
+                {
+                    data.Integer -= 1;
+                }
+            }
+            else
+            {
+                if (isString())
+                    _error = opError::INVALID_STRING_OP;
+                else if (isArray())
+                    _error = opError::INVALID_ARRAY_OP;
+                else //NULL
+                    _error = opError::OP_ON_NULL;
+            }
+
+            return *this;
+        }
+
+        const generic generic::operator++(int)
+        {
+            const generic oldValue = *this;
+
+            if (isNumeric())
+            {
+                if (isComplexFloat())
+                {
+                    *data.ComplexFloat += 1;
+                }
+                else if (isComplexInt())
+                {
+                    *data.ComplexInt += 1;
+                }
+                else if (isFloating())
+                {
+                    data.Floating += 1;
+                }
+                else//INTEGER
+                {
+                    data.Integer += 1;
+                }
+            }
+            else
+            {
+                if (isString())
+                    _error = opError::INVALID_STRING_OP;
+                else if (isArray())
+                    _error = opError::INVALID_ARRAY_OP;
+                else //NULL
+                    _error = opError::OP_ON_NULL;
+            }
+
+            return oldValue;
+        }
+
+        const generic generic::operator--(int)
+        {
+            const generic oldValue = *this;
+
+            if (isNumeric())
+            {
+                if (isComplexFloat())
+                {
+                    *data.ComplexFloat -= 1;
+                }
+                else if (isComplexInt())
+                {
+                    *data.ComplexInt -= 1;
+                }
+                else if (isFloating())
+                {
+                    data.Floating -= 1;
+                }
+                else//INTEGER
+                {
+                    data.Integer -= 1;
+                }
+            }
+            else
+            {
+                if (isString())
+                    _error = opError::INVALID_STRING_OP;
+                else if (isArray())
+                    _error = opError::INVALID_ARRAY_OP;
+                else //NULL
+                    _error = opError::OP_ON_NULL;
+            }
+
+            return oldValue;
+        }
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const
