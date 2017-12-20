@@ -37,9 +37,9 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    util::generic a((Int)3), b(std::complex<Int>(0,2));
+    util::generic a((Int)0);//, b(std::complex<Int>(0,2));
 
-    cout << (a ^ b).string().narrow().str() << endl;
+    cout << (~a).string().narrow().str() << endl;
 
     return 0;
 }

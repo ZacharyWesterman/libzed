@@ -1371,6 +1371,63 @@ namespace z
             }
         }
 
+        const generic generic::operator!() const
+        {
+            if (isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric())
+            {
+                if (_type == type::COMPLEX_FLOAT)
+                {
+                    return (Int)!(data.ComplexFloat->real() ||
+                                  data.ComplexFloat->imag());
+                }
+                else if (_type == type::COMPLEX_INT)
+                {
+                    return (Int)!(data.ComplexInt->real() ||
+                                  data.ComplexInt->imag());
+                }
+                else if (_type == type::FLOATING)
+                {
+                    return (Int)!data.Floating;
+                }
+                else//INTEGER
+                {
+                    return (Int)!data.Integer;
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator~() const
+        {
+            if (isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric())
+            {
+                return (Int)~integer();
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const
