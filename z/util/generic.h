@@ -1252,6 +1252,125 @@ namespace z
             }
         }
 
+
+        const generic generic::operator&&(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)((complexFloat().real() || complexFloat().imag()) &&
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)((complexInt().real() || complexInt().imag()) &&
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)(floating() && other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)(integer() && other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator&(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)(integer() & other.integer());
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator||(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)((complexFloat().real() || complexFloat().imag()) ||
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)((complexInt().real() || complexInt().imag()) ||
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)(floating() || other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)(integer() || other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator|(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)(integer() | other.integer());
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const
@@ -1506,68 +1625,6 @@ namespace z
 
 
         ///Operators
-
-        //power
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator^(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = pow(*d_value,*(other.d_value));
-            }
-
-            return result;
-        }
-
-        //factorial
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::factorial() const
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-            else if (d_type == data::VALUE)
-            {
-                if (d_value->imag() != 0)
-                {
-                    result = error("Factorial requires a real number");
-                }
-                else if (d_value->real() < 0)
-                {
-                    result = error("Factorial must be non-negative");
-                }
-                else
-                {
-                    Float _rslt = math::factorial((long)d_value->real());
-
-                    if (_rslt == 0)
-                    {
-                        result = error("Factorial input overflow");
-                    }
-                    else
-                        result = _rslt;
-                }
-            }
-
-            return result;
-        }
 
         //logical AND
         template <typename CHAR>
