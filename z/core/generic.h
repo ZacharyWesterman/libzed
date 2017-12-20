@@ -36,12 +36,15 @@ namespace z
         enum opError
         {
             NO_ERROR = 0,
-            //OVERFLOW,
-            //UNDERFLOW,
             DIV_BY_ZERO,
             INVALID_STRING_OP,
             INVALID_ARRAY_OP,
-            OP_ON_NULL
+            OP_ON_NULL,
+            VAL_OVERFLOW,
+            VAL_UNDERFLOW,
+            MUST_REAL,
+            MUST_INT,
+            MUST_NONNEG
         };
 
         class generic
@@ -1205,6 +1208,43 @@ namespace z
                 {
                     return (Int)pow(integer(),other.integer());
                 }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::factorial() const
+        {
+            if (isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isComplex())
+            {
+                return opError::MUST_REAL;
+            }
+            else if (isFloating())
+            {
+                return opError::MUST_INTEGER;
+            }
+            else if (isInteger())
+            {
+                if (data.Integer < 0)
+                    return opError::MUST_NONNEG;
+
+                bool did_overflow;
+                Int result = math::factorial(data.Integer, did_overflow);
+
+                if (did_overflow)
+                    return opError::VAL_OVERFLOW;
+
+                return result;
             }
             else //NULL
             {

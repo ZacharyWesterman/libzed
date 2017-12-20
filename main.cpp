@@ -36,9 +36,9 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    core::generic a((Int)3), b((Int)2);
+    core::generic a((Int)3), b(std::complex<Int>(0,2));
 
-    cout << (a / b).floating() << endl;
+    cout << (a ^ b).string().narrow().str() << endl;
 
     return 0;
 }
