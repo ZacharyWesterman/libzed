@@ -11,6 +11,7 @@
 
 #include <complex>
 #include <z/math/complexOps.h>
+#include <z/math/remainder.h>
 
 namespace z
 {
@@ -854,7 +855,24 @@ namespace z
         {
             if (isArray() || other.isArray())
             {
-                return opError::INVALID_ARRAY_OP;
+                if (isArray() && other.isArray())
+                {
+                    core::array<generic> arr = *data.Array;
+                    arr.add(*other.data.Array);
+                    return arr;
+                }
+                else if (isArray())
+                {
+                    core::array<generic> arr = *data.Array;
+                    arr.add(other);
+                    return arr;
+                }
+                else //other is array
+                {
+                    core::array<generic> arr = *this;
+                    arr.add(*other.data.Array);
+                    return arr;
+                }
             }
             else if (isString() || other.isString())
             {
@@ -916,6 +934,140 @@ namespace z
                 else//INTEGER
                 {
                     return (integer() - other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator*(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (complexFloat() * other.complexFloat());
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (complexInt() * other.complexInt());
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (floating() * other.floating());
+                }
+                else//INTEGER
+                {
+                    return (integer() * other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator/(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (complexFloat() / other.complexFloat());
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (complexInt() / other.complexInt());
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (floating() / other.floating());
+                }
+                else//INTEGER
+                {
+                    return (integer() / other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::operator%(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if ((opType == type::COMPLEX_FLOAT) ||
+                    (opType == type::COMPLEX_INT))
+                {
+                    return math::remainder(complexInt(),other.complexInt());
+                }
+                else//REAL value only
+                {
+                    return math::remainder(integer(),other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::int_divide(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if ((opType == type::COMPLEX_FLOAT) ||
+                    (opType == type::COMPLEX_INT))
+                {
+                    return (complexInt() / other.complexInt());
+                }
+                else//REAL value only
+                {
+                    return (integer() / other.integer());
                 }
             }
             else //NULL
