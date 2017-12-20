@@ -212,22 +212,67 @@ namespace z
 
         generic::generic(const std::complex<Float>& init)
         {
-            _type = type::COMPLEX_FLOAT;
-            data.ComplexFloat = new std::complex<Float>(init);
+            if (init.imag())
+            {
+                if ((init.real() == (Float)(Int)init.real()) &&
+                    (init.imag() == (Float)(Int)init.imag())
+                    )
+                {
+                    _type = type::COMPLEX_INT;
+                    data.ComplexInt = new std::complex<Int>(init);
+                }
+                else
+                {
+                    _type = type::COMPLEX_FLOAT;
+                    data.ComplexFloat = new std::complex<Float>(init);
+                }
+            }
+            else
+            {
+                if (init.real() == (Float)(Int)init.real())
+                {
+                    _type = type::INTEGER;
+                    data.Integer = (Int)init.real();
+                }
+                else
+                {
+                    _type = type::FLOATING;
+                    data.Floating = (Float)init.real();
+                }
+            }
+
             _error = opError::NO_ERROR;
         }
 
         generic::generic(const std::complex<Int>& init)
         {
-            _type = type::COMPLEX_INT;
-            data.ComplexInt = new std::complex<Int>(init);
+            if (init.imag())
+            {
+                _type = type::COMPLEX_INT;
+                data.ComplexInt = new std::complex<Int>(init);
+            }
+            else
+            {
+                _type = type::INTEGER;
+                data.Integer = init.real();
+            }
+
             _error = opError::NO_ERROR;
         }
 
         generic::generic(const Float& init)
         {
-            _type = type::FLOATING;
-            data.Floating = init;
+            if (init == (Float)(Int)init)
+            {
+                _type = type::INTEGER;
+                data.Integer = init;
+            }
+            else
+            {
+                _type = type::FLOATING;
+                data.Floating = init;
+            }
+
             _error = opError::NO_ERROR;
         }
 
@@ -1000,6 +1045,18 @@ namespace z
                 else if (opType == type::COMPLEX_INT)
                 {
                     return (complexInt() / other.complexInt());
+
+                    std::complex<Int> cintv1 = integer();
+                    std::complex<Int> cintv2 = other.integer();
+
+                    std::complex<Int> remd = math::remainder(cintv1,cintv2);
+
+                    if (remd.real() || remd.imag())
+                    {
+                        return (complexFloat() / other.complexFloat());
+                    }
+                    else
+                        return (cintv1 / cintv2);
                 }
                 else if (opType == type::FLOATING)
                 {
@@ -1007,7 +1064,15 @@ namespace z
                 }
                 else//INTEGER
                 {
-                    return (integer() / other.integer());
+                    Int intv1 = integer();
+                    Int intv2 = other.integer();
+
+                    if (intv1 % intv2)
+                    {
+                        return (floating() / other.floating());
+                    }
+                    else
+                        return (intv1 / intv2);
                 }
             }
             else //NULL
@@ -1110,6 +1175,41 @@ namespace z
         {
             *this = this->int_divide(other);
             return *this;
+        }
+
+
+        const generic generic::operator^(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if ((opType == type::COMPLEX_FLOAT) ||
+                    (opType == type::COMPLEX_INT))
+                {
+                    return pow(complexFloat(),other.complexFloat());
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Float)pow(floating(),other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)pow(integer(),other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
         }
 
 /*
