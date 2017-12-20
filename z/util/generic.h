@@ -156,11 +156,11 @@ namespace z
             const generic operator*(const generic&) const;
             const generic operator/(const generic&) const;
             const generic operator%(const generic&) const;
-            const generic int_divide(const generic&) const;
+            const generic intDivide(const generic&) const;
             const generic& operator*=(const generic&);
             const generic& operator/=(const generic&);
             const generic& operator%=(const generic&);
-            const generic& int_divide_equals(const generic&);
+            const generic& intDivideEqual(const generic&);
 
             const generic operator^(const generic&) const;
             const generic factorial() const;
@@ -171,14 +171,14 @@ namespace z
             const generic operator||(const generic&) const;
             const generic operator!() const;
             const generic operator~() const;
-            const generic xor_bitwise(const generic&) const;
-            const generic xor_logical(const generic&) const;
-            const generic nand_bitwise(const generic&) const;
-            const generic nand_logical(const generic&) const;
-            const generic nor_bitwise(const generic&) const;
-            const generic nor_logical(const generic&) const;
-            const generic nxor_bitwise(const generic&) const;
-            const generic nxor_logical(const generic&) const;
+            const generic logicalXor(const generic&) const;
+            const generic bitwiseXor(const generic&) const;
+            const generic logicalNand(const generic&) const;
+            const generic bitwiseNand(const generic&) const;
+            const generic logicalNor(const generic&) const;
+            const generic bitwiseNor(const generic&) const;
+            const generic logicalNxor(const generic&) const;
+            const generic bitwiseNxor(const generic&) const;
         };
 
         generic::generic()
@@ -1114,7 +1114,7 @@ namespace z
             }
         }
 
-        const generic generic::int_divide(const generic& other) const
+        const generic generic::intDivide(const generic& other) const
         {
             if (isArray() || other.isArray())
             {
@@ -1174,7 +1174,7 @@ namespace z
             return *this;
         }
 
-        const generic& generic::int_divide_equals(const generic& other)
+        const generic& generic::intDivideEqual(const generic& other)
         {
             *this = this->int_divide(other);
             return *this;
@@ -1421,6 +1421,242 @@ namespace z
             else if (isNumeric())
             {
                 return (Int)~integer();
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::logicalXor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)((complexFloat().real() || complexFloat().imag()) !=
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)((complexInt().real() || complexInt().imag()) !=
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)(!floating() != !other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)(!integer() != !other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::bitwiseXor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)(integer() ^ other.integer());
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::logicalNand(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)!((complexFloat().real() || complexFloat().imag()) &&
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)!((complexInt().real() || complexInt().imag()) &&
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)!(floating() && other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)!(integer() && other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::bitwiseNand(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)~(integer() & other.integer());
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::logicalNor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)!((complexFloat().real() || complexFloat().imag()) ||
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)!((complexInt().real() || complexInt().imag()) ||
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)!(floating() || other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)!(integer() || other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::bitwiseNor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)~(integer() | other.integer());
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::logicalNxor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                type opType = operationType(other);
+
+                if (opType == type::COMPLEX_FLOAT)
+                {
+                    return (Int)((complexFloat().real() || complexFloat().imag()) ==
+                        (other.complexFloat().real() || other.complexFloat().imag()));
+                }
+                else if (opType == type::COMPLEX_INT)
+                {
+                    return (Int)((complexInt().real() || complexInt().imag()) ==
+                        (other.complexInt().real() || other.complexInt().imag()));
+                }
+                else if (opType == type::FLOATING)
+                {
+                    return (Int)(!floating() == !other.floating());
+                }
+                else//INTEGER
+                {
+                    return (Int)(!integer() == !other.integer());
+                }
+            }
+            else //NULL
+            {
+                return opError::OP_ON_NULL;
+            }
+        }
+
+        const generic generic::bitwiseNxor(const generic& other) const
+        {
+            if (isArray() || other.isArray())
+            {
+                return opError::INVALID_ARRAY_OP;
+            }
+            else if (isString() || other.isString())
+            {
+                return opError::INVALID_STRING_OP;
+            }
+            else if (isNumeric() && other.isNumeric())
+            {
+                return (Int)~(integer() ^ other.integer());
             }
             else //NULL
             {
@@ -1675,434 +1911,6 @@ namespace z
 
 
             return *this;
-        }
-
-
-
-
-
-        ///Operators
-
-        //logical AND
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator&&(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (long)d_value->real() && (long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise AND
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator&(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (long)d_value->real() & (long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //logical OR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator||(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (long)d_value->real() || (long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise OR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator|(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (long)d_value->real() | (long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //logical NOT
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator!() const
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::VALUE)
-                result = !(long)d_value->real();
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-            else if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-
-            return result;
-        }
-
-
-        //bitwise NOT
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator~() const
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::VALUE)
-                result = ~(long)d_value->real();
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-            else if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-
-            return result;
-        }
-
-        //logical XOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::xor_logical(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = !(long)d_value->real() != !(long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise XOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::xor_bitwise(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (long)d_value->real() ^ (long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //logical NAND
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nand_logical(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = !((long)d_value->real() && (long)other.d_value->real());
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise NAND
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nand_bitwise(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = ~((long)d_value->real() & (long)other.d_value->real());
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //logical NOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nor_logical(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = !((long)d_value->real() || (long)other.d_value->real());
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise NOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nor_bitwise(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = ~((long)d_value->real() | (long)other.d_value->real());
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //logical NXOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nxor_logical(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = !(long)d_value->real() == !(long)other.d_value->real();
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        //bitwise NXOR
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::nxor_bitwise(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = ~((long)d_value->real() ^ (long)other.d_value->real());
-            }
-            else if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }*/
-
-        /*class generic
-        {
-        protected:
-            bool _error;
-
-        public:
-            generic() {_error = false;}
-            virtual ~generic() {}
-
-            inline bool error()
-            {
-                return _error;
-            }
-
-            //equality methods
-            virtual const bool operator==(const generic&) const;
-            virtual const bool operator!=(const generic&) const;
-            virtual const bool operator>(const generic&) const;
-            virtual const bool operator<(const generic&) const;
-            virtual const bool operator>=(const generic&) const;
-            virtual const bool operator<=(const generic&) const;
-
-            //casting methods
-            virtual const core::string<Char> string() const;
-            virtual const core::array<generic>* array() const;
-            virtual const std::complex<Float> complexFloat() const;
-            virtual const std::complex<Int> complexInt() const;
-            virtual const Float floating() const;
-            virtual const Int integer() const;
-
-            //type checking
-            virtual bool isNull() const;
-            virtual bool isString() const;
-            virtual bool isArray() const;
-            virtual bool isComplexFloat() const;
-            virtual bool isComplexInt() const;
-            virtual bool isFloating() const;
-            virtual bool isInteger() const;
-
-            //operators
-            const generic& operator++();
-            const generic& operator--();
-            const generic operator++(int);
-            const generic operator--(int);
-
-            const generic operator-() const;
-            const generic operator+(const generic&) const;
-            const generic operator+=(const generic&) const;
-            const generic operator-(const generic&) const;
-            const generic operator-=(const generic&) const;
-
-            const generic operator*(const generic&) const;
-            const generic operator/(const generic&) const;
-            const generic operator%(const generic&) const;
-            const generic int_divide(const generic&) const;
-            const generic int_divide_equals(const generic&) const;
-
-            const generic operator^(const generic&) const;
-            const generic factorial() const;
-
-            const generic operator&(const generic&) const;
-            const generic operator&&(const generic&) const;
-            const generic operator|(const generic&) const;
-            const generic operator||(const generic&) const;
-            const generic operator!() const;
-            const generic operator~() const;
-            const generic xor_bitwise(const generic&) const;
-            const generic xor_logical(const generic&) const;
-            const generic nand_bitwise(const generic&) const;
-            const generic nand_logical(const generic&) const;
-            const generic nor_bitwise(const generic&) const;
-            const generic nor_logical(const generic&) const;
-            const generic nxor_bitwise(const generic&) const;
-            const generic nxor_logical(const generic&) const;
-        };
-
-        const core::string<Char> generic::string() const
-        {
-            return core::string<Char>();
-        }
-
-        const core::array<generic>* generic::array() const
-        {
-            return NULL;
-        }
-
-        const std::complex<Float> generic::complexFloat() const
-        {
-            return std::complex<Float>();
-        }
-
-        const std::complex<Int> generic::complexInt() const
-        {
-            return std::complex<Int>();
-        }
-
-        const Float generic::floating() const
-        {
-            return 0;
-        }
-
-        const Int generic::integer() const
-        {
-            return 0;
         }*/
     }
 }
