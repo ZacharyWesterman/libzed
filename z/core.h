@@ -35,7 +35,4 @@
 #include "core/pause.h"
 #include "core/charFunctions.h"
 
-///Generic class
-#include "core/generic.h"
-
 #endif // CORE_H_INCLUDED

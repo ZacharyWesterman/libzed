@@ -5,6 +5,7 @@
 #include <z/core.h>
 #include <z/math.h>
 #include <z/file.h>
+#include <z/util.h>
 
 using namespace std;
 using namespace z;
@@ -36,7 +37,7 @@ core::string<char> hex(unsigned char _c)
 */
 int main()
 {
-    core::generic a((Int)3), b(std::complex<Int>(0,2));
+    util::generic a((Int)3), b(std::complex<Int>(0,2));
 
     cout << (a ^ b).string().narrow().str() << endl;
 

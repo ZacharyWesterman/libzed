@@ -6,8 +6,8 @@
 #include <z/int.h>
 #include <z/char.h>
 
-#include "string.h"
-#include "array.h"
+#include <z/core/string.h>
+#include <z/core/array.h>
 
 #include <complex>
 #include <z/math/complexOps.h>
@@ -15,7 +15,7 @@
 
 namespace z
 {
-    namespace core
+    namespace util
     {
         enum type
         {
@@ -43,7 +43,7 @@ namespace z
             VAL_OVERFLOW,
             VAL_UNDERFLOW,
             MUST_REAL,
-            MUST_INT,
+            MUST_INTEGER,
             MUST_NONNEG
         };
 
@@ -1445,14 +1445,13 @@ namespace z
 
         ///Assuming a 2D array list, change array grouping
         ///from horizontal to vertical.
-        /**
 
-        {a,b,c}     {a,d,g}
-        {d,e,f} --> {b,e,h}
-        {g,h,i}     {c,f,i}
 
-        */
-     /*   template <typename CHAR>
+        //{a,b,c}     {a,d,g}
+        //{d,e,f} --> {b,e,h}
+        //{g,h,i}     {c,f,i}
+
+        template <typename CHAR>
         const generic<CHAR>& generic<CHAR>::merge(const core::array< generic<CHAR> >& arr)
         {
             clear();
