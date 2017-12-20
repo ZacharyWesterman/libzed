@@ -1076,6 +1076,42 @@ namespace z
             }
         }
 
+        const generic& generic::operator+=(const generic& other)
+        {
+            *this = (*this + other);
+            return *this;
+        }
+
+        const generic& generic::operator-=(const generic& other)
+        {
+            *this = (*this - other);
+            return *this;
+        }
+
+        const generic& generic::operator*=(const generic& other)
+        {
+            *this = (*this * other);
+            return *this;
+        }
+
+        const generic& generic::operator/=(const generic& other)
+        {
+            *this = (*this / other);
+            return *this;
+        }
+
+        const generic& generic::operator%=(const generic& other)
+        {
+            *this = (*this % other);
+            return *this;
+        }
+
+        const generic& generic::int_divide_equals(const generic& other)
+        {
+            *this = this->int_divide(other);
+            return *this;
+        }
+
 /*
         template <typename CHAR>
         const generic<CHAR> generic<CHAR>::index(const generic<CHAR>& _index) const
@@ -1327,487 +1363,10 @@ namespace z
         }
 
 
-        template <typename CHAR>
-        const generic<CHAR>& generic<CHAR>::operator++()
-        {
-            if (d_type == data::VALUE)
-            {
-                *d_value = *d_value + (Float)1.0;
-            }
-            else if (d_type == data::ARRAY)
-            {
-                delete d_array;
-
-                d_type = data::ERROR;
-                d_error = new error("Invalid operation on array");
-            }
-            else if (d_type == data::STRING)
-            {
-                delete d_string;
-
-                d_type = data::ERROR;
-                d_error = new error("Invalid operation on string");
-            }
-
-            return *this;
-        }
-
-        template <typename CHAR>
-        const generic<CHAR>& generic<CHAR>::operator--()
-        {
-            if (d_type == data::VALUE)
-            {
-                *d_value = *d_value - (Float)1.0;
-            }
-            else if (d_type == data::ARRAY)
-            {
-                delete d_array;
-
-                d_type = data::ERROR;
-                d_error = new error("Invalid operation on array");
-            }
-            else if (d_type == data::STRING)
-            {
-                delete d_string;
-
-                d_type = data::ERROR;
-                *d_error = new error("Invalid operation on string");
-            }
-
-            return *this;
-        }
-
-
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator++(int)
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::VALUE)
-            {
-                result = *this;
-                *d_value = *d_value + (Float)1.0;
-            }
-            else if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator--(int)
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::VALUE)
-            {
-                result = *this;
-                *d_value = *d_value - (Float)1.0;
-            }
-            else if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-
-            return result;
-        }
-
-
-        template <typename CHAR>
-        const bool generic<CHAR>::operator==(const generic<CHAR>& other) const
-        {
-            if (d_type != other.d_type)
-                return false;
-
-            switch (d_type)
-            {
-            case (data::VALUE):
-                return *d_value == *other.d_value;
-                break;
-
-            case (data::STRING):
-                return *d_string == *other.d_string;
-                break;
-
-            case (data::ARRAY):
-                return *d_array == *other.d_array;
-                break;
-
-            default:
-                return true;
-            }
-        }
-
-        template <typename CHAR>
-        const bool generic<CHAR>::operator>(const generic<CHAR>& other) const
-        {
-            if (d_type != other.d_type)
-                return (d_type > other.d_type);
-
-            switch (d_type)
-            {
-            case (data::VALUE):
-                return *d_value > *other.d_value;
-                break;
-
-            case (data::STRING):
-                return *d_string > *other.d_string;
-                break;
-
-            case (data::ARRAY):
-                return *d_array > *other.d_array;
-                break;
-
-            default:
-                return true;
-            }
-        }
-
-        template <typename CHAR>
-        const bool generic<CHAR>::operator<(const generic<CHAR>& other) const
-        {
-            if (d_type != other.d_type)
-                return (d_type < other.d_type);
-
-            switch (d_type)
-            {
-            case (data::VALUE):
-                return *d_value < *other.d_value;
-                break;
-
-            case (data::STRING):
-                return *d_string < *other.d_string;
-                break;
-
-            case (data::ARRAY):
-                return *d_array < *other.d_array;
-                break;
-
-            default:
-                return true;
-            }
-        }
-
-
-        template <typename CHAR>
-        const generic<CHAR>& generic<CHAR>::operator=(const generic<CHAR>& other)
-        {
-            d_type = other.d_type;
-
-            if (d_type == data::VALUE)
-                d_value = new std::complex<Float>(*other.d_value);
-            else if (d_type == data::STRING)
-                d_string = new core::string<CHAR>(*other.d_string);
-            else if (d_type == data::ARRAY)
-                d_array = new core::array< generic<CHAR> >(*other.d_array);
-            else if (d_type == data::ERROR)
-                d_error = new error(*other.d_error);
-
-            return *this;
-        }
-
-
-        template <typename CHAR>
-        generic<CHAR>::generic(const generic<CHAR>& other)
-        {
-            d_type = other.d_type;
-
-            if (d_type == data::VALUE)
-                d_value = new std::complex<Float>(*other.d_value);
-            else if (d_type == data::STRING)
-                d_string = new core::string<CHAR>(*other.d_string);
-            else if (d_type == data::ARRAY)
-                d_array = new core::array< generic<CHAR> >(*other.d_array);
-            else if (d_type == data::ERROR)
-                d_error = new error(*other.d_error);
-        }
-
-        template <typename CHAR>
-        generic<CHAR>::generic(generic<CHAR>&& other)
-        {
-            d_type = other.d_type;
-
-            d_value = other.d_value;
-
-            other.d_type = data::NONE;
-        }
-
-
-        template <typename CHAR>
-        generic<CHAR>::generic(const core::array< generic<CHAR> >& _array)
-        {
-            d_type = data::ARRAY;
-            d_array = new core::array< generic<CHAR> >(_array);
-        }
-
-
-
-        template <typename CHAR>
-        const core::string<CHAR> generic<CHAR>::string() const
-        {
-            if (d_type == data::VALUE)
-                return core::string<CHAR>(*d_value);
-            else if (d_type == data::STRING)
-                return *d_string;
-            else if (d_type == data::ARRAY)
-            {
-                core::string<CHAR> r_string = "{";
-
-                for (int i=0; i<d_array->size(); i++)
-                {
-                    if (i > 0)
-                        r_string += ",";
-
-                    r_string += d_array->at(i).string();
-                }
-
-                r_string += "}";
-
-                return r_string;
-            }
-            else if (d_type == data::ERROR)
-            {
-                return core::string<CHAR>("[")+
-                        d_error->message()+
-                        core::string<CHAR>("]");
-            }
-            else
-                return core::string<CHAR>("NUL");
-
-        }
-
-
-        template <typename CHAR>
-        const std::complex<Float> generic<CHAR>::complex() const
-        {
-            if (d_type == data::VALUE)
-                return *d_value;
-            else if (d_type == data::STRING)
-                return d_string->complexValue();
-            else
-                return std::complex<Float>();
-        }
-
-
-        template <typename CHAR>
-        const Float generic<CHAR>::real() const
-        {
-            if (d_type == data::VALUE)
-                return d_value->real();
-            else if (d_type == data::STRING)
-                return d_string->complexValue().real();
-            else
-                return 0;
-        }
-
-        template <typename CHAR>
-        const Float generic<CHAR>::imag() const
-        {
-            if (d_type == data::VALUE)
-                return d_value->imag();
-            else if (d_type == data::STRING)
-                return d_string->complexValue().imag();
-            else
-                return 0;
-        }
-
 
 
 
         ///Operators
-
-        //negation
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator-() const
-        {
-            generic<CHAR> result;
-
-            if (d_type == data::VALUE)
-                result = -(*d_value);
-            else if (d_type == data::STRING)
-            {
-                result = error("Invalid operation on string");
-            }
-            else if (d_type == data::ARRAY)
-            {
-                result = error("Invalid operation on array");
-            }
-
-            return result;
-        }
-
-        //addition
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator+(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                if (d_type == data::STRING)
-                    result = *d_string;
-                else
-                    result = this->string();
-
-                if (other.d_type == data::STRING)
-                    *(result.d_string) += *(other.d_string);
-                else
-                    *(result.d_string) += other.string();
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = *d_value + *other.d_value;
-            }
-
-            return result;
-        }
-
-        //subtraction
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator-(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (*d_value) - (*other.d_value);
-            }
-
-            return result;
-        }
-
-        //multiplication
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator*(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                result = (*d_value) * (*other.d_value);
-            }
-
-            return result;
-        }
-
-        //floating-point division
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator/(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                if (other.d_value->real() || other.d_value->imag())
-                    result = *d_value / *other.d_value;
-                else
-                {
-                    result = error("Division by zero");
-                }
-
-            }
-
-            return result;
-        }
-
-        //remainder of integer division
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::operator%(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                if (other.d_value->real() || other.d_value->imag())
-                {
-                    result = math::remainder(*d_value, *(other.d_value));
-                }
-                else
-                {
-                    result = error("Division by zero");
-                }
-
-            }
-
-            return result;
-        }
-
-        //integer division
-        template <typename CHAR>
-        const generic<CHAR> generic<CHAR>::int_divide(const generic<CHAR>& other) const
-        {
-            generic<CHAR> result;
-
-            if ((d_type == data::ARRAY) || (other.d_type == data::ARRAY))
-            {
-                result = error("Invalid operation on array");
-            }
-            else if ((d_type == data::STRING) || (other.d_type == data::STRING))
-            {
-                result = error("Invalid operation on string");
-            }
-            else if ((d_type == data::VALUE) && (other.d_type == data::VALUE))
-            {
-                if (other.d_value->real() || other.d_value->imag())
-                {
-                    result = std::complex<long>(*d_value) /
-                             std::complex<long>(*other.d_value);
-                }
-                else
-                {
-                    result = error("Division by zero");
-                }
-
-            }
-
-            return result;
-        }
 
         //power
         template <typename CHAR>
