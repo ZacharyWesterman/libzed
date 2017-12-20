@@ -44,7 +44,6 @@
 		<Unit filename="z/core/array.h" />
 		<Unit filename="z/core/charFunctions.h" />
 		<Unit filename="z/core/dynamicStack.h" />
-		<Unit filename="z/core/generic.h" />
 		<Unit filename="z/core/pause.h" />
 		<Unit filename="z/core/refArray.h" />
 		<Unit filename="z/core/sortedArray.h" />
@@ -74,6 +73,8 @@
 		<Unit filename="z/math/matrix.h" />
 		<Unit filename="z/math/remainder.h" />
 		<Unit filename="z/math/zeta.h" />
+		<Unit filename="z/util.h" />
+		<Unit filename="z/util/generic.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

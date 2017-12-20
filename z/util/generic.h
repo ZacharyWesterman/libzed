@@ -83,7 +83,16 @@ namespace z
             generic(const std::complex<Float>&);
             generic(const std::complex<Int>&);
             generic(const Float&);
-            generic(const Int&);
+
+            template<typename T,
+            typename = typename std::enable_if<std::is_integral<T>::value>::type>
+            generic(const T& init)
+            {
+                _type = type::INTEGER;
+                data.Integer = (Int)init;
+                _error = opError::NO_ERROR;
+            }
+
             generic(opError);
 
             ~generic();
@@ -279,12 +288,7 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
-        generic::generic(const Int& init)
-        {
-            _type = type::INTEGER;
-            data.Integer = init;
-            _error = opError::NO_ERROR;
-        }
+
 
         generic::generic(opError err)
         {
@@ -1176,7 +1180,7 @@ namespace z
 
         const generic& generic::intDivideEqual(const generic& other)
         {
-            *this = this->int_divide(other);
+            *this = this->intDivide(other);
             return *this;
         }
 

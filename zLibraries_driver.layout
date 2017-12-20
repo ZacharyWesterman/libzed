@@ -2,20 +2,152 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="z/file/writer.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3488" topLine="114" />
+		</Cursor>
+	</File>
+	<File name="z/file/list.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4704" topLine="21" />
+		</Cursor>
+		<Folding>
+			<Collapse line="41" />
+		</Folding>
+	</File>
 	<File name="z/core.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="789" topLine="0" />
+			<Cursor1 position="745" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="z/math.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/core/string.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="409" topLine="0" />
+			<Cursor1 position="10798" topLine="157" />
+		</Cursor>
+		<Folding>
+			<Collapse line="34" />
+		</Folding>
+	</File>
+	<File name="z/math/constants.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="750" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="z/core/charFunctions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/math/complexOps.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2480" topLine="71" />
+			<Cursor1 position="1902" topLine="37" />
 		</Cursor>
+	</File>
+	<File name="z/math/zeta.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="82" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/core/sortedArray.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2693" topLine="69" />
+		</Cursor>
+	</File>
+	<File name="z/math/factorial.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="556" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="z/file/copy.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="436" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/core/stream.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2776" topLine="128" />
+		</Cursor>
+	</File>
+	<File name="z/math/remainder.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="71" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="z/math/fibonacci.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="987" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="z/file/info.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3297" topLine="105" />
+		</Cursor>
+	</File>
+	<File name="z/core/sortedRefArray.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="200" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="z/util/generic.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="35952" topLine="287" />
+		</Cursor>
+		<Folding>
+			<Collapse line="20" />
+			<Collapse line="36" />
+			<Collapse line="199" />
+			<Collapse line="204" />
+			<Collapse line="211" />
+			<Collapse line="218" />
+			<Collapse line="225" />
+			<Collapse line="259" />
+			<Collapse line="293" />
+			<Collapse line="299" />
+			<Collapse line="304" />
+			<Collapse line="336" />
+			<Collapse line="346" />
+			<Collapse line="363" />
+			<Collapse line="385" />
+			<Collapse line="401" />
+			<Collapse line="417" />
+			<Collapse line="448" />
+			<Collapse line="468" />
+			<Collapse line="480" />
+			<Collapse line="513" />
+			<Collapse line="522" />
+			<Collapse line="564" />
+			<Collapse line="606" />
+			<Collapse line="648" />
+			<Collapse line="690" />
+			<Collapse line="733" />
+			<Collapse line="767" />
+			<Collapse line="801" />
+			<Collapse line="837" />
+			<Collapse line="874" />
+			<Collapse line="906" />
+			<Collapse line="960" />
+			<Collapse line="997" />
+			<Collapse line="1034" />
+			<Collapse line="1091" />
+			<Collapse line="1121" />
+			<Collapse line="1151" />
+			<Collapse line="1157" />
+			<Collapse line="1163" />
+			<Collapse line="1169" />
+			<Collapse line="1175" />
+			<Collapse line="1181" />
+			<Collapse line="1188" />
+			<Collapse line="1222" />
+			<Collapse line="1260" />
+			<Collapse line="1299" />
+			<Collapse line="1319" />
+			<Collapse line="1358" />
+			<Collapse line="1378" />
+			<Collapse line="1415" />
+			<Collapse line="1435" />
+			<Collapse line="1474" />
+			<Collapse line="1494" />
+			<Collapse line="1533" />
+			<Collapse line="1553" />
+			<Collapse line="1592" />
+			<Collapse line="1612" />
+			<Collapse line="1651" />
+		</Folding>
 	</File>
 	<File name="z/file/reader.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -30,34 +162,29 @@
 			<Collapse line="320" />
 		</Folding>
 	</File>
-	<File name="z/core/timer.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="900" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="z/file/shorten.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1937" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="z/math/fibonacci.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="987" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="z/core/pause.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="719" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/core/sortedRefArray.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="200" topLine="4" />
-		</Cursor>
-	</File>
 	<File name="z/core/array.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5564" topLine="180" />
+		</Cursor>
+	</File>
+	<File name="z/math/matrix.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="66" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/math.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="409" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/file/library.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4914" topLine="182" />
+		</Cursor>
+	</File>
+	<File name="z/core/dynamicStack.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1099" topLine="33" />
 		</Cursor>
 	</File>
 	<File name="z/file/exists.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -65,24 +192,39 @@
 			<Cursor1 position="543" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="z/math/zeta.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/math/gcd.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="82" topLine="0" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="z/core/stream.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2776" topLine="128" />
+			<Cursor1 position="601" topLine="8" />
 		</Cursor>
 	</File>
-	<File name="z/math/factorial.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/core/timer.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1534" topLine="19" />
+			<Cursor1 position="900" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="z/math/constants.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/float.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="750" topLine="0" />
+			<Cursor1 position="551" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/core/timeout.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="348" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/core/pause.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="719" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="z/file/makeDir.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="292" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="z/file.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -90,37 +232,14 @@
 			<Cursor1 position="415" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="z/core/sortedArray.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/core/charFunctions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2693" topLine="69" />
+			<Cursor1 position="2480" topLine="71" />
 		</Cursor>
 	</File>
-	<File name="z/file/list.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="z/file/shorten.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4704" topLine="21" />
-		</Cursor>
-		<Folding>
-			<Collapse line="41" />
-		</Folding>
-	</File>
-	<File name="z/float.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="551" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/math/gcd.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/math/remainder.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="71" topLine="19" />
-		</Cursor>
-	</File>
-	<File name="z/file/makeDir.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="292" topLine="0" />
+			<Cursor1 position="1937" topLine="27" />
 		</Cursor>
 	</File>
 	<File name="z/core/refArray.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -131,98 +250,6 @@
 	<File name="z/int.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="724" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/file/info.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3297" topLine="105" />
-		</Cursor>
-	</File>
-	<File name="z/math/complexOps.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1902" topLine="37" />
-		</Cursor>
-	</File>
-	<File name="z/file/writer.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3488" topLine="114" />
-		</Cursor>
-	</File>
-	<File name="z/core/string.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10798" topLine="157" />
-		</Cursor>
-		<Folding>
-			<Collapse line="34" />
-		</Folding>
-	</File>
-	<File name="z/core/dynamicStack.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1099" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="z/file/library.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4914" topLine="182" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="836" topLine="11" />
-		</Cursor>
-	</File>
-	<File name="z/math/matrix.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="66" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/core/generic.h" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="28083" topLine="314" />
-		</Cursor>
-		<Folding>
-			<Collapse line="19" />
-			<Collapse line="180" />
-			<Collapse line="186" />
-			<Collapse line="191" />
-			<Collapse line="198" />
-			<Collapse line="205" />
-			<Collapse line="212" />
-			<Collapse line="219" />
-			<Collapse line="226" />
-			<Collapse line="233" />
-			<Collapse line="240" />
-			<Collapse line="246" />
-			<Collapse line="251" />
-			<Collapse line="283" />
-			<Collapse line="293" />
-			<Collapse line="310" />
-			<Collapse line="332" />
-			<Collapse line="348" />
-			<Collapse line="364" />
-			<Collapse line="395" />
-			<Collapse line="415" />
-			<Collapse line="427" />
-			<Collapse line="460" />
-			<Collapse line="469" />
-			<Collapse line="511" />
-			<Collapse line="553" />
-			<Collapse line="595" />
-			<Collapse line="637" />
-			<Collapse line="680" />
-			<Collapse line="714" />
-			<Collapse line="748" />
-			<Collapse line="784" />
-		</Folding>
-	</File>
-	<File name="z/file/copy.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="436" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="z/core/timeout.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="348" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
