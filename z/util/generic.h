@@ -17,6 +17,9 @@ namespace z
 {
     namespace util
     {
+        /**
+         * \brief Possible \b generic data types.
+         */
         enum type
         {
             NONE = 0,
@@ -33,6 +36,9 @@ namespace z
             TYPE_COUNT
         };
 
+        /**
+         * \brief Possible errors that can occur in operations with \b generic objects
+         */
         enum opError
         {
             NO_ERROR = 0,
@@ -47,6 +53,14 @@ namespace z
             MUST_NONNEG
         };
 
+        /**
+         * \brief An all-purpose generic datatype.
+         *
+         * This class can be initialized as a real or complex number, \b or
+         * a string \b or an array of generic objects, and handles all type 
+         * conversions for the user. Additionally has some error-checking
+         * built in, as some operations may be invalid.
+         */
         class generic
         {
         private:
@@ -84,6 +98,13 @@ namespace z
             generic(const std::complex<Int>&);
             generic(const Float&);
 
+            /**
+             * \brief Integer constructor.
+             *
+             * Initialize as any integral type.
+             *
+             * \param init the initializing integer value.
+             */
             template<typename T,
             typename = typename std::enable_if<std::is_integral<T>::value>::type>
             generic(const T& init)
@@ -190,6 +211,9 @@ namespace z
             const generic bitwiseNxor(const generic&) const;
         };
 
+        /**
+         * \brief Default constructor. Constructs as type \b null.
+         */
         generic::generic()
         {
             _type = type::NONE;
