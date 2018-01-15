@@ -57,7 +57,7 @@ namespace z
          * \brief An all-purpose generic datatype.
          *
          * This class can be initialized as a real or complex number, \b or
-         * a string \b or an array of generic objects, and handles all type 
+         * a string \b or an array of generic objects, and handles all type
          * conversions for the user. Additionally has some error-checking
          * built in, as some operations may be invalid.
          */
@@ -101,9 +101,9 @@ namespace z
             /**
              * \brief Integer constructor.
              *
-             * Initialize as any integral type.
+             * Constructs the object as any integer value.
              *
-             * \param init the initializing integer value.
+             * \param init the value to initialize this generic object as.
              */
             template<typename T,
             typename = typename std::enable_if<std::is_integral<T>::value>::type>
@@ -220,11 +220,21 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
+        /**
+         * \brief Copy constructor.
+         *
+         * \param other the generic object to duplicate.
+         */
         generic::generic(const generic& other)
         {
             alloc(other);
         }
 
+        /**
+         * \brief Move constructor.
+         *
+         * \param other the generic object containing the data to be moved.
+         */
         generic::generic(generic&& other)
         {
             _type = other._type;
@@ -232,6 +242,13 @@ namespace z
             data = other.data;
         }
 
+        /**
+         * \brief String constructor.
+         *
+         * Constructs the object as a string type.
+         *
+         * \param init the core::string to initialize this generic object as.
+         */
         generic::generic(const core::string<Char>& init)
         {
             _type = type::STRING;
@@ -239,6 +256,13 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
+        /**
+         * \brief Array constructor.
+         *
+         * Constructs the object as an array of generic objects.
+         *
+         * \param init the core::array to initialize this generic object as.
+         */
         generic::generic(const core::array<generic>& init)
         {
             _type = type::ARRAY;
@@ -246,6 +270,13 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
+        /**
+         * \brief Complex float constructor.
+         *
+         * Constructs the object as a floating-point complex number.
+         *
+         * \param init the complex value to initialize this generic object as.
+         */
         generic::generic(const std::complex<Float>& init)
         {
             if (init.imag())
@@ -280,6 +311,13 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
+        /**
+         * \brief Complex int constructor.
+         *
+         * Constructs the object as an integer complex number.
+         *
+         * \param init the complex value to initialize this generic object as.
+         */
         generic::generic(const std::complex<Int>& init)
         {
             if (init.imag())
@@ -296,6 +334,13 @@ namespace z
             _error = opError::NO_ERROR;
         }
 
+        /**
+         * \brief Float constructor.
+         *
+         * Constructs the object as a floating-point number.
+         *
+         * \param init the value to initialize this generic object as.
+         */
         generic::generic(const Float& init)
         {
             if (init == (Float)(Int)init)
@@ -313,13 +358,22 @@ namespace z
         }
 
 
-
+        /**
+         * \brief Error constructor.
+         *
+         * Constructs the object with an error code.
+         *
+         * \param init the error value to initialize this generic object as.
+         */
         generic::generic(opError err)
         {
             _type = type::NONE;
             _error = err;
         }
 
+        /**
+         * \brief Destructor.
+         */
         generic::~generic()
         {
             dealloc();
