@@ -118,6 +118,15 @@ namespace z
 
             ~generic();
 
+            /**
+             * \brief Get the error code of this object.
+             *
+             * This object will only have a non-zero error code if the previous
+             * operation to produce the current state of the object was invalid
+             * (e.g. dividing by a string).
+             *
+             * \return The error code for this object. \b 0 if no error.
+             */
             inline const opError error() const {return _error;}
 
             //Casting methods
@@ -130,18 +139,67 @@ namespace z
             Float floating() const;
             Int integer() const;
 
+            /**
+             * \brief Get whether this object is \b null.
+             *
+             * \return \b True if the type is \b NONE. \b False otherwise.
+             */
             inline const bool isNull() const {return _type == type::NONE;}
 
+            /**
+             * \brief Get whether this object is a string.
+             *
+             * \return \b True if the type is \b STRING. \b False otherwise.
+             */
             inline const bool isString() const {return _type == type::STRING;}
+
+            /**
+             * \brief Get whether this object is an array.
+             *
+             * \return \b True if the type is \b ARRAY. \b False otherwise.
+             */
             inline const bool isArray() const {return _type == type::ARRAY;}
 
+            /**
+             * \brief Get whether this object is complex and floating-point.
+             *
+             * \return \b True if the type is \b COMPLEX_FLOAT. \b False otherwise.
+             */
             inline const bool isComplexFloat() const {return _type == type::COMPLEX_FLOAT;}
+
+            /**
+             * \brief Get whether this object is complex and integral.
+             *
+             * \return \b True if the type is \b COMPLEX_INT. \b False otherwise.
+             */
             inline const bool isComplexInt() const {return _type == type::COMPLEX_INT;}
+
+            /**
+             * \brief Get whether this object is a complex number.
+             *
+             * \return \b True if the type is \b COMPLEX_FLOAT or \b COMPLEX_INT. \b False otherwise.
+             */
             inline const bool isComplex() const {return isComplexFloat() || isComplexInt();}
 
+            /**
+             * \brief Get whether this object is a floating-point value.
+             *
+             * \return \b True if the type is \b FLOATING. \b False otherwise.
+             */
             inline const bool isFloating() const {return _type == type::FLOATING;}
+
+            /**
+             * \brief Get whether this object is an integer value.
+             *
+             * \return \b True if the type is \b INTEGER. \b False otherwise.
+             */
             inline const bool isInteger() const {return _type == type::INTEGER;}
 
+            /**
+             * \brief Get whether this object is a numeric value.
+             *
+             * \return \b True if the type is \b FLOATING, \b INTEGER, \b COMPLEX_FLOAT or \b COMPLEX_INT. \b False otherwise.
+             */
             inline const bool isNumeric() const {return _type > type::ARRAY;}
 
 
@@ -165,9 +223,9 @@ namespace z
             const generic index(const generic&,
                                const generic&) const;
 
-            const generic subIndex(const generic&) const;
-            const generic subIndex(const generic&,
-                                  const generic&) const;
+            //const generic subIndex(const generic&) const;
+            //const generic subIndex(const generic&,
+              //                    const generic&) const;
 
             const generic& merge(const core::array< generic >&);
 
@@ -363,7 +421,7 @@ namespace z
          *
          * Constructs the object with an error code.
          *
-         * \param init the error value to initialize this generic object as.
+         * \param err the error value to initialize this generic object as.
          */
         generic::generic(opError err)
         {
@@ -379,6 +437,13 @@ namespace z
             dealloc();
         }
 
+        /**
+         * \brief String data cast.
+         *
+         * Casts the data contained by this object to a core::string object.
+         *
+         * \return A string representation of the data.
+         */
         core::string<Char> generic::string() const
         {
             if (_type == type::STRING)
@@ -411,6 +476,13 @@ namespace z
                 return core::string<Char>("[NUL]");
         }
 
+        /**
+         * \brief Array data cast.
+         *
+         * Casts the data contained by this object to a core::array object.
+         *
+         * \return The original data, if type is \b ARRAY. Otherwise, an empty array.
+         */
         core::array<generic> generic::array() const
         {
             if (_type == type::ARRAY)
@@ -421,6 +493,13 @@ namespace z
                 return core::array<generic>();
         }
 
+        /**
+         * \brief Complex float data cast.
+         *
+         * Casts the data contained by this object to a std::complex<Float> object.
+         *
+         * \return A complex floating-point representation of the data.
+         */
         std::complex<Float> generic::complexFloat() const
         {
             if (_type == type::STRING)
@@ -438,6 +517,13 @@ namespace z
                 return std::complex<Float>();
         }
 
+        /**
+         * \brief Complex integer data cast.
+         *
+         * Casts the data contained by this object to a std::complex<Int> object.
+         *
+         * \return A complex integer representation of the data.
+         */
         std::complex<Int> generic::complexInt() const
         {
             if (_type == type::STRING)
@@ -460,6 +546,13 @@ namespace z
                 return std::complex<Float>();
         }
 
+        /**
+         * \brief Floating-point data cast.
+         *
+         * Casts the data contained by this object to a z::Float value.
+         *
+         * \return A floating-point representation of the data.
+         */
         Float generic::floating() const
         {
             if (_type == type::STRING)
@@ -476,6 +569,13 @@ namespace z
                 return 0;
         }
 
+        /**
+         * \brief Integer data cast.
+         *
+         * Casts the data contained by this object to a z::Int value.
+         *
+         * \return An integer representation of the data.
+         */
         Int generic::integer() const
         {
             if (_type == type::STRING)
@@ -492,6 +592,7 @@ namespace z
                 return 0;
         }
 
+        //Internal function to allocate and copy data from the given generic object
         void generic::alloc(const generic& other)
         {
             _type = other._type;
@@ -523,6 +624,7 @@ namespace z
             }
         }
 
+        //Internal function to de-allocate data.
         void generic::dealloc()
         {
             if (_type == type::STRING)
