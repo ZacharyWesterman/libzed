@@ -212,6 +212,14 @@ namespace z
             const bool operator>=(const generic& other) const;
             const bool operator<=(const generic& other) const;
 
+            /**
+             * \brief Not-equal operator.
+             *
+             * \param other the object to compare this object against.
+             *
+             * \return \b False if the objects' datum are identical.
+             * \b True otherwise.
+             */
             inline const bool operator!=(const generic& other) const
             { return !operator==(other); }
 
@@ -645,6 +653,7 @@ namespace z
             }
         }
 
+        //Internal function to determine if objects' datum can be compared.
         bool generic::comparableTo(const generic& other) const
         {
             if (_type == other._type)
@@ -657,6 +666,8 @@ namespace z
             return false;
         }
 
+        //Internal function to get the type that the objects must be cast to
+        //in order to prevent data loss.
         type generic::operationType(const generic& other) const
         {
             if ((_type == type::COMPLEX_FLOAT) ||
@@ -689,7 +700,14 @@ namespace z
             }
         }
 
-
+        /**
+         * \brief Assignment operator.
+         *
+         * \param other the object to assign data from.
+         *
+         * \return A reference to this object after assignment.
+         * (for cases like <B>a = b = c;</B>)
+         */
         const generic& generic::operator=(const generic& other)
         {
             dealloc();
@@ -699,6 +717,14 @@ namespace z
             return *this;
         }
 
+        /**
+         * \brief Equals operator.
+         *
+         * \param other the object to compare this object to.
+         *
+         * \return \b True if the objects' datum are identical.
+         * \b False otherwise.
+         */
         const bool generic::operator==(const generic& other) const
         {
             if (comparableTo(other))
@@ -741,6 +767,15 @@ namespace z
             return false;
         }
 
+        /**
+         * \brief Greater than operator.
+         *
+         * \param other the object to compare this object against.
+         *
+         * \return \b True if the objects' datum are comparable
+         * and \b this evaluates to be the greater of the two.
+         * \b False otherwise.
+         */
         const bool generic::operator>(const generic& other) const
         {
             if (comparableTo(other))
@@ -783,6 +818,15 @@ namespace z
             return false;
         }
 
+        /**
+         * \brief Less than operator.
+         *
+         * \param other the object to compare this object against.
+         *
+         * \return \b True if the objects' datum are comparable
+         * and \b this evaluates to be the lesser of the two.
+         * \b False otherwise.
+         */
         const bool generic::operator<(const generic& other) const
         {
             if (comparableTo(other))
@@ -825,6 +869,15 @@ namespace z
             return false;
         }
 
+        /**
+         * \brief Greater than or equal operator.
+         *
+         * \param other the object to compare this object against.
+         *
+         * \return \b True if the objects' datum are comparable
+         * and \b this evaluates to be the greater or equal to \b other.
+         * \b False otherwise.
+         */
         const bool generic::operator>=(const generic& other) const
         {
             if (comparableTo(other))
@@ -867,6 +920,15 @@ namespace z
             return false;
         }
 
+        /**
+         * \brief Less than or equal operator.
+         *
+         * \param other the object to compare this object against.
+         *
+         * \return \b True if the objects' datum are comparable
+         * and \b this evaluates to be the lesser or equal to \b other.
+         * \b False otherwise.
+         */
         const bool generic::operator<=(const generic& other) const
         {
             if (comparableTo(other))
