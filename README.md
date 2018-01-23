@@ -1,5 +1,4 @@
 # Introduction
---------------------------
 
 This collection of header-only C++ libraries contains useful classes and functions that help decrease development time of other projects.  
 All code is under the **z** namespace. Currently, there are four other namespaces below that:<br>
