@@ -11,7 +11,7 @@ z::math
 z::util  
 <br>
 All functions, classes and definitions are in one of these namespaces.  
-The only exceptions are the three basic type definitions **Char**, **Int** and **Float** that are in the **z** namespace.
+The only exceptions are the three basic type definitions z::Char, z::Int and z::Float.
 
 --------------------------
 ## z::core
@@ -27,4 +27,5 @@ Mathematical constants and functions are defined here. No dependencies apart fro
 So far, only contains the z::util::generic class. Depends on z::core and z::math.
 
 --------------------------
-Download or fork: [GitHub repo](https://github.com/ZacharyWesterman/zLibraries).
+Download or fork: [GitHub repo](https://github.com/ZacharyWesterman/zLibraries).  
+Review the [License](md_Doxypages_LICENSE.html).
