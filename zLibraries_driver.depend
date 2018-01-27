@@ -222,3 +222,172 @@
 	<z/math.h>
 	<z/file.h>
 
+1516670696 source:c:\github\zlibraries\main.cpp
+	<iostream>
+	<z/core.h>
+	<z/math.h>
+	<z/file.h>
+	<z/util.h>
+
+1516670696 c:\github\zlibraries\\z\core.h
+	"core/string.h"
+	"core/stream.h"
+	"core/array.h"
+	"core/sortedArray.h"
+	"core/refArray.h"
+	"core/sortedRefArray.h"
+	"core/dynamicStack.h"
+	"core/timer.h"
+	"core/timeout.h"
+	"core/pause.h"
+	"core/charFunctions.h"
+
+1516670696 c:\github\zlibraries\\z\core\string.h
+	<type_traits>
+	<complex>
+	<z/float.h>
+	"charFunctions.h"
+
+1516670696 c:\github\zlibraries\\z\float.h
+
+1516670696 c:\github\zlibraries\\z\core\charfunctions.h
+
+1516670696 c:\github\zlibraries\\z\core\stream.h
+	<type_traits>
+	"string.h"
+
+1516670696 c:\github\zlibraries\\z\core\array.h
+	<vector>
+	"stream.h"
+
+1516670696 c:\github\zlibraries\\z\core\sortedarray.h
+	"array.h"
+
+1516670696 c:\github\zlibraries\\z\core\refarray.h
+	<type_traits>
+	"array.h"
+
+1516670696 c:\github\zlibraries\\z\core\sortedrefarray.h
+	"refArray.h"
+
+1516670696 c:\github\zlibraries\\z\core\dynamicstack.h
+
+1516670696 c:\github\zlibraries\\z\core\timer.h
+	<chrono>
+	<z/float.h>
+
+1516670696 c:\github\zlibraries\\z\core\timeout.h
+	"timer.h"
+
+1516670696 c:\github\zlibraries\\z\core\pause.h
+	<z/float.h>
+	<unistd.h>
+	<windows.h>
+
+1516670696 c:\github\zlibraries\\z\math.h
+	"math/constants.h"
+	"math/factorial.h"
+	"math/fibonacci.h"
+	"math/gcd.h"
+	"math/remainder.h"
+	"math/zeta.h"
+	"math/complexOps.h"
+	"math/matrix.h"
+
+1516670696 c:\github\zlibraries\\z\math\constants.h
+	<z/float.h>
+
+1516670696 c:\github\zlibraries\\z\math\factorial.h
+	<cmath>
+
+1516670696 c:\github\zlibraries\\z\math\fibonacci.h
+	"constants.h"
+	<math.h>
+	<z/float.h>
+
+1516670696 c:\github\zlibraries\\z\math\gcd.h
+	<complex>
+
+1516670696 c:\github\zlibraries\\z\math\remainder.h
+	<complex>
+
+1516670696 c:\github\zlibraries\\z\math\zeta.h
+	<z/float.h>
+
+1516670696 c:\github\zlibraries\\z\math\complexops.h
+	<complex>
+
+1516670696 c:\github\zlibraries\\z\math\matrix.h
+	<z/float.h>
+
+1516670696 c:\github\zlibraries\\z\file.h
+	"file/list.h"
+	"file/shorten.h"
+	"file/exists.h"
+	"file/makeDir.h"
+	"file/reader.h"
+	"file/writer.h"
+	"file/copy.h"
+	"file/info.h"
+	"file/library.h"
+
+1516670696 c:\github\zlibraries\\z\file\list.h
+	<z/core/string.h>
+	<z/core/array.h>
+	<dirent.h>
+	<windows.h>
+
+1516670696 c:\github\zlibraries\\z\file\shorten.h
+	<z/core/string.h>
+
+1516670696 c:\github\zlibraries\\z\file\exists.h
+	<z/core/string.h>
+	<sys/stat.h>
+
+1517013359 c:\github\zlibraries\\z\file\makedir.h
+	<z/core/string.h>
+	<sys/stat.h>
+	<direct.h>
+
+1516670696 c:\github\zlibraries\\z\file\reader.h
+	<z/core/string.h>
+	<z/core/timeout.h>
+	<fstream>
+
+1516670696 c:\github\zlibraries\\z\file\writer.h
+	<z/core/string.h>
+	<z/core/timeout.h>
+	<fstream>
+	<stdio.h>
+
+1516670696 c:\github\zlibraries\\z\file\copy.h
+	<z/core/string.h>
+	<fstream>
+
+1516670696 c:\github\zlibraries\\z\file\info.h
+	<sys/stat.h>
+	<z/core/string.h>
+
+1516670696 c:\github\zlibraries\\z\file\library.h
+	<z/core/string.h>
+	<stdint.h>
+	<windows.h>
+	<dlfcn.h>
+
+1516670696 c:\github\zlibraries\\z\util.h
+	"util/generic.h"
+
+1517013443 c:\github\zlibraries\\z\util\generic.h
+	<z/float.h>
+	<z/int.h>
+	<z/char.h>
+	<z/core/string.h>
+	<z/core/array.h>
+	<complex>
+	<z/math/complexOps.h>
+	<z/math/remainder.h>
+
+1516670696 c:\github\zlibraries\\z\int.h
+
+1516670696 c:\github\zlibraries\\z\char.h
+

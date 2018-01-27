@@ -41,7 +41,7 @@ namespace z
          */
         enum opError
         {
-            NO_ERROR = 0,
+            ERR_NONE = 0,
             DIV_BY_ZERO,
             INVALID_STRING_OP,
             INVALID_ARRAY_OP,
@@ -111,7 +111,7 @@ namespace z
             {
                 _type = type::INTEGER;
                 data.Integer = (Int)init;
-                _error = opError::NO_ERROR;
+                _error = opError::ERR_NONE;
             }
 
             generic(opError);
@@ -283,7 +283,7 @@ namespace z
         generic::generic()
         {
             _type = type::NONE;
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
         /**
@@ -319,7 +319,7 @@ namespace z
         {
             _type = type::STRING;
             data.String = new core::string<Char>(init);
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
         /**
@@ -333,7 +333,7 @@ namespace z
         {
             _type = type::ARRAY;
             data.Array = new core::array<generic>(init);
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
         /**
@@ -374,7 +374,7 @@ namespace z
                 }
             }
 
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
         /**
@@ -397,7 +397,7 @@ namespace z
                 data.Integer = init.real();
             }
 
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
         /**
@@ -420,7 +420,7 @@ namespace z
                 data.Floating = init;
             }
 
-            _error = opError::NO_ERROR;
+            _error = opError::ERR_NONE;
         }
 
 
