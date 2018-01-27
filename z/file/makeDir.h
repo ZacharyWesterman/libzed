@@ -7,7 +7,7 @@
 #ifdef __linux__
 #include <sys/stat.h>
 #elif _WIN32
-#include <sys/stat.h>
+#include <direct.h>
 #else
 #warning file::makeDir() is incompatible with the target OS.
 #endif
