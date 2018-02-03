@@ -3,43 +3,46 @@
 //#define Z_USE_DOUBLE
 
 #include <z/core.h>
-#include <z/math.h>
-#include <z/file.h>
 #include <z/util.h>
 
 using namespace std;
 using namespace z;
-/*
-typedef core::array<core::string<char> > strarray;
 
-char toHex(char _c)
+class output : public core::stream<char>
 {
-    char _h;
+public:
+    virtual void putChar(char c) {cout << c;}
 
-    if (_c < 10)
-        _h = _c + '0';
-    else
-        _h = _c - 10 + 'A';
+    virtual char getChar() {return 0;}
 
-    return _h;
+    virtual output& operator<<(const core::string<char>& input)
+    {
+        cout << input.str();
+
+        return *this;
+    }
+
+    virtual output& operator>>(core::string<char>& output) {return *this;}
+
+    virtual bool eof()
+    {
+        return 0;
+    }
+};
+
+void print(core::stream<char>& stream)
+{
+    stream.putChar('a');
 }
 
-core::string<char> hex(unsigned char _c)
-{
-    unsigned char c_l = _c & 0b00001111;
-    unsigned char c_h = _c >> 4;
-
-    core::string<char> _ret = toHex(c_h);
-    _ret += toHex(c_l);
-
-    return _ret;
-}
-*/
 int main()
 {
-    util::generic a(false);//, b(std::complex<Int>(0,2));
+    output out;
 
-    cout << (~a).string().narrow().str() << endl;
+    print (out);
 
     return 0;
 }
+
+
+

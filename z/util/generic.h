@@ -12,6 +12,7 @@
 #include <complex>
 #include <z/math/complexOps.h>
 #include <z/math/remainder.h>
+#include <z/math/factorial.h>
 
 namespace z
 {
