@@ -35,4 +35,8 @@
 #include "core/pause.h"
 #include "core/charFunctions.h"
 
+///Streams
+#include "core/stream.h"
+#include "core/console.h"
+
 #endif // CORE_H_INCLUDED
