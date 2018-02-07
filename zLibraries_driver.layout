@@ -24,6 +24,9 @@
 		<Cursor>
 			<Cursor1 position="1902" topLine="37" />
 		</Cursor>
+		<Folding>
+			<Collapse line="34" />
+		</Folding>
 	</File>
 	<File name="z/core/string.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
