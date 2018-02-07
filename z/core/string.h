@@ -2,7 +2,9 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
 
-#define null 0
+#ifndef null
+    #define null 0
+#endif // null
 #ifndef NULL
     #define NULL 0
 #endif // NULL
@@ -2021,7 +2023,5 @@ namespace z
 #undef num_precision
 
 #undef num_round_magic
-
-#undef null
 
 #endif // STRING_H_INCLUDED
