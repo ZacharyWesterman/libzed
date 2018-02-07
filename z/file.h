@@ -13,12 +13,14 @@
 #include "file/shorten.h"
 #include "file/exists.h"
 #include "file/makeDir.h"
+#include "file/workingDir.h"
 
 ///Manage file contents
-#include "file/reader.h"
-#include "file/writer.h"
+//#include "file/reader.h"
+//#include "file/writer.h"
 #include "file/copy.h"
 #include "file/info.h"
+#include "file/stream.h"
 
 ///Dynamic library loading
 #include "file/library.h"

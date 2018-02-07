@@ -23,6 +23,8 @@ namespace z
          * If timeout is reached, closes the file. Then
          * attempts to reopen file and continue loading at
          * each subsequent call.
+         * <BR/>
+         * <B> This class is deprecated. Use file::stream instead.</B>
          *
          * \see writer
          */
