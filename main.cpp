@@ -12,11 +12,12 @@ using namespace z;
 
 int main()
 {
-    core::stringStream<char> console("hello, this is a test.\nbeep!");
+    core::stringStream<char> input("hello, this is a test.\nbeep!");
+    //system::console input;
 
-    while (!console.empty())
+    while (!input.empty())
     {
-        std::cout << (console.read()).str() << std::endl;
+        std::cout << input.read('.').str() << std::endl;
     }
 
     /*system::cpuid cpu;

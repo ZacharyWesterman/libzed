@@ -58,7 +58,7 @@ namespace z
             }
             else
             {
-                while ((begIndex < data.length()) && !isWhiteSpace(data[begIndex]))
+                while ((begIndex < data.length()) && isWhiteSpace(data[begIndex]))
                     begIndex++;
             }
 
@@ -70,7 +70,6 @@ namespace z
                 endIndex = data.findAfter(delim, begIndex);
                 if (endIndex == -1)
                     endIndex = data.length();
-                endIndex--;
             }
             else
             {
@@ -79,7 +78,7 @@ namespace z
                     endIndex++;
             }
 
-            string<CHAR> result = data.substr(begIndex+1, endIndex-1);
+            string<CHAR> result = data.substr(begIndex, endIndex-1);
             data.remove(0, endIndex-1);
 
             return result;
