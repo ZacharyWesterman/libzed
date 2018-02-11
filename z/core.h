@@ -37,6 +37,5 @@
 
 ///Streams
 #include "core/stream.h"
-#include "core/console.h"
 
 #endif // CORE_H_INCLUDED

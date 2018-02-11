@@ -24,6 +24,8 @@
 //e.g. at the ~0.5 mark.
 #define num_round_magic 0.499999958629814528210388857587539
 
+#define cs(s) z::core::string<char>(s)
+#define ws(s) z::core::string<wchar_t>(s)
 
 namespace z
 {
