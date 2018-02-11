@@ -2,6 +2,7 @@
 #ifndef STRINGSTREAM_H_INCLUDED
 #define STRINGSTREAM_H_INCLUDED
 
+#include <z/int.h>
 #include "charFunctions.h"
 #include "string.h"
 #include "stream.h"
@@ -49,7 +50,7 @@ namespace z
         template <typename CHAR>
         string<CHAR> stringStream<CHAR>::read(CHAR delim)
         {
-            int begIndex = 0;
+            Int begIndex = 0;
 
             if (delim)
             {
@@ -63,7 +64,7 @@ namespace z
             }
 
 
-            int endIndex;
+            Int endIndex;
 
             if (delim)
             {

@@ -222,10 +222,8 @@
 	<z/math.h>
 	<z/file.h>
 
-1518380207 source:c:\github\zlibraries\main.cpp
-	<z/core.h>
-	<z/file.h>
-	<z/system.h>
+1518383681 source:c:\github\zlibraries\main.cpp
+	<z/util.h>
 
 1518368625 c:\github\zlibraries\\z\core.h
 	"core/string.h"
@@ -373,8 +371,9 @@
 	<windows.h>
 	<dlfcn.h>
 
-1517537442 c:\github\zlibraries\\z\util.h
+1518382232 c:\github\zlibraries\\z\util.h
 	"util/generic.h"
+	"util/regex.h"
 
 1517623835 c:\github\zlibraries\\z\util\generic.h
 	<z/float.h>
@@ -426,4 +425,10 @@
 	"charFunctions.h"
 	"string.h"
 	"stream.h"
+
+1518384303 c:\github\zlibraries\\z\util\regex.h
+	<z/int.h>
+	<z/core/timeout.h>
+	<z/core/stream.h>
+	<z/core/array.h>
 
