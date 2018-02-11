@@ -8,15 +8,21 @@
 
 using namespace z;
 
+
+
 int main()
 {
-    system::cpuid cpu;
+    core::stringStream<char> console("hello, this is a test. beep!");
 
-    system::console console;
+    std::cout << (console.read()).str() << std::endl;
+
+    /*system::cpuid cpu;
+
+
 
     console.write(cs("CPU Vendor: ") + cpu.vendor());
     console.write(cs("\nCPUs: ") + cpu.cpus());
-    console.write(cs("\nCores: ") + cpu.cores());
+    console.write(cs("\nCores: ") + cpu.cores());*/
 
     return 0;
 }

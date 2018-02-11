@@ -37,5 +37,6 @@
 
 ///Streams
 #include "core/stream.h"
+#include "core/stringStream.h"
 
 #endif // CORE_H_INCLUDED

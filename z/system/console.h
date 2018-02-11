@@ -15,7 +15,7 @@ namespace z
             char get();
             void put(char);
 
-            core::string<char> read(char);
+            core::string<char> read(char delim = ' ');
             void write(const core::string<char>&);
 
             bool empty();

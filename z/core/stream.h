@@ -15,7 +15,7 @@ namespace z
             virtual ~inputStream() {}
 
             virtual CHAR get() = 0;
-            virtual core::string<CHAR> read(CHAR delim = ' ') = 0;
+            virtual core::string<CHAR> read(CHAR) = 0;
 
             virtual bool empty() = 0;
         };
