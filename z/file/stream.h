@@ -57,7 +57,11 @@ namespace z
         core::string<CHAR> stream<CHAR>::read(CHAR delim)
         {
             CHAR tmp[256];
-            filestream.read(tmp, 256);
+
+            if (delim)
+                filestream.read(tmp, 256);
+            else
+                filestream.getline(tmp, 256, delim);
 
             return core::string<CHAR>(tmp);
         }
