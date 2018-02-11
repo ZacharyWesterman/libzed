@@ -2,14 +2,14 @@
 #ifndef CONSOLE_H_INCLUDED
 #define CONSOLE_H_INCLUDED
 
-#include "stream.h"
+#include <z/core/stream.h>
 #include <iostream>
 
 namespace z
 {
-    namespace core
+    namespace system
     {
-        class console : public stream<char>
+        class console : public core::stream<char>
         {
         public:
             char get();
