@@ -222,7 +222,7 @@
 	<z/math.h>
 	<z/file.h>
 
-1518378743 source:c:\github\zlibraries\main.cpp
+1518380207 source:c:\github\zlibraries\main.cpp
 	<z/core.h>
 	<z/file.h>
 	<z/system.h>
@@ -391,7 +391,7 @@
 
 1516670696 c:\github\zlibraries\\z\char.h
 
-1518376809 c:\github\zlibraries\\z\file\stream.h
+1518380519 c:\github\zlibraries\\z\file\stream.h
 	<fstream>
 	<z/core/stream.h>
 	"shorten.h"

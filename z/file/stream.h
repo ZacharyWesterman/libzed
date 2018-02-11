@@ -12,70 +12,93 @@ namespace z
     namespace file
     {
         template <typename CHAR>
-        class stream : public core::stream<CHAR>
+        class inputStream : public core::inputStream<CHAR>
         {
         private:
-            std::basic_fstream<CHAR> filestream;
-            bool is_done;
+            std::basic_ifstream<CHAR> filestream;
 
         public:
-            stream(const core::string<char>&, bool append = false);
+            inputStream(const core::string<char>&);
 
             CHAR get();
-            void put(CHAR);
-
-            void write(const core::string<CHAR>&);
             core::string<CHAR> read(CHAR delim = 0);
 
             bool empty();
         };
 
         template <typename CHAR>
-        stream<CHAR>::stream(const core::string<char>& fileName, bool append)
+        inputStream<CHAR>::inputStream(const core::string<char>& fileName)
         {
-            is_done = false;
-
-            if (append)
-                filestream.open(fileName.str(), std::ios::app);
-            else
-                filestream.open(fileName.str());
+            filestream.open(fileName.str(), std::ios::in);
         }
 
         template <typename CHAR>
-        CHAR stream<CHAR>::get()
+        CHAR inputStream<CHAR>::get()
         {
             return filestream.get();
         }
 
         template <typename CHAR>
-        void stream<CHAR>::put(CHAR input)
-        {
-            filestream.put(input);
-        }
-
-        template <typename CHAR>
-        core::string<CHAR> stream<CHAR>::read(CHAR delim)
+        core::string<CHAR> inputStream<CHAR>::read(CHAR delim)
         {
             CHAR tmp[256];
 
             if (delim)
-                filestream.read(tmp, 256);
-            else
                 filestream.getline(tmp, 256, delim);
+            else
+                filestream >> tmp;
 
             return core::string<CHAR>(tmp);
         }
 
         template <typename CHAR>
-        void stream<CHAR>::write(const core::string<CHAR>& input)
+        bool inputStream<CHAR>::empty()
         {
-            filestream.write(input.str(), input.length());
+            return (filestream.bad() || filestream.eof() || filestream.fail());
+        }
+
+
+
+        template <typename CHAR>
+        class outputStream : public core::outputStream<CHAR>
+        {
+        private:
+            std::basic_ofstream<CHAR> filestream;
+
+        public:
+            outputStream(const core::string<char>&, bool append = false);
+
+            void put(CHAR);
+            void write(const core::string<CHAR>&);
+
+            bool empty();
+        };
+
+        template <typename CHAR>
+        outputStream<CHAR>::outputStream(const core::string<char>& fileName, bool append)
+        {
+            if (append)
+                filestream.open(fileName.str(), std::ios::app | std::ios::out);
+            else
+                filestream.open(fileName.str(), std::ios::out);
         }
 
         template <typename CHAR>
-        bool stream<CHAR>::empty()
+        void outputStream<CHAR>::put(CHAR input)
         {
-            return (filestream.bad() || filestream.eof());
+            filestream.put(input);
+        }
+
+        template <typename CHAR>
+        void outputStream<CHAR>::write(const core::string<CHAR>& input)
+        {
+            filestream << input.str();
+        }
+
+        template <typename CHAR>
+        bool outputStream<CHAR>::empty()
+        {
+            return (filestream.bad() || filestream.eof() || filestream.fail());
         }
     }
 }
