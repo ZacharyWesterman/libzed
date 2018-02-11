@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="-U__STRICT_ANSI__" />
 					<Add directory="../zLibraries/" />
 				</Compiler>
 			</Target>
@@ -57,6 +58,8 @@
 		<Unit filename="z/file/makeDir.h" />
 		<Unit filename="z/file/reader.h" />
 		<Unit filename="z/file/shorten.h" />
+		<Unit filename="z/file/stream.h" />
+		<Unit filename="z/file/workingDir.h" />
 		<Unit filename="z/file/writer.h" />
 		<Unit filename="z/float.h" />
 		<Unit filename="z/int.h" />
@@ -69,6 +72,10 @@
 		<Unit filename="z/math/matrix.h" />
 		<Unit filename="z/math/remainder.h" />
 		<Unit filename="z/math/zeta.h" />
+		<Unit filename="z/system.h" />
+		<Unit filename="z/system/console.h" />
+		<Unit filename="z/system/cpuVendor.h" />
+		<Unit filename="z/system/cpuid.h" />
 		<Unit filename="z/util.h" />
 		<Unit filename="z/util/generic.h" />
 		<Extensions>
