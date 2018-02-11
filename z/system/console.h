@@ -15,7 +15,7 @@ namespace z
             char get();
             void put(char);
 
-            core::string<char> read(char delim = ' ');
+            core::string<char> read(char delim = 0);
             void write(const core::string<char>&);
 
             bool empty();
@@ -34,7 +34,13 @@ namespace z
         core::string<char> console::read(char delim)
         {
             char tmp[128];
-            std::cin >> tmp;
+
+            if (delim)
+            {
+                std::cin.getline(tmp, 128, delim);
+            }
+            else
+                std::cin >> tmp;
 
             return core::string<char>(tmp);
         }

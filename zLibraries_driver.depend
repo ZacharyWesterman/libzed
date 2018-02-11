@@ -222,12 +222,12 @@
 	<z/math.h>
 	<z/file.h>
 
-1518051253 source:c:\github\zlibraries\main.cpp
+1518377827 source:c:\github\zlibraries\main.cpp
 	<z/core.h>
 	<z/file.h>
 	<z/system.h>
 
-1518048502 c:\github\zlibraries\\z\core.h
+1518368625 c:\github\zlibraries\\z\core.h
 	"core/string.h"
 	"core/stream.h"
 	"core/array.h"
@@ -240,6 +240,7 @@
 	"core/pause.h"
 	"core/charFunctions.h"
 	"core/stream.h"
+	"core/stringStream.h"
 
 1518050102 c:\github\zlibraries\\z\core\string.h
 	<type_traits>
@@ -251,7 +252,7 @@
 
 1516670696 c:\github\zlibraries\\z\core\charfunctions.h
 
-1517978593 c:\github\zlibraries\\z\core\stream.h
+1518368875 c:\github\zlibraries\\z\core\stream.h
 	"string.h"
 
 1516670696 c:\github\zlibraries\\z\core\array.h
@@ -390,7 +391,7 @@
 
 1516670696 c:\github\zlibraries\\z\char.h
 
-1517978593 c:\github\zlibraries\\z\file\stream.h
+1518376809 c:\github\zlibraries\\z\file\stream.h
 	<fstream>
 	<z/core/stream.h>
 	"shorten.h"
@@ -405,11 +406,11 @@
 	<direct.h>
 	<unistd.h>
 
-1518051063 c:\github\zlibraries\\z\system.h
+1518368315 c:\github\zlibraries\\z\system.h
 	"system/console.h"
 	"system/cpuid.h"
 
-1518048526 c:\github\zlibraries\\z\system\console.h
+1518376917 c:\github\zlibraries\\z\system\console.h
 	<z/core/stream.h>
 	<iostream>
 
@@ -417,7 +418,12 @@
 	<z/core/string.h>
 	<cpuid.h>
 
-1518055194 c:\github\zlibraries\\z\system\cpuid.h
+1518059429 c:\github\zlibraries\\z\system\cpuid.h
 	<z/core/string.h>
 	<cpuid.h>
+
+1518377914 c:\github\zlibraries\\z\core\stringstream.h
+	"charFunctions.h"
+	"string.h"
+	"stream.h"
 
