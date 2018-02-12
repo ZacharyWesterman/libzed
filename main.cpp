@@ -10,7 +10,7 @@ using namespace z;
 
 int main()
 {
-    util::regex<char> regex("[a-z]+");
+    util::regex<char> regex("^.+\\w*$");
 
     return 0;
 }

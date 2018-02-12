@@ -47,20 +47,21 @@ namespace z
                 REGEX_0_OR_1,
 
                 REGEX_ENDLINE,
-            };
-
-            struct node
-            {
-                const Int type;
-                const Int count;
-                core::array<node*> children;
+                REGEX_NEWLINE,
             };
 
             struct symbol
             {
                 Int type;
                 CHAR value;
+
                 symbol(Int Type, CHAR Value = 0) : type(Type), value(Value) {}
+
+                symbol& operator=(const symbol& other)
+                {
+                    type = other.type;
+                    value = other.value;
+                }
 
                 bool operator==(const symbol& other) const
                 {
@@ -68,12 +69,26 @@ namespace z
                 }
             };
 
+            struct node
+            {
+                const symbol symbol;
+
+                const Int amount;
+
+                core::array<node*> children;
+                node* parent;
+            };
+
+
+
             Int search_pos;
             Int search_len;
 
             node* root;
 
             node* newNode(Int, Int);
+
+            void deleteTree(node*);
 
             void readSymbols(const core::string<CHAR>&, core::array<symbol>*);
 
@@ -136,10 +151,13 @@ namespace z
                         String = "0 OR 1";
                         break;
                     case REGEX_ENDLINE:
-                        String = "ENDLINE";
+                        String = "END LINE";
                         break;
                     case REGEX_NONE:
                         String = "NONE";
+                        break;
+                    case REGEX_NEWLINE:
+                        String = "NEW LINE";
                         break;
                     default:
                         String = cs("UNK : ") + cs(symbols[i].type);
@@ -150,8 +168,11 @@ namespace z
                 }
             }
 
+            void createTreeToRoot(const core::array<symbol>&);
+
         public:
             regex(const core::string<CHAR>&);
+            ~regex() {deleteTree(root);}
 
             bool match(const core::string<CHAR>&);
 
@@ -173,6 +194,18 @@ namespace z
                 root = thisNode;
 
             return thisNode;
+        }
+
+        template <typename CHAR>
+        void regex<CHAR>::deleteTree(node* aNode)
+        {
+            if (aNode)
+            {
+                for (Int i=0; i<aNode->children(); i++)
+                    deleteTree(aNode->children[i]);
+
+                delete aNode;
+            }
         }
 
         template <typename CHAR>
@@ -210,6 +243,10 @@ namespace z
                 {
                     symbols->add(symbol(REGEX_ENDLINE));
                 }
+                else if (expr[i] == '^')
+                {
+                    symbols->add(symbol(REGEX_NEWLINE));
+                }
                 else if (expr.foundAt("(?i)", i))
                 {
                     symbols->add(symbol(REGEX_START_CASE_I));
@@ -246,6 +283,7 @@ namespace z
                 else if (expr.foundAt("\\w", i))
                 {
                     symbols->add(symbol(REGEX_WHITESPACE));
+                    i++;
                 }
                 else
                 {
@@ -256,6 +294,36 @@ namespace z
                 }
 
                 i++;
+            }
+        }
+
+        template <typename CHAR>
+        void regex<CHAR>::createTreeToRoot(const core::array<symbol>& symbols)
+        {
+            if (root)
+                deleteTree(root);
+
+            root = new node;
+            root->parent = NULL;
+
+
+            node* currentNode = root;
+
+            for (Int i=0; i<symbols.size(); i++)
+            {
+                if ((symbols[i].type == REGEX_START_GROUP) ||
+                    (symbols[i].type == REGEX_START_OR) ||
+                    (symbols[i].type == REGEX_START_CASE_I)
+                    )
+                {
+                    node* tmp = new node;
+                    tmp->value = symbols[i];
+                    tmp->parent = currentNode;
+                    currentNode->children.add(tmp);
+
+                    currentNode->children.add(new symbol(symbols[i]));
+                    currentNode = &(currentNode->children[currentNode->children.size()-1]);
+                }
             }
         }
 
@@ -271,6 +339,8 @@ namespace z
             readSymbols(expr, &symbols);
 
             printSymbols(symbols);
+
+            createTreeToRoot(symbols);
         }
     }
 }

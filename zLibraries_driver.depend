@@ -222,7 +222,7 @@
 	<z/math.h>
 	<z/file.h>
 
-1518383681 source:c:\github\zlibraries\main.cpp
+1518395634 source:c:\github\zlibraries\main.cpp
 	<z/util.h>
 
 1518368625 c:\github\zlibraries\\z\core.h
@@ -426,7 +426,7 @@
 	"string.h"
 	"stream.h"
 
-1518395365 c:\github\zlibraries\\z\util\regex.h
+1518395725 c:\github\zlibraries\\z\util\regex.h
 	<z/int.h>
 	<z/core/timeout.h>
 	<z/core/stream.h>
