@@ -426,9 +426,10 @@
 	"string.h"
 	"stream.h"
 
-1518384303 c:\github\zlibraries\\z\util\regex.h
+1518395365 c:\github\zlibraries\\z\util\regex.h
 	<z/int.h>
 	<z/core/timeout.h>
 	<z/core/stream.h>
 	<z/core/array.h>
+	<z/system/console.h>
 

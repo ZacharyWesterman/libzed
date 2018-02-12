@@ -14,4 +14,7 @@
 ///Generic class
 #include "util/generic.h"
 
+///Regular expressions
+#include "util/regex.h"
+
 #endif // UTIL_H_INCLUDED
