@@ -2,7 +2,10 @@
 
 //#define Z_USE_DOUBLE
 
-#include <z/util.h>
+//#include <z/util.h>
+
+#include <z/system.h>
+
 
 using namespace z;
 
@@ -10,7 +13,10 @@ using namespace z;
 
 int main()
 {
-    util::regex<char> regex("^.+\\w*$");
+	system::console console;
+
+	console.writeln("hello");
+    //util::regex<char> regex("^.+\\w*$");
 
     return 0;
 }

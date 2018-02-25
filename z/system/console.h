@@ -17,6 +17,7 @@ namespace z
 
             core::string<char> read(char delim = 0);
             void write(const core::string<char>&);
+            void writeln(const core::string<char>&);
 
             bool empty();
         };
@@ -48,6 +49,11 @@ namespace z
         void console::write(const core::string<char>& input)
         {
             std::cout << input.str();
+        }
+
+        void console::writeln(const core::string<char>& input)
+        {
+            std::cout << input.str() << std::endl;
         }
 
         bool console::empty() {return false;}

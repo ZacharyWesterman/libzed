@@ -50,20 +50,20 @@ namespace z
                 REGEX_NEWLINE,
             };
 
-            struct symbol
+            struct regexSymbol
             {
                 Int type;
                 CHAR value;
 
-                symbol(Int Type, CHAR Value = 0) : type(Type), value(Value) {}
+                regexSymbol(Int Type, CHAR Value = 0) : type(Type), value(Value) {}
 
-                symbol& operator=(const symbol& other)
+                regexSymbol& operator=(const regexSymbol& other)
                 {
                     type = other.type;
                     value = other.value;
                 }
 
-                bool operator==(const symbol& other) const
+                bool operator==(const regexSymbol& other) const
                 {
                     return (type == other.type) && (value == other.value);
                 }
@@ -71,7 +71,7 @@ namespace z
 
             struct node
             {
-                const symbol symbol;
+                const regexSymbol symbol;
 
                 const Int amount;
 
@@ -90,9 +90,9 @@ namespace z
 
             void deleteTree(node*);
 
-            void readSymbols(const core::string<CHAR>&, core::array<symbol>*);
+            void readSymbols(const core::string<CHAR>&, core::array<regexSymbol>*);
 
-            void printSymbols(const core::array<symbol>& symbols)
+            void printSymbols(const core::array<regexSymbol>& symbols)
             {
                 system::console console;
 
@@ -168,7 +168,7 @@ namespace z
                 }
             }
 
-            void createTreeToRoot(const core::array<symbol>&);
+            void createTreeToRoot(const core::array<regexSymbol>&);
 
         public:
             regex(const core::string<CHAR>&);
@@ -201,8 +201,8 @@ namespace z
         {
             if (aNode)
             {
-                for (Int i=0; i<aNode->children(); i++)
-                    deleteTree(aNode->children[i]);
+                //for (Int i=0; i<(aNode->children()); i++)
+                  //  deleteTree(aNode->children[i]);
 
                 delete aNode;
             }
@@ -210,79 +210,79 @@ namespace z
 
         template <typename CHAR>
         void regex<CHAR>::readSymbols(const core::string<CHAR>& expr,
-                                      core::array<symbol>* symbols)
+                                      core::array<regexSymbol>* symbols)
         {
             Int i = 0;
             while (i < expr.length())
             {
                 if (expr[i] == '[')
                 {
-                    symbols->add(symbol(REGEX_START_OR));
+                    symbols->add(regexSymbol(REGEX_START_OR));
                 }
                 else if (expr[i] == ']')
                 {
-                    symbols->add(symbol(REGEX_STOP_OR));
+                    symbols->add(regexSymbol(REGEX_STOP_OR));
                 }
                 else if (expr[i] == ')')
                 {
-                    symbols->add(symbol(REGEX_STOP_GROUP));
+                    symbols->add(regexSymbol(REGEX_STOP_GROUP));
                 }
                 else if (expr[i] == '.')
                 {
-                    symbols->add(symbol(REGEX_ANYTHING));
+                    symbols->add(regexSymbol(REGEX_ANYTHING));
                 }
                 else if (expr[i] == '*')
                 {
-                    symbols->add(symbol(REGEX_0_OR_MORE));
+                    symbols->add(regexSymbol(REGEX_0_OR_MORE));
                 }
                 else if (expr[i] == '+')
                 {
-                    symbols->add(symbol(REGEX_1_OR_MORE));
+                    symbols->add(regexSymbol(REGEX_1_OR_MORE));
                 }
                 else if (expr[i] == '$')
                 {
-                    symbols->add(symbol(REGEX_ENDLINE));
+                    symbols->add(regexSymbol(REGEX_ENDLINE));
                 }
                 else if (expr[i] == '^')
                 {
-                    symbols->add(symbol(REGEX_NEWLINE));
+                    symbols->add(regexSymbol(REGEX_NEWLINE));
                 }
                 else if (expr.foundAt("(?i)", i))
                 {
-                    symbols->add(symbol(REGEX_START_CASE_I));
+                    symbols->add(regexSymbol(REGEX_START_CASE_I));
                     i+=3;
                 }
                 else if (expr.foundAt("(?!i)", i))
                 {
-                    symbols->add(symbol(REGEX_STOP_CASE_I));
+                    symbols->add(regexSymbol(REGEX_STOP_CASE_I));
                     i+=4;
                 }
                 else if (expr[i] == '?')
                 {
-                    symbols->add(symbol(REGEX_0_OR_1));
+                    symbols->add(regexSymbol(REGEX_0_OR_1));
                 }
                 else if (expr[i] == '(')
                 {
-                    symbols->add(symbol(REGEX_START_GROUP));
+                    symbols->add(regexSymbol(REGEX_START_GROUP));
                 }
                 else if (expr.foundAt("a-z", i))
                 {
-                    symbols->add(REGEX_RANGE_az);
+                    symbols->add(regexSymbol(REGEX_RANGE_az));
                     i+=2;
                 }
                 else if (expr.foundAt("A-Z", i))
                 {
-                    symbols->add(REGEX_RANGE_AZ);
+                    symbols->add(regexSymbol(REGEX_RANGE_AZ));
                     i+=2;
                 }
                 else if (expr.foundAt("0-9", i))
                 {
-                    symbols->add(REGEX_RANGE_09);
+                    symbols->add(regexSymbol(REGEX_RANGE_09));
                     i+=2;
                 }
                 else if (expr.foundAt("\\w", i))
                 {
-                    symbols->add(symbol(REGEX_WHITESPACE));
+                    symbols->add(regexSymbol(REGEX_WHITESPACE));
                     i++;
                 }
                 else
@@ -290,7 +290,7 @@ namespace z
                     if ((expr[i] == '\\') && (i+1 < expr.length()))
                         i++;
 
-                    symbols->add(symbol(REGEX_SYMBOL, expr[i]));
+                    symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
                 }
 
                 i++;
@@ -298,7 +298,7 @@ namespace z
         }
 
         template <typename CHAR>
-        void regex<CHAR>::createTreeToRoot(const core::array<symbol>& symbols)
+        void regex<CHAR>::createTreeToRoot(const core::array<regexSymbol>& symbols)
         {
             if (root)
                 deleteTree(root);
@@ -321,7 +321,7 @@ namespace z
                     tmp->parent = currentNode;
                     currentNode->children.add(tmp);
 
-                    currentNode->children.add(new symbol(symbols[i]));
+                    currentNode->children.add(new regexSymbol(symbols[i]));
                     currentNode = &(currentNode->children[currentNode->children.size()-1]);
                 }
             }
@@ -334,13 +334,13 @@ namespace z
             search_len = 0;
             root = NULL;
 
-            core::array<symbol> symbols;
+            core::array<regexSymbol> symbols;
 
             readSymbols(expr, &symbols);
 
             printSymbols(symbols);
 
-            createTreeToRoot(symbols);
+            //createTreeToRoot(symbols);
         }
     }
 }
