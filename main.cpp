@@ -1,22 +1,14 @@
-//#include <iostream>
-
-//#define Z_USE_DOUBLE
-
-//#include <z/util.h>
-
 #include <z/system.h>
 
-
 using namespace z;
-
-
 
 int main()
 {
 	system::console console;
 
-	console.writeln("hello");
-    //util::regex<char> regex("^.+\\w*$");
+	auto input = console.read('\n');
+
+	console.writeln(cs("input = ") + input);
 
     return 0;
 }

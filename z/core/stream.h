@@ -28,9 +28,17 @@ namespace z
 
             virtual void put(CHAR) = 0;
             virtual void write(const core::string<CHAR>&) = 0;
+            void writeln(const core::string<CHAR>&);
 
             virtual bool empty() = 0;
         };
+
+        template <typename CHAR>
+        void outputStream<CHAR>::writeln(const core::string<CHAR>& input)
+        {
+            this->write(input);
+            this->write('\n');
+        }
 
         /**
          * \brief A template class for character streams.
