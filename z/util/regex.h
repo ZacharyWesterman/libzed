@@ -54,6 +54,11 @@ namespace z
 
                 REGEX_AMOUNT,
 
+                REGEX_POS_LA,
+                REGEX_NEG_LA,
+                REGEX_POS_LB,
+                REGEX_NEG_LB,
+
                 REGEX_LOOK_AHEAD,
                 REGEX_LOOK_BEHIND,
 
@@ -420,6 +425,26 @@ namespace z
                     symbols->add(regexSymbol(REGEX_STOP_CASE_I));
                     i+=4;
                 }
+                else if (expr.foundAt("?=", i))
+                {
+                    symbols->add(regexSymbol(REGEX_POS_LA));
+                    i+=1;
+                }
+                else if (expr.foundAt("?!=", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NEG_LA));
+                    i+=2;
+                }
+                else if (expr.foundAt("?<", i))
+                {
+                    symbols->add(regexSymbol(REGEX_POS_LB));
+                    i+=1;
+                }
+                else if (expr.foundAt("?!<", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NEG_LB));
+                    i+=2;
+                }
                 else if (expr[i] == '?')
                 {
                     if (inOr)
@@ -502,6 +527,31 @@ namespace z
                     openLoc.add(i);
                     // isSubOrList.add(isSubOr);
                     // isSubOr = false;
+                }
+                else if ((symbol.type >= REGEX_POS_LA) && (symbol.type <= REGEX_NEG_LB))
+                {
+                    if (!nodesList.is_valid(i-1) || 
+                        (nodesList[i-1]->symbol.type != REGEX_START_AND))
+                    {
+                        regex_error = 1;
+                        break;
+                    }
+
+                    //for lookahead & lookbehind, no symbols can have repeat modifiers
+                    //also, no complicated logic
+                    Int index = i+1;
+                    auto symType = nodesList[index]->symbol.type;
+                    while ((index < nodesList.size()) && (symType != REGEX_STOP_AND))
+                    {
+                        if (!((symType >= REGEX_SYMBOL) && (symType <= REGEX_ANYTHING)))
+                        {
+                            regex_error = 1;
+                            break;
+                        }
+
+                        index++;
+                        symType = nodesList[index]->symbol.type;
+                    }
                 }
                 else if ((symbol.type == REGEX_STOP_AND) || (symbol.type == REGEX_STOP_OR))
                 {

@@ -7,12 +7,12 @@ using namespace z;
 int main()
 {
 	system::console console;
-	util::regex<char> regex("a~[cr]");
+	util::regex<char> regex("(?< )symbol");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream("Zachary Dewane");
+	core::stringStream<char> stream("symbol symbol");
 
 	Int found = regex.search(stream);
 
@@ -25,6 +25,3 @@ int main()
 
     return 0;
 }
-
-
-
