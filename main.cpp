@@ -1,14 +1,27 @@
 #include <z/system.h>
+#include <z/util.h>
+#include <z/core.h>
 
 using namespace z;
 
 int main()
 {
 	system::console console;
+	util::regex<char> regex("~[ '(Zach)]");
 
-	auto input = console.read('\n');
+	if (regex.bad())
+		console.writeln("Invalid regex formatting.");
 
-	console.writeln(cs("input = ") + input);
+	core::stringStream<char> stream(" 'Zachary'");
+
+	Int found = regex.search(stream);
+
+	if (found > 0)
+	{
+		console.writeln(cs("Found ")+regex.foundLen()+" characters at index "+regex.foundAt()+" in input.");
+	}
+	else
+		console.writeln("No string found matching regex.");
 
     return 0;
 }

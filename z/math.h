@@ -25,4 +25,7 @@
 ///Matrices
 #include "math/matrix.h"
 
+//2D numbers
+#include "math/value2d.h"
+
 #endif // MATH_H_INCLUDED
