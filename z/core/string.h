@@ -14,6 +14,7 @@
 #include <complex>
 
 #include <z/float.h>
+#include <z/int.h>
 
 #include "charFunctions.h"
 
@@ -378,10 +379,12 @@ namespace z
             const string<CHAR> lower() const;
 
             Float value(int base = 10) const;
+            Int integer(int base = 10) const;
             std::complex<Float> complexValue(int base = 10) const;
 
             bool isValue(int base = 10) const;
             bool isComplex(int base = 10) const;
+            bool isInteger(int base = 10) const;
         };
 
 
@@ -1102,6 +1105,51 @@ namespace z
             }
         }
 
+        template <typename CHAR>
+        Int string<CHAR>::integer(int base) const
+        {
+
+            Int value = 0;
+
+            int start = 0;
+            bool isNegative = false;
+
+            if (string_array[0] == (CHAR)'-') //'-' character
+            {
+                start = 1;
+                isNegative = true;
+            }
+
+            
+            int length = array_length - 1;
+
+            for (int i=start; i<length; i++)
+            {
+                //in the rare case that we encounter a null character
+                if (string_array[i] == (CHAR)0)
+                    break;
+
+                //if a character is not part of a valid number,
+                //the string evaluates to 0 and return.
+                if (isNumeric(string_array[i], base))
+                {
+                    value *= (Int)base;
+                    value += (Int)numeralValue(string_array[i]);
+                }
+                else
+                    return 0;
+            }
+
+
+            if (isNegative)
+            {
+                return -value;
+            }
+            else
+            {
+                return value;
+            }
+        }
 
         /**
          * \brief Convert the string to its complex number equivalent.
@@ -1288,6 +1336,34 @@ namespace z
             return true;
         }
 
+        template <typename CHAR>
+        bool string<CHAR>::isInteger(int base) const
+        {
+            int start = 0;
+            bool isNegative = false;
+
+            if (string_array[0] == (CHAR)'-') //'-' character
+            {
+                start = 1;
+                isNegative = true;
+            }
+
+
+            int length = array_length - 1;
+
+            for (int i=start; i<length; i++)
+            {
+                //in the rare case that we encounter a null character
+                if (string_array[i] == (CHAR)0)
+                    break;
+
+                //if a character is not part of a valid number
+                else if (!isNumeric(string_array[i], base))
+                    return false;
+            }
+
+            return (bool)length; //null string is not a number
+        }
 
         /**
          * \brief Check if this string can be converted to a complex number.
