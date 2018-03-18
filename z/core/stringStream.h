@@ -16,41 +16,64 @@ namespace z
         {
         private:
             string<CHAR> data;
+            Int index;
 
         public:
             stringStream(const string<CHAR>&);
 
             CHAR get();
+            void unget();
             void put(CHAR);
+            CHAR unput();
 
             string<CHAR> read(CHAR delim = 0);
             void write(const string<CHAR>&);
 
             bool empty();
+            void seek(int);
+            int tell() const;
         };
 
         template <typename CHAR>
-        stringStream<CHAR>::stringStream(const string<CHAR>& input) : data(input) {}
+        stringStream<CHAR>::stringStream(const string<CHAR>& input) : data(input), index(0) {}
 
         template <typename CHAR>
         CHAR stringStream<CHAR>::get()
         {
-            CHAR c = data[0];
-            data.remove(0,0);
+            CHAR c = data[index];
+            index++;
 
             return c;
         }
 
         template <typename CHAR>
+        void stringStream<CHAR>::unget()
+        {
+            if (index)
+                index--;
+        }
+
+        template <typename CHAR>
         void stringStream<CHAR>::put(CHAR c)
         {
-            data += c;
+            data += string<CHAR>(c);
+        }
+
+        template <typename CHAR>
+        CHAR stringStream<CHAR>::unput()
+        {
+            Int pos = data.length()-1;
+
+            CHAR c = data[pos];
+            data.remove(pos, pos);
+
+            return c;
         }
 
         template <typename CHAR>
         string<CHAR> stringStream<CHAR>::read(CHAR delim)
         {
-            Int begIndex = 0;
+            Int begIndex = index;
 
             if (delim)
             {
@@ -80,7 +103,7 @@ namespace z
             }
 
             string<CHAR> result = data.substr(begIndex, endIndex-1);
-            data.remove(0, endIndex-1);
+            index = endIndex;
 
             return result;
         }
@@ -94,7 +117,22 @@ namespace z
         template <typename CHAR>
         bool stringStream<CHAR>::empty()
         {
-            return (data.length() <= 0);
+            return (index >= data.length());
+        }
+
+        template <typename CHAR>
+        void stringStream<CHAR>::seek(int position)
+        {
+            if ((position < 0) || (position >= data.length()))
+                index = data.length();
+            else
+                index = position;
+        }
+
+        template <typename CHAR>
+        int stringStream<CHAR>::tell() const
+        {
+            return index;
         }
     }
 }

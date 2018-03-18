@@ -13,12 +13,17 @@ namespace z
         {
         public:
             char get();
+            void unget();
             void put(char);
+            char unput();
 
             core::string<char> read(char delim = 0);
             void write(const core::string<char>&);
 
             bool empty();
+
+            void seek(int);
+            int tell() const;
         };
 
         char console::get()
@@ -26,9 +31,16 @@ namespace z
             return std::cin.get();
         }
 
+        void console::unget() {}
+
         void console::put(char c)
         {
             std::cout << c;
+        }
+
+        char console::unput()
+        {
+            return 0;
         }
 
         core::string<char> console::read(char delim)
@@ -50,7 +62,14 @@ namespace z
             std::cout << input.str();
         }
 
-        bool console::empty() {return false;}
+        bool console::empty() {return true;}
+
+        void console::seek(int position) {}
+        
+        int console::tell() const
+        {
+            return 0;
+        }
     }
 }
 
