@@ -7,12 +7,12 @@ using namespace z;
 int main()
 {
 	system::console console;
-	util::regex<char> regex("~[ '(Zach)]");
+	util::regex<char> regex("a~[cr]");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream(" 'Zachary'");
+	core::stringStream<char> stream("Zachary Dewane");
 
 	Int found = regex.search(stream);
 

@@ -32,7 +32,6 @@ namespace z
                 REGEX_RANGE_az,
                 REGEX_RANGE_09,
 
-                REGEX_GROUP_AND,
                 REGEX_GROUP_OR,
 
                 REGEX_END_INPUT,
@@ -43,6 +42,7 @@ namespace z
 
                 REGEX_OR,
 
+                REGEX_GROUP_AND,
                 REGEX_START_AND,
                 REGEX_START_OR,
                 
@@ -429,6 +429,12 @@ namespace z
                 }
                 else if (expr[i] == '(')
                 {
+                    if (inOr)
+                    {
+                        regex_error = 1;
+                        return;
+                    }
+
                     openSym.add(regexSymbol(REGEX_START_OR));
                     symbols->add(regexSymbol(REGEX_START_AND));
                     inBracketOr.add(false);
@@ -655,8 +661,8 @@ namespace z
             if (!regex_error)
                 substituteOrInTree(root);
 
-            system::console con;
-            print(con, root);
+            // system::console con;
+            // print(con, root);
         }
 
         template <typename CHAR>
