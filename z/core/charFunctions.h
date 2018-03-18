@@ -26,11 +26,8 @@ namespace z
         template <typename CHAR>
         bool isUpperAlpha(const CHAR character)
         {
-            if ((character >= (CHAR)65) &&  //from A
-                (character <= (CHAR)90))    //to Z
-                return true;
-            else
-                return false;
+            return ((character >= (CHAR)65) &&  //from A
+                    (character <= (CHAR)90));    //to Z
         }
 
         /**
@@ -40,11 +37,24 @@ namespace z
         template <typename CHAR>
         bool isLowerAlpha(const CHAR character)
         {
-            if ((character >= (CHAR)97) &&  //from a
-                (character <= (CHAR)122))    //to z
-                return true;
-            else
-                return false;
+            return ((character >= (CHAR)97) &&  //from a
+                    (character <= (CHAR)122));    //to z
+        }
+
+        template <typename CHAR>
+        CHAR toUpper(CHAR ch)
+        {
+            if (isLowerAlpha(ch)) ch = ch - (CHAR)97 + (CHAR)65;
+
+            return ch;
+        }
+
+        template <typename CHAR>
+        CHAR toLower(CHAR ch)
+        {
+            if (isUpperAlpha(ch)) ch = ch - (CHAR)65 + (CHAR)97;
+
+            return ch;
         }
 
         /**
