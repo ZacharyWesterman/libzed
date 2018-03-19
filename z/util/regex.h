@@ -178,6 +178,24 @@ namespace z
                 case REGEX_NOT:
                     String = "NOT";
                     break;
+                case REGEX_POS_LA:
+                    String = "POSITIVE LOOKAHEAD";
+                    break;
+                case REGEX_NEG_LA:
+                    String = "NEGATIVE LOOKAHEAD";
+                    break;
+                case REGEX_NEG_LB:
+                    String = "NEGATIVE LOOKBEHIND";
+                    break;
+                case REGEX_POS_LB:
+                    String = "POSITIVE LOOKBEHIND";
+                    break;
+                case REGEX_LOOK_BEHIND:
+                    String = "LOOKBEHIND";
+                    break;
+                case REGEX_LOOK_AHEAD:
+                    String = "LOOKAHEAD";
+                    break;
                 case REGEX_START_AND:
                     String = "START AND GROUP";
                     break;
@@ -574,7 +592,37 @@ namespace z
                     
                     delete nodesList[loc];
                     delete nodesList[i];
-                        
+
+                    //take into account if this is a lookahead or lookbehind
+
+
+                    if (aNode->children.size() &&
+                        (aNode->children[0]->symbol.type >= REGEX_POS_LA) &&
+                        (aNode->children[0]->symbol.type <= REGEX_NEG_LB))
+                    {
+                        aType = aNode->children[0]->symbol.type;
+                        if (aType == REGEX_POS_LA)
+                        {
+                            aNode->negate = false;
+                            aType = REGEX_LOOK_AHEAD;
+                        }
+                        else if (aType == REGEX_NEG_LA)
+                        {
+                            aNode->negate = true;
+                            aType = REGEX_LOOK_AHEAD;
+                        }
+                        else
+                        {
+                            aNode->negate = (aType == REGEX_NEG_LB);
+                            aType = REGEX_LOOK_BEHIND;
+                        }
+
+                        aNode->symbol.type = aType;
+
+                        delete aNode->children[0];
+                        aNode->children.remove(0);
+                    }
+
                     nodesList.replace(loc, i, aNode);
                     i = loc;
 
@@ -733,7 +781,48 @@ namespace z
 
             auto symbol = aNode->symbol;
 
-            if (symbol.type == REGEX_END_INPUT)
+            if (symbol.type == REGEX_LOOK_AHEAD)
+            {
+                Int startIndex = input.tell();
+
+                for (Int i=0; i<(aNode->children.size()); i++)
+                {
+                    Int matched = matchNodeOnce(aNode->children[i], input, caseInsensitive);
+
+                    if (matched < 0)
+                    {
+                        input.seek(startIndex);
+
+                        return (aNode->negate ? 0 : -1);
+                    }
+                }
+
+                input.seek(startIndex);
+
+                return (aNode->negate ? -1 : 0);
+            }
+            else if (symbol.type == REGEX_LOOK_BEHIND)
+            {
+                Int stopIndex = input.tell();
+                input.seek(stopIndex - aNode->children.size());
+
+                for (Int i=0; i<(aNode->children.size()); i++)
+                {
+                    Int matched = matchNodeOnce(aNode->children[i], input, caseInsensitive);
+
+                    if (matched < 0)
+                    {
+                        input.seek(stopIndex);
+
+                        return (aNode->negate ? 0 : -1);
+                    }
+                }
+
+                input.seek(stopIndex);
+
+                return (aNode->negate ? -1 : 0);
+            }
+            else if (symbol.type == REGEX_END_INPUT)
             {
                 if (aNode->negate)
                     return (input.empty() ? -1 : 0);

@@ -7,12 +7,12 @@ using namespace z;
 int main()
 {
 	system::console console;
-	util::regex<char> regex("(?< )symbol");
+	util::regex<char> regex("(?i)([aeiou]|(?<a-z)y)");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream("symbol symbol");
+	core::stringStream<char> stream("SYMBOL cymbal");
 
 	Int found = regex.search(stream);
 
