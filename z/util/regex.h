@@ -12,8 +12,6 @@
     #define NULL 0
 #endif // NULL
 
-#include <z/system/console.h>
-
 namespace z
 {
     namespace util
@@ -274,6 +272,8 @@ namespace z
         public:
             regex(const core::string<CHAR>&);
             ~regex() {if (root) delete root;}
+
+            void set(const core::string<CHAR>&);
 
             bool match(core::inputStream<CHAR>&);
 
@@ -746,8 +746,17 @@ namespace z
         template <typename CHAR>
         regex<CHAR>::regex(const core::string<CHAR>& expr)
         {
-            lastSearchDone = true;
             root = NULL;
+            this->set(expr);
+        }
+
+        template <typename CHAR>
+        void regex<CHAR>::set(const core::string<CHAR>& expr)
+        {
+            if (root) delete root;
+            root = NULL;
+
+            lastSearchDone = true;
             regex_error = 0;
 
             core::array<regexSymbol> symbols;
@@ -758,9 +767,6 @@ namespace z
 
             if (!regex_error)
                 substituteOrInTree(root);
-
-            // system::console con;
-            // print(con, root);
         }
 
         template <typename CHAR>
@@ -981,7 +987,6 @@ namespace z
 
             Int iter = 0;
 
-            // system::console con; con.write('a');
             //at least match the minimum
             for (iter = 0; iter<min; iter++)
             {
@@ -1057,7 +1062,7 @@ namespace z
                 searchVal.x = 0; //position
                 searchVal.y = 0; //length
             }
-            system::console con;
+            
             while (!(input.empty() || time.timedOut()))
             {
                 input.seek(searchVal.x);

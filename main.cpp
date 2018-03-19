@@ -6,6 +6,8 @@ using namespace z;
 
 int main()
 {
+	core::string<char> string = "var main() {return;}";
+
 	system::console console;
 	util::regex<char> regex("(?i)([aeiou]|(?<a-z)y)");
 
