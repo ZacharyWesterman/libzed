@@ -776,8 +776,7 @@ namespace z
         template <typename CHAR>
         void regex<CHAR>::unConsume(core::inputStream<CHAR>& input, Int count) const
         {
-            for (Int i=0; i<count; i++)
-                input.unget();
+            input.seek(input.tell()-count);
         }
 
         //Only consumes input if matched
