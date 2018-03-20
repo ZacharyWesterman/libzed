@@ -43,7 +43,7 @@ namespace z
                 REGEX_GROUP_AND,
                 REGEX_START_AND,
                 REGEX_START_OR,
-                
+
                 REGEX_STOP_AND,
                 REGEX_STOP_OR,
 
@@ -73,7 +73,7 @@ namespace z
                 Int min;
                 Int max;
 
-                regexSymbol(Int Type, CHAR Value = 0, Int _max = 1, Int _min = 1) : 
+                regexSymbol(Int Type, CHAR Value = 0, Int _max = 1, Int _min = 1) :
                     type(Type), value(Value), min(_min), max(_max)
                 {}
 
@@ -108,7 +108,7 @@ namespace z
                 node* parent;
 
 
-                node(const regexSymbol& _symbol, bool _negate = false) : 
+                node(const regexSymbol& _symbol, bool _negate = false) :
                     symbol(_symbol), negate(_negate)
                 {
                     parent = NULL;
@@ -133,7 +133,9 @@ namespace z
 
             Int regex_error;
 
-            math::value2d<Int> searchVal;
+            Int searchLoc;
+            core::string<CHAR> searchBuf;
+
             bool lastSearchDone;
 
             node* root;
@@ -242,7 +244,7 @@ namespace z
 
                     Console.write(symbolString(symbol, root->negate));
                     Console.write(" | ");
-                    
+
                     if (symbol.min != symbol.max)
                     {
                         Console.write(symbol.min);
@@ -278,8 +280,10 @@ namespace z
             bool match(core::inputStream<CHAR>&);
 
             Int search(core::inputStream<CHAR>&, const core::timeout& time = -1);
-            Int foundAt() const {return searchVal.x;};
-            Int foundLen() const {return searchVal.y;};
+            Int foundAt() const {return searchLoc;};
+            Int foundLen() const {return searchBuf.length();};
+
+            const core::string<CHAR>& foundString() const {return searchBuf;}
 
             const bool good() const {return !regex_error;}
             const bool bad() const {return (bool)regex_error;}
@@ -548,7 +552,7 @@ namespace z
                 }
                 else if ((symbol.type >= REGEX_POS_LA) && (symbol.type <= REGEX_NEG_LB))
                 {
-                    if (!nodesList.is_valid(i-1) || 
+                    if (!nodesList.is_valid(i-1) ||
                         (nodesList[i-1]->symbol.type != REGEX_START_AND))
                     {
                         regex_error = 1;
@@ -589,7 +593,7 @@ namespace z
 
                     for (Int n=loc+1; n<i; n++)
                         aNode->addChild(nodesList[n]);
-                    
+
                     delete nodesList[loc];
                     delete nodesList[i];
 
@@ -657,7 +661,7 @@ namespace z
 
 
                 //see if symbol can be negated
-                if ((nodesList[i]->symbol.type >= REGEX_SYMBOL) && 
+                if ((nodesList[i]->symbol.type >= REGEX_SYMBOL) &&
                     (nodesList[i]->symbol.type <= REGEX_ANYTHING))
                 {
                     //see if symbol IS being negated
@@ -779,7 +783,7 @@ namespace z
         //Only consumes input if matched
         //returns # chars consumed if matched, -1 otherwise.
         template <typename CHAR>
-        Int regex<CHAR>::matchNodeOnce(const node* aNode, 
+        Int regex<CHAR>::matchNodeOnce(const node* aNode,
                                    core::inputStream<CHAR>& input,
                                    bool caseInsensitive) const
         {
@@ -976,7 +980,7 @@ namespace z
         }
 
         template <typename CHAR>
-        Int regex<CHAR>::matchNode(const node* aNode, 
+        Int regex<CHAR>::matchNode(const node* aNode,
                                    core::inputStream<CHAR>& input,
                                    bool caseInsensitive) const
         {
@@ -1041,47 +1045,58 @@ namespace z
         bool regex<CHAR>::match(core::inputStream<CHAR>& input)
         {
             lastSearchDone = true;
-
-            searchVal.x = 0; //position
-            searchVal.y = 0; //length
+            searchBuf.clear();
+            searchLoc = 0; //position
 
             if (!root || regex_error) return false;
 
-            return ((searchVal.y = matchNode(root, input, false)) >= 0);
+            Int startIndex = input.tell();
+            Int matched = matchNode(root, input, false);
+
+            if (matched < 0) return false;
+
+            input.seek(startIndex);
+            searchBuf = input.get(matched);
+
+            return true;
         }
 
         //does not consume any input. 1 if found, 0 if timeout, and -1 if not found.
         template <typename CHAR>
-        Int regex<CHAR>::search(core::inputStream<CHAR>& input, 
+        Int regex<CHAR>::search(core::inputStream<CHAR>& input,
                                 const core::timeout& time)
         {
             if (!root || regex_error) return -1;
 
             if (lastSearchDone)
             {
-                searchVal.x = 0; //position
-                searchVal.y = 0; //length
+                searchLoc = input.tell(); //position
+                searchBuf.clear();
             }
-            
+
+            Int startIndex = input.tell();
+
             while (!(input.empty() || time.timedOut()))
             {
-                input.seek(searchVal.x);
-                
+                input.seek(searchLoc);
+
                 Int matched = matchNode(root, input, false);
 
                 if (matched > 0)
                 {
-                    input.seek(0);
-                    searchVal.y = matched;
+                    input.seek(searchLoc);
+
+                    searchBuf = input.get(matched);
+                    input.seek(startIndex);
 
                     lastSearchDone = true;
                     return 1;
                 }
 
-                searchVal.x ++;
+                searchLoc++;
             }
 
-            input.seek(0);
+            input.seek(startIndex);
 
             lastSearchDone = input.empty();
 
