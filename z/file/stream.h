@@ -7,6 +7,8 @@
 #include <z/core/stream.h>
 #include "shorten.h"
 
+#include <z/int.h>
+
 namespace z
 {
     namespace file
@@ -21,7 +23,12 @@ namespace z
             inputStream(const core::string<char>&);
 
             CHAR get();
+            core::string<CHAR> get(Int);
             core::string<CHAR> read(CHAR delim = 0);
+            void unget();
+
+            void seek(Int);
+            Int tell();
 
             bool empty();
         };
@@ -37,6 +44,34 @@ namespace z
         {
             return filestream.get();
         }
+
+        template <typename CHAR>
+        core::string<CHAR> inputStream<CHAR>::get(Int count)
+        {
+            core::string<CHAR> result;
+            for (Int i=0; i<count; i++)
+                result += filestream.get();
+
+            return result;
+        }
+
+		template <typename CHAR>
+		void inputStream<CHAR>::unget()
+		{
+			filestream.unget();
+		}
+
+		template <typename CHAR>
+		void inputStream<CHAR>::seek(Int index)
+		{
+			filestream.seekg(index, filestream.beg);
+		}
+
+		template <typename CHAR>
+		Int inputStream<CHAR>::tell()
+		{
+			return filestream.tellg();
+		}
 
         template <typename CHAR>
         core::string<CHAR> inputStream<CHAR>::read(CHAR delim)
@@ -71,6 +106,9 @@ namespace z
             void put(CHAR);
             void write(const core::string<CHAR>&);
 
+			void seek(Int);
+			Int tell();
+
             bool empty();
         };
 
@@ -88,6 +126,18 @@ namespace z
         {
             filestream.put(input);
         }
+
+		template <typename CHAR>
+		void outputStream<CHAR>::seek(Int index)
+		{
+			filestream.seekp(index, filestream.beg);
+		}
+
+		template <typename CHAR>
+		Int outputStream<CHAR>::tell()
+		{
+			return filestream.tellp();
+		}
 
         template <typename CHAR>
         void outputStream<CHAR>::write(const core::string<CHAR>& input)

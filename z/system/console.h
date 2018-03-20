@@ -2,8 +2,9 @@
 #ifndef CONSOLE_H_INCLUDED
 #define CONSOLE_H_INCLUDED
 
-#include <z/core/stream.h>
 #include <iostream>
+#include <z/core/stream.h>
+#include <z/int.h>
 
 namespace z
 {
@@ -13,18 +14,17 @@ namespace z
         {
         public:
             char get();
-            core::string<char> get(int);
+            core::string<char> get(Int);
             void unget();
             void put(char);
-            char unput();
 
             core::string<char> read(char delim = 0);
             void write(const core::string<char>&);
 
             bool empty();
 
-            void seek(int);
-            int tell() const;
+            void seek(Int);
+            Int tell();
         };
 
         char console::get()
@@ -32,10 +32,10 @@ namespace z
             return std::cin.get();
         }
 
-        core::string<char> console::get(int count)
+        core::string<char> console::get(Int count)
         {
             core::string<char> result;
-            for (int i=0; i<count; i++)
+            for (Int i=0; i<count; i++)
                 result += std::cin.get();
 
             return result;
@@ -46,11 +46,6 @@ namespace z
         void console::put(char c)
         {
             std::cout << c;
-        }
-
-        char console::unput()
-        {
-            return 0;
         }
 
         core::string<char> console::read(char delim)
@@ -74,9 +69,9 @@ namespace z
 
         bool console::empty() {return true;}
 
-        void console::seek(int position) {}
+        void console::seek(Int position) {}
 
-        int console::tell() const
+        Int console::tell()
         {
             return 0;
         }

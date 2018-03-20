@@ -3,6 +3,7 @@
 #define CORE_STREAM_H_INCLUDED
 
 #include "string.h"
+#include <z/int.h>
 
 namespace z
 {
@@ -15,14 +16,14 @@ namespace z
             virtual ~inputStream() {}
 
             virtual CHAR get() = 0;
-            virtual string<CHAR> get(int) = 0;
+            virtual string<CHAR> get(Int) = 0;
             virtual void unget() = 0;
             virtual core::string<CHAR> read(CHAR) = 0;
 
             virtual bool empty() = 0;
 
-            virtual void seek(int) = 0;
-            virtual int tell() const = 0;
+            virtual void seek(Int) = 0;
+            virtual Int tell() = 0;
         };
 
         template <typename CHAR>
@@ -32,20 +33,19 @@ namespace z
             virtual ~outputStream() {}
 
             virtual void put(CHAR) = 0;
-            virtual CHAR unput() = 0;
             virtual void write(const core::string<CHAR>&) = 0;
             void writeln(const core::string<CHAR>&);
 
             virtual bool empty() = 0;
-            virtual void seek(int) = 0;
-            virtual int tell() const = 0;
+            virtual void seek(Int) = 0;
+            virtual Int tell() = 0;
         };
 
         template <typename CHAR>
         void outputStream<CHAR>::writeln(const core::string<CHAR>& input)
         {
             this->write(input);
-            this->write('\n');
+            this->write("\n");
         }
 
         /**

@@ -25,14 +25,13 @@ namespace z
             string<CHAR> get(int);
             void unget();
             void put(CHAR);
-            CHAR unput();
 
             string<CHAR> read(CHAR delim = 0);
             void write(const string<CHAR>&);
 
             bool empty();
             void seek(int);
-            int tell() const;
+            int tell();
         };
 
         template <typename CHAR>
@@ -69,17 +68,6 @@ namespace z
         void stringStream<CHAR>::put(CHAR c)
         {
             data += string<CHAR>(c);
-        }
-
-        template <typename CHAR>
-        CHAR stringStream<CHAR>::unput()
-        {
-            Int pos = data.length()-1;
-
-            CHAR c = data[pos];
-            data.remove(pos, pos);
-
-            return c;
         }
 
         template <typename CHAR>
@@ -142,7 +130,7 @@ namespace z
         }
 
         template <typename CHAR>
-        int stringStream<CHAR>::tell() const
+        int stringStream<CHAR>::tell()
         {
             return index;
         }
