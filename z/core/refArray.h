@@ -5,6 +5,7 @@
 #include <type_traits>
 
 #include "array.h"
+#include <z/int.h>
 
 namespace z
 {
@@ -48,7 +49,7 @@ namespace z
             template <typename... Args>
             refArray(const T arg1, const Args... args);
 
-            virtual int find(const T& object) const;
+            virtual Int find(const T& object) const;
         };
 
 
@@ -109,9 +110,9 @@ namespace z
          * \b -1 if it was not found.
          */
         template <typename T>
-        int refArray<T>::find(const T& object) const
+        Int refArray<T>::find(const T& object) const
         {
-            for (int i=0; i<((int)this->array_data.size()); i++)
+            for (Int i=0; i<((Int)this->array_data.size()); i++)
                 if (*(this->array_data.at(i)) == *object)
                     return i;
 

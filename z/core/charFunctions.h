@@ -15,6 +15,8 @@
 #ifndef CHARFUNCTIONS_H_INCLUDED
 #define CHARFUNCTIONS_H_INCLUDED
 
+#include <z/int.h>
+
 namespace z
 {
     namespace core
@@ -73,7 +75,7 @@ namespace z
          * respective numeral value.
          */
         template <typename CHAR>
-        int numeralValue(const CHAR character)
+        Int numeralValue(const CHAR character)
         {
             if ((character >= (CHAR)48) &&  //from 0
                 (character <= (CHAR)57))    //to 9
@@ -93,9 +95,9 @@ namespace z
          * the given base.
          */
         template <typename CHAR>
-        inline bool isNumeric(const CHAR character, int base = 10)
+        inline bool isNumeric(const CHAR character, Int base = 10)
         {
-            int value = numeralValue(character);
+            Int value = numeralValue(character);
             return ((value < base) && (value > -1));
         }
 

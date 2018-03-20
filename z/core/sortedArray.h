@@ -3,6 +3,7 @@
 #define SORTEDARRAY_H_INCLUDED
 
 #include "array.h"
+#include <z/int.h>
 
 namespace z
 {
@@ -42,12 +43,12 @@ namespace z
             template <typename... Args>
             sortedArray(const T& arg1, const Args&... args);
 
-            virtual int add(const T&);
+            virtual Int add(const T&);
             virtual void add(const array<T>&);
 
-            virtual int find(const T&) const;
+            virtual Int find(const T&) const;
 
-            int findInsert(const T&) const;
+            Int findInsert(const T&) const;
 
             virtual void sort();
         };
@@ -102,9 +103,9 @@ namespace z
          * \return The index where the inserted object now resides.
          */
         template <typename T>
-        int sortedArray<T>::add(const T& object)
+        Int sortedArray<T>::add(const T& object)
         {
-            int index = findInsert(object);
+            Int index = findInsert(object);
 
             this->insert(object, index);
 
@@ -124,9 +125,9 @@ namespace z
         template <typename T>
         void sortedArray<T>::add(const array<T>& other)
         {
-            for (int i=0; i<other.size(); i++)
+            for (Int i=0; i<other.size(); i++)
             {
-                int index = findInsert(other[i]);
+                Int index = findInsert(other[i]);
 
                 this->insert(other[i], index);
             }
@@ -144,17 +145,17 @@ namespace z
          * \b -1 if it was not found.
          */
         template <typename T>
-        int sortedArray<T>::find(const T& object) const
+        Int sortedArray<T>::find(const T& object) const
         {
             if (this->array_data.size() == 0)
                 return -1;
 
-            int left = 0;
-            int right = this->array_data.size()-1;
+            Int left = 0;
+            Int right = this->array_data.size()-1;
 
             while (left < right)
             {
-                int center = (left + right) / 2;
+                Int center = (left + right) / 2;
 
                 if ((this->array_data.at(center)) < object)
                 {
@@ -189,17 +190,17 @@ namespace z
          * inserted.
          */
         template <typename T>
-        int sortedArray<T>::findInsert(const T& object) const
+        Int sortedArray<T>::findInsert(const T& object) const
         {
             if (this->array_data.size() == 0)
                 return 0;
 
-            int left = 0;
-            int right = this->array_data.size()-1;
+            Int left = 0;
+            Int right = this->array_data.size()-1;
 
             while (left < right)
             {
-                int center = (left + right) / 2;
+                Int center = (left + right) / 2;
 
                 if (this->array_data.at(center) < object)
                 {
@@ -238,7 +239,7 @@ namespace z
                 done = true;
 
 
-                for (int i=0; i<(int)this->array_data.size()-1; i++)
+                for (Int i=0; i<(Int)this->array_data.size()-1; i++)
                 {
                     if (this->array_data[i] > this->array_data[i+1])
                     {
