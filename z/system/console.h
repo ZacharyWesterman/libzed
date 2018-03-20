@@ -13,6 +13,7 @@ namespace z
         {
         public:
             char get();
+            core::string<char> get(int);
             void unget();
             void put(char);
             char unput();
@@ -29,6 +30,15 @@ namespace z
         char console::get()
         {
             return std::cin.get();
+        }
+
+        core::string<char> console::get(int count)
+        {
+            core::string<char> result;
+            for (int i=0; i<count; i++)
+                result += std::cin.get();
+
+            return result;
         }
 
         void console::unget() {}
@@ -65,7 +75,7 @@ namespace z
         bool console::empty() {return true;}
 
         void console::seek(int position) {}
-        
+
         int console::tell() const
         {
             return 0;

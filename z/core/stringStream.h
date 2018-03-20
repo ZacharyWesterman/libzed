@@ -22,6 +22,7 @@ namespace z
             stringStream(const string<CHAR>&);
 
             CHAR get();
+            string<CHAR> get(int);
             void unget();
             void put(CHAR);
             CHAR unput();
@@ -44,6 +45,17 @@ namespace z
             index++;
 
             return c;
+        }
+
+        template <typename CHAR>
+        string<CHAR> stringStream<CHAR>::get(int count)
+        {
+            if (count < 1) return string<CHAR>();
+
+            string<CHAR> result = data.substr(index, index+count-1);
+            index += count;
+
+            return result;
         }
 
         template <typename CHAR>
