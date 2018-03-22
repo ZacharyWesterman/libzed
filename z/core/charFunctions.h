@@ -105,7 +105,7 @@ namespace z
          * \brief Check if the given character is alphanumeric.
          */
         template <typename CHAR>
-        inline bool isAlphanumeric(const CHAR character)
+        inline bool isAlphaNumeric(const CHAR character)
         {
             return (isAlpha(character) ||  //is a letter
                     isNumeric(character)); //or a number

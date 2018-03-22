@@ -11,7 +11,7 @@ int main()
 	core::string<char> string = "Var Main  () {return;}";
 
 	system::console console;
-	util::regex<char> regex("(?i)(?!<a-z)(~[v]&[a-z]+)");
+	util::regex<char> regex("(?i)\\b(~[v]&[a-z]{1,10}\\b)");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");

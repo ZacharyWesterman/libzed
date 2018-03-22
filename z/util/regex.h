@@ -34,7 +34,9 @@ namespace z
 
                 REGEX_END_INPUT,
                 REGEX_BEGIN_INPUT,
+				REGEX_BREAK,
 
+				REGEX_WORD,
                 REGEX_WHITESPACE,
                 REGEX_ANYTHING,
 
@@ -172,6 +174,12 @@ namespace z
                 case REGEX_WHITESPACE:
                     String = "WHITE SPACE";
                     break;
+				case REGEX_BREAK:
+					String = "BREAK";
+					break;
+				case REGEX_WORD:
+					String = "WORD CHARACTER";
+					break;
                 case REGEX_ANYTHING:
                     String = "ANY CHARACTER";
                     break;
@@ -515,9 +523,19 @@ namespace z
                     symbols->add(regexSymbol(REGEX_RANGE_09));
                     i+=2;
                 }
-                else if (expr.foundAt("\\w", i))
+                else if (expr.foundAt("\\s", i))
                 {
                     symbols->add(regexSymbol(REGEX_WHITESPACE));
+                    i++;
+                }
+				else if (expr.foundAt("\\b", i))
+                {
+                    symbols->add(regexSymbol(REGEX_BREAK));
+                    i++;
+                }
+				else if (expr.foundAt("\\w", i))
+                {
+                    symbols->add(regexSymbol(REGEX_WORD));
                     i++;
                 }
                 else
@@ -870,6 +888,25 @@ namespace z
                 else
                     return (input.tell() ? -1 : 0);
             }
+			else if (symbol.type == REGEX_BREAK)
+            {
+				bool atBreak = true;
+
+				if (!input.empty() && input.tell())
+				{
+					input.unget();
+					CHAR lastCh = input.get();
+					CHAR thisCh = input.get();
+					input.unget();
+
+					atBreak = !(core::isAlphaNumeric(lastCh) && core::isAlphaNumeric(thisCh));
+				}
+
+                if (aNode->negate)
+                    return (atBreak ? -1 : 0);
+                else
+                    return (atBreak ? 0 : -1);
+            }
             else if (symbol.type == REGEX_GROUP_AND)
             {
                 Int consumed = 0;
@@ -902,7 +939,7 @@ namespace z
                 return (aNode->negate ? -1 : consumed);
             }
 			else if (symbol.type == REGEX_UNIFIED_AND)
-            {
+			{
 				Int maxMatched = 0;
 
                 for (Int i=0; i<(aNode->children.size()); i++)
