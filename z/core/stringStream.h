@@ -22,7 +22,7 @@ namespace z
             stringStream(const string<CHAR>&);
 
             CHAR get();
-            string<CHAR> get(int);
+            string<CHAR> get(Int);
             void unget();
             void put(CHAR);
 
@@ -30,8 +30,8 @@ namespace z
             void write(const string<CHAR>&);
 
             bool empty();
-            void seek(int);
-            int tell();
+            void seek(Int);
+            Int tell();
         };
 
         template <typename CHAR>
@@ -47,7 +47,7 @@ namespace z
         }
 
         template <typename CHAR>
-        string<CHAR> stringStream<CHAR>::get(int count)
+        string<CHAR> stringStream<CHAR>::get(Int count)
         {
             if (count < 1) return string<CHAR>();
 
@@ -121,7 +121,7 @@ namespace z
         }
 
         template <typename CHAR>
-        void stringStream<CHAR>::seek(int position)
+        void stringStream<CHAR>::seek(Int position)
         {
             if ((position < 0) || (position >= data.length()))
                 index = data.length();
@@ -130,7 +130,7 @@ namespace z
         }
 
         template <typename CHAR>
-        int stringStream<CHAR>::tell()
+        Int stringStream<CHAR>::tell()
         {
             return index;
         }
