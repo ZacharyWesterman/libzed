@@ -1043,6 +1043,10 @@ namespace z
                 {
                     if (core::isNumeric(c)) matched = 1;
                 }
+				if (symbol.type == REGEX_WORD)
+                {
+                    if (core::isAlphaNumeric(c)) matched = 1;
+                }
                 else if (symbol.type == REGEX_WHITESPACE)
                 {
                     if (core::isWhiteSpace(c)) matched = 1;

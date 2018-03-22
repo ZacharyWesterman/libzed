@@ -8,10 +8,10 @@ using namespace z;
 int main()
 {
 	// file::inputStream<char> stream ("test.txt");
-	core::string<char> string = "Var Main  () {return;}";
+	core::string<char> string = "Var Main2  () {return;}";
 
 	system::console console;
-	util::regex<char> regex("(?i)\\b(~[v]&[a-z]{1,10}\\b)");
+	util::regex<char> regex("\\b(~[vV]&\\w+\\b)");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
