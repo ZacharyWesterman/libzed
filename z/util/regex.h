@@ -39,6 +39,9 @@ namespace z
                 REGEX_ANYTHING,
 
                 REGEX_OR,
+				REGEX_AND,
+
+				REGEX_UNIFIED_AND,
 
                 REGEX_GROUP_AND,
                 REGEX_START_AND,
@@ -175,6 +178,12 @@ namespace z
                 case REGEX_OR:
                     String = "OR";
                     break;
+				case REGEX_AND:
+					String = "AND";
+					break;
+				case REGEX_UNIFIED_AND:
+					String = "UNIFIED AND";
+					break;
                 case REGEX_NOT:
                     String = "NOT";
                     break;
@@ -264,9 +273,9 @@ namespace z
 
             void createTreeToRoot(core::array<regexSymbol>*);
 
-            void substituteOrInTree(node*&);
+            void condenseTree(node*&);
 
-            Int matchNode(const node*, core::inputStream<CHAR>&, bool) const;
+            Int matchNode(const node*, const node*, core::inputStream<CHAR>&, bool) const;
             Int matchNodeOnce(const node*, core::inputStream<CHAR>&, bool) const;
 
             void unConsume(core::inputStream<CHAR>&, Int) const;
@@ -377,6 +386,13 @@ namespace z
                     else
                         symbols->add(regexSymbol(REGEX_OR));
                 }
+				else if (expr[i] == '&')
+                {
+                    if (inOr)
+                        symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
+                    else
+                        symbols->add(regexSymbol(REGEX_AND));
+                }
                 else if (expr[i] == '[')
                 {
                     openSym.add(regexSymbol(REGEX_START_OR));
@@ -397,15 +413,14 @@ namespace z
                 }
                 else if (expr[i] == ')')
                 {
-                    if ((openSym.size() <= 0) || (openSym.at(openSym.size()-1).type != REGEX_START_OR))
-                    {
-                        regex_error = 1;
-                        return;
-                    }
-
-                    openSym.remove(openSym.size()-1);
-                    symbols->add(regexSymbol(REGEX_STOP_AND));
-                    inBracketOr.remove(inBracketOr.size()-1);
+					if (inOr)
+						symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
+					else
+					{
+						openSym.remove(openSym.size()-1);
+						symbols->add(regexSymbol(REGEX_STOP_AND));
+						inBracketOr.remove(inBracketOr.size()-1);
+					}
                 }
                 else if (expr[i] == '.')
                 {
@@ -476,15 +491,14 @@ namespace z
                 }
                 else if (expr[i] == '(')
                 {
-                    if (inOr)
-                    {
-                        regex_error = 1;
-                        return;
-                    }
-
-                    openSym.add(regexSymbol(REGEX_START_OR));
-                    symbols->add(regexSymbol(REGEX_START_AND));
-                    inBracketOr.add(false);
+					if (inOr)
+						symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
+					else
+					{
+						openSym.add(regexSymbol(REGEX_START_OR));
+						symbols->add(regexSymbol(REGEX_START_AND));
+						inBracketOr.add(false);
+					}
                 }
                 else if (expr.foundAt("a-z", i))
                 {
@@ -597,7 +611,7 @@ namespace z
                     delete nodesList[loc];
                     delete nodesList[i];
 
-                    //take into account if this is a lookahead or lookbehind
+                    //take Into account if this is a lookahead or lookbehind
 
 
                     if (aNode->children.size() &&
@@ -683,7 +697,7 @@ namespace z
         }
 
         template <typename CHAR>
-        void regex<CHAR>::substituteOrInTree(node*& aNode)
+        void regex<CHAR>::condenseTree(node*& aNode)
         {
             if (aNode && aNode->negate)
             {
@@ -700,11 +714,14 @@ namespace z
                 Int children = aNode->children.size();
 
                 bool isSubOr = false;
+				bool isSubAnd = false;
 
                 for (Int i=0; i<children; i++)
                 {
                     if (aNode->children[i]->symbol.type == REGEX_OR)
                         isSubOr = true;
+					else if (aNode->children[i]->symbol.type == REGEX_AND)
+						isSubAnd = true;
                     //if we have a negate symbol leftover, bad regex.
                     else if (aNode->children[i]->symbol.type == REGEX_NOT)
                     {
@@ -712,13 +729,18 @@ namespace z
                         return;
                     }
                     else
-                        substituteOrInTree(aNode->children[i]);
+                        condenseTree(aNode->children[i]);
                 }
 
-                if (isSubOr)
+				if (isSubOr && isSubAnd)
+				{
+					regex_error = 1;
+				}
+                else if (isSubOr || isSubAnd)
                 {
                     auto aType = aNode->symbol.type;
-                    aNode->symbol.type = REGEX_GROUP_OR;
+                    aNode->symbol.type = (isSubOr ? REGEX_GROUP_OR : REGEX_UNIFIED_AND);
+					Int checkSymbol = (isSubOr ? REGEX_OR : REGEX_AND);
 
                     node* newANode = new node(aNode->symbol);
 
@@ -728,7 +750,7 @@ namespace z
                     {
                         node* child = aNode->children[i];
 
-                        if (child->symbol.type == REGEX_OR)
+                        if (child->symbol.type == checkSymbol)
                         {
                             newANode->addChild(bNode);
                             delete child;
@@ -752,6 +774,9 @@ namespace z
         {
             root = NULL;
             this->set(expr);
+
+			system::console con;
+			print(con, root);
         }
 
         template <typename CHAR>
@@ -770,7 +795,7 @@ namespace z
                 createTreeToRoot(&symbols);
 
             if (!regex_error)
-                substituteOrInTree(root);
+                condenseTree(root);
         }
 
         template <typename CHAR>
@@ -858,7 +883,9 @@ namespace z
                         caseInsensitive = false;
                     else
                     {
-                        Int matched = matchNode(aNode->children[i], input, caseInsensitive);
+						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+
+                        Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
                         if(matched < 0)
                         {
                             unConsume(input, consumed);
@@ -874,6 +901,38 @@ namespace z
                 if (aNode->negate) unConsume(input, consumed);
                 return (aNode->negate ? -1 : consumed);
             }
+			else if (symbol.type == REGEX_UNIFIED_AND)
+            {
+				Int maxMatched = 0;
+
+                for (Int i=0; i<(aNode->children.size()); i++)
+                {
+                    auto childType = aNode->children[i]->symbol.type;
+                    if (childType == REGEX_START_CASE_I)
+                        caseInsensitive = true;
+                    else if (childType == REGEX_STOP_CASE_I)
+                        caseInsensitive = false;
+                    else
+					{
+						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+
+						Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
+						if(matched < 0)
+						{
+                            return (aNode->negate ? 0 : -1);
+                        }
+                        else
+                        {
+							unConsume(input, matched);
+
+							if (matched > maxMatched) maxMatched = matched;
+                        }
+					}
+                }
+
+                if (!aNode->negate) input.seek(input.tell() + maxMatched);
+                return (aNode->negate ? -1 : maxMatched);
+            }
             else if (symbol.type == REGEX_GROUP_OR)
             {
                 for (Int i=0; i<(aNode->children.size()); i++)
@@ -885,7 +944,9 @@ namespace z
                         caseInsensitive = false;
                     else
                     {
-                        Int matched = matchNode(aNode->children[i], input, caseInsensitive);
+						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+
+                        Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
                         if (matched >= 0)
                         {
                             if (aNode->negate)
@@ -979,7 +1040,7 @@ namespace z
         }
 
         template <typename CHAR>
-        Int regex<CHAR>::matchNode(const node* aNode,
+        Int regex<CHAR>::matchNode(const node* aNode, const node* next,
                                    core::inputStream<CHAR>& input,
                                    bool caseInsensitive) const
         {
@@ -1015,6 +1076,18 @@ namespace z
 
                 do
                 {
+					if (next)
+					{
+						//try to match the next node
+						matched = matchNode(next, NULL, input, caseInsensitive);
+						//and exit matching this node if the next node matches
+						if (matched >= 0)
+						{
+							unConsume(input, matched);
+							break;
+						}
+					}
+
                     matched = matchNodeOnce(aNode, input, caseInsensitive);
 
                     if (matched > 0) consumed += matched;
@@ -1025,7 +1098,21 @@ namespace z
             {
                 for (iter = min; iter<max; iter++)
                 {
-                    Int matched = matchNodeOnce(aNode, input, caseInsensitive);
+					Int matched = -1;
+
+					if (next)
+					{
+						//try to match the next node
+						matched = matchNode(next, NULL, input, caseInsensitive);
+						//and exit matching this node if the next node matches
+						if (matched >= 0)
+						{
+							unConsume(input, matched);
+							break;
+						}
+					}
+
+					matched = matchNodeOnce(aNode, input, caseInsensitive);
 
                     if (matched < 0)
                     {
@@ -1050,7 +1137,7 @@ namespace z
             if (!root || regex_error) return false;
 
             Int startIndex = input.tell();
-            Int matched = matchNode(root, input, false);
+            Int matched = matchNode(root, NULL, input, false);
 
             if (matched < 0) return false;
 
@@ -1079,7 +1166,7 @@ namespace z
             {
                 input.seek(searchLoc);
 
-                Int matched = matchNode(root, input, false);
+                Int matched = matchNode(root, NULL, input, false);
 
                 if (matched > 0)
                 {
