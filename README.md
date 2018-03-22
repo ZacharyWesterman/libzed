@@ -1,7 +1,7 @@
 # Introduction
 
 This collection of header-only C++ libraries contains useful classes and functions that help decrease development time of other projects.  
-All code is under the **z** namespace. Currently, there are four other namespaces below that:<br>
+All code is under the **z** namespace. Currently, there are four other namespaces below that:  
 
 **z::core**  
 **z::file**  
@@ -22,7 +22,7 @@ Has several classes for easy file system management. Depends on **z::core**.
 Mathematical constants and functions are defined here. No dependencies apart from stl.
 
 ## z::util
-So far, only contains the **z::util::generic** class. Depends on **z::core** and **z::math**.
-  
+Contains classes that provide more complicated functionality.
+
 --------------------------
 Sample programs and full code documentation available at [ZacharyWesterman.github.io](https://ZacharyWesterman.github.io).

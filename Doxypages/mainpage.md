@@ -10,7 +10,7 @@ All code is under the `z` namespace. Currently, there are four other namespaces 
 `z::file`  
 `z::math`  
 `z::util`  
-  
+
 All functions, classes and definitions are in one of these namespaces.  
 The only exceptions are the three basic type definitions z::Char, z::Int and z::Float.
 
@@ -20,20 +20,7 @@ The only exceptions are the three basic type definitions z::Char, z::Int and z::
 Contains core functionality such as strings, arrays, and timers. No dependencies apart from stl.
 
 ## Examples:
-<table>
-<tr>
-<th>Core</th>
-<th>File</th>
-<th>Math</th>
-<th>Util</th>
-</tr>
-<tr>
-<td>[Strings](Doxypages/examples/core/string.md)</td>
-<td>[Reader](#)</td>
-<td></td>
-<td></td>
-</tr>
-</table>
+[Strings](Doxypages/examples/core/string.md)
 
 ## z::file
 Has several classes for easy file system management. Depends on z::core.
@@ -52,12 +39,10 @@ Mathematical constants and functions are defined here. No dependencies apart fro
 ```
 
 ## z::util
-So far, only contains the z::util::generic class. Depends on z::core and z::math.
+Contains classes that provide more complicated functionality.
 
-#### Example
-```cpp
-
-```
+#### Examples:
+[Regex](Doxypages/examples/util/regex.md)
 
 --------------------------
 Download or fork: [GitHub repo](https://github.com/ZacharyWesterman/zLibraries).  
