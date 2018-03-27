@@ -36,14 +36,14 @@ namespace z
         //"buffer" is assumed to be 2*num_bufsiz + 7 characters long
         //returns number of characters in resultant string
         template<typename CHAR>
-        static int num_to_cstring(const Float& number, CHAR* buffer)
+        static Int num_to_cstring(const Float& number, CHAR* buffer)
         {
             Float_cast dbl_cst = {.value = number};
 
             bool use_scientific = (dbl_cst.expUnBias() > 50) ||
                                   (dbl_cst.expUnBias() < (-50));
 
-            int buffer_pos = 0;
+            Int buffer_pos = 0;
 
             Float fpart;
             long ipart;
@@ -67,9 +67,9 @@ namespace z
                 CHAR inv_fbuf[num_bufsiz];
                 CHAR inv_xbuf[4];
 
-                int ibufsiz = 0;
-                int fbufsiz = 0;
-                int xbufsiz = 0;
+                Int ibufsiz = 0;
+                Int fbufsiz = 0;
+                Int xbufsiz = 0;
 
 
                 if (ipart < 0)
@@ -108,7 +108,7 @@ namespace z
                 {
                     fpart *= 10;
 
-                    int frac_char = fpart;
+                    Int frac_char = fpart;
 
                     inv_fbuf[fbufsiz] = (CHAR)(frac_char + 48);
 
@@ -128,7 +128,7 @@ namespace z
 
                 if (fpart >= num_round_magic)
                 {
-                    int i = fbufsiz - 1;
+                    Int i = fbufsiz - 1;
 
                     inv_fbuf[i]++;
 
@@ -170,7 +170,7 @@ namespace z
                     }
                 }
 
-                for (int i=ibufsiz-1; i>=0; i--)
+                for (Int i=ibufsiz-1; i>=0; i--)
                 {
                     buffer[buffer_pos] = inv_ibuf[i];
                     buffer_pos++;
@@ -181,9 +181,9 @@ namespace z
                     buffer[buffer_pos] = (CHAR)46; // '.'
                     buffer_pos++;
 
-                    int frac_len = 0;
+                    Int frac_len = 0;
 
-                    for (int f=0; f<fbufsiz; f++)
+                    for (Int f=0; f<fbufsiz; f++)
                     {
                         buffer[buffer_pos + f] = inv_fbuf[f];
 
@@ -200,7 +200,7 @@ namespace z
                     buffer[buffer_pos] = (CHAR)69; //'E'
                     buffer_pos++;
 
-                    for (int i=xbufsiz-1; i>=0; i--)
+                    for (Int i=xbufsiz-1; i>=0; i--)
                     {
                         buffer[buffer_pos] = inv_xbuf[i];
                         buffer_pos++;
@@ -255,24 +255,25 @@ namespace z
                           "Invalid character type");
 
         private:
-            int array_length;
+			Int max_length;
+            Int current_length;
             CHAR* string_array;
 
-            void append_string(const CHAR* buffer, int bufsiz);
+            void append_string(const CHAR* buffer, Int bufsiz);
             void append_char(CHAR singleChar);
 
-            bool found_sub_string_at(int pos,
+            bool found_sub_string_at(Int pos,
                                      const CHAR* substr,
-                                     int substr_len) const;
+                                     Int substr_len) const;
 
-            void replace_sub_string_at_with(int beg_index,
-                                            int end_index,
+            void replace_sub_string_at_with(Int beg_index,
+                                            Int end_index,
                                             const CHAR* sub_str,
-                                            int substr_len);
+                                            Int substr_len);
 
-            int lessthan_equal_greater(const CHAR* other, int str_size) const;
+            Int lessthan_equal_greater(const CHAR* other, Int str_size) const;
 
-            void remove_portion(int beg_index, int end_index);
+            void remove_portion(Int beg_index, Int end_index);
 
 
         public:
@@ -308,8 +309,8 @@ namespace z
 
 
 
-            int size() const;
-            inline int length() const;
+            Int size() const;
+            inline Int length() const;
             inline const CHAR* str() const;
 
 
@@ -325,38 +326,38 @@ namespace z
 
 
 
-            CHAR at(int index) const;
-            CHAR& at(int index);
-            inline CHAR operator[](int index) const;
-            inline CHAR& operator[](int index);
+            CHAR at(Int index) const;
+            CHAR& at(Int index);
+            inline CHAR operator[](Int index) const;
+            inline CHAR& operator[](Int index);
 
-            int find(const string& sub_string) const;
-            int find(const string& sub_string, int n) const;
-            int findAfter(const string& sub_string, int n) const;
-            int findLast(const string& sub_string) const;
+            Int find(const string& sub_string) const;
+            Int find(const string& sub_string, Int n) const;
+            Int findAfter(const string& sub_string, Int n) const;
+            Int findLast(const string& sub_string) const;
 
 
-            inline void replace(int start_pos,
-                                int end_pos,
+            inline void replace(Int start_pos,
+                                Int end_pos,
                                 const string& new_string);
 
             bool replace(const string& sub_string,
                          const string& new_string);
 
             bool replace(const string& sub_string,
-                         int n,
+                         Int n,
                          const string& new_string);
 
 
-            const string substr(int start_index, int end_index) const;
+            const string substr(Int start_index, Int end_index) const;
 
-            int count(const string& sub_string) const;
+            Int count(const string& sub_string) const;
 
-            inline void remove(int start_index, int end_index);
+            inline void remove(Int start_index, Int end_index);
+			inline void remove(Int index) {this->remove(index, index);}
 
-
-            bool foundAt(const string& sub_string, int position) const;
-            bool foundEndAt(const string& sub_string, int position) const;
+            bool foundAt(const string& sub_string, Int position) const;
+            bool foundEndAt(const string& sub_string, Int position) const;
 
             inline bool beginsWith(const string& sub_string) const;
             bool beginsWith(const string& sub_string, CHAR pad_char) const;
@@ -378,13 +379,13 @@ namespace z
             const string<CHAR> upper() const;
             const string<CHAR> lower() const;
 
-            Float value(int base = 10) const;
-            Int integer(int base = 10) const;
-            std::complex<Float> complexValue(int base = 10) const;
+            Float value(Int base = 10) const;
+            Int integer(Int base = 10) const;
+            std::complex<Float> complexValue(Int base = 10) const;
 
-            bool isValue(int base = 10) const;
-            bool isComplex(int base = 10) const;
-            bool isInteger(int base = 10) const;
+            bool isValue(Int base = 10) const;
+            bool isComplex(Int base = 10) const;
+            bool isInteger(Int base = 10) const;
         };
 
 
@@ -392,7 +393,7 @@ namespace z
         template <typename CHAR>
         string<CHAR>::string()
         {
-            array_length = 1;
+            current_length = 1;
             string_array = new CHAR[1];
             string_array[0] = null;
         }
@@ -410,11 +411,11 @@ namespace z
         string<CHAR>::string(string<CHAR>&& other)
         {
             //snag other's resources and clear other
-            array_length = other.array_length;
+            current_length = other.current_length;
             string_array = other.string_array;
 
             other.string_array = NULL;
-            other.array_length = 0;
+            other.current_length = 0;
         }
 
         ///Constructor from null-terminated character string
@@ -424,26 +425,26 @@ namespace z
         {
             if (buffer)
             {
-                array_length = 0;
+                current_length = 0;
 
-                while (buffer[array_length] != null)
-                    array_length++;
+                while (buffer[current_length] != null)
+                    current_length++;
 
-                array_length++;
+                current_length++;
 
-                string_array = new CHAR[array_length];
+                string_array = new CHAR[current_length];
 
                 if (sizeof(CHAR_2) <= sizeof(CHAR))
                 {
-                    for (int i=0; i<array_length; i++)
+                    for (Int i=0; i<current_length; i++)
                         string_array[i] = buffer[i];
 
                 }
                 else
                 {
-                    int buf_i = 0;
+                    Int buf_i = 0;
 
-                    for (int i=0; i<array_length; i++)
+                    for (Int i=0; i<current_length; i++)
                     {
                         if (buffer[buf_i] < 128)
                             string_array[i] = buffer[buf_i];
@@ -468,11 +469,11 @@ namespace z
         template <typename CHAR>
         string<CHAR>::string(const string<CHAR>& other)
         {
-            array_length = other.array_length;
+            current_length = other.current_length;
 
-            string_array = new CHAR[array_length];
+            string_array = new CHAR[current_length];
 
-            for (int i=0; i<array_length; i++)
+            for (Int i=0; i<current_length; i++)
                 string_array[i] = other.string_array[i];
         }
 
@@ -481,22 +482,22 @@ namespace z
         template <typename CHAR_2>
         string<CHAR>::string(const string<CHAR_2>& other)
         {
-            array_length = other.length()+1;
+            current_length = other.length()+1;
 
-            string_array = new CHAR[array_length];
+            string_array = new CHAR[current_length];
 
             if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                for (int i=0; i<array_length-1; i++)
+                for (Int i=0; i<current_length-1; i++)
                     string_array[i] = other.str()[i];
 
-                string_array[array_length-1] = 0;
+                string_array[current_length-1] = 0;
             }
             else
             {
-                int buf_i = 0;
+                Int buf_i = 0;
 
-                for (int i=0; i<array_length-1; i++)
+                for (Int i=0; i<current_length-1; i++)
                 {
                     if (other.str()[buf_i] < 128)
                         string_array[i] = other.str()[buf_i];
@@ -512,7 +513,7 @@ namespace z
                     buf_i++;
                 }
 
-                string_array[array_length-1] = 0;
+                string_array[current_length-1] = 0;
             }
         }
 
@@ -520,7 +521,7 @@ namespace z
         template <typename CHAR>
         string<CHAR>::string(const char& character)
         {
-            array_length = 2;
+            current_length = 2;
             string_array = new CHAR[2];
 
             string_array[0] = character;
@@ -532,7 +533,7 @@ namespace z
         template <typename CHAR>
         string<CHAR>::string(const wchar_t& character)
         {
-            array_length = 2;
+            current_length = 2;
             string_array = new CHAR[2];
 
             if ((sizeof(CHAR) > sizeof(wchar_t)) &&
@@ -549,7 +550,7 @@ namespace z
          *
          * If the parameter is any numeric type other than
          * \b char or \b wchar_t, then it is assumed to be
-         * a real number, which is then converted into a string.
+         * a real number, which is then converted Into a string.
          *
          * \param number a value in any numeric type.
          */
@@ -560,11 +561,11 @@ namespace z
             //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
             CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-            array_length = num_to_cstring((Float)number, buffer) + 1;
+            current_length = num_to_cstring((Float)number, buffer) + 1;
 
-            string_array = new CHAR[array_length];
+            string_array = new CHAR[current_length];
 
-            for (int i=0; i<array_length; i++)
+            for (Int i=0; i<current_length; i++)
                 string_array[i] = buffer[i];
         }
 
@@ -589,11 +590,11 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                array_length = num_to_cstring((Float)number.real(), buffer) + 1;
+                current_length = num_to_cstring((Float)number.real(), buffer) + 1;
 
-                string_array = new CHAR[array_length];
+                string_array = new CHAR[current_length];
 
-                for (int i=0; i<array_length; i++)
+                for (Int i=0; i<current_length; i++)
                     string_array[i] = buffer[i];
             }
             else if (number.real() == 0)
@@ -601,14 +602,14 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 8];
 
-                array_length = num_to_cstring((Float)number.imag(), buffer) + 2;
+                current_length = num_to_cstring((Float)number.imag(), buffer) + 2;
                 //append 'i', since imaginary value.
-                buffer[array_length-2] = (CHAR)105;
-                buffer[array_length-1] = (CHAR)0;
+                buffer[current_length-2] = (CHAR)105;
+                buffer[current_length-1] = (CHAR)0;
 
-                string_array = new CHAR[array_length];
+                string_array = new CHAR[current_length];
 
-                for (int i=0; i<array_length; i++)
+                for (Int i=0; i<current_length; i++)
                     string_array[i] = buffer[i];
             }
             else
@@ -617,7 +618,7 @@ namespace z
                 CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
                 CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
 
-                int r_array_len = num_to_cstring((Float)number.real(), real_buffer) + 1;
+                Int r_array_len = num_to_cstring((Float)number.real(), real_buffer) + 1;
 
                 //append '+'(if positive imaginary part),
                 //since imaginary value comes next.
@@ -627,18 +628,18 @@ namespace z
                     r_array_len--;
 
 
-                int i_array_len = num_to_cstring((Float)number.imag(), imag_buffer) + 2;
+                Int i_array_len = num_to_cstring((Float)number.imag(), imag_buffer) + 2;
                 //append 'i', since imaginary value.
                 imag_buffer[i_array_len-2] = (CHAR)105;
                 imag_buffer[i_array_len-1] = (CHAR)0;
 
-                array_length = r_array_len + i_array_len;
-                string_array = new CHAR[array_length];
+                current_length = r_array_len + i_array_len;
+                string_array = new CHAR[current_length];
 
-                for (int i=0; i<r_array_len; i++)
+                for (Int i=0; i<r_array_len; i++)
                     string_array[i] = real_buffer[i];
 
-                for (int i=0; i<i_array_len; i++)
+                for (Int i=0; i<i_array_len; i++)
                     string_array[i+r_array_len] = imag_buffer[i];
             }
         }
@@ -653,11 +654,11 @@ namespace z
             if (string_array)
                 delete[] string_array;
 
-            array_length = other.array_length;
+            current_length = other.current_length;
 
-            string_array = new CHAR[array_length];
+            string_array = new CHAR[current_length];
 
-            for (int i=0; i<array_length; i++)
+            for (Int i=0; i<current_length; i++)
                 string_array[i] = other.string_array[i];
 
             return *this;
@@ -673,20 +674,20 @@ namespace z
             if (string_array)
                 delete[] string_array;
 
-            array_length = other.length()+1;
+            current_length = other.length()+1;
 
-            string_array = new CHAR[array_length];
+            string_array = new CHAR[current_length];
 
             if (sizeof(CHAR_2) <= sizeof(CHAR))
             {
-                for (int i=0; i<array_length; i++)
+                for (Int i=0; i<current_length; i++)
                     string_array[i] = other.str()[i];
             }
             else
             {
-                int buf_i = 0;
+                Int buf_i = 0;
 
-                for (int i=0; i<array_length-1; i++)
+                for (Int i=0; i<current_length-1; i++)
                 {
                     if (other.str()[buf_i] < 128)
                         string_array[i] = other.str()[buf_i];
@@ -714,7 +715,7 @@ namespace z
         inline bool string<CHAR>::operator==(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) == 0);
+                                            other.current_length) == 0);
         }
 
         /**
@@ -724,7 +725,7 @@ namespace z
         inline bool string<CHAR>::operator!=(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) != 0);
+                                            other.current_length) != 0);
         }
 
         /**
@@ -734,7 +735,7 @@ namespace z
         inline bool string<CHAR>::operator>(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) == 1);
+                                            other.current_length) == 1);
         }
 
         /**
@@ -744,7 +745,7 @@ namespace z
         inline bool string<CHAR>::operator>=(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) != -1);
+                                            other.current_length) != -1);
         }
 
         /**
@@ -754,7 +755,7 @@ namespace z
         inline bool string<CHAR>::operator<(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) == -1);
+                                            other.current_length) == -1);
         }
 
         /**
@@ -764,7 +765,7 @@ namespace z
         inline bool string<CHAR>::operator<=(const string<CHAR>& other) const
         {
             return (lessthan_equal_greater(other.string_array,
-                                            other.array_length) != -1);
+                                            other.current_length) != -1);
         }
 
         /**
@@ -774,7 +775,7 @@ namespace z
         inline const string<CHAR>& string<CHAR>::operator+=
                                     (const string<CHAR>& other)
         {
-            append_string(other.string_array, other.array_length);
+            append_string(other.string_array, other.current_length);
 
             return *this;
         }
@@ -803,14 +804,14 @@ namespace z
          * \param new_string the new string to substitute in.
          */
         template <typename CHAR>
-        inline void string<CHAR>::replace(int start_pos,
-                                          int end_pos,
+        inline void string<CHAR>::replace(Int start_pos,
+                                          Int end_pos,
                                           const string& new_string)
         {
             replace_sub_string_at_with(start_pos,
                                        end_pos,
                                        new_string.string_array,
-                                       new_string.array_length);
+                                       new_string.current_length);
         }
 
         /**
@@ -839,9 +840,9 @@ namespace z
          * \see length() const
          */
         template <typename CHAR>
-        int string<CHAR>::size() const
+        Int string<CHAR>::size() const
         {
-            int len = (int)(array_length)-1;
+            Int len = (Int)(current_length)-1;
 
             if (len < 0)
                 len = 0;
@@ -857,7 +858,7 @@ namespace z
          * \see size() const
          */
         template <typename CHAR>
-        inline int string<CHAR>::length() const
+        inline Int string<CHAR>::length() const
         {
             return size();
         }
@@ -865,7 +866,7 @@ namespace z
         /**
          * \brief A method to get the address of the current character string.
          *
-         * \return A const pointer to the string's character array.
+         * \return A const poInter to the string's character array.
          */
         template <typename CHAR>
         inline const CHAR* string<CHAR>::str() const
@@ -881,13 +882,13 @@ namespace z
          * \return The character at the given index, if the
          * index is valid. Otherwise, \b 0.
          *
-         * \see operator[](int) const
+         * \see operator[](Int) const
          */
         template <typename CHAR>
-        CHAR string<CHAR>::at(int index) const
+        CHAR string<CHAR>::at(Int index) const
         {
             if ((index < 0) ||
-                (index >= (int)array_length-1))
+                (index >= (Int)current_length-1))
                 return null;
             else
                 return string_array[index];
@@ -906,14 +907,14 @@ namespace z
          * if the index is valid. Otherwise, the \b terminating
          * \b character.
          *
-         * \see operator[](int)
+         * \see operator[](Int)
          */
         template <typename CHAR>
-        CHAR& string<CHAR>::at(int index)
+        CHAR& string<CHAR>::at(Int index)
         {
             if ((index < 0) ||
-                (index >= (int)array_length-1))
-                return string_array[array_length-1];
+                (index >= (Int)current_length-1))
+                return string_array[current_length-1];
             else
                 return string_array[index];
         }
@@ -921,7 +922,7 @@ namespace z
         /**
          * \brief Const operator to get the character at the given index.
          *
-         * Identical behavior to at(int) const method, but
+         * Identical behavior to at(Int) const method, but
          * allows character indexing like an array.
          *
          * \param index the index of the desired character.
@@ -929,10 +930,10 @@ namespace z
          * \return The character at the given index, if the
          * index is valid. Otherwise, \b 0.
          *
-         * \see at(int) const
+         * \see at(Int) const
          */
         template <typename CHAR>
-        inline CHAR string<CHAR>::operator[](int index) const
+        inline CHAR string<CHAR>::operator[](Int index) const
         {
             return at(index);
         }
@@ -940,7 +941,7 @@ namespace z
         /**
          * \brief Operator to get the character at the given index.
          *
-         * Identical behavior to at(int) method, but
+         * Identical behavior to at(Int) method, but
          * allows character indexing like an array.
          *
          * \param index the index of the desired character.
@@ -949,10 +950,10 @@ namespace z
          * index is valid. Otherwise, the \b terminating
          * \b character.
          *
-         * \see at(int)
+         * \see at(Int)
          */
         template <typename CHAR>
-        inline CHAR& string<CHAR>::operator[](int index)
+        inline CHAR& string<CHAR>::operator[](Int index)
         {
             return at(index);
         }
@@ -965,13 +966,13 @@ namespace z
          * characters are assumed to represent numbers above \b 9.
          * So the string \b "2EB0" in base \b 16 would convert to
          * \b 11952. Valid numeric strings can have up to a single
-         * decimal point. A leading '-' is also allowed for negative
+         * decimal poInt. A leading '-' is also allowed for negative
          * numbers. Additionally, the character \b 'e' or \b 'E'
          * is assumed to imply some exponent in the given base. This
          * exponent can also be negative (e.g. <B>2.2e-3.1</B>).
          * It is important to note bases above \b 14 (such as
          * hexadecimal) have \b E as a digit, so exponents are only
-         * interpreted for bases less than 15.
+         * Interpreted for bases less than 15.
          *
          * \param base an optional parameter for choosing the base
          * that the string is assumed to be in.
@@ -980,12 +981,12 @@ namespace z
          * \b 0 if there are any invalid characters.
          */
         template <typename CHAR>
-        Float string<CHAR>::value(int base) const
+        Float string<CHAR>::value(Int base) const
         {
 
             Float value = 0.0;
 
-            int start = 0;
+            Int start = 0;
             bool isNegative = false;
 
             if (string_array[0] == (CHAR)'-') //'-' character
@@ -998,18 +999,18 @@ namespace z
             bool pastExponent = false;
             bool exponentLast = false;
             Float fracMult = 1.0;
-            int exponent = 0;
+            Int exponent = 0;
             bool expNegative = false;
 
-            int length = array_length - 1;
+            Int length = current_length - 1;
 
-            for (int i=start; i<length; i++)
+            for (Int i=start; i<length; i++)
             {
                 //in the rare case that we encounter a null character
                 if (string_array[i] == (CHAR)0)
                     break;
 
-                //only one decimal point is allowed.
+                //only one decimal poInt is allowed.
                 //any more, and the string is invalid
                 if (string_array[i] == (CHAR)'.')
                 {
@@ -1082,7 +1083,7 @@ namespace z
             {
                 long valMult = 1;
 
-                for(int i=0; i<exponent; i++)
+                for(Int i=0; i<exponent; i++)
                     valMult *= base;
 
                 if (expNegative)
@@ -1105,13 +1106,28 @@ namespace z
             }
         }
 
+		/**
+         * \brief Convert the string to its integer equivalent.
+         *
+         * When converting a string to an integer, alphabetic
+         * characters are assumed to represent numbers above \b 9.
+         * So the string \b "2EB0" in base \b 16 would convert to
+         * \b 11952. A leading '-' is allowed for negative
+         * integers.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return The value of the string as it appears to humans.
+         * \b 0 if there are any invalid characters.
+         */
         template <typename CHAR>
-        Int string<CHAR>::integer(int base) const
+        Int string<CHAR>::integer(Int base) const
         {
 
             Int value = 0;
 
-            int start = 0;
+            Int start = 0;
             bool isNegative = false;
 
             if (string_array[0] == (CHAR)'-') //'-' character
@@ -1120,10 +1136,10 @@ namespace z
                 isNegative = true;
             }
 
-            
-            int length = array_length - 1;
 
-            for (int i=start; i<length; i++)
+            Int length = current_length - 1;
+
+            for (Int i=start; i<length; i++)
             {
                 //in the rare case that we encounter a null character
                 if (string_array[i] == (CHAR)0)
@@ -1154,7 +1170,7 @@ namespace z
         /**
          * \brief Convert the string to its complex number equivalent.
          *
-         * This function splits a numeric string into its real and
+         * This function splits a numeric string Into its real and
          * imaginary parts according to \b a+bi or \b a-bi, where
          * the imaginary part is assumed to come after the real part.
          * If no imaginary part is detected, then it is assumed to be
@@ -1168,23 +1184,23 @@ namespace z
          * \return The complex value of the string as it appears to
          * humans. <B>0+0i</B> if there are any invalid characters.
          *
-         * \see value(int) const
+         * \see value(Int) const
          */
         template <typename CHAR>
-        std::complex<Float> string<CHAR>::complexValue(int base) const
+        std::complex<Float> string<CHAR>::complexValue(Int base) const
         {
-            if (array_length-2 <= 0)
+            if (current_length-2 <= 0)
                 return std::complex<Float>(0,0);
 
             if ((base <= 17) &&//doesn't work for bases >17
-                (string_array[array_length-2] == (CHAR)'i'))
+                (string_array[current_length-2] == (CHAR)'i'))
             {
-                if (array_length == 2)
+                if (current_length == 2)
                     return std::complex<Float> (0,1);
 
-                int imag_begin;
+                Int imag_begin;
 
-                int i = array_length-3;
+                Int i = current_length-3;
                 bool done = false;
                 bool foundExp = false;
                 while (i && !done)
@@ -1213,7 +1229,7 @@ namespace z
                 imag_begin = i;
 
 
-                Float imag = substr(imag_begin, array_length-3).value(base);
+                Float imag = substr(imag_begin, current_length-3).value(base);
 
                 Float real;
 
@@ -1239,24 +1255,24 @@ namespace z
          * characters are assumed to represent numbers above \b 9.
          * So the string \b "2EB0" in base \b 16 would convert to
          * \b 11952. Valid numeric strings can have up to a single
-         * decimal point. A leading '-' is also allowed for negative
+         * decimal poInt. A leading '-' is also allowed for negative
          * numbers. Additionally, the character \b 'e' or \b 'E'
          * is assumed to imply some exponent in the given base. This
          * exponent can also be negative (e.g. <B>2.2e-3.1</B>).
          * It is important to note bases above \b 14 (such as
          * hexadecimal) have \b E as a digit, so exponents are only
-         * interpreted for bases less than 15.
+         * Interpreted for bases less than 15.
          *
          * \param base an optional parameter for choosing the base
          * that the string is assumed to be in.
          *
          * \return \b True if the string contains only characters valid
-         * for conversion into a value. \b False otherwise.
+         * for conversion Into a value. \b False otherwise.
          */
         template <typename CHAR>
-        bool string<CHAR>::isValue(int base) const
+        bool string<CHAR>::isValue(Int base) const
         {
-            int start = 0;
+            Int start = 0;
             bool isNegative = false;
 
             if (string_array[0] == (CHAR)'-') //'-' character
@@ -1270,15 +1286,15 @@ namespace z
             bool exponentLast = false;
             bool expNegative = false;
 
-            int length = array_length - 1;
+            Int length = current_length - 1;
 
-            for (int i=start; i<length; i++)
+            for (Int i=start; i<length; i++)
             {
                 //in the rare case that we encounter a null character
                 if (string_array[i] == (CHAR)0)
                     break;
 
-                //only one decimal point is allowed.
+                //only one decimal poInt is allowed.
                 //any more, and the string is invalid
                 if (string_array[i] == (CHAR)'.')
                 {
@@ -1336,10 +1352,25 @@ namespace z
             return true;
         }
 
+		/**
+         * \brief Check if this string can be converted to an integer.
+         *
+         * When converting a string to an integer, alphabetic
+         * characters are assumed to represent numbers above \b 9.
+         * So the string \b "2EB0" in base \b 16 would convert to
+         * \b 11952. A leading '-' is allowed for negative
+         * integers.
+         *
+         * \param base an optional parameter for choosing the base
+         * that the string is assumed to be in.
+         *
+         * \return \b True if the string contains only characters valid
+         * for conversion into an integer. \b False otherwise.
+         */
         template <typename CHAR>
-        bool string<CHAR>::isInteger(int base) const
+        bool string<CHAR>::isInteger(Int base) const
         {
-            int start = 0;
+            Int start = 0;
             bool isNegative = false;
 
             if (string_array[0] == (CHAR)'-') //'-' character
@@ -1349,9 +1380,9 @@ namespace z
             }
 
 
-            int length = array_length - 1;
+            Int length = current_length - 1;
 
-            for (int i=start; i<length; i++)
+            for (Int i=start; i<length; i++)
             {
                 //in the rare case that we encounter a null character
                 if (string_array[i] == (CHAR)0)
@@ -1368,7 +1399,7 @@ namespace z
         /**
          * \brief Check if this string can be converted to a complex number.
          *
-         * This function splits a numeric string into its real and
+         * This function splits a numeric string Into its real and
          * imaginary parts according to \b a+bi or \b a-bi, where
          * the imaginary part is assumed to come after the real part.
          * If no imaginary part is detected, then it is assumed to be
@@ -1380,25 +1411,25 @@ namespace z
          * that the string is assumed to be in.
          *
          * \return \b True if the string contains only characters valid
-         * for conversion into a complex number. \b False otherwise.
+         * for conversion Into a complex number. \b False otherwise.
          *
-         * \see isValue(int) const
+         * \see isValue(Int) const
          */
         template <typename CHAR>
-        bool string<CHAR>::isComplex(int base) const
+        bool string<CHAR>::isComplex(Int base) const
         {
-            if (array_length-2 <= 0)
+            if (current_length-2 <= 0)
                 return std::complex<Float>(0,0);
 
             if ((base <= 17) &&//doesn't work for bases >17
-                (string_array[array_length-2] == (CHAR)'i'))
+                (string_array[current_length-2] == (CHAR)'i'))
             {
-                if (array_length == 2)
+                if (current_length == 2)
                     return true;
 
-                int imag_begin;
+                Int imag_begin;
 
-                int i = array_length-3;
+                Int i = current_length-3;
                 bool done = false;
                 bool foundExp = false;
                 while (i && !done)
@@ -1427,7 +1458,7 @@ namespace z
                 imag_begin = i;
 
 
-                bool imag = substr(imag_begin, array_length-3).isValue(base);
+                bool imag = substr(imag_begin, current_length-3).isValue(base);
 
                 bool real;
 
@@ -1462,7 +1493,7 @@ namespace z
         {
             string<CHAR> result (*this);
 
-            for (int i=0; i<result.length(); i++)
+            for (Int i=0; i<result.length(); i++)
                 if ((string_array[i] >= (CHAR)97) &&
                     (string_array[i] <= (CHAR)122))
                 {
@@ -1489,7 +1520,7 @@ namespace z
         {
             string<CHAR> result (*this);
 
-            for (int i=0; i<result.length(); i++)
+            for (Int i=0; i<result.length(); i++)
                 if ((string_array[i] >= (CHAR)65) &&
                     (string_array[i] <= (CHAR)90))
                 {
@@ -1507,16 +1538,16 @@ namespace z
          * \return The index of the sub-string's first occurrence,
          * if found. Otherwise \b -1.
          *
-         * \see find(const string&, int) const
+         * \see find(const string&, Int) const
          */
         template <typename CHAR>
-        int string<CHAR>::find(const string<CHAR>& sub_string) const
+        Int string<CHAR>::find(const string<CHAR>& sub_string) const
             {
-                for (int i=0; i<array_length-1; i++)
+                for (Int i=0; i<current_length-1; i++)
                 {
                     if (found_sub_string_at(i, sub_string.string_array,
-                                            sub_string.array_length))
-                        return (int)i;
+                                            sub_string.current_length))
+                        return (Int)i;
                 }
 
                 return -1;
@@ -1537,21 +1568,21 @@ namespace z
          * \see find(const string&) const
          */
         template <typename CHAR>
-        int string<CHAR>::find(const string<CHAR>& sub_string, int n) const
+        Int string<CHAR>::find(const string<CHAR>& sub_string, Int n) const
         {
             if (n <= 0)
                 return -1;
 
-            int amount = 0;
+            Int amount = 0;
 
-            for (int i=0; i<array_length-1; i++)
+            for (Int i=0; i<current_length-1; i++)
             {
                 if (found_sub_string_at(i, sub_string.string_array,
-                                        sub_string.array_length))
+                                        sub_string.current_length))
                     amount++;
 
                 if (amount >= n)
-                    return (int)i;
+                    return (Int)i;
             }
 
             return -1;
@@ -1568,12 +1599,12 @@ namespace z
          * if found. Otherwise \b -1.
          */
         template <typename CHAR>
-        int string<CHAR>::findAfter(const string<CHAR>& sub_string, int n) const
+        Int string<CHAR>::findAfter(const string<CHAR>& sub_string, Int n) const
         {
-            for (int i=n; i<array_length-1; i++)
+            for (Int i=n; i<current_length-1; i++)
             {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                    return (int)i;
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.current_length))
+                    return (Int)i;
             }
 
             return -1;
@@ -1588,12 +1619,12 @@ namespace z
          * if found. Otherwise \b -1.
          */
         template <typename CHAR>
-        int string<CHAR>::findLast(const string<CHAR>& sub_string) const
+        Int string<CHAR>::findLast(const string<CHAR>& sub_string) const
         {
-            for (int i=array_length-1-sub_string.length(); i>=0; i--)
+            for (Int i=current_length-1-sub_string.length(); i>=0; i--)
             {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
-                    return (int)i;
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.current_length))
+                    return (Int)i;
             }
 
             return -1;
@@ -1616,14 +1647,14 @@ namespace z
         bool string<CHAR>::replace(const string<CHAR>& sub_string,
                                    const string<CHAR>& new_string)
         {
-            int found = find(sub_string);
+            Int found = find(sub_string);
 
             if (found > -1)
             {
                 replace_sub_string_at_with(found,
-                                           found + sub_string.array_length - 2,
+                                           found + sub_string.current_length - 2,
                                            new_string.string_array,
-                                           new_string.array_length - 1);
+                                           new_string.current_length - 1);
 
                 return true;
             }
@@ -1643,17 +1674,17 @@ namespace z
          * original string. \b True otherwise.
          */
         template <typename CHAR>
-        bool string<CHAR>::replace(const string<CHAR>& sub_string, int n,
+        bool string<CHAR>::replace(const string<CHAR>& sub_string, Int n,
                                    const string<CHAR>& new_string)
         {
-            int found = find(sub_string, n);
+            Int found = find(sub_string, n);
 
             if (found > -1)
             {
                 replace_sub_string_at_with(found,
-                                           found + sub_string.array_length - 2,
+                                           found + sub_string.current_length - 2,
                                            new_string.string_array,
-                                           new_string.array_length - 1);
+                                           new_string.current_length - 1);
 
                 return true;
             }
@@ -1675,23 +1706,23 @@ namespace z
          * \b start_index to \b end_index, inclusive.
          */
         template <typename CHAR>
-        const string<CHAR> string<CHAR>::substr(int start_index, int end_index) const
+        const string<CHAR> string<CHAR>::substr(Int start_index, Int end_index) const
         {
             //make sure start is within bounds
             if (start_index < 0)
                 start_index = 0;
-            else if (start_index > (int)array_length-2)
-                start_index = (int)array_length-2;
+            else if (start_index > (Int)current_length-2)
+                start_index = (Int)current_length-2;
 
             //make sure end is within bounds
             if (end_index < 0)
                 end_index = 0;
-            else if (end_index > (int)array_length-2)
-                end_index = (int)array_length-2;
+            else if (end_index > (Int)current_length-2)
+                end_index = (Int)current_length-2;
 
 
-            int direction;
-            int len;
+            Int direction;
+            Int len;
 
             //check copy direction
             if (start_index > end_index)
@@ -1708,7 +1739,7 @@ namespace z
 
             //accumulate data
             CHAR temp[len];
-            for (int i=0; i<len-1; i++)
+            for (Int i=0; i<len-1; i++)
             {
                 temp[i] = string_array[i*direction+start_index];
             }
@@ -1729,13 +1760,13 @@ namespace z
          * in the full string.
          */
         template <typename CHAR>
-        int string<CHAR>::count(const string<CHAR>& sub_string) const
+        Int string<CHAR>::count(const string<CHAR>& sub_string) const
         {
-            int amount = 0;
+            Int amount = 0;
 
-            for (int i=0; i<array_length-1; i++)
+            for (Int i=0; i<current_length-1; i++)
             {
-                if (found_sub_string_at(i, sub_string.string_array, sub_string.array_length))
+                if (found_sub_string_at(i, sub_string.string_array, sub_string.current_length))
                     amount++;
             }
 
@@ -1750,7 +1781,7 @@ namespace z
          * \param end_index that index of the last character to remove.
          */
         template <typename CHAR>
-        inline void string<CHAR>::remove(int start_index, int end_index)
+        inline void string<CHAR>::remove(Int start_index, Int end_index)
         {
             remove_portion(start_index, end_index);
         }
@@ -1766,12 +1797,12 @@ namespace z
          * the given index. \b False otherwise.
          */
         template <typename CHAR>
-        bool string<CHAR>::foundAt(const string<CHAR>& sub_string, int position) const
+        bool string<CHAR>::foundAt(const string<CHAR>& sub_string, Int position) const
         {
-            if ((position < 0) || (position >= (int)array_length-1))
+            if ((position < 0) || (position >= (Int)current_length-1))
                 return false;
 
-            for (int i=0; i<sub_string.array_length-1; i++)
+            for (Int i=0; i<sub_string.current_length-1; i++)
             {
                 if (sub_string[i] != string_array[i + position])
                     return false;
@@ -1790,12 +1821,12 @@ namespace z
          * and it ends at the given index. \b False otherwise.
          */
         template <typename CHAR>
-        bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, int position) const
+        bool string<CHAR>::foundEndAt(const string<CHAR>& sub_string, Int position) const
         {
-            if ((position < 0) || (position >= (int)array_length-1))
+            if ((position < 0) || (position >= (Int)current_length-1))
                 return false;
 
-            for (int i=sub_string.array_length-2; i>=0; i--)
+            for (Int i=sub_string.current_length-2; i>=0; i--)
             {
                 if (sub_string[i] != string_array[position])
                     return false;
@@ -1835,9 +1866,9 @@ namespace z
         template <typename CHAR>
         bool string<CHAR>::beginsWith(const string<CHAR>& sub_string, CHAR pad_char) const
         {
-            int i = 0;
+            Int i = 0;
 
-            while ((string_array[i] == pad_char) && (i < (int)array_length-1))
+            while ((string_array[i] == pad_char) && (i < (Int)current_length-1))
             {
                 if (foundAt(sub_string, i))
                     return true;
@@ -1861,7 +1892,7 @@ namespace z
         template <typename CHAR>
         inline bool string<CHAR>::endsWith(const string<CHAR>& sub_string) const
         {
-            return foundEndAt(sub_string, array_length-2);
+            return foundEndAt(sub_string, current_length-2);
         }
 
         /**
@@ -1873,7 +1904,7 @@ namespace z
         {
             delete[] string_array;
 
-            array_length = 1;
+            current_length = 1;
             string_array = new CHAR[1];
 
             string_array[0] = null;
@@ -1883,25 +1914,25 @@ namespace z
 
         //Append a character buffer to the current buffer
         template <typename CHAR>
-        void string<CHAR>::append_string(const CHAR* buffer, int bufsiz)
+        void string<CHAR>::append_string(const CHAR* buffer, Int bufsiz)
         {
             if (buffer)
             {
                 //shift current data
                 CHAR* temp = string_array;
-                int tempsiz = array_length;
+                Int tempsiz = current_length;
 
                 //prep for new data
-                array_length = tempsiz + bufsiz - 1;
-                string_array = new CHAR[array_length];
+                current_length = tempsiz + bufsiz - 1;
+                string_array = new CHAR[current_length];
 
 
                 //copy old data
-                for (int i=0; i<tempsiz-1; i++)
+                for (Int i=0; i<tempsiz-1; i++)
                     string_array[i] = temp[i];
 
                 //copy new data
-                for (int j=tempsiz-1; j<array_length; j++)
+                for (Int j=tempsiz-1; j<current_length; j++)
                     string_array[j] = buffer[j - tempsiz + 1];
 
                 delete[] temp;
@@ -1914,22 +1945,22 @@ namespace z
         {
             //shift current data
             CHAR* temp = string_array;
-            int tempsiz = array_length;
+            Int tempsiz = current_length;
 
-            if (!string_array || !array_length)
+            if (!string_array || !current_length)
                 tempsiz++;
 
             //prep for new data
-            array_length = tempsiz + 1;
-            string_array = new CHAR[array_length];
+            current_length = tempsiz + 1;
+            string_array = new CHAR[current_length];
 
             //copy old data
-            for (int i=0; i<tempsiz-1; i++)
+            for (Int i=0; i<tempsiz-1; i++)
                 string_array[i] = temp[i];
 
             //append new data
-            string_array[array_length-2] = singleChar;
-            string_array[array_length-1] = null;
+            string_array[current_length-2] = singleChar;
+            string_array[current_length-1] = null;
 
             delete[] temp;
         }
@@ -1937,14 +1968,14 @@ namespace z
         //Check whether the characters in the given buffer
         //are found at the given location.
         template <typename CHAR>
-        bool string<CHAR>::found_sub_string_at(int pos,
+        bool string<CHAR>::found_sub_string_at(Int pos,
                                                const CHAR* substr,
-                                               int substr_len) const
+                                               Int substr_len) const
         {
-            for (int i=0 ; i<substr_len-1; i++)
+            for (Int i=0 ; i<substr_len-1; i++)
             {
                 //if the string ends before all of the substring was found
-                if (pos+i >= array_length-1)
+                if (pos+i >= current_length-1)
                     return false;
 
                 //if the exact substring was not found here
@@ -1958,24 +1989,24 @@ namespace z
         //Replace the character in the given range (inclusive)
         //with the characters in the given buffer.
         template <typename CHAR>
-        void string<CHAR>::replace_sub_string_at_with(int beg_index,
-                                                      int end_index,
+        void string<CHAR>::replace_sub_string_at_with(Int beg_index,
+                                                      Int end_index,
                                                       const CHAR* sub_str,
-                                                      int substr_len)
+                                                      Int substr_len)
         {
-            if (string_array && array_length)
+            if (string_array && current_length)
             {
                 //make sure start index is within bounds
                 if (beg_index < 0)
                     beg_index = 0;
-                else if (beg_index >= (int)array_length-1)
+                else if (beg_index >= (Int)current_length-1)
                     return;
 
                 //make sure end index is within bounds
                 if (end_index < 0)
                     return;
-                else if (end_index >= (int)array_length-1)
-                    end_index = (int)array_length-2;
+                else if (end_index >= (Int)current_length-1)
+                    end_index = (Int)current_length-2;
 
                 //make sure start index is not after end index
                 if (beg_index > end_index)
@@ -1984,35 +2015,35 @@ namespace z
 
                 //shift the string data
                 CHAR* temp = string_array;
-                int tempsiz = array_length;
+                Int tempsiz = current_length;
 
                 //prep data
-                array_length = array_length + substr_len - (end_index - beg_index);
-                string_array = new CHAR[array_length];
+                current_length = current_length + substr_len - (end_index - beg_index);
+                string_array = new CHAR[current_length];
 
-                int index = 0;
+                Int index = 0;
                 //copy original data until the start position
-                for (int i=0; i<beg_index; i++)
+                for (Int i=0; i<beg_index; i++)
                 {
                     string_array[index] = temp[i];
                     index++;
                 }
 
-                //copy the new substring into place
-                for (int i=0; i<substr_len-1; i++)
+                //copy the new substring Into place
+                for (Int i=0; i<substr_len-1; i++)
                 {
                     string_array[index] = sub_str[i];
                     index++;
                 }
 
                 //copy original data from the end position
-                for (int i=end_index+1; i<tempsiz; i++)
+                for (Int i=end_index+1; i<tempsiz; i++)
                 {
                     string_array[index] = temp[i];
                     index++;
                 }
 
-                string_array[array_length-1] = null;
+                string_array[current_length-1] = null;
 
                 delete[] temp;
 
@@ -2020,17 +2051,17 @@ namespace z
             }
         }
 
-        //internal function to check string equality
+        //Internal function to check string equality
         //returns -1 if this string is less than another,
         //        +1 if it is greater,
         //     and 0 if they are the same.
         template <typename CHAR>
-        int string<CHAR>::lessthan_equal_greater(const CHAR* other,
-                                                 int str_size) const
+        Int string<CHAR>::lessthan_equal_greater(const CHAR* other,
+                                                 Int str_size) const
         {
-            int i = 0;
+            Int i = 0;
 
-            while ((i<str_size-1) && (i<array_length-1))
+            while ((i<str_size-1) && (i<current_length-1))
             {
                 if (string_array[i] < other[i])
                     return -1;
@@ -2042,30 +2073,30 @@ namespace z
                 i++;
             }
 
-            if (array_length < str_size)
+            if (current_length < str_size)
                 return -1;
-            else if (array_length > str_size)
+            else if (current_length > str_size)
                 return 1;
             else
                 return 0;
         }
 
-        //internal function to remove a section of text
+        //Internal function to remove a section of text
         //from the string (start+end inclusive)
         template <typename CHAR>
-        void string<CHAR>::remove_portion(int beg_index, int end_index)
+        void string<CHAR>::remove_portion(Int beg_index, Int end_index)
         {
             //make sure start index is within bounds
             if (beg_index < 0)
                 beg_index = 0;
-            else if (beg_index > (int)array_length-2)
-                beg_index = (int)array_length-2;
+            else if (beg_index > (Int)current_length-2)
+                beg_index = (Int)current_length-2;
 
             //make sure end index is within bounds
             if (end_index < 0)
                 end_index = 0;
-            else if (end_index > (int)array_length-2)
-                end_index = (int)array_length-2;
+            else if (end_index > (Int)current_length-2)
+                end_index = (Int)current_length-2;
 
             //make sure start index is not after end index
             if (beg_index > end_index)
@@ -2073,20 +2104,20 @@ namespace z
 
 
             //shift data
-            int tempsiz = array_length;
+            Int tempsiz = current_length;
             CHAR* temp = string_array;
 
             //prep new string
-            int section = (end_index - beg_index + 1);
-            array_length = tempsiz - section;
-            string_array = new CHAR[array_length];
+            Int section = (end_index - beg_index + 1);
+            current_length = tempsiz - section;
+            string_array = new CHAR[current_length];
 
             //copy part of old string before removed section
-            for (int i=0; i<beg_index; i++)
+            for (Int i=0; i<beg_index; i++)
                 string_array[i] = temp[i];
 
             //copy part of old string after removed section
-            for (int i=end_index+1; i<(int)tempsiz; i++)
+            for (Int i=end_index+1; i<(Int)tempsiz; i++)
                 string_array[i - section] = temp[i];
 
             delete[] temp;

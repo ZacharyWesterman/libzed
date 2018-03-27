@@ -6,7 +6,6 @@
 #include <z/core/timeout.h>
 #include <z/core/stream.h>
 #include <z/core/array.h>
-#include <z/math/value2d.h>
 
 #ifndef NULL
     #define NULL 0
