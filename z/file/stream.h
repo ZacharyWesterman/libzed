@@ -27,10 +27,12 @@ namespace z
             core::string<CHAR> read(CHAR delim = 0);
             void unget();
 
+			bool empty();
+
             void seek(Int);
             Int tell();
 
-            bool empty();
+			Int end();
         };
 
         template <typename CHAR>
@@ -92,6 +94,11 @@ namespace z
             return (filestream.bad() || filestream.eof() || filestream.fail());
         }
 
+		template <typename CHAR>
+		Int inputStream<CHAR>::end()
+		{
+			return filestream.end - filestream.beg;
+		}
 
 
         template <typename CHAR>
@@ -110,6 +117,7 @@ namespace z
 			Int tell();
 
             bool empty();
+			Int end();
         };
 
         template <typename CHAR>
@@ -150,6 +158,12 @@ namespace z
         {
             return (filestream.bad() || filestream.eof() || filestream.fail());
         }
+
+		template <typename CHAR>
+		Int outputStream<CHAR>::end()
+		{
+			return filestream.end - filestream.beg;
+		}
     }
 }
 

@@ -25,6 +25,7 @@ namespace z
 
             void seek(Int);
             Int tell();
+			Int end();
         };
 
         char console::get()
@@ -75,6 +76,11 @@ namespace z
         {
             return 0;
         }
+
+		Int console::end()
+		{
+			return 0;
+		}
     }
 }
 

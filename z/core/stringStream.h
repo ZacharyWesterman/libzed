@@ -32,6 +32,8 @@ namespace z
             bool empty();
             void seek(Int);
             Int tell();
+
+			Int end();
         };
 
         template <typename CHAR>
@@ -133,6 +135,12 @@ namespace z
         Int stringStream<CHAR>::tell()
         {
             return index;
+        }
+
+		template <typename CHAR>
+        Int stringStream<CHAR>::end()
+        {
+            return data.length();
         }
     }
 }
