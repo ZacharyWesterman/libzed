@@ -7,8 +7,8 @@
 
 namespace z
 {
-    namespace core
-    {
+	namespace core
+	{
 		/**
 		 * \interface inputStream
 		 * \brief A template class for character input streams.
@@ -46,7 +46,7 @@ namespace z
 			 *
 			 * \return A string containing up to \b count non-null characters.
 			 */
-            virtual string<CHAR> get(Int count) = 0;
+			virtual string<CHAR> get(Int count) = 0;
 
 			/**
 			 * \brief Put the last removed character back on the stream.
@@ -54,7 +54,7 @@ namespace z
 			 * This is implementation-specific, but most streams should be
 			 * able to put every character back on the stream.
 			 */
-            virtual void unget() = 0;
+			virtual void unget() = 0;
 
 			/**
 			 * \brief Read until a delimiter is encountered.
@@ -72,7 +72,7 @@ namespace z
 			 * \return A string containing all characters before
 			 * the first occurrence of the given delimiter.
 			 */
-            virtual core::string<CHAR> read(CHAR delim = 0) = 0;
+			virtual core::string<CHAR> read(CHAR delim = 0) = 0;
 
 			/**
 			 * \brief Tell whether we have consumed the last character in
@@ -81,7 +81,7 @@ namespace z
 			 * \return \b True if the last character has been consumed.
 			 * \b False otherwise.
 			 */
-            virtual bool empty() = 0;
+			virtual bool empty() = 0;
 
 			/**
 			 * \brief Seek a position in the stream.
@@ -91,7 +91,7 @@ namespace z
 			 *
 			 * \param index the position to seek.
 			 */
-            virtual void seek(Int index) = 0;
+			virtual void seek(Int index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -99,29 +99,61 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-            virtual Int tell() = 0;
-        };
+			virtual Int tell() = 0;
+
+			/**
+			 * \brief Get the end of the stream.
+			 *
+			 * Gives the position after the last
+			 * character in the stream.
+			 *
+			 * \return The end position of the character stream.
+			 */
+			virtual Int end() = 0;
+		};
 
 		/**
-         * \brief A template class for character output streams.
-         *
-         * This class provides an interface for
+		 * \interface outputStream
+		 * \brief A template class for character output streams.
+		 *
+		 * This class provides an interface for
 		 * output streams.
-         */
-        template <typename CHAR>
-        class outputStream
-        {
-        public:
-            virtual ~outputStream() {}
+		 */
+		template <typename CHAR>
+		class outputStream
+		{
+		public:
+			/**
+			 * \brief Virtual destructor.
+			 */
+			virtual ~outputStream() {}
 
-            virtual void put(CHAR) = 0;
-            virtual void write(const core::string<CHAR>&) = 0;
-            void writeln(const core::string<CHAR>&);
+			/**
+			 * \brief Add a character to the stream.
+			 *
+			 * Adds a character to the current index in the stream,
+			 * incrementing the stream index.
+			 *
+			 * \param ch the character to add to the stream.
+			 */
+			virtual void put(CHAR ch) = 0;
+			virtual void write(const core::string<CHAR>&) = 0;
+			void writeln(const core::string<CHAR>&);
 
-            virtual bool empty() = 0;
-            virtual void seek(Int) = 0;
-            virtual Int tell() = 0;
-        };
+			virtual bool empty() = 0;
+			virtual void seek(Int) = 0;
+			virtual Int tell() = 0;
+
+			/**
+			 * \brief Get the end of the stream.
+			 *
+			 * Gives the position after the last
+			 * character in the stream.
+			 *
+			 * \return The end position of the character stream.
+			 */
+			virtual Int end() = 0;
+		};
 
         template <typename CHAR>
         void outputStream<CHAR>::writeln(const core::string<CHAR>& input)
