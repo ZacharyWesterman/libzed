@@ -137,6 +137,7 @@ namespace z
 			 * \param ch the character to add to the stream.
 			 */
 			virtual void put(CHAR ch) = 0;
+			
 			virtual void write(const core::string<CHAR>&) = 0;
 			void writeln(const core::string<CHAR>&);
 
