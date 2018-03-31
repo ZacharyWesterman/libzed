@@ -576,6 +576,31 @@ namespace z
                     symbols->add(regexSymbol(REGEX_PUNCT));
                     i++;
                 }
+				else if (expr.foundAt("\\t", i))
+                {
+                    symbols->add(regexSymbol(REGEX_SYMBOL, '\t'));
+                    i++;
+                }
+				else if (expr.foundAt("\\r", i))
+                {
+                    symbols->add(regexSymbol(REGEX_SYMBOL, '\r'));
+                    i++;
+                }
+				else if (expr.foundAt("\\n", i))
+                {
+                    symbols->add(regexSymbol(REGEX_SYMBOL, '\n'));
+                    i++;
+                }
+				else if (expr.foundAt("\\v", i))
+                {
+                    symbols->add(regexSymbol(REGEX_SYMBOL, '\v'));
+                    i++;
+                }
+				else if (expr.foundAt("\\f", i))
+                {
+                    symbols->add(regexSymbol(REGEX_SYMBOL, '\f'));
+                    i++;
+                }
 				else if (expr.foundAt("\\x", i))
 				{
 					if (core::isNumeric(expr[i+2], 16) && core::isNumeric(expr[i+3], 16))
