@@ -342,8 +342,8 @@ namespace z
                         Int min, max;
 
                         if (cmaLoc < 0)
-                        {
-                            if (!minStr.isInteger())
+						{
+							if (!minStr.isInteger())
                             {
                                 regex_error = 1;
                                 return;
@@ -361,14 +361,27 @@ namespace z
                         }
                         else
                         {
-                            auto maxStr = minStr.substr(cmaLoc+1, minStr.length()-1);
+                            core::string<CHAR> maxStr;
+							if (cmaLoc+1 <= minStr.length()-1)
+								maxStr = minStr.substr(cmaLoc+1, minStr.length()-1);
+
                             minStr.remove(cmaLoc, minStr.length()-1);
 
-                            if (!minStr.isInteger() || !maxStr.isInteger())
+                            if (!minStr.isInteger())
                             {
                                 regex_error = 1;
                                 return;
                             }
+							else if (!maxStr.length())
+							{
+								max = -1;
+								min = minStr.integer();
+							}
+							else if (!maxStr.isInteger())
+							{
+								regex_error = 1;
+								return;
+							}
                             else
                             {
                                 max = maxStr.integer();
@@ -376,7 +389,7 @@ namespace z
                             }
                         }
 
-                        if ((min < 0) || (max < 0))
+                        if ((min < 0) || ((max < min) && (max != -1)))
                         {
                             regex_error = 1;
                             return;
@@ -455,7 +468,7 @@ namespace z
                 {
                     symbols->add(regexSymbol(REGEX_BEGIN_INPUT));
                 }
-                else if (expr[i] == '~')
+                else if (expr[i] == '!')
                 {
                     symbols->add(regexSymbol(REGEX_NOT));
                 }
@@ -716,9 +729,10 @@ namespace z
         template <typename CHAR>
         void regex<CHAR>::condenseTree(node*& aNode)
         {
-            if (aNode && aNode->negate)
+            if (aNode && aNode->negate && (aNode->symbol.type != REGEX_GROUP_OR))
             {
                 //negation can only happen on symbols that occur exactly once
+				//or an or group.
                 if ((aNode->symbol.min != 1) || (aNode->symbol.max != 1))
                 {
                     regex_error = 1;
@@ -1156,8 +1170,8 @@ namespace z
 
                     if (matched < 0)
                     {
-                        unConsume(input, consumed);
-                        return -1;
+                        unConsume(input, matched);
+                        break;
                     }
                     else
                         consumed += matched;
