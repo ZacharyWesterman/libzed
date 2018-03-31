@@ -10,7 +10,7 @@ int main()
 	system::cpuid cpu;
 	system::console console;
 
-	util::regex<char> regex ("\\s{2,5}");
+	util::regex<char> regex ("a-f");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");

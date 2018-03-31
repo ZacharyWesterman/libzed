@@ -25,19 +25,19 @@ namespace z
 
                 REGEX_SYMBOL,
 
-                REGEX_RANGE_AZ,
-                REGEX_RANGE_az,
-                REGEX_RANGE_09,
+                REGEX_RANGE,
 
                 REGEX_GROUP_OR,
 
                 REGEX_END_INPUT,
                 REGEX_BEGIN_INPUT,
-				REGEX_BREAK,
 
+				REGEX_BREAK,
 				REGEX_WORD,
                 REGEX_WHITESPACE,
-                REGEX_ANYTHING,
+				REGEX_DIGIT,
+
+				REGEX_ANYTHING,
 
                 REGEX_OR,
 				REGEX_AND,
@@ -73,18 +73,20 @@ namespace z
             {
                 Int type;
                 CHAR value;
+				CHAR val_end;
 
                 Int min;
                 Int max;
 
                 regexSymbol(Int Type, CHAR Value = 0, Int _max = 1, Int _min = 1) :
-                    type(Type), value(Value), min(_min), max(_max)
+                    type(Type), value(Value), min(_min), max(_max), val_end(0)
                 {}
 
                 regexSymbol(const regexSymbol& other)
                 {
                    type = other.type;
                    value = other.value;
+				   val_end = other.val_end;
                    min = other.min;
                    max = other.max;
                 }
@@ -152,14 +154,8 @@ namespace z
 
                 switch (symbol.type)
                 {
-                case REGEX_RANGE_AZ:
-                    String = "RANGE : A-Z";
-                    break;
-                case REGEX_RANGE_az:
-                    String = "RANGE : a-z";
-                    break;
-                case REGEX_RANGE_09:
-                    String = "RANGE : 0-9";
+                case REGEX_RANGE:
+                    String = cs("RANGE : ")+cs(symbol.value)+cs('-')+cs(symbol.val_end);
                     break;
                 case REGEX_SYMBOL:
                     String = cs("SYMBOL : ") + cs(symbol.value);
@@ -432,7 +428,7 @@ namespace z
                     inBracketOr.remove(inBracketOr.size()-1);
                 }
                 else if (expr[i] == ')')
-                {
+				{
 					if (inOr)
 						symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
 					else
@@ -510,7 +506,7 @@ namespace z
                         symbols->add(regexSymbol(REGEX_AMOUNT, 0, 1, 0));
                 }
                 else if (expr[i] == '(')
-                {
+				{
 					if (inOr)
 						symbols->add(regexSymbol(REGEX_SYMBOL, expr[i]));
 					else
@@ -519,21 +515,6 @@ namespace z
 						symbols->add(regexSymbol(REGEX_START_AND));
 						inBracketOr.add(false);
 					}
-                }
-                else if (expr.foundAt("a-z", i))
-                {
-                    symbols->add(regexSymbol(REGEX_RANGE_az));
-                    i+=2;
-                }
-                else if (expr.foundAt("A-Z", i))
-                {
-                    symbols->add(regexSymbol(REGEX_RANGE_AZ));
-                    i+=2;
-                }
-                else if (expr.foundAt("0-9", i))
-                {
-                    symbols->add(regexSymbol(REGEX_RANGE_09));
-                    i+=2;
                 }
                 else if (expr.foundAt("\\s", i))
                 {
@@ -698,10 +679,23 @@ namespace z
                     nodesList.remove(i);
                     i--;
                 }
-                // else if (symbol.type == REGEX_OR)
-                // {
-                //     isSubOr = true;
-                // }
+				//range syntax e.g. [a-z] , [A-F] , etc.
+                else if (nodesList.is_valid(i+2) &&
+						 (nodesList[i]->symbol.type == REGEX_SYMBOL) &&
+						 (nodesList[i+1]->symbol.type == REGEX_SYMBOL) &&
+						 (nodesList[i+1]->symbol.value == '-') &&
+						 (nodesList[i+2]->symbol.type == REGEX_SYMBOL)
+						)
+                {
+                    nodesList[i]->symbol.type = REGEX_RANGE;
+					nodesList[i]->symbol.val_end = nodesList[i+2]->symbol.value;
+
+					delete nodesList[i+1];
+					delete nodesList[i+2];
+
+					nodesList.remove(i+2);
+					nodesList.remove(i+1);
+                }
 
 
                 //see if symbol can be negated
@@ -1030,31 +1024,20 @@ namespace z
                         if (symbol.value == c) matched = 1;
                     }
                 }
-                else if (symbol.type == REGEX_RANGE_AZ)
+                else if (symbol.type == REGEX_RANGE)
                 {
                     if (caseInsensitive)
                     {
-                        if (core::isAlpha(c)) matched = 1;
+						auto cU = core::toUpper(c);
+						auto begU = core::toUpper(symbol.value);
+						auto endU = core::toUpper(symbol.val_end);
+
+						if ((cU >= begU) && (cU <= endU)) matched = 1;
                     }
                     else
                     {
-                        if (core::isUpperAlpha(c)) matched = 1;
+                        if ((c >= symbol.value) && (c <= symbol.val_end)) matched = 1;
                     }
-                }
-                else if (symbol.type == REGEX_RANGE_az)
-                {
-                    if (caseInsensitive)
-                    {
-                        if (core::isAlpha(c)) matched = 1;
-                    }
-                    else
-                    {
-                        if (core::isLowerAlpha(c)) matched = 1;
-                    }
-                }
-                else if (symbol.type == REGEX_RANGE_09)
-                {
-                    if (core::isNumeric(c)) matched = 1;
                 }
 				if (symbol.type == REGEX_WORD)
                 {
