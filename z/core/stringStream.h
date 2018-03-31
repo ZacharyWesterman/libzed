@@ -11,6 +11,11 @@ namespace z
 {
     namespace core
     {
+		/**
+		 * \brief A template class for string streams.
+		 *
+		 * This class provides an implementation of core::stream for character strings.
+		 */
         template <typename CHAR>
         class stringStream : public stream<CHAR>
         {

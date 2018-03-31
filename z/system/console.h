@@ -10,6 +10,17 @@ namespace z
 {
     namespace system
     {
+		/**
+		 * \brief Class for interacting with the console.
+		 *
+		 * This class provides an implementation of core::stream.
+		 * All read-related methods read from stdin, and all
+		 * write-related methods write to stdout. Note that
+		 * because of how stdin and stdout behave, you cannot
+		 * unget or unput characters; those are just dummy methods.
+		 * As a result, this class will not behave nicely with the
+		 * util::regex class.
+		 */
         class console : public core::stream<char>
         {
         public:
