@@ -10,6 +10,7 @@ z::core<br/>
 z::file<br/>
 z::math<br/>
 z::util<br/>
+z::system<br/>
 
 All functions, classes and definitions are in one of these namespaces.  
 The only exceptions are the three basic type definitions z::Char, z::Int and z::Float.
