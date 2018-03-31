@@ -15,6 +15,9 @@ namespace z
 {
     namespace util
     {
+		/**
+		 * \brief A template class for parsing and matching regular expressions.
+		 */
         template <typename CHAR>
         class regex
         {
@@ -158,131 +161,131 @@ namespace z
 
             void readSymbols(const core::string<CHAR>&, core::array<regexSymbol>*);
 
-            const core::string<char> symbolString(const regexSymbol& symbol, bool negate)
-            {
-                core::string<char> String;
-
-                switch (symbol.type)
-                {
-                case REGEX_RANGE:
-                    String = cs("RANGE : ")+cs(symbol.value)+cs('-')+cs(symbol.val_end);
-                    break;
-                case REGEX_SYMBOL:
-                    String = cs("SYMBOL : ") + cs(symbol.value);
-                    break;
-                case REGEX_START_CASE_I:
-                    String = "START CASE INSENSITIVE";
-                    break;
-                case REGEX_STOP_CASE_I:
-                    String = "STOP CASE INSENSITIVE";
-                    break;
-                case REGEX_WHITESPACE:
-                    String = "WHITE SPACE";
-                    break;
-				case REGEX_BREAK:
-					String = "BREAK";
-					break;
-				case REGEX_WORD:
-					String = "WORD CHARACTER";
-					break;
-                case REGEX_ANYTHING:
-                    String = "ANY CHARACTER";
-                    break;
-                case REGEX_OR:
-                    String = "OR";
-                    break;
-				case REGEX_AND:
-					String = "AND";
-					break;
-				case REGEX_UNIFIED_AND:
-					String = "UNIFIED AND";
-					break;
-                case REGEX_NOT:
-                    String = "NOT";
-                    break;
-                case REGEX_POS_LA:
-                    String = "POSITIVE LOOKAHEAD";
-                    break;
-                case REGEX_NEG_LA:
-                    String = "NEGATIVE LOOKAHEAD";
-                    break;
-                case REGEX_NEG_LB:
-                    String = "NEGATIVE LOOKBEHIND";
-                    break;
-                case REGEX_POS_LB:
-                    String = "POSITIVE LOOKBEHIND";
-                    break;
-                case REGEX_LOOK_BEHIND:
-                    String = "LOOKBEHIND";
-                    break;
-                case REGEX_LOOK_AHEAD:
-                    String = "LOOKAHEAD";
-                    break;
-                case REGEX_START_AND:
-                    String = "START AND GROUP";
-                    break;
-                case REGEX_STOP_AND:
-                    String = "STOP AND GROUP";
-                    break;
-                case REGEX_START_OR:
-                    String = "START OR GROUP";
-                    break;
-                case REGEX_STOP_OR:
-                    String = "STOP OR GROUP";
-                    break;
-                case REGEX_GROUP_OR:
-                    String = "OR GROUP";
-                    break;
-                case REGEX_GROUP_AND:
-                    String = "AND GROUP";
-                    break;
-                case REGEX_AMOUNT:
-                    String = "AMOUNT";
-                    break;
-                case REGEX_END_INPUT:
-                    String = "END INPUT";
-                    break;
-                case REGEX_NONE:
-                    String = "NONE";
-                    break;
-                case REGEX_BEGIN_INPUT:
-                    String = "BEGIN INPUT";
-                    break;
-                default:
-                    String = cs("UNK : ") + cs(symbol.type);
-                }
-
-                return (negate ? (cs("NOT ")+String) : String);
-            }
-
-            void print(core::outputStream<char>& Console, const node* root, Int indent = 0)
-            {
-                if (root)
-                {
-                    auto symbol = root->symbol;
-
-                    for (Int i=0; i<indent; i++)
-                        Console.write("    ");
-
-                    Console.write(symbolString(symbol, root->negate));
-                    Console.write(" | ");
-
-                    if (symbol.min != symbol.max)
-                    {
-                        Console.write(symbol.min);
-
-                        if (symbol.max < symbol.min)
-                            Console.writeln('+');
-                        else
-                            Console.writeln(cs('-') + cs(symbol.max));
-                    }
-                    else
-                        Console.writeln(symbol.min);
-
-                    for (Int i=0; i<(root->children.size()); i++)
-                        this->print(Console, root->children[i], indent+1);
-                }
-            }
+            // const core::string<char> symbolString(const regexSymbol& symbol, bool negate)
+            // {
+            //     core::string<char> String;
+			//
+            //     switch (symbol.type)
+            //     {
+            //     case REGEX_RANGE:
+            //         String = cs("RANGE : ")+cs(symbol.value)+cs('-')+cs(symbol.val_end);
+            //         break;
+            //     case REGEX_SYMBOL:
+            //         String = cs("SYMBOL : ") + cs(symbol.value);
+            //         break;
+            //     case REGEX_START_CASE_I:
+            //         String = "START CASE INSENSITIVE";
+            //         break;
+            //     case REGEX_STOP_CASE_I:
+            //         String = "STOP CASE INSENSITIVE";
+            //         break;
+            //     case REGEX_WHITESPACE:
+            //         String = "WHITE SPACE";
+            //         break;
+			// 	case REGEX_BREAK:
+			// 		String = "BREAK";
+			// 		break;
+			// 	case REGEX_WORD:
+			// 		String = "WORD CHARACTER";
+			// 		break;
+            //     case REGEX_ANYTHING:
+            //         String = "ANY CHARACTER";
+            //         break;
+            //     case REGEX_OR:
+            //         String = "OR";
+            //         break;
+			// 	case REGEX_AND:
+			// 		String = "AND";
+			// 		break;
+			// 	case REGEX_UNIFIED_AND:
+			// 		String = "UNIFIED AND";
+			// 		break;
+            //     case REGEX_NOT:
+            //         String = "NOT";
+            //         break;
+            //     case REGEX_POS_LA:
+            //         String = "POSITIVE LOOKAHEAD";
+            //         break;
+            //     case REGEX_NEG_LA:
+            //         String = "NEGATIVE LOOKAHEAD";
+            //         break;
+            //     case REGEX_NEG_LB:
+            //         String = "NEGATIVE LOOKBEHIND";
+            //         break;
+            //     case REGEX_POS_LB:
+            //         String = "POSITIVE LOOKBEHIND";
+            //         break;
+            //     case REGEX_LOOK_BEHIND:
+            //         String = "LOOKBEHIND";
+            //         break;
+            //     case REGEX_LOOK_AHEAD:
+            //         String = "LOOKAHEAD";
+            //         break;
+            //     case REGEX_START_AND:
+            //         String = "START AND GROUP";
+            //         break;
+            //     case REGEX_STOP_AND:
+            //         String = "STOP AND GROUP";
+            //         break;
+            //     case REGEX_START_OR:
+            //         String = "START OR GROUP";
+            //         break;
+            //     case REGEX_STOP_OR:
+            //         String = "STOP OR GROUP";
+            //         break;
+            //     case REGEX_GROUP_OR:
+            //         String = "OR GROUP";
+            //         break;
+            //     case REGEX_GROUP_AND:
+            //         String = "AND GROUP";
+            //         break;
+            //     case REGEX_AMOUNT:
+            //         String = "AMOUNT";
+            //         break;
+            //     case REGEX_END_INPUT:
+            //         String = "END INPUT";
+            //         break;
+            //     case REGEX_NONE:
+            //         String = "NONE";
+            //         break;
+            //     case REGEX_BEGIN_INPUT:
+            //         String = "BEGIN INPUT";
+            //         break;
+            //     default:
+            //         String = cs("UNK : ") + cs(symbol.type);
+            //     }
+			//
+            //     return (negate ? (cs("NOT ")+String) : String);
+            // }
+			//
+            // void print(core::outputStream<char>& Console, const node* root, Int indent = 0)
+            // {
+            //     if (root)
+            //     {
+            //         auto symbol = root->symbol;
+			//
+            //         for (Int i=0; i<indent; i++)
+            //             Console.write("    ");
+			//
+            //         Console.write(symbolString(symbol, root->negate));
+            //         Console.write(" | ");
+			//
+            //         if (symbol.min != symbol.max)
+            //         {
+            //             Console.write(symbol.min);
+			//
+            //             if (symbol.max < symbol.min)
+            //                 Console.writeln('+');
+            //             else
+            //                 Console.writeln(cs('-') + cs(symbol.max));
+            //         }
+            //         else
+            //             Console.writeln(symbol.min);
+			//
+            //         for (Int i=0; i<(root->children.size()); i++)
+            //             this->print(Console, root->children[i], indent+1);
+            //     }
+            // }
 
             void createTreeToRoot(core::array<regexSymbol>*);
 
@@ -302,12 +305,47 @@ namespace z
             bool match(core::inputStream<CHAR>&);
 
             Int search(core::inputStream<CHAR>&, const core::timeout& time = -1);
-            Int foundAt() const {return searchLoc;};
-            Int foundLen() const {return searchBuf.length();};
 
-            const core::string<CHAR>& foundString() const {return searchBuf;}
+			/**
+			 * \brief Get the location of the last matched string.
+			 *
+			 * \return The starting position of the last matched string
+			 * in the input stream. \b 0 if no string previously matched.
+			 */
+			Int foundAt() const {return searchLoc;};
 
-            const bool good() const {return !regex_error;}
+			/**
+			 * \brief Get the length of the last matched string.
+			 *
+			 * \return The number of characters last matched.
+			 * \b 0 if no string previously matched.
+			 */
+			Int foundLen() const {return searchBuf.length();};
+
+			/**
+			 * \brief Get the last matched string.
+			 *
+			 * \return The string that was last matched.
+			 * Gives an empty string if no previous match.
+			 */
+			const core::string<CHAR>& foundString() const {return searchBuf;}
+
+			/**
+			 * \brief Get whether there were no errors parsing the regex pattern.
+			 *
+			 * \return \b True if the pattern is free of errors. \b False otherwise.
+			 *
+			 * \see bad()
+			 */
+			const bool good() const {return !regex_error;}
+
+			/**
+			 * \brief Get whether there were errors parsing the regex pattern.
+			 *
+			 * \return \b True if the pattern has any errors. \b False otherwise.
+			 *
+			 * \see good()
+			 */
             const bool bad() const {return (bool)regex_error;}
         };
 
@@ -897,16 +935,28 @@ namespace z
             }
         }
 
-        template <typename CHAR>
-        regex<CHAR>::regex(const core::string<CHAR>& expr)
-        {
-            root = NULL;
-            this->set(expr);
+		/**
+		 * \brief Constructor.
+		 *
+		 * \param expr a string containing the pattern to match.
+		 */
+		template <typename CHAR>
+		regex<CHAR>::regex(const core::string<CHAR>& expr)
+		{
+			root = NULL;
+			searchLoc = 0;
 
-			system::console con;
-			print(con, root);
-        }
+			this->set(expr);
 
+			// system::console con;
+			// print(con, root);
+		}
+
+		/**
+		 * \brief Set the regex to match a new pattern.
+		 *
+		 * \param expr a string containing the pattern to match.
+		 */
         template <typename CHAR>
         void regex<CHAR>::set(const core::string<CHAR>& expr)
         {
@@ -1333,27 +1383,52 @@ namespace z
             return consumed;
         }
 
+		/**
+		 * \brief Attempt to match the pattern to the given input.
+		 *
+		 * Attempt to match the pattern to characters in the given
+		 * input stream. This method starts at the current index in
+		 * the stream and only consumes input on a match.
+		 *
+		 * \param input the character stream to read from.
+		 *
+		 * \return \b True if the pattern was matched at the current
+		 * position in the stream. \b False otherwise.
+		 */
         template <typename CHAR>
         bool regex<CHAR>::match(core::inputStream<CHAR>& input)
         {
             lastSearchDone = true;
             searchBuf.clear();
-            searchLoc = 0; //position
+            searchLoc = input.tell(); //position
 
             if (!root || regex_error) return false;
 
-            Int startIndex = input.tell();
             Int matched = matchNode(root, NULL, input, false);
 
             if (matched < 0) return false;
 
-            input.seek(startIndex);
+            input.seek(searchLoc);
             searchBuf = input.get(matched);
 
             return true;
         }
 
-        //does not consume any input. 1 if found, 0 if timeout, and -1 if not found.
+		/**
+		 * \brief Search for a match to the pattern in the given input.
+		 *
+		 * Attempt to match the pattern to characters in the given
+		 * input stream. This method does not consume input and searches through
+		 * the stream until a match is found. Because some streams may be very
+		 * long, this method can optionally exit upon timeout.
+		 *
+		 * \param input the character stream to read from.
+		 * \param time the amount of time to wait before returning.
+		 *
+		 * \return \b 1 if a match to the pattern was found.
+		 * \b 0 if the search timed out before matching.
+		 * \b -1 if the entire stream was searched and no match was found.
+		 */
         template <typename CHAR>
         Int regex<CHAR>::search(core::inputStream<CHAR>& input,
                                 const core::timeout& time)
