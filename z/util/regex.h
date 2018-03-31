@@ -33,9 +33,12 @@ namespace z
                 REGEX_BEGIN_INPUT,
 
 				REGEX_BREAK,
+				REGEX_ALPHA,
+				REGEX_ALNUM,
 				REGEX_WORD,
                 REGEX_WHITESPACE,
 				REGEX_DIGIT,
+				REGEX_CNTRL,
 
 				REGEX_ANYTHING,
 
@@ -531,6 +534,24 @@ namespace z
                     symbols->add(regexSymbol(REGEX_WORD));
                     i++;
                 }
+				else if (expr.foundAt("\\x", i))
+				{
+					if (core::isNumeric(expr[i+2], 16) && core::isNumeric(expr[i+3], 16))
+					{
+						CHAR val = core::numeralValue(expr[i+2]);
+						val = val << 4;
+						val += core::numeralValue(expr[i+3]);
+
+						symbols->add(regexSymbol(REGEX_SYMBOL, val));
+					}
+					else
+					{
+						regex_error = 1;
+						return;
+					}
+
+					i += 3;
+				}
                 else
                 {
                     if ((expr[i] == '\\') && (i+1 < expr.length()))

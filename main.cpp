@@ -10,12 +10,12 @@ int main()
 	system::cpuid cpu;
 	system::console console;
 
-	util::regex<char> regex ("a-f");
+	util::regex<char> regex ("\\x41");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream (cs("Hello, sir.   This is an example of bad   spacing."));
+	core::stringStream<char> stream (cs("var test = 0x0fAc31; return;"));
 
 	Int found = regex.search(stream);
 
