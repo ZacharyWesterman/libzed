@@ -19,7 +19,7 @@ namespace z
             Int index;
 
         public:
-            stringStream(const string<CHAR>&);
+            stringStream(const string<CHAR>& input = string<CHAR>());
 
             CHAR get();
             string<CHAR> get(Int);
@@ -36,8 +36,14 @@ namespace z
 			Int end();
         };
 
+		/**
+		 * \brief Constructor
+		 *
+		 * \param input initial string for the stream to contain.
+		 */
         template <typename CHAR>
-        stringStream<CHAR>::stringStream(const string<CHAR>& input) : data(input), index(0) {}
+        stringStream<CHAR>::stringStream(const string<CHAR>& input) :
+			data(input), index(0) {}
 
         template <typename CHAR>
         CHAR stringStream<CHAR>::get()

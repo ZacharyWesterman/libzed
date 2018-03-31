@@ -13,6 +13,11 @@ namespace z
 {
     namespace file
     {
+		/**
+		 * \brief A template class for file input streams.
+		 *
+		 * This class provides an implementation of core::inputStream for files.
+		 */
         template <typename CHAR>
         class inputStream : public core::inputStream<CHAR>
         {
@@ -35,6 +40,13 @@ namespace z
 			Int end();
         };
 
+		/**
+		 * \brief Constructor
+		 *
+		 * As this is a file stream, it must be constructed with a file name.
+		 *
+		 * \param fileName a string containing the name of the file to read from.
+		 */
         template <typename CHAR>
         inputStream<CHAR>::inputStream(const core::string<char>& fileName)
         {
@@ -100,7 +112,11 @@ namespace z
 			return filestream.end - filestream.beg;
 		}
 
-
+		/**
+		 * \brief A template class for file output streams.
+		 *
+		 * This class provides an implementation of core::outputStream for files.
+		 */
         template <typename CHAR>
         class outputStream : public core::outputStream<CHAR>
         {
@@ -120,6 +136,14 @@ namespace z
 			Int end();
         };
 
+		/**
+		 * \brief Constructor
+		 *
+		 * As this is a file stream, it must be constructed with a file name.
+		 *
+		 * \param fileName a string containing the name of the file to read from.
+		 * \param append set to \b true to append to the file, \b false to overwrite.
+		 */
         template <typename CHAR>
         outputStream<CHAR>::outputStream(const core::string<char>& fileName, bool append)
         {

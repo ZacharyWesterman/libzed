@@ -354,6 +354,14 @@ namespace z
             Int count(const string& sub_string) const;
 
             inline void remove(Int start_index, Int end_index);
+
+			/**
+			 * \brief Remove one character from the string.
+			 *
+			 * Removes the character from the string at the given index.
+			 *
+			 * \param index the index of the character to remove.
+			 */
 			inline void remove(Int index) {this->remove(index, index);}
 
             bool foundAt(const string& sub_string, Int position) const;
@@ -1776,6 +1784,8 @@ namespace z
         /**
          * \brief Remove the characters in the given range from
          * the current string.
+		 *
+		 * Removes all characters from \b start_index to \b end_index, inclusive.
          *
          * \param start_index the index of the first character to remove.
          * \param end_index that index of the last character to remove.

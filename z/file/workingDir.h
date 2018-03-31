@@ -14,12 +14,18 @@
     #define getCurrDir getcwd
 #else
     #error "file::workingDir is incompatible with the target OS."
+	#define getCurrDir
 #endif // _WIN32
 
 namespace z
 {
     namespace file
     {
+		/**
+		 * \brief Get the current working directory of the executable.
+		 *
+		 * \return A string containing the current working directory.
+		 */
         core::string<char> workingDir()
         {
             char tmp[FILENAME_MAX];
@@ -30,5 +36,7 @@ namespace z
         }
     }
 }
+
+#undef getCurrDir
 
 #endif // WORKINGDIR_H_INCLUDED

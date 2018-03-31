@@ -10,6 +10,9 @@ namespace z
 {
     namespace system
     {
+		/**
+		 * \brief A class for easily getting CPU info.
+		 */
         class cpuid
         {
         private:
@@ -87,6 +90,9 @@ namespace z
             _allow_smt = _cpuFeatures & (1 << 28) && _cores < _cpus;
         }
 
+		/**
+		 * \brief Constructor
+		 */
         cpuid::cpuid()
         {
             det_vendor(); //'good' will be determined after vendorID
@@ -97,16 +103,31 @@ namespace z
             }
         }
 
+		/**
+		 * \brief Get the CPU vendor.
+		 *
+		 * \return A string containing the vendor CPU id.
+		 */
         const core::string<char>& cpuid::vendor()
         {
             return _vendor;
         }
 
+		/**
+		 * \brief Get the number of CPUs.
+		 *
+		 * \return The number of CPUs on this machine.
+		 */
         int cpuid::cpus()
         {
             return _cpus;
         }
 
+		/**
+		 * \brief Get the number of cores.
+		 *
+		 * \return The number of individual cores on this machine.
+		 */
         int cpuid::cores()
         {
             return _cores;

@@ -1,4 +1,4 @@
-##Strings Examples
+# Strings Examples
 ----------------------
 
 
@@ -14,7 +14,7 @@ using namespace z;
 int main()
 {
     core::string<char> foo = "Hello world!";
-   
+
     cout << foo.str() << endl;
 
     return 0;
@@ -39,10 +39,10 @@ using namespace z;
 int main()
 {
     core::string<char> foo = "aN eXAMple StRiNg";
-    
+
     core::string<char> upper = foo.upper();
     core::string<char> lower = foo.lower();
-   
+
     cout << foo.str() << endl;
     cout << upper.str() << endl;
     cout << lower.str() << endl;

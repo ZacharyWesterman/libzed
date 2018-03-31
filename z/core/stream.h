@@ -137,12 +137,41 @@ namespace z
 			 * \param ch the character to add to the stream.
 			 */
 			virtual void put(CHAR ch) = 0;
-			
-			virtual void write(const core::string<CHAR>&) = 0;
+
+			/**
+			 * \brief Write the given string to the stream.
+			 *
+			 * \param input the character string to append.
+			 */
+			virtual void write(const core::string<CHAR>& input) = 0;
+
 			void writeln(const core::string<CHAR>&);
 
+			/**
+			 * \brief Tell whether we have consumed the last character in
+			 * the stream.
+			 *
+			 * \return \b True if the last character has been consumed.
+			 * \b False otherwise.
+			 */
 			virtual bool empty() = 0;
-			virtual void seek(Int) = 0;
+
+			/**
+			 * \brief Seek a position in the stream.
+			 *
+			 * Seeks to the given index, starting at the
+			 * beginning of the stream.
+			 *
+			 * \param index the position to seek.
+			 */
+			virtual void seek(Int index) = 0;
+
+			/**
+			 * \brief Give the current position in the stream.
+			 *
+			 * \return The current position in the stream, starting
+			 * at the beginning.
+			 */
 			virtual Int tell() = 0;
 
 			/**
@@ -156,6 +185,13 @@ namespace z
 			virtual Int end() = 0;
 		};
 
+		/**
+		 * \brief Write the given string to the stream, then add a new line.
+		 *
+		 * Appends the given string to the stream. Then, adds a newline character.
+		 *
+		 * \param input the character string to append.
+		 */
         template <typename CHAR>
         void outputStream<CHAR>::writeln(const core::string<CHAR>& input)
         {
@@ -171,10 +207,7 @@ namespace z
          */
         template <typename CHAR>
         class stream : public inputStream<CHAR>, public outputStream<CHAR>
-        {
-        public:
-            virtual ~stream() {}
-        };
+        {};
     }
 }
 
