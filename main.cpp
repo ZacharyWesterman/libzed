@@ -10,12 +10,12 @@ int main()
 	system::cpuid cpu;
 	system::console console;
 
-	util::regex<char> regex ("\\x41");
+	util::regex<char> regex ("\\d+(\\.\\d+)?");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream (cs("var test = 0x0fAc31; return;"));
+	core::stringStream<char> stream (cs("0 .123 0.123"));
 
 	Int found = regex.search(stream);
 

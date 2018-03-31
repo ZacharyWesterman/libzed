@@ -959,7 +959,7 @@ namespace z
                     return (input.tell() ? -1 : 0);
             }
 			else if (symbol.type == REGEX_BREAK)
-            {
+			{
 				bool atBreak = true;
 
 				if (!input.empty() && input.tell())
@@ -969,13 +969,34 @@ namespace z
 					CHAR thisCh = input.get();
 					input.unget();
 
-					atBreak = !(core::isAlphaNumeric(lastCh) && core::isAlphaNumeric(thisCh));
+					atBreak = !((core::isAlphaNumeric(lastCh) || (lastCh == '_')) &&
+								(core::isAlphaNumeric(thisCh) || (thisCh == '_')));
 				}
 
                 if (aNode->negate)
                     return (atBreak ? -1 : 0);
                 else
                     return (atBreak ? 0 : -1);
+            }
+			else if (symbol.type == REGEX_NONBREAK)
+			{
+				bool notAtBreak = false;
+
+				if (!input.empty() && input.tell())
+				{
+					input.unget();
+					CHAR lastCh = input.get();
+					CHAR thisCh = input.get();
+					input.unget();
+
+					notAtBreak = ((core::isAlphaNumeric(lastCh) || (lastCh == '_')) &&
+								(core::isAlphaNumeric(thisCh) || (thisCh == '_')));
+				}
+
+                if (aNode->negate)
+                    return (notAtBreak ? -1 : 0);
+                else
+                    return (notAtBreak ? 0 : -1);
             }
             else if (symbol.type == REGEX_GROUP_AND)
             {
@@ -1104,15 +1125,47 @@ namespace z
                 }
 				if (symbol.type == REGEX_WORD)
                 {
-                    if (core::isAlphaNumeric(c)) matched = 1;
+                    if (core::isAlphaNumeric(c) || (c == '_')) matched = 1;
+                }
+				if (symbol.type == REGEX_NONWORD)
+                {
+                    if (!core::isAlphaNumeric(c) && (c != '_')) matched = 1;
+                }
+				if (symbol.type == REGEX_DIGIT)
+                {
+                    if (core::isNumeric(c)) matched = 1;
+                }
+				if (symbol.type == REGEX_NONDIGIT)
+                {
+                    if (!core::isNumeric(c)) matched = 1;
                 }
                 else if (symbol.type == REGEX_WHITESPACE)
                 {
                     if (core::isWhiteSpace(c)) matched = 1;
                 }
+				else if (symbol.type == REGEX_NONWHITESP)
+                {
+                    if (!core::isWhiteSpace(c)) matched = 1;
+                }
                 else if (symbol.type == REGEX_ANYTHING)
                 {
-                    matched = 1;
+                    if ((c != '\n') && (c != '\r')) matched = 1;
+                }
+				else if (symbol.type == REGEX_PUNCT)
+                {
+					const CHAR punct[] = {']','[','!','"','#','$','%','&','\'',
+										  '(',')','*','+',',','.','/',':',';',
+										  '<','=','>','?','@','\\','^','_','`',
+										  '{','|','}','~','-','}',';'};
+
+					for (CHAR ch : punct)
+					{
+						if (c == ch)
+						{
+							matched = 1;
+							break;
+						}
+					}
                 }
 
 
@@ -1170,7 +1223,7 @@ namespace z
             {
                 return consumed;
             }
-            else if (max < min) //unbounded max, consume greedily.
+            else if (max < min) //unbounded max
             {
                 Int matched = -1;
 
@@ -1215,10 +1268,7 @@ namespace z
 					matched = matchNodeOnce(aNode, input, caseInsensitive);
 
                     if (matched < 0)
-                    {
-                        unConsume(input, matched);
-                        break;
-                    }
+						break;
                     else
                         consumed += matched;
                 }
