@@ -7,15 +7,14 @@ using namespace z;
 
 int main()
 {
-	system::cpuid cpu;
 	system::console console;
 
-	util::regex<char> regex ("\\d+(\\.\\d+)?");
+	util::regex<char> regex ("\\l\\w*");
 
 	if (regex.bad())
 		console.writeln("Invalid regex formatting.");
 
-	core::stringStream<char> stream (cs("0 .123 0.123"));
+	core::stringStream<char> stream (cs("0123 _f0 = 10"));
 
 	Int found = regex.search(stream);
 

@@ -32,24 +32,19 @@ namespace z
                 REGEX_END_INPUT,
                 REGEX_BEGIN_INPUT,
 
-				REGEX_ASCII,
 				REGEX_ALNUM,
+				REGEX_LETTER,
 				REGEX_WORD,
 				REGEX_NONWORD,
 				REGEX_ALPHA,
 				REGEX_BLANK,
 				REGEX_BREAK,
 				REGEX_NONBREAK,
-				REGEX_CNTRL,
 				REGEX_DIGIT,
 				REGEX_NONDIGIT,
-				REGEX_GRAPH,
-				REGEX_LOWER,
-				REGEX_PRINT,
 				REGEX_PUNCT,
 				REGEX_WHITESPACE,
 				REGEX_NONWHITESP,
-				REGEX_UPPER,
 				REGEX_HEXDIGIT,
 
 				REGEX_ANYTHING,
@@ -599,6 +594,26 @@ namespace z
 				else if (expr.foundAt("\\f", i))
                 {
                     symbols->add(regexSymbol(REGEX_SYMBOL, '\f'));
+                    i++;
+                }
+				else if (expr.foundAt("\\h", i))
+                {
+                    symbols->add(regexSymbol(REGEX_HEXDIGIT));
+                    i++;
+                }
+				else if (expr.foundAt("\\a", i))
+                {
+                    symbols->add(regexSymbol(REGEX_ALPHA));
+                    i++;
+                }
+				else if (expr.foundAt("\\m", i))
+                {
+                    symbols->add(regexSymbol(REGEX_ALNUM));
+                    i++;
+                }
+				else if (expr.foundAt("\\l", i))
+                {
+                    symbols->add(regexSymbol(REGEX_LETTER));
                     i++;
                 }
 				else if (expr.foundAt("\\x", i))
@@ -1160,9 +1175,25 @@ namespace z
                 {
                     if (core::isNumeric(c)) matched = 1;
                 }
+				if (symbol.type == REGEX_ALPHA)
+				{
+					if (core::isAlpha(c)) matched = 1;
+				}
+				if (symbol.type == REGEX_ALNUM)
+				{
+					if (core::isAlphaNumeric(c)) matched = 1;
+				}
+				if (symbol.type == REGEX_LETTER)
+				{
+					if (core::isAlpha(c) || (c == '_')) matched = 1;
+				}
 				if (symbol.type == REGEX_NONDIGIT)
                 {
                     if (!core::isNumeric(c)) matched = 1;
+                }
+				if (symbol.type == REGEX_HEXDIGIT)
+                {
+                    if (core::isNumeric(c, 16)) matched = 1;
                 }
                 else if (symbol.type == REGEX_WHITESPACE)
                 {
