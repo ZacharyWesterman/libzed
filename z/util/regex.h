@@ -32,13 +32,25 @@ namespace z
                 REGEX_END_INPUT,
                 REGEX_BEGIN_INPUT,
 
-				REGEX_BREAK,
-				REGEX_ALPHA,
+				REGEX_ASCII,
 				REGEX_ALNUM,
 				REGEX_WORD,
-                REGEX_WHITESPACE,
-				REGEX_DIGIT,
+				REGEX_NONWORD,
+				REGEX_ALPHA,
+				REGEX_BLANK,
+				REGEX_BREAK,
+				REGEX_NONBREAK,
 				REGEX_CNTRL,
+				REGEX_DIGIT,
+				REGEX_NONDIGIT,
+				REGEX_GRAPH,
+				REGEX_LOWER,
+				REGEX_PRINT,
+				REGEX_PUNCT,
+				REGEX_WHITESPACE,
+				REGEX_NONWHITESP,
+				REGEX_UPPER,
+				REGEX_HEXDIGIT,
 
 				REGEX_ANYTHING,
 
@@ -524,14 +536,44 @@ namespace z
                     symbols->add(regexSymbol(REGEX_WHITESPACE));
                     i++;
                 }
+				else if (expr.foundAt("\\S", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NONWHITESP));
+                    i++;
+                }
 				else if (expr.foundAt("\\b", i))
                 {
                     symbols->add(regexSymbol(REGEX_BREAK));
                     i++;
                 }
+				else if (expr.foundAt("\\B", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NONBREAK));
+                    i++;
+                }
 				else if (expr.foundAt("\\w", i))
                 {
                     symbols->add(regexSymbol(REGEX_WORD));
+                    i++;
+                }
+				else if (expr.foundAt("\\W", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NONWORD));
+                    i++;
+                }
+				else if (expr.foundAt("\\d", i))
+                {
+                    symbols->add(regexSymbol(REGEX_DIGIT));
+                    i++;
+                }
+				else if (expr.foundAt("\\D", i))
+                {
+                    symbols->add(regexSymbol(REGEX_NONDIGIT));
+                    i++;
+                }
+				else if (expr.foundAt("\\p", i))
+                {
+                    symbols->add(regexSymbol(REGEX_PUNCT));
                     i++;
                 }
 				else if (expr.foundAt("\\x", i))
