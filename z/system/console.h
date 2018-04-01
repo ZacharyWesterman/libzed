@@ -17,7 +17,8 @@ namespace z
 		 * All read-related methods read from stdin, and all
 		 * write-related methods write to stdout. Note that
 		 * because of how stdin and stdout behave, you cannot
-		 * unget or unput characters; those are just dummy methods.
+		 * unget characters or seek a position in the stream;
+		 * those are just dummy methods.
 		 * As a result, this class will not behave nicely with the
 		 * util::regex class.
 		 */
@@ -53,6 +54,9 @@ namespace z
             return result;
         }
 
+		/**
+		 * \brief Dummy method.
+		 */
         void console::unget() {}
 
         void console::put(char c)
@@ -79,15 +83,35 @@ namespace z
             std::cout << input.str();
         }
 
+		/**
+		 * \brief Dummy method.
+		 *
+		 * \return \b True.
+		 */
         bool console::empty() {return true;}
 
+		/**
+		 * \brief Dummy method.
+		 *
+		 * \param position ignored.
+		 */
         void console::seek(Int position) {}
 
+		/**
+		 * \brief Dummy method.
+		 *
+		 * \return \b 0.
+		 */
         Int console::tell()
         {
             return 0;
         }
 
+		/**
+		 * \brief Dummy method.
+		 *
+		 * \return \b 0.
+		 */
 		Int console::end()
 		{
 			return 0;

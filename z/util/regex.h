@@ -17,6 +17,9 @@ namespace z
     {
 		/**
 		 * \brief A template class for parsing and matching regular expressions.
+		 *
+		 * Note that because the class requires seeking locations in a stream,
+		 * it will not work nicely with the system::console class.
 		 */
         template <typename CHAR>
         class regex
