@@ -63,6 +63,7 @@ namespace z
             virtual void add(const array&);
             bool insert(const T&, Int);
             bool remove(Int);
+			bool remove(Int, Int);
 
             void replace(Int, Int, const T&);
             void replace(Int, Int, const array<T>&);
@@ -365,6 +366,28 @@ namespace z
                 return false;
 
             array_data.erase(array_data.begin() + index);
+
+            return true;
+        }
+
+		/**
+         * \brief Remove all elements in a subset of the array.
+         *
+         * \param start the index of the first object to be removed.
+		 *
+		 * \param end the index of the last object to be removed.
+         *
+         * \return \b True if all objects were successfully removed.
+         * \b False otherwise.
+         */
+        template <typename T>
+        bool array<T>::remove(Int start, Int end)
+        {
+            if ((start < 0) || (start < stop) || (stop >= (Int)array_data.size()))
+                return false;
+
+			for (Int i = start; i < end; i++)
+				array_data.erase(array_data.begin() + i);
 
             return true;
         }
