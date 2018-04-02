@@ -89,7 +89,7 @@ namespace z
             inline bool operator<=(const array& other) const;
 
 
-            bool is_valid(Int position) const;
+            bool isValid(Int position) const;
         };
 
 
@@ -563,7 +563,7 @@ namespace z
          * \b False otherwise.
          */
         template <typename T>
-        bool array<T>::is_valid(Int index) const
+        bool array<T>::isValid(Int index) const
         {
             return ((index < (Int)array_data.size()) &&
                     (index >= 0));

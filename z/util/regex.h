@@ -721,7 +721,7 @@ namespace z
                 }
                 else if ((symbol.type >= REGEX_POS_LA) && (symbol.type <= REGEX_NEG_LB))
                 {
-                    if (!nodesList.is_valid(i-1) ||
+                    if (!nodesList.isValid(i-1) ||
                         (nodesList[i-1]->symbol.type != REGEX_START_AND))
                     {
                         regex_error = 1;
@@ -804,13 +804,13 @@ namespace z
                 }
                 else if (symbol.type == REGEX_AMOUNT)
                 {
-                    if (!nodesList.is_valid(i-1))
+                    if (!nodesList.isValid(i-1))
                     {
                         regex_error = 1;
                         break;
                     }
 
-                    if (nodesList.is_valid(i+1) && (nodesList[i+1]->symbol.type == REGEX_AMOUNT))
+                    if (nodesList.isValid(i+1) && (nodesList[i+1]->symbol.type == REGEX_AMOUNT))
                     {
                         regex_error = 1;
                         break;
@@ -824,7 +824,7 @@ namespace z
                     i--;
                 }
 				//range syntax e.g. [a-z] , [A-F] , etc.
-                else if (nodesList.is_valid(i+2) &&
+                else if (nodesList.isValid(i+2) &&
 						 (nodesList[i]->symbol.type == REGEX_SYMBOL) &&
 						 (nodesList[i+1]->symbol.type == REGEX_SYMBOL) &&
 						 (nodesList[i+1]->symbol.value == '-') &&
@@ -1104,7 +1104,7 @@ namespace z
                         caseInsensitive = false;
                     else
                     {
-						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+						node* next = (aNode->children.isValid(i+1) ? aNode->children[i+1] : NULL);
 
                         Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
                         if(matched < 0)
@@ -1135,7 +1135,7 @@ namespace z
                         caseInsensitive = false;
                     else
 					{
-						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+						node* next = (aNode->children.isValid(i+1) ? aNode->children[i+1] : NULL);
 
 						Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
 						if(matched < 0)
@@ -1165,7 +1165,7 @@ namespace z
                         caseInsensitive = false;
                     else
                     {
-						node* next = (aNode->children.is_valid(i+1) ? aNode->children[i+1] : NULL);
+						node* next = (aNode->children.isValid(i+1) ? aNode->children[i+1] : NULL);
 
                         Int matched = matchNode(aNode->children[i], next, input, caseInsensitive);
                         if (matched >= 0)

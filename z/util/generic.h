@@ -1930,7 +1930,7 @@ namespace z
             {
                 int i_index = (int)_index.d_value->real();
 
-                if (d_array->is_valid(i_index))
+                if (d_array->isValid(i_index))
                     result = d_array->at(i_index);
                 else
                 {
@@ -1970,8 +1970,8 @@ namespace z
                 int i_start = (int)start.d_value->real();
                 int i_stop = (int)stop.d_value->real();
 
-                if (d_array->is_valid(i_start) &&
-                    d_array->is_valid(i_stop))
+                if (d_array->isValid(i_start) &&
+                    d_array->isValid(i_stop))
                     result = d_array->subset(i_start, i_stop);
                 else
                 {
@@ -2019,7 +2019,7 @@ namespace z
                     }
                     else if (d_array->at(i).d_type == data::ARRAY)
                     {
-                        if (d_array->at(i).d_array->is_valid(i_index))
+                        if (d_array->at(i).d_array->isValid(i_index))
                         {
                             result.d_array.add(d_array->at(i).
                                                d_array->at(i_index));
@@ -2076,8 +2076,8 @@ namespace z
                     }
                     else if (d_array->at(i).d_type == data::ARRAY)
                     {
-                        if (d_array->at(i).d_array->is_valid(i_start) &&
-                            d_array->at(i).d_array->is_valid(i_stop))
+                        if (d_array->at(i).d_array->isValid(i_start) &&
+                            d_array->at(i).d_array->isValid(i_stop))
                         {
 
                             result.d_array.add(
