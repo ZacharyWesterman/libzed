@@ -24,9 +24,6 @@
 #include "core/refArray.h"
 #include "core/sortedRefArray.h"
 
-///Misc data structures
-#include "core/dynamicStack.h"
-
 ///Timers
 #include "core/timer.h"
 #include "core/timeout.h"
