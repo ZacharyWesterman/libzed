@@ -386,7 +386,7 @@ namespace z
             if ((start < 0) || (start < stop) || (stop >= (Int)array_data.size()))
                 return false;
 
-			for (Int i = start; i < end; i++)
+			for (Int i = end; i >= start; i--)
 				array_data.erase(array_data.begin() + i);
 
             return true;
