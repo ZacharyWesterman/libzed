@@ -383,7 +383,7 @@ namespace z
         template <typename T>
         bool array<T>::remove(Int start, Int end)
         {
-            if ((start < 0) || (start < stop) || (stop >= (Int)array_data.size()))
+            if ((start < 0) || (start < end) || (end >= (Int)array_data.size()))
                 return false;
 
 			for (Int i = end; i >= start; i--)
