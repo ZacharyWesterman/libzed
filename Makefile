@@ -1,4 +1,4 @@
-CFLAGS= -I/../zLibraries/ -std=c++11 -g -Wall -fexceptions
+CFLAGS= -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
 
 all:
 	g++ $(CFLAGS) main.cpp -o zLibraries_driver

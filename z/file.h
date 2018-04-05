@@ -16,8 +16,6 @@
 #include "file/workingDir.h"
 
 ///Manage file contents
-//#include "file/reader.h"
-//#include "file/writer.h"
 #include "file/copy.h"
 #include "file/info.h"
 #include "file/stream.h"
