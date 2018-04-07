@@ -1379,13 +1379,9 @@ namespace z
         bool string<CHAR>::isInteger(Int base) const
         {
             Int start = 0;
-            bool isNegative = false;
 
-            if (string_array[0] == (CHAR)'-') //'-' character
-            {
-                start = 1;
-                isNegative = true;
-            }
+            if (string_array[0] == (CHAR)'-')
+				start = 1;
 
 
             Int length = current_length - 1;

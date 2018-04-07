@@ -95,7 +95,7 @@ namespace z
                 Int max;
 
                 regexSymbol(Int Type, CHAR Value = 0, Int _max = 1, Int _min = 1) :
-                    type(Type), value(Value), min(_min), max(_max), val_end(0)
+                    type(Type), value(Value), val_end(0), min(_min), max(_max)
                 {}
 
                 regexSymbol(const regexSymbol& other)
@@ -113,6 +113,8 @@ namespace z
                    value = other.value;
                    min = other.min;
                    max = other.max;
+
+				   return *this;
                 }
 
                 bool operator==(const regexSymbol& other) const
@@ -123,8 +125,8 @@ namespace z
 
             struct node
             {
+				regexSymbol symbol;
                 bool negate;
-                regexSymbol symbol;
 
                 core::array<node*> children;
                 node* parent;
@@ -992,8 +994,6 @@ namespace z
                                    core::inputStream<CHAR>& input,
                                    bool caseInsensitive) const
         {
-            Int totalConsumed = 0;
-
             auto symbol = aNode->symbol;
 
             if (symbol.type == REGEX_LOOK_AHEAD)
