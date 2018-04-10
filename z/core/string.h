@@ -1175,85 +1175,108 @@ namespace z
             }
         }
 
-        /**
-         * \brief Convert the string to its complex number equivalent.
-         *
-         * This function splits a numeric string Into its real and
-         * imaginary parts according to \b a+bi or \b a-bi, where
-         * the imaginary part is assumed to come after the real part.
-         * If no imaginary part is detected, then it is assumed to be
-         * \b 0. Also, note that if the base is greater than \b 17,
-         * then the complex part is assumed to be \b 0 as well,
-         * because \b I is a digit in that case.
-         *
-         * \param base an optional parameter for choosing the base
-         * that the string is assumed to be in.
-         *
-         * \return The complex value of the string as it appears to
-         * humans. <B>0+0i</B> if there are any invalid characters.
-         *
-         * \see value(Int) const
-         */
-        template <typename CHAR>
-        std::complex<Float> string<CHAR>::complexValue(Int base) const
-        {
-            if (current_length-2 <= 0)
-                return std::complex<Float>(0,0);
+		/**
+		 * \brief Convert the string to its complex number equivalent.
+		 *
+		 * This function splits a numeric string Into its real and
+		 * imaginary parts according to \b a+bi or \b a-bi, where
+		 * the imaginary part is assumed to come after the real part.
+		 * If no imaginary part is detected, then it is assumed to be
+		 * \b 0. Also, note that if the base is greater than \b 17,
+		 * then the complex part is assumed to be \b 0 as well,
+		 * because \b I is a digit in that case.
+		 *
+		 * \param base an optional parameter for choosing the base
+		 * that the string is assumed to be in.
+		 *
+		 * \return The complex value of the string as it appears to
+		 * humans. <B>0+0i</B> if there are any invalid characters.
+		 *
+		 * \see value(Int) const
+		 */
+		template <typename CHAR>
+		std::complex<Float> string<CHAR>::complexValue(Int base) const
+		{
+			if (current_length-1 == 0)
+				return std::complex<Float>(0,0);
 
-            if ((base <= 17) &&//doesn't work for bases >17
-                (string_array[current_length-2] == (CHAR)'i'))
-            {
-                if (current_length == 2)
-                    return std::complex<Float> (0,1);
+			Float v_real = 0;
+			Float v_imag = 0;
 
-                Int imag_begin;
+			if (base <= 17) //bases >17 have 'i' as a digit
+			{
+				const string<CHAR> imag_s ('i');
 
-                Int i = current_length-3;
-                bool done = false;
-                bool foundExp = false;
-                while (i && !done)
-                {
-                    if ((string_array[i] == (CHAR)'+') ||
-                         (string_array[i] == (CHAR)'-'))
-                    {
-                        if ((base <= 14) &&//doesn't work for bases >14
-                            !foundExp &&
-                            (i-1) &&
-                            ((string_array[i-1] == (CHAR)'E') ||
-                             (string_array[i-1] == (CHAR)'e')) )
-                        {
-                            foundExp = true;
-                        }
-                        else
-                        {
-                            done = true;
-                        }
-                    }
+				Int index = this->findLast(imag_s);
 
-                    if (!done)
-                        i--;
-                }
+				if (index >= 0) //have a complex part
+				{
+					Int max = current_length-2;
 
-                imag_begin = i;
+					//real part comes after imaginary
+					if ((index < max) &&
+						((string_array[index+1] == '+') ||
+						(string_array[index+1] == '-')))
+					{
+						if (string_array[index+1] == '-')
+							v_real = this->substr(index+1, max).value(base);
+						else
+							v_real = this->substr(index+2, max).value(base);
 
+						if (index)
+							v_imag = this->substr(0, index).value(base);
+						else
+							v_imag = 1;
+					}
+					else //imaginary part comes after real part
+					{
+						const string<CHAR> imag_plus  ('+');
+						const string<CHAR> imag_minus ('-');
 
-                Float imag = substr(imag_begin, current_length-3).value(base);
+						Int signLoc = this->findAfter(imag_plus, 1);
+						if (signLoc < 0) signLoc = this->findAfter(imag_minus, 1);
 
-                Float real;
+						if (signLoc < 0) //no real part
+						{
+							if (index == 0)
+								v_imag = 1;
+							else
+								v_imag = this->substr(0, index-1).value(base);
+						}
+						else //has a real part
+						{
+							if (index == signLoc + 1)
+							{
+								if (string_array[signLoc] == '-')
+									v_imag = -1;
+								else
+									v_imag = 1;
+							}
+							else
+							{
+								if (string_array[signLoc] == '-')
+									v_imag = this->substr(signLoc, index-1).value(base);
+								else
+									v_imag = this->substr(signLoc+1, index-1).value(base);
+							}
 
-                if (imag_begin)
-                    real = substr(0, imag_begin-1).value(base);
-                else
-                    real = 0;
+							v_real = this->substr(0, signLoc-1).value(base);
+						}
+					}
+				}
+				else //no complex part
+				{
+					v_real = this->value(base);
+				}
 
-                return std::complex<Float> (real, imag);
-            }
-            else
-            {
-                return std::complex<Float> (value(base), 0);
-            }
+			}
+			else //no complex part
+			{
+				v_real = this->value(base);
+			}
 
-        }
+			return std::complex<Float>(v_real, v_imag);
+		}
 
 
         /**
@@ -1403,11 +1426,11 @@ namespace z
         /**
          * \brief Check if this string can be converted to a complex number.
          *
-         * This function splits a numeric string Into its real and
-         * imaginary parts according to \b a+bi or \b a-bi, where
-         * the imaginary part is assumed to come after the real part.
-         * If no imaginary part is detected, then it is assumed to be
-         * \b 0. Also, note that if the base is greater than \b 17,
+         * This function checks if a string can be converted to a complex
+         * number of the forms `a+bi` or `ai+b`. Both `a` and `b` may be negative,
+		 * and if either the real or imaginary part is not found then it
+		 * is assumed to be \b 0.
+		 * Also, note that if the base is greater than \b 17,
          * then the complex part is assumed to be \b 0 as well,
          * because \b I is a digit in that case.
          *
@@ -1415,69 +1438,91 @@ namespace z
          * that the string is assumed to be in.
          *
          * \return \b True if the string contains only characters valid
-         * for conversion Into a complex number. \b False otherwise.
+         * for conversion Into a complex number, and is not null. \b False otherwise.
          *
          * \see isValue(Int) const
          */
-        template <typename CHAR>
-        bool string<CHAR>::isComplex(Int base) const
-        {
-            if (current_length-2 <= 0)
-                return std::complex<Float>(0,0);
+		template <typename CHAR>
+		bool string<CHAR>::isComplex(Int base) const
+		{
+			if (current_length-1 == 0)
+				return false;
 
-            if ((base <= 17) &&//doesn't work for bases >17
-                (string_array[current_length-2] == (CHAR)'i'))
-            {
-                if (current_length == 2)
-                    return true;
+			if (base <= 17) //bases >17 have 'i' as a digit
+			{
+				const string<CHAR> imag_s ('i');
 
-                Int imag_begin;
+				Int index = this->findLast(imag_s);
 
-                Int i = current_length-3;
-                bool done = false;
-                bool foundExp = false;
-                while (i && !done)
-                {
-                    if ((string_array[i] == (CHAR)'+') ||
-                         (string_array[i] == (CHAR)'-'))
-                    {
-                        if ((base <= 14) &&//doesn't work for bases >14
-                            !foundExp &&
-                            (i-1) &&
-                            ((string_array[i-1] == (CHAR)'E') ||
-                             (string_array[i-1] == (CHAR)'e')) )
-                        {
-                            foundExp = true;
-                        }
-                        else
-                        {
-                            done = true;
-                        }
-                    }
+				bool b_real = true;
+				bool b_imag = true;
 
-                    if (!done)
-                        i--;
-                }
+				if (index >= 0) //have a complex part
+				{
+					Int max = current_length-2;
 
-                imag_begin = i;
+					//real part comes after imaginary
+					if ((index < max) &&
+						((string_array[index+1] == '+') ||
+						(string_array[index+1] == '-')))
+					{
+						if (string_array[index+1] == '-')
+							b_real = this->substr(index+1, max).isValue(base);
+						else
+							b_real = this->substr(index+2, max).isValue(base);
 
+						if (index)
+							b_imag = this->substr(0, index-1).isValue(base);
+						else
+							b_imag = true;
+					}
+					else if (index < max) //extra characters at end
+					{
+						return false;
+					}
+					else //imaginary part comes after real part
+					{
+						const string<CHAR> imag_plus  ('+');
+						const string<CHAR> imag_minus ('-');
 
-                bool imag = substr(imag_begin, current_length-3).isValue(base);
+						Int signLoc = this->findAfter(imag_plus, 1);
+						if (signLoc < 0) signLoc = this->findAfter(imag_minus, 1);
 
-                bool real;
+						if (signLoc < 0) //no real part
+						{
+							if (index) //not just 'i'
+								b_imag = this->substr(0, index-1).isValue(base);
+						}
+						else //has a real part
+						{
+							if (index == signLoc + 1)
+							{
+								b_imag = true;
+							}
+							else
+							{
+								if (string_array[signLoc] == '-')
+									b_imag = this->substr(signLoc, index-1).isValue(base);
+								else
+									b_imag = this->substr(signLoc+1, index-1).isValue(base);
+							}
 
-                if (imag_begin)
-                    real = substr(0, imag_begin-1).isValue(base);
-                else
-                    real = true;
+							b_real = this->substr(0, signLoc-1).isValue(base);
+						}
+					}
+				}
+				else //no complex part
+				{
+					b_real = this->isValue(base);
+				}
 
-                return (real && imag);
-            }
-            else
-            {
-                return isValue(base);
-            }
-        }
+				return b_real && b_imag;
+			}
+			else //no complex part
+			{
+				return this->isValue(base);
+			}
+		}
 
 
         /**
