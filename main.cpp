@@ -9,24 +9,11 @@ int main()
 {
 	system::console console;
 
-	util::regex<char> regex ("\\l\\w*");
+	util::genericData* var = new util::genericDataString("3+i");
 
-	if (regex.bad())
-		console.writeln("Invalid regex formatting.");
-
-	core::stringStream<char> stream (cs("0123 _f0 = 10"));
-
-	Int found = regex.search(stream);
-
-	if (found > 0)
-	{
-		auto msg = cs("Found ")+regex.foundLen()+" characters at index ";
-		msg += cs(regex.foundAt())+" in input. (\"";
-		msg += regex.foundString()+"\")";
-		console.writeln(msg);
-	}
-	else
-		console.writeln("No string found matching regex.");
+	// console.writeln((var->complex()));
+	std::cout<< var->complex() << std::endl;
+	std::cout<< var->string().isComplex() << std::endl;
 
     return 0;
 }
