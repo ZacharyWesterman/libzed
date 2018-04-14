@@ -36,7 +36,7 @@ namespace z
         //"buffer" is assumed to be 2*num_bufsiz + 7 characters long
         //returns number of characters in resultant string
         template<typename CHAR>
-        static Int num_to_cstring(const Float& number, CHAR* buffer)
+        static Int num_to_cstring(Float number, CHAR* buffer, Int base)
         {
             Float_cast dbl_cst = {.value = number};
 
@@ -235,7 +235,96 @@ namespace z
                 return buffer_pos;
         }
 
+		//"buffer" is assumed to be 2*num_bufsiz + 7 characters long
+		//returns number of characters in resultant string
+		template<typename CHAR>
+		static Int int_to_cstring(Int number, CHAR* buffer, Int base)
+		{
+			Int buffer_pos, start;
 
+
+			if (number < 0)
+			{
+				buffer[0] = '-';
+				start = 1;
+			}
+			else if (number > 0)
+			{
+				start = 0;
+			}
+			else
+			{
+				buffer[0] = '0';
+				buffer[1] = 0;
+
+				return 2;
+			}
+
+			buffer_pos = start;
+
+			while (number > 0)
+			{
+				buffer[buffer_pos] = numeral(number % base);
+				number /= base;
+
+				buffer_pos++;
+			}
+
+			for (Int i=0; i<((buffer_pos-start)/2); i++)
+			{
+				Int from = i + start;
+				Int to = buffer_pos - 1 - i;
+
+				CHAR tmp = buffer[from];
+				buffer[from] = buffer[to];
+				buffer[to] = tmp;
+			}
+
+			return buffer_pos;
+		}
+
+		//"buffer" is assumed to be 2*num_bufsiz + 7 characters long
+		//returns number of characters in resultant string
+		template<typename CHAR>
+		static Int ptr_to_cstring(void* ptr, CHAR* buffer, Int base)
+		{
+			Int buffer_pos, start;
+			long long number = (long long)ptr;
+
+			if (number == 0)
+			{
+				buffer[0] = '0';
+				buffer[1] = 0;
+
+				return 2;
+			}
+			else
+			{
+				start = 0;
+			}
+
+			buffer_pos = start;
+
+			while (number > 0)
+			{
+				buffer[buffer_pos] = numeral(number % base);
+				number /= base;
+
+				buffer_pos++;
+			}
+
+			for (Int i=0; i<((buffer_pos-start)/2); i++)
+			{
+				Int from = i + start;
+				Int to = buffer_pos - 1 - i;
+
+				CHAR tmp = buffer[from];
+				buffer[from] = buffer[to];
+				buffer[to] = tmp;
+			}
+
+			return buffer_pos;
+		}
 
         /**
          * \brief A template class for character strings.
@@ -301,11 +390,14 @@ namespace z
                         <std::is_arithmetic<T>::value,T>::type>
             string(const T& number, Int base = 10);
 
+			template<typename T>
+            string(T* pointer, Int base = 16);
+
             template<
                 typename T, //numeric type
                 typename = typename std::enable_if
                         <std::is_arithmetic<T>::value,T>::type>
-            string(const std::complex<T>& number);
+            string(const std::complex<T>& number, Int base = 10);
 
 
 
@@ -569,7 +661,22 @@ namespace z
             //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
             CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-            current_length = num_to_cstring((Float)number, buffer) + 1;
+            current_length = num_to_cstring(number, buffer, base) + 1;
+
+            string_array = new CHAR[current_length];
+
+            for (Int i=0; i<current_length; i++)
+                string_array[i] = buffer[i];
+        }
+
+		template <typename CHAR>
+        template<typename T>
+        string<CHAR>::string(T* pointer, Int base)
+        {
+            //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
+            CHAR buffer[num_bufsiz + num_bufsiz + 7];
+
+            current_length = ptr_to_cstring(pointer, buffer, base) + 1;
 
             string_array = new CHAR[current_length];
 
@@ -591,14 +698,14 @@ namespace z
          */
         template<typename CHAR>
         template<typename T, typename>
-        string<CHAR>::string(const std::complex<T>& number)
+        string<CHAR>::string(const std::complex<T>& number, Int base)
         {
             if (number.imag() == 0)
             {
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-                current_length = num_to_cstring((Float)number.real(), buffer) + 1;
+                current_length = num_to_cstring((Float)number.real(), buffer, base) + 1;
 
                 string_array = new CHAR[current_length];
 
@@ -610,7 +717,7 @@ namespace z
                 //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
                 CHAR buffer[num_bufsiz + num_bufsiz + 8];
 
-                current_length = num_to_cstring((Float)number.imag(), buffer) + 2;
+                current_length = num_to_cstring((Float)number.imag(), buffer, base) + 2;
                 //append 'i', since imaginary value.
                 buffer[current_length-2] = (CHAR)105;
                 buffer[current_length-1] = (CHAR)0;
@@ -626,7 +733,7 @@ namespace z
                 CHAR real_buffer[num_bufsiz + num_bufsiz + 8];
                 CHAR imag_buffer[num_bufsiz + num_bufsiz + 8];
 
-                Int r_array_len = num_to_cstring((Float)number.real(), real_buffer) + 1;
+                Int r_array_len = num_to_cstring((Float)number.real(), real_buffer, base) + 1;
 
                 //append '+'(if positive imaginary part),
                 //since imaginary value comes next.
@@ -636,7 +743,7 @@ namespace z
                     r_array_len--;
 
 
-                Int i_array_len = num_to_cstring((Float)number.imag(), imag_buffer) + 2;
+                Int i_array_len = num_to_cstring((Float)number.imag(), imag_buffer, base) + 2;
                 //append 'i', since imaginary value.
                 imag_buffer[i_array_len-2] = (CHAR)105;
                 imag_buffer[i_array_len-1] = (CHAR)0;

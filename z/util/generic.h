@@ -22,6 +22,7 @@
 #include "generic/genericDataFloat.h"
 #include "generic/genericDataComplex.h"
 #include "generic/genericDataNull.h"
+#include "generic/genericDataPointer.h"
 
 #define g(D) z::util::generic(D)
 
@@ -46,6 +47,7 @@ namespace z
 			generic(const core::string<Char>&);
 			generic(const std::complex<Float>&);
 			generic(Float);
+			generic(void*);
 
 			template< typename T, //numeric type
 			typename = typename std::enable_if<std::is_integral<T>::value,T>::type>
@@ -53,8 +55,6 @@ namespace z
 			{
 				data = new genericDataInt(input);
 			}
-
-			// generic(void*);
 
 			~generic();
 
@@ -124,6 +124,11 @@ namespace z
 		generic::generic(Float input)
 		{
 			data = new genericDataFloat(input);
+		}
+
+		generic::generic(void* input)
+		{
+			data = new genericDataPointer(input);
 		}
 
 		generic::~generic()

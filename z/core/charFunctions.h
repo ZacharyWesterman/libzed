@@ -127,6 +127,17 @@ namespace z
                 return -1;
         }
 
+		Int numeral(Int value)
+		{
+			if ((value > 36) || (value < 1))
+				return '0';
+
+			if (value < 10)
+				return value + '0';
+			else
+				return (value - 10) + 'A';
+		}
+
         /**
          * \brief Check if the given character is numeric under
          * the given base.

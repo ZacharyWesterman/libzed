@@ -27,7 +27,7 @@ namespace z
 			bool isString() const;
 			bool isNull() const;
 
-			genericDataPointer* duplicate() {return new genericDataPointer();}
+			genericDataPointer* duplicate() {return new genericDataPointer(data);}
 		};
 
 		const Int genericDataPointer::integer() const

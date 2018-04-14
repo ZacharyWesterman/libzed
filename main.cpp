@@ -10,11 +10,13 @@ int main()
 {
 	system::console con;
 
-	core::array<util::generic> vals = {g(12345), g("Hello"), g(3.14)};
+	// core::array<util::generic> vals = {g(12345), g("Hello"), g(3.14)};
+	//
+	// util::generic var(vals);
+	//
+	// con.writeln(var.string());
 
-	util::generic var(vals);
-
-	con.writeln(var.string());
+	con.writeln(cs((void*)123456));
 
     return 0;
 }
