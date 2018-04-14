@@ -19,7 +19,7 @@
 #include "charFunctions.h"
 
 #define num_bufsiz 16
-#define num_precision 9
+#define num_precision 6
 
 //magic number for determining when to round numbers,
 //e.g. at the ~0.5 mark.
@@ -299,7 +299,7 @@ namespace z
                 typename T, //numeric type
                 typename = typename std::enable_if
                         <std::is_arithmetic<T>::value,T>::type>
-            string(const T& number);
+            string(const T& number, Int base = 10);
 
             template<
                 typename T, //numeric type
@@ -564,7 +564,7 @@ namespace z
          */
         template <typename CHAR>
         template<typename T, typename>
-        string<CHAR>::string(const T& number)
+        string<CHAR>::string(const T& number, Int base)
         {
             //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
             CHAR buffer[num_bufsiz + num_bufsiz + 7];

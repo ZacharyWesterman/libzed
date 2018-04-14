@@ -5,15 +5,16 @@
 
 using namespace z;
 
+
 int main()
 {
-	system::console console;
+	system::console con;
 
-	util::genericData* var = new util::genericDataString("3+i");
+	core::array<util::generic> vals = {g(12345), g("Hello"), g(3.14)};
 
-	// console.writeln((var->complex()));
-	std::cout<< var->complex() << std::endl;
-	std::cout<< var->string().isComplex() << std::endl;
+	util::generic var(vals);
+
+	con.writeln(var.string());
 
     return 0;
 }

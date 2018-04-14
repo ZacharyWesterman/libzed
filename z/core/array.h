@@ -72,6 +72,7 @@ namespace z
             array subset(Int, Int) const;
 
             inline Int size() const;
+			inline Int length() const {return size();}
 
             inline T& at(const Int);
             inline const T& at(const Int) const;

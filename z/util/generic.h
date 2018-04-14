@@ -15,36 +15,49 @@
 #include <z/math/factorial.h>
 
 
+#include "generic/genericData.h"
+
+#include "generic/genericDataString.h"
+#include "generic/genericDataInt.h"
+#include "generic/genericDataFloat.h"
+#include "generic/genericDataComplex.h"
+#include "generic/genericDataNull.h"
+
+#define g(D) z::util::generic(D)
+
 namespace z
 {
 	namespace util
 	{
-		class genericData
-		{
-		public:
-			virtual ~genericData() {}
-
-			virtual const Int integer() const = 0;
-			virtual const Float floating() const = 0;
-			virtual const std::complex<Float> complex() const = 0;
-			virtual const core::string<Char> string() const = 0;
-			virtual void* pointer() const = 0;
-
-			virtual bool isArithmetic() const = 0;
-			virtual bool isComplex() const = 0;
-			virtual bool isIntegral() const = 0;
-
-			virtual bool isPointer() const = 0;
-			virtual bool isString() const = 0;
-		};
-
-		class genericDataString : public genericData
+		class generic
 		{
 		private:
-			core::string<Char> data;
+			genericData* data;
+			core::array<generic> arrayData;
+
+			void dump();
 
 		public:
-			genericDataString(const core::string<Char>& input = core::string<Char>()) : data(input) {}
+			generic();
+			generic(const generic&);
+			generic(generic&&);
+
+			generic(const core::array<generic>&);
+			generic(const core::string<Char>&);
+			generic(const std::complex<Float>&);
+			generic(Float);
+
+			template< typename T, //numeric type
+			typename = typename std::enable_if<std::is_integral<T>::value,T>::type>
+			explicit generic(T input)
+			{
+				data = new genericDataInt(input);
+			}
+
+			// generic(void*);
+
+			~generic();
+
 
 			const Int integer() const;
 			const Float floating() const;
@@ -54,61 +67,252 @@ namespace z
 
 			bool isArithmetic() const;
 			bool isIntegral() const;
+			bool isFloating() const;
 			bool isComplex() const;
 
 			bool isPointer() const;
 			bool isString() const;
+			bool isArray() const;
+			bool isNull() const;
+
+			void reduce();
+
+			bool operator==(const generic&) const;
+			inline bool operator!=(const generic& other) const {return !(operator==(other));}
+
+			const generic& operator=(const generic&);
 		};
 
-		inline const Int genericDataString::integer() const
+		generic::generic()
 		{
-			return data.integer();
+			data = new genericDataNull();
 		}
 
-		inline const Float genericDataString::floating() const
+		generic::generic(const generic& other)
 		{
-			return data.value();
+			if (other.data)
+				data = other.data->duplicate();
+			else
+			{
+				data = NULL;
+				arrayData = other.arrayData;
+			}
 		}
 
-		inline const std::complex<Float> genericDataString::complex() const
+		generic::generic(generic&& other)
 		{
-			return data.complexValue();
+			data = other.data;
+			arrayData = other.arrayData;
 		}
 
-		inline const core::string<Char> genericDataString::string() const
+		generic::generic(const core::array<generic>& input)
 		{
-			return data;
+			data = NULL;
+			arrayData = input;
 		}
 
-		inline void* genericDataString::pointer() const
+		generic::generic(const core::string<Char>& input)
 		{
-			return NULL;
+			data = new genericDataString(input);
 		}
 
-		inline bool genericDataString::isArithmetic() const
+		generic::generic(const std::complex<Float>& input)
 		{
+			data = new genericDataComplex(input);
+		}
+
+		generic::generic(Float input)
+		{
+			data = new genericDataFloat(input);
+		}
+
+		generic::~generic()
+		{
+			dump();
+		}
+
+		void generic::dump()
+		{
+			if (data)
+				delete data;
+			else
+				arrayData.clear();
+		}
+
+		void generic::reduce()
+		{
+			if (!data) return;
+
+			if (data->isIntegral())
+			{
+				Int val = data->integer();
+				dump();
+				data = new genericDataInt(val);
+			}
+			else if (data->isFloating())
+			{
+				Float val = data->floating();
+				dump();
+				data = new genericDataFloat(val);
+			}
+			else if (data->isComplex())
+			{
+				std::complex<Float> val = data->complex();
+				dump();
+				data = new genericDataComplex(val);
+			}
+		}
+
+		bool generic::isArithmetic() const
+		{
+			if (data) return data->isArithmetic();
+
 			return false;
 		}
 
-		inline bool genericDataString::isIntegral() const
+		bool generic::isIntegral() const
 		{
+			if (data) return data->isIntegral();
+
 			return false;
 		}
 
-		inline bool genericDataString::isComplex() const
+		bool generic::isFloating() const
 		{
+			if (data) return data->isFloating();
+
 			return false;
 		}
 
-		inline bool genericDataString::isPointer() const
+		bool generic::isComplex() const
 		{
+			if (data) return data->isComplex();
+
 			return false;
 		}
 
-		inline bool genericDataString::isString() const
+		bool generic::isPointer() const
 		{
-			return true;
+			if (data) return data->isPointer();
+
+			return false;
 		}
+
+		bool generic::isString() const
+		{
+			if (data) return data->isString();
+
+			return false;
+		}
+
+		bool generic::isArray() const
+		{
+			return !data;
+		}
+
+		bool generic::isNull() const
+		{
+			if (data)
+				return data->isNull();
+			else
+				return !arrayData.length();
+		}
+
+		const Int generic::integer() const
+		{
+			if (data)
+				return data->integer();
+			else
+				return 0;
+		}
+
+		const Float generic::floating() const
+		{
+			if (data)
+				return data->floating();
+			else
+				return 0;
+		}
+
+		const std::complex<Float> generic::complex() const
+		{
+			if (data)
+				return data->complex();
+			else
+				return std::complex<Float>(0,0);
+		}
+
+		void* generic::pointer() const
+		{
+			if (data)
+				return data->pointer();
+			else
+				return NULL;
+		}
+
+		const core::string<Char> generic::string() const
+		{
+			if (data)
+				return data->string();
+			else
+			{
+				core::string<Char> result = "{";
+
+				for (Int i=0; i<arrayData.length(); i++)
+				{
+					if (i) result += ",";
+					result += arrayData[i].string();
+				}
+
+				result += "}";
+
+				return result;
+			}
+		}
+
+		bool generic::operator==(const generic& other) const
+		{
+			if (!other.data || !data)
+			{
+				if (!(other.data && data)) return false;
+
+				return other.arrayData == arrayData;
+			}
+			else if (other.isString() || isString())
+			{
+				return other.string() == string();
+			}
+			else if (other.isArithmetic() || isArithmetic())
+			{
+				return other.complex() == complex();
+			}
+			else if (other.isPointer() && isPointer())
+			{
+				return other.pointer() == pointer();
+			}
+			else
+			{
+				if (other.isPointer() || isPointer()) return false;
+
+				return true;
+			}
+		}
+
+		const generic& generic::operator=(const generic& other)
+		{
+			dump();
+
+			if (other.data)
+				data = other.data->duplicate();
+			else
+			{
+				data = NULL;
+				arrayData = other.arrayData;
+			}
+
+			return *this;
+		}
+
 	}
 }
 
