@@ -47,7 +47,7 @@ namespace z
 
 		const core::string<Char> genericDataPointer::string() const
 		{
-			return core::string<Char>("0x")+core::string<Char>(data, 16);
+			return core::string<Char>(data);
 		}
 
 		void* genericDataPointer::pointer() const

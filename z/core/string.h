@@ -524,7 +524,7 @@ namespace z
 
                 current_length++;
 
-                string_array = new char[current_length];
+                string_array = new CHAR[current_length];
 
                 for (Int i=0; i<current_length; i++)
                     string_array[i] = buffer[i];
@@ -1439,18 +1439,18 @@ namespace z
         bool string<CHAR>::isValue(Int base) const
         {
             Int start = 0;
-            bool isNegative = false;
+            // bool isNegative = false;
 
             if (string_array[0] == (CHAR)'-') //'-' character
             {
                 start = 1;
-                isNegative = true;
+                // isNegative = true;
             }
 
             bool pastDecimal = false;
             bool pastExponent = false;
             bool exponentLast = false;
-            bool expNegative = false;
+            // bool expNegative = false;
 
             Int length = current_length - 1;
 
@@ -1500,7 +1500,7 @@ namespace z
                     else
                         return false;
 
-                    expNegative = true;
+                    // expNegative = true;
                 }
                 else if (string_array[i] == (CHAR)'+')
                 {

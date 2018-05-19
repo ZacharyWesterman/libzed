@@ -1,5 +1,5 @@
 #include <z/system.h>
-// #include <z/util.h>
+#include <z/util.h>
 #include <z/core.h>
 #include <z/file.h>
 
@@ -10,17 +10,13 @@ int main()
 {
 	system::console con;
 
-	// core::array<util::generic> vals = {g(12345), g("Hello"), g(3.14)};
-	//
-	// util::generic var(vals);
-	//
-	// con.writeln(var.string());
+	util::generic var = core::array<util::generic>{23,"a"};
 
-	int* var = new int(23);
+	// int* var = new int(23);
 
-	core::string<char> st = 23;
+	// core::string<char> st = 23;
 
-	con.writeln(*var);
+	con.writeln(var.string());
 
-    // return 0;
+    return 0;
 }
