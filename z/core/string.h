@@ -286,44 +286,38 @@ namespace z
 		//"buffer" is assumed to be 2*num_bufsiz + 7 characters long
 		//returns number of characters in resultant string
 		template<typename CHAR>
-		static Int ptr_to_cstring(void* ptr, CHAR* buffer, Int base)
+		static Int ptr_to_cstring(void* ptr, CHAR* buffer)
 		{
-			Int buffer_pos, start;
+			Int buffer_pos;
 			long long number = (long long)ptr;
 
-			if (number == 0)
+			const Int buf_chars = sizeof(void*)-1+2; //0x01234567
+
+
+			buffer_pos = buf_chars;
+
+			while (buffer_pos >= 2)
 			{
-				buffer[0] = '0';
-				buffer[1] = 0;
+				buffer[buffer_pos] = numeral(number % 16);
+				number = number >> 4;
 
-				return 2;
-			}
-			else
-			{
-				start = 0;
-			}
-
-			buffer_pos = start;
-
-			while (number > 0)
-			{
-				buffer[buffer_pos] = numeral(number % base);
-				number /= base;
-
-				buffer_pos++;
+				buffer_pos--;
 			}
 
-			for (Int i=0; i<((buffer_pos-start)/2); i++)
-			{
-				Int from = i + start;
-				Int to = buffer_pos - 1 - i;
+			// for (Int i=0; i<((buffer_pos-start)/2); i++)
+			// {
+			// 	Int from = i + start;
+			// 	Int to = buffer_pos - 1 - i;
+			//
+			// 	CHAR tmp = buffer[from];
+			// 	buffer[from] = buffer[to];
+			// 	buffer[to] = tmp;
+			// }
+			buffer[0] = '0';
+			buffer[1] = 'x';
+			buffer[buf_chars+1] = 0;
 
-				CHAR tmp = buffer[from];
-				buffer[from] = buffer[to];
-				buffer[to] = tmp;
-			}
-
-			return buffer_pos;
+			return buf_chars+2;
 		}
 
         /**
@@ -371,18 +365,17 @@ namespace z
 
             string(string&& other);
 
-            template <typename CHAR_2,
-                      typename = typename std::enable_if
-                        <std::is_integral<CHAR_2>::value,CHAR_2>::type>
-            string(const CHAR_2* buffer);
+
+			string(const char* buffer);
+            string(const wchar_t* buffer);
 
             string(const string& other);
 
             template <typename CHAR_2>
             string(const string<CHAR_2>& other);
 
-            string(const char& character);
-            string(const wchar_t& character);
+            explicit string(const char& character);
+            explicit string(const wchar_t& character);
 
             template<
                 typename T, //numeric type
@@ -391,13 +384,13 @@ namespace z
             string(const T& number, Int base = 10);
 
 			template<typename T>
-            string(T* pointer, Int base = 16);
+            string(T* pointer);
 
             template<
                 typename T, //numeric type
                 typename = typename std::enable_if
                         <std::is_arithmetic<T>::value,T>::type>
-            string(const std::complex<T>& number, Int base = 10);
+            explicit string(const std::complex<T>& number, Int base = 10);
 
 
 
@@ -520,8 +513,29 @@ namespace z
 
         ///Constructor from null-terminated character string
         template <typename CHAR>
-        template <typename CHAR_2, typename>
-        string<CHAR>::string(const CHAR_2* buffer)
+        string<CHAR>::string(const char* buffer)
+        {
+			if (buffer)
+            {
+                current_length = 0;
+
+                while (buffer[current_length] != null)
+                    current_length++;
+
+                current_length++;
+
+                string_array = new char[current_length];
+
+                for (Int i=0; i<current_length; i++)
+                    string_array[i] = buffer[i];
+
+            }
+            else
+                string();
+        }
+
+		template <typename CHAR>
+        string<CHAR>::string(const wchar_t* buffer)
         {
             if (buffer)
             {
@@ -532,33 +546,47 @@ namespace z
 
                 current_length++;
 
-                string_array = new CHAR[current_length];
+                string_array = new wchar_t[current_length];
 
-                if (sizeof(CHAR_2) <= sizeof(CHAR))
+                for (Int i=0; i<current_length; i++)
+                    string_array[i] = buffer[i];
+
+            }
+            else
+                string();
+        }
+
+		template <>
+        string<char>::string(const wchar_t* buffer)
+        {
+            if (buffer)
+            {
+                current_length = 0;
+
+                while (buffer[current_length] != null)
+                    current_length++;
+
+                current_length++;
+
+                string_array = new char[current_length];
+
+
+                Int buf_i = 0;
+
+                for (Int i=0; i<current_length; i++)
                 {
-                    for (Int i=0; i<current_length; i++)
-                        string_array[i] = buffer[i];
-
-                }
-                else
-                {
-                    Int buf_i = 0;
-
-                    for (Int i=0; i<current_length; i++)
+                    if (buffer[buf_i] < 128)
+                        string_array[i] = buffer[buf_i];
+                    else
                     {
-                        if (buffer[buf_i] < 128)
-                            string_array[i] = buffer[buf_i];
-                        else
-                        {
-                            string_array[i] = (CHAR)'?';
+                        string_array[i] = '?';
 
-                            if ((buffer[buf_i] >= 0xD800) &&
-                                (buffer[buf_i] <= 0xD8FF))
-                                buf_i++;
-                        }
-
-                        buf_i++;
+                        if ((buffer[buf_i] >= 0xD800) &&
+                            (buffer[buf_i] <= 0xD8FF))
+                            buf_i++;
                     }
+
+                    buf_i++;
                 }
             }
             else
@@ -671,12 +699,12 @@ namespace z
 
 		template <typename CHAR>
         template<typename T>
-        string<CHAR>::string(T* pointer, Int base)
+        string<CHAR>::string(T* pointer)
         {
             //buffer assumed to be AT LEAST (2*num_bufsiz + 7) characters long!
             CHAR buffer[num_bufsiz + num_bufsiz + 7];
 
-            current_length = ptr_to_cstring(pointer, buffer, base) + 1;
+            current_length = ptr_to_cstring(pointer, buffer) + 1;
 
             string_array = new CHAR[current_length];
 

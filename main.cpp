@@ -1,5 +1,5 @@
 #include <z/system.h>
-#include <z/util.h>
+// #include <z/util.h>
 #include <z/core.h>
 #include <z/file.h>
 
@@ -16,7 +16,11 @@ int main()
 	//
 	// con.writeln(var.string());
 
-	con.writeln(cs((void*)123456));
+	int* var = new int(23);
 
-    return 0;
+	core::string<char> st = 23;
+
+	con.writeln(*var);
+
+    // return 0;
 }
