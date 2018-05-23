@@ -1,3 +1,5 @@
+#define Z_USE_NARROW
+
 #include <z/system.h>
 #include <z/util.h>
 #include <z/core.h>
@@ -10,13 +12,14 @@ int main()
 {
 	system::console con;
 
-	util::generic var = core::array<util::generic>{23,"a"};
+	// util::generic var = cs("1+7i");
+	core::string<char> var = "17+12i";
 
-	// int* var = new int(23);
+	// core::string<Char> result = var.boolean() ? "true" : "false";
 
-	// core::string<char> st = 23;
+	std::cout << var.complexValue() << std::endl;
 
-	con.writeln(var.string());
+	// con.writeln(result.complex());
 
     return 0;
 }

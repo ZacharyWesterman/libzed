@@ -59,6 +59,7 @@ namespace z
 			~generic();
 
 
+			const bool boolean() const;
 			const Int integer() const;
 			const Float floating() const;
 			const std::complex<Float> complex() const;
@@ -221,6 +222,14 @@ namespace z
 				return data->isNull();
 			else
 				return !arrayData.length();
+		}
+
+		const bool generic::boolean() const
+		{
+			if (data)
+				return data->boolean();
+			else
+				return (bool)arrayData.length();
 		}
 
 		const Int generic::integer() const

@@ -12,6 +12,7 @@ namespace z
 		public:
 			genericDataInt(Int input) : data(input) {}
 
+			const bool boolean() const;
 			const Int integer() const;
 			const Float floating() const;
 			const std::complex<Float> complex() const;
@@ -29,6 +30,11 @@ namespace z
 
 			genericDataInt* duplicate() {return new genericDataInt(data);}
 		};
+
+		const bool genericDataInt::boolean() const
+		{
+			return (bool)data;
+		}
 
 		const Int genericDataInt::integer() const
 		{

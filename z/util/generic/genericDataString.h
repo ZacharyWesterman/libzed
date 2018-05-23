@@ -12,6 +12,7 @@ namespace z
 		public:
 			genericDataString(const core::string<Char>& input = core::string<Char>()) : data(input) {}
 
+			const bool boolean() const;
 			const Int integer() const;
 			const Float floating() const;
 			const std::complex<Float> complex() const;
@@ -29,6 +30,13 @@ namespace z
 
 			genericDataString* duplicate() {return new genericDataString(data);}
 		};
+
+		const bool genericDataString::boolean() const
+		{
+			auto val = data.complexValue();
+
+			return (val.real() || val.imag());
+		}
 
 		const Int genericDataString::integer() const
 		{

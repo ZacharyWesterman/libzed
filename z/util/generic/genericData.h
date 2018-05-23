@@ -9,6 +9,7 @@ namespace z
 		public:
 			virtual ~genericData() {}
 
+			virtual const bool boolean() const = 0;
 			virtual const Int integer() const = 0;
 			virtual const Float floating() const = 0;
 			virtual const std::complex<Float> complex() const = 0;

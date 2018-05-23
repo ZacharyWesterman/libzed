@@ -12,6 +12,7 @@ namespace z
 		public:
 			genericDataPointer(void* input) : data(input) {}
 
+			const bool boolean() const;
 			const Int integer() const;
 			const Float floating() const;
 			const std::complex<Float> complex() const;
@@ -29,6 +30,11 @@ namespace z
 
 			genericDataPointer* duplicate() {return new genericDataPointer(data);}
 		};
+
+		const bool genericDataPointer::boolean() const
+		{
+			return (bool)data;
+		}
 
 		const Int genericDataPointer::integer() const
 		{

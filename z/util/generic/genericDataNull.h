@@ -9,6 +9,7 @@ namespace z
 		public:
 			genericDataNull() {}
 
+			const bool boolean() const;
 			const Int integer() const;
 			const Float floating() const;
 			const std::complex<Float> complex() const;
@@ -26,6 +27,11 @@ namespace z
 
 			genericDataNull* duplicate() {return new genericDataNull();}
 		};
+
+		const bool genericDataNull::boolean() const
+		{
+			return false;
+		}
 
 		const Int genericDataNull::integer() const
 		{
