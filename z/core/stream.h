@@ -146,6 +146,7 @@ namespace z
 			virtual void write(const core::string<CHAR>& input) = 0;
 
 			void writeln(const core::string<CHAR>&);
+			void writeln();
 
 			/**
 			 * \brief Tell whether we have consumed the last character in
@@ -198,6 +199,12 @@ namespace z
             this->write(input);
             this->write("\n");
         }
+
+		template <typename CHAR>
+		void outputStream<CHAR>::writeln()
+		{
+			this->write("\n");
+		}
 
         /**
          * \brief A template class for character streams.
