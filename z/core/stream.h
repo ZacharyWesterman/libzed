@@ -4,6 +4,7 @@
 
 #include "string.h"
 #include <z/int.h>
+#include <z/byte.h>
 
 namespace z
 {
@@ -34,6 +35,8 @@ namespace z
 			 * beginning of the stream.
 			 */
 			virtual CHAR get() = 0;
+
+			virtual byte getByte() = 0;
 
 			/**
 			 * \brief Pull an exact number of characters off the stream.
@@ -136,7 +139,9 @@ namespace z
 			 *
 			 * \param ch the character to add to the stream.
 			 */
-			virtual void put(CHAR ch) = 0;
+			virtual void put(CHAR) = 0;
+
+			virtual void putByte(byte) = 0;
 
 			/**
 			 * \brief Write the given string to the stream.

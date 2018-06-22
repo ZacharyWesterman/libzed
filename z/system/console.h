@@ -5,6 +5,7 @@
 #include <iostream>
 #include <z/core/stream.h>
 #include <z/int.h>
+#include <z/byte.h>
 
 namespace z
 {
@@ -26,9 +27,11 @@ namespace z
         {
         public:
             char get();
+			byte getByte();
             core::string<char> get(Int);
             void unget();
             void put(char);
+			void putByte(byte);
 
             core::string<char> read(char delim = 0);
             void write(const core::string<char>&);
@@ -44,6 +47,11 @@ namespace z
         {
             return std::cin.get();
         }
+
+		byte console::getByte()
+		{
+			return this->get();
+		}
 
         core::string<char> console::get(Int count)
         {
@@ -63,6 +71,11 @@ namespace z
         {
             std::cout << c;
         }
+
+		void console::putByte(byte b)
+		{
+			this->put(b);
+		}
 
         core::string<char> console::read(char delim)
         {

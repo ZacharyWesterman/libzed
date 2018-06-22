@@ -27,9 +27,11 @@ namespace z
             stringStream(const string<CHAR>& input = string<CHAR>());
 
             CHAR get();
+			byte getByte();
             string<CHAR> get(Int);
             void unget();
             void put(CHAR);
+			void putByte(byte);
 
             string<CHAR> read(CHAR delim = 0);
             void write(const string<CHAR>&);
@@ -59,6 +61,12 @@ namespace z
             return c;
         }
 
+		template <typename CHAR>
+		byte stringStream<CHAR>::getByte()
+		{
+			return this->get();
+		}
+
         template <typename CHAR>
         string<CHAR> stringStream<CHAR>::get(Int count)
         {
@@ -82,6 +90,12 @@ namespace z
         {
             data += string<CHAR>(c);
         }
+
+		template <typename CHAR>
+		void stringStream<CHAR>::putByte(byte b)
+		{
+			this->put(b);
+		}
 
         template <typename CHAR>
         string<CHAR> stringStream<CHAR>::read(CHAR delim)

@@ -13,6 +13,7 @@ namespace z
 		class binaryStream : public stream<CHAR>
 		{
 		private:
+			//TODO: array<byte> data;
 			array<CHAR> data;
 			Int index;
 
@@ -20,6 +21,7 @@ namespace z
 			binaryStream();
 
 			CHAR get();
+			// TODO: getByte() and putByte()
 			string<CHAR> get(Int);
 			void unget();
 			void put(CHAR);

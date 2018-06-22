@@ -38,9 +38,10 @@ namespace z
 			CHAR readChar();
 
         public:
-            inputStream(const core::string<char>&, encoding fileFormat = UTF_8);
+            inputStream(const core::string<char>&);
 
             CHAR get();
+			byte getByte();
             core::string<CHAR> get(Int);
             core::string<CHAR> read(CHAR delim = 0);
             void unget();
@@ -63,22 +64,32 @@ namespace z
 		 * \param fileName a string containing the name of the file to read from.
 		 */
         template <typename CHAR>
-        inputStream<CHAR>::inputStream(const core::string<char>& fileName, encoding fileFormat)
+        inputStream<CHAR>::inputStream(const core::string<char>& fileName)
         {
             filestream.open(fileName.str(), std::ios::in);
 
-			format = fileFormat;
+			format = UTF_8;
+        }
+
+		template <>
+        inputStream<char>::inputStream(const core::string<char>& fileName)
+        {
+            filestream.open(fileName.str(), std::ios::in);
+
+			format = ASCII;
         }
 
         template <typename CHAR>
         CHAR inputStream<CHAR>::get()
         {
-			char c[sizeof(CHAR)];
-
-			for (int i=0; i<sizeof(CHAR); i++) c[i] = filestream.get();
-
-			return *((CHAR*)c);
+			return readChar();
         }
+
+		template <typename CHAR>
+		byte inputStream<CHAR>::getByte()
+		{
+			return filestream.get();
+		}
 
         template <typename CHAR>
         core::string<CHAR> inputStream<CHAR>::get(Int count)
@@ -132,7 +143,7 @@ namespace z
 					if (chr != delim)
 					{
 						readStart = true;
-						result += core::string<CHAR>(chr);
+						result += chr;
 					}
 					else if (readStart)
 						done = true;
@@ -142,7 +153,7 @@ namespace z
 					if (!core::isWhiteSpace(chr))
 					{
 						readStart = true;
-						result += core::string<CHAR>(chr);
+						result += chr;
 					}
 					else if (readStart)
 						done = true;
@@ -198,8 +209,8 @@ namespace z
 		template <typename CHAR>
 		CHAR inputStream<CHAR>::readCharUTF_8()
 		{
-			char chr = filestream.get();
-			CHAR result;
+			uint32_t chr = filestream.get();
+			uint32_t result;
 
 			if (chr < 0x80)//1 char, ascii
 			{
@@ -277,10 +288,13 @@ namespace z
 			void writeCharUTF16(CHAR);
 			void writeCharUTF32(CHAR);
 
+			void writeChar(CHAR);
+
         public:
             outputStream(const core::string<char>&, bool append = false, encoding fileFormat = UTF_8);
 
             void put(CHAR);
+			void putByte(byte);
             void write(const core::string<CHAR>&);
 
 			void seek(Int);
@@ -314,10 +328,14 @@ namespace z
         template <typename CHAR>
         void outputStream<CHAR>::put(CHAR input)
         {
-			char* c = (char*)&input;
-
-			for (int i=0; i<sizeof(CHAR); i++) filestream.put(c[i]);
+			writeChar(input);
         }
+
+		template <typename CHAR>
+		void outputStream<CHAR>::putByte(byte input)
+		{
+			filestream.put(input);
+		}
 
 		template <typename CHAR>
 		void outputStream<CHAR>::seek(Int index)
@@ -336,27 +354,31 @@ namespace z
         {
 			for (Int i=0; i<input.length(); i++)
 			{
-				CHAR chr = input.at(i);
-
-				switch (format)
-				{
-				case ASCII:
-					writeCharASCII(chr);
-					break;
-				case UTF_8:
-					writeCharUTF_8(chr);
-					break;
-				case UTF16:
-					writeCharUTF16(chr);
-					break;
-				case UTF32:
-					writeCharUTF32(chr);
-					break;
-				default:
-					writeCharUTF_8(chr);
-				}
+				writeChar(input.at(i));
 			}
         }
+
+		template <typename CHAR>
+		void outputStream<CHAR>::writeChar(CHAR chr)
+		{
+			switch (format)
+			{
+			case ASCII:
+				writeCharASCII(chr);
+				break;
+			case UTF_8:
+				writeCharUTF_8(chr);
+				break;
+			case UTF16:
+				writeCharUTF16(chr);
+				break;
+			case UTF32:
+				writeCharUTF32(chr);
+				break;
+			default:
+				writeCharUTF_8(chr);
+			}
+		}
 
         template <typename CHAR>
         bool outputStream<CHAR>::empty()
