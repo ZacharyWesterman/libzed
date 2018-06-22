@@ -28,9 +28,10 @@
 #include "core/timer.h"
 #include "core/timeout.h"
 
-///Misc functions
+///Misc
 #include "core/pause.h"
 #include "core/charFunctions.h"
+#include "core/serializable.h"
 
 ///Streams
 #include "core/stream.h"

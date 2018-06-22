@@ -127,7 +127,7 @@ namespace z
                 return -1;
         }
 
-		Int numeral(Int value)
+		inline Int numeral(Int value)
 		{
 			if ((value > 36) || (value < 1))
 				return '0';

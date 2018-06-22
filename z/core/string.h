@@ -374,8 +374,8 @@ namespace z
             template <typename CHAR_2>
             string(const string<CHAR_2>& other);
 
-            explicit string(char character);
-            explicit string(wchar_t character);
+            string(const char character);
+            string(const wchar_t character);
 
             template<
                 typename T, //numeric type
@@ -647,7 +647,7 @@ namespace z
 
         ///Constructor from single narrow character
         template <typename CHAR>
-        string<CHAR>::string(char character)
+        string<CHAR>::string(const char character)
         {
             current_length = 2;
             string_array = new CHAR[2];
@@ -659,7 +659,7 @@ namespace z
 
         ///Constructor from single wide character
         template <typename CHAR>
-        string<CHAR>::string(wchar_t character)
+        string<CHAR>::string(const wchar_t character)
         {
             current_length = 2;
             string_array = new CHAR[2];

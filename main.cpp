@@ -7,7 +7,7 @@
 
 using namespace z;
 
-template <typename T>
+/*template <typename T>
 void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 {
 	// system::console con;
@@ -35,23 +35,48 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 	if (col % 5) con.writeln();
 
 	con.writeln("}");
-}
+}*/
 
 int main()
 {
-	// system::console con;
-	file::outputStream<char> con ("out.txt");
+	system::console con;
+	file::inputStream<char> stream ("out.byte");
 
-	core::binaryStream<int> stream;
+	core::string<char> data;
+	// core::string<char> data;
 
-	int intl[] = {0,1,1,2,3,5,8,13,21,34,55};
+	core::serialIn(&data, &stream);
+	// core::serialIn(&data, &stream);
 
-	for (int i=0; i<11; i++)
-		stream.put(intl[i]);
+	con.writeln(data);
+	// con.writeln(data);
+	// while (!output.empty())
+		// con.writeln(output.read());
 
-	// con.writeln(stream.get());
+	// char tmp[10];
 
-	print(stream, con);
+	// con.writeln(wctomb(tmp, L'it\'sƔtest'));
+	// core::string<byte> data2 = data;
+
+	// std::basic_ofstream<wchar_t> out("out.byte");
+	// con.writeln(data);
+	// out << ((byte)'A');
+	// output.put('A');
+	// output.write(data);
+	// con.writeln(output.empty());
+	// core::serialOut(data, &output);
+	// core::binaryStream<int> stream;
+
+	// std::wofstream out ("out.byte");
+
+	// out << L"Ɣtest";
+
+	// int intl[] = {0,1,1,2,3,5,8,13,21,34,55};
+
+	// for (int i=0; i<11; i++)
+		// stream.put(intl[i]);
+
+	// print(stream, con);
 
     return 0;
 }
