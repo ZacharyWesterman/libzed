@@ -104,6 +104,57 @@ string<utf32>::string(const string<ascii>& other)
 }
 
 template <>
+string<utf32>::string(const string<utf8>& other)
+{
+	data_len = (other.character_ct + 1) << 1;
+	character_ct = other.character_ct;
+
+	data = new uint8_t[data_len];
+
+	uint32_t* data32 = (uint32_t*)data;
+	data32[character_ct] = 0;
+
+	size_t pos = 0;
+	for (size_t i=0; i<=character_ct; i++)
+	{
+		uint32_t val = fromUTF8(&other.data[pos]);
+		pos += lenFromUTF8(&other.data[pos]);
+
+		data32[i] = val;
+	}
+}
+
+template <>
+string<utf16>::string(const string<utf16>& other)
+{
+	data_len = other.data_len << 1;
+	character_ct = other.character_ct;
+
+	data = new uint8_t[data_len];
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint16_t* data16 = (uint16_t*)other.data;
+
+	for (size_t i=0; i<=character_ct; i++)
+		data32[i] = data16[i];
+}
+
+template <>
+string<utf32>::string(const string<utf32>& other)
+{
+	data_len = other.data_len;
+	character_ct = other.character_ct;
+
+	data = new uint8_t[data_len];
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* other32 = (uint32_t*)other.data;
+
+	for (size_t i=0; i<=character_ct; i++)
+		data32[i] = other32[i];
+}
+
+template <>
 const uint8_t* string<utf32>::cstring() const
 {
 	return 0;

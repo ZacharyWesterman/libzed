@@ -109,6 +109,56 @@ string<utf8>::string(const string<ascii>& other)
 }
 
 template <>
+string<utf8>::string(const string<utf8>& other)
+{
+	data_len = other.data_len;
+	character_ct = other.character_ct;
+
+	data = new uint8_t[data_len];
+
+	for (size_t i=0; i<data_len; i++)
+		data[i] = other.data[i];
+}
+
+template <>
+string<utf8>::string(const string<utf16>& other)
+{
+	data_len = 1;
+	character_ct = other.character_ct;
+
+	uint16_t* data16 = (uint16_t*)other.data;
+
+	for (size_t i=0; i<other.data_len; i++)
+		data_len += lenToUTF8(data16[i]);
+
+	data = new uint8_t[data_len];
+	data[data_len-1] = 0;
+
+	size_t len = 0;
+	for (size_t i=0; i<character_ct; i++)
+		len += toUTF8(&data[len], data16[i]);
+}
+
+template <>
+string<utf8>::string(const string<utf32>& other)
+{
+	data_len = 1;
+	character_ct = other.character_ct;
+
+	uint32_t* data32 = (uint32_t*)other.data;
+
+	for (size_t i=0; i<other.data_len; i++)
+		data_len += lenToUTF8(data32[i]);
+
+	data = new uint8_t[data_len];
+	data[data_len-1] = 0;
+
+	size_t len = 0;
+	for (size_t i=0; i<character_ct; i++)
+		len += toUTF8(&data[len], data32[i]);
+}
+
+template <>
 const uint8_t* string<utf8>::cstring() const
 {
 	return data;

@@ -34,6 +34,12 @@ namespace z
 
 			//constructors from various string types
 			string(const string<ascii>&);
+			string(const string<utf8>&);
+			string(const string<utf16>&);
+			string(const string<utf32>&);
+
+			//copy constructor
+			string(string&&);
 
 			~string() {delete data;}
 
@@ -47,6 +53,14 @@ namespace z
 
 			constexpr encoding format() const {return E;}
 		};
+
+		template <encoding E>
+		string<E>::string(string<E>&& other)
+		{
+			data = other.data;
+			data_len = other.data_len;
+			character_ct = other.character_ct;
+		}
 
 		template <encoding E>
 		size_t string<E>::size() const
