@@ -226,48 +226,53 @@ namespace z
 		{
 			if (c)
 			{
-				uint32_t result = 0;
-				bool read = true;
+				uint32_t chr = c[0];
 
-				int i = 0;
-
-				while (read)
+				if (chr < 0x80)//0xxx xxxx
 				{
-					uint32_t chr = c[i];
-
-					if (chr && (i < 4))
+					return chr;
+				}
+				else if (chr < 0xC0)//10xx xxxx
+				{
+					return '?'; //invalid UTF8
+				}
+				else if (chr < 0xE0)//110x xxxx, 10xx xxxx
+				{
+					if (c[1])
 					{
-						if (chr < 0x80)//0xxx xxxx
-						{
-							result = chr;
-							read = false;
-						}
-						else if (chr < 0xC0)//10xx xxxx
-						{
-							result = (result << 6) + (chr & 0x3F);
-							i++;
-						}
-						else if (chr < 0xE0)//110x xxxx, 10xx xxxx
-						{
-							result = (chr & 0x1F);
-							i+=3; //1 more char after this
-						}
-						else if (chr < 0xF0)//1110 xxxx, 10xx xxxx, 10xx xxxx
-						{
-							result = (chr & 0x0F);
-							i+=2;//2 more chars after this
-						}
-						else//1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
-						{
-							result = (chr & 0x0F);
-							i++;
-						}
+						uint32_t res[] = {(chr & 0x1F) << 6,
+										(uint32_t)(c[1] & 0x3F)};
+
+						return res[0] + res[1];
 					}
-					else read = false;
+					else return '?';
+				}
+				else if (chr < 0xF0)//1110 xxxx, 10xx xxxx, 10xx xxxx
+				{
+					if (c[1] && c[2])
+					{
+						uint32_t res[] = {(chr & 0x0F) << 12,
+										(uint32_t)(c[1] & 0x3F) << 6,
+										(uint32_t)(c[2] & 0x3F)};
+
+						return res[0] + res[1] + res[2];
+					}
+					else return '?';
+				}
+				else//1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
+				{
+					if (c[1] && c[2] && c[3])
+					{
+						uint32_t res[] = {(chr & 0x0F) << 18,
+										(uint32_t)(c[1] & 0x3F) << 12,
+										(uint32_t)(c[2] & 0x3F) << 6,
+										(uint32_t)(c[3] & 0x3F)};
+
+						return res[0] + res[1] + res[2] + res[3];
+					}
+					else return '?';
 				}
 
-				//only get here when finished reading UTF8
-				return result;
 			}
 
 			return 0;
