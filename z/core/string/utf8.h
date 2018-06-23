@@ -69,7 +69,7 @@ string<utf8>::string(const wchar_t* str)
 		while (str[i])
 			len += lenToUTF8(str[i++]);
 
-		character_ct = i-1;
+		character_ct = len;
 
 		data = new uint8_t[len+1];
 		data[len] = 0;
@@ -181,4 +181,24 @@ template <>
 const uint32_t* string<utf8>::wstring() const
 {
 	return 0;
+}
+
+
+//operators
+
+template <>
+const string<utf8>& string<utf8>::operator+=(const string<utf8>& other)
+{
+	size_t new_size = character_ct + other.character_ct + 1;
+	this->increase(new_size);
+
+	for (size_t i=0; i<other.character_ct; i++)
+	{
+		data[character_ct + i] = other.data[i];
+	}
+	data[new_size-1] = 0;
+
+	character_ct += other.character_ct;
+
+	return *this;
 }

@@ -20,7 +20,8 @@ namespace z
 			size_t data_len;
 			size_t character_ct;
 
-			// void appendChar(uint32_t);
+			void increase(size_t);
+
 		public:
 			string(); //construct as null
 
@@ -57,6 +58,11 @@ namespace z
 			const uint32_t* wstring() const;
 
 			constexpr encoding format() const {return E;}
+
+
+			//operators
+			const string operator+(const string&);
+			const string& operator+=(const string&);
 		};
 
 		template <encoding E>
@@ -86,6 +92,54 @@ namespace z
 		size_t string<E>::length() const
 		{
 			return character_ct;
+		}
+
+		template <encoding E>
+		void string<E>::increase(size_t goal)
+		{
+			if (data_len >= goal) return;
+
+			uint8_t* old_data = data;
+			size_t old_data_len = data_len;
+
+			//~1.5x string growth
+			while (data_len < goal)
+				data_len += (data_len >> 1) + 4;
+			data = new uint8_t[data_len];
+
+			size_t remain = old_data_len;
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* old32 = (uint32_t*)old_data;
+
+			size_t i = 0;
+
+			//copy as much data as possible in 32-bit chunks
+			while (remain > 4)
+			{
+				data32[i] = old32[i];
+
+				i++;
+				remain -= sizeof(uint32_t);
+			}
+
+			//copy remaining amount
+			while (remain)
+			{
+				size_t offset = old_data_len - remain;
+				data[offset] = old_data[offset];
+
+				remain--;
+			}
+		}
+
+		///operators
+		template <encoding E>
+		const string<E> string<E>::operator+(const string<E>& other)
+		{
+			string<E> result = *this;
+			result += other;
+
+			return result;
 		}
 
 		#include "string/ascii.h"

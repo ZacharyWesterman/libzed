@@ -44,12 +44,16 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 
 int main()
 {
-	core::string<utf16> str = L"funnƔmun";
-	core::string<utf8> res = str;
+	core::string<utf32> str = L"funnƔmun";
+	core::string<utf32> res = "test,";
 
+	size_t size = res.length();
+	// res.increase();
+
+	core::string<utf8> tmp (res += str);
 	// core::string<utf32> B = A;
 
-	std::cout << str.length() << ' ' << res.length() << std::endl;
+	std::cout << tmp.cstring() << ' ' << size << "->" << res.length() << std::endl;
 
     return 0;
 }

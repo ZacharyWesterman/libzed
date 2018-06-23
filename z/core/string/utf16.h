@@ -187,3 +187,26 @@ const uint32_t* string<utf16>::wstring() const
 {
 	return 0;
 }
+
+
+///operators
+
+template <>
+const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)
+{
+	size_t new_size = character_ct + other.character_ct + 1;
+	this->increase(new_size << 1);
+
+	uint16_t* data16 = (uint16_t*)data;
+	uint16_t* other16 = (uint16_t*)other.data;
+
+	for (size_t i=0; i<other.character_ct; i++)
+	{
+		data16[character_ct + i] = other16[i];
+	}
+	data16[new_size-1] = 0;
+
+	character_ct += other.character_ct;
+
+	return *this;
+}
