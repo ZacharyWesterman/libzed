@@ -160,6 +160,17 @@ string<utf16>::string(const string<utf32>& other)
 }
 
 template <>
+uint32_t string<utf16>::at(size_t index) const
+{
+	uint16_t* data16 = (uint16_t*)data;
+
+	if (index < character_ct)
+		return data16[index];
+	else
+		return 0;
+}
+
+template <>
 const uint8_t* string<utf16>::cstring() const
 {
 	return 0;

@@ -106,6 +106,8 @@ string<utf8>::string(const string<ascii>& other)
 	size_t len = 0;
 	for (size_t i=0; i<character_ct; i++)
 		len += toUTF8(&data[len], other.data[i]);
+
+	character_ct = data_len - 1;
 }
 
 template <>
@@ -128,7 +130,7 @@ string<utf8>::string(const string<utf16>& other)
 
 	uint16_t* data16 = (uint16_t*)other.data;
 
-	for (size_t i=0; i<other.data_len; i++)
+	for (size_t i=0; i<=other.character_ct; i++)
 		data_len += lenToUTF8(data16[i]);
 
 	data = new uint8_t[data_len];
@@ -137,6 +139,8 @@ string<utf8>::string(const string<utf16>& other)
 	size_t len = 0;
 	for (size_t i=0; i<character_ct; i++)
 		len += toUTF8(&data[len], data16[i]);
+
+	character_ct = len;
 }
 
 template <>
@@ -147,7 +151,7 @@ string<utf8>::string(const string<utf32>& other)
 
 	uint32_t* data32 = (uint32_t*)other.data;
 
-	for (size_t i=0; i<other.data_len; i++)
+	for (size_t i=0; i<=other.character_ct; i++)
 		data_len += lenToUTF8(data32[i]);
 
 	data = new uint8_t[data_len];
@@ -156,7 +160,10 @@ string<utf8>::string(const string<utf32>& other)
 	size_t len = 0;
 	for (size_t i=0; i<character_ct; i++)
 		len += toUTF8(&data[len], data32[i]);
+
+	character_ct = len;
 }
+
 
 template <>
 const uint8_t* string<utf8>::cstring() const

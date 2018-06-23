@@ -27,6 +27,7 @@ namespace z
 			//single-char constructors
 			string(char);
 			string(wchar_t);
+			string(uint32_t);
 
 			//string literal constructors
 			string(const char*);
@@ -41,8 +42,12 @@ namespace z
 			//copy constructor
 			string(string&&);
 
+			//destructor
 			~string() {delete data;}
 
+
+			uint32_t at(size_t) const;
+			uint32_t operator[](size_t index) const {return at(index);}
 
 			size_t size() const;
 			size_t length() const;
@@ -60,6 +65,15 @@ namespace z
 			data = other.data;
 			data_len = other.data_len;
 			character_ct = other.character_ct;
+		}
+
+		template <encoding E>
+		uint32_t string<E>::at(size_t index) const
+		{
+			if (index < character_ct)
+				return data[index];
+			else
+				return 0;
 		}
 
 		template <encoding E>

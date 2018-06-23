@@ -125,7 +125,7 @@ string<utf32>::string(const string<utf8>& other)
 }
 
 template <>
-string<utf16>::string(const string<utf16>& other)
+string<utf32>::string(const string<utf16>& other)
 {
 	data_len = other.data_len << 1;
 	character_ct = other.character_ct;
@@ -152,6 +152,17 @@ string<utf32>::string(const string<utf32>& other)
 
 	for (size_t i=0; i<=character_ct; i++)
 		data32[i] = other32[i];
+}
+
+template <>
+uint32_t string<utf32>::at(size_t index) const
+{
+	uint32_t* data32 = (uint32_t*)data;
+
+	if (index < character_ct)
+		return data32[index];
+	else
+		return 0;
 }
 
 template <>
