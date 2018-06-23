@@ -1,10 +1,13 @@
-#define Z_USE_NARROW
+// #define Z_USE_NARROW
 
-#include <z/system.h>
-#include <z/util.h>
-#include <z/core.h>
-#include <z/file.h>
+// #include <z/system.h>
+// #include <z/util.h>
+// #include <z/core.h>
+// #include <z/file.h>
 
+#include <iostream>
+
+#include <z/core/string.h>
 using namespace z;
 
 /*template <typename T>
@@ -37,46 +40,16 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 	con.writeln("}");
 }*/
 
+
+
 int main()
 {
-	system::console con;
-	file::inputStream<char> stream ("out.byte");
+	core::string<ascii> A = "hello, a test";
 
-	core::string<char> data;
-	// core::string<char> data;
+	core::string<utf32> B = A;
+	// core::string<utf8> str = str2;//L"funnƔmun";
 
-	core::serialIn(&data, &stream);
-	// core::serialIn(&data, &stream);
-
-	con.writeln(data);
-	// con.writeln(data);
-	// while (!output.empty())
-		// con.writeln(output.read());
-
-	// char tmp[10];
-
-	// con.writeln(wctomb(tmp, L'it\'sƔtest'));
-	// core::string<byte> data2 = data;
-
-	// std::basic_ofstream<wchar_t> out("out.byte");
-	// con.writeln(data);
-	// out << ((byte)'A');
-	// output.put('A');
-	// output.write(data);
-	// con.writeln(output.empty());
-	// core::serialOut(data, &output);
-	// core::binaryStream<int> stream;
-
-	// std::wofstream out ("out.byte");
-
-	// out << L"Ɣtest";
-
-	// int intl[] = {0,1,1,2,3,5,8,13,21,34,55};
-
-	// for (int i=0; i<11; i++)
-		// stream.put(intl[i]);
-
-	// print(stream, con);
+	std::cout << B.length() << std::endl;
 
     return 0;
 }

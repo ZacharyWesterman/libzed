@@ -176,6 +176,122 @@ namespace z
             else
                 return false;
         }
+
+		//char c[4]
+		int toUTF8(uint8_t* c, uint32_t chr)
+		{
+			if (chr < 0x80)
+			{
+				c[0] = chr;
+				return 1;
+			}
+			else if (chr < 0x0800)
+			{
+				c[0] = ((chr >> 6) & 0x1F) + 0xC0;
+				c[1] = (chr & 0x3F) + 0x80;
+				return 2;
+			}
+			else if (chr < 0xFFFF)
+			{
+				c[0] = ((chr >> 12) & 0x0F) + 0xE0;
+				c[1] = ((chr >> 6) & 0x3F) + 0x80;
+				c[2] = (chr & 0x3F) + 0x80;
+				return 3;
+			}
+			else
+			{
+				c[0] = ((chr >> 18) & 0x07) + 0xF0;
+				c[1] = ((chr >> 12) & 0x3F) + 0x80;
+				c[2] = ((chr >> 6) & 0x3F) + 0x80;
+				c[3] = (chr & 0x3F) + 0x80;
+				return 4;
+			}
+		}
+
+		int lenToUTF8(uint32_t chr)
+		{
+			if (chr < 0x80)
+				return 1;
+			else if (chr < 0x0800)
+				return 2;
+			else if (chr < 0xFFFF)
+				return 3;
+			else
+				return 4;
+		}
+
+
+		//read UTF8 (with error compensation)
+		uint32_t fromUTF8(uint8_t* c)
+		{
+			if (c)
+			{
+				uint32_t result = 0;
+				bool read = true;
+
+				int i = 0;
+
+				while (read)
+				{
+					uint32_t chr = c[i];
+
+					if (chr && (i < 4))
+					{
+						if (chr < 0x80)//0xxx xxxx
+						{
+							result = chr;
+							read = false;
+						}
+						else if (chr < 0xC0)//10xx xxxx
+						{
+							result = (result << 6) + (chr & 0x3F);
+							i++;
+						}
+						else if (chr < 0xE0)//110x xxxx, 10xx xxxx
+						{
+							result = (chr & 0x1F);
+							i+=3; //1 more char after this
+						}
+						else if (chr < 0xF0)//1110 xxxx, 10xx xxxx, 10xx xxxx
+						{
+							result = (chr & 0x0F);
+							i+=2;//2 more chars after this
+						}
+						else//1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
+						{
+							result = (chr & 0x0F);
+							i++;
+						}
+					}
+					else read = false;
+				}
+
+				//only get here when finished reading UTF8
+				return result;
+			}
+
+			return 0;
+		}
+
+		int lenFromUTF8(uint8_t* c)
+		{
+			if (c)
+			{
+				uint8_t chr = c[0];
+
+				if (chr < 0x80)//0xxx xxxx
+					return 1;
+				else if (chr < 0xC0)//10xx xxxx
+					return 0; //not a starting char in UTF8 format
+				else if (chr < 0xE0)//110x xxxx, 10xx xxxx
+					return 2;
+				else if (chr < 0xF0)//1110 xxxx, 10xx xxxx, 10xx xxxx
+					return 3;
+				else//1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
+					return 4;
+			}
+			else return 0;
+		}
     }
 }
 
