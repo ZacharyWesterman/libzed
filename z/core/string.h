@@ -21,6 +21,7 @@ namespace z
 			size_t character_ct;
 
 			void increase(size_t);
+			constexpr size_t charSize() const;
 
 		public:
 			string(); //construct as null
@@ -59,10 +60,18 @@ namespace z
 
 			constexpr encoding format() const {return E;}
 
-
 			//operators
 			const string operator+(const string&);
 			const string& operator+=(const string&);
+
+			const string& operator=(const string&);
+
+			bool operator==(const string&) const;
+			bool operator!=(const string&) const;
+			bool operator>(const string&) const;
+			bool operator>=(const string&) const;
+			bool operator<(const string&) const;
+			bool operator<=(const string&) const;
 		};
 
 		template <encoding E>
@@ -141,6 +150,140 @@ namespace z
 
 			return result;
 		}
+
+		template <encoding E>
+		const string<E>& string<E>::operator=(const string<E>& other)
+		{
+			delete[] data;
+			data = new uint8_t[other.data_len];
+			data_len = other.data_len;
+			character_ct = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = data_len >> 2;
+
+			for (size_t i=0; i<len32; i++)
+				data32[i] = other32[i];
+
+			size_t len = len32 << 2;
+			for (size_t i=len; i<data_len; i++)
+				data[i] = other.data[i];
+
+			return *this;
+		}
+
+		template <encoding E>
+		bool string<E>::operator==(const string<E>& other) const
+		{
+			if (character_ct != other.character_ct)
+				return false;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (character_ct * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] != other32[i])
+					return false;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = character_ct * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] != other.data[i]);
+					return false;
+			}
+
+			return true;
+		}
+
+		template <encoding E>
+		bool string<E>::operator!=(const string<E>& other) const
+		{
+			return !operator==(other);
+		}
+
+		template <encoding E>
+		bool string<E>::operator>(const string<E>& other) const
+		{
+			size_t max_char;
+			if (character_ct < other.character_ct)
+				max_char = character_ct;
+			else
+				max_char = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (max_char * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] <= other32[i])
+					return false;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = max_char * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] <= other.data[i]);
+					return false;
+			}
+
+			if (character_ct <= other.character_ct)
+				return false;
+
+			return true;
+		}
+
+		template <encoding E>
+		bool string<E>::operator>=(const string<E>& other) const
+		{
+			return !operator<(other);
+		}
+
+		template <encoding E>
+		bool string<E>::operator>(const string<E>& other) const
+		{
+			size_t max_char;
+			if (character_ct < other.character_ct)
+				max_char = character_ct;
+			else
+				max_char = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (max_char * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] >= other32[i])
+					return false;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = max_char * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] >= other.data[i]);
+					return false;
+			}
+
+			if (character_ct >= other.character_ct)
+				return false;
+
+			return true;
+		}
+
+		template <encoding E>
+		bool string<E>::operator<=(const string<E>& other) const
+		{
+			return !operator>(other);
+		}
+
 
 		#include "string/ascii.h"
 		#include "string/utf8.h"

@@ -188,6 +188,11 @@ const uint32_t* string<utf16>::wstring() const
 	return 0;
 }
 
+template <>
+size_t string<utf16>::charSize() const
+{
+	return 2;
+}
 
 ///operators
 

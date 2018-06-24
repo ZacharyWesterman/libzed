@@ -168,6 +168,11 @@ const uint32_t* string<ascii>::wstring() const
 	return 0;
 }
 
+template <>
+size_t string<ascii>::charSize() const
+{
+	return 1;
+}
 
 ///operators
 
