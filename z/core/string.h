@@ -1,7 +1,79 @@
 #pragma once
 
+#include <type_traits>
+
 #include "charFunctions.h"
 #include <z/encoding.h>
+
+#ifndef Z_STR_INT_BUFSIZE
+	#define Z_STR_INT_BUFSIZE 64
+#endif
+
+#ifndef Z_STR_FLOAT_BUFSIZE
+	#define Z_STR_FLOAT_BUFSIZE 64
+#endif
+
+#ifndef Z_STR_FLOAT_PRECISION
+	#define Z_STR_FLOAT_PRECISION 6
+#endif
+
+#ifndef Z_STR_FLOAT_ROUND
+	#define Z_STR_FLOAT_ROUND 0.0000005
+#endif
+
+
+static size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
+{
+	if (integral)
+	{
+		size_t length = 0;
+
+		while (integral)
+		{
+			buf[length] = z::core::numeral(integral%base);
+			integral /= base;
+			length++;
+		}
+
+		return length;
+	}
+	else
+	{
+		buf[0] = '0';
+		return 1;
+	}
+}
+
+#include <iostream>
+static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
+{
+	if (fractional)
+	{
+		size_t length = 0;
+		double mult = base;
+
+		for (int i=0; i<precision; i++)
+		{
+			if (!(fractional || force)) return length;
+
+			char chr = z::core::numeral(fractional *= mult);
+			fractional -= (long)fractional;
+
+			buf[length] = (chr);
+
+			if (chr) length = i+1;
+		}
+
+		if (force)
+			return precision;
+		else
+			return length;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
 namespace z
 {
@@ -20,6 +92,7 @@ namespace z
 			size_t data_len;
 			size_t character_ct;
 
+			void initChar(uint32_t, size_t);
 			void increase(size_t);
 			constexpr size_t charSize() const;
 
@@ -34,6 +107,16 @@ namespace z
 			//string literal constructors
 			string(const char*);
 			string(const wchar_t*);
+
+			//constructors from numerical types
+			string(long,
+				int base = 10,
+				int padSize = 0);
+
+			string(double,
+				int base = 10,
+				int precision = 0,
+				int padSize = 0);
 
 			//constructors from various string types
 			string(const string<ascii>&);
@@ -60,8 +143,41 @@ namespace z
 
 			constexpr encoding format() const {return E;}
 
+			///analyzers
+			int count(const string&);
+
+			int find(const string&, int occurrence = 1) const;
+			int findLast(const string&, int occurrence = 1) const;
+			int findAfter(const string&, size_t) const;
+			int findBefore(const string&, size_t) const;
+
+			int foundAt(const string&, size_t) const;
+			int foundEndAt(const string&, size_t) const;
+
+			bool beginsWith(const string&) const;
+			bool endsWith(const string&) const;
+
+			///mutators
+			string substr(size_t, int);
+
+			void append(const string&);
+			void insert(const string&, size_t);
+			void remove(const string&, int occurrence = 0);
+			void remove(size_t, int);
+
+			void replace(const string&, const string&, int occurrence = 0);
+			void replace(size_t, int, const string&);
+
+			void padLeft(const string&, int);
+			void padRight(const string&, int);
+
+			void unPadLeft(const string&);
+			void unPadRight(const string&);
+			void cutDuplicates(const string&);
+
+
 			//operators
-			const string operator+(const string&);
+			string operator+(const string&);
 			const string& operator+=(const string&);
 
 			const string& operator=(const string&);
@@ -73,6 +189,92 @@ namespace z
 			bool operator<(const string&) const;
 			bool operator<=(const string&) const;
 		};
+
+
+		template <encoding E>
+		string<E>::string(double value, int base, int precision, int padSize)
+		{
+			uint8_t ibuf[Z_STR_INT_BUFSIZE];
+			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
+
+			union float_cast
+			{
+				double fval;
+				unsigned long ival;
+
+				struct
+				{
+					unsigned long mantissa : 52;
+					unsigned long exponent : 11;
+					unsigned long sign : 1;
+				};
+			};
+			float_cast number;
+			number.fval = value;
+
+			bool negative = number.sign;
+			number.sign = 0;
+			bool force = true;
+
+			if ((base < 2) || (base > 36)) base = 10;
+			if (precision <= 0)
+			{
+				precision = Z_STR_FLOAT_PRECISION;
+				force = false;
+			}
+
+			//integral and fractional parts of the number
+			unsigned long integral;
+			double fractional;
+
+			if (number.exponent < 1023)//x2^neg
+			{
+				integral = 0;
+			}
+			else if (number.exponent > 1023)//x2^(pos)
+			{
+				uint32_t expo = number.exponent - 1023;
+				integral = (1 << expo) + (number.mantissa >> (52 - expo));
+			}
+			else //x2^0
+			{
+				integral = 1;
+			}
+
+			fractional = number.fval - (double)integral;
+			// number.exponent - 1023;
+
+			size_t ibufsiz = integralBuf(integral, base, ibuf);
+			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+
+			//initialize string data
+			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz;
+			if (character_ct < padSize)
+				character_ct += (padSize -= character_ct);
+
+			data_len = (character_ct + 1) * this->charSize();
+			data = new uint8_t[data_len];
+
+			if (negative) this->initChar('-', 0);
+
+			size_t pos = negative;
+
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<ibufsiz; i++)
+				this->initChar(ibuf[ibufsiz-i-1], pos++);
+
+			if (fractional)
+			{
+				this->initChar('.', pos++);
+
+				for (size_t i=0; i<fbufsiz; i++)
+					this->initChar(fbuf[i],pos++);
+			}
+
+			this->initChar(0,character_ct);
+		}
 
 		template <encoding E>
 		string<E>::string(string<E>&& other)
@@ -143,7 +345,7 @@ namespace z
 
 		///operators
 		template <encoding E>
-		const string<E> string<E>::operator+(const string<E>& other)
+		string<E> string<E>::operator+(const string<E>& other)
 		{
 			string<E> result = *this;
 			result += other;
@@ -221,22 +423,22 @@ namespace z
 
 			for (size_t i=0; i<len32; i++)
 			{
-				if (data32[i] <= other32[i])
-					return false;
+				if (data32[i] > other32[i])
+					return true;
 			}
 
 			size_t len = len32 << 2;
 			size_t max = max_char * this->charSize();
 			for (size_t i=len; i<max; i++)
 			{
-				if (data[i] <= other.data[i]);
-					return false;
+				if (data[i] > other.data[i]);
+					return true;
 			}
 
-			if (character_ct <= other.character_ct)
-				return false;
+			if (character_ct > other.character_ct)
+				return true;
 
-			return true;
+			return false;
 		}
 
 		template <encoding E>
@@ -246,7 +448,7 @@ namespace z
 		}
 
 		template <encoding E>
-		bool string<E>::operator>(const string<E>& other) const
+		bool string<E>::operator<(const string<E>& other) const
 		{
 			size_t max_char;
 			if (character_ct < other.character_ct)
@@ -260,22 +462,22 @@ namespace z
 
 			for (size_t i=0; i<len32; i++)
 			{
-				if (data32[i] >= other32[i])
-					return false;
+				if (data32[i] < other32[i])
+					return true;
 			}
 
 			size_t len = len32 << 2;
 			size_t max = max_char * this->charSize();
 			for (size_t i=len; i<max; i++)
 			{
-				if (data[i] >= other.data[i]);
-					return false;
+				if (data[i] < other.data[i]);
+					return true;
 			}
 
-			if (character_ct >= other.character_ct)
-				return false;
+			if (character_ct < other.character_ct)
+				return true;
 
-			return true;
+			return false;
 		}
 
 		template <encoding E>

@@ -169,6 +169,12 @@ const uint32_t* string<ascii>::wstring() const
 }
 
 template <>
+void string<ascii>::initChar(uint32_t chr, size_t index)
+{
+	data[index] = chr;
+}
+
+template <>
 size_t string<ascii>::charSize() const
 {
 	return 1;
