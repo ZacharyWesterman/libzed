@@ -33,6 +33,17 @@ string<ascii>::string(wchar_t chr)
 }
 
 template <>
+string<ascii>::string(const uint32_t& chr)
+{
+	data = new uint8_t[2];
+	data[0] = (chr > 0xFF) ? '?' : chr;
+	data[1] = 0;
+
+	data_len = 2;
+	character_ct = 1;
+}
+
+template <>
 string<ascii>::string(const char* str)
 {
 	if (str)

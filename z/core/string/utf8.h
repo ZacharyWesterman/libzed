@@ -34,6 +34,18 @@ string<utf8>::string(wchar_t chr)
 }
 
 template <>
+string<utf8>::string(const uint32_t& chr)
+{
+	data = new uint8_t[5];
+	data_len = 5;
+
+	int len = toUTF8(data, chr);
+	data[len] = 0;
+
+	character_ct = 1;
+}
+
+template <>
 string<utf8>::string(const char* str)
 {
 	if (str)

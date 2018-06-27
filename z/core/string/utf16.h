@@ -37,6 +37,19 @@ string<utf16>::string(wchar_t chr)
 }
 
 template <>
+string<utf16>::string(const uint32_t& chr)
+{
+	data = new uint8_t[4];
+	uint16_t* data16 = (uint16_t*)data;
+
+	data16[0] = (chr > 0xFFFF) ? '?' : chr;
+	data16[1] = 0;
+
+	data_len = 4;
+	character_ct = 1;
+}
+
+template <>
 string<utf16>::string(const char* str)
 {
 	if (str)
@@ -160,7 +173,7 @@ string<utf16>::string(const string<utf32>& other)
 }
 
 template <>
-uint32_t string<utf16>::at(size_t index) const
+const uint32_t string<utf16>::at(size_t index) const
 {
 	uint16_t* data16 = (uint16_t*)data;
 
