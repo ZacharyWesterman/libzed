@@ -108,7 +108,7 @@ namespace z
 			size_t character_ct;
 
 			void initChar(uint32_t, size_t);
-			void increase(size_t);
+			void increase(size_t); //increase number of string bytes up to the given amount
 			constexpr size_t charSize() const;
 
 		public:
@@ -175,20 +175,20 @@ namespace z
 			///mutators
 			string substr(size_t, int);
 
-			void append(const string&);
-			void insert(const string&, size_t);
-			void remove(const string&, int occurrence = 0);
-			void remove(size_t, int);
+			const string& append(const string& other) {return operator+=(other);}
+			const string& insert(const string&, size_t);
+			const string& remove(const string&, int occurrence = 0);
+			const string& remove(size_t, int);
 
-			void replace(const string&, const string&, int occurrence = 0);
-			void replace(size_t, int, const string&);
+			const string& replace(const string&, const string&, int occurrence = 0);
+			const string& replace(size_t, int, const string&);
 
-			void padLeft(const string&, int);
-			void padRight(const string&, int);
+			const string& padLeft(const string&, size_t);
+			const string& padRight(const string&, size_t);
 
-			void unPadLeft(const string&);
-			void unPadRight(const string&);
-			void cutDuplicates(const string&);
+			const string&  unPadLeft(const string&);
+			const string&  unPadRight(const string&);
+			const string&  cutDuplicates(const string&);
 
 
 			//operators

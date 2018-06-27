@@ -209,6 +209,50 @@ size_t string<utf32>::charSize() const
 	return 4;
 }
 
+///mutators
+template <>
+string<utf32> string<utf32>::substr(size_t index, int count)
+{
+	string<utf32> result;
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* result32;
+
+	if (index >= character_ct) return result;
+
+	if (count < 0)
+	{
+		count = -count;
+		if ((size_t)count > index+1) count = index+1;
+		result.increase((1+count) << 2);
+
+		result32 = (uint32_t*)result.data;
+
+		size_t beg = index - count + 1;
+		for (size_t i=beg; i<=index; i++)
+		{
+			result32[index-i] = data32[i];
+		}
+		result32[count] = 0;
+		result.character_ct = count;
+	}
+	else if (count)
+	{
+		if ((size_t)count > index+1) count = index+1;
+		result.increase((1+count) << 2);
+
+		result32 = (uint32_t*)result.data;
+
+		size_t end = index + count;
+		for (size_t i=index; i<end; i++)
+			result32[i-index] = data32[i];
+
+		result32[count] = 0;
+		result.character_ct = count;
+	}
+
+	return result;
+}
+
 ///operators
 
 template <>

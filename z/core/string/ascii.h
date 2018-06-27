@@ -191,6 +191,44 @@ size_t string<ascii>::charSize() const
 	return 1;
 }
 
+///mutators
+template <>
+string<ascii> string<ascii>::substr(size_t index, int count)
+{
+	string<ascii> result;
+
+	if (index >= character_ct) return result;
+
+	if (count < 0)
+	{
+		count = -count;
+		if ((size_t)count > index+1) count = index+1;
+		result.increase(1+count);
+
+		size_t beg = index - count + 1;
+		for (size_t i=beg; i<=index; i++)
+		{
+			result.data[index-i] = data[i];
+		}
+		result.data[count] = 0;
+		result.character_ct = count;
+	}
+	else if (count)
+	{
+		if ((size_t)count > index+1) count = index+1;
+		result.increase(1+count);
+
+		size_t end = index + count;
+		for (size_t i=index; i<end; i++)
+			result.data[i-index] = data[i];
+
+		result.data[count] = 0;
+		result.character_ct = count;
+	}
+
+	return result;
+}
+
 ///operators
 
 template <>

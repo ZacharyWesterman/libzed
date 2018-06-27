@@ -214,6 +214,50 @@ size_t string<utf16>::charSize() const
 	return 2;
 }
 
+///mutators
+template <>
+string<utf16> string<utf16>::substr(size_t index, int count)
+{
+	string<utf16> result;
+	uint16_t* data16 = (uint16_t*)data;
+	uint16_t* result16;
+
+	if (index >= character_ct) return result;
+
+	if (count < 0)
+	{
+		count = -count;
+		if ((size_t)count > index+1) count = index+1;
+		result.increase((1+count) << 1);
+
+		result16 = (uint16_t*)result.data;
+
+		size_t beg = index - count + 1;
+		for (size_t i=beg; i<=index; i++)
+		{
+			result16[index-i] = data16[i];
+		}
+		result16[count] = 0;
+		result.character_ct = count;
+	}
+	else if (count)
+	{
+		if ((size_t)count > index+1) count = index+1;
+		result.increase((1+count) << 1);
+
+		result16 = (uint16_t*)result.data;
+
+		size_t end = index + count;
+		for (size_t i=index; i<end; i++)
+			result16[i-index] = data16[i];
+
+		result16[count] = 0;
+		result.character_ct = count;
+	}
+
+	return result;
+}
+
 ///operators
 
 template <>

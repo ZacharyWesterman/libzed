@@ -207,6 +207,18 @@ size_t string<utf8>::charSize() const
 	return 1;
 }
 
+///mutators
+//TODO: do not reverse multibyte characters!!
+template <>
+string<utf8> string<utf8>::substr(size_t index, int count)
+{
+	string<utf8> result;
+
+	///!!!
+
+	return result;
+}
+
 //operators
 
 template <>
