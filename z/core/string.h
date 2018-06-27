@@ -226,6 +226,8 @@ namespace z
 			character_ct = ibufsiz + negative;
 			if (character_ct < padSize)
 				character_ct += (padSize -= character_ct);
+			else
+				padSize = 0;
 
 			data_len = (character_ct + 1) * this->charSize();
 			data = new uint8_t[data_len];
@@ -366,6 +368,8 @@ namespace z
 			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
 			if (character_ct < padSize)
 				character_ct += (padSize -= character_ct);
+			else
+				padSize = 0;
 
 			data_len = (character_ct + 1) * this->charSize();
 			data = new uint8_t[data_len];

@@ -45,11 +45,11 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 int main()
 {
 	// double val = 123;
-	double* ptr = new double;
+	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<ascii> str = ptr;
+	core::string<ascii> str (123, 3, 2);
 
-	str = str[1];
+	// str = str[1];
 	// core::string<utf32> res = "abcee";
 
 	// size_t size = res.length();
