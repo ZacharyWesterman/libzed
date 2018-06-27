@@ -29,6 +29,14 @@
 	#define Z_STR_FLOAT_ROUND 0.0000005
 #endif
 
+#ifndef Z_STR_POINTER_FORCE
+	#define Z_STR_POINTER_FORCE true
+#endif
+
+#ifndef Z_STR_POINTER_CHARS
+	#define Z_STR_POINTER_CHARS 8
+#endif
+
 
 static size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
 {
@@ -119,7 +127,11 @@ namespace z
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
 			string(INT, int base = 10, int padSize = 0);
 
+			template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value,PTR>::type>
+			string(PTR);
+
 			string(double, int base = 10, int precision = 0, int padSize = 0);
+
 
 			//constructors from various string types
 			string(const string<ascii>&);
@@ -227,6 +239,47 @@ namespace z
 
 			for (size_t i=0; i<ibufsiz; i++)
 				this->initChar(ibuf[ibufsiz-i-1], pos++);
+		}
+
+		template <encoding E>
+		template <typename PTR, typename>
+		string<E>::string(PTR pointer)
+		{
+			uint8_t pbuf[Z_STR_INT_BUFSIZE];
+
+			union ptv
+			{
+				PTR pval;
+				unsigned long ival;
+			};
+			ptv ptr;
+			ptr.pval = pointer;
+
+			size_t pbufsiz = integralBuf(ptr.ival, 16, pbuf);
+			size_t padSize;
+
+			//initialize string data
+			if (Z_STR_POINTER_FORCE && (pbufsiz < Z_STR_POINTER_CHARS))
+				padSize = Z_STR_POINTER_CHARS - pbufsiz;
+			else
+				padSize = 0;
+
+			character_ct = padSize + pbufsiz + 2;
+			data_len = (character_ct + 1) * this->charSize();
+			data = new uint8_t[data_len];
+
+			// if (negative) this->initChar('-', 0);
+
+			size_t pos = 0;
+
+			this->initChar('0',pos++);
+			this->initChar('x',pos++);
+
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<pbufsiz; i++)
+				this->initChar(pbuf[pbufsiz-i-1], pos++);
 		}
 
 		template <encoding E>
