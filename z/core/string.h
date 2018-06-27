@@ -109,21 +109,17 @@ namespace z
 			//single-char constructors
 			string(char);
 			string(wchar_t);
-			string(uint32_t);
+			explicit string(const uint32_t&);
 
 			//string literal constructors
 			string(const char*);
 			string(const wchar_t*);
 
 			//constructors from numerical types
-			string(long,
-				int base = 10,
-				int padSize = 0);
+			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
+			string(INT, int base = 10, int padSize = 0);
 
-			string(double,
-				int base = 10,
-				int precision = 0,
-				int padSize = 0);
+			string(double, int base = 10, int precision = 0, int padSize = 0);
 
 			//constructors from various string types
 			string(const string<ascii>&);
@@ -199,6 +195,41 @@ namespace z
 
 
 		template <encoding E>
+		template <typename INT, typename>
+		string<E>::string(INT value, int base, int padSize)
+		{
+			uint8_t ibuf[Z_STR_INT_BUFSIZE];
+			if ((base < 2) || (base > 36)) base = 10;
+
+			bool negative = false;
+			if (value < 0)
+			{
+				value = -value;
+				negative = true;
+			}
+
+			size_t ibufsiz = integralBuf(value, base, ibuf);
+
+			//initialize string data
+			character_ct = ibufsiz + negative;
+			if (character_ct < padSize)
+				character_ct += (padSize -= character_ct);
+
+			data_len = (character_ct + 1) * this->charSize();
+			data = new uint8_t[data_len];
+
+			if (negative) this->initChar('-', 0);
+
+			size_t pos = negative;
+
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<ibufsiz; i++)
+				this->initChar(ibuf[ibufsiz-i-1], pos++);
+		}
+
+		template <encoding E>
 		string<E>::string(double value, int base, int precision, int padSize)
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
@@ -222,7 +253,7 @@ namespace z
 
 			bool negative = number.sign;
 			number.sign = 0;
-			bool force = false;
+			bool force = true;
 
 			if ((base < 2) || (base > 36)) base = 10;
 			if (precision <= 0)
