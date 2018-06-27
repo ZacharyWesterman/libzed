@@ -13,8 +13,16 @@
 	#define Z_STR_FLOAT_BUFSIZE 64
 #endif
 
+#ifndef Z_STR_EXP_BUFSIZE
+	#define Z_STR_EXP_BUFSIZE 10
+#endif
+
 #ifndef Z_STR_FLOAT_PRECISION
 	#define Z_STR_FLOAT_PRECISION 6
+#endif
+
+#ifndef Z_STR_EXP_SCIENTIFIC
+	#define Z_STR_EXP_SCIENTIFIC 50
 #endif
 
 #ifndef Z_STR_FLOAT_ROUND
@@ -44,7 +52,6 @@ static size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
 	}
 }
 
-#include <iostream>
 static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
 {
 	if (fractional)
@@ -61,7 +68,7 @@ static size_t fractionalBuf(double fractional, int base, int precision, bool for
 
 			buf[length] = (chr);
 
-			if (chr) length = i+1;
+			if (chr != '0') length = i+1;
 		}
 
 		if (force)
@@ -196,6 +203,7 @@ namespace z
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
+			uint8_t ebuf[Z_STR_EXP_BUFSIZE];
 
 			union float_cast
 			{
@@ -205,8 +213,8 @@ namespace z
 				struct
 				{
 					unsigned long mantissa : 52;
-					unsigned long exponent : 11;
-					unsigned long sign : 1;
+					unsigned int exponent : 11;
+					bool sign : 1;
 				};
 			};
 			float_cast number;
@@ -214,7 +222,7 @@ namespace z
 
 			bool negative = number.sign;
 			number.sign = 0;
-			bool force = true;
+			bool force = false;
 
 			if ((base < 2) || (base > 36)) base = 10;
 			if (precision <= 0)
@@ -226,6 +234,27 @@ namespace z
 			//integral and fractional parts of the number
 			unsigned long integral;
 			double fractional;
+			unsigned long exponent = 0;
+			bool negexponent = false;
+
+			if ((1023 + Z_STR_EXP_SCIENTIFIC) <= number.exponent)// pos exponent <= x2^50
+			{
+				while (number.fval >= base)
+				{
+					number.fval /= base;
+					exponent++;
+				}
+			}
+			else if ((1023 - Z_STR_EXP_SCIENTIFIC) >= number.exponent)// neg exponent >= x2^-50
+			{
+				negexponent = true;
+
+				while (number.exponent < 1023)
+				{
+					number.fval *= base;
+					exponent++;
+				}
+			}
 
 			if (number.exponent < 1023)//x2^neg
 			{
@@ -241,14 +270,16 @@ namespace z
 				integral = 1;
 			}
 
+
 			fractional = number.fval - (double)integral;
 			// number.exponent - 1023;
 
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+			size_t ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
 
 			//initialize string data
-			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz;
+			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
 			if (character_ct < padSize)
 				character_ct += (padSize -= character_ct);
 
@@ -271,6 +302,16 @@ namespace z
 
 				for (size_t i=0; i<fbufsiz; i++)
 					this->initChar(fbuf[i],pos++);
+			}
+
+			if (exponent)
+			{
+				this->initChar('e', pos++);
+				if (negexponent)
+					this->initChar('-', pos++);
+
+				for (size_t i=0; i<ebufsiz; i++)
+					this->initChar(ebuf[ebufsiz-i-1],pos++);
 			}
 
 			this->initChar(0,character_ct);

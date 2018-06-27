@@ -44,9 +44,9 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 
 int main()
 {
-	double val = 1234567891011121314.0;
+	double val = 0.000000000000000123;
 	std::cout << val << std::endl;
-	core::string<ascii> str;
+	core::string<ascii> str = val;
 	// core::string<utf32> res = "abcee";
 
 	// size_t size = res.length();
