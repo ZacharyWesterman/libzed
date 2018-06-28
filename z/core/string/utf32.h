@@ -106,7 +106,7 @@ string<utf32>::string(const wchar_t* str)
 template <>
 string<utf32>::string(const string<ascii>& other)
 {
-	data_len = other.data_len << 2;
+	data_len = (other.character_ct + 1) << 2;
 	character_ct = other.character_ct;
 
 	data = new uint8_t[data_len];
@@ -119,16 +119,18 @@ string<utf32>::string(const string<ascii>& other)
 template <>
 string<utf32>::string(const string<utf8>& other)
 {
-	data_len = (other.character_ct + 1) << 1;
-	character_ct = other.character_ct;
+	character_ct = 0;
+	for (size_t i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
+		character_ct++;
 
+	data_len = (character_ct + 1) << 2;
 	data = new uint8_t[data_len];
 
 	uint32_t* data32 = (uint32_t*)data;
 	data32[character_ct] = 0;
 
 	size_t pos = 0;
-	for (size_t i=0; i<=character_ct; i++)
+	for (size_t i=0; i<character_ct; i++)
 	{
 		uint32_t val = fromUTF8(&other.data[pos]);
 		pos += lenFromUTF8(&other.data[pos]);
@@ -140,7 +142,7 @@ string<utf32>::string(const string<utf8>& other)
 template <>
 string<utf32>::string(const string<utf16>& other)
 {
-	data_len = other.data_len << 1;
+	data_len = (other.character_ct + 1) << 2;
 	character_ct = other.character_ct;
 
 	data = new uint8_t[data_len];
@@ -155,7 +157,7 @@ string<utf32>::string(const string<utf16>& other)
 template <>
 string<utf32>::string(const string<utf32>& other)
 {
-	data_len = other.data_len;
+	data_len = (other.character_ct + 1) << 2;
 	character_ct = other.character_ct;
 
 	data = new uint8_t[data_len];
@@ -211,7 +213,7 @@ size_t string<utf32>::charSize() const
 
 ///mutators
 template <>
-string<utf32> string<utf32>::substr(size_t index, int count)
+string<utf32> string<utf32>::substr(size_t index, int count) const
 {
 	string<utf32> result;
 	uint32_t* data32 = (uint32_t*)data;

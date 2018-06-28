@@ -207,16 +207,25 @@ size_t string<utf8>::charSize() const
 	return 1;
 }
 
-///mutators
-//TODO: do not reverse multibyte characters!!
 template <>
-string<utf8> string<utf8>::substr(size_t index, int count)
+const uint32_t string<utf8>::at(size_t index) const
 {
-	string<utf8> result;
+	if (index < character_ct)
+		return fromUTF8(&data[index]);
+	else
+		return 0;
+}
 
-	///!!!
+#include <iostream>
+///mutators
+template <>
+string<utf8> string<utf8>::substr(size_t index, int count) const
+{
+	const string<utf32> tmp (*this);
 
-	return result;
+
+
+	return string<utf8>(tmp.substr(index,count));
 }
 
 //operators

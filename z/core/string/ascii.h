@@ -101,7 +101,7 @@ string<ascii>::string(const wchar_t* str)
 template <>
 string<ascii>::string(const string<ascii>& other)
 {
-	data_len = other.data_len;
+	data_len = other.character_ct + 1;
 	character_ct = other.character_ct;
 
 	data = new uint8_t[data_len];
@@ -191,9 +191,18 @@ size_t string<ascii>::charSize() const
 	return 1;
 }
 
+template <>
+const uint32_t string<ascii>::at(size_t index) const
+{
+	if (index < character_ct)
+		return data[index];
+	else
+		return 0;
+}
+
 ///mutators
 template <>
-string<ascii> string<ascii>::substr(size_t index, int count)
+string<ascii> string<ascii>::substr(size_t index, int count) const
 {
 	string<ascii> result;
 

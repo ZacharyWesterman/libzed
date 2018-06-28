@@ -173,7 +173,7 @@ namespace z
 			bool endsWith(const string&) const;
 
 			///mutators
-			string substr(size_t, int);
+			string substr(size_t, int) const;
 
 			const string& append(const string& other) {return operator+=(other);}
 			const string& insert(const string&, size_t);
@@ -414,15 +414,6 @@ namespace z
 		}
 
 		template <encoding E>
-		const uint32_t string<E>::at(size_t index) const
-		{
-			if (index < character_ct)
-				return data[index];
-			else
-				return 0;
-		}
-
-		template <encoding E>
 		size_t string<E>::size() const
 		{
 			return sizeof(*this) + (data_len * sizeof(uint8_t));
@@ -616,9 +607,9 @@ namespace z
 		}
 
 
+		#include "string/utf32.h"
+		#include "string/utf16.h"
 		#include "string/ascii.h"
 		#include "string/utf8.h"
-		#include "string/utf16.h"
-		#include "string/utf32.h"
 	}
 }
