@@ -160,7 +160,7 @@ namespace z
 			constexpr encoding format() const {return E;}
 
 			///analyzers
-			int count(const string&);
+			int count(const string&) const;
 
 			int find(const string&, int occurrence = 1) const;
 			int findLast(const string&, int occurrence = 1) const;

@@ -50,7 +50,7 @@ int main()
 	core::string<utf32> str = "this is a test";
 
 
-std::cout << str.find("t", 3) << std::endl;
+std::cout << str.count("is") << std::endl;
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 

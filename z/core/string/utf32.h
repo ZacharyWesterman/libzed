@@ -213,9 +213,42 @@ size_t string<utf32>::charSize() const
 
 ///analyzers
 template <>
+int string<utf32>::count(const string<utf32>& other) const
+{
+	if (!other.character_ct) return 0;
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* other32 = (uint32_t*)other.data;
+
+	size_t occurrence = 0;
+
+	size_t other_i = 0;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		if (data32[i] == other32[other_i])
+		{
+			other_i++;
+			if (other_i >= other.character_ct)
+				occurrence++;
+
+			if (!occurrence) return (i - other_i + 1);
+		}
+		else
+		{
+			if ((character_ct - i) <= other.character_ct)
+				return occurrence;
+
+			other_i = 0;
+		}
+	}
+
+	return occurrence;
+}
+
+template <>
 int string<utf32>::find(const string<utf32>& other, int occurrence) const
 {
-	if (occurrence < 1) return -1;
+	if (!other.character_ct || (occurrence < 1)) return -1;
 
 	uint32_t* data32 = (uint32_t*)data;
 	uint32_t* other32 = (uint32_t*)other.data;

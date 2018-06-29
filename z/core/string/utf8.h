@@ -233,9 +233,39 @@ const uint32_t string<utf8>::at(size_t index) const
 
 ///analyzers
 template <>
+int string<utf8>::count(const string<utf8>& other) const
+{
+	if (!other.character_ct) return 0;
+
+	size_t occurrence = 0;
+
+	size_t other_i = 0;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		if (data[i] == other.data[other_i])
+		{
+			other_i++;
+			if (other_i >= other.character_ct)
+				occurrence++;
+
+			if (!occurrence) return (i - other_i + 1);
+		}
+		else
+		{
+			if ((character_ct - i) <= other.character_ct)
+				return occurrence;
+
+			other_i = 0;
+		}
+	}
+
+	return occurrence;
+}
+
+template <>
 int string<utf8>::find(const string<utf8>& other, int occurrence) const
 {
-	if (occurrence < 1) return -1;
+	if (!other.character_ct || (occurrence < 1)) return -1;
 
 	size_t other_i = 0;
 	for (size_t i=0; i<character_ct; i++)
