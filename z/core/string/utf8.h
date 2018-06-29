@@ -263,7 +263,7 @@ int string<utf8>::count(const string<utf8>& other) const
 }
 
 template <>
-int string<utf8>::find(const string<utf8>& other, int occurrence) const
+int string<utf8>::findAfter(const string<utf8>& other, size_t index, int occurrence) const
 {
 	if (!other.character_ct || (occurrence < 1)) return -1;
 
@@ -283,6 +283,12 @@ int string<utf8>::find(const string<utf8>& other, int occurrence) const
 	}
 
 	return -1;
+}
+
+template <>
+int string<utf8>::find(const string<utf8>& other, int occurrence) const
+{
+	return this->findAfter(other,0,occurrence);
 }
 
 ///mutators

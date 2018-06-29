@@ -232,12 +232,12 @@ int string<ascii>::count(const string<ascii>& other) const
 }
 
 template <>
-int string<ascii>::find(const string<ascii>& other, int occurrence) const
+int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occurrence) const
 {
 	if (!other.character_ct || (occurrence < 1)) return -1;
 
 	size_t other_i = 0;
-	for (size_t i=0; i<character_ct; i++)
+	for (size_t i=index; i<character_ct; i++)
 	{
 		if (data[i] == other.data[other_i])
 		{
@@ -252,6 +252,12 @@ int string<ascii>::find(const string<ascii>& other, int occurrence) const
 	}
 
 	return -1;
+}
+
+template <>
+int string<ascii>::find(const string<ascii>& other, int occurrence) const
+{
+	return this->findAfter(other,0,occurrence);
 }
 
 ///mutators

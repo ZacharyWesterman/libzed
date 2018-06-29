@@ -246,7 +246,7 @@ int string<utf32>::count(const string<utf32>& other) const
 }
 
 template <>
-int string<utf32>::find(const string<utf32>& other, int occurrence) const
+int string<utf32>::findAfter(const string<utf32>& other, size_t index, int occurrence) const
 {
 	if (!other.character_ct || (occurrence < 1)) return -1;
 
@@ -254,7 +254,7 @@ int string<utf32>::find(const string<utf32>& other, int occurrence) const
 	uint32_t* other32 = (uint32_t*)other.data;
 
 	size_t other_i = 0;
-	for (size_t i=0; i<character_ct; i++)
+	for (size_t i=index; i<character_ct; i++)
 	{
 		if (data32[i] == other32[other_i])
 		{
@@ -269,6 +269,12 @@ int string<utf32>::find(const string<utf32>& other, int occurrence) const
 	}
 
 	return -1;
+}
+
+template <>
+int string<utf32>::find(const string<utf32>& other, int occurrence) const
+{
+	return this->findAfter(other,0,occurrence);
 }
 
 ///mutators
