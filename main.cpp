@@ -47,11 +47,10 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf8> str = L"abcdᵺfghijkl";
+	core::string<utf8> str = "this is a test";
+	str = str.substr(str.length(),-str.length());
 
-	str = str.substr(6,-4);
-
-
+std::cout << str.cstring() << std::endl;
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 
@@ -62,9 +61,9 @@ int main()
 
 	// tmp = res + str;
 	// core::string<utf32> B = A;
-	core::string<utf8> utfstr = str;
-
-	std::cout << utfstr.cstring() << std::endl;
+	// core::string<utf8> utfstr = str;
+//
+	// std::cout << utfstr.cstring() << std::endl;
 
     return 0;
 }

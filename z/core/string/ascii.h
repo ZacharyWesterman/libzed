@@ -206,10 +206,10 @@ string<ascii> string<ascii>::substr(size_t index, int count) const
 {
 	string<ascii> result;
 
-	if (index >= character_ct) return result;
-
 	if (count < 0)
 	{
+		if (index >= character_ct) index = character_ct - 1;
+
 		count = -count;
 		if ((size_t)count > index+1) count = index+1;
 		result.increase(1+count);
@@ -224,6 +224,8 @@ string<ascii> string<ascii>::substr(size_t index, int count) const
 	}
 	else if (count)
 	{
+		if (index >= character_ct) return result;
+
 		if ((size_t)count > index+1) count = index+1;
 		result.increase(1+count);
 

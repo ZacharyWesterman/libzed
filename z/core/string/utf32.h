@@ -219,10 +219,10 @@ string<utf32> string<utf32>::substr(size_t index, int count) const
 	uint32_t* data32 = (uint32_t*)data;
 	uint32_t* result32;
 
-	if (index >= character_ct) return result;
-
 	if (count < 0)
 	{
+		if (index >= character_ct) index = character_ct - 1;
+
 		count = -count;
 		if ((size_t)count > index+1) count = index+1;
 		result.increase((1+count) << 2);
@@ -239,6 +239,8 @@ string<utf32> string<utf32>::substr(size_t index, int count) const
 	}
 	else if (count)
 	{
+		if (index >= character_ct) return result;
+
 		if ((size_t)count > index+1) count = index+1;
 		result.increase((1+count) << 2);
 

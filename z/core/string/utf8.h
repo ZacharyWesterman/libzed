@@ -83,14 +83,14 @@ string<utf8>::string(const wchar_t* str)
 
 		character_ct = len;
 
-		data = new uint8_t[len+1];
-		data[len] = 0;
-		data_len = len+1;
+		data_len = character_ct + 1;
+		data = new uint8_t[data_len];
+		data[character_ct] = 0;
 
 		size_t pos = 0;
-		for (size_t i=0; i<=character_ct; i++)
+		for (size_t j=0; j<i; j++)
 		{
-			pos += toUTF8(&data[pos], str[i]);
+			pos += toUTF8(&data[pos], str[j]);
 		}
 	}
 	else
@@ -216,16 +216,11 @@ const uint32_t string<utf8>::at(size_t index) const
 		return 0;
 }
 
-#include <iostream>
 ///mutators
 template <>
 string<utf8> string<utf8>::substr(size_t index, int count) const
 {
-	const string<utf32> tmp (*this);
-
-
-
-	return string<utf8>(tmp.substr(index,count));
+	return string<utf8>(string<utf32>(*this).substr(index,count));
 }
 
 //operators
