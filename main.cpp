@@ -50,7 +50,7 @@ int main()
 	core::string<utf32> str = "this is a test";
 
 
-std::cout << str.findAfter("is", 5, 1) << std::endl;
+std::cout << str.findLast("is", 2) << std::endl;
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 

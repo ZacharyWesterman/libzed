@@ -277,6 +277,51 @@ int string<utf32>::find(const string<utf32>& other, int occurrence) const
 	return this->findAfter(other,0,occurrence);
 }
 
+template <>
+int string<utf32>::findBefore(const string<utf32>& other, size_t index, int occurrence) const
+{
+	if (!other.character_ct || (occurrence < 1)) return -1;
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* other32 = (uint32_t*)other.data;
+
+	if (index > (character_ct - other.character_ct))
+		index = character_ct - other.character_ct;
+
+	size_t other_i = other.character_ct - 1;
+	for (size_t i=index; i<character_ct; i--)
+	{
+		if (data32[i] == other32[other_i])
+		{
+
+			if (!other_i)
+			{
+				occurrence--;
+
+				if (occurrence && (i < other.character_ct)) i = 0;
+				other_i = other.character_ct - 1;
+			}
+			else
+				other_i--;
+
+			if (!occurrence) return i;
+		}
+		else
+		{
+			if (occurrence && (i < other.character_ct)) return -1;
+			other_i = other.character_ct - 1;
+		}
+	}
+
+	return -1;
+}
+
+template <>
+int string<utf32>::findLast(const string<utf32>& other, int occurrence) const
+{
+	return this->findBefore(other, this->character_ct, occurrence);
+}
+
 ///mutators
 template <>
 string<utf32> string<utf32>::substr(size_t index, int count) const

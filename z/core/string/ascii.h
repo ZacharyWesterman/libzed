@@ -243,7 +243,10 @@ int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occur
 		{
 			other_i++;
 			if (other_i >= other.character_ct)
+			{
 				occurrence--;
+				other_i = 0;
+			}
 
 			if (!occurrence) return (i - other_i + 1);
 		}
@@ -258,6 +261,48 @@ template <>
 int string<ascii>::find(const string<ascii>& other, int occurrence) const
 {
 	return this->findAfter(other,0,occurrence);
+}
+
+template <>
+int string<ascii>::findBefore(const string<ascii>& other, size_t index, int occurrence) const
+{
+	if (!other.character_ct || (occurrence < 1)) return -1;
+
+	if (index > (character_ct - other.character_ct))
+		index = character_ct - other.character_ct;
+
+	size_t other_i = other.character_ct - 1;
+	for (size_t i=index; i<character_ct; i--)
+	{
+		if (data[i] == other.data[other_i])
+		{
+
+			if (!other_i)
+			{
+				occurrence--;
+
+				if (occurrence && (i < other.character_ct)) i = 0;
+				other_i = other.character_ct - 1;
+			}
+			else
+				other_i--;
+
+			if (!occurrence) return i;
+		}
+		else
+		{
+			if (occurrence && (i < other.character_ct)) return -1;
+			other_i = other.character_ct - 1;
+		}
+	}
+
+	return -1;
+}
+
+template <>
+int string<ascii>::findLast(const string<ascii>& other, int occurrence) const
+{
+	return this->findBefore(other, this->character_ct, occurrence);
 }
 
 ///mutators
