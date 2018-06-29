@@ -47,10 +47,10 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf8> str = "this is a test";
-	str = str.substr(str.length(),-str.length());
+	core::string<utf32> str = "this is a test";
 
-std::cout << str.cstring() << std::endl;
+
+std::cout << str.find("t", 3) << std::endl;
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 

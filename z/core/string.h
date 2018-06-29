@@ -151,6 +151,7 @@ namespace z
 
 			size_t size() const;
 			size_t length() const;
+			size_t chars() const;
 
 			const uint8_t* cstring() const;
 			const uint16_t* nstring() const;
@@ -163,8 +164,8 @@ namespace z
 
 			int find(const string&, int occurrence = 1) const;
 			int findLast(const string&, int occurrence = 1) const;
-			int findAfter(const string&, size_t) const;
-			int findBefore(const string&, size_t) const;
+			int findAfter(const string&, size_t, int occurrence = 1) const;
+			int findBefore(const string&, size_t, int occurrence = 1) const;
 
 			int foundAt(const string&, size_t) const;
 			int foundEndAt(const string&, size_t) const;
@@ -421,6 +422,12 @@ namespace z
 
 		template <encoding E>
 		size_t string<E>::length() const
+		{
+			return character_ct;
+		}
+
+		template <encoding E>
+		size_t string<E>::chars() const
 		{
 			return character_ct;
 		}

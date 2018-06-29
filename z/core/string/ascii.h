@@ -200,6 +200,30 @@ const uint32_t string<ascii>::at(size_t index) const
 		return 0;
 }
 
+///analyzers
+template <>
+int string<ascii>::find(const string<ascii>& other, int occurrence) const
+{
+	if (occurrence < 1) return -1;
+
+	size_t other_i = 0;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		if (data[i] == other.data[other_i])
+		{
+			other_i++;
+			if (other_i >= other.character_ct)
+				occurrence--;
+
+			if (!occurrence) return (i - other_i + 1);
+		}
+		else
+			other_i = 0;
+	}
+
+	return -1;
+}
+
 ///mutators
 template <>
 string<ascii> string<ascii>::substr(size_t index, int count) const

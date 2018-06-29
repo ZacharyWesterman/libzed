@@ -216,6 +216,33 @@ size_t string<utf16>::charSize() const
 	return 2;
 }
 
+///analyzers
+template <>
+int string<utf16>::find(const string<utf16>& other, int occurrence) const
+{
+	if (occurrence < 1) return -1;
+
+	uint16_t* data16 = (uint16_t*)data;
+	uint16_t* other16 = (uint16_t*)other.data;
+
+	size_t other_i = 0;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		if (data16[i] == other16[other_i])
+		{
+			other_i++;
+			if (other_i >= other.character_ct)
+				occurrence--;
+
+			if (!occurrence) return (i - other_i + 1);
+		}
+		else
+			other_i = 0;
+	}
+
+	return -1;
+}
+
 ///mutators
 template <>
 string<utf16> string<utf16>::substr(size_t index, int count) const
