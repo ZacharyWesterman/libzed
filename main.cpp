@@ -47,10 +47,12 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf32> str = "this is a test";
+	core::string<utf16> str = "this is a test";
 
 
-std::cout << str.findLast("is", 2) << std::endl;
+	// for (int i=0; i<(int)str.length(); i++)
+	std::cout << str.endsWith("test") << std::endl;
+
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 

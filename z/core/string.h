@@ -167,8 +167,8 @@ namespace z
 			int findAfter(const string&, size_t, int occurrence = 1) const;
 			int findBefore(const string&, size_t, int occurrence = 1) const;
 
-			int foundAt(const string&, size_t) const;
-			int foundEndAt(const string&, size_t) const;
+			bool foundAt(const string&, size_t) const;
+			bool foundEndAt(const string&, size_t) const;
 
 			bool beginsWith(const string&) const;
 			bool endsWith(const string&) const;
@@ -468,6 +468,81 @@ namespace z
 
 				remain--;
 			}
+		}
+
+		///analyzers
+		template <encoding E>
+		bool string<E>::foundAt(const string<E>& other, size_t index) const
+		{
+			if ((character_ct - index) < other.character_ct) return false;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+
+			const size_t charSz = this->charSize();
+
+			size_t i = 0;
+			size_t idx = index * charSz;
+			size_t end = (other.character_ct * charSz) >> 2;
+			while (i < end)
+			{
+				if (data32[i+idx] != other32[i])
+					return false;
+
+				i++;
+			}
+
+			for (i=(end<<2); i<(other.character_ct * charSz); i++)
+			{
+				if (data[i+idx] != other[i])
+					return false;
+			}
+
+			return true;
+		}
+
+		template <encoding E>
+		bool string<E>::beginsWith(const string<E>& other) const
+		{
+			return this->foundAt(other, 0);
+		}
+
+		template <encoding E>
+		bool string<E>::foundEndAt(const string<E>& other, size_t index) const
+		{
+			if (index < other.character_ct) return false;
+			if (index >= character_ct) return false;
+
+			const size_t charSz = this->charSize();
+			const size_t idx = (index-other.character_ct+1)*charSz;
+			const size_t last = other.character_ct * charSz;
+
+			uint32_t* data32 = (uint32_t*)&data[idx];
+			uint32_t* other32 = (uint32_t*)other.data;
+
+			size_t i = 0;
+			size_t end = last >> 2;
+			while (i < end)
+			{
+				if (data32[i] != other32[i])
+					return false;
+
+				i++;
+			}
+
+			for (i=(end<<2); i<last; i++)
+			{
+				if (data[i+idx] != other[i])
+					return false;
+			}
+
+			return true;
+		}
+
+		template <encoding E>
+		bool string<E>::endsWith(const string<E>& other) const
+		{
+			return this->foundEndAt(other, character_ct-1);
 		}
 
 		///operators
