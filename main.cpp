@@ -47,9 +47,9 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<ascii> str = "this is a test";
+	core::string<ascii> str = "abcdefghijklmno";
 
-	str.insert("", 10);
+	str.remove(8, -50);
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
 

@@ -404,6 +404,53 @@ const string<utf16>& string<utf16>::insert(const string<utf16>& other, size_t in
 	return *this;
 }
 
+template <>
+const string<utf16>& string<utf16>::remove(size_t index, int count)
+{
+	if (count)
+	{
+		if (index >= character_ct) return *this;
+
+		size_t start, end, offset;
+
+		if (count < 0)
+		{
+			if ((index + count) > character_ct)
+			{
+				start = 0;
+				offset = index;
+			}
+			else
+			{
+				start = index + count;
+				offset = -count;
+			}
+		}
+		else
+		{
+			if ((size_t)count > (character_ct - index))
+				offset = character_ct - index - 1;
+			else
+				offset = count - 1;
+
+			start = index;
+		}
+
+		uint16_t* data16 = (uint16_t*)data;
+
+		end = character_ct - offset;
+		for (size_t i=start; i<end; i++)
+		{
+			data16[i] = data16[i+offset];
+		}
+
+		data16[end] = 0;
+		character_ct = end;
+	}
+
+	return *this;
+}
+
 ///operators
 
 template <>

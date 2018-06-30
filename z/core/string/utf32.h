@@ -399,6 +399,53 @@ const string<utf32>& string<utf32>::insert(const string<utf32>& other, size_t in
 	return *this;
 }
 
+template <>
+const string<utf32>& string<utf32>::remove(size_t index, int count)
+{
+	if (count)
+	{
+		if (index >= character_ct) return *this;
+
+		size_t start, end, offset;
+
+		if (count < 0)
+		{
+			if ((index + count) > character_ct)
+			{
+				start = 0;
+				offset = index;
+			}
+			else
+			{
+				start = index + count;
+				offset = -count;
+			}
+		}
+		else
+		{
+			if ((size_t)count > (character_ct - index))
+				offset = character_ct - index - 1;
+			else
+				offset = count - 1;
+
+			start = index;
+		}
+
+		uint32_t* data32 = (uint32_t*)data;
+
+		end = character_ct - offset;
+		for (size_t i=start; i<end; i++)
+		{
+			data32[i] = data32[i+offset];
+		}
+
+		data32[end] = 0;
+		character_ct = end;
+	}
+
+	return *this;
+}
+
 ///operators
 
 template <>
