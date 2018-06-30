@@ -248,7 +248,7 @@ int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occur
 				other_i = 0;
 			}
 
-			if (!occurrence) return (i - other_i + 1);
+			if (!occurrence) return (i - other.character_ct + 1);
 		}
 		else
 			other_i = 0;
@@ -400,7 +400,7 @@ const string<ascii>& string<ascii>::remove(size_t index, int count)
 			if ((size_t)count > (character_ct - index))
 				offset = character_ct - index - 1;
 			else
-				offset = count - 1;
+				offset = count;
 
 			start = index;
 		}

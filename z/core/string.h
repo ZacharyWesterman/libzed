@@ -545,6 +545,33 @@ namespace z
 			return this->foundEndAt(other, character_ct-1);
 		}
 
+		///mutators
+		template <encoding E>
+		const string<E>& string<E>::remove(const string& other, int occurrence)
+		{
+			if (occurrence > 0) //remove one occurrence
+			{
+				int pos = this->find(other, occurrence);
+
+				if (pos >= 0)
+				{
+					this->remove(pos, other.length());
+				}
+			}
+			else if (!occurrence)
+			{
+				int pos = this->find(other, 1);
+
+				while (pos >= 0)
+				{
+					this->remove(pos, other.length());
+					pos = this->findAfter(other, pos, 1);
+				}
+			}
+
+			return *this;
+		}
+
 		///operators
 		template <encoding E>
 		string<E> string<E>::operator+(const string<E>& other)

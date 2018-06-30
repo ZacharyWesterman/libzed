@@ -267,7 +267,7 @@ int string<utf16>::findAfter(const string<utf16>& other, size_t index, int occur
 			if (other_i >= other.character_ct)
 				occurrence--;
 
-			if (!occurrence) return (i - other_i + 1);
+			if (!occurrence) return (i - other.character_ct + 1);
 		}
 		else
 			other_i = 0;
@@ -431,7 +431,7 @@ const string<utf16>& string<utf16>::remove(size_t index, int count)
 			if ((size_t)count > (character_ct - index))
 				offset = character_ct - index - 1;
 			else
-				offset = count - 1;
+				offset = count;
 
 			start = index;
 		}
