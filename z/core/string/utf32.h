@@ -368,6 +368,37 @@ string<utf32> string<utf32>::substr(size_t index, int count) const
 	return result;
 }
 
+template <>
+const string<utf32>& string<utf32>::insert(const string<utf32>& other, size_t index)//insert before index
+{
+	if (!other.character_ct) return *this;
+
+	if (index >= character_ct) index = character_ct;
+
+	size_t start = index + other.character_ct;
+	size_t end = character_ct + other.character_ct;
+	this->increase(end << 2);
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* other32 = (uint32_t*)other.data;
+
+	for (size_t i=end-1; i>=start; i--)
+	{
+		data32[i] = data32[i - other.character_ct];
+	}
+
+	end = index + other.character_ct;
+	for (size_t i=index; i<end; i++)
+	{
+		data32[i] = other32[i-index];
+	}
+
+	character_ct += other.character_ct;
+	data32[character_ct] = 0;
+
+	return *this;
+}
+
 ///operators
 
 template <>

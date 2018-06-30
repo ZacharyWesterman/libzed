@@ -373,6 +373,37 @@ string<utf16> string<utf16>::substr(size_t index, int count) const
 	return result;
 }
 
+template <>
+const string<utf16>& string<utf16>::insert(const string<utf16>& other, size_t index)//insert before index
+{
+	if (!other.character_ct) return *this;
+
+	if (index >= character_ct) index = character_ct;
+
+	size_t start = index + other.character_ct;
+	size_t end = character_ct + other.character_ct;
+	this->increase(end << 1);
+
+	uint16_t* data16 = (uint16_t*)data;
+	uint16_t* other16 = (uint16_t*)other.data;
+
+	for (size_t i=end-1; i>=start; i--)
+	{
+		data16[i] = data16[i - other.character_ct];
+	}
+
+	end = index + other.character_ct;
+	for (size_t i=index; i<end; i++)
+	{
+		data16[i] = other16[i-index];
+	}
+
+	character_ct += other.character_ct;
+	data16[character_ct] = 0;
+
+	return *this;
+}
+
 ///operators
 
 template <>

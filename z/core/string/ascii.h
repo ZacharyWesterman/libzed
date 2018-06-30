@@ -345,6 +345,34 @@ string<ascii> string<ascii>::substr(size_t index, int count) const
 	return result;
 }
 
+template <>
+const string<ascii>& string<ascii>::insert(const string<ascii>& other, size_t index)//insert before index
+{
+	if (!other.character_ct) return *this;
+
+	if (index >= character_ct) index = character_ct;
+
+	size_t start = index + other.character_ct;
+	size_t end = character_ct + other.character_ct;
+	this->increase(end);
+
+	for (size_t i=end-1; i>=start; i--)
+	{
+		data[i] = data[i - other.character_ct];
+	}
+
+	end = index + other.character_ct;
+	for (size_t i=index; i<end; i++)
+	{
+		data[i] = other.data[i-index];
+	}
+
+	character_ct += other.character_ct;
+	data[character_ct] = 0;
+
+	return *this;
+}
+
 ///operators
 
 template <>

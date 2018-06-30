@@ -177,7 +177,7 @@ namespace z
 			string substr(size_t, int) const;
 
 			const string& append(const string& other) {return operator+=(other);}
-			const string& insert(const string&, size_t);
+			const string& insert(const string&, size_t); //insert before index
 			const string& remove(const string&, int occurrence = 0);
 			const string& remove(size_t, int);
 
