@@ -291,12 +291,6 @@ int string<utf8>::findAfter(const string<utf8>& other, size_t index, int occurre
 }
 
 template <>
-int string<utf8>::find(const string<utf8>& other, int occurrence) const
-{
-	return this->findAfter(other,0,occurrence);
-}
-
-template <>
 int string<utf8>::findBefore(const string<utf8>& other, size_t index, int occurrence) const
 {
 	if (!other.character_ct || (occurrence < 1)) return -1;
@@ -330,12 +324,6 @@ int string<utf8>::findBefore(const string<utf8>& other, size_t index, int occurr
 	}
 
 	return -1;
-}
-
-template <>
-int string<utf8>::findLast(const string<utf8>& other, int occurrence) const
-{
-	return this->findBefore(other, this->character_ct, occurrence);
 }
 
 ///mutators

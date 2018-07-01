@@ -472,6 +472,18 @@ namespace z
 
 		///analyzers
 		template <encoding E>
+		int string<E>::find(const string<E>& other, int occurrence) const
+		{
+			return this->findAfter(other,0,occurrence);
+		}
+
+		template <encoding E>
+		int string<E>::findLast(const string<E>& other, int occurrence) const
+		{
+			return this->findBefore(other, this->character_ct, occurrence);
+		}
+
+		template <encoding E>
 		bool string<E>::foundAt(const string<E>& other, size_t index) const
 		{
 			if ((character_ct - index) < other.character_ct) return false;
