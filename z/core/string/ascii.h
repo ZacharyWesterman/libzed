@@ -239,6 +239,10 @@ int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occur
 	size_t other_i = 0;
 	for (size_t i=index; i<character_ct; i++)
 	{
+		//reset to first char of other if not still matching
+		if (data[i] != other.data[other_i])
+			other_i = 0;
+
 		if (data[i] == other.data[other_i])
 		{
 			other_i++;
@@ -250,8 +254,6 @@ int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occur
 
 			if (!occurrence) return (i - other.character_ct + 1);
 		}
-		else
-			other_i = 0;
 	}
 
 	return -1;

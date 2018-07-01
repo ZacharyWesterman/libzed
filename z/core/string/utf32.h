@@ -256,16 +256,21 @@ int string<utf32>::findAfter(const string<utf32>& other, size_t index, int occur
 	size_t other_i = 0;
 	for (size_t i=index; i<character_ct; i++)
 	{
+		//reset to first char of other if not still matching
+		if (data32[i] != other32[other_i])
+			other_i = 0;
+
 		if (data32[i] == other32[other_i])
 		{
 			other_i++;
 			if (other_i >= other.character_ct)
+			{
 				occurrence--;
+				other_i = 0;
+			}
 
 			if (!occurrence) return (i - other.character_ct + 1);
 		}
-		else
-			other_i = 0;
 	}
 
 	return -1;
