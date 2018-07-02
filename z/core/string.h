@@ -143,7 +143,7 @@ namespace z
 			string(string&&);
 
 			//destructor
-			~string() {delete data;}
+			~string() {delete[] data;}
 
 
 			const uint32_t at(size_t) const;
@@ -570,7 +570,7 @@ namespace z
 					this->remove(pos, other.length());
 				}
 			}
-			else if (!occurrence)
+			else if (!occurrence) //remove all occurrences
 			{
 				int pos = this->find(other, 1);
 
@@ -597,6 +597,32 @@ namespace z
 					this->remove(opos, other.length());
 				}
 				pos = this->findAfter(other, opos, 1);
+			}
+
+			return *this;
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::replace(const string<E>& findStr, const string<E>& replStr, int occurrence)
+		{
+			if (occurrence > 0) //replace one occurrence
+			{
+				int pos = this->find(findStr, occurrence);
+
+				if (pos >= 0)
+				{
+					this->replace((size_t)pos, (int)findStr.length(), replStr);
+				}
+			}
+			else if (!occurrence) //replace all occurrences
+			{
+				int pos = this->find(findStr, 1);
+
+				while (pos >= 0)
+				{
+					this->replace((size_t)pos, (int)findStr.length(), replStr);
+					pos = this->findAfter(findStr, pos+replStr.length(), 1);
+				}
 			}
 
 			return *this;

@@ -49,7 +49,7 @@ int main()
 	// std::cout << val << std::endl;
 	core::string<utf32> str = "isis";
 
-	str.replace(1,2, "t");
+	str.replace("is", "was");
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
 

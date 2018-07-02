@@ -505,7 +505,7 @@ const string<utf32>& string<utf32>::replace(size_t index, int count, const strin
 
 		size_t offset = end - start;
 		size_t newCharCt = character_ct - offset + other.character_ct;
-		this->increase((newCharCt + 1) << 1);
+		this->increase((newCharCt + 1) << 2);
 
 		uint32_t* data32 = (uint32_t*)data;
 		uint32_t* other32 = (uint32_t*)other.data;

@@ -163,7 +163,7 @@ string<utf8>::string(const string<utf32>& other)
 
 	uint32_t* data32 = (uint32_t*)other.data;
 
-	for (size_t i=0; i<=other.character_ct; i++)
+	for (size_t i=0; i<other.character_ct; i++)
 		data_len += lenToUTF8(data32[i]);
 
 	data = new uint8_t[data_len];

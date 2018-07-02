@@ -157,8 +157,8 @@ string<ascii>::string(const string<utf32>& other)
 
 	uint32_t* data32 = (uint32_t*)other.data;
 
-	for (size_t i=0; i<data_len; i++)
-		data[i] = (data32[i] > 0xFF) ? '?' : data32[i];
+	for (size_t i=0; i<= character_ct; i++)
+		data[i] = (data32[i] > 0xFF) ? '?' : (uint8_t)data32[i];
 }
 
 template <>
