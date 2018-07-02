@@ -583,18 +583,17 @@ namespace z
 
 			return *this;
 		}
-#include <iostream>
+
 		template <encoding E>
 		const string<E>& string<E>::cutDuplicates(const string<E>& other)
 		{
 			int pos = this->find(other, 1);
 
 			while (pos >= 0)
-			{std::cout << "["<<pos<<','<<other.length()<<"]";
+			{
 				size_t opos = pos + other.length();
-				while (this->foundAt(other, opos-1))
+				while (this->foundAt(other, opos))
 				{
-					std::cout << "{}";
 					this->remove(opos, other.length());
 				}
 				pos = this->findAfter(other, opos, 1);

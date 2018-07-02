@@ -47,9 +47,9 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<ascii> str = "iisis";
+	core::string<ascii> str = "isisisiisis isssisisis";
 
-	std::cout << str.findAfter("is",0,2);
+	str.cutDuplicates("is");
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
 
