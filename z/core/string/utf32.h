@@ -437,8 +437,8 @@ const string<utf32>& string<utf32>::remove(size_t index, int count)
 		}
 		else
 		{
-			if ((size_t)count > (character_ct - index))
-				offset = character_ct - index - 1;
+			if ((index + count) > character_ct)
+				offset = character_ct - index;
 			else
 				offset = count;
 
