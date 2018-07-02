@@ -216,6 +216,27 @@ size_t string<utf16>::charSize() const
 	return 2;
 }
 
+///operators
+template <>
+const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)
+{
+	size_t new_size = character_ct + other.character_ct + 1;
+	this->increase(new_size << 1);
+
+	uint16_t* data16 = (uint16_t*)data;
+	uint16_t* other16 = (uint16_t*)other.data;
+
+	for (size_t i=0; i<other.character_ct; i++)
+	{
+		data16[character_ct + i] = other16[i];
+	}
+	data16[new_size-1] = 0;
+
+	character_ct += other.character_ct;
+
+	return *this;
+}
+
 ///analyzers
 template <>
 int string<utf16>::count(const string<utf16>& other) const
@@ -444,24 +465,81 @@ const string<utf16>& string<utf16>::remove(size_t index, int count)
 	return *this;
 }
 
-///operators
-
 template <>
-const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)
+const string<utf16>& string<utf16>::replace(size_t index, int count, const string<utf16>& other)
 {
-	size_t new_size = character_ct + other.character_ct + 1;
-	this->increase(new_size << 1);
-
-	uint16_t* data16 = (uint16_t*)data;
-	uint16_t* other16 = (uint16_t*)other.data;
-
-	for (size_t i=0; i<other.character_ct; i++)
+	if (count)
 	{
-		data16[character_ct + i] = other16[i];
-	}
-	data16[new_size-1] = 0;
+		size_t start, end;
 
-	character_ct += other.character_ct;
+		if (count < 0)
+		{
+			if ((index >= character_ct) && ((size_t)-count >= character_ct))
+				return operator=(other);
+
+			if (index >= character_ct)
+			{
+				start = character_ct + count;
+				end = character_ct;
+			}
+			else
+			{
+				end = index + 1;
+
+				if ((size_t)-count >= character_ct)
+					start = 0;
+				else
+					start = end + count;
+			}
+		}
+		else
+		{
+			if (index >= character_ct)
+				return operator+=(other);
+
+			if (!index && ((size_t)count >= character_ct))
+				return operator=(other);
+
+			start = index;
+			if ((size_t)count >= character_ct)
+				end = character_ct;
+			else
+				end = start + count;
+		}
+
+
+		size_t offset = end - start;
+		size_t newCharCt = character_ct - offset + other.character_ct;
+		this->increase((newCharCt + 1) << 1);
+
+		uint16_t* data16 = (uint16_t*)data;
+		uint16_t* other16 = (uint16_t*)other.data;
+
+		if (newCharCt < character_ct)
+		{
+			//pull chars in
+			size_t toOffs = newCharCt - character_ct;
+
+			for (size_t i=end; i<character_ct; i++)
+				data16[i+toOffs] = data16[i];
+		}
+		else if (newCharCt > character_ct)
+		{
+			//pull chars out
+			size_t toPos = newCharCt + 1;
+			size_t fromPos = character_ct + 1;
+
+			for (size_t i=end; i<character_ct; i++)
+				data16[toPos-i] = data16[fromPos-i];
+		}
+		//else just directly replace chars
+
+		for (size_t i=0; i<other.character_ct; i++)
+			data16[i+start] = other16[i];
+
+		character_ct = newCharCt;
+		data16[character_ct] = 0;
+	}
 
 	return *this;
 }

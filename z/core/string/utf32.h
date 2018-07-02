@@ -211,6 +211,27 @@ size_t string<utf32>::charSize() const
 	return 4;
 }
 
+///operators
+template <>
+const string<utf32>& string<utf32>::operator+=(const string<utf32>& other)
+{
+	size_t new_size = character_ct + other.character_ct + 1;
+	this->increase(new_size << 2);
+
+	uint32_t* data32 = (uint32_t*)data;
+	uint32_t* other32 = (uint32_t*)other.data;
+
+	for (size_t i=0; i<other.character_ct; i++)
+	{
+		data32[character_ct + i] = other32[i];
+	}
+	data32[new_size-1] = 0;
+
+	character_ct += other.character_ct;
+
+	return *this;
+}
+
 ///analyzers
 template <>
 int string<utf32>::count(const string<utf32>& other) const
@@ -439,24 +460,81 @@ const string<utf32>& string<utf32>::remove(size_t index, int count)
 	return *this;
 }
 
-///operators
-
 template <>
-const string<utf32>& string<utf32>::operator+=(const string<utf32>& other)
+const string<utf32>& string<utf32>::replace(size_t index, int count, const string<utf32>& other)
 {
-	size_t new_size = character_ct + other.character_ct + 1;
-	this->increase(new_size << 2);
-
-	uint32_t* data32 = (uint32_t*)data;
-	uint32_t* other32 = (uint32_t*)other.data;
-
-	for (size_t i=0; i<other.character_ct; i++)
+	if (count)
 	{
-		data32[character_ct + i] = other32[i];
-	}
-	data32[new_size-1] = 0;
+		size_t start, end;
 
-	character_ct += other.character_ct;
+		if (count < 0)
+		{
+			if ((index >= character_ct) && ((size_t)-count >= character_ct))
+				return operator=(other);
+
+			if (index >= character_ct)
+			{
+				start = character_ct + count;
+				end = character_ct;
+			}
+			else
+			{
+				end = index + 1;
+
+				if ((size_t)-count >= character_ct)
+					start = 0;
+				else
+					start = end + count;
+			}
+		}
+		else
+		{
+			if (index >= character_ct)
+				return operator+=(other);
+
+			if (!index && ((size_t)count >= character_ct))
+				return operator=(other);
+
+			start = index;
+			if ((size_t)count >= character_ct)
+				end = character_ct;
+			else
+				end = start + count;
+		}
+
+
+		size_t offset = end - start;
+		size_t newCharCt = character_ct - offset + other.character_ct;
+		this->increase((newCharCt + 1) << 1);
+
+		uint32_t* data32 = (uint32_t*)data;
+		uint32_t* other32 = (uint32_t*)other.data;
+
+		if (newCharCt < character_ct)
+		{
+			//pull chars in
+			size_t toOffs = newCharCt - character_ct;
+
+			for (size_t i=end; i<character_ct; i++)
+				data32[i+toOffs] = data32[i];
+		}
+		else if (newCharCt > character_ct)
+		{
+			//pull chars out
+			size_t toPos = newCharCt + 1;
+			size_t fromPos = character_ct + 1;
+
+			for (size_t i=end; i<character_ct; i++)
+				data32[toPos-i] = data32[fromPos-i];
+		}
+		//else just directly replace chars
+
+		for (size_t i=0; i<other.character_ct; i++)
+			data32[i+start] = other32[i];
+
+		character_ct = newCharCt;
+		data32[character_ct] = 0;
+	}
 
 	return *this;
 }

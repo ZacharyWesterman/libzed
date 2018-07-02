@@ -231,6 +231,24 @@ const uint32_t string<utf8>::at(size_t index) const
 		return 0;
 }
 
+///operators
+template <>
+const string<utf8>& string<utf8>::operator+=(const string<utf8>& other)
+{
+	size_t new_size = character_ct + other.character_ct + 1;
+	this->increase(new_size);
+
+	for (size_t i=0; i<other.character_ct; i++)
+	{
+		data[character_ct + i] = other.data[i];
+	}
+	data[new_size-1] = 0;
+
+	character_ct += other.character_ct;
+
+	return *this;
+}
+
 ///analyzers
 template <>
 int string<utf8>::count(const string<utf8>& other) const
@@ -407,21 +425,78 @@ const string<utf8>& string<utf8>::remove(size_t index, int count)
 	return *this;
 }
 
-//operators
-
 template <>
-const string<utf8>& string<utf8>::operator+=(const string<utf8>& other)
+const string<utf8>& string<utf8>::replace(size_t index, int count, const string<utf8>& other)
 {
-	size_t new_size = character_ct + other.character_ct + 1;
-	this->increase(new_size);
-
-	for (size_t i=0; i<other.character_ct; i++)
+	if (count)
 	{
-		data[character_ct + i] = other.data[i];
-	}
-	data[new_size-1] = 0;
+		size_t start, end;
 
-	character_ct += other.character_ct;
+		if (count < 0)
+		{
+			if ((index >= character_ct) && ((size_t)-count >= character_ct))
+				return operator=(other);
+
+			if (index >= character_ct)
+			{
+				start = character_ct + count;
+				end = character_ct;
+			}
+			else
+			{
+				end = index + 1;
+
+				if ((size_t)-count >= character_ct)
+					start = 0;
+				else
+					start = end + count;
+			}
+		}
+		else
+		{
+			if (index >= character_ct)
+				return operator+=(other);
+
+			if (!index && ((size_t)count >= character_ct))
+				return operator=(other);
+
+			start = index;
+			if ((size_t)count >= character_ct)
+				end = character_ct;
+			else
+				end = start + count;
+		}
+
+
+		size_t offset = end - start;
+		size_t newCharCt = character_ct - offset + other.character_ct;
+		this->increase(newCharCt + 1);
+
+		if (newCharCt < character_ct)
+		{
+			//pull chars in
+			size_t toOffs = newCharCt - character_ct;
+
+			for (size_t i=end; i<character_ct; i++)
+				data[i+toOffs] = data[i];
+		}
+		else if (newCharCt > character_ct)
+		{
+			//pull chars out
+			size_t toPos = newCharCt + 1;
+			size_t fromPos = character_ct + 1;
+
+			for (size_t i=end; i<character_ct; i++)
+				data[toPos-i] = data[fromPos-i];
+		}
+		//else just directly replace chars
+
+		for (size_t i=0; i<other.character_ct; i++)
+			data[i+start] = other.data[i];
+
+		character_ct = newCharCt;
+		data[character_ct] = 0;
+	}
 
 	return *this;
 }

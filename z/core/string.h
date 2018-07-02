@@ -615,9 +615,9 @@ namespace z
 		template <encoding E>
 		const string<E>& string<E>::operator=(const string<E>& other)
 		{
-			delete[] data;
-			data = new uint8_t[other.data_len];
-			data_len = other.data_len;
+			data_len = (other.character_ct + 1) * this->charSize();
+
+			this->increase(data_len);
 			character_ct = other.character_ct;
 
 			uint32_t* data32 = (uint32_t*)data;
