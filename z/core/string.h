@@ -651,6 +651,36 @@ namespace z
 		}
 
 		template <encoding E>
+		const string<E>& string<E>::unPadLeft(const string<E>& other)
+		{
+			if (character_ct < other.character_ct) return *this;
+
+			size_t index = 0;
+			while (this->foundAt(other, index))
+			{
+				index += other.character_ct;
+			}
+
+			return this->remove(0, index);
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::unPadRight(const string<E>& other)
+		{
+			if (character_ct < other.character_ct) return *this;
+
+			size_t index = character_ct-other.character_ct;
+			int count = 0;
+			while (this->foundAt(other, index))
+			{
+				index -= other.character_ct;
+				count += other.character_ct;
+			}
+
+			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template <encoding E>
 		const string<E>& string<E>::cutDuplicates(const string<E>& other)
 		{
 			int pos = this->find(other, 1);
