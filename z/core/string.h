@@ -187,9 +187,9 @@ namespace z
 			const string& padLeft(const string&, size_t);
 			const string& padRight(const string&, size_t);
 
-			const string&  unPadLeft(const string&);
-			const string&  unPadRight(const string&);
-			const string&  cutDuplicates(const string&);
+			const string& unPadLeft(const string&);
+			const string& unPadRight(const string&);
+			const string& cutDuplicates(const string&);
 
 
 			//operators
@@ -585,24 +585,6 @@ namespace z
 		}
 
 		template <encoding E>
-		const string<E>& string<E>::cutDuplicates(const string<E>& other)
-		{
-			int pos = this->find(other, 1);
-
-			while (pos >= 0)
-			{
-				size_t opos = pos + other.length();
-				while (this->foundAt(other, opos))
-				{
-					this->remove(opos, other.length());
-				}
-				pos = this->findAfter(other, opos, 1);
-			}
-
-			return *this;
-		}
-
-		template <encoding E>
 		const string<E>& string<E>::replace(const string<E>& findStr, const string<E>& replStr, int occurrence)
 		{
 			if (occurrence > 0) //replace one occurrence
@@ -623,6 +605,66 @@ namespace z
 					this->replace((size_t)pos, (int)findStr.length(), replStr);
 					pos = this->findAfter(findStr, pos+replStr.length(), 1);
 				}
+			}
+
+			return *this;
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::padLeft(const string<E>& other, size_t padSize)
+		{
+			if (padSize <= character_ct) return *this;
+
+			string<E> padStr;
+
+			size_t padChars = padSize - character_ct;
+
+			while (padChars >= other.character_ct)
+			{
+				padStr += other;
+				padChars -= other.character_ct;
+			}
+
+			if (padChars)
+				padStr += other.substr(0, padChars);
+
+			return this->insert(padStr, 0);
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::padRight(const string<E>& other, size_t padSize)
+		{
+			if (padSize <= character_ct) return *this;
+
+			string<E> padStr;
+
+			size_t padChars = padSize - character_ct;
+
+			while (padChars >= other.character_ct)
+			{
+				padStr += other;
+				padChars -= other.character_ct;
+			}
+
+			if (padChars)
+				padStr += other.substr(0, padChars);
+
+			return operator+=(padStr);
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::cutDuplicates(const string<E>& other)
+		{
+			int pos = this->find(other, 1);
+
+			while (pos >= 0)
+			{
+				size_t opos = pos + other.length();
+				while (this->foundAt(other, opos))
+				{
+					this->remove(opos, other.length());
+				}
+				pos = this->findAfter(other, opos, 1);
 			}
 
 			return *this;
