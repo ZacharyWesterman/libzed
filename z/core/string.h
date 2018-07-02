@@ -496,12 +496,10 @@ namespace z
 			size_t i = 0;
 			size_t idx = index * charSz;
 			size_t end = (other.character_ct * charSz) >> 2;
-			while (i < end)
+			for (i=0; i<end; i++)
 			{
-				if (data32[i+idx] != other32[i])
+				if (data32[i+index] != other32[i])
 					return false;
-
-				i++;
 			}
 
 			for (i=(end<<2); i<(other.character_ct * charSz); i++)
