@@ -30,11 +30,10 @@ namespace z
 		 * \return \b True if the character is uppercase.
 		 * \b False otherwise.
          */
-        template <typename CHAR>
-        bool isUpperAlpha(const CHAR ch)
+        bool isUpperAlpha(uint32_t ch)
         {
-            return ((ch >= (CHAR)65) &&  //from A
-                    (ch <= (CHAR)90));    //to Z
+            return ((ch >= 'A') &&  //from A
+                    (ch <= 'Z'));    //to Z
         }
 
         /**
@@ -46,11 +45,10 @@ namespace z
 		 * \return \b True if the character is lowercase.
 		 * \b False otherwise.
          */
-        template <typename CHAR>
-        bool isLowerAlpha(const CHAR ch)
+        bool isLowerAlpha(uint32_t ch)
         {
-            return ((ch >= (CHAR)97) &&  //from a
-                    (ch <= (CHAR)122));    //to z
+            return ((ch >= 'a') &&  //from a
+                    (ch <= 'z'));    //to z
         }
 
 		/**
@@ -61,10 +59,9 @@ namespace z
 		 * \return The character, converted to uppercase if
 		 * applicable.
 		 */
-        template <typename CHAR>
-        CHAR toUpper(CHAR ch)
+        uint32_t toUpper(uint32_t ch)
         {
-            if (isLowerAlpha(ch)) ch = ch - (CHAR)97 + (CHAR)65;
+            if (isLowerAlpha(ch)) ch = ch - 'a' + 'A';
 
             return ch;
         }
@@ -77,10 +74,9 @@ namespace z
 		 * \return The character, converted to lowercase if
 		 * applicable.
 		 */
-        template <typename CHAR>
-        CHAR toLower(CHAR ch)
+        uint32_t toLower(uint32_t ch)
         {
-            if (isUpperAlpha(ch)) ch = ch - (CHAR)65 + (CHAR)97;
+            if (isUpperAlpha(ch)) ch = ch - 'A' + 'a';
 
             return ch;
         }
@@ -94,8 +90,7 @@ namespace z
 		 * \return \b True if the character is an alphabetic character.
 		 * \b False otherwise.
          */
-        template <typename CHAR>
-        bool isAlpha(const CHAR ch)
+        bool isAlpha(uint32_t ch)
         {
             return (isLowerAlpha(ch) || //is uppercase
                     isUpperAlpha(ch));  //or lowercase
@@ -113,21 +108,20 @@ namespace z
 		 * \return The numeral value of the character.
 		 * If it is not a numeric character, returns \b -1.
          */
-        template <typename CHAR>
-        Int numeralValue(const CHAR ch)
+        int numeralValue(uint32_t ch)
         {
-            if ((ch >= (CHAR)48) &&  //from 0
-                (ch <= (CHAR)57))    //to 9
-                return (ch - 48);
+            if ((ch >= '0') &&  //from 0
+                (ch <= '9'))    //to 9
+                return (ch - '0');
             else if (isLowerAlpha(ch))    //a-z
-                return (ch - 87);
+                return (ch - 'a');
             else if (isUpperAlpha(ch))    //A-Z
-                return (ch - 55);
+                return (ch - 'A');
             else
                 return -1;
         }
 
-		inline Int numeral(Int value)
+		inline uint32_t numeral(int value)
 		{
 			if ((value > 36) || (value < 1))
 				return '0';
@@ -142,18 +136,16 @@ namespace z
          * \brief Check if the given character is numeric under
          * the given base.
          */
-        template <typename CHAR>
-        inline bool isNumeric(const CHAR ch, Int base = 10)
+        inline bool isNumeric(uint32_t ch, int base = 10)
         {
-            Int value = numeralValue(ch);
+            int value = numeralValue(ch);
             return ((value < base) && (value > -1));
         }
 
         /**
          * \brief Check if the given character is alphanumeric.
          */
-        template <typename CHAR>
-        inline bool isAlphaNumeric(const CHAR ch)
+        inline bool isAlphaNumeric(uint32_t ch)
         {
             return (isAlpha(ch) ||  //is a letter
                     isNumeric(ch)); //or a number
@@ -162,8 +154,7 @@ namespace z
         /**
          * \brief Check if the given character is white space.
          */
-        template <typename CHAR>
-        bool isWhiteSpace(CHAR ch)
+        bool isWhiteSpace(uint32_t ch)
         {
             if ((ch == (CHAR)9)  || //tab
                 (ch == (CHAR)10) || //newline
