@@ -366,8 +366,34 @@ namespace z
 				integral = 1;
 			}
 
-
 			fractional = number.fval - (double)integral;
+
+			//this section rounds to nearest fractional point (decimal pt. in base 10)
+			if (number.ival)
+			{
+				//prep for rounding
+				double tmp = fractional;
+				double roundval = tmp / (double)(base << 1);
+				double roundadd = roundval;
+				for (size_t i=0; i<precision; i++)
+				{
+					tmp *= base;
+					tmp -= (double)(long)tmp;
+					roundadd /= base;
+				}
+				//round
+				if (tmp >= roundval)
+				{
+					fractional += roundadd;
+
+					if (fractional >= 1)
+					{
+						integral++;
+						fractional--;
+					}
+				}
+			}
+
 			// number.exponent - 1023;
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);

@@ -45,7 +45,7 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	std::complex<double> comp (3.4,3.4);
+	std::complex<double> comp (3.127,3.4);
 	core::string<utf32> str = comp;
 
 
