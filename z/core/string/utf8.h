@@ -5,7 +5,7 @@ string<utf8>::string()
 {
 	data = new uint8_t[1];
 	data[0] = 0;
-
+	
 	data_len = 1;
 	character_ct = 0;
 }

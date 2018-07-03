@@ -40,19 +40,23 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 	con.writeln("}");
 }*/
 
-
-
 int main()
 {
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf32> str = "123abcabcabc";
+	core::string<utf32> str;
 
-	str.unPadRight("abc");
+	std::complex<double> comp (3.4,3.4);
+
+	str = core::string<utf32>(comp.real());
+	// core::string<utf32> str = std::complex<double>(0,3.4);
+	// core::string<utf32> str = 3.4;
+
+	// str.unPadRight("abc");
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
-
+	// std::cout << str.length() << std::endl;
 	// str = str[1];
 	// core::string<utf32> res = "abcee";
 

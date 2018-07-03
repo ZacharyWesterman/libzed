@@ -1,6 +1,7 @@
 #pragma once
 
 #include <type_traits>
+#include <complex>
 
 #include "charFunctions.h"
 #include <z/encoding.h>
@@ -64,25 +65,28 @@ static size_t fractionalBuf(double fractional, int base, int precision, bool for
 {
 	if (fractional)
 	{
+		fractional -= (double)(long)fractional;
+		// return 0;
 		size_t length = 0;
 		double mult = base;
+		int i = 0;
 
-		for (int i=0; i<precision; i++)
+		bool cont = true;
+		while ((i < precision) && cont)
 		{
-			if (!(fractional || force)) return length;
+			fractional *= mult;
 
-			char chr = z::core::numeral(fractional *= mult);
-			fractional -= (long)fractional;
+			uint8_t chr = z::core::numeral((int)fractional);
+			fractional -= (double)(long)fractional;
 
-			buf[length] = (chr);
+			buf[i] = chr;
 
-			if (chr != '0') length = i+1;
+			i++;
+			if (chr != '0') length = i;
+			if (!fractional && !force) cont = false;
 		}
 
-		if (force)
-			return precision;
-		else
-			return length;
+		return length;
 	}
 	else
 	{
@@ -131,13 +135,14 @@ namespace z
 			string(PTR);
 
 			string(double, int base = 10, int precision = 0, int padSize = 0);
+			string(const std::complex<double>&, int base = 10, int precision = 0);
 
 
 			//constructors from various string types
-			string(const string<ascii>&);
-			string(const string<utf8>&);
-			string(const string<utf16>&);
-			string(const string<utf32>&);
+			explicit string(const string<ascii>&);
+			explicit string(const string<utf8>&);
+			explicit string(const string<utf16>&);
+			explicit string(const string<utf32>&);
 
 			//copy constructor
 			string(string&&);
@@ -205,7 +210,6 @@ namespace z
 			bool operator<(const string&) const;
 			bool operator<=(const string&) const;
 		};
-
 
 		template <encoding E>
 		template <typename INT, typename>
@@ -292,6 +296,8 @@ namespace z
 			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
 			uint8_t ebuf[Z_STR_EXP_BUFSIZE];
 
+			data = 0;
+
 			union float_cast
 			{
 				double fval;
@@ -324,22 +330,25 @@ namespace z
 			unsigned long exponent = 0;
 			bool negexponent = false;
 
-			if ((1023 + Z_STR_EXP_SCIENTIFIC) <= number.exponent)// pos exponent <= x2^50
+			if (number.ival) //don't bother with exponents if 0
 			{
-				while (number.fval >= base)
+				if ((1023 + Z_STR_EXP_SCIENTIFIC) <= number.exponent)// pos exponent <= x2^50
 				{
-					number.fval /= base;
-					exponent++;
+					while (number.fval >= base)
+					{
+						number.fval /= base;
+						exponent++;
+					}
 				}
-			}
-			else if ((1023 - Z_STR_EXP_SCIENTIFIC) >= number.exponent)// neg exponent >= x2^-50
-			{
-				negexponent = true;
-
-				while (number.exponent < 1023)
+				else if ((1023 - Z_STR_EXP_SCIENTIFIC) >= number.exponent)// neg exponent >= x2^-50
 				{
-					number.fval *= base;
-					exponent++;
+					negexponent = true;
+
+					while (number.fval < 1)
+					{
+						number.fval *= base;
+						exponent++;
+					}
 				}
 			}
 
@@ -360,11 +369,10 @@ namespace z
 
 			fractional = number.fval - (double)integral;
 			// number.exponent - 1023;
-
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+			// size_t fbufsiz = fractionalBuf(fractional, 10, 6, 0, fbuf);
 			size_t ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
-
 			//initialize string data
 			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
 			if (character_ct < padSize)
@@ -372,20 +380,29 @@ namespace z
 			else
 				padSize = 0;
 
+			// bool
+
+			// character_ct = fbufsiz;
+
+			// character_ct = fbufsiz + (bool)fbufsiz;
 			data_len = (character_ct + 1) * this->charSize();
+			// data_len = 100;
+			// character_ct = 0;
 			data = new uint8_t[data_len];
-
+			// data = new uint8_t[10];
+			// data_len = 10;
+			// character_ct = 0;
 			if (negative) this->initChar('-', 0);
-
+			// size_t pos = 0;
 			size_t pos = negative;
-
+			//
 			for (size_t i=0; i<padSize; i++)
 				this->initChar('0',pos++);
 
 			for (size_t i=0; i<ibufsiz; i++)
 				this->initChar(ibuf[ibufsiz-i-1], pos++);
 
-			if (fractional)
+			if (fbufsiz)
 			{
 				this->initChar('.', pos++);
 
@@ -403,8 +420,30 @@ namespace z
 					this->initChar(ebuf[ebufsiz-i-1],pos++);
 			}
 
-			this->initChar(0,character_ct);
+			this->initChar(0,pos);
 		}
+
+		// template <encoding E>
+		// string<E>::string(const std::complex<double>& value, int base, int precision) : string()
+		// {
+		// 	if (value.real() && value.imag())
+		// 	{
+		// 		operator=(string<E>(value.real(), base, precision, 0));
+		// 		if (value.imag() > 0) operator+=("+");
+		// 		operator+=(string<E>(value.imag(), base, precision, 0));
+		// 		operator+=("i");
+		// 	}
+		// 	else if (value.imag())
+		// 	{
+		// 		operator=(string<E>(value.imag(), base, precision, 0));
+		// 		operator+=("i");
+		// 	}
+		// 	else
+		// 	{
+		// 		operator=(string<E>(value.real(), base, precision, 0));
+		// 	}
+		//
+		// }
 
 		template <encoding E>
 		string<E>::string(string<E>&& other)
@@ -412,6 +451,8 @@ namespace z
 			data = other.data;
 			data_len = other.data_len;
 			character_ct = other.character_ct;
+
+			other.data = 0;
 		}
 
 		template <encoding E>
@@ -711,9 +752,10 @@ namespace z
 		template <encoding E>
 		const string<E>& string<E>::operator=(const string<E>& other)
 		{
-			data_len = (other.character_ct + 1) * this->charSize();
+			size_t new_len = (other.character_ct + 1) * this->charSize();
+			this->increase(new_len);
+			// data = new uint8_t[data_len];
 
-			this->increase(data_len);
 			character_ct = other.character_ct;
 
 			uint32_t* data32 = (uint32_t*)data;
