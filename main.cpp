@@ -45,11 +45,11 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf32> str;
-
 	std::complex<double> comp (3.4,3.4);
+	core::string<utf32> str = comp;
 
-	str = core::string<utf32>(comp.real());
+
+	// str = core::string<utf32>(comp.real());
 	// core::string<utf32> str = std::complex<double>(0,3.4);
 	// core::string<utf32> str = 3.4;
 

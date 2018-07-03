@@ -423,27 +423,27 @@ namespace z
 			this->initChar(0,pos);
 		}
 
-		// template <encoding E>
-		// string<E>::string(const std::complex<double>& value, int base, int precision) : string()
-		// {
-		// 	if (value.real() && value.imag())
-		// 	{
-		// 		operator=(string<E>(value.real(), base, precision, 0));
-		// 		if (value.imag() > 0) operator+=("+");
-		// 		operator+=(string<E>(value.imag(), base, precision, 0));
-		// 		operator+=("i");
-		// 	}
-		// 	else if (value.imag())
-		// 	{
-		// 		operator=(string<E>(value.imag(), base, precision, 0));
-		// 		operator+=("i");
-		// 	}
-		// 	else
-		// 	{
-		// 		operator=(string<E>(value.real(), base, precision, 0));
-		// 	}
-		//
-		// }
+		template <encoding E>
+		string<E>::string(const std::complex<double>& value, int base, int precision) : string()
+		{
+			if (value.real() && value.imag())
+			{
+				operator=(string<E>(value.real(), base, precision, 0));
+				if (value.imag() > 0) operator+=("+");
+				operator+=(string<E>(value.imag(), base, precision, 0));
+				operator+=("i");
+			}
+			else if (value.imag())
+			{
+				operator=(string<E>(value.imag(), base, precision, 0));
+				operator+=("i");
+			}
+			else
+			{
+				operator=(string<E>(value.real(), base, precision, 0));
+			}
+
+		}
 
 		template <encoding E>
 		string<E>::string(string<E>&& other)
