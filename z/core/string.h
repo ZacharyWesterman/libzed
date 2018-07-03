@@ -164,6 +164,10 @@ namespace z
 
 			constexpr encoding format() const {return E;}
 
+			long integer(int base = 10) const;
+			double floating(int base = 10) const;
+			std::complex<double> complex(int base = 10) const;
+
 			///analyzers
 			int count(const string&) const;
 
@@ -177,6 +181,10 @@ namespace z
 
 			bool beginsWith(const string&) const;
 			bool endsWith(const string&) const;
+
+			bool isInteger(int base = 10) const;
+			bool isFloating(int base = 10) const;
+			bool isComplex(int base = 10) const;
 
 			///mutators
 			string substr(size_t, int) const;
@@ -537,6 +545,29 @@ namespace z
 			}
 		}
 
+		template <encoding E>
+		long string<E>::integer(int base) const
+		{
+			if ((base < 2) || (base > 36)) return 0;
+
+			bool negative = (data[0] == '-');
+			long result = 0;
+
+			for (size_t i=negative; i<character_ct; i++)
+			{
+				uint32_t chr = data[i];
+
+				if (isNumeric(chr))
+				{
+					result *= base;
+					result += numeralValue(chr);
+				}
+				else return 0;
+			}
+
+			return (negative ? -result : result);
+		}
+
 		///analyzers
 		template <encoding E>
 		int string<E>::find(const string<E>& other, int occurrence) const
@@ -620,6 +651,20 @@ namespace z
 		bool string<E>::endsWith(const string<E>& other) const
 		{
 			return this->foundEndAt(other, character_ct-1);
+		}
+
+		template <encoding E>
+		bool string<E>::isInteger(int base) const
+		{
+			if ((base < 2) || (base > 36)) return false;
+
+			for (size_t i=0; i<character_ct; i++)
+			{
+				if (!isNumeric(data[i], base))
+					return false;
+			}
+
+			return true;
 		}
 
 		///mutators

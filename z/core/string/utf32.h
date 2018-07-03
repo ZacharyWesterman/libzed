@@ -211,6 +211,31 @@ size_t string<utf32>::charSize() const
 	return 4;
 }
 
+template <>
+long string<utf32>::integer(int base) const
+{
+	if ((base < 2) || (base > 36)) return 0;
+
+	uint32_t* data32 = (uint32_t*)data;
+
+	bool negative = (data32[0] == '-');
+	long result = 0;
+
+	for (size_t i=negative; i<character_ct; i++)
+	{
+		uint32_t chr = data32[i];
+
+		if (isNumeric(chr))
+		{
+			result *= base;
+			result += numeralValue(chr);
+		}
+		else return 0;
+	}
+
+	return (negative ? -result : result);
+}
+
 ///operators
 template <>
 const string<utf32>& string<utf32>::operator+=(const string<utf32>& other)
@@ -334,6 +359,22 @@ int string<utf32>::findBefore(const string<utf32>& other, size_t index, int occu
 	}
 
 	return -1;
+}
+
+template <>
+bool string<utf32>::isInteger(int base) const
+{
+	if ((base < 2) || (base > 36)) return false;
+
+	uint32_t* data32 = (uint32_t*)data;
+
+	for (size_t i=0; i<character_ct; i++)
+	{
+		if (!isNumeric(data32[i], base))
+			return false;
+	}
+
+	return true;
 }
 
 ///mutators

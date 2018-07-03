@@ -156,13 +156,13 @@ namespace z
          */
         bool isWhiteSpace(uint32_t ch)
         {
-            if ((ch == (CHAR)9)  || //tab
-                (ch == (CHAR)10) || //newline
-                (ch == (CHAR)13) || //carriage return
-                (ch == (CHAR)32) || //space
-                (ch == (CHAR)12) || //form feed
-                (ch == (CHAR)11) || //vertical tab
-                (ch == (CHAR)0))    //null
+            if ((ch == 9)  || //tab
+                (ch == 10) || //newline
+                (ch == 13) || //carriage return
+                (ch == 32) || //space
+                (ch == 12) || //form feed
+                (ch == 11) || //vertical tab
+                (ch == 0))    //null
                 return true;
             else
                 return false;
