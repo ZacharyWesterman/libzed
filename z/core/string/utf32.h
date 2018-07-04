@@ -223,7 +223,7 @@ long string<utf32>::integer(int base) const
 
 	size_t start = (negative || (data32[0] == '+'));
 
-	for (size_t i=negative; i<character_ct; i++)
+	for (size_t i=start; i<character_ct; i++)
 	{
 		uint32_t chr = data32[i];
 
@@ -372,16 +372,51 @@ bool string<utf32>::isInteger(int base) const
 
 	if (!character_ct) return false;
 
-	size_t start;
-	if ((data32[0] == '-') || (data32[0] == '+'))
-		start = 1;
-	else
-		start = 0;
+	size_t start = ((data32[0] == '-') || (data32[0] == '+'));
 
-	for (size_t i=0; i<character_ct; i++)
+	for (size_t i=start; i<character_ct; i++)
 	{
 		if (!isNumeric(data32[i], base))
 			return false;
+	}
+
+	return true;
+}
+
+template <>
+bool string<utf32>::isFloating(int base) const
+{
+	if ((base < 2) || (base > 36)) return false;
+
+	if (!character_ct) return false;
+
+	uint32_t* data32 = (uint32_t*)data;
+
+	bool pastDecimal, pastExponent;
+	pastDecimal = pastExponent = false;
+
+	size_t start = ((data32[0] == '-') || (data32[0] == '+'));
+
+	for (size_t i=start; i<character_ct; i++)
+	{
+		if (!isNumeric(data32[i], base))
+		{
+			if (data32[i] == '.')
+			{
+				if (pastDecimal || pastExponent)
+					return false;
+				else
+					pastDecimal = true;
+			}
+			else if (toLower(data32[i]) == 'e')
+			{
+				if (pastExponent)
+					return false;
+				else
+					pastExponent = true;
+			}
+			else return false;
+		}
 	}
 
 	return true;
