@@ -555,6 +555,8 @@ namespace z
 			bool negative = (data[0] == '-');
 			long result = 0;
 
+			size_t start = (negative || (data[0] == '+'));
+
 			for (size_t i=negative; i<character_ct; i++)
 			{
 				uint32_t chr = data[i];
@@ -663,7 +665,7 @@ namespace z
 			if (!character_ct) return false;
 
 			size_t start;
-			if (data[0] == '-')
+			if ((data[0] == '-') || (data[0] == '+'))
 				start = 1;
 			else
 				start = 0;

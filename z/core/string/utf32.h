@@ -221,6 +221,8 @@ long string<utf32>::integer(int base) const
 	bool negative = (data32[0] == '-');
 	long result = 0;
 
+	size_t start = (negative || (data32[0] == '+'));
+
 	for (size_t i=negative; i<character_ct; i++)
 	{
 		uint32_t chr = data32[i];
@@ -371,7 +373,7 @@ bool string<utf32>::isInteger(int base) const
 	if (!character_ct) return false;
 
 	size_t start;
-	if (data32[0] == '-')
+	if ((data32[0] == '-') || (data32[0] == '+'))
 		start = 1;
 	else
 		start = 0;
