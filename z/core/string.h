@@ -202,6 +202,8 @@ namespace z
 
 			const string& unPadLeft(const string&);
 			const string& unPadRight(const string&);
+			const string& unPad(const string&);
+
 			const string& cutDuplicates(const string&);
 
 
@@ -790,6 +792,13 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template <encoding E>
+		const string<E>& string<E>::unPad(const string<E>& other)
+		{
+			this->unPadLeft(other);
+			return this->unPadRight(other);
 		}
 
 		template <encoding E>
