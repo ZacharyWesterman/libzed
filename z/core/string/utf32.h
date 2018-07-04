@@ -368,6 +368,14 @@ bool string<utf32>::isInteger(int base) const
 
 	uint32_t* data32 = (uint32_t*)data;
 
+	if (!character_ct) return false;
+
+	size_t start;
+	if (data32[0] == '-')
+		start = 1;
+	else
+		start = 0;
+
 	for (size_t i=0; i<character_ct; i++)
 	{
 		if (!isNumeric(data32[i], base))

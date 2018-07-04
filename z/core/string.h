@@ -660,7 +660,15 @@ namespace z
 		{
 			if ((base < 2) || (base > 36)) return false;
 
-			for (size_t i=0; i<character_ct; i++)
+			if (!character_ct) return false;
+
+			size_t start;
+			if (data[0] == '-')
+				start = 1;
+			else
+				start = 0;
+
+			for (size_t i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data[i], base))
 					return false;

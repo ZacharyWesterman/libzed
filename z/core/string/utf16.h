@@ -373,6 +373,14 @@ bool string<utf16>::isInteger(int base) const
 
 	uint16_t* data16 = (uint16_t*)data;
 
+	if (!character_ct) return false;
+
+	size_t start;
+	if (data16[0] == '-') 
+		start = 1;
+	else
+		start = 0;
+
 	for (size_t i=0; i<character_ct; i++)
 	{
 		if (!isNumeric(data16[i], base))
