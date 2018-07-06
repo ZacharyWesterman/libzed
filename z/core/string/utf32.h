@@ -413,7 +413,11 @@ bool string<utf32>::isFloating(int base) const
 				if (pastExponent)
 					return false;
 				else
+				{
 					pastExponent = true;
+					if ((data32[i+1] == '+') || (data32[i+1] == '-'))
+						i++;
+				}
 			}
 			else return false;
 		}

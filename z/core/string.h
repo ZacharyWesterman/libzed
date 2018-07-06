@@ -709,7 +709,11 @@ namespace z
 						if (pastExponent)
 							return false;
 						else
+						{
 							pastExponent = true;
+							if ((data[i+1] == '+') || (data[i+1] == '-'))
+								i++;
+						}
 					}
 					else return false;
 				}

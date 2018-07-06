@@ -418,7 +418,11 @@ bool string<utf16>::isFloating(int base) const
 				if (pastExponent)
 					return false;
 				else
+				{
 					pastExponent = true;
+					if ((data16[i+1] == '+') || (data16[i+1] == '-'))
+						i++;
+				}
 			}
 			else return false;
 		}
