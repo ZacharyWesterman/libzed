@@ -2,6 +2,7 @@
 
 #include <type_traits>
 #include <complex>
+#include <climits>
 
 #include "charFunctions.h"
 #include <z/encoding.h>
@@ -20,14 +21,6 @@
 
 #ifndef Z_STR_FLOAT_PRECISION
 	#define Z_STR_FLOAT_PRECISION 6
-#endif
-
-#ifndef Z_STR_EXP_SCIENTIFIC
-	#define Z_STR_EXP_SCIENTIFIC 50
-#endif
-
-#ifndef Z_STR_FLOAT_ROUND
-	#define Z_STR_FLOAT_ROUND 0.0000005
 #endif
 
 #ifndef Z_STR_POINTER_FORCE
@@ -342,23 +335,36 @@ namespace z
 
 			if (number.ival) //don't bother with exponents if 0
 			{
-				if ((1023 + Z_STR_EXP_SCIENTIFIC) <= number.exponent)// pos exponent <= x2^50
+				double temp = number.fval;
+				unsigned long tempExp = exponent;
+				bool tempNegExp = negexponent;
+
+				if (1023 <= number.exponent)// pos exponent
 				{
-					while (number.fval >= base)
+					while (temp >= base)
 					{
-						number.fval /= base;
-						exponent++;
+						temp /= base;
+						tempExp++;
 					}
 				}
-				else if ((1023 - Z_STR_EXP_SCIENTIFIC) >= number.exponent)// neg exponent >= x2^-50
+				else if (1023 >= number.exponent)// neg exponent
 				{
-					negexponent = true;
+					tempNegExp = true;
+					double frac = 1.0 / (double)base;
 
-					while (number.fval < 1)
+					while (temp < frac)
 					{
-						number.fval *= base;
-						exponent++;
+						temp *= base;
+						tempExp++;
 					}
+				}
+
+				if ((tempNegExp && (tempExp >= precision)) ||
+					(number.fval > (double)(INT_MAX)))
+				{
+					number.fval = temp;
+					exponent = tempExp;
+					negexponent = tempNegExp;
 				}
 			}
 
@@ -368,8 +374,8 @@ namespace z
 			}
 			else if (number.exponent > 1023)//x2^(pos)
 			{
-				uint32_t expo = number.exponent - 1023;
-				integral = (1 << expo) + (number.mantissa >> (52 - expo));
+				long expo = number.exponent - 1023;
+				integral = ((long)1 << expo) + (number.mantissa >> ((long)52 - expo));
 			}
 			else //x2^0
 			{

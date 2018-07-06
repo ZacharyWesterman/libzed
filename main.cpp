@@ -45,7 +45,8 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf32> str = "+12.3e1";
+	// core::string<utf32> str = (double)0.0000001;
+	core::string<utf32> str = (double)100000000*(double)100000000;
 
 
 	// str = core::string<utf32>(comp.real());
