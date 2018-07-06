@@ -591,6 +591,8 @@ namespace z
 			bool negative = (data[0] == '-');
 			size_t start = (negative || (data[0] == '+'));
 
+			if (start >= character_ct) return 0;
+
 			double result = 0;
 			double frac = 1;
 			int exponent = 0;
@@ -768,6 +770,8 @@ namespace z
 			pastDecimal = pastExponent = false;
 
 			size_t start = ((data[0] == '-') || (data[0] == '+'));
+
+			if (start >= character_ct) return 0;
 
 			for (size_t i=start; i<character_ct; i++)
 			{

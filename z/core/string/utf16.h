@@ -258,6 +258,8 @@ double string<utf16>::floating(int base) const
 	bool negative = (data16[0] == '-');
 	size_t start = (negative || (data16[0] == '+'));
 
+	if (start >= character_ct) return 0;
+
 	double result = 0;
 	double frac = 1;
 	int exponent = 0;
@@ -479,6 +481,8 @@ bool string<utf16>::isFloating(int base) const
 	pastDecimal = pastExponent = false;
 
 	size_t start = ((data16[0] == '-') || (data16[0] == '+'));
+
+	if (start >= character_ct) return 0;
 
 	for (size_t i=start; i<character_ct; i++)
 	{
