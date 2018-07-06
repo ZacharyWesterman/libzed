@@ -243,6 +243,84 @@ long string<utf16>::integer(int base) const
 	return (negative ? -result : result);
 }
 
+template <>
+double string<utf16>::floating(int base) const
+{
+	if ((base < 2) || (base > 36)) return 0;
+
+	if (!character_ct) return 0;
+
+	bool pastDecimal, pastExponent, negexponent;
+	pastDecimal = pastExponent = negexponent = false;
+
+	uint16_t* data16 = (uint16_t*)data;
+
+	bool negative = (data16[0] == '-');
+	size_t start = (negative || (data16[0] == '+'));
+
+	double result = 0;
+	double frac = 1;
+	int exponent = 0;
+
+	for (size_t i=start; i<character_ct; i++)
+	{
+		if (!isNumeric(data16[i], base))
+		{
+			if (data16[i] == '.')
+			{
+				if (pastDecimal || pastExponent)
+					return 0;
+				else
+					pastDecimal = true;
+			}
+			else if (toLower(data16[i]) == 'e')
+			{
+				if (pastExponent)
+					return 0;
+				else
+				{
+					pastExponent = true;
+					negexponent = (data16[i+1] == '-');
+					if (negexponent || (data16[i+1] == '+'))
+						i++;
+				}
+			}
+			else return 0;
+		}
+		else
+		{
+			if (pastExponent)
+			{
+				exponent *= base;
+				exponent += numeralValue(data16[i]);
+			}
+			else if (pastDecimal)
+			{
+				frac /= base;
+				result += (double)numeralValue(data16[i])*frac;
+			}
+			else
+			{
+				result *= base;
+				result += numeralValue(data16[i]);
+			}
+		}
+	}
+
+	if (pastExponent)
+	{
+		for (int i=0; i<exponent; i++)
+		{
+			if (negexponent)
+				result /= base;
+			else
+				result *= base;
+		}
+	}
+
+	return (negative ? -result : result);
+}
+
 ///operators
 template <>
 const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)

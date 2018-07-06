@@ -46,7 +46,7 @@ int main()
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
 	// core::string<utf32> str = (double)0.0000001;
-	core::string<utf32> str = (double)100000000*(double)100000000;
+	core::string<utf32> str = "1e+12";
 
 
 	// str = core::string<utf32>(comp.real());
@@ -56,7 +56,7 @@ int main()
 	// str.unPadRight("abc");
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
-	std::cout << str.isComplex() << std::endl;
+	std::cout << str.floating() << std::endl;
 	// std::cout << (str.isInteger(10) ? "int" : "not int") << std::endl;
 	// std::cout << str.length() << std::endl;
 	// str = str[1];

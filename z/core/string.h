@@ -578,6 +578,82 @@ namespace z
 			return (negative ? -result : result);
 		}
 
+		template <encoding E>
+		double string<E>::floating(int base) const
+		{
+			if ((base < 2) || (base > 36)) return 0;
+
+			if (!character_ct) return 0;
+
+			bool pastDecimal, pastExponent, negexponent;
+			pastDecimal = pastExponent = negexponent = false;
+
+			bool negative = (data[0] == '-');
+			size_t start = (negative || (data[0] == '+'));
+
+			double result = 0;
+			double frac = 1;
+			int exponent = 0;
+
+			for (size_t i=start; i<character_ct; i++)
+			{
+				if (!isNumeric(data[i], base))
+				{
+					if (data[i] == '.')
+					{
+						if (pastDecimal || pastExponent)
+							return 0;
+						else
+							pastDecimal = true;
+					}
+					else if (toLower(data[i]) == 'e')
+					{
+						if (pastExponent)
+							return 0;
+						else
+						{
+							pastExponent = true;
+							negexponent = (data[i+1] == '-');
+							if (negexponent || (data[i+1] == '+'))
+								i++;
+						}
+					}
+					else return 0;
+				}
+				else
+				{
+					if (pastExponent)
+					{
+						exponent *= base;
+						exponent += numeralValue(data[i]);
+					}
+					else if (pastDecimal)
+					{
+						frac /= base;
+						result += (double)numeralValue(data[i])*frac;
+					}
+					else
+					{
+						result *= base;
+						result += numeralValue(data[i]);
+					}
+				}
+			}
+
+			if (pastExponent)
+			{
+				for (int i=0; i<exponent; i++)
+				{
+					if (negexponent)
+						result /= base;
+					else
+						result *= base;
+				}
+			}
+
+			return (negative ? -result : result);
+		}
+
 		///analyzers
 		template <encoding E>
 		int string<E>::find(const string<E>& other, int occurrence) const
