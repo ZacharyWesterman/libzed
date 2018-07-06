@@ -427,6 +427,69 @@ bool string<utf16>::isFloating(int base) const
 	return true;
 }
 
+template <>
+bool string<utf16>::isComplex(int base) const
+{
+	if ((base < 2) || (base > 36)) return false;
+
+	if (!character_ct) return false;
+
+	bool pastDecimal, pastExponent, imag, ir;
+	pastDecimal = pastExponent = imag = ir = false;
+
+	uint16_t* data16 = (uint16_t*)data;
+
+	size_t start = ((data16[0] == '-') || (data16[0] == '+'));
+
+	for (size_t i=start; i<character_ct; i++)
+	{
+		if (!isNumeric(data16[i], 10))
+		{
+			if (data16[i] == '.')
+			{
+				if (pastDecimal || pastExponent)
+					return false;
+				else
+					pastDecimal = true;
+			}
+			else if (toLower(data16[i]) == 'e')
+			{
+				if (pastExponent)
+					return false;
+				else
+				{
+					pastExponent = true;
+					if ((data16[i+1] == '+') || (data16[i+1] == '-'))
+						i++;
+				}
+			}
+			else if (toLower(data16[i]) == 'i')
+			{
+				if (imag)
+					return false;
+				else
+				{
+					pastExponent = pastDecimal = false;
+					imag = true;
+				}
+			}
+			else if ((data16[i] == '-') || (data16[i] == '+'))
+			{
+				if (ir)
+					return false;
+				else
+				{
+					pastDecimal = pastExponent = false;
+					ir = true;
+				}
+			}
+			else return false;
+		}
+	}
+
+	return true;
+}
+
 ///mutators
 template <>
 string<utf16> string<utf16>::substr(size_t index, int count) const

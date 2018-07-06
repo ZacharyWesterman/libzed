@@ -712,6 +712,67 @@ namespace z
 			return true;
 		}
 
+		template <encoding E>
+		bool string<E>::isComplex(int base) const
+		{
+			if ((base < 2) || (base > 36)) return false;
+
+			if (!character_ct) return false;
+
+			bool pastDecimal, pastExponent, imag, ir;
+			pastDecimal = pastExponent = imag = ir = false;
+
+			size_t start = ((data[0] == '-') || (data[0] == '+'));
+
+			for (size_t i=start; i<character_ct; i++)
+			{
+				if (!isNumeric(data[i], 10))
+				{
+					if (data[i] == '.')
+					{
+						if (pastDecimal || pastExponent)
+							return false;
+						else
+							pastDecimal = true;
+					}
+					else if (toLower(data[i]) == 'e')
+					{
+						if (pastExponent)
+							return false;
+						else
+						{
+							pastExponent = true;
+							if ((data[i+1] == '+') || (data[i+1] == '-'))
+								i++;
+						}
+					}
+					else if (toLower(data[i]) == 'i')
+					{
+						if (imag)
+							return false;
+						else
+						{
+							pastExponent = pastDecimal = false;
+							imag = true;
+						}
+					}
+					else if ((data[i] == '-') || (data[i] == '+'))
+					{
+						if (ir)
+							return false;
+						else
+						{
+							pastDecimal = pastExponent = false;
+							ir = true;
+						}
+					}
+					else return false;
+				}
+			}
+
+			return true;
+		}
+
 		///mutators
 		template <encoding E>
 		const string<E>& string<E>::remove(const string& other, int occurrence)

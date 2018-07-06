@@ -45,7 +45,7 @@ int main()
 	// double val = 123;
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
-	core::string<utf32> str = "+1.23e4";
+	core::string<utf32> str = "+12.3e1";
 
 
 	// str = core::string<utf32>(comp.real());
@@ -55,7 +55,7 @@ int main()
 	// str.unPadRight("abc");
 	// for (int i=0; i<(int)str.length(); i++)
 	std::cout << core::string<utf8>(str).cstring() << std::endl;
-	std::cout << str.isFloating() << std::endl;
+	std::cout << str.isComplex() << std::endl;
 	// std::cout << (str.isInteger(10) ? "int" : "not int") << std::endl;
 	// std::cout << str.length() << std::endl;
 	// str = str[1];
