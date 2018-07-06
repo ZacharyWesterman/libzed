@@ -114,9 +114,9 @@ namespace z
                 (ch <= '9'))    //to 9
                 return (ch - '0');
             else if (isLowerAlpha(ch))    //a-z
-                return (ch - 'a');
+                return (ch - 'a' + 10);
             else if (isUpperAlpha(ch))    //A-Z
-                return (ch - 'A');
+                return (ch - 'A' + 10);
             else
                 return -1;
         }
