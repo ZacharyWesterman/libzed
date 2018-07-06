@@ -656,6 +656,145 @@ namespace z
 			return (negative ? -result : result);
 		}
 
+		template <encoding E>
+		std::complex<double> string<E>::complex(int base) const
+		{
+			if ((base < 2) || (base > 36)) return 0;
+
+			if (!character_ct) return 0;
+
+			bool pastDecimal, pastExponent, imag, ir, negexponent;
+			pastDecimal = pastExponent = imag = ir = negexponent = false;
+
+			bool negative = (data[0] == '-');
+			size_t start = (negative || (data[0] == '+'));
+
+			if (start >= character_ct) return 0;
+
+			double imagResult = 0;
+			double realResult = 0;
+			double result = 0;
+			double frac = 1;
+			int exponent = 0;
+
+			if (negative) result = -result;
+
+			for (size_t i=start; i<character_ct; i++)
+			{
+				if (!isNumeric(data[i], 10))
+				{
+					if (data[i] == '.')
+					{
+						if (pastDecimal || pastExponent)
+							return 0;
+						else
+							pastDecimal = true;
+					}
+					else if (toLower(data[i]) == 'e')
+					{
+						if (pastExponent)
+							return 0;
+						else
+						{
+							pastExponent = true;
+
+							negexponent = (data[i+1] == '-');
+							if (negexponent || (data[i+1] == '+'))
+								i++;
+						}
+					}
+					else if (toLower(data[i]) == 'i')
+					{
+						if (imag)
+							return 0;
+						else
+						{
+							pastExponent = pastDecimal = negexponent = false;
+							imag = true;
+
+							if (pastExponent)
+							{
+								for (int i=0; i<exponent; i++)
+								{
+									if (negexponent)
+										result /= base;
+									else
+										result *= base;
+								}
+							}
+
+							imagResult = (negative ? -result : result);
+							result = 0;
+						}
+					}
+					else if ((data[i] == '-') || (data[i] == '+'))
+					{
+						if (ir || (i >= character_ct-1))
+							return 0;
+						else
+						{
+							pastDecimal = pastExponent = negexponent = false;
+							ir = true;
+
+							if (!imag)
+							{
+								if (pastExponent)
+								{
+									for (int i=0; i<exponent; i++)
+									{
+										if (negexponent)
+											result /= base;
+										else
+											result *= base;
+									}
+								}
+
+								realResult = (negative ? -result : result);
+								result = 0;
+							}
+
+							negative = (data[i] == '-');
+						}
+					}
+					else return 0;
+				}
+				else
+				{
+					if (pastExponent)
+					{
+						exponent *= base;
+						exponent += numeralValue(data[i]);
+					}
+					else if (pastDecimal)
+					{
+						frac /= base;
+						result += (double)numeralValue(data[i])*frac;
+					}
+					else
+					{
+						result *= base;
+						result += numeralValue(data[i]);
+					}
+				}
+			}
+
+			if (pastExponent)
+			{
+				for (int i=0; i<exponent; i++)
+				{
+					if (negexponent)
+						result /= base;
+					else
+						result *= base;
+				}
+			}
+
+			if (result)
+				realResult = (negative ? -result : result);
+
+			return std::complex<double>(realResult, imagResult);
+		}
+
 		///analyzers
 		template <encoding E>
 		int string<E>::find(const string<E>& other, int occurrence) const
