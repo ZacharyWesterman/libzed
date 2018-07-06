@@ -46,7 +46,7 @@ int main()
 	// double* ptr = new double;
 	// std::cout << val << std::endl;
 	// core::string<utf32> str = (double)0.0000001;
-	core::string<utf32> str = "10I-3.4E-4";
+	core::string<utf32> str = "1.";
 
 
 	// str = core::string<utf32>(comp.real());

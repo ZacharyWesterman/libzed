@@ -350,7 +350,7 @@ std::complex<double> string<utf16>::complex(int base) const
 
 	for (size_t i=start; i<character_ct; i++)
 	{
-		if (!isNumeric(data16[i], 10))
+		if (!isNumeric(data16[i], base))
 		{
 			if (data16[i] == '.')
 			{
@@ -378,8 +378,9 @@ std::complex<double> string<utf16>::complex(int base) const
 					return 0;
 				else
 				{
-					pastExponent = pastDecimal = negexponent = false;
 					imag = true;
+
+					if (!i || !isNumeric(data16[i-1], base)) result = 1;
 
 					if (pastExponent)
 					{
@@ -392,6 +393,8 @@ std::complex<double> string<utf16>::complex(int base) const
 						}
 					}
 
+					pastExponent = pastDecimal = negexponent = false;
+
 					imagResult = (negative ? -result : result);
 					result = 0;
 				}
@@ -402,7 +405,6 @@ std::complex<double> string<utf16>::complex(int base) const
 					return 0;
 				else
 				{
-					pastDecimal = pastExponent = negexponent = false;
 					ir = true;
 
 					if (!imag)
@@ -421,6 +423,8 @@ std::complex<double> string<utf16>::complex(int base) const
 						realResult = (negative ? -result : result);
 						result = 0;
 					}
+					
+					pastDecimal = pastExponent = negexponent = false;
 
 					negative = (data16[i] == '-');
 				}

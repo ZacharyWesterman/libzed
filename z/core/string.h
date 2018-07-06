@@ -681,7 +681,7 @@ namespace z
 
 			for (size_t i=start; i<character_ct; i++)
 			{
-				if (!isNumeric(data[i], 10))
+				if (!isNumeric(data[i], base))
 				{
 					if (data[i] == '.')
 					{
@@ -709,8 +709,9 @@ namespace z
 							return 0;
 						else
 						{
-							pastExponent = pastDecimal = negexponent = false;
 							imag = true;
+
+							if (!i || !isNumeric(data[i-1], base)) result = 1;
 
 							if (pastExponent)
 							{
@@ -723,6 +724,8 @@ namespace z
 								}
 							}
 
+							pastExponent = pastDecimal = negexponent = false;
+
 							imagResult = (negative ? -result : result);
 							result = 0;
 						}
@@ -733,7 +736,6 @@ namespace z
 							return 0;
 						else
 						{
-							pastDecimal = pastExponent = negexponent = false;
 							ir = true;
 
 							if (!imag)
@@ -752,6 +754,8 @@ namespace z
 								realResult = (negative ? -result : result);
 								result = 0;
 							}
+							
+							pastDecimal = pastExponent = negexponent = false;
 
 							negative = (data[i] == '-');
 						}
