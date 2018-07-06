@@ -814,6 +814,8 @@ namespace z
 
 			size_t start = ((data[0] == '-') || (data[0] == '+'));
 
+			if (start >= character_ct) return 0;
+
 			for (size_t i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data[i], 10))
@@ -848,7 +850,7 @@ namespace z
 					}
 					else if ((data[i] == '-') || (data[i] == '+'))
 					{
-						if (ir)
+						if (ir || (i >= character_ct-1))
 							return false;
 						else
 						{
