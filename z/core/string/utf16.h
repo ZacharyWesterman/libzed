@@ -273,7 +273,11 @@ double string<utf16>::floating(int base) const
 				if (pastDecimal || pastExponent)
 					return 0;
 				else
+				{
+					if ((i >= character_ct-1) || (toLower(data16[i+1]) == 'i'))
+						return 0;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data16[i]) == 'e')
 			{
@@ -357,7 +361,11 @@ std::complex<double> string<utf16>::complex(int base) const
 				if (pastDecimal || pastExponent)
 					return 0;
 				else
+				{
+					if ((i >= character_ct-1) || (toLower(data16[i+1]) == 'i'))
+						return 0;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data16[i]) == 'e')
 			{
@@ -423,7 +431,7 @@ std::complex<double> string<utf16>::complex(int base) const
 						realResult = (negative ? -result : result);
 						result = 0;
 					}
-					
+
 					pastDecimal = pastExponent = negexponent = false;
 
 					negative = (data16[i] == '-');

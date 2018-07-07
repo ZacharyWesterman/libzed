@@ -268,7 +268,11 @@ double string<utf32>::floating(int base) const
 				if (pastDecimal || pastExponent)
 					return 0;
 				else
+				{
+					if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
+						return 0;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data32[i]) == 'e')
 			{
@@ -352,7 +356,11 @@ std::complex<double> string<utf32>::complex(int base) const
 				if (pastDecimal || pastExponent)
 					return 0;
 				else
+				{
+					if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
+						return 0;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data32[i]) == 'e')
 			{

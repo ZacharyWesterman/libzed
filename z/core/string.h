@@ -606,7 +606,11 @@ namespace z
 						if (pastDecimal || pastExponent)
 							return 0;
 						else
+						{
+							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+								return 0;
 							pastDecimal = true;
+						}
 					}
 					else if (toLower(data[i]) == 'e')
 					{
@@ -688,7 +692,11 @@ namespace z
 						if (pastDecimal || pastExponent)
 							return 0;
 						else
+						{
+							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+								return 0;
 							pastDecimal = true;
+						}
 					}
 					else if (toLower(data[i]) == 'e')
 					{
@@ -754,7 +762,7 @@ namespace z
 								realResult = (negative ? -result : result);
 								result = 0;
 							}
-							
+
 							pastDecimal = pastExponent = negexponent = false;
 
 							negative = (data[i] == '-');
