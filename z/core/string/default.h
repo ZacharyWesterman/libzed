@@ -13,7 +13,7 @@ constexpr encoding string<E>::format() const
 }
 
 template <encoding E>
-uint32_t string<E>::operator[](size_t index)
+const uint32_t string<E>::operator[](size_t index) const
 {
 	return this->at(index);
 }
@@ -851,6 +851,12 @@ const string<E>& string<E>::remove(const string& other, int occurrence)
 	}
 
 	return *this;
+}
+
+template <encoding E>
+const string<E>& string<E>::append(const string<E>& other)
+{
+	return operator+=(other);
 }
 
 template <encoding E>

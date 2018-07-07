@@ -51,6 +51,9 @@ namespace z
 		 * Allocated memory is increased as needed with approximate 1.5x growth, and
 		 * is not decreased on subsequent data changes, except in the case where
 		 * data is copied over to a different string.
+		 * <br/><br/>
+		 * <B>RE-ENTRANCE:</B><br/>
+		 * Simultaneous accesses to the same object can cause data races.
          */
 		template <encoding E>
 		class string
@@ -124,43 +127,215 @@ namespace z
 			 */
 			string(const wchar_t* str);
 
-			//constructors from numerical types
+			/**
+			 * \brief Construct from an integer.
+			 *
+			 * \param value An integer.
+			 * \param base The number's base.
+			 * \param padSize Number of characters to pad up to.
+			 *
+			 * Converts an integer to a string in the given base.
+			 * If the character count is less than the pad size, zeroes
+			 * are added to the left side until the character count equals
+			 * the pad size. Valid base sizes are from 2 to 36, and anything
+			 * else is assumed to be base 10. If the pad size is less than 1,
+			 * no character padding is applied.
+			 */
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			string(INT, int base = 10, int padSize = 0);
+			string(INT value, int base = 10, int padSize = 0);
 
+			/**
+			 * \brief Construct from a pointer.
+			 *
+			 * \param pointer A pointer.
+			 *
+			 * Creates a string representation from a pointer, of the form
+			 * `0xFFFFFFFF`. If `Z_STR_POINTER_FORCE` is defined as `true`,
+			 * then the hex part of the string is padded up to
+			 * `Z_STR_POINTER_CHARS` characters (default is 8).
+			 */
 			template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value,PTR>::type>
-			string(PTR);
+			string(PTR pointer);
 
-			string(double, int base = 10, int precision = 0, int padSize = 0);
-			string(const std::complex<double>&, int base = 10, int precision = 0);
+			/**
+			 * \brief Construct from floating-point.
+			 *
+			 * \param value A floating-point number.
+			 * \param base The number's base.
+			 * \param precision The number of characters after the decimal point.
+			 * \param padSize Number of characters to pad up to.
+			 *
+			 * Converts a floating-point number to a string in the given base.
+			 * If the character count is less than the pad size, zeroes
+			 * are added to the left side until the character count equals
+			 * the pad size. Valid base sizes are from 2 to 36, and anything
+			 * else is assumed to be base 10. If the pad size is less than 1,
+			 * no character padding is applied. If the precision is 1 or greater,
+			 * then exactly that many digits will show after the decimal point,
+			 * otherwise up to `Z_STR_FLOAT_PRECISION` digits will show
+			 * (default is 6).
+			 */
+			string(double value, int base = 10, int precision = 0, int padSize = 0);
 
+			/**
+			 * \brief Construct from complex number.
+			 *
+			 * \param value A floating-point complex number.
+			 * \param base The number's base.
+			 * \param precision The number of characters after the decimal point.
+			 *
+			 * Converts a floating-point complex number to a string in the given base.
+			 * This string will look like `X+Yi`, `X-Yi`, `-X+Yi`, or `-X-Yi`.
+			 * Valid base sizes are from 2 to 36, and anything
+			 * else is assumed to be base 10. If the precision is 1 or greater,
+			 * then exactly that many digits will show after the decimal point,
+			 * otherwise up to `Z_STR_FLOAT_PRECISION` digits will show
+			 * (default is 6).
+			 */
+			string(const std::complex<double>& value, int base = 10, int precision = 0);
 
-			//constructors from various string types
-			explicit string(const string<ascii>&);
-			explicit string(const string<utf8>&);
-			explicit string(const string<utf16>&);
-			explicit string(const string<utf32>&);
+			/**
+			 * \brief Construct from an ASCII string.
+			 *
+			 * \param other An ASCII encoded string.
+			 *
+			 * Copies over characters from the given string, converting them
+			 * to the appropriate encoding scheme for this string.
+			 */
+			explicit string(const string<ascii>& other);
+
+			/**
+			 * \brief Construct from a UTF-8 string.
+			 *
+			 * \param other A UTF-8 encoded string.
+			 *
+			 * Copies over characters from the given string, converting them
+			 * to the appropriate encoding scheme for this string.
+			 */
+			explicit string(const string<utf8>& other);
+
+			/**
+			 * \brief Construct from a UTF16 string.
+			 *
+			 * \param other A UTF16 encoded string.
+			 *
+			 * Copies over characters from the given string, converting them
+			 * to the appropriate encoding scheme for this string.
+			 */
+			explicit string(const string<utf16>& other);
+
+			/**
+			 * \brief Construct from a UTF32 string.
+			 *
+			 * \param other A UTF32 encoded string.
+			 *
+			 * Copies over characters from the given string, converting them
+			 * to the appropriate encoding scheme for this string.
+			 */
+			explicit string(const string<utf32>& other);
 
 			/// Lvalue copy-constructor
 			string(string&&);
 
-			//destructor
+			///Destructor
 			~string();
 
-			///at
-			const uint32_t at(size_t) const;
+			/**
+			 * \brief Get the character at the given index.
+			 *
+			 * \param index The index of the character to get.
+			 *
+			 * \return The character at the given index, in UTF32 format.
+			 *
+			 * If the index is greater than the character count, the
+			 * null character is returned.
+			 * For UTF-8 strings, if the chracter at the given index is
+			 * part of a multibyte sequence, that sequence is converted to
+			 * UTF32 and returned.
+			 *
+			 * \see operator[]()
+			 */
+			const uint32_t at(size_t index) const;
 
-			///operator[]
+			/**
+			 * \brief Get the character at the given index.
+			 *
+			 * \param index The index of the character to get.
+			 *
+			 * \return The character at the given index, in UTF32 format.
+			 *
+			 * If the index is greater than the character count, the
+			 * null character is returned.
+			 * For UTF-8 strings, if the chracter at the given index is
+			 * part of a multibyte sequence, that sequence is converted to
+			 * UTF32 and returned.
+			 *
+			 * \see at()
+			 */
 			const uint32_t operator[](size_t index) const;
 
+			/**
+			 * \brief Get the size of the string in memory
+			 *
+			 * \return The number of bytes in memory this string currently consumes.
+			 */
 			size_t size() const;
+
+			/**
+			 * \brief Get the character count of the string.
+			 *
+			 * \return The number of characters in the string.
+			 *
+			 * For UTF-8 strings, multibyte sequences are counted
+			 * as multiple characters.
+			 *
+			 * \see chars()
+			 */
 			size_t length() const;
+
+			/**
+			 * \brief Get the individual character count of the string.
+			 *
+			 * \return The number of characters in the string.
+			 *
+			 * For UTF-8 strings, multibyte sequences are counted
+			 * count as a single character.
+			 *
+			 * \see length()
+			 */
 			size_t chars() const;
 
+			/**
+			 * \brief Get the single-byte cstring pointer.
+			 *
+			 * \return A pointer to the string data, if this string is in a
+			 * single-byte format. `NULL` otherwise.
+			 */
 			const uint8_t* cstring() const;
+
+			/**
+			 * \brief Get the two-byte cstring pointer.
+			 *
+			 * \return A pointer to the string data, if this string is in a
+			 * two-byte format. `NULL` otherwise.
+			 */
 			const uint16_t* nstring() const;
+
+			/**
+			 * \brief Get the four-byte cstring pointer.
+			 *
+			 * \return A pointer to the string data, if this string is in a
+			 * four-byte format. `NULL` otherwise.
+			 */
 			const uint32_t* wstring() const;
 
+			/**
+			 * \brief Get the encoding of this string.
+			 *
+			 * \return An integer indicating this string's encoding.
+			 *
+			 * \see encoding.h
+			 */
 			constexpr encoding format() const;
 
 			long integer(int base = 10) const;
@@ -188,7 +363,7 @@ namespace z
 			///mutators
 			string substr(size_t, int) const;
 
-			const string& append(const string& other) {return operator+=(other);}
+			const string& append(const string& other);
 			const string& insert(const string&, size_t); //insert before index
 			const string& remove(const string&, int occurrence = 0);
 			const string& remove(size_t, int);
