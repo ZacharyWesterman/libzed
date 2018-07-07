@@ -13,6 +13,12 @@ constexpr encoding string<E>::format() const
 }
 
 template <encoding E>
+uint32_t string<E>::operator[](size_t index)
+{
+	return this->at(index);
+}
+
+template <encoding E>
 template <typename INT, typename>
 string<E>::string(INT value, int base, int padSize)
 {

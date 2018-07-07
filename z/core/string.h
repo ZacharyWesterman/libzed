@@ -39,6 +39,19 @@ namespace z
 {
 	namespace core
 	{
+		/**
+         * \brief A template class for character strings.
+         *
+         * This class focuses on how characters are encoded rather than character size.
+		 * Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.
+		 * When characters are input or output, they are converted to or from their
+		 * encoding scheme to a single UTF32 character. Thus, the "default" character
+		 * type is `uint32_t`.
+         * <br/><br/>
+		 * Allocated memory is increased as needed with approximate 1.5x growth, and
+		 * is not decreased on subsequent data changes, except in the case where
+		 * data is copied over to a different string.
+         */
 		template <encoding E>
 		class string
 		{
@@ -53,20 +66,63 @@ namespace z
 			size_t character_ct;
 
 			void initChar(uint32_t, size_t);
-			void increase(size_t); //increase number of string bytes up to the given amount
+			void increase(size_t); //increase number of data bytes up to the given amount
 			constexpr size_t charSize() const;
 
 		public:
-			string(); //construct as null
+			///Default string constructor
+			string();
 
-			//single-char constructors
-			string(char);
-			string(wchar_t);
-			string(const uint32_t&);
+			/**
+			 * \brief Construct string from a single-byte character.
+			 *
+			 * \param chr Initializing character.
+			 *
+			 * Character is assumed to be compatible with this string's encoding.
+			 */
+			string(char chr);
 
-			//string literal constructors
-			string(const char*);
-			string(const wchar_t*);
+			/**
+			 * \brief Construct string from a wide character.
+			 *
+			 * \param chr Initializing character.
+			 *
+			 * Converts the given character to the appropriate encoding for this string.
+			 */
+			string(wchar_t chr);
+
+			/**
+			 * \brief Construct string from uint32_t.
+			 *
+			 * \param chr Initializing character.
+			 *
+			 * This constructor exists to allow a "default" string character to
+			 * again be constructed into a string.
+			 * Converts the given character to the appropriate encoding for this string.
+			 *
+			 * \see at()
+			 * \see operator[]()
+			 */
+			string(const uint32_t& chr);
+
+			/**
+			 * \brief Construct from a cstring of single-byte characters.
+			 *
+			 * \param str Null-terminated cstring.
+			 *
+			 * All characters are assumed to be compatible with this string's encoding.
+			 */
+			string(const char* str);
+
+			/**
+			 * \brief Construct from a cstring of wide characters.
+			 *
+			 * \param str Null-terminated cstring.
+			 *
+			 * Converts the characters in the given cstring to the appropriate encoding
+			 * for this string.
+			 */
+			string(const wchar_t* str);
 
 			//constructors from numerical types
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
@@ -85,15 +141,17 @@ namespace z
 			explicit string(const string<utf16>&);
 			explicit string(const string<utf32>&);
 
-			//copy constructor
+			/// Lvalue copy-constructor
 			string(string&&);
 
 			//destructor
 			~string();
 
-
+			///at
 			const uint32_t at(size_t) const;
-			const uint32_t operator[](size_t index) const {return at(index);}
+
+			///operator[]
+			const uint32_t operator[](size_t index) const;
 
 			size_t size() const;
 			size_t length() const;
