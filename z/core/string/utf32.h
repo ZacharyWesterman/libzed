@@ -269,8 +269,7 @@ double string<utf32>::floating(int base) const
 					return 0;
 				else
 				{
-					if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
-						return 0;
+					if (i >= character_ct-1) return false;
 					pastDecimal = true;
 				}
 			}
@@ -641,7 +640,10 @@ bool string<utf32>::isFloating(int base) const
 				if (pastDecimal || pastExponent)
 					return false;
 				else
+				{
+					if (i >= character_ct-1) return false;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data32[i]) == 'e')
 			{
@@ -686,7 +688,11 @@ bool string<utf32>::isComplex(int base) const
 				if (pastDecimal || pastExponent)
 					return false;
 				else
+				{
+					if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
+						return false;
 					pastDecimal = true;
+				}
 			}
 			else if (toLower(data32[i]) == 'e')
 			{

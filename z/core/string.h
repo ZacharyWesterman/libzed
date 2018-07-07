@@ -607,8 +607,7 @@ namespace z
 							return 0;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
-								return 0;
+							if (i >= character_ct-1) return false;
 							pastDecimal = true;
 						}
 					}
@@ -933,7 +932,10 @@ namespace z
 						if (pastDecimal || pastExponent)
 							return false;
 						else
+						{
+							if (i >= character_ct-1) return false;
 							pastDecimal = true;
+						}
 					}
 					else if (toLower(data[i]) == 'e')
 					{
@@ -976,7 +978,11 @@ namespace z
 						if (pastDecimal || pastExponent)
 							return false;
 						else
+						{
+							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+								return false;
 							pastDecimal = true;
+						}
 					}
 					else if (toLower(data[i]) == 'e')
 					{
