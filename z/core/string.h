@@ -338,61 +338,469 @@ namespace z
 			 */
 			constexpr encoding format() const;
 
+			/**
+			 * \brief Convert this string to an integer.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return A signed integer representation of this string, if it
+			 * is a valid integer. 0 otherwise.
+			 *
+			 * \see isInteger()
+			 */
 			long integer(int base = 10) const;
+
+			/**
+			 * \brief Convert this string to a floating-point value.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return The floating-point representation of this string, if it
+			 * is a valid float. 0 otherwise.
+			 *
+			 * \see isFloating()
+			 */
 			double floating(int base = 10) const;
+
+			/**
+			 * \brief Convert this string to a complex value.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return The floating-point complex representation of this string,
+			 * if it is a valid complex float. 0 otherwise.
+			 *
+			 * \see isComplex()
+			 */
 			std::complex<double> complex(int base = 10) const;
 
-			///analyzers
-			int count(const string&) const;
+			/**
+			 * \brief Count the occurrences of a sub-string.
+			 *
+			 * \param other The sub-string to search for.
+			 *
+			 * \return The number of times the given sub-string appears in
+			 * the full string.
+			 */
+			int count(const string& other) const;
 
-			int find(const string&, int occurrence = 1) const;
-			int findLast(const string&, int occurrence = 1) const;
-			int findAfter(const string&, size_t, int occurrence = 1) const;
-			int findBefore(const string&, size_t, int occurrence = 1) const;
+			/**
+			 * \brief Find a specific occurrence of a sub-string.
+			 *
+			 * \param other The sub-string to search for.
+			 * \param occurrence The occurrence of the sub-string to find.
+			 *
+			 * \return The index of the given occurrence of the sub-string,
+			 * if that occurrence was found. Otherwise, -1.
+			 *
+			 * Attempts to find given occurrence of the sub-string starting at
+			 * the \b beginning of the string. Note that the occurrence starts at 1.
+			 * If the occurrence is less than 1, then -1 is returned.
+			 */
+			int find(const string& other, int occurrence = 1) const;
 
-			bool foundAt(const string&, size_t) const;
-			bool foundEndAt(const string&, size_t) const;
+			/**
+			 * \brief Reverse-find a specific occurrence of a sub-string.
+			 *
+			 * \param other The sub-string to search for.
+			 * \param occurrence The occurrence of the sub-string to find.
+			 *
+			 * \return The index of the given occurrence of the sub-string,
+			 * if that occurrence was found. Otherwise, -1.
+			 *
+			 * Attempts to find given occurrence of the sub-string starting at
+			 * the \b end of the string. Note that the occurrence starts at 1.
+			 * If the occurrence is less than 1, then -1 is returned.
+			 */
+			int findLast(const string& other, int occurrence = 1) const;
 
-			bool beginsWith(const string&) const;
-			bool endsWith(const string&) const;
+			/**
+			 * \brief Find a specific occurrence of a sub-string.
+			 *
+			 * \param other The sub-string to search for.
+			 * \param index The index to start at.
+			 * \param occurrence The occurrence of the sub-string to find.
+			 *
+			 * \return The index of the given occurrence of the sub-string,
+			 * if that occurrence was found. Otherwise, -1.
+			 *
+			 * Attempts to find given occurrence of the sub-string, searching
+			 * forward starting at the given index. Note that the occurrence starts at 1.
+			 * If the occurrence is less than 1, then -1 is returned.
+			 */
+			int findAfter(const string& other, size_t index, int occurrence = 1) const;
 
+			/**
+			 * \brief Reverse-find a specific occurrence of a sub-string.
+			 *
+			 * \param other The sub-string to search for.
+			 * \param index The index to start at.
+			 * \param occurrence The occurrence of the sub-string to find.
+			 *
+			 * \return The index of the given occurrence of the sub-string,
+			 * if that occurrence was found. Otherwise, -1.
+			 *
+			 * Attempts to find given occurrence of the sub-string, searching
+			 * backward starting at the given index. Note that the occurrence starts at 1.
+			 * If the occurrence is less than 1, then -1 is returned.
+			 */
+			int findBefore(const string& other, size_t index, int occurrence = 1) const;
+
+			/**
+			 * \brief Check if a sub-string is found at the given index.
+			 *
+			 * \param other The sub-string to check for.
+			 * \param index The index in the string to look at.
+			 *
+			 * \return True if the sub-string was found beginning at the given index.
+			 * False otherwise.
+			 */
+			bool foundAt(const string& other, size_t index) const;
+
+			/**
+			 * \brief Check if a sub-string ends at the given index.
+			 *
+			 * \param other The sub-string to check for.
+			 * \param index The index in the string to look at.
+			 *
+			 * \return True if the sub-string was found ending at the given index.
+			 * False otherwise.
+			 */
+			bool foundEndAt(const string& other, size_t index) const;
+
+			/**
+			 * \brief Check if the string begins with a given sub-string.
+			 *
+			 * \param other The sub-string to check for.
+			 *
+			 * \return True if this string begins with the given sub-string.
+			 * False otherwise.
+			 */
+			bool beginsWith(const string& other) const;
+
+			/**
+			 * \brief Check if the string ends with a given sub-string.
+			 *
+			 * \param other The sub-string to check for.
+			 *
+			 * \return True if this string ends with the given sub-string.
+			 * False otherwise.
+			 */
+			bool endsWith(const string& other) const;
+
+			/**
+			 * \brief Check if this string can convert to an integer.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return True if the string contains only characters representing a
+			 * signed integer. False otherwise.
+			 *
+			 * Valid strings may contain only numeric characters in the given base,
+			 * and may optionally begin with a `+` or `-`.
+			 *
+			 * \see integer()
+			 */
 			bool isInteger(int base = 10) const;
+
+			/**
+			 * \brief Check if this string can convert to a floating-point value.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return True if the string contains only characters representing a
+			 * float. False otherwise.
+			 *
+			 * Valid strings may optionally begin with a `+` or `-`, and contain only one
+			 * period (decimal point). The number may also have an exponent in the same base,
+			 * in the form `XXeY`, where the exponent `Y` may optionally begin with a `+` or `-`.
+			 * Unlike the main number, this exponent must be an integer.
+			 *
+			 * \see floating()
+			 */
 			bool isFloating(int base = 10) const;
+
+			/**
+			 * \brief Check if this string can convert to a complex value.
+			 *
+			 * \param base The base this string is being interpreted as.
+			 *
+			 * \return True if the string contains only characters representing a
+			 * floating-point complex number. False otherwise.
+			 *
+			 * Valid strings must follow the form `X+Yi` or `Xi+Y`, where `X` and `Y` are
+			 * floating-point values. `X` may optionally have a `+` or `-` preceding it,
+			 * and `Y` may be preceded by a `-` instead of a `+`.
+			 *
+			 * \see isFloating()
+			 * \see complex()
+			 */
 			bool isComplex(int base = 10) const;
 
-			///mutators
-			string substr(size_t, int) const;
+			/**
+			 * \brief Get a sub-string from this string.
+			 *
+			 * \param index The sub-string starting index.
+			 * \param count The number of characters in the sub-string.
+			 *
+			 * \return A subset of the original string.
+			 *
+			 * If count is 0, a null string is returned. If count is negative, characters are
+			 * added in reverse order. <br/>
+			 * e.g. for `string str = "example"`, `str.substr(2,3)` will
+			 * give `"amp"`, and `str.substr(5,-3)` will give `"pma"`.
+			 */
+			string substr(size_t index, int count) const;
 
+			/**
+			 * \brief Append another string to the end of this one.
+			 *
+			 * \param other The string to append.
+			 *
+			 * \return A reference to this string after the other string is appended.
+			 *
+			 * \see operator+=()
+			 */
 			const string& append(const string& other);
-			const string& insert(const string&, size_t); //insert before index
-			const string& remove(const string&, int occurrence = 0);
-			const string& remove(size_t, int);
 
-			const string& replace(const string&, const string&, int occurrence = 0);
-			const string& replace(size_t, int, const string&);
+			/**
+			 * \brief Insert another string into this one.
+			 *
+			 * \param other The string to insert.
+			 * \param index The index to insert before.
+			 *
+			 * \return A reference to this string after the other string is inserted.
+			 *
+			 * Inserts the given string before the given index. So, for `B = "abc"` and
+			 * `A = "xyz"`, `A.insert(B,0)` would give `"abcxyz"`, `A.insert(B,1)` would
+			 * give `"xabcyz"`, etc.
+			 */
+			const string& insert(const string& other, size_t index);
 
-			const string& padLeft(const string&, size_t);
-			const string& padRight(const string&, size_t);
+			/**
+			 * \brief Remove occurrences of the given sub-string.
+			 *
+			 * \param other The sub-string to remove.
+			 * \param occurrence The occurrence to remove.
+			 *
+			 * \return A reference to this string after the sub-string is removed.
+			 *
+			 * If the occurrence is 0, all occurrences of the sub-string are removed.
+			 * If the occurrence is negative, then none are removed. Otherwise, only the
+			 * specified occurrence of the sub-string is removed from the main string,
+			 * starting from the beginning.
+			 */
+			const string& remove(const string& other, int occurrence = 0);
 
-			const string& unPadLeft(const string&);
-			const string& unPadRight(const string&);
-			const string& unPad(const string&);
+			/**
+			 * \brief Remove a subset of the string.
+			 *
+			 * \param index The starting index.
+			 * \param count The number of characters to remove.
+			 *
+			 * \return A reference to this string after the characters are removed.
+			 *
+			 * If count is 0, no characters are removed. If count is negative, characters are
+			 * removed in reverse order.
+			 */
+			const string& remove(size_t index, int count);
 
-			const string& cutDuplicates(const string&);
+			/**
+			 * \brief Replace occurrences of the given sub-string.
+			 *
+			 * \param findStr The sub-string to replace.
+			 * \param replStr The string to replace the sub-string with.
+			 * \param occurrence The occurrence to remove.
+			 *
+			 * \return A reference to this string after the sub-string is replaced.
+			 *
+			 * If the occurrence is 0, all occurrences of the sub-string are replaced.
+			 * If the occurrence is negative, then none are replaced. Otherwise, only the
+			 * specified occurrence of the sub-string is replaced, starting from the
+			 * beginning of this string.
+			 */
+			const string& replace(const string& findStr, const string& replStr, int occurrence = 0);
 
+			/**
+			 * \brief Replace a subset of the string.
+			 *
+			 * \param index The starting index.
+			 * \param count The number of characters to remove.
+			 * \param other The string to replace the subset with.
+			 *
+			 * \return A reference to this string after the characters are replaced.
+			 *
+			 * If count is 0, no characters are replaced. Characters are replaced in forward-order
+			 * whether count is positive or negative.
+			 */
+			const string& replace(size_t index, int count, const string& other);
 
-			//operators
-			string operator+(const string&);
-			const string& operator+=(const string&);
+			/**
+			 * \brief Left-pad this string up to a given chracter count.
+			 *
+			 * \param other The string to pad on the left of this string.
+			 * \param padSize the number of characters to pad up to.
+			 *
+			 * \return A reference to this string after padding.
+			 *
+			 * If the given string contains more than one character, then some of
+			 * that string's characters may be cut off in the resultant string. If
+			 * the pad size is equal or less than the current chracter count, then no
+			 * padding will be added.
+			 */
+			const string& padLeft(const string& other, size_t padSize);
 
-			const string& operator=(const string&);
+			/**
+			 * \brief Right-pad this string up to a given chracter count.
+			 *
+			 * \param other The string to pad on the left of this string.
+			 * \param padSize the number of characters to pad up to.
+			 *
+			 * \return A reference to this string after padding.
+			 *
+			 * If the given string contains more than one character, then some of
+			 * that string's characters may be cut off in the resultant string. If
+			 * the pad size is equal or less than the current chracter count, then no
+			 * padding will be added.
+			 */
+			const string& padRight(const string& other, size_t padSize);
 
-			bool operator==(const string&) const;
-			bool operator!=(const string&) const;
-			bool operator>(const string&) const;
-			bool operator>=(const string&) const;
-			bool operator<(const string&) const;
-			bool operator<=(const string&) const;
+			/**
+			 * \brief Remove padding from the left side of this string.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A reference to this string after removing left-padding.
+			 *
+			 * Removes all occurrences of the given pad string from the left
+			 * side of this string.
+			 */
+			const string& unPadLeft(const string& other);
+
+			/**
+			 * \brief Remove padding from the right side of this string.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A reference to this string after removing right-padding.
+			 *
+			 * Removes all occurrences of the given pad string from the right
+			 * side of this string.
+			 */
+			const string& unPadRight(const string& other);
+
+			/**
+			 * \brief Remove padding from the both sides of this string.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A reference to this string after removing padding.
+			 *
+			 * Removes all occurrences of the given pad string from the left
+			 * and right sides of this string.
+			 */
+			const string& unPad(const string& other);
+
+			/**
+			 * \brief Remove all sequential duplicates from this string.
+			 *
+			 * \param other The string to remove duplicates of.
+			 *
+			 * \return A reference to this string after removing duplicates.
+			 *
+			 * Removes all contiguous repetitions of the given sub-string, leaving
+			 * one instance of the sub-string where the group was.
+			 */
+			const string& cutDuplicates(const string& other);
+
+			/**
+			 * \brief Concatenate two strings.
+			 *
+			 * \param other The string to append.
+			 *
+			 * \return The concatenation of this and the given string.
+			 *
+			 * Appends the given string to the end of this string's characters and
+			 * returns the result. This string is not modified.
+			 */
+			string operator+(const string& other) const;
+
+			/**
+			 * \brief Append another string to the end of this one.
+			 *
+			 * \param other The string to append.
+			 *
+			 * \return A reference to this string after the other string is appended.
+			 *
+			 * \see append()
+			 */
+			const string& operator+=(const string& other);
+
+			/**
+			 * \brief Assign the contents of this string.
+			 *
+			 * \param other The string to copy from.
+			 *
+			 * \return A reference to this string after assignment.
+			 *
+			 * Copies all characters from the given string over to this string,
+			 * replacing current data.
+			 */
+			const string& operator=(const string& other);
+
+			/**
+			 * \brief Equality comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if the strings exactly match. False otherwise.
+			 */
+			bool operator==(const string& other) const;
+
+			/**
+			 * \brief Inequality comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if the strings do not exactly match. False otherwise.
+			 */
+			bool operator!=(const string& other) const;
+
+			/**
+			 * \brief Greater-than comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if this string comes after the given string alphabetically. False otherwise.
+			 */
+			bool operator>(const string& other) const;
+
+			/**
+			 * \brief Greater-than or equal comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if this string does not come before the given string alphabetically. False otherwise.
+			 */
+			bool operator>=(const string& other) const;
+
+			/**
+			 * \brief Less-than comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if this string comes before the given string alphabetically. False otherwise.
+			 */
+			bool operator<(const string& other) const;
+
+			/**
+			 * \brief Less-than or equal comparison.
+			 *
+			 * \param other The string to compare to.
+			 *
+			 * \return True if this string does not come after the given string alphabetically. False otherwise.
+			 */
+			bool operator<=(const string& other) const;
 		};
 
 		#include "string/default.h"
