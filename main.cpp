@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include <z/core/stream.h>
+#include <z/core/array.h>
 using namespace z;
 
 /*template <typename T>
@@ -42,36 +42,17 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 
 int main()
 {
-	// double val = 123;
-	// double* ptr = new double;
-	// std::cout << val << std::endl;
-	// core::string<utf32> str = (double)0.0000001;
-	core::string<utf32> str = "1.0i";
+	core::array<int> A = {1,2,3,4,5,6,7,8,9,10};
 
+	core::array<int> C = A.remove(5,-4);
 
-	// str = core::string<utf32>(comp.real());
-	// core::string<utf32> str = std::complex<double>(0,3.4);
-	// core::string<utf32> str = 3.4;
-
-	// str.unPadRight("abc");
-	// for (int i=0; i<(int)str.length(); i++)
-	std::cout << core::string<utf8>(str).cstring() << std::endl;
-	std::cout << str.complex() << std::endl;
-	// std::cout << (str.isInteger(10) ? "int" : "not int") << std::endl;
-	// std::cout << str.length() << std::endl;
-	// str = str[1];
-	// core::string<utf32> res = "abcee";
-
-	// size_t size = res.length();
-	// res.increase();
-
-	// core::string<utf8> tmp;
-
-	// tmp = res + str;
-	// core::string<utf32> B = A;
-	// core::string<utf8> utfstr = str;
-//
-	// std::cout << utfstr.cstring() << std::endl;
+	std::cout << '{';
+	for (size_t i=0; i<C.length(); i++)
+	{
+		if (i) std::cout << ',';
+		std::cout << C[i];
+	}
+	std::cout << '}' << std::endl;
 
     return 0;
 }
