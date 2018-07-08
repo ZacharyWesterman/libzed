@@ -1,6 +1,4 @@
 #pragma once
-#ifndef CORE_STREAM_H_INCLUDED
-#define CORE_STREAM_H_INCLUDED
 
 #include "string.h"
 #include <z/int.h>
@@ -17,7 +15,7 @@ namespace z
 		 * This class provides an interface for
 		 * input streams.
 		 */
-		template <typename CHAR>
+		template <encoding E>
 		class inputStream
 		{
 		public:
@@ -31,12 +29,18 @@ namespace z
 			 *
 			 * Increments the stream index.
 			 *
-			 * \return The character previously at the
-			 * beginning of the stream.
+			 * \return The character previously at the beginning of the stream.
 			 */
-			virtual CHAR get() = 0;
+			virtual uint32_t get() = 0;
 
-			virtual byte getByte() = 0;
+			/**
+			 * \brief Get the next byte from the stream.
+			 *
+			 * Increments the stream index.
+			 *
+			 * \return The byte previously at the beginning of the stream.
+			 */
+			virtual uint8_t getByte() = 0;
 
 			/**
 			 * \brief Pull an exact number of characters off the stream.
@@ -49,7 +53,7 @@ namespace z
 			 *
 			 * \return A string containing up to \b count non-null characters.
 			 */
-			virtual string<CHAR> get(Int count) = 0;
+			virtual string<E> get(size_t count) = 0;
 
 			/**
 			 * \brief Put the last removed character back on the stream.
@@ -75,26 +79,23 @@ namespace z
 			 * \return A string containing all characters before
 			 * the first occurrence of the given delimiter.
 			 */
-			virtual core::string<CHAR> read(CHAR delim = 0) = 0;
+			virtual string<E> read(uint32_t delim = 0) = 0;
 
 			/**
-			 * \brief Tell whether we have consumed the last character in
-			 * the stream.
+			 * \brief Tell whether we have consumed the last character in the stream.
 			 *
-			 * \return \b True if the last character has been consumed.
-			 * \b False otherwise.
+			 * \return True if the last character has been consumed. False otherwise.
 			 */
 			virtual bool empty() = 0;
 
 			/**
 			 * \brief Seek a position in the stream.
 			 *
-			 * Seeks to the given index, starting at the
-			 * beginning of the stream.
+			 * Seeks to the given index, starting at the beginning of the stream.
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(Int index) = 0;
+			virtual void seek(size_t index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -102,7 +103,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual Int tell() = 0;
+			virtual size_t tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -112,7 +113,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual Int end() = 0;
+			virtual size_t end() = 0;
 		};
 
 		/**
@@ -122,7 +123,7 @@ namespace z
 		 * This class provides an interface for
 		 * output streams.
 		 */
-		template <typename CHAR>
+		template <encoding E>
 		class outputStream
 		{
 		public:
@@ -139,8 +140,16 @@ namespace z
 			 *
 			 * \param ch the character to add to the stream.
 			 */
-			virtual void put(CHAR) = 0;
+			virtual void put(uint32_t ch) = 0;
 
+			/**
+			 * \brief Add a byte to the stream.
+			 *
+			 * Adds a character to the current index in the stream,
+			 * incrementing the stream index.
+			 *
+			 * \param ch the character to add to the stream.
+			 */
 			virtual void putByte(byte) = 0;
 
 			/**
@@ -148,29 +157,35 @@ namespace z
 			 *
 			 * \param input the character string to append.
 			 */
-			virtual void write(const core::string<CHAR>& input) = 0;
+			virtual void write(const string<E>& input) = 0;
 
-			void writeln(const core::string<CHAR>&);
+			/**
+			 * \brief Write the given string to the stream, appending a newline.
+			 *
+			 * \param input the character string to append.
+			 */
+			void writeln(const string<E>& input);
+
+			/**
+			 * \brief Write a newline to the stream.
+			 */
 			void writeln();
 
 			/**
-			 * \brief Tell whether we have consumed the last character in
-			 * the stream.
+			 * \brief Tell whether we have consumed the last character in the stream.
 			 *
-			 * \return \b True if the last character has been consumed.
-			 * \b False otherwise.
+			 * \return True if the last character has been consumed. False otherwise.
 			 */
 			virtual bool empty() = 0;
 
 			/**
 			 * \brief Seek a position in the stream.
 			 *
-			 * Seeks to the given index, starting at the
-			 * beginning of the stream.
+			 * Seeks to the given index, starting at the beginning of the stream.
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(Int index) = 0;
+			virtual void seek(size_t index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -178,7 +193,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual Int tell() = 0;
+			virtual size_t tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -188,7 +203,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual Int end() = 0;
+			virtual size_t end() = 0;
 		};
 
 		/**
@@ -198,29 +213,28 @@ namespace z
 		 *
 		 * \param input the character string to append.
 		 */
-        template <typename CHAR>
-        void outputStream<CHAR>::writeln(const core::string<CHAR>& input)
+        template <encoding E>
+        void outputStream<E>::writeln(const string<E>& input)
         {
             this->write(input);
             this->write("\n");
         }
 
-		template <typename CHAR>
-		void outputStream<CHAR>::writeln()
+		template <encoding E>
+		void outputStream<E>::writeln()
 		{
 			this->write("\n");
 		}
 
         /**
+		 * \interface stream
          * \brief A template class for character streams.
          *
          * This class provides an interface for both input
 		 * and output streams.
          */
-        template <typename CHAR>
-        class stream : public inputStream<CHAR>, public outputStream<CHAR>
+        template <encoding E>
+        class stream : public inputStream<E>, public outputStream<E>
         {};
     }
 }
-
-#endif // STREAM_H_INCLUDED

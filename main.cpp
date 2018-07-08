@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include <z/core/string.h>
+#include <z/core/stream.h>
 using namespace z;
 
 /*template <typename T>
