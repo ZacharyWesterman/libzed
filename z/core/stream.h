@@ -1,13 +1,15 @@
 #pragma once
 
+#include <z/encoding.h>
 #include "string.h"
-#include <z/int.h>
-#include <z/byte.h>
 
 namespace z
 {
 	namespace core
 	{
+		template <encoding E>
+		class string;
+
 		/**
 		 * \interface inputStream
 		 * \brief A template class for character input streams.
@@ -15,7 +17,6 @@ namespace z
 		 * This class provides an interface for
 		 * input streams.
 		 */
-		template <encoding E>
 		class inputStream
 		{
 		public:
@@ -25,22 +26,13 @@ namespace z
 			virtual ~inputStream() {}
 
 			/**
-			 * \brief Get the next character on the stream.
+			 * \brief Get the next byte on the stream.
 			 *
 			 * Increments the stream index.
 			 *
 			 * \return The character previously at the beginning of the stream.
 			 */
-			virtual uint32_t get() = 0;
-
-			/**
-			 * \brief Get the next byte from the stream.
-			 *
-			 * Increments the stream index.
-			 *
-			 * \return The byte previously at the beginning of the stream.
-			 */
-			virtual uint8_t getByte() = 0;
+			virtual uint8_t get() = 0;
 
 			/**
 			 * \brief Pull an exact number of characters off the stream.
@@ -53,33 +45,7 @@ namespace z
 			 *
 			 * \return A string containing up to \b count non-null characters.
 			 */
-			virtual string<E> get(size_t count) = 0;
-
-			/**
-			 * \brief Put the last removed character back on the stream.
-			 *
-			 * This is implementation-specific, but most streams should be
-			 * able to put every character back on the stream.
-			 */
-			virtual void unget() = 0;
-
-			/**
-			 * \brief Read until a delimiter is encountered.
-			 *
-			 * If a non-null delimiter is specified, the stream
-			 * should read until that delimiter is encountered,
-			 * ignoring repetitions of the delimiter. If no
-			 * delimiter or delimiter of \b null given, the
-			 * stream should read until any whitespace is encountered,
-			 * skipping repeating whitespace.
-			 *
-			 * \param delim an optional parameter indicating the
-			 * delimiter to read to.
-			 *
-			 * \return A string containing all characters before
-			 * the first occurrence of the given delimiter.
-			 */
-			virtual string<E> read(uint32_t delim = 0) = 0;
+			virtual size_t get(size_t count, uint8_t* buf) = 0;
 
 			/**
 			 * \brief Tell whether we have consumed the last character in the stream.
@@ -123,7 +89,6 @@ namespace z
 		 * This class provides an interface for
 		 * output streams.
 		 */
-		template <encoding E>
 		class outputStream
 		{
 		public:
@@ -133,43 +98,28 @@ namespace z
 			virtual ~outputStream() {}
 
 			/**
-			 * \brief Add a character to the stream.
-			 *
-			 * Adds a character to the current index in the stream,
-			 * incrementing the stream index.
-			 *
-			 * \param ch the character to add to the stream.
-			 */
-			virtual void put(uint32_t ch) = 0;
-
-			/**
 			 * \brief Add a byte to the stream.
 			 *
-			 * Adds a character to the current index in the stream,
+			 * Adds a byte to the current index in the stream,
 			 * incrementing the stream index.
 			 *
 			 * \param ch the character to add to the stream.
 			 */
-			virtual void putByte(byte) = 0;
+			virtual void put(uint8_t ch) = 0;
 
 			/**
 			 * \brief Write the given string to the stream.
 			 *
 			 * \param input the character string to append.
 			 */
-			virtual void write(const string<E>& input) = 0;
+			virtual void write(const string<utf32>& input) = 0;
 
 			/**
 			 * \brief Write the given string to the stream, appending a newline.
 			 *
 			 * \param input the character string to append.
 			 */
-			void writeln(const string<E>& input);
-
-			/**
-			 * \brief Write a newline to the stream.
-			 */
-			void writeln();
+			void writeln(const string<utf32>& input);
 
 			/**
 			 * \brief Tell whether we have consumed the last character in the stream.
@@ -207,34 +157,13 @@ namespace z
 		};
 
 		/**
-		 * \brief Write the given string to the stream, then add a new line.
-		 *
-		 * Appends the given string to the stream. Then, adds a newline character.
-		 *
-		 * \param input the character string to append.
-		 */
-        template <encoding E>
-        void outputStream<E>::writeln(const string<E>& input)
-        {
-            this->write(input);
-            this->write("\n");
-        }
-
-		template <encoding E>
-		void outputStream<E>::writeln()
-		{
-			this->write("\n");
-		}
-
-        /**
 		 * \interface stream
          * \brief A template class for character streams.
          *
          * This class provides an interface for both input
 		 * and output streams.
          */
-        template <encoding E>
-        class stream : public inputStream<E>, public outputStream<E>
+        class stream : public inputStream, public outputStream
         {};
-    }
+	}
 }

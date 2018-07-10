@@ -9,44 +9,52 @@ namespace z
 {
 	namespace core
 	{
-		template <typename CHAR>
-		class binaryStream : public stream<CHAR>
+		template <encoding E>
+		class binaryStream : public stream<E>
 		{
 		private:
-			//TODO: array<byte> data;
-			array<CHAR> data;
-			Int index;
+			array<uint8_t> data;
+			size_t index;
 
 		public:
 			binaryStream();
 
-			CHAR get();
-			// TODO: getByte() and putByte()
-			string<CHAR> get(Int);
-			void unget();
-			void put(CHAR);
+			uint32_t get();
+			uint8_t getByte();
+			string<E> get(size_t);
 
-			string<CHAR> read(CHAR delim = 0);
-			void write(const string<CHAR>&);
+			void unget();
+
+			void put(uint32_t);
+			void putByte(uint8_t);
+
+			string<E> read(uint32_t delim = 0);
+			void write(const string<E>&);
 
 			bool empty();
-			void seek(Int);
-			Int tell();
+			void seek(size_t);
+			size_t tell();
 
-			Int end();
+			size_t end();
 		};
 
 
-		template <typename CHAR>
-		binaryStream<CHAR>::binaryStream() : index(0) {}
+		template <encoding E>
+		binaryStream<E>::binaryStream() : index(0) {}
 
-		template <typename CHAR>
-		CHAR binaryStream<CHAR>::get()
+		template <encoding E>
+		uint32_t binaryStream<E>::get()
 		{
 			if (data.isValid(index))
 				return data.at(index++);
 			else
 				return 0;
+		}
+
+		template <encoding E>
+		uint8_t binaryStream<E>::getByte()
+		{
+			
 		}
 
 		template <typename CHAR>

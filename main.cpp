@@ -7,7 +7,8 @@
 
 #include <iostream>
 
-#include <z/core/array.h>
+// #include <z/core/array.h>
+#include <z/core/string.h>
 using namespace z;
 
 /*template <typename T>
@@ -42,17 +43,17 @@ void print(core::inputStream<T>& stream, core::outputStream<char>& con)
 
 int main()
 {
-	core::array<int> A = {1,2,3,4,5,6,7,8,9,10};
-
-	core::array<int> C = A.remove(5,-4);
-
-	std::cout << '{';
-	for (size_t i=0; i<C.length(); i++)
-	{
-		if (i) std::cout << ',';
-		std::cout << C[i];
-	}
-	std::cout << '}' << std::endl;
+	// core::array<int> A = {1,2,3,4,5,6,7,8,9,10};
+	//
+	// core::array<int> C = A.remove(5,-4);
+	//
+	// std::cout << '{';
+	// for (size_t i=0; i<C.length(); i++)
+	// {
+	// 	if (i) std::cout << ',';
+	// 	std::cout << C[i];
+	// }
+	// std::cout << '}' << std::endl;
 
     return 0;
 }

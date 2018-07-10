@@ -6,6 +6,7 @@
 
 #include "charFunctions.h"
 #include <z/encoding.h>
+#include "serializable.h"
 
 #ifndef Z_STR_INT_BUFSIZE
 	#define Z_STR_INT_BUFSIZE 64
@@ -56,7 +57,7 @@ namespace z
 		 * Simultaneous accesses to the same object can cause data races.
          */
 		template <encoding E>
-		class string
+		class string : public serializable
 		{
 			friend string<ascii>;
 			friend string<utf8>;
@@ -801,6 +802,12 @@ namespace z
 			 * \return True if this string does not come after the given string alphabetically. False otherwise.
 			 */
 			bool operator<=(const string& other) const;
+
+			void serialIn(inputStream*);
+			void serialOut(outputStream*) const;
+
+			void read(inputStream*, uint32_t delim = 0);
+			void write(outputStream*) const;
 		};
 
 		#include "string/default.h"
