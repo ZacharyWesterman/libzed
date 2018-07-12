@@ -934,3 +934,64 @@ const string<utf32>& string<utf32>::replace(size_t index, int count, const strin
 
 	return *this;
 }
+
+template <>
+void string<utf32>::read(inputStream& stream, uint32_t delim)
+{
+	character_ct = 0;
+	this->increase(4);
+
+	uint32_t* data32 = (uint32_t*)data;
+
+	uint32_t last = stream.getChar(utf32);
+
+	while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
+		last = stream.getChar(utf32);
+
+	while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
+	{
+		data32[character_ct++] = last;
+		this->increase((character_ct+1) << 2);
+
+		last = stream.getChar(utf32);
+	}
+
+	data32[character_ct] = 0;
+}
+
+template <>
+void string<utf32>::readln(inputStream& stream)
+{
+	character_ct = 0;
+	this->increase(4);
+
+	uint32_t* data32 = (uint32_t*)data;
+
+	uint32_t last = stream.getChar(utf32);
+
+	while (!stream.empty())
+	{
+		if (last == '\r')
+		{
+			last = stream.getChar(utf32);
+			if (last == '\n')
+			{
+				data32[character_ct] = 0;
+				return;
+			}
+			data32[character_ct++] = '\r';
+		}
+		else if (last == '\n')
+		{
+			data32[character_ct] = 0;
+			return;
+		}
+
+		data32[character_ct++] = last;
+		this->increase((character_ct+1) << 1);
+
+		last = stream.getChar(utf32);
+	}
+
+	data32[character_ct] = 0;
+}

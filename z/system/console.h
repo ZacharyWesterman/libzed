@@ -4,8 +4,6 @@
 
 #include <iostream>
 #include <z/core/stream.h>
-#include <z/int.h>
-#include <z/byte.h>
 
 namespace z
 {
@@ -23,14 +21,13 @@ namespace z
 		 * As a result, this class will not behave nicely with the
 		 * util::regex class.
 		 */
-        class console : public core::stream<char>
+        class console : public core::stream
         {
         public:
-            char get();
-			byte getByte();
-            core::string<char> get(Int);
+            uint8_t get();
+			
             void unget();
-            void put(char);
+            void put();
 			void putByte(byte);
 
             core::string<char> read(char delim = 0);

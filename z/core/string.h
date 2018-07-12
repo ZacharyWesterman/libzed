@@ -806,8 +806,10 @@ namespace z
 			void serialIn(inputStream*);
 			void serialOut(outputStream*) const;
 
-			void read(inputStream*, uint32_t delim = 0);
-			void write(outputStream*) const;
+			void read(inputStream&, uint32_t delim = 0);
+			void readln(inputStream&);
+			void write(outputStream&) const;
+			void writeln(outputStream&) const;
 		};
 
 		#include "string/default.h"

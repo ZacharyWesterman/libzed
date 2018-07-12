@@ -15,7 +15,7 @@
 #ifndef CHARFUNCTIONS_H_INCLUDED
 #define CHARFUNCTIONS_H_INCLUDED
 
-#include <z/int.h>
+// #include <z/int.h>
 
 namespace z
 {

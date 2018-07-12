@@ -1125,3 +1125,90 @@ bool string<E>::operator<=(const string<E>& other) const
 {
 	return !operator>(other);
 }
+
+template <encoding E>
+void string<E>::read(inputStream& stream, uint32_t delim)
+{
+	character_ct = 0;
+	this->increase(1);
+
+	uint32_t last = stream.getChar(E);
+
+	while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
+		last = stream.getChar(E);
+
+	while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
+	{
+		data[character_ct++] = last;
+		this->increase(character_ct+1);
+
+		last = stream.getChar(E);
+	}
+
+	data[character_ct] = 0;
+}
+
+template <encoding E>
+void string<E>::readln(inputStream& stream)
+{
+	character_ct = 0;
+	this->increase(1);
+
+	uint32_t last = stream.getChar(E);
+
+	while (!stream.empty())
+	{
+		if (last == '\r')
+		{
+			last = stream.getChar(E);
+			if (last == '\n')
+			{
+				data[character_ct] = 0;
+				return;
+			}
+			data[character_ct++] = '\r';
+		}
+		else if (last == '\n')
+		{
+			data[character_ct] = 0;
+			return;
+		}
+
+		data[character_ct++] = last;
+		this->increase(character_ct+1);
+
+		last = stream.getChar(E);
+	}
+
+	data[character_ct] = 0;
+}
+
+template <encoding E>
+void string<E>::write(outputStream& stream) const
+{
+	if (character_ct)
+		stream.put(data, character_ct, E);
+}
+
+template <encoding E>
+void string<E>::writeln(outputStream& stream) const
+{
+
+	if (character_ct)
+		stream.put(data, character_ct, E);
+
+	string<E> newl = "\n";
+	stream.put(newl.data, newl.character_ct, E);
+}
+
+template <encoding E>
+void string<E>::serialIn(inputStream* stream)
+{
+
+}
+
+template <encoding E>
+void string<E>::serialOut(outputStream* stream) const
+{
+
+}

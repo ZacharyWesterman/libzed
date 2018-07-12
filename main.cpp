@@ -9,51 +9,101 @@
 
 // #include <z/core/array.h>
 #include <z/core/string.h>
+#include <z/core/stream.h>
 using namespace z;
 
-/*template <typename T>
-void print(core::inputStream<T>& stream, core::outputStream<char>& con)
+class console : public core::stream
 {
-	// system::console con;
-
-	con.writeln("{");
-
-	Int col = 1;
-
-	stream.seek(0);
-	while(!stream.empty())
+public:
+	void put(uint8_t ch)
 	{
-		core::string<char> pad = stream.get();
-		for (Int i=pad.length(); i<5; i++)
-			pad += " ";
-
-		con.write(cs("  ")+pad);
-		if (!(col % 5))
-		{
-			con.writeln();
-			col = 0;
-		}
-		col++;
+		std::cout << ch;
 	}
 
-	if (col % 5) con.writeln();
+	void put(uint8_t* str, size_t count, encoding format = ascii)
+	{
+		if (!str) return;
+		uint8_t c[4];
 
-	con.writeln("}");
-}*/
+		switch (format)
+		{
+		case utf16:
+			for (size_t i=0; i<count; i++)
+			{
+				size_t len = core::toUTF8(c, ((uint16_t*)str)[i]);
+
+				for (size_t j=0; j<len; j++)
+					std::cout << c[j];
+			}
+			break;
+
+		case utf32:
+			for (size_t i=0; i<count; i++)
+			{
+				size_t len = core::toUTF8(c, ((uint32_t*)str)[i]);
+
+				for (size_t j=0; j<len; j++)
+					std::cout << c[j];
+			}
+			break;
+
+		default:
+			for (size_t i=0; i<count; i++)
+			{
+				std::cout << str[i];
+			}
+		}
+
+	}
+
+	uint8_t get()
+	{
+		return std::cin.get();
+	}
+
+	uint32_t getChar(encoding format = ascii)
+	{
+		return std::cin.get();
+	}
+
+	size_t get(size_t count, uint8_t* buf, encoding format = ascii)
+	{
+		return 0;
+	}
+
+	bool empty()
+	{
+		return false;
+	}
+
+	void seek(size_t index)
+	{
+
+	}
+
+	size_t tell()
+	{
+		return 0;
+	}
+
+	size_t end()
+	{
+		return 0;
+	}
+};
 
 int main()
 {
-	// core::array<int> A = {1,2,3,4,5,6,7,8,9,10};
-	//
-	// core::array<int> C = A.remove(5,-4);
-	//
-	// std::cout << '{';
-	// for (size_t i=0; i<C.length(); i++)
-	// {
-	// 	if (i) std::cout << ',';
-	// 	std::cout << C[i];
-	// }
-	// std::cout << '}' << std::endl;
+	core::string<ascii> A;
+	core::string<ascii> B = ";";
+	console con;
+
+	A.readln(con);
+	// std::cout << ';' << A.length() << ';';
+
+	(A += B).writeln(con);
+
+	// A.writeln(B);
 
     return 0;
 }

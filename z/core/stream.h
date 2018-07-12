@@ -34,6 +34,8 @@ namespace z
 			 */
 			virtual uint8_t get() = 0;
 
+			virtual uint32_t getChar(encoding format = ascii) = 0;
+
 			/**
 			 * \brief Pull an exact number of characters off the stream.
 			 *
@@ -45,7 +47,7 @@ namespace z
 			 *
 			 * \return A string containing up to \b count non-null characters.
 			 */
-			virtual size_t get(size_t count, uint8_t* buf) = 0;
+			virtual size_t get(size_t count, uint8_t* buf, encoding format = ascii) = 0;
 
 			/**
 			 * \brief Tell whether we have consumed the last character in the stream.
@@ -107,19 +109,7 @@ namespace z
 			 */
 			virtual void put(uint8_t ch) = 0;
 
-			/**
-			 * \brief Write the given string to the stream.
-			 *
-			 * \param input the character string to append.
-			 */
-			virtual void write(const string<utf32>& input) = 0;
-
-			/**
-			 * \brief Write the given string to the stream, appending a newline.
-			 *
-			 * \param input the character string to append.
-			 */
-			void writeln(const string<utf32>& input);
+			virtual void put(uint8_t* str, size_t count, encoding format = ascii) = 0;
 
 			/**
 			 * \brief Tell whether we have consumed the last character in the stream.
