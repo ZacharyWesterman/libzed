@@ -1132,6 +1132,12 @@ void string<E>::read(inputStream& stream, uint32_t delim)
 	character_ct = 0;
 	this->increase(1);
 
+	if (stream.bad())
+	{
+		data[character_ct] = 0;
+		return;
+	}
+
 	uint32_t last = stream.getChar(E);
 
 	while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
@@ -1153,6 +1159,12 @@ void string<E>::readln(inputStream& stream)
 {
 	character_ct = 0;
 	this->increase(1);
+
+	if (stream.bad())
+	{
+		data[character_ct] = 0;
+		return;
+	}
 
 	uint32_t last = stream.getChar(E);
 
@@ -1186,6 +1198,8 @@ void string<E>::readln(inputStream& stream)
 template <encoding E>
 void string<E>::write(outputStream& stream) const
 {
+	if (stream.bad()) return;
+
 	if (character_ct)
 		stream.put(data, character_ct, E);
 }
@@ -1193,6 +1207,7 @@ void string<E>::write(outputStream& stream) const
 template <encoding E>
 void string<E>::writeln(outputStream& stream) const
 {
+	if (stream.bad()) return;
 
 	if (character_ct)
 		stream.put(data, character_ct, E);
@@ -1204,11 +1219,45 @@ void string<E>::writeln(outputStream& stream) const
 template <encoding E>
 void string<E>::serialIn(inputStream* stream)
 {
+	if (stream.bad() || !stream.binary())
+	{
+		character_ct = 0;
+		this->increase(4);
+		*((uint32_t*)data) = 0;
+		return;
+	}
 
+	uint8_t c[sizeof(size_t)];
+	for (size_t i=0; i<sizeof(size_t); i++)
+		c[i] = stream.get();
+
+	size_t datact = *((size_t*)c);
+	character_ct = datact / this->charSize();
+	this->increase(datact + 4);
+
+	size_t i = 0;
+	while (!stream.empty() && (i < datact))
+	{
+		data[i++] = stream.get();
+	}
+
+	*((uint32_t*)&data[i]) = 0;
 }
 
 template <encoding E>
 void string<E>::serialOut(outputStream* stream) const
 {
+	if (stream.bad() || !stream.binary())
+		return;
 
+	size_t datact = character_ct * this->charSize();
+	uint8_t* c = (uint8_t*)&datact;
+	for (size_t i=0; i<sizeof(size_t); i++)
+		stream.put(c[i]);
+
+	size_t i = 0;
+	while ((i < datact))
+	{
+		stream.put(data[i++]);
+	}
 }

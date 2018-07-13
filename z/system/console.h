@@ -30,6 +30,10 @@ namespace z
  			size_t get(size_t count, uint8_t* buf, encoding format = ascii);
 
  			bool empty();
+			bool good();
+			bool bad();
+			bool binary();
+
  			void seek(size_t index);
  			size_t tell();
  			size_t end();
@@ -92,6 +96,21 @@ namespace z
 		}
 
 		bool console::empty()
+		{
+			return false;
+		}
+
+		bool console::good()
+		{
+			return true;
+		}
+
+		bool console::bad()
+		{
+			return false;
+		}
+
+		bool console::binary()
 		{
 			return false;
 		}

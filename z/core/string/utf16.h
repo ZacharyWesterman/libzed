@@ -948,6 +948,12 @@ void string<utf16>::read(inputStream& stream, uint32_t delim)
 
 	uint16_t* data16 = (uint16_t*)data;
 
+	if (stream.bad())
+	{
+		data16[character_ct] = 0;
+		return;
+	}
+
 	uint32_t last = stream.getChar(utf16);
 
 	while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
@@ -971,6 +977,12 @@ void string<utf16>::readln(inputStream& stream)
 	this->increase(2);
 
 	uint16_t* data16 = (uint16_t*)data;
+
+	if (stream.bad())
+	{
+		data16[character_ct] = 0;
+		return;
+	}
 
 	uint32_t last = stream.getChar(utf16);
 

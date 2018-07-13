@@ -56,6 +56,10 @@ namespace z
 			 */
 			virtual bool empty() = 0;
 
+			virtual bool good() = 0;
+			virtual bool bad() = 0;
+			virtual bool binary() = 0;
+
 			/**
 			 * \brief Seek a position in the stream.
 			 *
@@ -117,6 +121,10 @@ namespace z
 			 * \return True if the last character has been consumed. False otherwise.
 			 */
 			virtual bool empty() = 0;
+
+			virtual bool good() = 0;
+			virtual bool bad() = 0;
+			virtual bool binary() = 0;
 
 			/**
 			 * \brief Seek a position in the stream.
