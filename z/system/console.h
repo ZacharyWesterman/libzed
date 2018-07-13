@@ -1,6 +1,4 @@
 #pragma once
-#ifndef CONSOLE_H_INCLUDED
-#define CONSOLE_H_INCLUDED
 
 #include <iostream>
 #include <z/core/stream.h>
@@ -21,112 +19,96 @@ namespace z
 		 * As a result, this class will not behave nicely with the
 		 * util::regex class.
 		 */
-        class console : public core::stream
-        {
-        public:
-            uint8_t get();
-			
-            void unget();
-            void put();
-			void putByte(byte);
+		 class console : public core::stream
+ 		{
+ 		public:
+ 			void put(uint8_t ch);
+ 			void put(uint8_t* str, size_t count, encoding format = ascii);
 
-            core::string<char> read(char delim = 0);
-            void write(const core::string<char>&);
+ 			uint8_t get();
+ 			uint32_t getChar(encoding format = ascii);
+ 			size_t get(size_t count, uint8_t* buf, encoding format = ascii);
 
-            bool empty();
+ 			bool empty();
+ 			void seek(size_t index);
+ 			size_t tell();
+ 			size_t end();
+ 		};
 
-            void seek(Int);
-            Int tell();
-			Int end();
-        };
-
-        char console::get()
-        {
-            return std::cin.get();
-        }
-
-		byte console::getByte()
+		void console::put(uint8_t ch)
 		{
-			return this->get();
+			std::cout << ch;
 		}
 
-        core::string<char> console::get(Int count)
-        {
-            core::string<char> result;
-            for (Int i=0; i<count; i++)
-                result += std::cin.get();
-
-            return result;
-        }
-
-		/**
-		 * \brief Dummy method.
-		 */
-        void console::unget() {}
-
-        void console::put(char c)
-        {
-            std::cout << c;
-        }
-
-		void console::putByte(byte b)
+		void console::put(uint8_t* str, size_t count, encoding format)
 		{
-			this->put(b);
+			if (!str) return;
+			uint8_t c[4];
+
+			switch (format)
+			{
+			case utf16:
+				for (size_t i=0; i<count; i++)
+				{
+					size_t len = core::toUTF8(c, ((uint16_t*)str)[i]);
+
+					for (size_t j=0; j<len; j++)
+						std::cout << c[j];
+				}
+				break;
+
+			case utf32:
+				for (size_t i=0; i<count; i++)
+				{
+					size_t len = core::toUTF8(c, ((uint32_t*)str)[i]);
+
+					for (size_t j=0; j<len; j++)
+						std::cout << c[j];
+				}
+				break;
+
+			default:
+				for (size_t i=0; i<count; i++)
+				{
+					std::cout << str[i];
+				}
+			}
+
 		}
 
-        core::string<char> console::read(char delim)
-        {
-            char tmp[128];
+		uint8_t console::get()
+		{
+			return std::cin.get();
+		}
 
-            if (delim)
-            {
-                std::cin.getline(tmp, 128, delim);
-            }
-            else
-                std::cin >> tmp;
+		uint32_t console::getChar(encoding format)
+		{
+			return std::cin.get();
+		}
 
-            return core::string<char>(tmp);
-        }
+		size_t console::get(size_t count, uint8_t* buf, encoding format)
+		{
+			return 0;
+		}
 
-        void console::write(const core::string<char>& input)
-        {
-            std::cout << input.str();
-        }
+		bool console::empty()
+		{
+			return false;
+		}
 
-		/**
-		 * \brief Dummy method.
-		 *
-		 * \return \b True.
-		 */
-        bool console::empty() {return true;}
+		void console::seek(size_t index)
+		{
 
-		/**
-		 * \brief Dummy method.
-		 *
-		 * \param position ignored.
-		 */
-        void console::seek(Int position) {}
+		}
 
-		/**
-		 * \brief Dummy method.
-		 *
-		 * \return \b 0.
-		 */
-        Int console::tell()
-        {
-            return 0;
-        }
+		size_t console::tell()
+		{
+			return 0;
+		}
 
-		/**
-		 * \brief Dummy method.
-		 *
-		 * \return \b 0.
-		 */
-		Int console::end()
+		size_t console::end()
 		{
 			return 0;
 		}
     }
 }
-
-#endif // CONSOLE_H_INCLUDED
