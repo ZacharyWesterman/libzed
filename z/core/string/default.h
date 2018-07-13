@@ -986,7 +986,7 @@ const string<E>& string<E>::cutDuplicates(const string<E>& other)
 template <encoding E>
 string<E> string<E>::operator+(const string<E>& other) const
 {
-	string<E> result = *this;
+	string<E> result (*this);
 	result += other;
 
 	return result;
