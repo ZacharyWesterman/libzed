@@ -803,8 +803,8 @@ namespace z
 			 */
 			bool operator<=(const string& other) const;
 
-			void serialIn(inputStream*);
-			void serialOut(outputStream*) const;
+			void serialIn(inputStream&);
+			void serialOut(outputStream&) const;
 
 			void read(inputStream&, uint32_t delim = 0);
 			void readln(inputStream&);

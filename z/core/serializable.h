@@ -17,8 +17,8 @@ namespace z
 		public:
 			virtual ~serializable() {}
 
-			virtual void serialIn(inputStream*) = 0;
-			virtual void serialOut(outputStream*) const = 0;
+			virtual void serialIn(inputStream&) = 0;
+			virtual void serialOut(outputStream&) const = 0;
 		};
 
 		// template <typename N, typename T,

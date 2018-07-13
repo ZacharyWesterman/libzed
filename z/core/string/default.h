@@ -1217,7 +1217,7 @@ void string<E>::writeln(outputStream& stream) const
 }
 
 template <encoding E>
-void string<E>::serialIn(inputStream* stream)
+void string<E>::serialIn(inputStream& stream)
 {
 	if (stream.bad() || !stream.binary())
 	{
@@ -1245,7 +1245,7 @@ void string<E>::serialIn(inputStream* stream)
 }
 
 template <encoding E>
-void string<E>::serialOut(outputStream* stream) const
+void string<E>::serialOut(outputStream& stream) const
 {
 	if (stream.bad() || !stream.binary())
 		return;

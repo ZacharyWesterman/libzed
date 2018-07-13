@@ -10,20 +10,29 @@
 // #include <z/core/array.h>
 #include <z/core/string.h>
 #include <z/system/console.h>
+#include <z/file/stream.h>
 using namespace z;
 
 int main()
 {
 	core::string<ascii> A;
 	core::string<ascii> L ("<<"), R (">>");
-	system::console con;
+	file::inputStream input ("test.txt");
+	file::outputStream output ("out.txt");
 
-	A.readln(con);
-	// std::cout << ';' << A.length() << ';';
-	// core::string<ascii> C = A + B;
-	(L + A + R).writeln(con);
-
-	// A.writeln(B);
+	if (input.good())
+	{
+		while (!input.empty())
+		{
+			A.readln(input);
+			(L + A + R).writeln(output);
+		}
+	}
+	else
+	{
+		A = "!! Error reading from stream.";
+		A.writeln(output);
+	}
 
     return 0;
 }

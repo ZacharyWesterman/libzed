@@ -37,19 +37,6 @@ namespace z
 			virtual uint32_t getChar(encoding format = ascii) = 0;
 
 			/**
-			 * \brief Pull an exact number of characters off the stream.
-			 *
-			 * Note that because of how the string class works, any
-			 * \b null characters will be concatenated. Use CHAR get()
-			 * if you are reading specially formatted data.
-			 *
-			 * \param count the number of characters to read.
-			 *
-			 * \return A string containing up to \b count non-null characters.
-			 */
-			virtual size_t get(size_t count, uint8_t* buf, encoding format = ascii) = 0;
-
-			/**
 			 * \brief Tell whether we have consumed the last character in the stream.
 			 *
 			 * \return True if the last character has been consumed. False otherwise.

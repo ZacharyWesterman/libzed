@@ -27,7 +27,6 @@ namespace z
 
  			uint8_t get();
  			uint32_t getChar(encoding format = ascii);
- 			size_t get(size_t count, uint8_t* buf, encoding format = ascii);
 
  			bool empty();
 			bool good();
@@ -88,11 +87,6 @@ namespace z
 		uint32_t console::getChar(encoding format)
 		{
 			return std::cin.get();
-		}
-
-		size_t console::get(size_t count, uint8_t* buf, encoding format)
-		{
-			return 0;
 		}
 
 		bool console::empty()
