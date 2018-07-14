@@ -97,12 +97,12 @@ namespace z
 
 		bool inputStream::good()
 		{
-			return filestream.good();
+			return filestream.good() && filestream.is_open();
 		}
 
 		bool inputStream::bad()
 		{
-			return filestream.bad();
+			return filestream.bad() || !filestream.is_open();
 		}
 
 		bool inputStream::binary()
@@ -200,12 +200,12 @@ namespace z
 
 		bool outputStream::good()
 		{
-			return filestream.good();
+			return filestream.good() && filestream.is_open();
 		}
 
 		bool outputStream::bad()
 		{
-			return filestream.bad();
+			return filestream.bad() || !filestream.is_open();
 		}
 
 		bool outputStream::binary()

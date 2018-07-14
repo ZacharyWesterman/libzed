@@ -9,30 +9,21 @@
 
 // #include <z/core/array.h>
 #include <z/core/string.h>
+// #include <z/core/binaryStream.h>
 #include <z/system/console.h>
 #include <z/file/stream.h>
 using namespace z;
 
 int main()
 {
-	core::string<ascii> A;
-	core::string<ascii> L ("<<"), R (">>");
-	file::inputStream input ("test.txt");
-	file::outputStream output ("out.txt");
+	core::string<utf8> A;
+	core::string<utf8> L ("<<"), R (">>");
+	file::inputStream input ("out.txt");
+	// file::outputStream output ("out.txt");
+	system::console output;
 
-	if (input.good())
-	{
-		while (!input.empty())
-		{
-			A.readln(input);
-			(L + A + R).writeln(output);
-		}
-	}
-	else
-	{
-		A = "!! Error reading from stream.";
-		A.writeln(output);
-	}
+	A.serialIn(input);
+	(L+A+R).writeln(output);
 
     return 0;
 }
