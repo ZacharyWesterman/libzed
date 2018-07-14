@@ -1227,11 +1227,8 @@ void string<E>::serialIn(inputStream& stream)
 		return;
 	}
 
-	uint8_t c[sizeof(size_t)];
-	for (size_t i=0; i<sizeof(size_t); i++)
-		c[i] = stream.get();
-
-	size_t datact = *((size_t*)c);
+	size_t datact;
+	core::serialIn(datact, stream);
 	character_ct = datact / this->charSize();
 	this->increase(datact + 4);
 
@@ -1251,9 +1248,7 @@ void string<E>::serialOut(outputStream& stream) const
 		return;
 
 	size_t datact = character_ct * this->charSize();
-	uint8_t* c = (uint8_t*)&datact;
-	for (size_t i=0; i<sizeof(size_t); i++)
-		stream.put(c[i]);
+	core::serialOut(datact, stream);
 
 	size_t i = 0;
 	while ((i < datact))

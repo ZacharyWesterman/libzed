@@ -21,42 +21,45 @@ namespace z
 			virtual void serialOut(outputStream&) const = 0;
 		};
 
-		// template <typename N, typename T,
-		// typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
-		// void serialIn(N* number, inputStream<T>* stream)
-		// {
-		// 	byte c[sizeof(N)];
-		// 	for (int i=0; i<sizeof(N); i++) c[i] = stream->getByte();
-		//
-		// 	(*number) = *((N*)c);
-		// }
+		template <typename N,
+		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
+		void serialIn(N& number, inputStream& stream)
+		{
+			if (stream.bad() || !stream.binary()) return;
 
-		// template <typename N, typename T,
-		// typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
-		// void serialOut(const N number, outputStream<T>* stream)
-		// {
-		// 	byte* c = (byte*)&number;
-		// 	for (int i=0; i<sizeof(N); i++) stream->putByte(c[i]);
-		// }
+			uint8_t chars = stream.get();
+			number = 0;
 
-		// template <typename CHAR, typename T>
-		// void serialIn(core::string<CHAR>* data, inputStream<T>* stream)
-		// {
-		// 	Int len;
-		// 	serialIn(&len, stream);
-		//
-		// 	(*data) = stream->read(len);
-		// }
-		//
-		// template <typename CHAR, typename T>
-		// void serialOut(const core::string<CHAR>& data, outputStream<T>* stream)
-		// {
-		// 	Int len = data.length();
-		// 	serialOut(len, stream);
-		//
-		// 	stream->write(data);
-		// }
+			for (size_t i=0; i<chars; i++)
+			{
+				number <<= 8;
+				number += stream.get();
+			}
+		}
 
+		template <typename N,
+		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
+		void serialOut(N number, outputStream& stream)
+		{
+			if (stream.bad() || !stream.binary()) return;
 
+			uint8_t c[sizeof(N)];
+			uint8_t chars = 0;
+
+			for (size_t i=0; i<sizeof(N); i++)
+			{
+				if (number)
+				{
+					chars++;
+					c[i] = number & 0xFF;
+					number >>= 8;
+				}
+				else break;
+			}
+
+			stream.put(chars);
+			for (size_t i=0; i<chars; i++)
+				stream.put(c[i]);
+		}
 	}
 }

@@ -23,6 +23,7 @@ int main()
 	system::console output;
 
 	A.serialIn(input);
+	// A.serialOut(output);
 	(L+A+R).writeln(output);
 
     return 0;
