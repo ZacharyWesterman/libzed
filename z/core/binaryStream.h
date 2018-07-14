@@ -9,124 +9,135 @@ namespace z
 {
 	namespace core
 	{
-		template <encoding E>
-		class binaryStream : public stream<E>
+		class binaryStream : public stream
 		{
 		private:
 			array<uint8_t> data;
-			size_t index;
+			size_t streamIndex;
 
 		public:
 			binaryStream();
 
-			uint32_t get();
-			uint8_t getByte();
-			string<E> get(size_t);
+			void put(uint8_t ch);
+ 			void put(uint8_t* str, size_t count, encoding format = ascii);
 
-			void unget();
+ 			uint8_t get();
+ 			uint32_t getChar(encoding format = ascii);
 
-			void put(uint32_t);
-			void putByte(uint8_t);
+ 			bool empty();
+			bool good();
+			bool bad();
+			bool binary();
 
-			string<E> read(uint32_t delim = 0);
-			void write(const string<E>&);
-
-			bool empty();
-			void seek(size_t);
-			size_t tell();
-
-			size_t end();
+ 			void seek(size_t index);
+ 			size_t tell();
+ 			size_t end();
 		};
 
+		binaryStream::binaryStream() : streamIndex(0) {}
 
-		template <encoding E>
-		binaryStream<E>::binaryStream() : index(0) {}
-
-		template <encoding E>
-		uint32_t binaryStream<E>::get()
+		void binaryStream::put(uint8_t ch)
 		{
-			if (data.isValid(index))
-				return data.at(index++);
+			data.add(ch);
+		}
+
+		void binaryStream::put(uint8_t* str, size_t count, encoding format)
+		{
+			if (!str) return;
+			size_t datact;
+
+			switch (format)
+			{
+			case utf16:
+				datact = count << 1;
+				break;
+
+			case utf32:
+				datact = count << 2;
+				break;
+
+			default:
+				datact = count;
+			}
+
+			for (size_t i=0; i<datact; i++)
+			{
+				data.add(str[i]);
+			}
+		}
+
+		uint8_t binaryStream::get()
+		{
+			if (streamIndex < data.length())
+				return data[streamIndex++];
 			else
 				return 0;
 		}
 
-		template <encoding E>
-		uint8_t binaryStream<E>::getByte()
+		uint32_t binaryStream::getChar(encoding format)
 		{
-			
-		}
+			if (streamIndex >= data.length())
+				return 0;
 
-		template <typename CHAR>
-		string<CHAR> binaryStream<CHAR>::get(Int count)
-		{
-			string<CHAR> result;
+			uint32_t result;
 
-			Int i = 0;
-			while ((i < count) && data.isValid(index+i))
-				result += data.at(index+i);
+			switch (format)
+			{
+			case utf16:
+				if ((streamIndex+1) >= data.length()) return 0;
+				result = data[streamIndex++];
+				result = (result << 8) + data[streamIndex++];
+				break;
 
-			index += count;
+			case utf32:
+				if ((streamIndex+3) >= data.length()) return 0;
+				result = data[streamIndex++];
+				result = (result << 8) + data[streamIndex++];
+				result = (result << 8) + data[streamIndex++];
+				result = (result << 8) + data[streamIndex++];
+				break;
+
+			default:
+				result = data[streamIndex++];
+			}
 
 			return result;
 		}
 
-		template <typename CHAR>
-		void binaryStream<CHAR>::unget()
+		bool binaryStream::empty()
 		{
-			if (index) index--;
+			return (streamIndex >= data.length());
 		}
 
-		template <typename CHAR>
-		void binaryStream<CHAR>::put(CHAR c)
+		bool binaryStream::good()
 		{
-			data.add(c);
+			return true;
 		}
 
-		template <typename CHAR>
-		string<CHAR> binaryStream<CHAR>::read(CHAR delim)
+		bool binaryStream::bad()
 		{
-			string<CHAR> result;
-
-			while (data.isValid(index) && (data.at(index) == delim))
-				index++;
-
-			while (data.isValid(index) && (data.at(index) != delim))
-				result += data.at(index++);
-
-			return result;
+			return false;
 		}
 
-		template <typename CHAR>
-		void binaryStream<CHAR>::write(const string<CHAR>& input)
+		bool binaryStream::binary()
 		{
-			for (Int i=0; i<input.length(); i++)
-				data.add(input[i]);
+			return true;
 		}
 
-		template <typename CHAR>
-		bool binaryStream<CHAR>::empty()
+		void binaryStream::seek(size_t index)
 		{
-			return index >= data.length();
+			if (index > data.length())
+				streamIndex = data.length();
+			else
+				streamIndex = index;
 		}
 
-		template <typename CHAR>
-		void binaryStream<CHAR>::seek(Int position)
+		size_t binaryStream::tell()
 		{
-			if ((position < 0) || (position >= data.length()))
-                index = data.length();
-            else
-                index = position;
+			return streamIndex;
 		}
 
-		template <typename CHAR>
-		Int binaryStream<CHAR>::tell()
-		{
-			return index;
-		}
-
-		template <typename CHAR>
-		Int binaryStream<CHAR>::end()
+		size_t binaryStream::end()
 		{
 			return data.length();
 		}
