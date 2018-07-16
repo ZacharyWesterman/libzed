@@ -61,5 +61,30 @@ namespace z
 			for (size_t i=0; i<chars; i++)
 				stream.put(c[i]);
 		}
+
+		void serialIn(double& number, inputStream& stream)
+		{
+			if (stream.bad() || !stream.binary()) return;
+
+			uint8_t c[sizeof(double)];
+			for (size_t i=0; i<sizeof(double); i++)
+			{
+				c[i] = stream.get();
+			}
+
+			number = *((double*)c);
+		}
+
+		void serialOut(double number, outputStream& stream)
+		{
+			if (stream.bad() || !stream.binary()) return;
+
+			uint8_t* c = (uint8_t*)&number;
+
+			for (size_t i=0; i<sizeof(double); i++)
+			{
+				stream.put(c[i]);
+			}
+		}
 	}
 }
