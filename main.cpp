@@ -5,8 +5,6 @@
 // #include <z/core.h>
 // #include <z/file.h>
 
-#include <iostream>
-
 // #include <z/core/array.h>
 #include <z/core/string.h>
 // #include <z/core/binaryStream.h>
@@ -14,17 +12,26 @@
 #include <z/file/stream.h>
 using namespace z;
 
+template <typename T>
+size_t getSize(const T& object)
+{
+	return sizeof(object);
+}
+
+template <>
+size_t getSize(const core::sizable& object)
+{
+	return object.size();
+}
+
 int main()
 {
-	core::string<utf8> A;
-	core::string<utf8> L ("<<"), R (">>");
-	file::inputStream input ("out.txt");
-	// file::outputStream output ("out.txt");
+	core::string<utf8> A = "12345";
+	core::string<utf8> B = getSize(A);
+
 	system::console output;
 
-	A.serialIn(input);
-	// A.serialOut(output);
-	(L+A+R).writeln(output);
+	(B).writeln(output);
 
     return 0;
 }

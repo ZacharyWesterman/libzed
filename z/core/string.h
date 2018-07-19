@@ -7,6 +7,7 @@
 #include "charFunctions.h"
 #include <z/encoding.h>
 #include "serializable.h"
+#include "sizable.h"
 
 #ifndef Z_STR_INT_BUFSIZE
 	#define Z_STR_INT_BUFSIZE 64
@@ -57,7 +58,7 @@ namespace z
 		 * Simultaneous accesses to the same object can cause data races.
          */
 		template <encoding E>
-		class string : public serializable
+		class string : public serializable, public sizable
 		{
 			friend string<ascii>;
 			friend string<utf8>;

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "stream.h"
+#include "sizable.h"
 
 namespace z
 {
@@ -20,7 +21,7 @@ namespace z
          * \see sortedRefArray
          */
         template <typename T>
-        class array
+        class array : public sizable
         {
         protected:
             ///The data in the array.
