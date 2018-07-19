@@ -12,15 +12,41 @@ namespace z
 	namespace core
 	{
 
+		/**
+		 * \interface serializable
+		 * \brief An interface for reading and writing object binary data to streams.
+		 */
 		class serializable
 		{
 		public:
+			///Virtual destructor
 			virtual ~serializable() {}
 
-			virtual void serialIn(inputStream&) = 0;
-			virtual void serialOut(outputStream&) const = 0;
+			/**
+			 * \brief Read the object's binary data from a stream.
+			 *
+			 * \param stream The stream to read from.
+			 */
+			virtual void serialIn(inputStream& stream) = 0;
+
+			/**
+			 * \brief Write the object's binary data to a stream.
+			 *
+			 * \param stream The stream to write to.
+			 */
+			virtual void serialOut(outputStream& stream) const = 0;
 		};
 
+		/**
+		 * \brief Read an integer as binary data from a stream.
+		 *
+		 * This function assumes integers are no larger than 255 bytes in size.
+		 * The first byte is assumed to be the number of bytes to read afterward.
+		 * Then that number of bytes is read from the stream.
+		 *
+		 * \param number The number to read from the stream, returned by reference.
+		 * \param stream The stream to read from.
+		 */
 		template <typename N,
 		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
 		void serialIn(N& number, inputStream& stream)
@@ -37,6 +63,16 @@ namespace z
 			}
 		}
 
+		/**
+		 * \brief Write an integer as binary data to a stream.
+		 *
+		 * This function assumes integers are no larger than 255 bytes in size.
+		 * Leading null bytes are ignored and then the count of remaining bytes
+		 * is written to the stream. Then all remaining bytes are written.
+		 *
+		 * \param number The number to write to the stream.
+		 * \param stream The stream to write to.
+		 */
 		template <typename N,
 		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
 		void serialOut(N number, outputStream& stream)
@@ -62,6 +98,14 @@ namespace z
 				stream.put(c[i]);
 		}
 
+		/**
+		 * \brief Read a floating-point as binary data from a stream.
+		 *
+		 * Reads sizeof(double) bytes from the stream.
+		 *
+		 * \param number The number to read from the stream, returned by reference.
+		 * \param stream The stream to read from.
+		 */
 		void serialIn(double& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -75,6 +119,14 @@ namespace z
 			number = *((double*)c);
 		}
 
+		/**
+		 * \brief Write a floating-point as binary data to a stream.
+		 *
+		 * Writes sizeof(double) bytes to the stream.
+		 *
+		 * \param number The number to write to the stream, returned by reference.
+		 * \param stream The stream to write.
+		 */
 		void serialOut(double number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;

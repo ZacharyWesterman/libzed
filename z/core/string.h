@@ -807,10 +807,45 @@ namespace z
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
 
-			void read(inputStream&, uint32_t delim = 0);
-			void readln(inputStream&);
-			void write(outputStream&) const;
-			void writeln(outputStream&) const;
+			/**
+			 * \brief Read string data from a stream until the given delimiter is encountered.
+			 *
+			 * Reads until the delimiting character is encountered, or the stream is exhausted.
+			 * If the delimiter is 0 or not given, the delimiter is assumed to be any white space character.
+			 * Leading delimiter characters are skipped over until a non-delimiter character is encountered or the stream is exhausted.
+			 * Any data this string contains is wiped when this function is called.
+			 *
+			 * \param stream The stream to read from.
+			 * \param delim The delimiter to read until.
+			 */
+			void read(inputStream& stream, uint32_t delim = 0);
+
+			/**
+			 * \brief Read string data from a stream until a newline is encountered.
+			 *
+			 * Reads until a newline is encountered (either `\r\n` or `\n`), or the stream is exhausted.
+			 * Leading newlines are not skipped, so as to allow for empty lines.
+			 * Any data this string contains is wiped when this function is called.
+			 *
+			 * \param stream The stream to read from.
+			 */
+			void readln(inputStream& stream);
+
+			/**
+			 * \brief Write string data to a stream.
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void write(outputStream& stream) const;
+
+			/**
+			 * \brief Write string data to a stream, appending a newline.
+			 *
+			 * Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void writeln(outputStream& stream) const;
 		};
 
 		#include "string/default.h"

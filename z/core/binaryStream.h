@@ -9,6 +9,11 @@ namespace z
 {
 	namespace core
 	{
+		/**
+		 * \brief A class for bunary data streams.
+		 *
+		 * This class provides an implementation of core::stream for binary data in memory.
+		 */
 		class binaryStream : public stream
 		{
 		private:
