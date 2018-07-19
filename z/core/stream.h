@@ -7,15 +7,15 @@ namespace z
 {
 	namespace core
 	{
-		template <encoding E>
-		class string;
-
 		/**
 		 * \interface inputStream
 		 * \brief A template class for character input streams.
 		 *
 		 * This class provides an interface for
 		 * input streams.
+		 * <br/><br/>
+		 * <B>RE-ENTRANCE:</B><br/>
+		 * Simultaneous accesses to the same object can cause data races.
 		 */
 		class inputStream
 		{
@@ -30,10 +30,19 @@ namespace z
 			 *
 			 * Increments the stream index.
 			 *
-			 * \return The character previously at the beginning of the stream.
+			 * \return The byte previously at the beginning of the stream.
 			 */
 			virtual uint8_t get() = 0;
 
+			/**
+			 * \brief Get the next chracter on the stream in the given encoding.
+			 *
+			 * Increments the stream index.
+			 *
+			 * \param format The character encoding scheme.
+			 *
+			 * \return The character previously at the beginning of the stream.
+			 */
 			virtual uint32_t getChar(encoding format = ascii) = 0;
 
 			/**
@@ -43,8 +52,25 @@ namespace z
 			 */
 			virtual bool empty() = 0;
 
+			/**
+			 * \brief Tell whether this is a valid stream object.
+			 *
+			 * \return True if we can properly read to and write from the stream. False otherwise.
+			 */
 			virtual bool good() = 0;
+
+			/**
+			 * \brief Tell whether this is an invalid stream object.
+			 *
+			 * \return False if we can properly read to and write from the stream. True otherwise.
+			 */
 			virtual bool bad() = 0;
+
+			/**
+			 * \brief Tell whether this stream supports any binary format.
+			 *
+			 * \return True if this is a binary stream. False otherwise.
+			 */
 			virtual bool binary() = 0;
 
 			/**
@@ -81,6 +107,9 @@ namespace z
 		 *
 		 * This class provides an interface for
 		 * output streams.
+		 * <br/><br/>
+		 * <B>RE-ENTRANCE:</B><br/>
+		 * Simultaneous accesses to the same object can cause data races.
 		 */
 		class outputStream
 		{
@@ -100,6 +129,16 @@ namespace z
 			 */
 			virtual void put(uint8_t ch) = 0;
 
+			/**
+			 * \brief Add a number of characters in the given format to the stream.
+			 *
+			 * Adds a number of characters, assumed to be in the given format, to the stream,
+			 * incrementing the stream index.
+			 *
+			 * \param str Pointer to the characters to add to the stream.
+			 * \param count The number of characters.
+			 * \param format The scheme the characters are encoded in.
+			 */
 			virtual void put(uint8_t* str, size_t count, encoding format = ascii) = 0;
 
 			/**
@@ -109,8 +148,25 @@ namespace z
 			 */
 			virtual bool empty() = 0;
 
+			/**
+			 * \brief Tell whether this is a valid stream object.
+			 *
+			 * \return True if we can properly read to and write from the stream. False otherwise.
+			 */
 			virtual bool good() = 0;
+
+			/**
+			 * \brief Tell whether this is an invalid stream object.
+			 *
+			 * \return False if we can properly read to and write from the stream. True otherwise.
+			 */
 			virtual bool bad() = 0;
+
+			/**
+			 * \brief Tell whether this stream supports any binary format.
+			 *
+			 * \return True if this is a binary stream. False otherwise.
+			 */
 			virtual bool binary() = 0;
 
 			/**
@@ -147,6 +203,11 @@ namespace z
          *
          * This class provides an interface for both input
 		 * and output streams.
+		 *
+		 * <br/><br/>
+		 * <B>RE-ENTRANCE:</B><br/>
+		 * Simultaneous accesses to the same object can cause data races.
+		 *
          */
         class stream : public inputStream, public outputStream
         {};

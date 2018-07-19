@@ -15,6 +15,9 @@ namespace z
          * that adds ease of use.<BR>Additionally, if I ever decide to
          * stop using std::vector, I won't have to change all of my code,
          * just this class.
+		 * <br/><br/>
+		 * <B>RE-ENTRANCE:</B><br/>
+		 * Simultaneous accesses to the same object can cause data races.
          *
          * \see refArray
          * \see sortedArray
