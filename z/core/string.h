@@ -716,6 +716,27 @@ namespace z
 			const string& cutDuplicates(const string& other);
 
 			/**
+			 * \brief Convert all characters in the string to uppercase.
+			 *
+			 * \return A duplicate of this string, converted to uppercase.
+			 */
+			string upper() const;
+
+			/**
+			 * \brief Convert all characters in the string to lowercase.
+			 *
+			 * \return A duplicate of this string, converted to lowercase.
+			 */
+			string lower() const;
+
+			/**
+			 * \brief Convert all characters in the string to camelcase.
+			 *
+			 * \return A duplicate of this string, converted to camelcase.
+			 */
+			string camel() const;
+
+			/**
 			 * \brief Concatenate two strings.
 			 *
 			 * \param other The string to append.

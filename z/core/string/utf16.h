@@ -941,6 +941,48 @@ const string<utf16>& string<utf16>::replace(size_t index, int count, const strin
 }
 
 template <>
+string<utf16> string<utf16>::upper() const
+{
+	string<utf16> result (*this);
+	uint16_t* data16 = (uint16_t*)result.data;
+
+	for (size_t i=0; i<character_ct; i++)
+		data16[i] = toUpper(data16[i]);
+
+	return result;
+}
+
+template <>
+string<utf16> string<utf16>::lower() const
+{
+	string<utf16> result (*this);
+	uint16_t* data16 = (uint16_t*)result.data;
+
+	for (size_t i=0; i<character_ct; i++)
+		data16[i] = toLower(data16[i]);
+
+	return result;
+}
+
+template <>
+string<utf16> string<utf16>::camel() const
+{
+	string<utf16> result (*this);
+	uint16_t* data16 = (uint16_t*)result.data;
+
+	bool doLower = false;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		uint32_t ch = data16[i];
+		data16[i] = (doLower ? toLower(ch) : toUpper(ch));
+
+		doLower = isAlphaNumeric(ch) || (ch == '_');
+	}
+
+	return result;
+}
+
+template <>
 void string<utf16>::read(inputStream& stream, uint32_t delim)
 {
 	character_ct = 0;

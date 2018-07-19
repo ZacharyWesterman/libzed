@@ -982,6 +982,45 @@ const string<E>& string<E>::cutDuplicates(const string<E>& other)
 	return *this;
 }
 
+template <encoding E>
+string<E> string<E>::upper() const
+{
+	string<E> result (*this);
+
+	for (size_t i=0; i<character_ct; i++)
+		result.data[i] = toUpper(result.data[i]);
+
+	return result;
+}
+
+template <encoding E>
+string<E> string<E>::lower() const
+{
+	string<E> result (*this);
+
+	for (size_t i=0; i<character_ct; i++)
+		result.data[i] = toLower(result.data[i]);
+
+	return result;
+}
+
+template <encoding E>
+string<E> string<E>::camel() const
+{
+	string<E> result (*this);
+
+	bool doLower = false;
+	for (size_t i=0; i<character_ct; i++)
+	{
+		uint32_t ch = result.data[i];
+		result.data[i] = (doLower ? toLower(ch) : toUpper(ch));
+
+		doLower = isAlphaNumeric(ch) || (ch == '_');
+	}
+
+	return result;
+}
+
 ///operators
 template <encoding E>
 string<E> string<E>::operator+(const string<E>& other) const

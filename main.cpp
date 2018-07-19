@@ -10,28 +10,17 @@
 // #include <z/core/binaryStream.h>
 #include <z/system/console.h>
 #include <z/file/stream.h>
-using namespace z;
 
-template <typename T>
-size_t getSize(const T& object)
-{
-	return sizeof(object);
-}
-
-template <>
-size_t getSize(const core::sizable& object)
-{
-	return object.size();
-}
+using z::core::string;
+using z::system::console;
 
 int main()
 {
-	core::string<utf8> A = "12345";
-	core::string<utf8> B = getSize(A);
+	string<z::utf8> A = "Hello, this is a test. 1234test, _test";
 
-	system::console output;
+	console output;
 
-	(B).writeln(output);
+	(A.camel()).writeln(output);
 
     return 0;
 }

@@ -1,59 +1,60 @@
-# Strings Examples
+Strings Examples
 ----------------------
 
 
 ## Hello World
 
-```cpp
-#include <iostream>
+~~~cpp
 #include <z/core.h>
+#include <z/system.h>
 
-using namespace std;
-using namespace z;
+using z::cotruere::string;
+using z::system::console;
 
 int main()
 {
-    core::string<char> foo = "Hello world!";
+    string<z::utf8> foo = "Hello world!";
+    console bar;
 
-    cout << foo.str() << endl;
+	foo.writeln(bar);
 
     return 0;
 }
-```
+~~~
 
 **Output:**
-```
+~~~
 Hello world!
-```
+~~~
 
 -----------------------------
 ## Uppercase vs. Lowercase
 
-```cpp
-#include <iostream>
+~~~cpp
 #include <z/core.h>
+#include <z/system.h>
 
-using namespace std;
-using namespace z;
+using z::core::string;
+using z::system::console;
 
 int main()
 {
-    core::string<char> foo = "aN eXAMple StRiNg";
+    string<z::utf8> foo = "aN eXAMple StRiNg";
+	console bar;
 
-    core::string<char> upper = foo.upper();
-    core::string<char> lower = foo.lower();
-
-    cout << foo.str() << endl;
-    cout << upper.str() << endl;
-    cout << lower.str() << endl;
+    foo.writeln(bar);
+    foo.upper().writeln(bar);
+    foo.lower().writeln(bar);
+	foo.camel().writeln(bar);
 
     return 0;
 }
-```
+~~~
 
 **Output:**
-```
+~~~
 aN eXAMple StRiNg
 AN EXAMPLE STRING
 an example string
-```
+An Example String
+~~~
