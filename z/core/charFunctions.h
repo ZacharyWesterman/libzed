@@ -12,10 +12,9 @@
 **/
 
 #pragma once
-#ifndef CHARFUNCTIONS_H_INCLUDED
-#define CHARFUNCTIONS_H_INCLUDED
 
-// #include <z/int.h>
+#include <cstdint>
+#include <cstddef>
 
 namespace z
 {
@@ -338,5 +337,3 @@ namespace z
 		}
     }
 }
-
-#endif // CHARFUNCTIONS_H_INCLUDED

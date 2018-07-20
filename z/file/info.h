@@ -32,7 +32,7 @@ namespace z
             bool does_exist;
 
         public:
-            info(const core::string<char>&);
+            info(const core::string<utf8>&);
 
 
             inline bool exists();
@@ -53,9 +53,9 @@ namespace z
          * \param path a string of the path to
          * the file object.
          */
-        info::info(const core::string<char>& path)
+        info::info(const core::string<utf8>& path)
         {
-            does_exist = STAT(path.str(), &fileStat);
+            does_exist = STAT(path.cstring(), &fileStat);
         }
 
         /**

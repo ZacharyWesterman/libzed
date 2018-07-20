@@ -3,6 +3,8 @@
 #include <type_traits>
 #include <complex>
 #include <climits>
+#include <cstdint>
+#include <cstddef>
 
 #include "charFunctions.h"
 #include <z/encoding.h>

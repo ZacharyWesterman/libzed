@@ -18,7 +18,7 @@ namespace z
         private:
             bool good;
 
-            core::string<char> _vendor;
+            core::string<ascii> _vendor;
             int _cpus;
             int _cores;
             int _threads;
@@ -31,7 +31,7 @@ namespace z
         public:
             cpuid();
 
-            const core::string<char>& vendor();
+            const core::string<ascii>& vendor();
 
             int cpus();
             int cores();
@@ -53,7 +53,7 @@ namespace z
             if (good)
             {
                 char vendor[13];
-                vendor[12] = null;
+                vendor[12] = 0;
 
                 *((uint32_t*)&vendor[0]) = ebx;
                 *((uint32_t*)&vendor[4]) = edx;
@@ -108,7 +108,7 @@ namespace z
 		 *
 		 * \return A string containing the vendor CPU id.
 		 */
-        const core::string<char>& cpuid::vendor()
+        const core::string<ascii>& cpuid::vendor()
         {
             return _vendor;
         }

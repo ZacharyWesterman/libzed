@@ -1,7 +1,9 @@
 #pragma once
 
+#include <cstdint>
+#include <cstddef>
+
 #include <z/encoding.h>
-#include "string.h"
 
 namespace z
 {

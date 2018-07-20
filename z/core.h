@@ -11,12 +11,9 @@
 
 
 #pragma once
-#ifndef CORE_H_INCLUDED
-#define CORE_H_INCLUDED
 
 ///Strings
 #include "core/string.h"
-#include "core/stream.h"
 
 ///Arrays
 #include "core/array.h"
@@ -32,10 +29,8 @@
 #include "core/pause.h"
 #include "core/charFunctions.h"
 #include "core/serializable.h"
+#include "core/sizable.h"
 
 ///Streams
 #include "core/stream.h"
-#include "core/stringStream.h"
 #include "core/binaryStream.h"
-
-#endif // CORE_H_INCLUDED

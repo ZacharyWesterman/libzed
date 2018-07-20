@@ -18,11 +18,11 @@ namespace z
          * \return \b True if the file was copied successfully.
          * \b False otherwise.
          */
-        bool copy(const core::string<char>& fileInput,
-                  const core::string<char>& fileOutput)
+        bool copy(const core::string<utf8>& fileInput,
+                  const core::string<utf8>& fileOutput)
         {
-            std::ifstream src(fileInput.str(), std::ios::binary);
-            std::ofstream dest(fileOutput.str(), std::ios::binary);
+            std::ifstream src(fileInput.cstring(), std::ios::binary);
+            std::ofstream dest(fileOutput.cstring(), std::ios::binary);
             dest << src.rdbuf();
             return src && dest;
         }

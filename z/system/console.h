@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include <z/core/stream.h>
+#include <z/core/charFunctions.h>
 
 namespace z
 {
-    namespace system
-    {
+  namespace system
+  {
 		/**
 		 * \brief Class for interacting with the console.
 		 *
@@ -19,7 +20,7 @@ namespace z
 		 * As a result, this class will not behave nicely with the
 		 * util::regex class.
 		 */
-		 class console : public core::stream
+		class console : public core::stream
  		{
  		public:
  			void put(uint8_t ch);
@@ -123,5 +124,5 @@ namespace z
 		{
 			return 0;
 		}
-    }
+  }
 }

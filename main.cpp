@@ -1,15 +1,17 @@
 // #define Z_USE_NARROW
 
-// #include <z/system.h>
+#include <z/system.h>
 // #include <z/util.h>
-// #include <z/core.h>
+// #include <cstdint>
+
+#include <z/core.h>
 // #include <z/file.h>
 
 // #include <z/core/array.h>
-#include <z/core/string.h>
+// #include <z/core/serializable.h>
+// #include <z/core/string.h>
+// #include <z/system/console.h>
 // #include <z/core/binaryStream.h>
-#include <z/system/console.h>
-#include <z/file/stream.h>
 
 using z::core::string;
 using z::system::console;

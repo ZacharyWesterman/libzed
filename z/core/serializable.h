@@ -1,10 +1,6 @@
 #pragma once
 
-#include <cstdint>
-
-#include <z/z.h>
-// #include "string.h"
-
+#include <type_traits>
 #include "stream.h"
 
 namespace z
@@ -47,8 +43,7 @@ namespace z
 		 * \param number The number to read from the stream, returned by reference.
 		 * \param stream The stream to read from.
 		 */
-		template <typename N,
-		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
+		template <typename N>
 		void serialIn(N& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -73,8 +68,7 @@ namespace z
 		 * \param number The number to write to the stream.
 		 * \param stream The stream to write to.
 		 */
-		template <typename N,
-		typename = typename std::enable_if<std::is_integral<N>::value,N>::type>
+		template <typename N>
 		void serialOut(N number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;

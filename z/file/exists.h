@@ -20,11 +20,11 @@ namespace z
          * \return \b True if the file or directory exists.
          * \b False otherwise.
          */
-        bool exists(const core::string<char>& pathname)
+        bool exists(const core::string<utf8>& pathname)
         {
             struct stat info;
 
-            if (stat(pathname.str(), &info) != 0)
+            if (stat(pathname.cstring(), &info) != 0)
                 return true; //directory item exists
             else
                 return false; //does not exist
