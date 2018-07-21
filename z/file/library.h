@@ -67,13 +67,13 @@ namespace z
             library();
             ~library();
 
-            bool load(const core::string<char>&);
+            bool load(const core::string<utf8>&);
             bool unload();
 
             inline bool good();
             inline bool bad();
 
-            smbl_t symbol(const core::string<char>&);
+            smbl_t symbol(const core::string<utf8>&);
         };
 
 
@@ -109,7 +109,7 @@ namespace z
          * \return \b True if the library loaded successfully.
          * \b False otherwise.
          */
-        bool library::load(const core::string<char>& file_name)
+        bool library::load(const core::string<utf8>& file_name)
         {
             #ifdef _WIN32
             if (lib_ptr)
@@ -192,7 +192,7 @@ namespace z
          * a pointer to the symbol. Otherwise, if the symbol was not
          * found or the library hasn't been loaded, returns \b NULL.
          */
-        smbl_t library::symbol(const core::string<char>& symbol_name)
+        smbl_t library::symbol(const core::string<utf8>& symbol_name)
         {
             #ifdef _WIN32
             if (lib_ptr)

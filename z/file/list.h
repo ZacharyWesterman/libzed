@@ -36,13 +36,13 @@ namespace z
          * \return An array containing the names of all files of
          * the given type in the given directory.
          */
-        core::array< core::string<char> >
-            listFiles(const core::string<char>& dir,
-                 const core::string<char>& file_type)
+        core::array< core::string<utf8> >
+            listFiles(const core::string<utf8>& dir,
+                 const core::string<utf8>& file_type)
         {
-            core::array< core::string<char> > output;
+            core::array< core::string<utf8> > output;
 
-            core::string<char> search_path = dir;
+            core::string<utf8> search_path = dir;
 
             if (!dir.length())
                 search_path += "./";
@@ -57,7 +57,7 @@ namespace z
 
 
             WIN32_FIND_DATA fd;
-            HANDLE hFind = FindFirstFile(search_path.str(), &fd);
+            HANDLE hFind = FindFirstFile((char*)search_path.cstring(), &fd);
 
             if (hFind != INVALID_HANDLE_VALUE)
             {
@@ -65,7 +65,7 @@ namespace z
                 {
                     if(!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
                     {
-                        output.add(core::string<char>(fd.cFileName));
+                        output.add(core::string<utf8>(fd.cFileName));
                     }
                 }
                 while (FindNextFile(hFind, &fd));
@@ -83,13 +83,13 @@ namespace z
             DIR *dpdf;
             dirent *epdf;
 
-            dpdf = opendir(search_path.str());
+            dpdf = opendir((char*)search_path.cstring());
 
             if (dpdf)
             {
                 while ((epdf = readdir(dpdf)))
                 {
-                    core::string<char> filename (epdf->d_name);
+                    core::string<utf8> filename (epdf->d_name);
 
                     if (epdf->d_type != DT_DIR)
                     {
@@ -101,7 +101,7 @@ namespace z
                         {
 
 
-                            if (filename.endsWith(core::string<char>('.') + file_type))
+                            if (filename.endsWith(core::string<utf8>('.') + file_type))
                                 output.add(filename);
                         }
                     }
@@ -134,13 +134,13 @@ namespace z
          * \return An array containing the names of all
          * sub-directories in the given directory.
          */
-        core::array< core::string<char> >
-            listDirs(const core::string<char>& dir,
+        core::array< core::string<utf8> >
+            listDirs(const core::string<utf8>& dir,
                      bool showAll = false)
         {
-            core::array< core::string<char> > output;
+            core::array< core::string<utf8> > output;
 
-            core::string<char> search_path = dir;
+            core::string<utf8> search_path = dir;
 
             if (!dir.length())
                 search_path += "./";
@@ -153,7 +153,7 @@ namespace z
 
 
             WIN32_FIND_DATA fd;
-            HANDLE hFind = FindFirstFile(search_path.str(), &fd);
+            HANDLE hFind = FindFirstFile((char*)search_path.cstring(), &fd);
 
             if (hFind != INVALID_HANDLE_VALUE)
             {
@@ -161,7 +161,7 @@ namespace z
                 {
                     if(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
                     {
-                        core::string<char> filename = fd.cFileName;
+                        core::string<utf8> filename = fd.cFileName;
 
                         if (showAll || (filename[0] != '.'))
                             output.add(filename);
@@ -176,13 +176,13 @@ namespace z
             DIR *dpdf;
             dirent *epdf;
 
-            dpdf = opendir(search_path.str());
+            dpdf = opendir((char*)search_path.cstring());
 
             if (dpdf)
             {
                 while ((epdf = readdir(dpdf)))
                 {
-                    core::string<char> filename (epdf->d_name);
+                    core::string<utf8> filename (epdf->d_name);
 
                     if (epdf->d_type == DT_DIR)
                     {

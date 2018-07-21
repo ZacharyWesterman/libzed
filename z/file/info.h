@@ -55,7 +55,7 @@ namespace z
          */
         info::info(const core::string<utf8>& path)
         {
-            does_exist = STAT(path.cstring(), &fileStat);
+            does_exist = STAT((char*)path.cstring(), &fileStat);
         }
 
         /**

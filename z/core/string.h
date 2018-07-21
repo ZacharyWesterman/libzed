@@ -206,7 +206,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			explicit string(const string<ascii>& other);
+			string(const string<ascii>& other);
 
 			/**
 			 * \brief Construct from a UTF-8 string.
@@ -216,7 +216,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			explicit string(const string<utf8>& other);
+			string(const string<utf8>& other);
 
 			/**
 			 * \brief Construct from a UTF16 string.
@@ -226,7 +226,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			explicit string(const string<utf16>& other);
+			string(const string<utf16>& other);
 
 			/**
 			 * \brief Construct from a UTF32 string.
@@ -236,7 +236,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			explicit string(const string<utf32>& other);
+			string(const string<utf32>& other);
 
 			/// Lvalue copy-constructor
 			string(string&&);

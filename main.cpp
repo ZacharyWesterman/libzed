@@ -4,8 +4,8 @@
 // #include <z/util.h>
 // #include <cstdint>
 
+#include <z/file.h>
 #include <z/core.h>
-// #include <z/file.h>
 
 // #include <z/core/array.h>
 // #include <z/core/serializable.h>
@@ -18,11 +18,11 @@ using z::system::console;
 
 int main()
 {
-	string<z::utf8> A = "Hello, this is a test. 1234test, _test";
+	string<z::utf8> A = "././a/b./c/../d/e/../f/./.";
 
 	console output;
 
-	(A.camel()).writeln(output);
+	(z::file::shorten(A)).writeln(output);
 
     return 0;
 }

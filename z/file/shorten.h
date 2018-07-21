@@ -21,42 +21,40 @@ namespace z
          *
          * \return The directory with redundant symbols removed.
          */
-        core::string<char> shorten(const core::string<char>& dir)
+        core::string<utf8> shorten(const core::string<utf8>& dir)
         {
-            core::string<char> output = dir;
+            core::string<utf8> output = dir;
+						output.replace("\\", "/");
+						output.cutDuplicates("/");
+						output.replace("/./", "/");
 
-            int last_slash = -1;
+						core::string<utf8> lastDir = "/../";
+						core::string<utf8> slash = "/";
+						int index = output.find(lastDir);
 
-            for (int i=0; i<output.length(); i++)
-            {
-                if ((output[i] == '\\') ||
-                    (output[i] == '/'))
-                {
-                    if (output.foundAt("..", i+1) &&
-                        (last_slash > -1))
-                    {
-                        output.remove(last_slash, i+2);
-                        i--;
-                    }
-                    else if ((output[i+1] == '.') &&
-                             ((output[i+2] == null) ||
-                              (output[i+2] == '\\') ||
-                              (output[i+2] == '/')))
-                    {
-                        output.remove(i+1,i+1);
-                    }
-                    else if (last_slash == i-1)
-                    {
-                        output.remove(i,i);
-                        i--;
-                    }
+						while (index >= 0)
+						{
+							if (index)
+							{
+								int last = output.findBefore(slash, index-1);
+								if (last < 0)
+									output.replace(0, index-last+lastDir.length(), "./");
+								else
+									output.replace(last, index-last+lastDir.length(), slash);
+							}
 
-                    last_slash = i;
-                }
-            }
+							index = output.findAfter(lastDir, index+1);
+						}
 
-            if (last_slash == output.length() - 1)
-                output.remove(output.length() - 1, output.length() - 1);
+						lastDir = "/..";
+						if ((output.length() > lastDir.length()) && output.endsWith(lastDir))
+						{
+							int last = output.findBefore(slash, output.length()-lastDir.length()-1);
+							if (last < 0)
+								output = ".";
+							else
+								output.remove(last, index-last+lastDir.length());
+						}
 
             return output;
         }

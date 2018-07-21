@@ -26,13 +26,13 @@ namespace z
 		 *
 		 * \return A string containing the current working directory.
 		 */
-        core::string<char> workingDir()
+        core::string<utf8> workingDir()
         {
             char tmp[FILENAME_MAX];
 
             getCurrDir(tmp, FILENAME_MAX);
 
-            return core::string<char>(tmp);
+            return core::string<utf8>(tmp);
         }
     }
 }
