@@ -1,5 +1,7 @@
 // #define Z_USE_NARROW
 
+#include <z/util/regex.h>
+
 #include <z/system.h>
 // #include <z/util.h>
 // #include <cstdint>
@@ -24,5 +26,5 @@ int main()
 
 	(z::file::shorten(A)).writeln(output);
 
-    return 0;
+	return 0;
 }
