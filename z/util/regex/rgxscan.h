@@ -1,7 +1,7 @@
 #pragma once
 
 template <encoding E>
-uint8_t rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
+rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 {
 	bool inOr = false;
 	bool startOr = false;
@@ -9,11 +9,14 @@ uint8_t rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 	int paren = 0;
 
 	uint8_t last = 0;
+	rgxss esc(0);
+
+	system::console con;
+	core::string<utf8> res;
 
 	for (size_t i=0; i<pattern.length(); i++)
 	{
 		uint32_t ch = pattern[i];
-		uint32_t prev = pattern[i-1];
 		uint32_t next = pattern[i+1];
 
 		bool braceValid = false;
@@ -57,9 +60,14 @@ uint8_t rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 				if (inOr)
 				{
 					if (startOr)
+					{
 						output.add(rgxss(last=RGX_SYMBOL, ch));
+					}
 					else
-						output.add(rgxss(last=RGX_LBRACKET));
+					{
+						inOr = false;
+						output.add(rgxss(last=RGX_RBRACKET));
+					}
 				}
 				else return RGX_BRACKET_MISMATCH;
 				break;
@@ -67,16 +75,20 @@ uint8_t rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 				if (inOr)
 				{
 					if (startOr || (next == ']'))
+					{
 						output.add(rgxss(last=RGX_SYMBOL, ch));
+					}
 					else
-						output.add(rgxss(last=RGX_DASH));
+					{
+						if (last == RGX_NOT)
+							output.add(rgxss(last=RGX_SYMBOL, ch));
+						else
+							output.add(rgxss(last=RGX_DASH));
+					}
 				}
 				else
 				{
-					if ((last == RGX_LPAREN) || (last == RGX_RPAREN) || (next == '(') || (next == '['))
-						output.add(rgxss(last=RGX_SYMBOL, ch));
-					else
-						output.add(rgxss(last=RGX_DASH))
+					output.add(rgxss(last=RGX_SYMBOL, ch));
 				}
 				break;
 			case '?':
@@ -89,10 +101,10 @@ uint8_t rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 				if (inOr)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				else
-					output.add(rgxss(last=RGX_COLUMN))
+					output.add(rgxss(last=RGX_COLUMN));
 				break;
 			case '\\':
-				rgxss esc = rgxsesc(next);
+				esc = rgxsesc(next);
 				last = esc.id();
 				output.add(esc);
 				i++;
