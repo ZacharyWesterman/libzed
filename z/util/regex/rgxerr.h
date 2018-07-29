@@ -8,5 +8,7 @@ enum rgxerr
 	RGX_BRACE_MISMATCH,
 	RGX_BRACE_INVALID,
 
+	RGX_LEX_FAIL,
+
 	RGX_COUNT
 };

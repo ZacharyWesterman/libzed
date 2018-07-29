@@ -92,10 +92,30 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 				}
 				break;
 			case '?':
-				if (inOr || (last == RGX_LPAREN))
+				if (inOr)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
+				else if (last == RGX_LPAREN)
+					output.add(rgxss(last=RGX_QUERY));
 				else
 					output.add(rgxss(last=RGX_QUESTION));
+				break;
+			case '!':
+				if ((last == RGX_QUERY) || (last == RGX_PREVIOUS))
+					output.add(rgxss(last=RGX_BANG));
+				else
+					output.add(rgxss(last=RGX_SYMBOL, ch));
+				break;
+			case '<':
+				if (last == RGX_QUERY)
+					output.add(rgxss(last=RGX_PREVIOUS));
+				else
+					output.add(rgxss(last=RGX_SYMBOL, ch));
+				break;
+			case '=':
+				if (last == RGX_QUERY)
+					output.add(rgxss(last=RGX_EQUALS));
+				else
+					output.add(rgxss(last=RGX_SYMBOL, ch));
 				break;
 			case '|':
 				if (inOr)

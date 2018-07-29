@@ -37,6 +37,9 @@ rgxss rgxsesc(uint32_t ch)
 		case 'x':
 			return rgxss(RGX_HEXDIGIT);
 		default:
-			return rgxss(RGX_SYMBOL, ch);
+			if (ch)
+				return rgxss(RGX_SYMBOL, ch);
+			else
+				return rgxss(RGX_SYMBOL, '\\');
 	}
 }

@@ -20,6 +20,8 @@ namespace z
 		#include "regex/rgxss.h"
 		#include "regex/rgxsesc.h"
 		#include "regex/rgxscan.h"
+		#include "regex/rgxll.h"
+		#include "regex/rgxlex.h"
 
 		/**
 		 * \brief A template class for parsing and matching regular expressions.
