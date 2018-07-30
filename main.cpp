@@ -44,8 +44,9 @@ const core::array< core::string<utf8> > names =
 
 	"RGX_CASEI",
 	"RGX_NOT_CASEI",
-
-	"RGX_TEST",
+	"RGX_RANGE",
+	"RGX_OR_LIST",
+	"RGX_AND_LIST",
 };
 
 const core::array< core::string<utf8> > errors =
@@ -59,6 +60,7 @@ const core::array< core::string<utf8> > errors =
 	"RGX_BRACE_INVALID",
 
 	"RGX_LEX_FAIL",
+	"RGX_BAD_HEX",
 
 	"RGX_COUNT"
 };
@@ -153,7 +155,7 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"(?i)[1\\\\*2](?!i)";
+	core::string<utf32> pattern = L"[\\x61-Z]";
 	core::array<util::rgxss> symbols;
 	util::rgxll* root = 0;
 

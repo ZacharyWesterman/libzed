@@ -9,6 +9,7 @@ enum rgxerr
 	RGX_BRACE_INVALID,
 
 	RGX_LEX_FAIL,
+	RGX_BAD_HEX,
 
 	RGX_COUNT
 };

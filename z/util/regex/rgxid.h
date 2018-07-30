@@ -41,8 +41,9 @@ enum rgxid
 
 	RGX_CASEI,
 	RGX_NOT_CASEI,
-
-	RGX_TEST,
+	RGX_RANGE,
+	RGX_OR_LIST,
+	RGX_AND_LIST,
 	//the following are deprecated.
 
 	REGEX_SYMBOL,
