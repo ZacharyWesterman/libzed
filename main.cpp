@@ -1,4 +1,5 @@
 #include <z/system/console.h>
+
 #include <z/util/regex.h>
 
 using namespace z;
@@ -15,6 +16,7 @@ const core::array< core::string<utf8> > names =
 	"RGX_DASH",
 	"RGX_QUESTION",
 	"RGX_QUERY",
+	"RGX_GREEDY",
 	"RGX_COLUMN",
 	"RGX_ASTERISK",
 	"RGX_COMMA",
@@ -40,11 +42,15 @@ const core::array< core::string<utf8> > names =
 	"RGX_NOT_BREAK",
 	"RGX_PUNCT",
 	"RGX_NOT_PUNCT",
+	"RGX_POS_LOOKAHEAD",
+	"RGX_NEG_LOOKAHEAD",
+	"RGX_POS_LOOKBEHIND",
+	"RGX_NEG_LOOKBEHIND",
+	"RGX_CASEI",
+	"RGX_NOT_CASEI",
 	"RGX_END",
 	"RGX_HEXDIGIT",
 
-	"RGX_CASEI",
-	"RGX_NOT_CASEI",
 	"RGX_OR_LIST",
 	"RGX_AND_LIST",
 	"RGX_COUNT",
@@ -64,6 +70,12 @@ const core::array< core::string<utf8> > errors =
 	"RGX_BAD_HEX",
 	"RGX_BAD_RANGE",
 	"RGX_BAD_COUNT_LOC",
+	"RGX_BAD_COUNT_FORM",
+	"RGX_BAD_GREED_LOC",
+	"RGX_GREED_INEFFECTIVE",
+
+	"RGX_BAD_LOOKAHEAD",
+	"RGX_BAD_LOOKBEHIND",
 
 	"RGX_ERR_COUNT"
 };
@@ -97,10 +109,12 @@ void printll(const util::rgxll* root, core::outputStream& stream, int level=0)
 {
 	if (root)
 	{
+		core::string<utf8> space;
+		space.padLeft(" ", level*2).write(stream);
+
 		//print the ID
 		core::string<utf8> id = names[root->id()];
-		id.padRight(" ",14);
-		id.padLeft(" ", level*2 + 14).write(stream);
+		id.padRight(" ",14).write(stream);
 
 		core::string<utf8> range;
 		if (root->beg())
@@ -135,12 +149,11 @@ void printll(const util::rgxll* root, core::outputStream& stream, int level=0)
 		count.padRight(" ", 10).write(stream);
 
 		core::string<utf8> greedy;
-		if (root->greedy())
+		if (!root->greedy())
 		{
-			greedy = ", greedy";
+			greedy = ", not greedy";
 		}
 		greedy.writeln(stream);
-
 
 		for (size_t i=0; i<(root->children.length()); i++)
 		{
@@ -158,7 +171,7 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"((((x))))";
+	core::string<utf32> pattern = L"(?<=)(?i)(?<!m)xy(?=a)(?!=b)";
 	core::array<util::rgxss> symbols;
 	util::rgxll* root = 0;
 

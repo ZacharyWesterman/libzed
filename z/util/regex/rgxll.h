@@ -40,7 +40,7 @@ public:
 	void setCountExact(size_t count);
 	void setCountNoMax(size_t count);
 
-	void setGreedy(bool greedy);
+	void setGreedy(bool status = true) {isGreedy = status;}
 };
 
 rgxll::rgxll(uint8_t ID)
@@ -50,7 +50,7 @@ rgxll::rgxll(uint8_t ID)
 	symbolEnd = 0;
 	minCount = 1;
 	maxCount = 1;
-	isGreedy = false;
+	isGreedy = true;
 }
 
 rgxll::rgxll(const rgxss& init)
@@ -60,7 +60,7 @@ rgxll::rgxll(const rgxss& init)
 	symbolEnd = init.symbol();
 	minCount = 1;
 	maxCount = 1;
-	isGreedy = false;
+	isGreedy = true;
 }
 
 rgxll::~rgxll()

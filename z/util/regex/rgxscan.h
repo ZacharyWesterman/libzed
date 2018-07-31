@@ -96,6 +96,8 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				else if (last == RGX_LPAREN)
 					output.add(rgxss(last=RGX_QUERY));
+				else if ((last == RGX_ASTERISK) || (last == RGX_PLUS) || (last == RGX_RBRACE))
+					output.add(rgxss(last=RGX_GREEDY));
 				else
 					output.add(rgxss(last=RGX_QUESTION));
 				break;
@@ -112,7 +114,7 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				break;
 			case '=':
-				if (last == RGX_QUERY)
+				if ((last == RGX_QUERY) || (last == RGX_BANG))
 					output.add(rgxss(last=RGX_EQUALS));
 				else
 					output.add(rgxss(last=RGX_SYMBOL, ch));
