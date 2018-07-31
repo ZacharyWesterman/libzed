@@ -19,12 +19,12 @@ const core::array< core::string<utf8> > names =
 	"RGX_ASTERISK",
 	"RGX_COMMA",
 	"RGX_NOT",
-	"RGX_BEGIN",
-	"RGX_END",
 	"RGX_BANG",
 	"RGX_PREVIOUS",
 	"RGX_EQUALS",
+	"RGX_PLUS",
 
+	"RGX_BEGIN",
 	"RGX_SPACE",
 	"RGX_NOT_SPACE",
 	"RGX_ALPHA",
@@ -40,13 +40,14 @@ const core::array< core::string<utf8> > names =
 	"RGX_NOT_BREAK",
 	"RGX_PUNCT",
 	"RGX_NOT_PUNCT",
+	"RGX_END",
 	"RGX_HEXDIGIT",
 
 	"RGX_CASEI",
 	"RGX_NOT_CASEI",
-	"RGX_RANGE",
 	"RGX_OR_LIST",
 	"RGX_AND_LIST",
+	"RGX_COUNT",
 };
 
 const core::array< core::string<utf8> > errors =
@@ -61,8 +62,10 @@ const core::array< core::string<utf8> > errors =
 
 	"RGX_LEX_FAIL",
 	"RGX_BAD_HEX",
+	"RGX_BAD_RANGE",
+	"RGX_BAD_COUNT_LOC",
 
-	"RGX_COUNT"
+	"RGX_ERR_COUNT"
 };
 
 void printss(const core::array<util::rgxss>& list, core::outputStream& stream)
@@ -105,7 +108,7 @@ void printll(const util::rgxll* root, core::outputStream& stream, int level=0)
 			range = "ch["; range += root->beg();
 			if (root->end() != root->beg())
 			{
-				range += "->"; range += root->end();
+				range += L"→"; range += root->end();
 			}
 			range += "]";
 		}
@@ -117,7 +120,7 @@ void printll(const util::rgxll* root, core::outputStream& stream, int level=0)
 			count += root->min();
 			if (root->max() != root->min())
 			{
-				count += "->";
+				count += L"→";
 				if (root->max() < (size_t)-1)
 					count += root->max();
 				else
@@ -155,7 +158,7 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"[\\x61-Z]";
+	core::string<utf32> pattern = L"((((x))))";
 	core::array<util::rgxss> symbols;
 	util::rgxll* root = 0;
 

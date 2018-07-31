@@ -59,7 +59,7 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 			case ']':
 				if (inOr)
 				{
-					if (startOr)
+					if (startOr || (last == RGX_NOT))
 					{
 						output.add(rgxss(last=RGX_SYMBOL, ch));
 					}
@@ -130,10 +130,16 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 				i++;
 				break;
 			case '*':
-				if (inOr || (last == RGX_LPAREN))
+				if (inOr || (!i) || (last == RGX_LPAREN))
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				else
 					output.add(rgxss(last=RGX_ASTERISK));
+				break;
+			case '+':
+				if (inOr || (!i) || (last == RGX_LPAREN))
+					output.add(rgxss(last=RGX_SYMBOL, ch));
+				else
+					output.add(rgxss(last=RGX_PLUS));
 				break;
 			case ',':
 				braceValid = true;

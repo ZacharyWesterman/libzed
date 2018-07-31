@@ -39,9 +39,9 @@ static bool rgxmr(const core::array<rgxll*>& list, size_t index, rgxerr& error) 
 {
 	if (list.isValid(index+3))
 	{
-		if (list[index]->id() != RGX_SYMBOL) return false;
 		if (list[index+1]->id() != RGX_DASH) return false;
-		if (list[index+2]->id() != RGX_SYMBOL) return false;
+		if (list[index]->id() != RGX_SYMBOL) error = RGX_BAD_RANGE;
+		if (list[index+2]->id() != RGX_SYMBOL) error = RGX_BAD_RANGE;
 	}
 	else return false;
 
@@ -60,7 +60,7 @@ static bool rgxmol(const core::array<rgxll*>& list, size_t index, rgxerr& error)
 			bool bad = true;
 			bad &= (list[i]->id() != RGX_SYMBOL);
 			bad &= (list[i]->id() != RGX_NOT);
-			bad &= ((list[i]->id() > RGX_NOT_PUNCT) || (list[i]->id() < RGX_SPACE));
+			bad &= ((list[i]->id() > RGX_END) || (list[i]->id() < RGX_BEGIN));
 
 			if (bad) return false;
 			i++;
@@ -102,9 +102,85 @@ static bool rgxmh(const core::array<rgxll*>& list, size_t index, rgxerr& error) 
 	return true;
 }
 
+static bool rgxmal(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (...)
+{
+	if (list.isValid(index+1))
+	{
+		if (list[index]->id() != RGX_LPAREN) return false;
+
+		size_t i = index+1;
+		while (list[i]->id() != RGX_RPAREN)
+		{
+			if (list[i]->id() == RGX_LPAREN) return false;
+
+			bool bad = true;
+			bad &= (list[i]->id() != RGX_SYMBOL);
+			bad &= (list[i]->id() != RGX_OR_LIST);
+			bad &= (list[i]->id() != RGX_AND_LIST);
+			bad &= (list[i]->id() != RGX_COLUMN);
+			bad &= ((list[i]->id() > RGX_END) || (list[i]->id() < RGX_BEGIN));
+
+			if (bad) return false;
+			i++;
+		}
+	}
+	else return false;
+
+	return true;
+}
+
+static bool rgxmali(const core::array<rgxll*>& list, size_t index, rgxerr& error) // match if total regex is valid, else error
+{
+	size_t i = index;
+	while (list.isValid(i))
+	{
+		bool bad = true;
+		bad &= (list[i]->id() != RGX_SYMBOL);
+		bad &= (list[i]->id() != RGX_OR_LIST);
+		bad &= (list[i]->id() != RGX_AND_LIST);
+		bad &= (list[i]->id() != RGX_COLUMN);
+		bad &= ((list[i]->id() > RGX_END) || (list[i]->id() < RGX_BEGIN));
+
+		if (bad)
+		{
+			error = RGX_LEX_FAIL;
+			return false;
+		}
+		i++;
+	}
+
+	return true;
+}
+
+static bool rgxmcc(const core::array<rgxll*>& list, size_t index, rgxerr& error) // match if can count
+{
+	bool noMatch = true;
+	noMatch &= (list[index]->id() != RGX_ASTERISK);
+	noMatch &= (list[index]->id() != RGX_PLUS);
+	noMatch &= (list[index]->id() != RGX_COUNT);
+	if (noMatch) return false;
+
+	if (!index || (list[index-1]->id() == RGX_LPAREN))
+	{
+		error = RGX_BAD_COUNT_LOC;
+		return true;
+	}
+
+	if (list[index-1]->id() == RGX_SYMBOL) return true;
+	if (list[index-1]->id() == RGX_OR_LIST) return true;
+	if (list[index-1]->id() == RGX_AND_LIST) return true;
+
+	if (list[index-1]->id() > RGX_END) return false;
+	if (list[index-1]->id() < RGX_BEGIN) return false;
+
+	return true;
+}
+
 //root is dynamically allocated
 rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 {
+	root = 0;
+
 	core::array<rgxll*> list;
 	for (size_t i=0; i<input.length(); i++)
 		list.add(new rgxll(input[i]));
@@ -118,7 +194,24 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 		for (size_t i=0; i<list.length(); i++)
 		{
-			if (rgxmci(list,i, error)) //begin case-insensitive
+			if (rgxmcc(list,i,error))//* or + or {..}
+			{
+				if (!error)
+				{
+					if (list[i]->id() == RGX_ASTERISK)
+					{
+						list[i-1]->setCountRange(0,-1);
+					}
+					else if (list[i]->id() == RGX_PLUS)
+					{
+						list[i-1]->setCountRange(1,-1);
+					}
+
+					delete list[i];
+					list.remove(i--);
+				}
+			}
+			else if (rgxmci(list,i, error)) //begin case-insensitive
 			{
 				if (!error)
 				{
@@ -151,7 +244,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					madeChange = true;
 				}
 			}
-			else if (rgxmol(list,i,error))
+			else if (rgxmol(list,i,error))//[...]
 			{
 				if (!error)
 				{
@@ -182,6 +275,44 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					madeChange = true;
 				}
 			}
+			else if (rgxmal(list,i,error))//(...)
+			{
+				if (!error)
+				{
+					list[i]->setID(RGX_OR_LIST);
+
+					rgxll* node = new rgxll(RGX_AND_LIST);
+					size_t k = i+1;
+					while (list[k]->id() != RGX_RPAREN)
+					{
+						if (list[k]->id() == RGX_COLUMN)
+						{
+							delete list[k];
+							list[i]->children.add(node);
+							node = new rgxll(RGX_AND_LIST);
+						}
+						else
+						{
+							node->children.add(list[k]);
+						}
+						k++;
+					}
+					delete list[k];
+					list.remove(i+1,k-i);
+
+					if (list[i]->children.length())
+					{
+						list[i]->children.add(node);
+					}
+					else
+					{
+						delete list[i];
+						list[i] = node;
+					}
+
+					madeChange = true;
+				}
+			}
 
 			if (error)
 			{
@@ -193,9 +324,35 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 	if (list.length() > 1)
 	{
-		root = new rgxll(RGX_AND_LIST);
-		for (size_t i=0; i<list.length(); i++)
-			root->children.add(list[i]);
+		if (rgxmali(list,0,error))
+		{
+			rgxll* node = new rgxll(RGX_AND_LIST);
+			size_t i = 0;
+			while (list.isValid(i))
+			{
+				if (list[i]->id() == RGX_COLUMN)
+				{
+					delete list[i];
+					if (!root) root = new rgxll(RGX_OR_LIST);
+					root->children.add(node);
+					node = new rgxll(RGX_AND_LIST);
+				}
+				else
+				{
+					node->children.add(list[i]);
+				}
+				i++;
+			}
+
+			if (root)
+			{
+				root->children.add(node);
+			}
+			else
+			{
+				root = node;
+			}
+		}
 	}
 	else if (list.length())
 	{
