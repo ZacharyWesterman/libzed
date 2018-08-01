@@ -174,31 +174,34 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"(?<=)(?i)(?<!m)xy(?=a)(?!=b)(?-i)";
-	core::array<util::rgxss> symbols;
-	util::rgxll* root = 0;
+	core::string<utf32> pattern = L"(?<=)(?s)(?<!m)xy(?=a)(?!=b)(?-m)";
+	util::regex<utf32> rgx (pattern);
 
-	util::rgxerr error = util::rgxscan(pattern, symbols);
-	if (!error)
-	{
-		// printss(symbols, console);
-
-		error = util::rgxlex(symbols, root);
-		if (!error)
-		{
-			printll(root, console);
-		}
-		else
-		{
-			core::string<utf8> res = "lex error: ";
-			(res+errors[error]).writeln(console);
-		}
-	}
-	else
-	{
-		core::string<utf8> res = "scan error: ";
-		(res+errors[error]).writeln(console);
-	}
+	rgx.errstr().writeln(console);
+	// core::array<util::rgxss> symbols;
+	// util::rgxll* root = 0;
+	//
+	// util::rgxerr error = util::rgxscan(pattern, symbols);
+	// if (!error)
+	// {
+	// 	// printss(symbols, console);
+	//
+	// 	error = util::rgxlex(symbols, root);
+	// 	if (!error)
+	// 	{
+	// 		printll(root, console);
+	// 	}
+	// 	else
+	// 	{
+	// 		core::string<utf8> res = "lex error: ";
+	// 		(res+errors[error]).writeln(console);
+	// 	}
+	// }
+	// else
+	// {
+	// 	core::string<utf8> res = "scan error: ";
+	// 	(res+errors[error]).writeln(console);
+	// }
 
 	return 0;
 }

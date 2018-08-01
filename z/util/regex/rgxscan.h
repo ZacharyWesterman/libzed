@@ -1,7 +1,6 @@
 #pragma once
 
-template <encoding E>
-rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
+rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output)
 {
 	bool inOr = false;
 	bool startOr = false;

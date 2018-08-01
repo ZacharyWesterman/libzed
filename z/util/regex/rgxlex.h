@@ -671,9 +671,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 		}
 	}
 
-	if (error) return error;
-
-	if (rgxmali(list,0,error))
+	if (!error && rgxmali(list,0,error))
 	{
 		if (list.length() > 1)
 		{
@@ -711,5 +709,11 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 		else error = RGX_LEX_FAIL;
 	}
 
+	if (error)
+	{
+		root = 0;
+		for (size_t i=0; i<list.length(); i++)
+			delete list[i];
+	}
 	return error;
 }
