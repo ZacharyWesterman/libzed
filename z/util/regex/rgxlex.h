@@ -1,37 +1,63 @@
 #pragma once
 
-static bool rgxmci(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?i)
+static bool rgxmpf(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?.)
 {
 	if (list.isValid(index+3))
 	{
 		if (list[index]->id() != RGX_LPAREN) return false;
 		if (list[index+1]->id() != RGX_QUERY) return false;
-		if (list[index+2]->id() != RGX_SYMBOL) return false;
-		if (list[index+2]->beg() != 'i') return false;
-		if (list[index+2]->min() != 1) return false;
-		if (list[index+2]->max() != 1) return false;
-		if (list[index+3]->id() != RGX_RPAREN) return false;
+		if (list[index+2]->id() == RGX_BANG) return false;
+		if (list[index+2]->id() == RGX_PREVIOUS) return false;
+		if (list[index+2]->id() == RGX_EQUALS) return false;
+		if (list[index+2]->id() == RGX_DASH) return false;
+		if (list[index+2]->id() != RGX_SYMBOL)
+		{
+			error = RGX_BAD_POS_FLAG;
+			return true;
+		}
+		if (list[index+3]->id() != RGX_RPAREN)
+		{
+			error = RGX_BAD_POS_FLAG;
+			return true;
+		}
+
+		uint32_t ch = list[index+2]->beg();
+		if (ch == 'i') return true;
+		if (ch == 's') return true;
 	}
 	else return false;
 
+	//if we get here, no good flags have been identified
+	error = RGX_BAD_POS_FLAG;
 	return true;
 }
 
-static bool rgxmcni(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?!i)
+static bool rgxmnf(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?-.)
 {
 	if (list.isValid(index+4))
 	{
 		if (list[index]->id() != RGX_LPAREN) return false;
 		if (list[index+1]->id() != RGX_QUERY) return false;
-		if (list[index+2]->id() != RGX_BANG) return false;
-		if (list[index+3]->id() != RGX_SYMBOL) return false;
-		if (list[index+3]->beg() != 'i') return false;
-		if (list[index+3]->min() != 1) return false;
-		if (list[index+3]->max() != 1) return false;
-		if (list[index+4]->id() != RGX_RPAREN) return false;
+		if (list[index+2]->id() != RGX_DASH) return false;
+		if (list[index+3]->id() != RGX_SYMBOL)
+		{
+			error = RGX_BAD_NEG_FLAG;
+			return true;
+		}
+		if (list[index+4]->id() != RGX_RPAREN)
+		{
+			error = RGX_BAD_NEG_FLAG;
+			return true;
+		}
+
+		uint32_t ch = list[index+3]->beg();
+		if (ch == 'i') return true;
+		if (ch == 's') return true;
 	}
 	else return false;
 
+	//if we get here, no good flags have been identified
+	error = RGX_BAD_NEG_FLAG;
 	return true;
 }
 
@@ -238,21 +264,20 @@ static bool rgxmpla(const core::array<rgxll*>& list, size_t index, rgxerr& error
 	return true;
 }
 
-static bool rgxmnla(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?!=..)
+static bool rgxmnla(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?!..)
 {
-	if (list.isValid(index+4))
+	if (list.isValid(index+3))
 	{
 		if (list[index]->id() != RGX_LPAREN) return false;
 		if (list[index+1]->id() != RGX_QUERY) return false;
 		if (list[index+2]->id() != RGX_BANG) return false;
-		if (list[index+3]->id() != RGX_EQUALS) return false;
 
-		if (list[index+4]->id() == RGX_RPAREN)
+		if (list[index+3]->id() == RGX_RPAREN)
 		{
 			error = RGX_BAD_LOOKAHEAD;
 		}
 
-		size_t i = index+4;
+		size_t i = index+3;
 		while (list[i]->id() != RGX_RPAREN)
 		{
 			if (list[i]->id() == RGX_LBRACKET) return false;
@@ -449,25 +474,30 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					list.remove(i--);
 				}
 			}
-			else if (rgxmci(list,i, error)) //begin case-insensitive
+			else if (rgxmpf(list,i, error)) //positive flag (?.)
 			{
 				if (!error)
 				{
-					list[i]->setID(RGX_CASEI);
+					list[i+2]->setID(RGX_POS_FLAG);
+					delete list[i];
 					delete list[i+1];
-					delete list[i+2];
 					delete list[i+3];
-					list.remove(i+1, 3);
+					list.remove(i+3);
+					list.remove(i, 2);
 					madeChange = true;
 				}
 			}
-			else if (rgxmcni(list,i,error)) //end case-insensitive
+			else if (rgxmnf(list,i,error)) //negative flag (?-.)
 			{
 				if (!error)
 				{
-					list[i]->setID(RGX_NOT_CASEI);
-					for (size_t k=i+1; k<(i+4); k++) delete list[k];
-					list.remove(i+1, 4);
+					list[i+3]->setID(RGX_NEG_FLAG);
+					delete list[i];
+					delete list[i+1];
+					delete list[i+2];
+					delete list[i+4];
+					list.remove(i+4);
+					list.remove(i, 3);
 					madeChange = true;
 				}
 			}
@@ -571,12 +601,12 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					madeChange = true;
 				}
 			}
-			else if (rgxmnla(list,i,error))//(?!=..)
+			else if (rgxmnla(list,i,error))//(?!..)
 			{
 				if (!error)
 				{
 					list[i]->setID(RGX_NEG_LOOKAHEAD);
-					size_t k = i + 4;
+					size_t k = i + 3;
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
@@ -586,7 +616,6 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					delete list[i+1];
 					delete list[i+2];
-					delete list[i+3];
 					delete list[k];
 					list.remove(i+1,k-i);
 					madeChange = true;

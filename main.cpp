@@ -46,8 +46,8 @@ const core::array< core::string<utf8> > names =
 	"RGX_NEG_LOOKAHEAD",
 	"RGX_POS_LOOKBEHIND",
 	"RGX_NEG_LOOKBEHIND",
-	"RGX_CASEI",
-	"RGX_NOT_CASEI",
+	"RGX_POS_FLAG",
+	"RGX_NEG_FLAG",
 	"RGX_END",
 	"RGX_HEXDIGIT",
 
@@ -76,6 +76,9 @@ const core::array< core::string<utf8> > errors =
 
 	"RGX_BAD_LOOKAHEAD",
 	"RGX_BAD_LOOKBEHIND",
+
+	"RGX_BAD_NEG_FLAG",
+	"RGX_BAD_POS_FLAG",
 
 	"RGX_ERR_COUNT"
 };
@@ -171,7 +174,7 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"(?<=)(?i)(?<!m)xy(?=a)(?!=b)";
+	core::string<utf32> pattern = L"(?<=)(?i)(?<!m)xy(?=a)(?!=b)(?-i)";
 	core::array<util::rgxss> symbols;
 	util::rgxll* root = 0;
 

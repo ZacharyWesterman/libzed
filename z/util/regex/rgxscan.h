@@ -86,6 +86,10 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 							output.add(rgxss(last=RGX_DASH));
 					}
 				}
+				else if (last == RGX_QUERY)
+				{
+					output.add(rgxss(last=RGX_DASH));
+				}
 				else
 				{
 					output.add(rgxss(last=RGX_SYMBOL, ch));
@@ -114,7 +118,7 @@ rgxerr rgxscan(const core::string<E>& pattern, core::array<rgxss>& output)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				break;
 			case '=':
-				if ((last == RGX_QUERY) || (last == RGX_BANG))
+				if (last == RGX_QUERY)
 					output.add(rgxss(last=RGX_EQUALS));
 				else
 					output.add(rgxss(last=RGX_SYMBOL, ch));
