@@ -81,32 +81,45 @@ namespace z
 
 		uint32_t binaryStream::getChar(encoding format)
 		{
-			if (streamIndex >= data.length())
-				return 0;
+			size_t datact;
 
-			uint32_t result;
+			uint8_t res8;
+			uint16_t res16;
+			uint32_t res32;
+			uint8_t* str;
 
 			switch (format)
 			{
 			case utf16:
-				if ((streamIndex+1) >= data.length()) return 0;
-				result = data[streamIndex++];
-				result = (result << 8) + data[streamIndex++];
+				datact = 2;
+				str = (uint8_t*)&res16;
 				break;
 
 			case utf32:
-				if ((streamIndex+3) >= data.length()) return 0;
-				result = data[streamIndex++];
-				result = (result << 8) + data[streamIndex++];
-				result = (result << 8) + data[streamIndex++];
-				result = (result << 8) + data[streamIndex++];
+				datact = 4;
+				str = (uint8_t*)&res32;
 				break;
 
 			default:
-				result = data[streamIndex++];
+				datact = 1;
+				str = (uint8_t*)&res8;
 			}
 
-			return result;
+			if (streamIndex+datact > data.length())
+				return 0;
+
+			for (size_t i=0; i<datact; i++)
+				str[i] = data[streamIndex++];
+
+			switch (format)
+			{
+				case utf16:
+					return res16;
+				case utf32:
+					return res32;
+				default:
+					return res8;
+			}
 		}
 
 		bool binaryStream::empty()

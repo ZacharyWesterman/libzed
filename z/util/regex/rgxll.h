@@ -3,6 +3,7 @@
 class rgxll
 {
 private:
+	rgxll* rgxParent;
 
 	uint8_t rgxID;
 
@@ -41,6 +42,9 @@ public:
 	void setCountNoMax(size_t count);
 
 	void setGreedy(bool status = true) {isGreedy = status;}
+
+	rgxll* parent() {return rgxParent;}
+	void addChild(rgxll*);
 };
 
 rgxll::rgxll(uint8_t ID)
@@ -51,6 +55,7 @@ rgxll::rgxll(uint8_t ID)
 	minCount = 1;
 	maxCount = 1;
 	isGreedy = true;
+	rgxParent = 0;
 }
 
 rgxll::rgxll(const rgxss& init)
@@ -61,6 +66,7 @@ rgxll::rgxll(const rgxss& init)
 	minCount = 1;
 	maxCount = 1;
 	isGreedy = true;
+	rgxParent = 0;
 }
 
 rgxll::~rgxll()
@@ -119,4 +125,13 @@ void rgxll::setCountNoMax(size_t count)
 {
 	minCount = count;
 	maxCount = -1;
+}
+
+void rgxll::addChild(rgxll* node)
+{
+	if (node)
+	{
+		node->rgxParent = this;
+		children.add(node);
+	}
 }

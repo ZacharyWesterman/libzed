@@ -1,4 +1,5 @@
 #include <z/system/console.h>
+#include <z/core/binaryStream.h>
 
 #include <z/util/regex.h>
 
@@ -174,10 +175,20 @@ int main()
 {
 	system::console console;
 
-	core::string<utf32> pattern = L"(?<=)(?s)(?<!m)xy(?=a)(?!=b)(?-m)";
-	util::regex<utf32> rgx (pattern);
+	const encoding format = utf16;
 
-	rgx.errstr().writeln(console);
+	core::string<format> pattern = L"ab[^cd]e";
+	util::regex<format> rgx (pattern);
+
+	core::binaryStream stream;
+	core::string<format> str = "abge";
+	str.write(stream);
+	stream.seek(0);
+
+	core::string<format> result;
+	rgx.match(stream) ? (result = "success") : (result = "fail");
+
+	result.writeln(console);
 	// core::array<util::rgxss> symbols;
 	// util::rgxll* root = 0;
 	//

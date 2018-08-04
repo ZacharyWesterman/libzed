@@ -520,7 +520,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					size_t k = i+1;
 					while (list[k]->id() != RGX_RBRACKET)
 					{
-						list[i]->children.add(list[k]);
+						list[i]->addChild(list[k]);
 						k++;
 					}
 					delete list[k];
@@ -556,12 +556,12 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 						if (list[k]->id() == RGX_COLUMN)
 						{
 							delete list[k];
-							list[i]->children.add(node);
+							list[i]->addChild(node);
 							node = new rgxll(RGX_AND_LIST);
 						}
 						else
 						{
-							node->children.add(list[k]);
+							node->addChild(list[k]);
 						}
 						k++;
 					}
@@ -570,7 +570,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					if (list[i]->children.length())
 					{
-						list[i]->children.add(node);
+						list[i]->addChild(node);
 					}
 					else
 					{
@@ -590,7 +590,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
-						list[i]->children.add(list[k]);
+						list[i]->addChild(list[k]);
 						k++;
 					}
 
@@ -610,7 +610,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
-						list[i]->children.add(list[k]);
+						list[i]->addChild(list[k]);
 						k++;
 					}
 
@@ -630,7 +630,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
-						list[i]->children.add(list[k]);
+						list[i]->addChild(list[k]);
 						k++;
 					}
 
@@ -651,7 +651,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
-						list[i]->children.add(list[k]);
+						list[i]->addChild(list[k]);
 						k++;
 					}
 
@@ -683,19 +683,19 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 				{
 					delete list[i];
 					if (!root) root = new rgxll(RGX_OR_LIST);
-					root->children.add(node);
+					root->addChild(node);
 					node = new rgxll(RGX_AND_LIST);
 				}
 				else
 				{
-					node->children.add(list[i]);
+					node->addChild(list[i]);
 				}
 				i++;
 			}
 
 			if (root)
 			{
-				root->children.add(node);
+				root->addChild(node);
 			}
 			else
 			{

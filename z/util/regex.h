@@ -16,6 +16,7 @@ namespace z
 		#include "regex/rgxscan.h"
 		#include "regex/rgxll.h"
 		#include "regex/rgxlex.h"
+		#include "regex/rgxmatch.h"
 
 		/**
 		 * \brief A template class for parsing and matching regular expressions.
@@ -33,6 +34,8 @@ namespace z
 		public:
 			regex();
 			regex(const core::string<E>& pattern);
+
+			bool match(core::inputStream& stream) const;
 
 			bool good() const;
 			bool bad() const;
@@ -54,6 +57,17 @@ namespace z
 			{
 				parseError = rgxlex(symbols, root);
 			}
+		}
+
+		template <encoding E>
+		bool regex<E>::match(core::inputStream& stream) const
+		{
+			if (parseError) return false;
+			if (stream.bad()) return false;
+
+			rgxmatcher matcher (&stream, root, E);
+			
+			return rgxmatch(&matcher);
 		}
 
 		template <encoding E>
