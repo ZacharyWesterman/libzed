@@ -1,9 +1,7 @@
 *.o
 
-bin/Debug/zLibraries_driver/
-
 Doxygen/
 
 bin/Debug/
 
-zLibraries_driver
+driver
