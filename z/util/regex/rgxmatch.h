@@ -89,6 +89,11 @@ bool rgxmatch(rgxmatcher* matcher)
 
 			if (rgxmatchnext(matcher))
 			{
+				if (!(matcher->node->greedy()))
+				{
+					return rgxmatchsuccess(matcher);
+				}
+
 				lastMatchIndex = matcher->stream->tell();
 			}
 
