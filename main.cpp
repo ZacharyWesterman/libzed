@@ -1,11 +1,8 @@
 #include <z/system/console.h>
 #include <z/core/binaryStream.h>
+#include <z/core/string.h>
 
-#include <z/util/regex.h>
-
-using namespace z;
-
-const core::array< core::string<utf8> > names =
+const z::core::array< z::core::string<z::utf8> > names =
 {
 	"RGX_SYMBOL",
 	"RGX_LPAREN",
@@ -28,6 +25,7 @@ const core::array< core::string<utf8> > names =
 	"RGX_PLUS",
 
 	"RGX_BEGIN",
+	"RGX_PERIOD",
 	"RGX_SPACE",
 	"RGX_NOT_SPACE",
 	"RGX_ALPHA",
@@ -57,7 +55,7 @@ const core::array< core::string<utf8> > names =
 	"RGX_COUNT",
 };
 
-const core::array< core::string<utf8> > errors =
+const z::core::array< z::core::string<z::utf8> > errors =
 {
 	"RGX_NO_ERROR",
 
@@ -83,6 +81,10 @@ const core::array< core::string<utf8> > errors =
 
 	"RGX_ERR_COUNT"
 };
+
+#include <z/util/regex.h>
+
+using namespace z;
 
 void printss(const core::array<util::rgxss>& list, core::outputStream& stream)
 {
@@ -177,16 +179,24 @@ int main()
 
 	const encoding format = utf16;
 
-	core::string<format> pattern = L"ab[^cd]e";
+	core::string<format> pattern = L"p(ot)*ot";
 	util::regex<format> rgx (pattern);
 
 	core::binaryStream stream;
-	core::string<format> str = "abge";
+	core::string<format> str = "pototoo";
 	str.write(stream);
 	stream.seek(0);
 
 	core::string<format> result;
+	// printll(rgx.getroot(), console);
 	rgx.match(stream) ? (result = "success") : (result = "fail");
+
+	result.writeln(console);
+	rgx.errstr().writeln(console);
+
+	result = "Matched {{";
+	result += rgx.matched();
+	result += "}}";
 
 	result.writeln(console);
 	// core::array<util::rgxss> symbols;

@@ -184,6 +184,7 @@ static bool rgxmcc(const core::array<rgxll*>& list, size_t index, rgxerr& error)
 	noMatch &= (list[index]->id() != RGX_ASTERISK);
 	noMatch &= (list[index]->id() != RGX_PLUS);
 	noMatch &= (list[index]->id() != RGX_COUNT);
+	noMatch &= (list[index]->id() != RGX_QUESTION);
 	if (noMatch) return false;
 
 	if (!index || (list[index-1]->id() == RGX_LPAREN))
@@ -373,6 +374,23 @@ static bool rgxmnlb(const core::array<rgxll*>& list, size_t index, rgxerr& error
 	return true;
 }
 
+static void rgxlinksiblings(rgxll* node)
+{
+	if (node)
+	{
+		for (size_t i=0; i<(node->children.length()); i++)
+		{
+			rgxll* child = node->children[i];
+
+			if (node->children.isValid(i+1))
+			{
+				child->setSibling(node->children[i+1]);
+			}
+
+			rgxlinksiblings(child);
+		}
+	}
+}
 
 //root is dynamically allocated
 rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
@@ -453,7 +471,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					madeChange = true;
 				}
 			}
-			else if (rgxmcc(list,i,error))//* or + or {..}
+			else if (rgxmcc(list,i,error))//* or + or {..} or ?
 			{
 				if (!error)
 				{
@@ -465,9 +483,13 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					{
 						list[i-1]->setCountRange(1,-1);
 					}
-					else //if (list[i]->id() == RGX_COUNT)
+					else if (list[i]->id() == RGX_COUNT)
 					{
 						list[i-1]->setCountRange(list[i]->min(), list[i]->max());
+					}
+					else // if (list[i]->id() == RGX_QUESTION)
+					{
+						list[i-1]->setCountRange(0,1);
 					}
 
 					delete list[i];
@@ -715,5 +737,10 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 		for (size_t i=0; i<list.length(); i++)
 			delete list[i];
 	}
+	else
+	{
+		rgxlinksiblings(root);
+	}
+
 	return error;
 }

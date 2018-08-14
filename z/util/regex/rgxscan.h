@@ -94,6 +94,9 @@ rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				}
 				break;
+			case '.':
+				output.add(rgxss(last=RGX_PERIOD));
+				break;
 			case '?':
 				if (inOr)
 					output.add(rgxss(last=RGX_SYMBOL, ch));

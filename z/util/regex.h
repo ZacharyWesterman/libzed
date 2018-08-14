@@ -31,16 +31,22 @@ namespace z
 			rgxll* root;
 			rgxerr parseError;
 
+			core::string<E> matchedString;
+
 		public:
 			regex();
 			regex(const core::string<E>& pattern);
 
-			bool match(core::inputStream& stream) const;
+			bool match(core::inputStream& stream);
 
 			bool good() const;
 			bool bad() const;
 			rgxerr error() const;
 			core::string<E> errstr() const;
+
+			const core::string<E>& matched() const;
+
+			rgxll* getroot() const {return root;}
 		};
 
 		template <encoding E>
@@ -60,14 +66,38 @@ namespace z
 		}
 
 		template <encoding E>
-		bool regex<E>::match(core::inputStream& stream) const
+		bool regex<E>::match(core::inputStream& stream)
 		{
+			matchedString = "";
+
 			if (parseError) return false;
-			if (stream.bad()) return false;
+			if (stream.bad())
+			{
+				parseError = RGX_BAD_STREAM;
+				return false;
+			}
 
 			rgxmatcher matcher (&stream, root, E);
-			
-			return rgxmatch(&matcher);
+
+			size_t startIndex = stream.tell();
+			bool result = rgxmatch(&matcher);
+			size_t endIndex = stream.tell();
+
+			stream.seek(startIndex);
+
+			if (matcher.fail)
+			{
+				parseError = RGX_BAD_STREAM;
+			}
+			else
+			{
+				while (stream.tell() < endIndex)
+				{
+					matchedString += stream.getChar(E);
+				}
+			}
+
+			return result;
 		}
 
 		template <encoding E>
@@ -110,9 +140,16 @@ namespace z
 				"Invalid lookbehind symbol",
 				"Unknown negative flag",
 				"Unknown positive flag",
+				"Unable to analyze stream",
 			};
 
 			return msgs[parseError];
+		}
+
+		template <encoding E>
+		const core::string<E>& regex<E>::matched() const
+		{
+			return matchedString;
 		}
 	}
 }

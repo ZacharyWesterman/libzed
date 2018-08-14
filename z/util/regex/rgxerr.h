@@ -22,5 +22,7 @@ enum rgxerr
 	RGX_BAD_NEG_FLAG,
 	RGX_BAD_POS_FLAG,
 
+	RGX_BAD_STREAM,
+
 	RGX_ERR_COUNT
 };

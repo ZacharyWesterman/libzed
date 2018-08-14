@@ -1,10 +1,10 @@
 CFLAGS= -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
 
 all:
-	g++ $(CFLAGS) main.cpp -o zLibraries_driver
+	g++ $(CFLAGS) main.cpp -o driver
 
 clean:
-	rm -f zLibraries_driver
+	rm -f driver
 
 
 
