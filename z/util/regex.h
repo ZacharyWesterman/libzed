@@ -3,7 +3,9 @@
 #include <z/core/timeout.h>
 #include <z/core/string.h>
 #include <z/core/stream.h>
-#include <z/core/array.h>
+// #include <z/core/array.h>
+
+#include <stack>
 
 namespace z
 {

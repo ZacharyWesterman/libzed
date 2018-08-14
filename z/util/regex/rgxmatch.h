@@ -1,5 +1,15 @@
 #pragma once
 
+enum rgxflag
+{
+	RGX_FLAG_CASEI,
+	RGX_FLAG_NEWLINE,
+
+	RGX_FLAG_COUNT
+};
+
+
+
 struct rgxmatcher
 {
 	core::inputStream* stream;
@@ -7,13 +17,67 @@ struct rgxmatcher
 	encoding format;
 	bool fail;
 
+	bool* flags;
+	std::stack<bool*> flagStack;
+
 	rgxmatcher(core::inputStream* input, rgxll* root, encoding charType)
 	{
 		fail = !(input && root);
 		stream = input;
 		node = root;
 		format = charType;
+
+		flags = new bool[RGX_FLAG_COUNT];
+		for (size_t i=0; i<RGX_FLAG_COUNT; i++)
+		{
+			flags[i] = false;
+		}
 	}
+
+	~rgxmatcher()
+	{
+		delete[] flags;
+
+		while (!flagStack.empty())
+		{
+			delete[] flagStack.top();
+			flagStack.pop();
+		}
+	}
+
+	void setFlag(rgxflag flag, bool state)
+	{
+		if ((flag > RGX_FLAG_COUNT) || (flag < 0)) return;
+
+		flags[flag] = state;
+	}
+
+	bool getFlag(rgxflag flag) const
+	{
+		if ((flag > RGX_FLAG_COUNT) || (flag < 0)) return false;
+
+		return flags[flag];
+	}
+
+	void pushFlags()
+	{
+		bool* newFlags = new bool[RGX_FLAG_COUNT];
+		for (size_t i=0; i<RGX_FLAG_COUNT; i++)
+		{
+			newFlags[i] = flags[i];
+		}
+
+		flagStack.push(flags);
+		flags = newFlags;
+	}
+
+	void popFlags()
+	{
+		delete[] flags;
+		flags = flagStack.top();
+		flagStack.pop();
+	}
+
 };
 
 bool rgxmatchsuccess(rgxmatcher* matcher)
@@ -171,8 +235,22 @@ bool rgxmatchandlist(rgxmatcher* matcher)
 bool rgxmatchsymbol(rgxmatcher* matcher)
 {
 	uint32_t ch = matcher->stream->getChar(matcher->format);
-	if ((ch < matcher->node->beg()) || (ch > matcher->node->end()))
+	uint32_t beg = matcher->node->beg();
+	uint32_t end = matcher->node->end();
+
+	if ((ch < beg) || (ch > end))
 	{
+		if (matcher->getFlag(RGX_FLAG_CASEI))
+		{
+			ch = core::toUpper(ch);
+			beg = core::toUpper(beg);
+			end = core::toUpper(end);
+
+			if ((ch >= beg) && (ch <= end))
+			{
+				return true;
+			}
+		}
 		// not within character range
 		return false;
 	}
@@ -189,36 +267,71 @@ bool rgxmatchword(rgxmatcher* matcher, bool negate)
 		return negate;
 }
 
+bool rgxsetflag(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->node->beg();
+	bool state = !negate;
+
+	switch(ch)
+	{
+		case 'i':
+			matcher->setFlag(RGX_FLAG_CASEI, state);
+			return true;
+
+		case 's':
+			matcher->setFlag(RGX_FLAG_NEWLINE, state);
+			return true;
+
+		default:
+			return false;
+	}
+}
+
 bool rgxmatchonce(rgxmatcher* matcher)
 {
 	if (!(matcher && matcher->node)) return false;
 
 	bool negate = false;
+	bool result = false;
 
 	switch (matcher->node->id())
 	{
 		case RGX_OR_LIST:
-			return rgxmatchorlist(matcher);
+			result = rgxmatchorlist(matcher);
 			break;
 
 		case RGX_AND_LIST:
-			return rgxmatchandlist(matcher);
+			if (matcher->node->parent())
+			{
+				matcher->pushFlags();
+				result = rgxmatchandlist(matcher);
+				matcher->popFlags();
+			}
+			else
+			{
+				result = rgxmatchandlist(matcher);
+			}
 			break;
 
 		case RGX_SYMBOL:
-			return rgxmatchsymbol(matcher);
+			result = rgxmatchsymbol(matcher);
 			break;
 
 		case RGX_NOT_WORD:
 			negate = true;
 		case RGX_WORD:
-			return rgxmatchword(matcher, negate);
+			result = rgxmatchword(matcher, negate);
+			break;
+
+		case RGX_NEG_FLAG:
+			negate = true;
+		case RGX_POS_FLAG:
+			result = rgxsetflag(matcher, negate);
 			break;
 
 		default:
 			matcher->fail = true;
-			return false;
 	}
 
-	//Should never get here
+	return result;
 }
