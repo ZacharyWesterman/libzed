@@ -118,12 +118,23 @@ bool rgxmatchnext(rgxmatcher* matcher) //does not consume stream
 
 	bool result = true;
 
+	matcher->pushFlags();
 	while (result && matcher->node->sibling())
 	{
+
 		matcher->node = matcher->node->sibling();
 
-		result = rgxmatchmin(matcher);
+		if (matcher->node->min() < matcher->node->max())
+		{
+			result = rgxmatch(matcher);
+			break;
+		}
+		else
+		{
+			result = rgxmatchmin(matcher);
+		}
 	}
+	matcher->popFlags();
 
 	matcher->node = prev;
 	matcher->stream->seek(streamIndex);
@@ -238,23 +249,42 @@ bool rgxmatchsymbol(rgxmatcher* matcher)
 	uint32_t beg = matcher->node->beg();
 	uint32_t end = matcher->node->end();
 
-	if ((ch < beg) || (ch > end))
+	bool casei = matcher->getFlag(RGX_FLAG_CASEI);
+
+	if (beg == end)
 	{
-		if (matcher->getFlag(RGX_FLAG_CASEI))
+		if (casei)
+		{
+			ch = core::toUpper(ch);
+			beg = core::toUpper(beg);
+		}
+
+		return (ch == beg);
+	}
+	else
+	{
+		if ((ch < beg) || (ch > end))
 		{
 			ch = core::toUpper(ch);
 			beg = core::toUpper(beg);
 			end = core::toUpper(end);
 
-			if ((ch >= beg) && (ch <= end))
-			{
-				return true;
-			}
+			return ((ch >= beg) && (ch <= end));
 		}
-		// not within character range
-		return false;
+
+		return true;
 	}
-	return true;
+}
+
+bool rgxmatchanything(rgxmatcher* matcher)
+{
+	if (matcher->stream->empty()) return false;
+
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (matcher->getFlag(RGX_FLAG_NEWLINE)) return true;
+
+	return (ch != '\n');
 }
 
 bool rgxmatchword(rgxmatcher* matcher, bool negate)
@@ -267,10 +297,9 @@ bool rgxmatchword(rgxmatcher* matcher, bool negate)
 		return negate;
 }
 
-bool rgxsetflag(rgxmatcher* matcher, bool negate)
+bool rgxsetflag(rgxmatcher* matcher, bool state)
 {
 	uint32_t ch = matcher->node->beg();
-	bool state = !negate;
 
 	switch(ch)
 	{
@@ -326,7 +355,11 @@ bool rgxmatchonce(rgxmatcher* matcher)
 		case RGX_NEG_FLAG:
 			negate = true;
 		case RGX_POS_FLAG:
-			result = rgxsetflag(matcher, negate);
+			result = rgxsetflag(matcher, !negate);
+			break;
+
+		case RGX_PERIOD:
+			result = rgxmatchanything(matcher);
 			break;
 
 		default:

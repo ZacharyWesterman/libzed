@@ -179,11 +179,11 @@ int main()
 
 	const encoding format = utf16;
 
-	core::string<format> pattern = L"(?i)p[ot]*ot";
+	core::string<format> pattern = L"[A-Z][\\w ]*?(?=\\.)";
 	util::regex<format> rgx (pattern);
 
 	core::binaryStream stream;
-	core::string<format> str = "poTotoT";
+	core::string<format> str = "Sentence 1. Sentence 2.";
 	str.write(stream);
 	stream.seek(0);
 
