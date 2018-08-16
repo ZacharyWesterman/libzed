@@ -70,6 +70,12 @@ namespace z
 		template <encoding E>
 		bool regex<E>::match(core::inputStream& stream)
 		{
+			if (!root)
+			{
+				parseError = RGX_ERROR;
+				return false;
+			}
+
 			matchedString = "";
 
 			if (parseError) return false;

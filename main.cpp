@@ -179,13 +179,13 @@ int main()
 
 	const encoding format = utf16;
 
-	core::string<format> pattern = L"[A-Z][\\w ]*?(?=\\.)";
+	core::string<format> pattern = L"(?<=\\.)[\\w ]*";
 	util::regex<format> rgx (pattern);
 
 	core::binaryStream stream;
-	core::string<format> str = "Sentence 1. Sentence 2.";
+	core::string<format> str = ".Sentence 1.Sentence 2.";
 	str.write(stream);
-	stream.seek(0);
+	stream.seek(2);
 
 	core::string<format> result;
 	// printll(rgx.getroot(), console);
@@ -199,6 +199,7 @@ int main()
 	result += "}}";
 
 	result.writeln(console);
+
 	// core::array<util::rgxss> symbols;
 	// util::rgxll* root = 0;
 	//

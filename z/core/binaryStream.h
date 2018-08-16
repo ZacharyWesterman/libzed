@@ -81,6 +81,8 @@ namespace z
 
 		uint32_t binaryStream::getChar(encoding format)
 		{
+			if (streamIndex >= data.length()) return 0;
+
 			size_t datact;
 
 			uint8_t res8;
@@ -106,7 +108,10 @@ namespace z
 			}
 
 			if (streamIndex+datact > data.length())
+			{
+				streamIndex = data.length();
 				return 0;
+			}
 
 			for (size_t i=0; i<datact; i++)
 				str[i] = data[streamIndex++];

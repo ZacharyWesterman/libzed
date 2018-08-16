@@ -137,7 +137,7 @@ bool rgxmatchnext(rgxmatcher* matcher) //does not consume stream
 
 		matcher->node = matcher->node->sibling();
 
-		if (matcher->node->min() < matcher->node->max())
+		if (matcher->node->min() == matcher->node->max())
 		{
 			result = rgxmatch(matcher);
 			break;
@@ -295,6 +295,9 @@ bool rgxmatchanything(rgxmatcher* matcher)
 
 	uint32_t ch = matcher->stream->getChar(matcher->format);
 
+	std::cout << matcher->stream->tell() << '/' << matcher->stream->end();
+	std::cout << " [" << ch << "]\n";
+
 	if (matcher->getFlag(RGX_FLAG_NEWLINE)) return true;
 
 	return (ch != '\n');
@@ -407,6 +410,63 @@ bool rgxmatchpunct(rgxmatcher* matcher, bool negate)
 	return negate;
 }
 
+//never consume input
+bool rgxmatchlookahead(rgxmatcher* matcher, bool negate)
+{
+	size_t streamIndex = matcher->stream->tell();
+
+	size_t children = matcher->node->children.length();
+	for (size_t i=0; i<children; i++)
+	{
+		rgxll* node = matcher->node;
+		matcher->node = node->children[i];
+
+		if (!rgxmatchonce(matcher)) //an item didn't match, fail.
+		{
+			matcher->node = node;
+			matcher->stream->seek(streamIndex);
+			return negate;
+		}
+
+		matcher->node = node;
+	}
+
+	//no items that didn't match, success
+	matcher->stream->seek(streamIndex);
+	return !negate;
+}
+
+//never consume input
+bool rgxmatchlookbehind(rgxmatcher* matcher, bool negate)
+{
+	size_t streamIndex = matcher->stream->tell();
+
+	size_t charSz = matcher->charsToOffset(1);
+	size_t index = streamIndex;
+
+	size_t children = matcher->node->children.length();
+	for (size_t i=0; i<children; i++)
+	{
+		rgxll* node = matcher->node;
+		matcher->node = node->children[children-i-1];
+
+		index -= charSz;
+		matcher->stream->seek(index);
+		if (!rgxmatchonce(matcher)) //an item didn't match, fail.
+		{
+			matcher->node = node;
+			matcher->stream->seek(streamIndex);
+			return negate;
+		}
+
+		matcher->node = node;
+	}
+
+	//no items that didn't match, success
+	matcher->stream->seek(streamIndex);
+	return !negate;
+}
+
 bool rgxsetflag(rgxmatcher* matcher, bool state)
 {
 	uint32_t ch = matcher->node->beg();
@@ -514,6 +574,18 @@ bool rgxmatchonce(rgxmatcher* matcher)
 
 		case RGX_END:
 			result = !(matcher->stream->empty());
+			break;
+
+		case RGX_NEG_LOOKAHEAD:
+			negate = true;
+		case RGX_POS_LOOKAHEAD:
+			result = rgxmatchlookahead(matcher, negate);
+			break;
+
+		case RGX_NEG_LOOKBEHIND:
+			negate = true;
+		case RGX_POS_LOOKBEHIND:
+			result = rgxmatchlookbehind(matcher, negate);
 			break;
 
 		default:

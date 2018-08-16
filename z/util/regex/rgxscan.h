@@ -120,7 +120,7 @@ rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output)
 					output.add(rgxss(last=RGX_SYMBOL, ch));
 				break;
 			case '=':
-				if (last == RGX_QUERY)
+				if ((last == RGX_QUERY) || (last == RGX_PREVIOUS))
 					output.add(rgxss(last=RGX_EQUALS));
 				else
 					output.add(rgxss(last=RGX_SYMBOL, ch));

@@ -301,20 +301,21 @@ static bool rgxmnla(const core::array<rgxll*>& list, size_t index, rgxerr& error
 	return true;
 }
 
-static bool rgxmplb(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?<..)
+static bool rgxmplb(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (?<=..)
 {
-	if (list.isValid(index+3))
+	if (list.isValid(index+4))
 	{
 		if (list[index]->id() != RGX_LPAREN) return false;
 		if (list[index+1]->id() != RGX_QUERY) return false;
 		if (list[index+2]->id() != RGX_PREVIOUS) return false;
+		if (list[index+3]->id() != RGX_EQUALS) return false;
 
-		if (list[index+3]->id() == RGX_RPAREN)
+		if (list[index+4]->id() == RGX_RPAREN)
 		{
 			error = RGX_BAD_LOOKBEHIND;
 		}
 
-		size_t i = index+3;
+		size_t i = index+4;
 		while (list[i]->id() != RGX_RPAREN)
 		{
 			if (list[i]->id() == RGX_LBRACKET) return false;
@@ -664,12 +665,12 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 					madeChange = true;
 				}
 			}
-			else if (rgxmplb(list,i,error))//(?<..)
+			else if (rgxmplb(list,i,error))//(?<=..)
 			{
 				if (!error)
 				{
 					list[i]->setID(RGX_POS_LOOKBEHIND);
-					size_t k = i + 3;
+					size_t k = i + 4;
 
 					while (list[k]->id() != RGX_RPAREN)
 					{
@@ -679,6 +680,7 @@ rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root)
 
 					delete list[i+1];
 					delete list[i+2];
+					delete list[i+3];
 					delete list[k];
 					list.remove(i+1,k-i);
 					madeChange = true;
