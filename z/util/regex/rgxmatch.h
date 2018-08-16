@@ -78,6 +78,19 @@ struct rgxmatcher
 		flagStack.pop();
 	}
 
+	size_t charsToOffset(size_t charCount) const
+	{
+		switch (format)
+		{
+			case utf32:
+				return charCount << 2;
+			case utf16:
+				return charCount << 1;
+			default:
+				return charCount;
+		}
+	}
+
 };
 
 bool rgxmatchsuccess(rgxmatcher* matcher)
@@ -297,6 +310,103 @@ bool rgxmatchword(rgxmatcher* matcher, bool negate)
 		return negate;
 }
 
+bool rgxmatchspace(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (core::isWhiteSpace(ch))
+		return !negate;
+	else
+		return negate;
+}
+
+bool rgxmatchalpha(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (core::isAlpha(ch))
+		return !negate;
+	else
+		return negate;
+}
+
+bool rgxmatchdigit(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (core::isNumeric(ch))
+		return !negate;
+	else
+		return negate;
+}
+
+bool rgxmatchalnum(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (core::isAlphaNumeric(ch))
+		return !negate;
+	else
+		return negate;
+}
+
+bool rgxmatchbreak(rgxmatcher* matcher, bool negate)
+{
+	size_t streamIndex = matcher->stream->tell();
+
+	//match if at either end of the stream
+	if (matcher->stream->empty()) return !negate;
+	if (!streamIndex) return !negate;
+
+	//move back 1 character
+	matcher->stream->seek(streamIndex - matcher->charsToOffset(1));
+
+	uint32_t ch1 = matcher->stream->getChar(matcher->format);
+	uint32_t ch2 = matcher->stream->getChar(matcher->format);
+
+	matcher->stream->seek(streamIndex);
+
+	//if between two word-characters, we're not at a break
+	if (core::isAlphaNumeric(ch1) || (ch1 == '_'))
+	{
+		if (core::isAlphaNumeric(ch2) || (ch2 == '_'))
+			return negate;
+	}
+
+	return !negate;
+}
+
+bool rgxmatchpunct(rgxmatcher* matcher, bool negate)
+{
+	uint32_t ch = matcher->stream->getChar(matcher->format);
+
+	if (!ch) return negate;
+
+	const uint32_t charList[] =
+	{
+		'[', '!', '"', '#', '$', '%',
+		'&', '\'', '(', ')', '*', '+',
+		',', '-', '.', '/', ':', ';',
+		'<', '=', '>', '?', '@', '[',
+		'\\', ']', '^', '_', '`', '{',
+		'|', '}', '~', ']',
+		0 // end here
+	};
+
+	size_t index = 0;
+	while (charList[index])
+	{
+		if (ch == charList[index])
+		{
+			return !negate;
+		}
+
+		index++;
+	}
+
+	return negate;
+}
+
 bool rgxsetflag(rgxmatcher* matcher, bool state)
 {
 	uint32_t ch = matcher->node->beg();
@@ -360,6 +470,50 @@ bool rgxmatchonce(rgxmatcher* matcher)
 
 		case RGX_PERIOD:
 			result = rgxmatchanything(matcher);
+			break;
+
+		case RGX_NOT_SPACE:
+			negate = true;
+		case RGX_SPACE:
+			result = rgxmatchspace(matcher, negate);
+			break;
+
+		case RGX_NOT_ALPHA:
+			negate = true;
+		case RGX_ALPHA:
+			result = rgxmatchalpha(matcher, negate);
+			break;
+
+		case RGX_NOT_DIGIT:
+			negate = true;
+		case RGX_DIGIT:
+			result = rgxmatchdigit(matcher, negate);
+			break;
+
+		case RGX_NOT_ALNUM:
+			negate = true;
+		case RGX_ALNUM:
+			result = rgxmatchalnum(matcher, negate);
+			break;
+
+		case RGX_NOT_BREAK:
+			negate = true;
+		case RGX_BREAK:
+			result = rgxmatchbreak(matcher, negate);
+			break;
+
+		case RGX_NOT_PUNCT:
+			negate = true;
+		case RGX_PUNCT:
+			result = rgxmatchpunct(matcher, negate);
+			break;
+
+		case RGX_BEGIN:
+			result = !(matcher->stream->tell());
+			break;
+
+		case RGX_END:
+			result = !(matcher->stream->empty());
 			break;
 
 		default:
