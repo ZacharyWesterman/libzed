@@ -76,6 +76,13 @@ namespace z
 			virtual bool binary() = 0;
 
 			/**
+			 * \brief Tell whether this stream allows seeking to an index.
+			 *
+			 * \return True if seeking is possible for this stream. False otherwise.
+			 */
+			virtual bool seekable() = 0;
+
+			/**
 			 * \brief Seek a position in the stream.
 			 *
 			 * Seeks to the given index, starting at the beginning of the stream.
@@ -170,6 +177,13 @@ namespace z
 			 * \return True if this is a binary stream. False otherwise.
 			 */
 			virtual bool binary() = 0;
+
+			/**
+			 * \brief Tell whether this stream allows seeking to an index.
+			 *
+			 * \return True if seeking is possible for this stream. False otherwise.
+			 */
+			virtual bool seekable() = 0;
 
 			/**
 			 * \brief Seek a position in the stream.

@@ -23,6 +23,7 @@ enum rgxerr
 	RGX_BAD_POS_FLAG,
 
 	RGX_BAD_STREAM,
+	RGX_NOT_SEEKABLE,
 
 	RGX_ERR_COUNT
 };

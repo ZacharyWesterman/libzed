@@ -1,6 +1,4 @@
 #pragma once
-#ifndef FILE_STREAM_H_INCLUDED
-#define FILE_STREAM_H_INCLUDED
 
 #include <fstream>
 #include <stdlib.h>
@@ -10,33 +8,34 @@
 
 namespace z
 {
-    namespace file
-    {
+	namespace file
+	{
 		/**
 		 * \brief A class for file input streams.
 		 *
 		 * This class provides an implementation of core::inputStream for files.
 		 */
-        class inputStream : public core::inputStream
-        {
-        private:
-            std::ifstream filestream;
+		class inputStream : public core::inputStream
+		{
+		private:
+			std::ifstream filestream;
 
-        public:
-            inputStream(const core::string<utf8>&);
+		public:
+			inputStream(const core::string<utf8>&);
 
-            uint8_t get();
+			uint8_t get();
 			uint32_t getChar(encoding format = ascii);
 
 			bool empty();
 			bool good();
 			bool bad();
 			bool binary();
+			bool seekable();
 
-            void seek(size_t index);
-            size_t tell();
+			void seek(size_t index);
+			size_t tell();
 			size_t end();
-        };
+		};
 
 		/**
 		 * \brief Constructor
@@ -45,15 +44,15 @@ namespace z
 		 *
 		 * \param fileName a string containing the name of the file to read from.
 		 */
-        inputStream::inputStream(const core::string<utf8>& fileName)
-        {
-            filestream.open((const char*)fileName.cstring(), std::ios::in);
-        }
+		inputStream::inputStream(const core::string<utf8>& fileName)
+		{
+			filestream.open((const char*)fileName.cstring(), std::ios::in);
+		}
 
-        uint8_t inputStream::get()
-        {
+		uint8_t inputStream::get()
+		{
 			return filestream.get();
-        }
+		}
 
 		uint32_t inputStream::getChar(encoding format)
 		{
@@ -61,20 +60,20 @@ namespace z
 
 			switch (format)
 			{
-			case utf16:
-				result = filestream.get();
-				result = (result << 8) + filestream.get();
-				break;
+				case utf16:
+					result = filestream.get();
+					result = (result << 8) + filestream.get();
+					break;
 
-			case utf32:
-				result = filestream.get();
-				result = (result << 8) + filestream.get();
-				result = (result << 8) + filestream.get();
-				result = (result << 8) + filestream.get();
-				break;
+				case utf32:
+					result = filestream.get();
+					result = (result << 8) + filestream.get();
+					result = (result << 8) + filestream.get();
+					result = (result << 8) + filestream.get();
+					break;
 
-			default:
-				result = filestream.get();
+				default:
+					result = filestream.get();
 			}
 
 			return result;
@@ -90,10 +89,10 @@ namespace z
 			return filestream.tellg();
 		}
 
-        bool inputStream::empty()
-        {
-            return filestream.eof();
-        }
+		bool inputStream::empty()
+		{
+			return filestream.eof();
+		}
 
 		bool inputStream::good()
 		{
@@ -110,6 +109,11 @@ namespace z
 			return true;
 		}
 
+		bool inputStream::seekable()
+		{
+			return true;
+		}
+
 		size_t inputStream::end()
 		{
 			return filestream.end - filestream.beg;
@@ -120,26 +124,27 @@ namespace z
 		 *
 		 * This class provides an implementation of core::outputStream for files.
 		 */
-        class outputStream : public core::outputStream
-        {
-        private:
-            std::ofstream filestream;
+		class outputStream : public core::outputStream
+		{
+		private:
+			std::ofstream filestream;
 
-        public:
-            outputStream(const core::string<utf8>&, bool append = false);
+		public:
+			outputStream(const core::string<utf8>&, bool append = false);
 
-            void put(uint8_t ch);
+			void put(uint8_t ch);
 			void put(uint8_t* str, size_t count, encoding format = ascii);
 
 			bool empty();
 			bool good();
 			bool bad();
 			bool binary();
+			bool seekable();
 
 			void seek(size_t);
 			size_t tell();
 			size_t end();
-        };
+		};
 
 		/**
 		 * \brief Constructor
@@ -149,13 +154,13 @@ namespace z
 		 * \param fileName a string containing the name of the file to read from.
 		 * \param append set to \b true to append to the file, \b false to overwrite.
 		 */
-        outputStream::outputStream(const core::string<utf8>& fileName, bool append)
-        {
-            if (append)
-                filestream.open((const char*)fileName.cstring(), std::ios::app | std::ios::out);
-            else
-                filestream.open((const char*)fileName.cstring(), std::ios::out);
-        }
+		outputStream::outputStream(const core::string<utf8>& fileName, bool append)
+		{
+			if (append)
+				filestream.open((const char*)fileName.cstring(), std::ios::app | std::ios::out);
+			else
+				filestream.open((const char*)fileName.cstring(), std::ios::out);
+		}
 
 		void outputStream::put(uint8_t ch)
 		{
@@ -193,10 +198,10 @@ namespace z
 			return filestream.tellp();
 		}
 
-        bool outputStream::empty()
-        {
-            return filestream.eof();
-        }
+		bool outputStream::empty()
+		{
+			return filestream.eof();
+		}
 
 		bool outputStream::good()
 		{
@@ -213,11 +218,14 @@ namespace z
 			return true;
 		}
 
+		bool outputStream::seekable()
+		{
+			return true;
+		}
+
 		size_t outputStream::end()
 		{
 			return filestream.end - filestream.beg;
 		}
-    }
+	}
 }
-
-#endif // STREAM_H_INCLUDED

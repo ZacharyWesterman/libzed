@@ -21,7 +21,7 @@ namespace z
 		#include "regex/rgxmatch.h"
 
 		/**
-		 * \brief A template class for parsing and matching regular expressions.
+		 * \brief A class for parsing and matching regular expressions.
 		 *
 		 * Note that because the class requires seeking locations in a stream,
 		 * it will not work nicely with the system::console class.
@@ -82,6 +82,12 @@ namespace z
 			if (stream.bad())
 			{
 				parseError = RGX_BAD_STREAM;
+				return false;
+			}
+
+			if (!stream.seekable())
+			{
+				parseError = RGX_NOT_SEEKABLE;
 				return false;
 			}
 
@@ -149,6 +155,7 @@ namespace z
 				"Unknown negative flag",
 				"Unknown positive flag",
 				"Unable to analyze stream",
+				"Unable to seek stream indices"
 			};
 
 			return msgs[parseError];

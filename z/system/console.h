@@ -33,6 +33,7 @@ namespace z
 			bool good();
 			bool bad();
 			bool binary();
+			bool seekable();
 
  			void seek(size_t index);
  			size_t tell();
@@ -106,6 +107,11 @@ namespace z
 		}
 
 		bool console::binary()
+		{
+			return false;
+		}
+
+		bool console::seekable()
 		{
 			return false;
 		}
