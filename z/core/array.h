@@ -71,14 +71,9 @@ namespace z
 
 			array subset(size_t, int) const;
 
-			inline size_t size() const;
+			size_t size() const;
 
-			/**
-			 * \brief Get the length of the array.
-			 *
-			 * \return The number of objects in the array.
-			 */
-			inline size_t length() const {return size();}
+			size_t length() const;
 
 			inline T& at(size_t);
 			inline const T& at(size_t) const;
@@ -417,10 +412,28 @@ namespace z
 		/**
 		 * \brief Get the size of the array.
 		 *
+		 * \return The (approximate) number of bytes the array consumes.
+		 */
+		template <typename T>
+		size_t array<T>::size() const
+		{
+			size_t bytes = 0;
+			for (size_t i=0; i<array_data.size(); i++)
+			{
+				size_t objBytes;
+				z::core::size(array_data[i], objBytes);
+				bytes += objBytes;
+			}
+			return bytes;
+		}
+
+		/**
+		 * \brief Get the length of the array.
+		 *
 		 * \return The number of objects in the array.
 		 */
 		template <typename T>
-		inline size_t array<T>::size() const
+		size_t array<T>::length() const
 		{
 			return array_data.size();
 		}

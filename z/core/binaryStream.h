@@ -1,6 +1,4 @@
 #pragma once
-#ifndef BINARYSTREAM_H_INCLUDED
-#define BINARYSTREAM_H_INCLUDED
 
 #include "array.h"
 #include "stream.h"
@@ -33,6 +31,7 @@ namespace z
 			bool good();
 			bool bad();
 			bool binary();
+			bool seekable();
 
  			void seek(size_t index);
  			size_t tell();
@@ -147,6 +146,11 @@ namespace z
 			return true;
 		}
 
+		bool binaryStream::seekable()
+		{
+			return true;
+		}
+
 		void binaryStream::seek(size_t index)
 		{
 			if (index > data.length())
@@ -166,5 +170,3 @@ namespace z
 		}
 	}
 }
-
-#endif //BINARYSTREAM_H_INCLUDED
