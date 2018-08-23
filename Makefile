@@ -1,12 +1,34 @@
-CFLAGS= -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
+CC = g++
+CFLAGS = -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
+LFLAGS =
 
-all:
-	g++ $(CFLAGS) main.cpp -o driver
+SRCS = main.cpp $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp)
 
+OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+
+.PHONY: all
+all: driver
+
+driver: $(OBJS)
+	g++ $(LFLAGS) -o driver $^
+
+main.o: main.cpp
+	g++ $(CFLAGS) -o $@ -c $^
+
+%.o: %.cpp %.h
+	g++ $(CFLAGS) -o $@ -c $<
+
+
+.PHONY: clean
 clean:
-	rm -f driver
+	rm -f $(OBJS) driver
 
+.PHONY: clear
+clear:
+	rm -f $(OBJS)
 
+.PHONY: rebuild
+rebuild: clean all
 
 # Below this is for comipling shared libraries
 

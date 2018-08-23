@@ -35,30 +35,26 @@
 	#define Z_STR_POINTER_CHARS 8
 #endif
 
-
-static size_t integralBuf(unsigned long integral, int base, uint8_t* buf);
-static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf);
-
 namespace z
 {
 	namespace core
 	{
 		/**
-         * \brief A template class for character strings.
-         *
-         * This class focuses on how characters are encoded rather than character size.
+		 * \brief A template class for character strings.
+		 *
+		 * This class focuses on how characters are encoded rather than character size.
 		 * Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.
 		 * When characters are input or output, they are converted to or from their
 		 * encoding scheme to a single UTF32 character. Thus, the "default" character
 		 * type is `uint32_t`.
-         * <br/><br/>
+		 * <br/><br/>
 		 * Allocated memory is increased as needed with approximate 1.5x growth, and
 		 * is not decreased on subsequent data changes, except in the case where
 		 * data is copied over to a different string.
 		 * <br/><br/>
 		 * <B>RE-ENTRANCE:</B><br/>
 		 * Simultaneous accesses to the same object can cause data races.
-         */
+		 */
 		template <encoding E>
 		class string : public serializable, public sizable
 		{
@@ -871,66 +867,5 @@ namespace z
 			void writeln(outputStream& stream) const;
 		};
 
-		#include "string/default.h"
-		#include "string/utf32.h"
-		#include "string/utf16.h"
-		#include "string/ascii.h"
-		#include "string/utf8.h"
-	}
-}
-
-
-static size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
-{
-	if (integral)
-	{
-		size_t length = 0;
-
-		while (integral)
-		{
-			buf[length] = z::core::numeral(integral%base);
-			integral /= base;
-			length++;
-		}
-
-		return length;
-	}
-	else
-	{
-		buf[0] = '0';
-		return 1;
-	}
-}
-
-static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
-{
-	if (fractional)
-	{
-		fractional -= (double)(long)fractional;
-		// return 0;
-		size_t length = 0;
-		double mult = base;
-		int i = 0;
-
-		bool cont = true;
-		while ((i < precision) && cont)
-		{
-			fractional *= mult;
-
-			uint8_t chr = z::core::numeral((int)fractional);
-			fractional -= (double)(long)fractional;
-
-			buf[i] = chr;
-
-			i++;
-			if (chr != '0') length = i;
-			if (!fractional && !force) cont = false;
-		}
-
-		return length;
-	}
-	else
-	{
-		return 0;
 	}
 }
