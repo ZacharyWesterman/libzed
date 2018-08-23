@@ -215,17 +215,17 @@ namespace z
 
 		/**
 		 * \interface stream
-         * \brief A template class for character streams.
-         *
-         * This class provides an interface for both input
+		 * \brief A template class for character streams.
+		 *
+		 * This class provides an interface for both input
 		 * and output streams.
 		 *
 		 * <br/><br/>
 		 * <B>RE-ENTRANCE:</B><br/>
 		 * Simultaneous accesses to the same object can cause data races.
 		 *
-         */
-        class stream : public inputStream, public outputStream
-        {};
+		 */
+		class stream : public inputStream, public outputStream
+		{};
 	}
 }
