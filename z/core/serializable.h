@@ -34,7 +34,7 @@ namespace z
 		};
 
 		template <typename T>
-		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		inline typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialIn(T& object, inputStream& stream)
 		{
 			object.serialIn(stream);
@@ -51,7 +51,7 @@ namespace z
 		 * \param stream The stream to read from.
 		 */
 		template <typename T>
-		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value>::type
+		inline typename std::enable_if<std::is_integral<T>::value>::type
 		serialIn(T& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -67,7 +67,7 @@ namespace z
 		}
 
 		template <typename T>
-		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		inline typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialOut(const T& object, outputStream& stream)
 		{
 			object.serialOut(stream);
@@ -84,7 +84,7 @@ namespace z
 		 * \param stream The stream to write to.
 		 */
 		template <typename T>
-		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value>::type
+		inline typename std::enable_if<std::is_integral<T>::value>::type
 		serialOut(T number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -116,7 +116,7 @@ namespace z
 		 * \param number The number to read from the stream, returned by reference.
 		 * \param stream The stream to read from.
 		 */
-		void serialIn(double& number, inputStream& stream)
+		inline void serialIn(double& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
 
@@ -137,7 +137,7 @@ namespace z
 		 * \param number The number to write to the stream, returned by reference.
 		 * \param stream The stream to write.
 		 */
-		void serialOut(double number, outputStream& stream)
+		inline void serialOut(double number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
 
