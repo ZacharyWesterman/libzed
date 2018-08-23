@@ -33,6 +33,13 @@ namespace z
 			virtual void serialOut(outputStream& stream) const = 0;
 		};
 
+		template <typename T>
+		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		serialIn(T& object, inputStream& stream)
+		{
+			object.serialIn(stream);
+		}
+
 		/**
 		 * \brief Read an integer as binary data from a stream.
 		 *
@@ -43,8 +50,9 @@ namespace z
 		 * \param number The number to read from the stream, returned by reference.
 		 * \param stream The stream to read from.
 		 */
-		template <typename N>
-		void serialIn(N& number, inputStream& stream)
+		template <typename T>
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value>::type
+		serialIn(T& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
 
@@ -58,6 +66,13 @@ namespace z
 			}
 		}
 
+		template <typename T>
+		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		serialOut(const T& object, outputStream& stream)
+		{
+			object.serialOut(stream);
+		}
+
 		/**
 		 * \brief Write an integer as binary data to a stream.
 		 *
@@ -68,15 +83,16 @@ namespace z
 		 * \param number The number to write to the stream.
 		 * \param stream The stream to write to.
 		 */
-		template <typename N>
-		void serialOut(N number, outputStream& stream)
+		template <typename T>
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value>::type
+		serialOut(T number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
 
-			uint8_t c[sizeof(N)];
+			uint8_t c[sizeof(T)];
 			uint8_t chars = 0;
 
-			for (size_t i=0; i<sizeof(N); i++)
+			for (size_t i=0; i<sizeof(T); i++)
 			{
 				if (number)
 				{

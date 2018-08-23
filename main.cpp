@@ -1,6 +1,7 @@
 #include <z/system/console.h>
 #include <z/core/binaryStream.h>
 #include <z/core/string.h>
+#include <z/file/stream.h>
 
 // const z::core::array< z::core::string<z::utf8> > names =
 // {
@@ -177,12 +178,23 @@ using namespace z;
 
 int main()
 {
+	file::inputStream stream("test.byte");
+
 	core::array< core::string<utf32> > arr;
 
-	arr.add("123456789000");
-	arr.add("123456789000");
+	// arr.add("hello,");
+	// arr.add("this is a");
+	// arr.add("test.");
 
-	std::cout << arr.length() << std::endl;
+	arr.serialIn(stream);
+
+	std::cout << '{' << std::endl;
+	for (size_t i=0; i<arr.length(); i++)
+	{
+		std::cout << core::string<utf8>(arr[i]).cstring() << std::endl;
+	}
+	std::cout << '}' << std::endl;
+	// std::cout << arr.length() << std::endl;
 
 	return 0;
 }

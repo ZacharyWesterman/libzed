@@ -3,6 +3,7 @@
 #include <vector>
 #include "stream.h"
 #include "sizable.h"
+#include "serializable.h"
 
 namespace z
 {
@@ -24,7 +25,7 @@ namespace z
 		 * \see sortedRefArray
 		 */
 		template <typename T>
-		class array : public sizable
+		class array : public sizable, public serializable
 		{
 		protected:
 			///The data in the array.
@@ -93,6 +94,9 @@ namespace z
 
 
 			bool isValid(size_t position) const;
+
+			void serialIn(inputStream&);
+			void serialOut(outputStream&) const;
 		};
 
 
@@ -654,5 +658,32 @@ namespace z
 		{
 			return (index < array_data.size());
 		}
+
+		template <typename T>
+		void array<T>::serialIn(inputStream& stream)
+		{
+			size_t count = 0;
+			z::core::serialIn(count, stream);
+
+			for (size_t i=0; i<count; i++)
+			{
+				T object;
+				z::core::serialIn(object, stream);
+				array_data.push_back(object);
+			}
+		}
+
+		template <typename T>
+		void array<T>::serialOut(outputStream& stream) const
+		{
+			size_t count = array_data.size();
+			z::core::serialOut(count, stream);
+
+			for (size_t i=0; i<count; i++)
+			{
+				z::core::serialOut(array_data[i], stream);
+			}
+		}
+
 	}
 }
