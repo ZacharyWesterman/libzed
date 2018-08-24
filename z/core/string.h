@@ -675,7 +675,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			const string& unPadLeft(const string& other);
+			const string& trimLeft(const string& other);
 
 			/**
 			 * \brief Remove padding from the right side of this string.
@@ -687,7 +687,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			const string& unPadRight(const string& other);
+			const string& trimRight(const string& other);
 
 			/**
 			 * \brief Remove padding from the both sides of this string.
@@ -699,7 +699,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			const string& unPad(const string& other);
+			const string& trim(const string& other);
 
 			/**
 			 * \brief Remove all sequential duplicates from this string.

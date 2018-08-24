@@ -932,7 +932,7 @@ namespace z
 		}
 
 		template <encoding E>
-		const string<E>& string<E>::unPadLeft(const string<E>& other)
+		const string<E>& string<E>::trimLeft(const string<E>& other)
 		{
 			if (character_ct < other.character_ct) return *this;
 
@@ -946,7 +946,7 @@ namespace z
 		}
 
 		template <encoding E>
-		const string<E>& string<E>::unPadRight(const string<E>& other)
+		const string<E>& string<E>::trimRight(const string<E>& other)
 		{
 			if (character_ct < other.character_ct) return *this;
 
@@ -962,10 +962,10 @@ namespace z
 		}
 
 		template <encoding E>
-		const string<E>& string<E>::unPad(const string<E>& other)
+		const string<E>& string<E>::trim(const string<E>& other)
 		{
-			this->unPadLeft(other);
-			return this->unPadRight(other);
+			this->trimLeft(other);
+			return this->trimRight(other);
 		}
 
 		template <encoding E>
