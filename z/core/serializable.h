@@ -126,7 +126,8 @@ namespace z
 				c[i] = stream.get();
 			}
 
-			number = *((double*)c);
+			double* result = (double*)c;
+			number = *result;
 		}
 
 		/**

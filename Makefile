@@ -1,4 +1,3 @@
-CC = g++
 CFLAGS = -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
 LFLAGS =
 

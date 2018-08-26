@@ -1753,7 +1753,7 @@ namespace z
 				return;
 			}
 
-			size_t datact;
+			size_t datact = 0;
 			core::serialIn(datact, stream);
 			character_ct = datact / this->charSize();
 			this->increase(datact + 4);
