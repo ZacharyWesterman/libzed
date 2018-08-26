@@ -1,7 +1,7 @@
 CFLAGS = -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
 LFLAGS =
 
-SRCS = main.cpp $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp)
+SRCS = main.cpp $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp)
 
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 

@@ -1,30 +1,28 @@
 #pragma once
 
-#include <z/core/timeout.h>
 #include <z/core/string.h>
 #include <z/core/stream.h>
-// #include <z/core/array.h>
 
-#include <stack>
+#include "regex/rgxid.h"
+#include "regex/rgxerr.h"
+#include "regex/rgxss.h"
+#include "regex/rgxsesc.h"
+#include "regex/rgxscan.h"
+#include "regex/rgxll.h"
+#include "regex/rgxlex.h"
+#include "regex/rgxmatch.h"
+
 
 namespace z
 {
 	namespace util
 	{
-		#include "regex/rgxid.h"
-		#include "regex/rgxerr.h"
-		#include "regex/rgxss.h"
-		#include "regex/rgxsesc.h"
-		#include "regex/rgxscan.h"
-		#include "regex/rgxll.h"
-		#include "regex/rgxlex.h"
-		#include "regex/rgxmatch.h"
 
 		/**
 		 * \brief A class for parsing and matching regular expressions.
 		 *
 		 * Note that because the class requires seeking locations in a stream,
-		 * it will not work nicely with the system::console class.
+		 * it will not work with the system::console class.
 		 */
 		template <encoding E>
 		class regex

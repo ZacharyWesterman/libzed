@@ -34,10 +34,17 @@ namespace z
 		};
 
 		template <typename T>
-		inline typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialIn(T& object, inputStream& stream)
 		{
 			object.serialIn(stream);
+		}
+
+		template <typename T>
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
+		serialIn(T& object, inputStream& stream)
+		{
+			//dummy
 		}
 
 		/**
@@ -51,7 +58,7 @@ namespace z
 		 * \param stream The stream to read from.
 		 */
 		template <typename T>
-		inline typename std::enable_if<std::is_integral<T>::value>::type
+		typename std::enable_if<std::is_integral<T>::value>::type
 		serialIn(T& number, inputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -67,10 +74,17 @@ namespace z
 		}
 
 		template <typename T>
-		inline typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
+		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialOut(const T& object, outputStream& stream)
 		{
 			object.serialOut(stream);
+		}
+
+		template <typename T>
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
+		serialOut(const T& object, outputStream& stream)
+		{
+			//dummy
 		}
 
 		/**
@@ -84,7 +98,7 @@ namespace z
 		 * \param stream The stream to write to.
 		 */
 		template <typename T>
-		inline typename std::enable_if<std::is_integral<T>::value>::type
+		typename std::enable_if<std::is_integral<T>::value>::type
 		serialOut(T number, outputStream& stream)
 		{
 			if (stream.bad() || !stream.binary()) return;
@@ -116,19 +130,19 @@ namespace z
 		 * \param number The number to read from the stream, returned by reference.
 		 * \param stream The stream to read from.
 		 */
-		inline void serialIn(double& number, inputStream& stream)
-		{
-			if (stream.bad() || !stream.binary()) return;
-
-			uint8_t c[sizeof(double)];
-			for (size_t i=0; i<sizeof(double); i++)
-			{
-				c[i] = stream.get();
-			}
-
-			double* result = (double*)c;
-			number = *result;
-		}
+		// void serialIn(double& number, inputStream& stream)
+		// {
+		// 	if (stream.bad() || !stream.binary()) return;
+		//
+		// 	uint8_t c[sizeof(double)];
+		// 	for (size_t i=0; i<sizeof(double); i++)
+		// 	{
+		// 		c[i] = stream.get();
+		// 	}
+		//
+		// 	double* result = (double*)c;
+		// 	number = *result;
+		// }
 
 		/**
 		 * \brief Write a floating-point as binary data to a stream.
@@ -138,16 +152,16 @@ namespace z
 		 * \param number The number to write to the stream, returned by reference.
 		 * \param stream The stream to write.
 		 */
-		inline void serialOut(double number, outputStream& stream)
-		{
-			if (stream.bad() || !stream.binary()) return;
-
-			uint8_t* c = (uint8_t*)&number;
-
-			for (size_t i=0; i<sizeof(double); i++)
-			{
-				stream.put(c[i]);
-			}
-		}
+		// void serialOut(double number, outputStream& stream)
+		// {
+		// 	if (stream.bad() || !stream.binary()) return;
+		//
+		// 	uint8_t* c = (uint8_t*)&number;
+		//
+		// 	for (size_t i=0; i<sizeof(double); i++)
+		// 	{
+		// 		stream.put(c[i]);
+		// 	}
+		// }
 	}
 }
