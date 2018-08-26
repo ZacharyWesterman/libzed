@@ -1,6 +1,35 @@
+#include <climits>
+#include <cstdint>
+#include <cstddef>
+
+#include "charFunctions.h"
 #include "string.h"
 
-size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
+#ifndef Z_STR_INT_BUFSIZE
+	#define Z_STR_INT_BUFSIZE 64
+#endif
+
+#ifndef Z_STR_FLOAT_BUFSIZE
+	#define Z_STR_FLOAT_BUFSIZE 64
+#endif
+
+#ifndef Z_STR_EXP_BUFSIZE
+	#define Z_STR_EXP_BUFSIZE 10
+#endif
+
+#ifndef Z_STR_FLOAT_PRECISION
+	#define Z_STR_FLOAT_PRECISION 6
+#endif
+
+#ifndef Z_STR_POINTER_FORCE
+	#define Z_STR_POINTER_FORCE true
+#endif
+
+#ifndef Z_STR_POINTER_CHARS
+	#define Z_STR_POINTER_CHARS 8
+#endif
+
+size_t integralBuf(unsigned long integral, unsigned int base, uint8_t* buf)
 {
 	if (integral)
 	{
@@ -22,7 +51,7 @@ size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
 	}
 }
 
-size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
+size_t fractionalBuf(double fractional, unsigned int base, unsigned int precision, bool force, uint8_t* buf)
 {
 	if (fractional)
 	{
@@ -30,7 +59,7 @@ size_t fractionalBuf(double fractional, int base, int precision, bool force, uin
 		// return 0;
 		size_t length = 0;
 		double mult = base;
-		int i = 0;
+		unsigned int i = 0;
 
 		bool cont = true;
 		while ((i < precision) && cont)
@@ -55,7 +84,6 @@ size_t fractionalBuf(double fractional, int base, int precision, bool force, uin
 	}
 }
 
-#include "string/default.h"
 #include "string/utf32.h"
 #include "string/utf16.h"
 #include "string/ascii.h"

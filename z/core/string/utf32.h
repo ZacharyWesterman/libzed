@@ -5,6 +5,44 @@ namespace z
 	namespace core
 	{
 		template <>
+		void string<utf32>::increase(size_t goal)
+		{
+			if (data_len >= goal) return;
+
+			uint8_t* old_data = data;
+			size_t old_data_len = data_len;
+
+			//~1.5x string growth
+			while (data_len < goal)
+				data_len += (data_len >> 1) + 4;
+			data = new uint8_t[data_len];
+
+			size_t remain = old_data_len;
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* old32 = (uint32_t*)old_data;
+
+			size_t i = 0;
+
+			//copy as much data as possible in 32-bit chunks
+			while (remain > 4)
+			{
+				data32[i] = old32[i];
+
+				i++;
+				remain -= sizeof(uint32_t);
+			}
+
+			//copy remaining amount
+			while (remain)
+			{
+				size_t offset = old_data_len - remain;
+				data[offset] = old_data[offset];
+
+				remain--;
+			}
+		}
+
+		template <>
 		string<utf32>::string()
 		{
 			data = new uint8_t[4];
@@ -738,6 +776,29 @@ namespace z
 
 		///mutators
 		template <>
+		const string<utf32>& string<utf32>::operator=(const string<utf32>& other)
+		{
+			size_t new_len = (other.character_ct + 1) * this->charSize();
+			this->increase(new_len);
+			// data = new uint8_t[data_len];
+
+			character_ct = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = data_len >> 2;
+
+			for (size_t i=0; i<len32; i++)
+				data32[i] = other32[i];
+
+			size_t len = len32 << 2;
+			for (size_t i=len; i<data_len; i++)
+				data[i] = other.data[i];
+
+			return *this;
+		}
+
+		template <>
 		string<utf32> string<utf32>::substr(size_t index, int count) const
 		{
 			string<utf32> result;
@@ -1052,6 +1113,674 @@ namespace z
 			}
 
 			data32[character_ct] = 0;
+		}
+
+		template <>
+		const uint32_t string<utf32>::operator[](size_t index) const
+		{
+			return this->at(index);
+		}
+
+		template <>
+		void string<utf32>::initInt(long long value, unsigned int base, unsigned int padSize)
+		{
+			uint8_t ibuf[Z_STR_INT_BUFSIZE];
+			if ((base < 2) || (base > 36)) base = 10;
+
+			bool negative = false;
+			if (value < 0)
+			{
+				value = -value;
+				negative = true;
+			}
+
+			size_t ibufsiz = integralBuf(value, base, ibuf);
+
+			//initialize string data
+			character_ct = ibufsiz + negative;
+			if (character_ct < padSize)
+				character_ct += (padSize -= character_ct);
+			else
+				padSize = 0;
+
+			data_len = (character_ct + 1) * this->charSize();
+			data = new uint8_t[data_len];
+
+			if (negative) this->initChar('-', 0);
+
+			size_t pos = negative;
+
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<ibufsiz; i++)
+				this->initChar(ibuf[ibufsiz-i-1], pos++);
+		}
+
+		template <>
+		void string<utf32>::initPointer(void* pointer)
+		{
+			uint8_t pbuf[Z_STR_INT_BUFSIZE];
+
+			union ptv
+			{
+				void* pval;
+				unsigned long ival;
+			};
+			ptv ptr;
+			ptr.pval = pointer;
+
+			size_t pbufsiz = integralBuf(ptr.ival, 16, pbuf);
+			size_t padSize;
+
+			//initialize string data
+			if (Z_STR_POINTER_FORCE && (pbufsiz < Z_STR_POINTER_CHARS))
+				padSize = Z_STR_POINTER_CHARS - pbufsiz;
+			else
+				padSize = 0;
+
+			character_ct = padSize + pbufsiz + 2;
+			data_len = (character_ct + 1) * this->charSize();
+			data = new uint8_t[data_len];
+
+			// if (negative) this->initChar('-', 0);
+
+			size_t pos = 0;
+
+			this->initChar('0',pos++);
+			this->initChar('x',pos++);
+
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<pbufsiz; i++)
+				this->initChar(pbuf[pbufsiz-i-1], pos++);
+		}
+
+		template <>
+		void string<utf32>::initFloat(double value, unsigned int base, unsigned int precision, unsigned int padSize)
+		{
+			uint8_t ibuf[Z_STR_INT_BUFSIZE];
+			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
+			uint8_t ebuf[Z_STR_EXP_BUFSIZE];
+
+			data = 0;
+
+			union float_cast
+			{
+				double fval;
+				unsigned long ival;
+
+				struct
+				{
+					unsigned long mantissa : 52;
+					unsigned int exponent : 11;
+					bool sign : 1;
+				};
+			};
+			float_cast number;
+			number.fval = value;
+
+			bool negative = number.sign;
+			number.sign = 0;
+			bool force = true;
+
+			if ((base < 2) || (base > 36)) base = 10;
+			if (precision <= 0)
+			{
+				precision = Z_STR_FLOAT_PRECISION;
+				force = false;
+			}
+
+			//integral and fractional parts of the number
+			unsigned long integral;
+			double fractional;
+			unsigned long exponent = 0;
+			bool negexponent = false;
+
+			if (number.ival) //don't bother with exponents if 0
+			{
+				double temp = number.fval;
+				unsigned long tempExp = exponent;
+				bool tempNegExp = negexponent;
+
+				if (1023 <= number.exponent)// pos exponent
+				{
+					while (temp >= base)
+					{
+						temp /= base;
+						tempExp++;
+					}
+				}
+				else if (1023 >= number.exponent)// neg exponent
+				{
+					tempNegExp = true;
+					double frac = 1.0 / (double)base;
+
+					while (temp < frac)
+					{
+						temp *= base;
+						tempExp++;
+					}
+				}
+
+				if ((tempNegExp && (tempExp >= precision)) ||
+					(number.fval > (double)(INT_MAX)))
+				{
+					number.fval = temp;
+					exponent = tempExp;
+					negexponent = tempNegExp;
+				}
+			}
+
+			if (number.exponent < 1023)//x2^neg
+			{
+				integral = 0;
+			}
+			else if (number.exponent > 1023)//x2^(pos)
+			{
+				long expo = number.exponent - 1023;
+				integral = ((long)1 << expo) + (number.mantissa >> ((long)52 - expo));
+			}
+			else //x2^0
+			{
+				integral = 1;
+			}
+
+			fractional = number.fval - (double)integral;
+
+			//this section rounds to nearest fractional point (decimal pt. in base 10)
+			if (number.ival)
+			{
+				//prep for rounding
+				double tmp = fractional;
+				double roundval = tmp / (double)(base << 1);
+				double roundadd = roundval;
+				for (size_t i=0; i<precision; i++)
+				{
+					tmp *= base;
+					tmp -= (double)(long)tmp;
+					roundadd /= base;
+				}
+				//round
+				if (tmp >= roundval)
+				{
+					fractional += roundadd;
+
+					if (fractional >= 1)
+					{
+						integral++;
+						fractional--;
+					}
+				}
+			}
+
+			// number.exponent - 1023;
+			size_t ibufsiz = integralBuf(integral, base, ibuf);
+			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+			// size_t fbufsiz = fractionalBuf(fractional, 10, 6, 0, fbuf);
+			size_t ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
+			//initialize string data
+			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
+			if (character_ct < padSize)
+				character_ct += (padSize -= character_ct);
+			else
+				padSize = 0;
+
+			// bool
+
+			// character_ct = fbufsiz;
+
+			// character_ct = fbufsiz + (bool)fbufsiz;
+			data_len = (character_ct + 1) * this->charSize();
+			// data_len = 100;
+			// character_ct = 0;
+			data = new uint8_t[data_len];
+			// data = new uint8_t[10];
+			// data_len = 10;
+			// character_ct = 0;
+			if (negative) this->initChar('-', 0);
+			// size_t pos = 0;
+			size_t pos = negative;
+			//
+			for (size_t i=0; i<padSize; i++)
+				this->initChar('0',pos++);
+
+			for (size_t i=0; i<ibufsiz; i++)
+				this->initChar(ibuf[ibufsiz-i-1], pos++);
+
+			if (fbufsiz)
+			{
+				this->initChar('.', pos++);
+
+				for (size_t i=0; i<fbufsiz; i++)
+					this->initChar(fbuf[i],pos++);
+			}
+
+			if (exponent)
+			{
+				this->initChar('e', pos++);
+				if (negexponent)
+					this->initChar('-', pos++);
+
+				for (size_t i=0; i<ebufsiz; i++)
+					this->initChar(ebuf[ebufsiz-i-1],pos++);
+			}
+
+			this->initChar(0,pos);
+		}
+
+		template <>
+		void string<utf32>::initComplex(const std::complex<double>& value, unsigned int base, unsigned int precision)
+		{
+			data_len = 4;
+			data = new uint8_t[data_len];
+			*((uint32_t*)data) = 0;
+			character_ct = 0;
+
+			if (value.real() && value.imag())
+			{
+				operator=(string<utf32>(value.real(), base, precision, 0));
+				if (value.imag() > 0) operator+=("+");
+				operator+=(string<utf32>(value.imag(), base, precision, 0));
+				operator+=("i");
+			}
+			else if (value.imag())
+			{
+				operator=(string<utf32>(value.imag(), base, precision, 0));
+				operator+=("i");
+			}
+			else
+			{
+				operator=(string<utf32>(value.real(), base, precision, 0));
+			}
+
+		}
+
+		template <>
+		size_t string<utf32>::size() const
+		{
+			return sizeof(*this) + (data_len * sizeof(uint8_t));
+		}
+
+		template <>
+		size_t string<utf32>::length() const
+		{
+			return character_ct;
+		}
+
+		template <>
+		size_t string<utf32>::chars() const
+		{
+			return character_ct;
+		}
+
+		template <>
+		bool string<utf32>::foundAt(const string<utf32>& other, size_t index) const
+		{
+			if ((character_ct - index) < other.character_ct) return false;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+
+			const size_t charSz = this->charSize();
+
+			size_t i = 0;
+			size_t idx = index * charSz;
+			size_t end = (other.character_ct * charSz) >> 2;
+			for (i=0; i<end; i++)
+			{
+				if (data32[i+index] != other32[i])
+					return false;
+			}
+
+			for (i=(end<<2); i<(other.character_ct * charSz); i++)
+			{
+				if (data[i+idx] != other[i])
+					return false;
+			}
+
+			return true;
+		}
+
+		template <>
+		bool string<utf32>::foundEndAt(const string<utf32>& other, size_t index) const
+		{
+			if (index < other.character_ct) return false;
+			if (index >= character_ct) return false;
+
+			const size_t charSz = this->charSize();
+			const size_t idx = (index-other.character_ct+1)*charSz;
+			const size_t last = other.character_ct * charSz;
+
+			uint32_t* data32 = (uint32_t*)&data[idx];
+			uint32_t* other32 = (uint32_t*)other.data;
+
+			size_t i = 0;
+			size_t end = last >> 2;
+			while (i < end)
+			{
+				if (data32[i] != other32[i])
+					return false;
+
+				i++;
+			}
+
+			for (i=(end<<2); i<last; i++)
+			{
+				if (data[i+idx] != other[i])
+					return false;
+			}
+
+			return true;
+		}
+
+		///mutators
+		template <>
+		const string<utf32>& string<utf32>::remove(const string& other, int occurrence)
+		{
+			if (occurrence > 0) //remove one occurrence
+			{
+				int pos = this->find(other, occurrence);
+
+				if (pos >= 0)
+				{
+					this->remove(pos, other.length());
+				}
+			}
+			else if (!occurrence) //remove all occurrences
+			{
+				int pos = this->find(other, 1);
+
+				while (pos >= 0)
+				{
+					this->remove(pos, other.length());
+					pos = this->findAfter(other, pos, 1);
+				}
+			}
+
+			return *this;
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::replace(const string<utf32>& findStr, const string<utf32>& replStr, int occurrence)
+		{
+			if (occurrence > 0) //replace one occurrence
+			{
+				int pos = this->find(findStr, occurrence);
+
+				if (pos >= 0)
+				{
+					this->replace((size_t)pos, (int)findStr.length(), replStr);
+				}
+			}
+			else if (!occurrence) //replace all occurrences
+			{
+				int pos = this->find(findStr, 1);
+
+				while (pos >= 0)
+				{
+					this->replace((size_t)pos, (int)findStr.length(), replStr);
+					pos = this->findAfter(findStr, pos+replStr.length(), 1);
+				}
+			}
+
+			return *this;
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::padLeft(const string<utf32>& other, size_t padSize)
+		{
+			if (padSize <= character_ct) return *this;
+
+			string<utf32> padStr;
+
+			size_t padChars = padSize - character_ct;
+
+			while (padChars >= other.character_ct)
+			{
+				padStr += other;
+				padChars -= other.character_ct;
+			}
+
+			if (padChars)
+				padStr += other.substr(0, padChars);
+
+			return this->insert(padStr, 0);
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::padRight(const string<utf32>& other, size_t padSize)
+		{
+			if (padSize <= character_ct) return *this;
+
+			string<utf32> padStr;
+
+			size_t padChars = padSize - character_ct;
+
+			while (padChars >= other.character_ct)
+			{
+				padStr += other;
+				padChars -= other.character_ct;
+			}
+
+			if (padChars)
+				padStr += other.substr(0, padChars);
+
+			return operator+=(padStr);
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::trimLeft(const string<utf32>& other)
+		{
+			if (character_ct < other.character_ct) return *this;
+
+			size_t index = 0;
+			while (this->foundAt(other, index))
+			{
+				index += other.character_ct;
+			}
+
+			return this->remove(0, index);
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::trimRight(const string<utf32>& other)
+		{
+			if (character_ct < other.character_ct) return *this;
+
+			size_t index = character_ct-other.character_ct;
+			int count = 0;
+			while (this->foundAt(other, index))
+			{
+				index -= other.character_ct;
+				count += other.character_ct;
+			}
+
+			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template <>
+		const string<utf32>& string<utf32>::cutDuplicates(const string<utf32>& other)
+		{
+			int pos = this->find(other, 1);
+
+			while (pos >= 0)
+			{
+				size_t opos = pos + other.length();
+				while (this->foundAt(other, opos))
+				{
+					this->remove(opos, other.length());
+				}
+				pos = this->findAfter(other, opos, 1);
+			}
+
+			return *this;
+		}
+
+		///operators
+		template <>
+		string<utf32> string<utf32>::operator+(const string<utf32>& other) const
+		{
+			string<utf32> result (*this);
+			result += other;
+
+			return result;
+		}
+
+		template <>
+		bool string<utf32>::operator==(const string<utf32>& other) const
+		{
+			if (character_ct != other.character_ct)
+				return false;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (character_ct * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] != other32[i])
+					return false;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = character_ct * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] != other.data[i]);
+					return false;
+			}
+
+			return true;
+		}
+
+		template <>
+		bool string<utf32>::operator>(const string<utf32>& other) const
+		{
+			size_t max_char;
+			if (character_ct < other.character_ct)
+				max_char = character_ct;
+			else
+				max_char = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (max_char * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] > other32[i])
+					return true;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = max_char * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] > other.data[i]);
+					return true;
+			}
+
+			if (character_ct > other.character_ct)
+				return true;
+
+			return false;
+		}
+
+		template <>
+		bool string<utf32>::operator<(const string<utf32>& other) const
+		{
+			size_t max_char;
+			if (character_ct < other.character_ct)
+				max_char = character_ct;
+			else
+				max_char = other.character_ct;
+
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
+			size_t len32 = (max_char * this->charSize()) >> 2;
+
+			for (size_t i=0; i<len32; i++)
+			{
+				if (data32[i] < other32[i])
+					return true;
+			}
+
+			size_t len = len32 << 2;
+			size_t max = max_char * this->charSize();
+			for (size_t i=len; i<max; i++)
+			{
+				if (data[i] < other.data[i]);
+					return true;
+			}
+
+			if (character_ct < other.character_ct)
+				return true;
+
+			return false;
+		}
+
+		template <>
+		void string<utf32>::write(outputStream& stream) const
+		{
+			if (stream.bad()) return;
+
+			if (character_ct)
+				stream.put(data, character_ct, utf32);
+		}
+
+		template <>
+		void string<utf32>::writeln(outputStream& stream) const
+		{
+			if (stream.bad()) return;
+
+			if (character_ct)
+				stream.put(data, character_ct, utf32);
+
+			string<utf32> newl = "\n";
+			stream.put(newl.data, newl.character_ct, utf32);
+		}
+
+		template <>
+		void string<utf32>::serialIn(inputStream& stream)
+		{
+			if (stream.bad() || !stream.binary())
+			{
+				character_ct = 0;
+				this->increase(4);
+				*((uint32_t*)data) = 0;
+				return;
+			}
+
+			size_t datact;
+			core::serialIn(datact, stream);
+			character_ct = datact / this->charSize();
+			this->increase(datact + 4);
+
+			size_t i = 0;
+			while (!stream.empty() && (i < datact))
+			{
+				data[i++] = stream.get();
+			}
+
+			*((uint32_t*)&data[i]) = 0;
+		}
+
+		template <>
+		void string<utf32>::serialOut(outputStream& stream) const
+		{
+			if (stream.bad() || !stream.binary())
+				return;
+
+			size_t datact = character_ct * this->charSize();
+			core::serialOut(datact, stream);
+
+			size_t i = 0;
+			while ((i < datact))
+			{
+				stream.put(data[i++]);
+			}
 		}
 
 	} //end of core namespace
