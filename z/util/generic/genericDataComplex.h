@@ -7,16 +7,16 @@ namespace z
 		class genericDataComplex : public genericData
 		{
 		private:
-			std::complex<Float> data;
+			std::complex<double> data;
 
 		public:
-			genericDataComplex(const std::complex<Float>& input) : data(input) {}
+			genericDataComplex(const std::complex<double>& input) : data(input) {}
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -36,24 +36,24 @@ namespace z
 			return (data.real() || data.imag());
 		}
 
-		const Int genericDataComplex::integer() const
+		const long long genericDataComplex::integer() const
 		{
-			return (Int)data.real();
+			return (long long)data.real();
 		}
 
-		const Float genericDataComplex::floating() const
+		const double genericDataComplex::floating() const
 		{
 			return data.real();
 		}
 
-		const std::complex<Float> genericDataComplex::complex() const
+		const std::complex<double> genericDataComplex::complex() const
 		{
 			return data;
 		}
 
-		const core::string<Char> genericDataComplex::string() const
+		const core::string<utf32> genericDataComplex::string() const
 		{
-			return core::string<Char>(data);
+			return core::string<utf32>(data);
 		}
 
 		void* genericDataComplex::pointer() const
@@ -68,7 +68,7 @@ namespace z
 
 		bool genericDataComplex::isIntegral() const
 		{
-			bool real_int = ((Float)(Int)data.real()) == data.real();
+			bool real_int = ((double)(long long)data.real()) == data.real();
 
 			return real_int && !data.imag();
 		}

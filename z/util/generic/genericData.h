@@ -10,10 +10,10 @@ namespace z
 			virtual ~genericData() {}
 
 			virtual const bool boolean() const = 0;
-			virtual const Int integer() const = 0;
-			virtual const Float floating() const = 0;
-			virtual const std::complex<Float> complex() const = 0;
-			virtual const core::string<Char> string() const = 0;
+			virtual const long long integer() const = 0;
+			virtual const double floating() const = 0;
+			virtual const std::complex<double> complex() const = 0;
+			virtual const core::string<utf32> string() const = 0;
 			virtual void* pointer() const = 0;
 
 			virtual bool isArithmetic() const = 0;

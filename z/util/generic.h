@@ -44,9 +44,9 @@ namespace z
 			generic(generic&&);
 
 			generic(const core::array<generic>&);
-			generic(const core::string<Char>&);
-			generic(const std::complex<Float>&);
-			generic(Float);
+			generic(const core::string<utf32>&);
+			generic(const std::complex<double>&);
+			generic(double);
 			generic(void*);
 
 			template< typename T, //numeric type
@@ -60,10 +60,10 @@ namespace z
 
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -112,17 +112,17 @@ namespace z
 			arrayData = input;
 		}
 
-		generic::generic(const core::string<Char>& input)
+		generic::generic(const core::string<utf32>& input)
 		{
 			data = new genericDataString(input);
 		}
 
-		generic::generic(const std::complex<Float>& input)
+		generic::generic(const std::complex<double>& input)
 		{
 			data = new genericDataComplex(input);
 		}
 
-		generic::generic(Float input)
+		generic::generic(double input)
 		{
 			data = new genericDataFloat(input);
 		}
@@ -151,19 +151,19 @@ namespace z
 
 			if (data->isIntegral())
 			{
-				Int val = data->integer();
+				long long val = data->integer();
 				dump();
 				data = new genericDataInt(val);
 			}
 			else if (data->isFloating())
 			{
-				Float val = data->floating();
+				double val = data->floating();
 				dump();
 				data = new genericDataFloat(val);
 			}
 			else if (data->isComplex())
 			{
-				std::complex<Float> val = data->complex();
+				std::complex<double> val = data->complex();
 				dump();
 				data = new genericDataComplex(val);
 			}
@@ -232,7 +232,7 @@ namespace z
 				return (bool)arrayData.length();
 		}
 
-		const Int generic::integer() const
+		const long long generic::integer() const
 		{
 			if (data)
 				return data->integer();
@@ -240,7 +240,7 @@ namespace z
 				return 0;
 		}
 
-		const Float generic::floating() const
+		const double generic::floating() const
 		{
 			if (data)
 				return data->floating();
@@ -248,12 +248,12 @@ namespace z
 				return 0;
 		}
 
-		const std::complex<Float> generic::complex() const
+		const std::complex<double> generic::complex() const
 		{
 			if (data)
 				return data->complex();
 			else
-				return std::complex<Float>(0,0);
+				return std::complex<double>(0,0);
 		}
 
 		void* generic::pointer() const
@@ -264,15 +264,15 @@ namespace z
 				return NULL;
 		}
 
-		const core::string<Char> generic::string() const
+		const core::string<utf32> generic::string() const
 		{
 			if (data)
 				return data->string();
 			else
 			{
-				core::string<Char> result = "{";
+				core::string<utf32> result = "{";
 
-				for (Int i=0; i<arrayData.length(); i++)
+				for (long long i=0; i<arrayData.length(); i++)
 				{
 					if (i) result += ",";
 					result += arrayData[i].string();

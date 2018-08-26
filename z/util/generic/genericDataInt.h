@@ -7,16 +7,16 @@ namespace z
 		class genericDataInt : public genericData
 		{
 		private:
-			Int data;
+			long long data;
 
 		public:
-			genericDataInt(Int input) : data(input) {}
+			genericDataInt(long long input) : data(input) {}
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -36,24 +36,24 @@ namespace z
 			return (bool)data;
 		}
 
-		const Int genericDataInt::integer() const
+		const long long genericDataInt::integer() const
 		{
 			return data;
 		}
 
-		const Float genericDataInt::floating() const
+		const double genericDataInt::floating() const
 		{
-			return (Float)data;
+			return (double)data;
 		}
 
-		const std::complex<Float> genericDataInt::complex() const
+		const std::complex<double> genericDataInt::complex() const
 		{
-			return std::complex<Float>(data,0);
+			return std::complex<double>(data,0);
 		}
 
-		const core::string<Char> genericDataInt::string() const
+		const core::string<utf32> genericDataInt::string() const
 		{
-			return core::string<Char>(data);
+			return core::string<utf32>(data);
 		}
 
 		void* genericDataInt::pointer() const

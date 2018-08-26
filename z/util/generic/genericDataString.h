@@ -7,16 +7,16 @@ namespace z
 		class genericDataString : public genericData
 		{
 		private:
-			core::string<Char> data;
+			core::string<utf32> data;
 
 		public:
-			genericDataString(const core::string<Char>& input = core::string<Char>()) : data(input) {}
+			genericDataString(const core::string<utf32>& input = core::string<utf32>()) : data(input) {}
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -38,22 +38,22 @@ namespace z
 			return (val.real() || val.imag());
 		}
 
-		const Int genericDataString::integer() const
+		const long long genericDataString::integer() const
 		{
 			return data.integer();
 		}
 
-		const Float genericDataString::floating() const
+		const double genericDataString::floating() const
 		{
 			return data.value();
 		}
 
-		const std::complex<Float> genericDataString::complex() const
+		const std::complex<double> genericDataString::complex() const
 		{
 			return data.complexValue();
 		}
 
-		const core::string<Char> genericDataString::string() const
+		const core::string<utf32> genericDataString::string() const
 		{
 			return data;
 		}

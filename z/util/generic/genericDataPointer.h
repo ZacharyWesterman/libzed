@@ -13,10 +13,10 @@ namespace z
 			genericDataPointer(void* input) : data(input) {}
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -36,24 +36,24 @@ namespace z
 			return (bool)data;
 		}
 
-		const Int genericDataPointer::integer() const
+		const long long genericDataPointer::integer() const
 		{
 			return 0;
 		}
 
-		const Float genericDataPointer::floating() const
+		const double genericDataPointer::floating() const
 		{
 			return 0;
 		}
 
-		const std::complex<Float> genericDataPointer::complex() const
+		const std::complex<double> genericDataPointer::complex() const
 		{
-			return std::complex<Float>(0,0);
+			return std::complex<double>(0,0);
 		}
 
-		const core::string<Char> genericDataPointer::string() const
+		const core::string<utf32> genericDataPointer::string() const
 		{
-			return core::string<Char>(data);
+			return core::string<utf32>(data);
 		}
 
 		void* genericDataPointer::pointer() const

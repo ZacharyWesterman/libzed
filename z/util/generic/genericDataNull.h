@@ -10,10 +10,10 @@ namespace z
 			genericDataNull() {}
 
 			const bool boolean() const;
-			const Int integer() const;
-			const Float floating() const;
-			const std::complex<Float> complex() const;
-			const core::string<Char> string() const;
+			const long long integer() const;
+			const double floating() const;
+			const std::complex<double> complex() const;
+			const core::string<utf32> string() const;
 			void* pointer() const;
 
 			bool isArithmetic() const;
@@ -33,24 +33,24 @@ namespace z
 			return false;
 		}
 
-		const Int genericDataNull::integer() const
+		const long long genericDataNull::integer() const
 		{
 			return 0;
 		}
 
-		const Float genericDataNull::floating() const
+		const double genericDataNull::floating() const
 		{
 			return 0;
 		}
 
-		const std::complex<Float> genericDataNull::complex() const
+		const std::complex<double> genericDataNull::complex() const
 		{
-			return std::complex<Float>(0,0);
+			return std::complex<double>(0,0);
 		}
 
-		const core::string<Char> genericDataNull::string() const
+		const core::string<utf32> genericDataNull::string() const
 		{
-			return core::string<Char>();
+			return core::string<utf32>();
 		}
 
 		void* genericDataNull::pointer() const
