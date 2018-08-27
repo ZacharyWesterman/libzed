@@ -1,44 +1,51 @@
-CFLAGS = -I"../zLibraries" -std=c++11 -g -Wall -fexceptions
-LFLAGS =
-
-SRCS = main.cpp $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp)
-
+SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
-.PHONY: all
-all: driver
+VERSION_MAJOR = 1
+VERSION_MINOR = 0
+VERSION_RELEASE = 0
 
-driver: $(OBJS)
-	g++ $(LFLAGS) -o driver $^
+INCLUDE = -I"../zLibraries"
+CCFLAGS = $(INCLUDE) -std=c++11 -g -Wall -fexceptions -O4
+CFLAGS = $(CCFLAGS) -fPIC
+LFLAGS = -ldl -s
+
+DRIVER_FLAGS = -L. -lzed -Wl,-rpath=.
+
+STATIC_LIB = zed.a
+SHARED_LIB = libzed.so
+
+CC = g++
+LN = g++
+
+default: shared
+
+all: shared static driver
+
+driver: main.o
+	$(LN) $(DRIVER_FLAGS) -o $@ $^
+
+shared: $(SHARED_LIB)
+static: $(STATIC_LIB)
+
+$(STATIC_LIB): $(OBJS)
+	ar -cvq $@ $^
+
+$(SHARED_LIB): $(OBJS)
+	$(LN) $(LFLAGS) -shared -o $@ $^
 
 main.o: main.cpp
-	g++ $(CFLAGS) -o $@ -c $^
+	$(CC) $(CCFLAGS) -o $@ -c $^
 
 %.o: %.cpp %.h
-	g++ $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-
-.PHONY: clean
 clean:
-	rm -f $(OBJS) driver
+	rm -f $(OBJS) $(STATIC_LIB) driver main.o *.so
 
-.PHONY: clear
 clear:
-	rm -f $(OBJS)
+	rm -f $(OBJS) main.o
 
-.PHONY: rebuild
 rebuild: clean all
 
-# Below this is for comipling shared libraries
-
-
-#all: lib exe
-
-#lib:
-#	g++ -shared -fPIC -o libtest.so dynamicLib.cpp
-
-#exe:
-#	g++ -o loadLib loadLib.cpp -ldl
-
-#clean:
-#	rm -f loadLib libtest.so.1.0 dynamicLib.o libtest.so
+.PHONY: rebuild clean clear all shared install uninstall driver
