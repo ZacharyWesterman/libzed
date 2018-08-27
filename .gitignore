@@ -1,7 +1,3 @@
 *.o
-
 Doxygen/
-
-bin/Debug/
-
 driver

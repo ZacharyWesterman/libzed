@@ -3,6 +3,7 @@
 #include <vector>
 #include "stream.h"
 #include "sizable.h"
+#include "serializable.h"
 
 namespace z
 {
@@ -24,7 +25,7 @@ namespace z
 		 * \see sortedRefArray
 		 */
 		template <typename T>
-		class array : public sizable
+		class array : public sizable, public serializable
 		{
 		protected:
 			///The data in the array.
@@ -71,14 +72,9 @@ namespace z
 
 			array subset(size_t, int) const;
 
-			inline size_t size() const;
+			size_t size() const;
 
-			/**
-			 * \brief Get the length of the array.
-			 *
-			 * \return The number of objects in the array.
-			 */
-			inline size_t length() const {return size();}
+			size_t length() const;
 
 			inline T& at(size_t);
 			inline const T& at(size_t) const;
@@ -98,6 +94,9 @@ namespace z
 
 
 			bool isValid(size_t position) const;
+
+			void serialIn(inputStream&);
+			void serialOut(outputStream&) const;
 		};
 
 
@@ -417,10 +416,28 @@ namespace z
 		/**
 		 * \brief Get the size of the array.
 		 *
+		 * \return The (approximate) number of bytes the array consumes.
+		 */
+		template <typename T>
+		size_t array<T>::size() const
+		{
+			size_t bytes = 0;
+			for (size_t i=0; i<array_data.size(); i++)
+			{
+				size_t objBytes;
+				z::core::size(array_data[i], objBytes);
+				bytes += objBytes;
+			}
+			return bytes;
+		}
+
+		/**
+		 * \brief Get the length of the array.
+		 *
 		 * \return The number of objects in the array.
 		 */
 		template <typename T>
-		inline size_t array<T>::size() const
+		size_t array<T>::length() const
 		{
 			return array_data.size();
 		}
@@ -641,5 +658,32 @@ namespace z
 		{
 			return (index < array_data.size());
 		}
+
+		template <typename T>
+		void array<T>::serialIn(inputStream& stream)
+		{
+			size_t count = 0;
+			z::core::serialIn(count, stream);
+
+			for (size_t i=0; i<count; i++)
+			{
+				T object;
+				z::core::serialIn(object, stream);
+				array_data.push_back(object);
+			}
+		}
+
+		template <typename T>
+		void array<T>::serialOut(outputStream& stream) const
+		{
+			size_t count = array_data.size();
+			z::core::serialOut(count, stream);
+
+			for (size_t i=0; i<count; i++)
+			{
+				z::core::serialOut(array_data[i], stream);
+			}
+		}
+
 	}
 }

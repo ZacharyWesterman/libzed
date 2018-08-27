@@ -2,63 +2,31 @@
 
 #include <type_traits>
 #include <complex>
-#include <climits>
-#include <cstdint>
-#include <cstddef>
 
-#include "charFunctions.h"
 #include <z/encoding.h>
 #include "serializable.h"
 #include "sizable.h"
-
-#ifndef Z_STR_INT_BUFSIZE
-	#define Z_STR_INT_BUFSIZE 64
-#endif
-
-#ifndef Z_STR_FLOAT_BUFSIZE
-	#define Z_STR_FLOAT_BUFSIZE 64
-#endif
-
-#ifndef Z_STR_EXP_BUFSIZE
-	#define Z_STR_EXP_BUFSIZE 10
-#endif
-
-#ifndef Z_STR_FLOAT_PRECISION
-	#define Z_STR_FLOAT_PRECISION 6
-#endif
-
-#ifndef Z_STR_POINTER_FORCE
-	#define Z_STR_POINTER_FORCE true
-#endif
-
-#ifndef Z_STR_POINTER_CHARS
-	#define Z_STR_POINTER_CHARS 8
-#endif
-
-
-static size_t integralBuf(unsigned long integral, int base, uint8_t* buf);
-static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf);
 
 namespace z
 {
 	namespace core
 	{
 		/**
-         * \brief A template class for character strings.
-         *
-         * This class focuses on how characters are encoded rather than character size.
+		 * \brief A template class for character strings.
+		 *
+		 * This class focuses on how characters are encoded rather than character size.
 		 * Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.
 		 * When characters are input or output, they are converted to or from their
 		 * encoding scheme to a single UTF32 character. Thus, the "default" character
 		 * type is `uint32_t`.
-         * <br/><br/>
+		 * <br/><br/>
 		 * Allocated memory is increased as needed with approximate 1.5x growth, and
 		 * is not decreased on subsequent data changes, except in the case where
 		 * data is copied over to a different string.
 		 * <br/><br/>
 		 * <B>RE-ENTRANCE:</B><br/>
 		 * Simultaneous accesses to the same object can cause data races.
-         */
+		 */
 		template <encoding E>
 		class string : public serializable, public sizable
 		{
@@ -75,6 +43,11 @@ namespace z
 			void initChar(uint32_t, size_t);
 			void increase(size_t); //increase number of data bytes up to the given amount
 			constexpr size_t charSize() const;
+
+			void initInt(long long, unsigned int, unsigned int);
+			void initFloat(double, unsigned int, unsigned int, unsigned int);
+			void initPointer(void*);
+			void initComplex(const std::complex<double>&, unsigned int, unsigned int);
 
 		public:
 			///Default string constructor
@@ -146,7 +119,10 @@ namespace z
 			 * no character padding is applied.
 			 */
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			string(INT value, int base = 10, int padSize = 0);
+			string(INT value, unsigned int base = 10, unsigned int padSize = 0)
+			{
+				this->initInt((long long)value, base, padSize);
+			}
 
 			/**
 			 * \brief Construct from a pointer.
@@ -159,7 +135,10 @@ namespace z
 			 * `Z_STR_POINTER_CHARS` characters (default is 8).
 			 */
 			template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value,PTR>::type>
-			string(PTR pointer);
+			string(PTR pointer)
+			{
+				this->initPointer((void*)pointer);
+			}
 
 			/**
 			 * \brief Construct from floating-point.
@@ -179,7 +158,11 @@ namespace z
 			 * otherwise up to `Z_STR_FLOAT_PRECISION` digits will show
 			 * (default is 6).
 			 */
-			string(double value, int base = 10, int precision = 0, int padSize = 0);
+			template <typename FLT, typename = typename std::enable_if<std::is_floating_point<FLT>::value,FLT>::type>
+			string(FLT value, unsigned int base = 10, unsigned int precision = 0, unsigned int padSize = 0)
+			{
+				this->initFloat((double)value, base, precision, padSize);
+			}
 
 			/**
 			 * \brief Construct from complex number.
@@ -196,7 +179,11 @@ namespace z
 			 * otherwise up to `Z_STR_FLOAT_PRECISION` digits will show
 			 * (default is 6).
 			 */
-			string(const std::complex<double>& value, int base = 10, int precision = 0);
+			template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
+			string(const std::complex<T>& value, unsigned int base = 10, unsigned int precision = 0)
+			{
+				this->initComplex((std::complex<double>)value, base, precision);
+			}
 
 			/**
 			 * \brief Construct from an ASCII string.
@@ -239,10 +226,20 @@ namespace z
 			string(const string<utf32>& other);
 
 			/// Lvalue copy-constructor
-			string(string&&);
+			string(string&& other)
+			{
+				data = other.data;
+				data_len = other.data_len;
+				character_ct = other.character_ct;
+
+				other.data = 0;
+			}
 
 			///Destructor
-			~string();
+			~string()
+			{
+				if (data) delete[] data;
+			}
 
 			/**
 			 * \brief Get the character at the given index.
@@ -340,7 +337,10 @@ namespace z
 			 *
 			 * \see encoding.h
 			 */
-			constexpr encoding format() const;
+			constexpr encoding format() const
+			{
+				return E;
+			}
 
 			/**
 			 * \brief Convert this string to an integer.
@@ -401,7 +401,10 @@ namespace z
 			 * the \b beginning of the string. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int find(const string& other, int occurrence = 1) const;
+			int find(const string& other, int occurrence = 1) const
+			{
+				return this->findAfter(other,0,occurrence);
+			}
 
 			/**
 			 * \brief Reverse-find a specific occurrence of a sub-string.
@@ -416,7 +419,10 @@ namespace z
 			 * the \b end of the string. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findLast(const string& other, int occurrence = 1) const;
+			int findLast(const string& other, int occurrence = 1) const
+			{
+				return this->findBefore(other, this->character_ct, occurrence);
+			}
 
 			/**
 			 * \brief Find a specific occurrence of a sub-string.
@@ -480,7 +486,10 @@ namespace z
 			 * \return True if this string begins with the given sub-string.
 			 * False otherwise.
 			 */
-			bool beginsWith(const string& other) const;
+			bool beginsWith(const string& other) const
+			{
+				return this->foundAt(other, 0);
+			}
 
 			/**
 			 * \brief Check if the string ends with a given sub-string.
@@ -490,7 +499,10 @@ namespace z
 			 * \return True if this string ends with the given sub-string.
 			 * False otherwise.
 			 */
-			bool endsWith(const string& other) const;
+			bool endsWith(const string& other) const
+			{
+				return this->foundEndAt(other, character_ct-1);
+			}
 
 			/**
 			 * \brief Check if this string can convert to an integer.
@@ -565,7 +577,10 @@ namespace z
 			 *
 			 * \see operator+=()
 			 */
-			const string& append(const string& other);
+			const string& append(const string& other)
+			{
+				return operator+=(other);
+			}
 
 			/**
 			 * \brief Insert another string into this one.
@@ -679,7 +694,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			const string& unPadLeft(const string& other);
+			const string& trimLeft(const string& other);
 
 			/**
 			 * \brief Remove padding from the right side of this string.
@@ -691,7 +706,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			const string& unPadRight(const string& other);
+			const string& trimRight(const string& other);
 
 			/**
 			 * \brief Remove padding from the both sides of this string.
@@ -703,7 +718,11 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			const string& unPad(const string& other);
+			const string& trim(const string& other)
+			{
+				this->trimLeft(other);
+				return this->trimRight(other);
+			}
 
 			/**
 			 * \brief Remove all sequential duplicates from this string.
@@ -789,7 +808,10 @@ namespace z
 			 *
 			 * \return True if the strings do not exactly match. False otherwise.
 			 */
-			bool operator!=(const string& other) const;
+			bool operator!=(const string& other) const
+			{
+				return !operator==(other);
+			}
 
 			/**
 			 * \brief Greater-than comparison.
@@ -807,7 +829,10 @@ namespace z
 			 *
 			 * \return True if this string does not come before the given string alphabetically. False otherwise.
 			 */
-			bool operator>=(const string& other) const;
+			bool operator>=(const string& other) const
+			{
+				return !operator<(other);
+			}
 
 			/**
 			 * \brief Less-than comparison.
@@ -825,7 +850,10 @@ namespace z
 			 *
 			 * \return True if this string does not come after the given string alphabetically. False otherwise.
 			 */
-			bool operator<=(const string& other) const;
+			bool operator<=(const string& other) const
+			{
+				return !operator>(other);
+			}
 
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
@@ -871,66 +899,5 @@ namespace z
 			void writeln(outputStream& stream) const;
 		};
 
-		#include "string/default.h"
-		#include "string/utf32.h"
-		#include "string/utf16.h"
-		#include "string/ascii.h"
-		#include "string/utf8.h"
-	}
-}
-
-
-static size_t integralBuf(unsigned long integral, int base, uint8_t* buf)
-{
-	if (integral)
-	{
-		size_t length = 0;
-
-		while (integral)
-		{
-			buf[length] = z::core::numeral(integral%base);
-			integral /= base;
-			length++;
-		}
-
-		return length;
-	}
-	else
-	{
-		buf[0] = '0';
-		return 1;
-	}
-}
-
-static size_t fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
-{
-	if (fractional)
-	{
-		fractional -= (double)(long)fractional;
-		// return 0;
-		size_t length = 0;
-		double mult = base;
-		int i = 0;
-
-		bool cont = true;
-		while ((i < precision) && cont)
-		{
-			fractional *= mult;
-
-			uint8_t chr = z::core::numeral((int)fractional);
-			fractional -= (double)(long)fractional;
-
-			buf[i] = chr;
-
-			i++;
-			if (chr != '0') length = i;
-			if (!fractional && !force) cont = false;
-		}
-
-		return length;
-	}
-	else
-	{
-		return 0;
 	}
 }
