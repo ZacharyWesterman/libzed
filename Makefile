@@ -5,7 +5,7 @@ VERSION_MAJOR = 1
 VERSION_MINOR = 0
 VERSION_RELEASE = 0
 
-INCLUDE = -I"../zLibraries"
+INCLUDE = -I"../libzed"
 CCFLAGS = $(INCLUDE) -std=c++11 -g -Wall -fexceptions -O4
 CFLAGS = $(CCFLAGS) -fPIC
 LFLAGS = -ldl -s
