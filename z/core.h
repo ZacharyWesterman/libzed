@@ -1,3 +1,4 @@
+#pragma once
 /**
  * \file z/core.h
  * \namespace z::core
@@ -8,9 +9,6 @@
  * It can be used by itself, however, as it does not
  * require any libraries besides STL.
 **/
-
-
-#pragma once
 
 ///Strings
 #include "core/string.h"
