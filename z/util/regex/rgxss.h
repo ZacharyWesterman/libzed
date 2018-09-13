@@ -1,6 +1,5 @@
 #pragma once
 
-// #include <type_traits>
 #include <cstdint>
 
 namespace z
@@ -17,15 +16,50 @@ namespace z
 			uint32_t rgxSym;
 
 		public:
+
+			/**
+			 * \brief ID and character constructor.
+			 *
+			 * \param regexID The ID of this symbol.
+			 * \param regexSymbol An additional character associated with this symbol.
+			 */
 			rgxss(const uint8_t regexID, const uint32_t regexSymbol);
+
+			/**
+			 * \brief Constructor from ID.
+			 *
+			 * \param regexID The ID of this symbol.
+			 */
 			rgxss(const uint8_t regexID);
 
+			/**
+			 * \brief Get this symbol's character.
+			 * \return The character associated with this symbol.
+			 */
 			const uint32_t symbol() const;
+
+			/**
+			 * \brief Get this symbol's ID.
+			 * \return The ID of this symbol.
+			 */
 			const uint8_t id() const;
 
+			/**
+			 * \brief Equality operator.
+			 *
+			 * Provided to allow searching in core::array.
+			 *
+			 * \param other Symbol to compare against.
+			 * \return True if the symbols are equivalent, false otherwise.
+			 */
 			bool operator==(const rgxss& other) const;
-			// bool operator>(const rgxss& other) {return (rgxID > other.rgxID);}
-			// bool operator<(const rgxss& other) {return (rgxID < other.rgxID);}
+
+			/**
+			 * \brief Assignment operator.
+			 *
+			 * \param other Symbol to assign as.
+			 * \return A reference to this symbol after assignment.
+			 */
 			const rgxss& operator=(const rgxss& other);
 		};
 	}
