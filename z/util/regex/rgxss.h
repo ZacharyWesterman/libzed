@@ -7,6 +7,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Regex pattern scan symbol
+		 */
 		class rgxss
 		{
 		private:

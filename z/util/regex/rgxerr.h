@@ -4,6 +4,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Regex error flags
+		 */
 		enum rgxerr
 		{
 			RGX_NO_ERROR = 0,

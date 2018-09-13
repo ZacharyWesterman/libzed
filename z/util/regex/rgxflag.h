@@ -4,6 +4,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Supported regex pattern flags.
+		 */
 		enum rgxflag
 		{
 			RGX_FLAG_CASEI,

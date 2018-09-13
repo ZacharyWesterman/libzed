@@ -5,10 +5,7 @@
 
 #include "regex/rgxid.h"
 #include "regex/rgxerr.h"
-// #include "regex/rgxss.h"
-// #include "regex/rgxsesc.h"
 #include "regex/rgxscan.h"
-// #include "regex/rgxll.h"
 #include "regex/rgxlex.h"
 #include "regex/rgxmatch.h"
 
@@ -23,6 +20,8 @@ namespace z
 		 *
 		 * Note that because the class requires seeking locations in a stream,
 		 * it will not work with the system::console class.
+		 *
+		 * RE-ENTRANCE: Multiple accesses to the same object can cause data races.
 		 */
 		template <encoding E>
 		class regex
@@ -34,6 +33,7 @@ namespace z
 			core::string<E> matchedString;
 
 		public:
+
 			regex();
 			regex(const core::string<E>& pattern);
 
@@ -45,13 +45,19 @@ namespace z
 			core::string<E> errstr() const;
 
 			const core::string<E>& matched() const;
-
-			rgxll* getroot() const {return root;}
 		};
 
+		/**
+		 * \brief Empty constructor.
+		 */
 		template <encoding E>
 		regex<E>::regex() : root(0), parseError(RGX_NO_ERROR) {}
 
+		/**
+		 * \brief Constructor from string pattern
+		 *
+		 * \param pattern The regex pattern to match against.
+		 */
 		template <encoding E>
 		regex<E>::regex(const core::string<E>& pattern)
 		{
@@ -65,6 +71,34 @@ namespace z
 			}
 		}
 
+		/**
+		 * \brief Set the matching pattern
+		 *
+		 * \param pattern The pattern to match against.
+		 */
+		template <encoding E>
+		regex<E>::setPattern(const core::string<E>& pattern)
+		{
+			if (root) delete root;
+			root = 0;
+			core::array<rgxss> symbols; //intermediate
+
+			parseError = rgxscan(pattern, symbols);
+			if (!parseError)
+			{
+				parseError = rgxlex(symbols, root);
+			}
+		}
+
+		/**
+		 * \brief Attempt to match the pattern from a stream.
+		 *
+		 * Reads from a seekable input stream. Note that this does seek within a stream but it does not consume input.
+		 *
+		 * \param stream The input stream to read from.
+		 *
+		 * \return True if the stream is seekable and the pattern matched at the current stream index. False otherwise.
+		 */
 		template <encoding E>
 		bool regex<E>::match(core::inputStream& stream)
 		{
@@ -112,24 +146,44 @@ namespace z
 			return result;
 		}
 
+		/**
+		 * \brief Get whether the regex pattern is valid.
+		 *
+		 * \return True if the pattern is valid, false otherwise.
+		 */
 		template <encoding E>
 		bool regex<E>::good() const
 		{
 			return (bool)root;
 		}
 
+		/**
+		 * \brief Get whether the regex pattern is invalid.
+		 *
+		 * \return False if the pattern is valid, true otherwise.
+		 */
 		template <encoding E>
 		bool regex<E>::bad() const
 		{
 			return !root;
 		}
 
+		/**
+		 * \brief Get the regex pattern error, if any.
+		 *
+		 * \return The code for the pattern error. If no error, this will be RGX_NO_ERROR, which equals 0.
+		 */
 		template <encoding E>
 		rgxerr regex<E>::error() const
 		{
 			return parseError;
 		}
 
+		/**
+		 * \brief Get a string indicating the regex pattern error.
+		 *
+		 * \return A message describing the first encountered regex error.
+		 */
 		template <encoding E>
 		core::string<E> regex<E>::errstr() const
 		{
@@ -159,6 +213,11 @@ namespace z
 			return msgs[parseError];
 		}
 
+		/**
+		 * \brief Get the last string that the regex pattern matched.
+		 *
+		 * \return The last string of characters that this regex matched.
+		 */
 		template <encoding E>
 		const core::string<E>& regex<E>::matched() const
 		{

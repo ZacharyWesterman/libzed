@@ -9,6 +9,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Data structure for regex pattern matching.
+		 */
 		struct rgxmatcher
 		{
 			core::inputStream* stream;
