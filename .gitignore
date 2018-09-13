@@ -1,3 +1,4 @@
 *.o
 Doxygen/
 driver
+*.so
