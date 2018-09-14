@@ -1,3 +1,5 @@
+https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master
+
 To link against this library:
 (Assuming your program is called "driver")
 
