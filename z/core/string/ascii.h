@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		// void string<ascii>::increase(size_t goal)
+		void string<ascii>::increase(size_t goal)
 		{
 			if (data_len >= goal) return;
 
