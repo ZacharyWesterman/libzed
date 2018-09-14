@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>libzed: Main Page</title>
+<title>libzed: z::math::matrix&lt; N &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,9 +37,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -59,7 +59,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,11 +81,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>z</b></li><li class="navelem"><a class="el" href="namespacez_1_1math.html">math</a></li><li class="navelem"><a class="el" href="classz_1_1math_1_1matrix.html">matrix</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classz_1_1math_1_1matrix-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">libzed Documentation</div>  </div>
+<div class="title">z::math::matrix&lt; N &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A class for managing square matrices.  
+ <a href="classz_1_1math_1_1matrix.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="matrix_8h_source.html">matrix.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7074f9a277ba75f5893aa17610dbb9cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7074f9a277ba75f5893aa17610dbb9cb"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb">det</a> ()</td></tr>
+<tr class="memdesc:a7074f9a277ba75f5893aa17610dbb9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for calculating the determinant of NxN matrix. <br/></td></tr>
+<tr class="separator:a7074f9a277ba75f5893aa17610dbb9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3121015726f9119825a47ef491a11279"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><b>det</b> ()</td></tr>
+<tr class="separator:a3121015726f9119825a47ef491a11279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:af2ab2dd5faca9f718b03764db5ba6f6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2ab2dd5faca9f718b03764db5ba6f6d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1math_1_1matrix.html#af2ab2dd5faca9f718b03764db5ba6f6d">value</a> [N][N]</td></tr>
+<tr class="memdesc:af2ab2dd5faca9f718b03764db5ba6f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of all elements in the matrix. <br/></td></tr>
+<tr class="separator:af2ab2dd5faca9f718b03764db5ba6f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;unsigned int N&gt;<br/>
+class z::math::matrix&lt; N &gt;</h3>
+
+<p>A class for managing square matrices. </p>
+<p>Template class for square matrices of size at least 2x2. Includes methods for calculating determinants. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/travis/build/ZacharyWesterman/libzed/z/math/<a class="el" href="matrix_8h_source.html">matrix.h</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
