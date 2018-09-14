@@ -1,7 +1,7 @@
 var searchData=
 [
   ['makedir',['makeDir',['../namespacez_1_1file.html#a2a4a46d522e67653f27b2dc371afbee0',1,'z::file']]],
-  ['match',['match',['../classz_1_1util_1_1regex.html#a68c07089092882213f34f5bbecebccf1',1,'z::util::regex']]],
+  ['match',['match',['../classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302',1,'z::util::regex']]],
   ['matched',['matched',['../classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea',1,'z::util::regex']]],
   ['max',['max',['../classz_1_1util_1_1rgxll.html#ade92d919fb8da2f348afcdf3ecc7a2b1',1,'z::util::rgxll']]],
   ['micros',['micros',['../classz_1_1core_1_1timer.html#a76fa4d8534b790daf37ac86d1fe69ebd',1,'z::core::timer']]],

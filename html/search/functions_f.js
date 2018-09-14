@@ -12,6 +12,7 @@ var searchData=
   ['setgreedy',['setGreedy',['../classz_1_1util_1_1rgxll.html#af3b31ae309f7646375a548cf6feeedbe',1,'z::util::rgxll']]],
   ['setid',['setID',['../classz_1_1util_1_1rgxll.html#aa74f14200a93e6cd31b6328dd29f424d',1,'z::util::rgxll']]],
   ['setnochars',['setNoChars',['../classz_1_1util_1_1rgxll.html#a8d7f290fa8d46d6c1f3b625aa9c18d16',1,'z::util::rgxll']]],
+  ['setpattern',['setPattern',['../classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50',1,'z::util::regex']]],
   ['setrange',['setRange',['../classz_1_1util_1_1rgxll.html#a49e23113400c489aef095299985a4a9d',1,'z::util::rgxll']]],
   ['setsibling',['setSibling',['../classz_1_1util_1_1rgxll.html#abdcfdd4737475e185f4a7c23762f1836',1,'z::util::rgxll']]],
   ['settimeout',['setTimeOut',['../classz_1_1core_1_1timeout.html#a2d4ace55ad6e56c8dff57b374cd0abeb',1,'z::core::timeout']]],
