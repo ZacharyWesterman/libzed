@@ -35,9 +35,11 @@ namespace z
 		public:
 
 			regex();
-			regex(const core::string<E>& pattern);
+			regex(const core::string<E>&);
 
-			bool match(core::inputStream& stream);
+			void setPattern(const core::string<E>&);
+
+			bool match(core::inputStream&);
 
 			bool good() const;
 			bool bad() const;
@@ -77,7 +79,7 @@ namespace z
 		 * \param pattern The pattern to match against.
 		 */
 		template <encoding E>
-		regex<E>::setPattern(const core::string<E>& pattern)
+		void regex<E>::setPattern(const core::string<E>& pattern)
 		{
 			if (root) delete root;
 			root = 0;
