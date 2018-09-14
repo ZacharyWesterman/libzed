@@ -13,7 +13,8 @@ var indexSectionsWithContent =
   3: "cfmsu",
   4: "abcdefghilmnoprstuvwz~",
   5: "acefnpsv",
-  6: "r"
+  6: "r",
+  7: "ilrs"
 };
 
 var indexSectionNames =
@@ -24,7 +25,8 @@ var indexSectionNames =
   3: "files",
   4: "functions",
   5: "variables",
-  6: "enums"
+  6: "enums",
+  7: "pages"
 };
 
 function convertToId(search)

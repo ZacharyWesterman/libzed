@@ -17,5 +17,6 @@ var searchData=
   ['isnumeric',['isNumeric',['../namespacez_1_1core.html#a91507df7b280485658f03492563c7caf',1,'z::core']]],
   ['isupperalpha',['isUpperAlpha',['../namespacez_1_1core.html#a3f59796e26b3587c1f45875b2800559b',1,'z::core']]],
   ['isvalid',['isValid',['../classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7',1,'z::core::array']]],
-  ['iswhitespace',['isWhiteSpace',['../namespacez_1_1core.html#a8062dc909cc41ac06a60de79532ffb00',1,'z::core']]]
+  ['iswhitespace',['isWhiteSpace',['../namespacez_1_1core.html#a8062dc909cc41ac06a60de79532ffb00',1,'z::core']]],
+  ['introduction',['Introduction',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_mainpage.html',1,'']]]
 ];

@@ -11,5 +11,6 @@ var searchData=
   ['listdirs',['listDirs',['../namespacez_1_1file.html#a9b13e404756856b077c5eb16cdd3638c',1,'z::file']]],
   ['listfiles',['listFiles',['../namespacez_1_1file.html#a2085b733c0acf38e9553ade3c7a27bcc',1,'z::file']]],
   ['load',['load',['../classz_1_1file_1_1library.html#a9610a4eb7ab7e3dd9e166a6640b52c4b',1,'z::file::library']]],
-  ['lower',['lower',['../classz_1_1core_1_1string.html#aab4c1fb525e6d99631fa34594ce37856',1,'z::core::string']]]
+  ['lower',['lower',['../classz_1_1core_1_1string.html#aab4c1fb525e6d99631fa34594ce37856',1,'z::core::string']]],
+  ['license',['LICENSE',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_LICENSE.html',1,'']]]
 ];
