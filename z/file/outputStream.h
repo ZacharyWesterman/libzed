@@ -47,6 +47,19 @@ namespace z
 			void seek(size_t);
 			size_t tell();
 			size_t end();
+
+			/**
+			 * \brief Get the expected format of the stream.
+			 *
+			 * Analyzes a portion of the stream in an attempt to determine how
+			 * Characters on it are formatted. Note that this only gives an assumption of
+			 * the most likely encoding so it may not be correct in some cases.
+			 * Additionally results will be inaccurate if the stream contains
+			 * raw binary data.
+			 *
+			 * \return 0 (ascii), as the format of output streams should be determined beforehand.
+			 */
+			encoding format();
 		};
 	}
 }

@@ -150,5 +150,15 @@ namespace z
 		 * \return The number of characters in the UTF-8 sequence. Assumed to be valid UTF-8.
 		 */
 		int lenFromUTF8(uint8_t* c);
+
+		/**
+		 * \brief Get whether the characters are in valid UTF-8 format.
+		 *
+		 * \param c The character sequence. Assumed to have \b len characters.
+		 * \param len The characters in the sequence. Characters after the 4th will be ignored.
+		 *
+		 * \return True if the sequence is valid UTF-8 format, false otherwise.
+		 */
+		bool isUTF8(uint8_t* c, size_t len);
 	}
 }

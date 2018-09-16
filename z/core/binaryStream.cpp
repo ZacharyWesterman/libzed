@@ -1,4 +1,5 @@
 #include "binaryStream.h"
+#include "charFunctions.h"
 
 namespace z
 {
@@ -133,6 +134,38 @@ namespace z
 		size_t binaryStream::end()
 		{
 			return data.length();
+		}
+
+		encoding binaryStream::format()
+		{
+			if (this->empty()) return ascii;
+
+			size_t read_max = (32 > data.length()) ? data.length() : 32;
+
+			size_t max_nulls = 0;
+			size_t contig_nulls = 0;
+			bool can_utf8 = true;
+
+			for (size_t i=0; i<read_max; i++)
+			{
+				//ascii and utf8 won't have null chars
+				if (max_nulls || !data[i])
+				{
+					if (contig_nulls >= 2) return utf32;
+
+					contig_nulls++;
+					if (max_nulls < contig_nulls) max_nulls = contig_nulls;
+				}
+				else if (can_utf8)
+				{
+					if (!core::isUTF8(&data[i], data.length()-i))
+						can_utf8 = false;
+				}
+			}
+
+			if (max_nulls) return utf16;
+
+			return can_utf8 ? utf8 : ascii;
 		}
 	}
 }
