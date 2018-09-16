@@ -32,7 +32,15 @@ namespace z
 			 */
 			outputStream(const core::string<utf8>&, bool append = false);
 
-			void open(const core::string<utf8>&, bool append = false);
+			/**
+			 * \brief Reopen the stream to the given file.
+			 *
+			 * \param fileName a string containing the name of the file to read from.
+			 * \param append set to \b true to append to the file, \b false to overwrite.
+			 */
+			void open(const core::string<utf8>& fileName, bool append = false);
+
+			///Close the current file stream.
 			void close();
 
 			void put(uint8_t ch);

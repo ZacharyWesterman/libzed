@@ -29,9 +29,16 @@ namespace z
 			 *
 			 * \param fileName a string containing the name of the file to read from.
 			 */
-			inputStream(const core::string<utf8>&);
+			inputStream(const core::string<utf8>& fileName);
 
-			void open(const core::string<utf8>&);
+			/**
+			 * \brief Reopen a stream to the given file.
+			 *
+			 * \param fileName a string containing the name of the file to read from.
+			 */
+			void open(const core::string<utf8>& fileName);
+
+			///Close the current file stream.
 			void close();
 
 			uint8_t get();
