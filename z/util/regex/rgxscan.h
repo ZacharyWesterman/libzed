@@ -8,6 +8,14 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Scan a string, creating a list of regex symbols.
+		 *
+		 * \param pattern The string to scan.
+		 * \param output An array of regex symbols, returned by reference.
+		 *
+		 * \return The first error encountered in the pattern. If no error, gives RGX_NO_ERROR (0).
+		 */
 		rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output);
 	}
 }

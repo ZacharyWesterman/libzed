@@ -115,16 +115,16 @@ namespace z
 		 * a pointer to the symbol. Otherwise, if the symbol was not
 		 * found or the library hasn't been loaded, returns \b NULL.
 		 */
-		ref library::symbol(const core::string<utf8>& symbol_name)
+		void* library::symbol(const core::string<utf8>& symbol_name)
 		{
 #			ifdef _WIN32
 			if (lib_ptr)
-				return GetProcAddress(lib_ptr, (char*)symbol_name.cstring());
+				return (void*)GetProcAddress(lib_ptr, (char*)symbol_name.cstring());
 			else
 				return 0;
 #			elif __linux__
 			if(lib_ptr)
-				return dlsym(lib_ptr, (char*)symbol_name.cstring());
+				return (void*)dlsym(lib_ptr, (char*)symbol_name.cstring());
 			else
 				return 0;
 #			else
