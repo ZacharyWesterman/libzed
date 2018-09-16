@@ -31,6 +31,9 @@ namespace z
 			 */
 			inputStream(const core::string<utf8>&);
 
+			void open(const core::string<utf8>&);
+			void close();
+
 			uint8_t get();
 			uint32_t getChar(encoding format = ascii);
 

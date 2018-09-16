@@ -12,6 +12,20 @@ namespace z
 				filestream.open((const char*)fileName.cstring(), std::ios::out);
 		}
 
+		void outputStream::open(const core::string<utf8>& fileName, bool append)
+		{
+			filestream.close();
+			if (append)
+				filestream.open((const char*)fileName.cstring(), std::ios::app | std::ios::out);
+			else
+				filestream.open((const char*)fileName.cstring(), std::ios::out);
+		}
+
+		void outputStream::close()
+		{
+			filestream.close();
+		}
+
 		void outputStream::put(uint8_t ch)
 		{
 			filestream.put(ch);
