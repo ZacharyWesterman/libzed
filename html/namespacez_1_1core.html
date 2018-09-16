@@ -183,6 +183,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a17357856167c7cfdf50d6011c0ae30d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a17357856167c7cfdf50d6011c0ae30d1">lenFromUTF8</a> (uint8_t *c)</td></tr>
 <tr class="memdesc:a17357856167c7cfdf50d6011c0ae30d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character length of a UTF-8 sequence.  <a href="#a17357856167c7cfdf50d6011c0ae30d1">More...</a><br/></td></tr>
 <tr class="separator:a17357856167c7cfdf50d6011c0ae30d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8839d32f94cee77147fe8ec39ecd8e96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a8839d32f94cee77147fe8ec39ecd8e96">isUTF8</a> (uint8_t *c, size_t len)</td></tr>
+<tr class="memdesc:a8839d32f94cee77147fe8ec39ecd8e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether the characters are in valid UTF-8 format.  <a href="#a8839d32f94cee77147fe8ec39ecd8e96">More...</a><br/></td></tr>
+<tr class="separator:a8839d32f94cee77147fe8ec39ecd8e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt; std::is_base_of<br class="typebreak"/>
@@ -402,6 +405,42 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the character is uppercase. False otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8839d32f94cee77147fe8ec39ecd8e96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::core::isUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get whether the characters are in valid UTF-8 format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>The character sequence. Assumed to have <b>len</b> characters. </td></tr>
+    <tr><td class="paramname">len</td><td>The characters in the sequence. Characters after the 4th will be ignored.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the sequence is valid UTF-8 format, false otherwise. </dd></dl>
 
 </div>
 </div>

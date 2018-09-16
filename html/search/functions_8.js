@@ -13,6 +13,7 @@ var searchData=
   ['isloweralpha',['isLowerAlpha',['../namespacez_1_1core.html#a8c13665f8a14c6d5c3fc24dcad779a38',1,'z::core']]],
   ['isnumeric',['isNumeric',['../namespacez_1_1core.html#a91507df7b280485658f03492563c7caf',1,'z::core']]],
   ['isupperalpha',['isUpperAlpha',['../namespacez_1_1core.html#a3f59796e26b3587c1f45875b2800559b',1,'z::core']]],
+  ['isutf8',['isUTF8',['../namespacez_1_1core.html#a8839d32f94cee77147fe8ec39ecd8e96',1,'z::core']]],
   ['isvalid',['isValid',['../classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7',1,'z::core::array']]],
   ['iswhitespace',['isWhiteSpace',['../namespacez_1_1core.html#a8062dc909cc41ac06a60de79532ffb00',1,'z::core']]]
 ];

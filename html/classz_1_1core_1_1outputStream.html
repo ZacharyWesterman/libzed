@@ -122,7 +122,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:ab8bdcd226d9f0ab4ecb9c0c589d26e1a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a> (uint8_t ch)=0</td></tr>
 <tr class="memdesc:ab8bdcd226d9f0ab4ecb9c0c589d26e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">More...</a><br/></td></tr>
 <tr class="separator:ab8bdcd226d9f0ab4ecb9c0c589d26e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e1986ba2a709677cfd685851373eed"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#ab3e1986ba2a709677cfd685851373eed">put</a> (uint8_t *str, size_t count, encoding format=ascii)=0</td></tr>
+<tr class="memitem:ab3e1986ba2a709677cfd685851373eed"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#ab3e1986ba2a709677cfd685851373eed">put</a> (uint8_t *str, size_t count, encoding <a class="el" href="classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49">format</a>=ascii)=0</td></tr>
 <tr class="memdesc:ab3e1986ba2a709677cfd685851373eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="#ab3e1986ba2a709677cfd685851373eed">More...</a><br/></td></tr>
 <tr class="separator:ab3e1986ba2a709677cfd685851373eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc99f0276681817c071c8a5c2162624"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a8dc99f0276681817c071c8a5c2162624">empty</a> ()=0</td></tr>
@@ -149,6 +149,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:ad75d2abda399b4f076e09e0d58407901"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#ad75d2abda399b4f076e09e0d58407901">end</a> ()=0</td></tr>
 <tr class="memdesc:ad75d2abda399b4f076e09e0d58407901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of the stream.  <a href="#ad75d2abda399b4f076e09e0d58407901">More...</a><br/></td></tr>
 <tr class="separator:ad75d2abda399b4f076e09e0d58407901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb08c3fe541ce38d5df428918f83a49"><td class="memItemLeft" align="right" valign="top">virtual encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49">format</a> ()=0</td></tr>
+<tr class="memdesc:a3eb08c3fe541ce38d5df428918f83a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#a3eb08c3fe541ce38d5df428918f83a49">More...</a><br/></td></tr>
+<tr class="separator:a3eb08c3fe541ce38d5df428918f83a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A template class for character output streams. </p>
@@ -267,6 +270,35 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>The end position of the character stream. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a87e3ba6437f10d4aa2fb98755d7b1a94">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1console.html#abd81cf6fd0da597a49df01d20584f0a1">z::system::console</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a844f1012b1469ecf5149d47ef7f3d4a9">z::core::binaryStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3eb08c3fe541ce38d5df428918f83a49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual encoding z::core::outputStream::format </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the expected format of the stream. </p>
+<p>Analyzes a portion of the stream in an attempt to determine how Characters on it are formatted. Note that this only gives an assumption of the most likely encoding so it may not be correct in some cases. Additionally results will be inaccurate if the stream contains raw binary data.</p>
+<dl class="section return"><dt>Returns</dt><dd>The determined encoding format of the stream. </dd></dl>
+
+<p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a469b4b0116ab980f20141cc434bec96e">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1console.html#a7f7329a6069edb7aed26cdf4617c6380">z::system::console</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
