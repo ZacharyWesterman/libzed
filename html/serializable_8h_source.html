@@ -94,127 +94,122 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;stream.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>z</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">namespace </span>core</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1serializable.html">   15</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classz_1_1core_1_1serializable.html">serializable</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">   19</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">~serializable</a>() {}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1serializable.html#a66821a8de1a3f4f336cc335cb3ab0b5a">serialIn</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>) = 0;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1serializable.html#a1b8dd7caf9959c59d8ea07702e1a491b">serialOut</a>(<a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::serializable, T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        serialIn(T&amp; <span class="keywordtype">object</span>, inputStream&amp; stream)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">object</span>.serialIn(stream);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::serializable, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        serialIn(T&amp; <span class="keywordtype">object</span>, inputStream&amp; stream)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">//dummy</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a8ec3a0ec2e13b46cd89ebb0d01f1030e">   62</a></span>&#160;        serialIn(T&amp; number, <a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; stream)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">bad</a>() || !stream.<a class="code" href="classz_1_1core_1_1inputStream.html#ada4e5143a0b5d6304166c82624e9ef95">binary</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>z</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">namespace </span>core</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1serializable.html">   17</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classz_1_1core_1_1serializable.html">serializable</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">   21</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">~serializable</a>() {}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1serializable.html#a66821a8de1a3f4f336cc335cb3ab0b5a">serialIn</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>) = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1serializable.html#a1b8dd7caf9959c59d8ea07702e1a491b">serialOut</a>(<a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        };</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::serializable, T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">   48</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a>(T&amp; <span class="keywordtype">object</span>, <a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordtype">object</span>.serialIn(stream);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::serializable, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#aff9d8ae4556e01c199964e38abc39e36">   61</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a>(T&amp; <span class="keywordtype">object</span>, <a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordtype">size_t</span> length = <span class="keyword">sizeof</span>(T);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            uint8_t* data = (uint8_t*)&amp;<span class="keywordtype">object</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            uint8_t chars = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">get</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            number = 0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;chars; i++)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                number &lt;&lt;= 8;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                number += stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">get</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::serializable, T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        serialOut(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, outputStream&amp; stream)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordtype">object</span>.serialOut(stream);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::serializable, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        serialOut(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, outputStream&amp; stream)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">//dummy</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;length; i++)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                data[i] = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">get</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                std::cout &lt;&lt; (int)data[i] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a8ec3a0ec2e13b46cd89ebb0d01f1030e">   86</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a>(T&amp; number, <a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">bad</a>() || !stream.<a class="code" href="classz_1_1core_1_1inputStream.html#ada4e5143a0b5d6304166c82624e9ef95">binary</a>()) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a314a8b54daea7da36daa047fc7f97ddd">  102</a></span>&#160;        serialOut(T number, <a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; stream)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab47701de85acc450920cf3c4dc746af4">bad</a>() || !stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab83f9b4731491bcebc4edec3599dea03">binary</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            uint8_t c[<span class="keyword">sizeof</span>(T)];</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            uint8_t chars = 0;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;<span class="keyword">sizeof</span>(T); i++)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">if</span> (number)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    chars++;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    c[i] = number &amp; 0xFF;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                    number &gt;&gt;= 8;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a>(chars);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;chars; i++)</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a>(c[i]);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// void serialIn(double&amp; number, inputStream&amp; stream)</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// {</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">//  if (stream.bad() || !stream.binary()) return;</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">//  uint8_t c[sizeof(double)];</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="comment">//  for (size_t i=0; i&lt;sizeof(double); i++)</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">//  {</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">//      c[i] = stream.get();</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="comment">//  }</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="comment">//  double* result = (double*)c;</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="comment">//  number = *result;</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">// }</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">// void serialOut(double number, outputStream&amp; stream)</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">// {</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="comment">//  if (stream.bad() || !stream.binary()) return;</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="comment">//  uint8_t* c = (uint8_t*)&amp;number;</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="comment">//  for (size_t i=0; i&lt;sizeof(double); i++)</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment">//  {</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="comment">//      stream.put(c[i]);</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="comment">//  }</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="comment">// }</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            uint8_t chars = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">get</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            number = 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;chars; i++)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                number &lt;&lt;= 8;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                number += stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">get</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::serializable, T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">  110</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">serialOut</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordtype">object</span>.serialOut(stream);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::serializable, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a27f0cebd2ce5747e6942d1438e84a490">  123</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">serialOut</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordtype">size_t</span> length = <span class="keyword">sizeof</span>(T);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            uint8_t* data = (uint8_t*)&amp;<span class="keywordtype">object</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;length; i++)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                std::cout &lt;&lt; (int)data[i] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a>(data[i]);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">typename</span> std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a314a8b54daea7da36daa047fc7f97ddd">  148</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">serialOut</a>(T number, <a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab47701de85acc450920cf3c4dc746af4">bad</a>() || !stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab83f9b4731491bcebc4edec3599dea03">binary</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            uint8_t c[<span class="keyword">sizeof</span>(T)];</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            uint8_t chars = 0;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;<span class="keyword">sizeof</span>(T); i++)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">if</span> (number)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    chars++;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    c[i] = number &amp; 0xFF;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    number &gt;&gt;= 8;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a>(chars);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;chars; i++)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                stream.<a class="code" href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">put</a>(c[i]);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 <div class="ttc" id="classz_1_1core_1_1outputStream_html_ab8bdcd226d9f0ab4ecb9c0c589d26e1a"><div class="ttname"><a href="classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a">z::core::outputStream::put</a></div><div class="ttdeci">virtual void put(uint8_t ch)=0</div><div class="ttdoc">Add a byte to the stream. </div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_a67fd27be1192be4894abbad5ba967241"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241">z::core::inputStream::get</a></div><div class="ttdeci">virtual uint8_t get()=0</div><div class="ttdoc">Get the next byte on the stream. </div></div>
-<div class="ttc" id="classz_1_1core_1_1serializable_html"><div class="ttname"><a href="classz_1_1core_1_1serializable.html">z::core::serializable</a></div><div class="ttdoc">An interface for reading and writing object binary data to streams. </div><div class="ttdef"><b>Definition:</b> serializable.h:15</div></div>
+<div class="ttc" id="classz_1_1core_1_1serializable_html"><div class="ttname"><a href="classz_1_1core_1_1serializable.html">z::core::serializable</a></div><div class="ttdoc">An interface for reading and writing object binary data to streams. </div><div class="ttdef"><b>Definition:</b> serializable.h:17</div></div>
 <div class="ttc" id="classz_1_1core_1_1outputStream_html_ab83f9b4731491bcebc4edec3599dea03"><div class="ttname"><a href="classz_1_1core_1_1outputStream.html#ab83f9b4731491bcebc4edec3599dea03">z::core::outputStream::binary</a></div><div class="ttdeci">virtual bool binary()=0</div><div class="ttdoc">Tell whether this stream supports any binary format. </div></div>
 <div class="ttc" id="classz_1_1core_1_1stream_html"><div class="ttname"><a href="classz_1_1core_1_1stream.html">z::core::stream</a></div><div class="ttdoc">A template class for character streams. </div><div class="ttdef"><b>Definition:</b> stream.h:228</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html">z::core::inputStream</a></div><div class="ttdoc">A template class for character input streams. </div><div class="ttdef"><b>Definition:</b> stream.h:22</div></div>
-<div class="ttc" id="classz_1_1core_1_1serializable_html_a531923d38bc223a5255223efd22ede98"><div class="ttname"><a href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">z::core::serializable::~serializable</a></div><div class="ttdeci">virtual ~serializable()</div><div class="ttdoc">Virtual destructor. </div><div class="ttdef"><b>Definition:</b> serializable.h:19</div></div>
+<div class="ttc" id="classz_1_1core_1_1serializable_html_a531923d38bc223a5255223efd22ede98"><div class="ttname"><a href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">z::core::serializable::~serializable</a></div><div class="ttdeci">virtual ~serializable()</div><div class="ttdoc">Virtual destructor. </div><div class="ttdef"><b>Definition:</b> serializable.h:21</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_a43d1a1edb8949f3f644ac7bbf667aedf"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">z::core::inputStream::bad</a></div><div class="ttdeci">virtual bool bad()=0</div><div class="ttdoc">Tell whether this is an invalid stream object. </div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_ada4e5143a0b5d6304166c82624e9ef95"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#ada4e5143a0b5d6304166c82624e9ef95">z::core::inputStream::binary</a></div><div class="ttdeci">virtual bool binary()=0</div><div class="ttdoc">Tell whether this stream supports any binary format. </div></div>
 <div class="ttc" id="classz_1_1core_1_1outputStream_html_ab47701de85acc450920cf3c4dc746af4"><div class="ttname"><a href="classz_1_1core_1_1outputStream.html#ab47701de85acc450920cf3c4dc746af4">z::core::outputStream::bad</a></div><div class="ttdeci">virtual bool bad()=0</div><div class="ttdoc">Tell whether this is an invalid stream object. </div></div>
+<div class="ttc" id="namespacez_1_1core_html_a7db138c141b66449f9b8b1b22fa7af16"><div class="ttname"><a href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">z::core::serialOut</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::serializable, T &gt;::value &gt;::type serialOut(const T &amp;object, outputStream &amp;stream)</div><div class="ttdoc">Write a serializable object as binary data to a stream. </div><div class="ttdef"><b>Definition:</b> serializable.h:110</div></div>
+<div class="ttc" id="namespacez_1_1core_html_afeeb64c7e9d461c49844c8c064638bf4"><div class="ttname"><a href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">z::core::serialIn</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::serializable, T &gt;::value &gt;::type serialIn(T &amp;object, inputStream &amp;stream)</div><div class="ttdoc">Read a serializable object as binary data from a stream. </div><div class="ttdef"><b>Definition:</b> serializable.h:48</div></div>
 <div class="ttc" id="classz_1_1core_1_1serializable_html_a1b8dd7caf9959c59d8ea07702e1a491b"><div class="ttname"><a href="classz_1_1core_1_1serializable.html#a1b8dd7caf9959c59d8ea07702e1a491b">z::core::serializable::serialOut</a></div><div class="ttdeci">virtual void serialOut(outputStream &amp;stream) const =0</div><div class="ttdoc">Write the object&#39;s binary data to a stream. </div></div>
 <div class="ttc" id="classz_1_1core_1_1outputStream_html"><div class="ttname"><a href="classz_1_1core_1_1outputStream.html">z::core::outputStream</a></div><div class="ttdoc">A template class for character output streams. </div><div class="ttdef"><b>Definition:</b> stream.h:123</div></div>
 <div class="ttc" id="classz_1_1core_1_1serializable_html_a66821a8de1a3f4f336cc335cb3ab0b5a"><div class="ttname"><a href="classz_1_1core_1_1serializable.html#a66821a8de1a3f4f336cc335cb3ab0b5a">z::core::serializable::serialIn</a></div><div class="ttdeci">virtual void serialIn(inputStream &amp;stream)=0</div><div class="ttdoc">Read the object&#39;s binary data from a stream. </div></div>

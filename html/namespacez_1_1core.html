@@ -183,20 +183,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a17357856167c7cfdf50d6011c0ae30d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a17357856167c7cfdf50d6011c0ae30d1">lenFromUTF8</a> (uint8_t *c)</td></tr>
 <tr class="memdesc:a17357856167c7cfdf50d6011c0ae30d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character length of a UTF-8 sequence.  <a href="#a17357856167c7cfdf50d6011c0ae30d1">More...</a><br/></td></tr>
 <tr class="separator:a17357856167c7cfdf50d6011c0ae30d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplParams" colspan="2"><a class="anchor" id="afeeb64c7e9d461c49844c8c064638bf4"></a>
-template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt; std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialIn</b> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:afeeb64c7e9d461c49844c8c064638bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a serializable object as binary data from a stream.  <a href="#afeeb64c7e9d461c49844c8c064638bf4">More...</a><br/></td></tr>
 <tr class="separator:afeeb64c7e9d461c49844c8c064638bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff9d8ae4556e01c199964e38abc39e36"><td class="memTemplParams" colspan="2"><a class="anchor" id="aff9d8ae4556e01c199964e38abc39e36"></a>
-template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aff9d8ae4556e01c199964e38abc39e36"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aff9d8ae4556e01c199964e38abc39e36"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt;!std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
 ::value &amp;&amp;!std::is_integral&lt; T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialIn</b> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#aff9d8ae4556e01c199964e38abc39e36">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:aff9d8ae4556e01c199964e38abc39e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a non-serializable object or datatype as binary data from a stream.  <a href="#aff9d8ae4556e01c199964e38abc39e36">More...</a><br/></td></tr>
 <tr class="separator:aff9d8ae4556e01c199964e38abc39e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
@@ -204,20 +204,20 @@ template&lt;typename T &gt; </td></tr>
 ::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a8ec3a0ec2e13b46cd89ebb0d01f1030e">serialIn</a> (T &amp;number, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
 <tr class="memdesc:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read an integer as binary data from a stream.  <a href="#a8ec3a0ec2e13b46cd89ebb0d01f1030e">More...</a><br/></td></tr>
 <tr class="separator:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7db138c141b66449f9b8b1b22fa7af16"><td class="memTemplParams" colspan="2"><a class="anchor" id="a7db138c141b66449f9b8b1b22fa7af16"></a>
-template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7db138c141b66449f9b8b1b22fa7af16"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a7db138c141b66449f9b8b1b22fa7af16"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt; std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialOut</b> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">serialOut</a> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:a7db138c141b66449f9b8b1b22fa7af16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a serializable object as binary data to a stream.  <a href="#a7db138c141b66449f9b8b1b22fa7af16">More...</a><br/></td></tr>
 <tr class="separator:a7db138c141b66449f9b8b1b22fa7af16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27f0cebd2ce5747e6942d1438e84a490"><td class="memTemplParams" colspan="2"><a class="anchor" id="a27f0cebd2ce5747e6942d1438e84a490"></a>
-template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a27f0cebd2ce5747e6942d1438e84a490"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a27f0cebd2ce5747e6942d1438e84a490"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt;!std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
 ::value &amp;&amp;!std::is_integral&lt; T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialOut</b> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a27f0cebd2ce5747e6942d1438e84a490">serialOut</a> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:a27f0cebd2ce5747e6942d1438e84a490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a non-serializable object or datatype as binary data to a stream.  <a href="#a27f0cebd2ce5747e6942d1438e84a490">More...</a><br/></td></tr>
 <tr class="separator:a27f0cebd2ce5747e6942d1438e84a490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a314a8b54daea7da36daa047fc7f97ddd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a314a8b54daea7da36daa047fc7f97ddd"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
@@ -532,6 +532,81 @@ template&lt;typename T &gt; </td></tr>
 
 </div>
 </div>
+<a class="anchor" id="afeeb64c7e9d461c49844c8c064638bf4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if&lt;std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value&gt;::type z::core::serialIn </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">inputStream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a serializable object as binary data from a stream. </p>
+<p>Calls the object's <a class="el" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4" title="Read a serializable object as binary data from a stream. ">serialIn()</a> member method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to read from the stream, returned by reference. </td></tr>
+    <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aff9d8ae4556e01c199964e38abc39e36"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type z::core::serialIn </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">inputStream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a non-serializable object or datatype as binary data from a stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to read from the stream, returned by reference. </td></tr>
+    <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8ec3a0ec2e13b46cd89ebb0d01f1030e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -564,6 +639,81 @@ template&lt;typename T &gt; </div>
   <table class="params">
     <tr><td class="paramname">number</td><td>The number to read from the stream, returned by reference. </td></tr>
     <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7db138c141b66449f9b8b1b22fa7af16"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if&lt;std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value&gt;::type z::core::serialOut </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">outputStream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a serializable object as binary data to a stream. </p>
+<p>Calls the object's <a class="el" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16" title="Write a serializable object as binary data to a stream. ">serialOut()</a> member method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to write to the stream. </td></tr>
+    <tr><td class="paramname">stream</td><td>The stream to write to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a27f0cebd2ce5747e6942d1438e84a490"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type z::core::serialOut </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">outputStream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a non-serializable object or datatype as binary data to a stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to write to the stream. </td></tr>
+    <tr><td class="paramname">stream</td><td>The stream to write to. </td></tr>
   </table>
   </dd>
 </dl>
