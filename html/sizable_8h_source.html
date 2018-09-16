@@ -103,24 +103,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code" href="classz_1_1core_1_1sizable.html#ac608fc50670d4616c956c7663e7d5714">size</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        };</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">inline</span> <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::sizable, T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        size(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <span class="keywordtype">size_t</span>&amp; bytes)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            bytes = <span class="keywordtype">object</span>.size();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">inline</span> <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::sizable, T&gt;::value&gt;::type</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        size(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <span class="keywordtype">size_t</span>&amp; bytes)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">inline</span> <span class="keyword">typename</span> std::enable_if&lt;std::is_base_of&lt;z::core::sizable, T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">   34</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">size</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <span class="keywordtype">size_t</span>&amp; bytes)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            bytes = <span class="keyword">sizeof</span>(object);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            bytes = <span class="keywordtype">object</span>.size();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">inline</span> <span class="keyword">typename</span> std::enable_if&lt;!std::is_base_of&lt;z::core::sizable, T&gt;::value&gt;::type</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a2abbcf5218be9ebd97d4f7d31eadc454">   46</a></span>&#160;        <a class="code" href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">size</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>, <span class="keywordtype">size_t</span>&amp; bytes)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            bytes = <span class="keyword">sizeof</span>(object);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="ttc" id="classz_1_1core_1_1sizable_html_a531d70e7355f2694ad3176c57312cd86"><div class="ttname"><a href="classz_1_1core_1_1sizable.html#a531d70e7355f2694ad3176c57312cd86">z::core::sizable::~sizable</a></div><div class="ttdeci">virtual ~sizable()</div><div class="ttdoc">Virtual destructor. </div><div class="ttdef"><b>Definition:</b> sizable.h:15</div></div>
 <div class="ttc" id="classz_1_1core_1_1sizable_html_ac608fc50670d4616c956c7663e7d5714"><div class="ttname"><a href="classz_1_1core_1_1sizable.html#ac608fc50670d4616c956c7663e7d5714">z::core::sizable::size</a></div><div class="ttdeci">virtual size_t size() const =0</div><div class="ttdoc">Get the size of the object in memory. </div></div>
 <div class="ttc" id="classz_1_1core_1_1sizable_html"><div class="ttname"><a href="classz_1_1core_1_1sizable.html">z::core::sizable</a></div><div class="ttdoc">An interface for getting an object&#39;s size. </div><div class="ttdef"><b>Definition:</b> sizable.h:11</div></div>
+<div class="ttc" id="namespacez_1_1core_html_a5b4b9a8dfc7a60b3c2142856d17a6d17"><div class="ttname"><a href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">z::core::size</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::sizable, T &gt;::value &gt;::type size(const T &amp;object, size_t &amp;bytes)</div><div class="ttdoc">Get the size of a sizable object. </div><div class="ttdef"><b>Definition:</b> sizable.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

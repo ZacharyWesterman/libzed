@@ -2,6 +2,7 @@ var searchData=
 [
   ['camel',['camel',['../classz_1_1core_1_1string.html#a6a130e7f8527bac3208ac8dbe8b57c19',1,'z::core::string']]],
   ['chars',['chars',['../classz_1_1core_1_1string.html#a34d4052c0c352352e49e020ded382eb5',1,'z::core::string']]],
+  ['charstooffset',['charsToOffset',['../structz_1_1util_1_1rgxmatcher.html#a11e8e8a809e3ba1ecb04840ac529f14a',1,'z::util::rgxmatcher']]],
   ['clear',['clear',['../classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692',1,'z::core::array']]],
   ['complex',['complex',['../classz_1_1core_1_1string.html#af8669c07cf59dc85ebbd27c3a21771a8',1,'z::core::string']]],
   ['copy',['copy',['../namespacez_1_1file.html#a27794a5ee96a7e36531314b6193e6018',1,'z::file']]],

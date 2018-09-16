@@ -360,7 +360,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;array_data.size(); i++)</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                <span class="keywordtype">size_t</span> objBytes;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                z::core::size(array_data[i], objBytes);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                <a class="code" href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">z::core::size</a>(array_data[i], objBytes);</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                bytes += objBytes;</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            }</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordflow">return</span> bytes;</div>
@@ -563,6 +563,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classz_1_1core_1_1array_html_ae437f528b8d1087366bd40fd0295eca3"><div class="ttname"><a href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">z::core::array::subset</a></div><div class="ttdeci">array subset(size_t, int) const </div><div class="ttdoc">Get a contiguous subset of the elements in the array. </div><div class="ttdef"><b>Definition:</b> array.h:611</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a6491cb489a4082f67ef6b448b9aa8e7c"><div class="ttname"><a href="classz_1_1core_1_1array.html#a6491cb489a4082f67ef6b448b9aa8e7c">z::core::array::at</a></div><div class="ttdeci">T &amp; at(size_t)</div><div class="ttdoc">Function to get the object at the given index. </div><div class="ttdef"><b>Definition:</b> array.h:455</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_af824aabbb51e2d7255c4d4c4f47f641d"><div class="ttname"><a href="classz_1_1core_1_1array.html#af824aabbb51e2d7255c4d4c4f47f641d">z::core::array::operator&gt;=</a></div><div class="ttdeci">bool operator&gt;=(const array &amp;other) const </div><div class="ttdoc">Array greater-than-or-equal operator. </div><div class="ttdef"><b>Definition:</b> array.h:252</div></div>
+<div class="ttc" id="namespacez_1_1core_html_a5b4b9a8dfc7a60b3c2142856d17a6d17"><div class="ttname"><a href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">z::core::size</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::sizable, T &gt;::value &gt;::type size(const T &amp;object, size_t &amp;bytes)</div><div class="ttdoc">Get the size of a sizable object. </div><div class="ttdef"><b>Definition:</b> sizable.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

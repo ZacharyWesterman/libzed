@@ -290,41 +290,11 @@ Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/file.h...
 Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/math.h...
 Generating docs for file /home/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:16: warning: unable to resolve reference to `Doxypages/examples/core/string.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
-/home/travis/build/ZacharyWesterman/libzed/z/core/sizable.h:27: warning: Member size(const T &object, size_t &bytes) (function) of namespace z::core is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/sizable.h:34: warning: Member size(const T &object, size_t &bytes) (function) of namespace z::core is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/file/library.h:9: warning: Member lib (typedef) of namespace z::file is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/file/library.h:10: warning: Member ref (typedef) of namespace z::file is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/file/inputStream.h:34: warning: Member open(const core::string< utf8 > &) (function) of class z::file::inputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/file/inputStream.h:35: warning: Member close() (function) of class z::file::inputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/file/outputStream.h:35: warning: Member open(const core::string< utf8 > &, bool append=false) (function) of class z::file::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/file/outputStream.h:36: warning: Member close() (function) of class z::file::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/math/matrix.h:61: warning: Member det() (function) of class z::math::matrix is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:13: warning: Member rgxmatchsuccess(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:19: warning: Member rgxmatchfail(rgxmatcher *matcher, size_t streamIndex) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:26: warning: Member rgxmatchonce(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:29: warning: Member rgxmatchmin(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:42: warning: Member rgxmatchnext(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:127: warning: Member rgxmatchorlist(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:159: warning: Member rgxmatchandlist(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:176: warning: Member rgxmatchsymbol(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:209: warning: Member rgxmatchanything(rgxmatcher *matcher) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:220: warning: Member rgxmatchword(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:230: warning: Member rgxmatchspace(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:240: warning: Member rgxmatchalpha(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:250: warning: Member rgxmatchdigit(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:260: warning: Member rgxmatchalnum(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:270: warning: Member rgxmatchbreak(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:296: warning: Member rgxmatchpunct(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:328: warning: Member rgxmatchlookahead(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:354: warning: Member rgxmatchlookbehind(rgxmatcher *matcher, bool negate) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatch.cpp:384: warning: Member rgxsetflag(rgxmatcher *matcher, bool state) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxscan.cpp:11: warning: Member rgxscan(const core::string< utf8 > &pattern, core::array< rgxss > &output) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxsesc.cpp:7: warning: Member rgxsesc(uint32_t ch) (function) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatcher.h:46: warning: Member setFlag(rgxflag flag, bool state) (function) of class z::util::rgxmatcher is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatcher.h:48: warning: Member getFlag(rgxflag flag) const  (function) of class z::util::rgxmatcher is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatcher.h:50: warning: Member pushFlags() (function) of class z::util::rgxmatcher is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatcher.h:52: warning: Member popFlags() (function) of class z::util::rgxmatcher is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxmatcher.h:54: warning: Member charsToOffset(size_t charCount) const  (function) of class z::util::rgxmatcher is not documented.
 /travis/build/ZacharyWesterman/libzed/z/system.h...
 Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/util.h...
 Generating page documentation...
@@ -379,5 +349,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 690/65536 hits=4435 misses=739
+lookup cache used 679/65536 hits=4414 misses=728
 finished...
