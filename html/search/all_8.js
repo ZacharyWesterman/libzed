@@ -5,7 +5,7 @@ var searchData=
   ['info',['info',['../classz_1_1file_1_1info.html#a1a603519cf7e614fa64e386e9a42bc45',1,'z::file::info']]],
   ['inputstream',['inputStream',['../classz_1_1core_1_1inputStream.html',1,'z::core']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html',1,'z::file']]],
-  ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#a1433609e31cb18012e220bdb80792027',1,'z::file::inputStream']]],
+  ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#af8a6fa319286e01893b1b8ba9c05b0c0',1,'z::file::inputStream']]],
   ['insert',['insert',['../classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aca681e97ec1f2142c36bc15a2d6deba4',1,'z::core::string::insert()']]],
   ['integer',['integer',['../classz_1_1core_1_1string.html#a14b2c3667a94126667653e8266b6577e',1,'z::core::string']]],
   ['isalpha',['isAlpha',['../namespacez_1_1core.html#a92a36496e468ae0ae8c2f668d12b85ae',1,'z::core']]],

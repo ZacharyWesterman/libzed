@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['open',['open',['../classz_1_1file_1_1inputStream.html#af7831622d2dbaecf159c95b8fb1ff2ee',1,'z::file::inputStream::open()'],['../classz_1_1file_1_1outputStream.html#a7f5775e1bf19daf35c9414e2ac2cd04c',1,'z::file::outputStream::open()']]],
   ['operator_21_3d',['operator!=',['../classz_1_1core_1_1string.html#a83d92960f8b55d2726607ae72d9d3e50',1,'z::core::string']]],
   ['operator_2b',['operator+',['../classz_1_1core_1_1string.html#aa47ffefe13f1ee573e4f0a020cd3afe7',1,'z::core::string']]],
   ['operator_2b_3d',['operator+=',['../classz_1_1core_1_1string.html#a74e91ace781f0f0d0b30011ab6d3922a',1,'z::core::string']]],

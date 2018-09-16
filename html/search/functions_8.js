@@ -2,7 +2,7 @@ var searchData=
 [
   ['id',['id',['../classz_1_1util_1_1rgxll.html#a70c5a86bd4802a3a6c954ab12ceed81c',1,'z::util::rgxll::id()'],['../classz_1_1util_1_1rgxss.html#ac50969f2ecaef3d6b8116fe953a39157',1,'z::util::rgxss::id()']]],
   ['info',['info',['../classz_1_1file_1_1info.html#a1a603519cf7e614fa64e386e9a42bc45',1,'z::file::info']]],
-  ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#a1433609e31cb18012e220bdb80792027',1,'z::file::inputStream']]],
+  ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#af8a6fa319286e01893b1b8ba9c05b0c0',1,'z::file::inputStream']]],
   ['insert',['insert',['../classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aca681e97ec1f2142c36bc15a2d6deba4',1,'z::core::string::insert()']]],
   ['integer',['integer',['../classz_1_1core_1_1string.html#a14b2c3667a94126667653e8266b6577e',1,'z::core::string']]],
   ['isalpha',['isAlpha',['../namespacez_1_1core.html#a92a36496e468ae0ae8c2f668d12b85ae',1,'z::core']]],

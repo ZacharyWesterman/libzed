@@ -115,11 +115,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab81d48d6f67a8198a415b661c48acb23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#ab81d48d6f67a8198a415b661c48acb23">outputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;, bool append=false)</td></tr>
 <tr class="memdesc:ab81d48d6f67a8198a415b661c48acb23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ab81d48d6f67a8198a415b661c48acb23">More...</a><br/></td></tr>
 <tr class="separator:ab81d48d6f67a8198a415b661c48acb23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36741608c2eda7867ec333802d9fa2db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36741608c2eda7867ec333802d9fa2db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;, bool append=false)</td></tr>
-<tr class="separator:a36741608c2eda7867ec333802d9fa2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5775e1bf19daf35c9414e2ac2cd04c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#a7f5775e1bf19daf35c9414e2ac2cd04c">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName, bool append=false)</td></tr>
+<tr class="memdesc:a7f5775e1bf19daf35c9414e2ac2cd04c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen the stream to the given file.  <a href="#a7f5775e1bf19daf35c9414e2ac2cd04c">More...</a><br/></td></tr>
+<tr class="separator:a7f5775e1bf19daf35c9414e2ac2cd04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c3fa9f4b743fb5dcda7d6944653333a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c3fa9f4b743fb5dcda7d6944653333a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#a9c3fa9f4b743fb5dcda7d6944653333a">close</a> ()</td></tr>
+<tr class="memdesc:a9c3fa9f4b743fb5dcda7d6944653333a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the current file stream. <br/></td></tr>
 <tr class="separator:a9c3fa9f4b743fb5dcda7d6944653333a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fb6e684d6fc7991c2e2571cb66ad11c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#a6fb6e684d6fc7991c2e2571cb66ad11c">put</a> (uint8_t ch)</td></tr>
 <tr class="memdesc:a6fb6e684d6fc7991c2e2571cb66ad11c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#a6fb6e684d6fc7991c2e2571cb66ad11c">More...</a><br/></td></tr>
@@ -368,6 +369,41 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>True if we can properly read to and write from the stream. False otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1outputStream.html#a2b70a3b3d27f7b28ea9452184d67aa4f">z::core::outputStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7f5775e1bf19daf35c9414e2ac2cd04c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::file::outputStream::open </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>append</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reopen the stream to the given file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>a string containing the name of the file to read from. </td></tr>
+    <tr><td class="paramname">append</td><td>set to <b>true</b> to append to the file, <b>false</b> to overwrite. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -112,14 +112,15 @@ Inheritance diagram for z::file::inputStream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1433609e31cb18012e220bdb80792027"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a1433609e31cb18012e220bdb80792027">inputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;)</td></tr>
-<tr class="memdesc:a1433609e31cb18012e220bdb80792027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a1433609e31cb18012e220bdb80792027">More...</a><br/></td></tr>
-<tr class="separator:a1433609e31cb18012e220bdb80792027"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38e8878e500fbc86d8be2466195a64f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38e8878e500fbc86d8be2466195a64f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;)</td></tr>
-<tr class="separator:a38e8878e500fbc86d8be2466195a64f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#af8a6fa319286e01893b1b8ba9c05b0c0">inputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName)</td></tr>
+<tr class="memdesc:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#af8a6fa319286e01893b1b8ba9c05b0c0">More...</a><br/></td></tr>
+<tr class="separator:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#af7831622d2dbaecf159c95b8fb1ff2ee">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName)</td></tr>
+<tr class="memdesc:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen a stream to the given file.  <a href="#af7831622d2dbaecf159c95b8fb1ff2ee">More...</a><br/></td></tr>
+<tr class="separator:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a254ea28bf149375def8faff38e004973"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a254ea28bf149375def8faff38e004973"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a254ea28bf149375def8faff38e004973">close</a> ()</td></tr>
+<tr class="memdesc:a254ea28bf149375def8faff38e004973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the current file stream. <br/></td></tr>
 <tr class="separator:a254ea28bf149375def8faff38e004973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6abdeb036cb9e480577af5f433157a8d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a6abdeb036cb9e480577af5f433157a8d">get</a> ()</td></tr>
 <tr class="memdesc:a6abdeb036cb9e480577af5f433157a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="#a6abdeb036cb9e480577af5f433157a8d">More...</a><br/></td></tr>
@@ -164,7 +165,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <div class="textblock"><p>A class for file input streams. </p>
 <p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1inputStream.html" title="A template class for character input streams. ">core::inputStream</a> for files. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a1433609e31cb18012e220bdb80792027"></a>
+<a class="anchor" id="af8a6fa319286e01893b1b8ba9c05b0c0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -422,6 +423,30 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>True if we can properly read to and write from the stream. False otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1inputStream.html#ab75530182e22d918d42d8300999edd11">z::core::inputStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7831622d2dbaecf159c95b8fb1ff2ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::file::inputStream::open </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reopen a stream to the given file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>a string containing the name of the file to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
