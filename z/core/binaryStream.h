@@ -36,6 +36,8 @@ namespace z
  			void seek(size_t index);
  			size_t tell();
  			size_t end();
+
+			encoding format();
 		};
 	}
 }

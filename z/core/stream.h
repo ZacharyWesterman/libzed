@@ -108,6 +108,19 @@ namespace z
 			 * \return The end position of the character stream.
 			 */
 			virtual size_t end() = 0;
+
+			/**
+			 * \brief Get the expected format of the stream.
+			 *
+			 * Analyzes a portion of the stream in an attempt to determine how
+			 * Characters on it are formatted. Note that this only gives an assumption of
+			 * the most likely encoding so it may not be correct in some cases.
+			 * Additionally results will be inaccurate if the stream contains
+			 * raw binary data.
+			 *
+			 * \return The determined encoding format of the stream.
+			 */
+			 virtual encoding format() = 0;
 		};
 
 		/**
@@ -211,6 +224,19 @@ namespace z
 			 * \return The end position of the character stream.
 			 */
 			virtual size_t end() = 0;
+
+			/**
+			 * \brief Get the expected format of the stream.
+			 *
+			 * Analyzes a portion of the stream in an attempt to determine how
+			 * Characters on it are formatted. Note that this only gives an assumption of
+			 * the most likely encoding so it may not be correct in some cases.
+			 * Additionally results will be inaccurate if the stream contains
+			 * raw binary data.
+			 *
+			 * \return The determined encoding format of the stream.
+			 */
+			 virtual encoding format() = 0;
 		};
 
 		/**

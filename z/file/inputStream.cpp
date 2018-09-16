@@ -1,4 +1,5 @@
 #include "inputStream.h"
+#include <z/core/charFunctions.h>
 
 namespace z
 {
@@ -77,6 +78,47 @@ namespace z
 		size_t inputStream::end()
 		{
 			return filestream.end - filestream.beg;
+		}
+
+		encoding inputStream::format()
+		{
+			if (this->empty()) return ascii;
+
+			size_t read_max = (32 > this->end()) ? this->end() : 32;
+
+			size_t max_nulls = 0;
+			size_t contig_nulls = 0;
+			bool can_utf8 = true;
+
+			size_t init_pos = this->tell();
+			this->seek(0);
+
+			uint8_t buffer[read_max];
+			for (size_t i=0; i<read_max; i++)
+				buffer[i] = this->get();
+
+			this->seek(init_pos);
+
+			for (size_t i=0; i<read_max; i++)
+			{
+				//ascii and utf8 won't have null chars
+				if (max_nulls || !buffer[i])
+				{
+					if (contig_nulls >= 2) return utf32;
+
+					contig_nulls++;
+					if (max_nulls < contig_nulls) max_nulls = contig_nulls;
+				}
+				else if (can_utf8)
+				{
+					if (!core::isUTF8(&buffer[i], read_max-i))
+						can_utf8 = false;
+				}
+			}
+
+			if (max_nulls) return utf16;
+
+			return can_utf8 ? utf8 : ascii;
 		}
 	}
 }

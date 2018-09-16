@@ -97,5 +97,10 @@ namespace z
 		{
 			return 0;
 		}
+
+		encoding console::format()
+		{
+			return utf8;
+		}
 	}
 }

@@ -1,4 +1,5 @@
 #include "outputStream.h"
+#include <z/core/charFunctions.h>
 
 namespace z
 {
@@ -76,6 +77,11 @@ namespace z
 		size_t outputStream::end()
 		{
 			return filestream.end - filestream.beg;
+		}
+
+		encoding outputStream::format()
+		{
+			return ascii;
 		}
 	}
 }

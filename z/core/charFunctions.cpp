@@ -203,5 +203,37 @@ namespace z
 			}
 			else return 0;
 		}
+
+		bool isUTF8(uint8_t* c, size_t len)
+		{
+			if (c && len)
+			{
+				if (c[0] < 0x80)//0xxx xxxx
+				{
+					return true;
+				}
+				else if (c[0] < 0xC0)//10xx xxxx
+				{
+					return false; //invalid UTF8
+				}
+				else if (c[0] < 0xE0)//110x xxxx, 10xx xxxx
+				{
+					if (len < 2) return false;
+					return ((c[1] & 0xC0) == 0xC0);
+				}
+				else if (c[0] < 0xF0)//1110 xxxx, 10xx xxxx, 10xx xxxx
+				{
+					if (len < 3) return false;
+					return ((c[1] & 0xC0) == 0xC0) && ((c[2] & 0xC0) == 0xC0);
+				}
+				else//1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
+				{
+					if (len < 4) return false;
+					return ((c[1] & 0xC0) == 0xC0) && ((c[2] & 0xC0) == 0xC0) && ((c[3] & 0xC0) == 0xC0);
+				}
+			}
+
+			return false;
+		}
 	}
 }
