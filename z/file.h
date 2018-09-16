@@ -15,7 +15,8 @@
 ///Manage file contents
 #include "file/copy.h"
 #include "file/info.h"
-#include "file/stream.h"
+#include "file/inputStream.h"
+#include "file/outputStream.h"
 
 ///Dynamic library loading
 #include "file/library.h"

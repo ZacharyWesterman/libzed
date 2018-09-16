@@ -32,6 +32,9 @@ namespace z
 			 */
 			outputStream(const core::string<utf8>&, bool append = false);
 
+			void open(const core::string<utf8>&, bool append = false);
+			void close();
+
 			void put(uint8_t ch);
 			void put(uint8_t* str, size_t count, encoding format = ascii);
 

@@ -3,6 +3,8 @@
 #include <type_traits>
 #include "stream.h"
 
+#include <iostream>
+
 namespace z
 {
 	namespace core
@@ -33,6 +35,14 @@ namespace z
 			virtual void serialOut(outputStream& stream) const = 0;
 		};
 
+		/**
+		 * \brief Read a serializable object as binary data from a stream.
+		 *
+		 * Calls the object's serialIn() member method.
+		 *
+		 * \param object The object to read from the stream, returned by reference.
+		 * \param stream The stream to read from.
+		 */
 		template <typename T>
 		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialIn(T& object, inputStream& stream)
@@ -40,11 +50,25 @@ namespace z
 			object.serialIn(stream);
 		}
 
+		/**
+		 * \brief Read a non-serializable object or datatype as binary data from a stream.
+		 *
+		 * \param object The object to read from the stream, returned by reference.
+		 * \param stream The stream to read from.
+		 */
 		template <typename T>
 		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
 		serialIn(T& object, inputStream& stream)
 		{
-			//dummy
+			size_t length = sizeof(T);
+			uint8_t* data = (uint8_t*)&object;
+
+			for (size_t i=0; i<length; i++)
+			{
+				data[i] = stream.get();
+				std::cout << (int)data[i] << ' ';
+			}
+			std::cout << std::endl;
 		}
 
 		/**
@@ -73,6 +97,14 @@ namespace z
 			}
 		}
 
+		/**
+		* \brief Write a serializable object as binary data to a stream.
+		*
+		* Calls the object's serialOut() member method.
+		*
+		* \param object The object to write to the stream.
+		* \param stream The stream to write to.
+		*/
 		template <typename T>
 		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialOut(const T& object, outputStream& stream)
@@ -80,11 +112,25 @@ namespace z
 			object.serialOut(stream);
 		}
 
+		/**
+		* \brief Write a non-serializable object or datatype as binary data to a stream.
+		*
+		* \param object The object to write to the stream.
+		* \param stream The stream to write to.
+		*/
 		template <typename T>
 		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
 		serialOut(const T& object, outputStream& stream)
 		{
-			//dummy
+			size_t length = sizeof(T);
+			uint8_t* data = (uint8_t*)&object;
+
+			for (size_t i=0; i<length; i++)
+			{
+				std::cout << (int)data[i] << ' ';
+				stream.put(data[i]);
+			}
+			std::cout << std::endl;
 		}
 
 		/**
@@ -122,46 +168,5 @@ namespace z
 				stream.put(c[i]);
 		}
 
-		/**
-		 * \brief Read a floating-point as binary data from a stream.
-		 *
-		 * Reads sizeof(double) bytes from the stream.
-		 *
-		 * \param number The number to read from the stream, returned by reference.
-		 * \param stream The stream to read from.
-		 */
-		// void serialIn(double& number, inputStream& stream)
-		// {
-		// 	if (stream.bad() || !stream.binary()) return;
-		//
-		// 	uint8_t c[sizeof(double)];
-		// 	for (size_t i=0; i<sizeof(double); i++)
-		// 	{
-		// 		c[i] = stream.get();
-		// 	}
-		//
-		// 	double* result = (double*)c;
-		// 	number = *result;
-		// }
-
-		/**
-		 * \brief Write a floating-point as binary data to a stream.
-		 *
-		 * Writes sizeof(double) bytes to the stream.
-		 *
-		 * \param number The number to write to the stream, returned by reference.
-		 * \param stream The stream to write.
-		 */
-		// void serialOut(double number, outputStream& stream)
-		// {
-		// 	if (stream.bad() || !stream.binary()) return;
-		//
-		// 	uint8_t* c = (uint8_t*)&number;
-		//
-		// 	for (size_t i=0; i<sizeof(double); i++)
-		// 	{
-		// 		stream.put(c[i]);
-		// 	}
-		// }
 	}
 }

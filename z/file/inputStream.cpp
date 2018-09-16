@@ -9,6 +9,17 @@ namespace z
 			filestream.open((const char*)fileName.cstring(), std::ios::in);
 		}
 
+		void inputStream::open(const core::string<utf8>& fileName)
+		{
+			filestream.close();
+			filestream.open((const char*)fileName.cstring(), std::ios::in);
+		}
+
+		void inputStream::close()
+		{
+			filestream.close();
+		}
+
 		uint8_t inputStream::get()
 		{
 			return filestream.get();
