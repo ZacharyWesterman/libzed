@@ -6,9 +6,6 @@ namespace z
 {
 	namespace file
 	{
-		typedef void* lib;
-		typedef void* ref;
-
 		/**
 		 * \brief A class for loading dynamic libraries.
 		 *
@@ -21,7 +18,7 @@ namespace z
 		class library
 		{
 		private:
-			lib lib_ptr;
+			void* lib_ptr;
 
 		public:
 			/**
@@ -81,7 +78,7 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			ref symbol(const core::string<utf8>&);
+			void* symbol(const core::string<utf8>&);
 		};
 	}
 }

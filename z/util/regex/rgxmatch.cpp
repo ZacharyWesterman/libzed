@@ -10,23 +10,23 @@ namespace z
 	namespace util
 	{
 
-		bool rgxmatchsuccess(rgxmatcher* matcher)
+		static bool rgxmatchsuccess(rgxmatcher* matcher)
 		{
 			matcher->node = matcher->node->parent();
 			return true;
 		}
 
-		bool rgxmatchfail(rgxmatcher* matcher, size_t streamIndex)
+		static bool rgxmatchfail(rgxmatcher* matcher, size_t streamIndex)
 		{
 			matcher->stream->seek(streamIndex);
 			matcher->node = matcher->node->parent();
 			return false;
 		}
 
-		bool rgxmatchonce(rgxmatcher* matcher);
+		static bool rgxmatchonce(rgxmatcher* matcher);
 		bool rgxmatch(rgxmatcher* matcher);
 
-		bool rgxmatchmin(rgxmatcher* matcher)
+		static bool rgxmatchmin(rgxmatcher* matcher)
 		{
 			size_t min = matcher->node->min();
 
@@ -39,7 +39,7 @@ namespace z
 			return true;
 		}
 
-		bool rgxmatchnext(rgxmatcher* matcher) //does not consume stream
+		static bool rgxmatchnext(rgxmatcher* matcher) //does not consume stream
 		{
 			if (matcher->fail) return false;
 
@@ -124,7 +124,7 @@ namespace z
 			return false;
 		}
 
-		bool rgxmatchorlist(rgxmatcher* matcher)
+		static bool rgxmatchorlist(rgxmatcher* matcher)
 		{
 			if (matcher->node->children[0]->id() == RGX_NOT)
 			{
@@ -156,7 +156,7 @@ namespace z
 			}
 		}
 
-		bool rgxmatchandlist(rgxmatcher* matcher)
+		static bool rgxmatchandlist(rgxmatcher* matcher)
 		{
 			size_t count = matcher->node->children.length();
 			for (size_t i=0; i<count; i++)
@@ -173,7 +173,7 @@ namespace z
 			return true;
 		}
 
-		bool rgxmatchsymbol(rgxmatcher* matcher)
+		static bool rgxmatchsymbol(rgxmatcher* matcher)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 			uint32_t beg = matcher->node->beg();
@@ -206,7 +206,7 @@ namespace z
 			}
 		}
 
-		bool rgxmatchanything(rgxmatcher* matcher)
+		static bool rgxmatchanything(rgxmatcher* matcher)
 		{
 			if (matcher->stream->empty()) return false;
 
@@ -217,7 +217,7 @@ namespace z
 			return (ch != '\n');
 		}
 
-		bool rgxmatchword(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchword(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -227,7 +227,7 @@ namespace z
 				return negate;
 		}
 
-		bool rgxmatchspace(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchspace(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -237,7 +237,7 @@ namespace z
 				return negate;
 		}
 
-		bool rgxmatchalpha(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchalpha(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -247,7 +247,7 @@ namespace z
 				return negate;
 		}
 
-		bool rgxmatchdigit(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchdigit(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -257,7 +257,7 @@ namespace z
 				return negate;
 		}
 
-		bool rgxmatchalnum(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchalnum(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -267,7 +267,7 @@ namespace z
 				return negate;
 		}
 
-		bool rgxmatchbreak(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchbreak(rgxmatcher* matcher, bool negate)
 		{
 			size_t streamIndex = matcher->stream->tell();
 
@@ -293,7 +293,7 @@ namespace z
 			return !negate;
 		}
 
-		bool rgxmatchpunct(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchpunct(rgxmatcher* matcher, bool negate)
 		{
 			uint32_t ch = matcher->stream->getChar(matcher->format);
 
@@ -325,7 +325,7 @@ namespace z
 		}
 
 		//never consume input
-		bool rgxmatchlookahead(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchlookahead(rgxmatcher* matcher, bool negate)
 		{
 			size_t streamIndex = matcher->stream->tell();
 
@@ -351,7 +351,7 @@ namespace z
 		}
 
 		//never consume input
-		bool rgxmatchlookbehind(rgxmatcher* matcher, bool negate)
+		static bool rgxmatchlookbehind(rgxmatcher* matcher, bool negate)
 		{
 			size_t streamIndex = matcher->stream->tell();
 
@@ -381,7 +381,7 @@ namespace z
 			return !negate;
 		}
 
-		bool rgxsetflag(rgxmatcher* matcher, bool state)
+		static bool rgxsetflag(rgxmatcher* matcher, bool state)
 		{
 			uint32_t ch = matcher->node->beg();
 
@@ -400,7 +400,7 @@ namespace z
 			}
 		}
 
-		bool rgxmatchonce(rgxmatcher* matcher)
+		static bool rgxmatchonce(rgxmatcher* matcher)
 		{
 			if (!(matcher && matcher->node)) return false;
 

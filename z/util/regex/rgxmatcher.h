@@ -41,16 +41,39 @@ namespace z
 			 */
 			rgxmatcher(core::inputStream* input, rgxll* root, encoding charType);
 
+			///Destructor
 			~rgxmatcher();
 
+			/**
+			 * \brief Set a regex flag's state.
+			 *
+			 * \param flag The flag to set.
+			 * \param state The state to set the flag to.
+			 */
 			void setFlag(rgxflag flag, bool state);
 
+			/**
+			 * \brief Get a regex flag's state.
+			 *
+			 * \param flag The flag to get.
+			 *
+			 * \return The state of the flag.
+			 */
 			bool getFlag(rgxflag flag) const;
 
+			///Copy the state of all current flags, and push them onto the stack.
 			void pushFlags();
 
+			///Pop the old flag states off the stack, replacing all current flags.
 			void popFlags();
 
+			/**
+			 * \brief Get the number of bytes the given number of characters would consume.
+			 *
+			 * \param charCount The number of characters.
+			 *
+			 * \return 2 if this matcher's format is UTF16, 4 if it's UTF32, 1 otherwise.
+			 */
 			size_t charsToOffset(size_t charCount) const;
 
 		};
