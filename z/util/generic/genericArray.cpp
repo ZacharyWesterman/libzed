@@ -46,6 +46,8 @@ namespace z
 			core::array<generic*> list;
 			for (size_t i=0; i<data.length(); i++)
 				list.add(data.at(i));
+
+			return list;
 		}
 
 		bool genericArray::isArray() const
