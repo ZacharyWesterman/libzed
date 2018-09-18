@@ -1,6 +1,14 @@
 var searchData=
 [
   ['gcd',['gcd',['../namespacez_1_1math.html#a84a2578debe4c1f49a4e40fb6a3955f3',1,'z::math::gcd(long x, long y)'],['../namespacez_1_1math.html#ab25b27ce4a938f3a3575bf2fea52498f',1,'z::math::gcd(const std::complex&lt; long &gt; &amp;x, const std::complex&lt; long &gt; &amp;y)']]],
+  ['generic',['generic',['../classz_1_1util_1_1generic.html',1,'z::util']]],
+  ['genericarray',['genericArray',['../classz_1_1util_1_1genericArray.html',1,'z::util']]],
+  ['genericcomplex',['genericComplex',['../classz_1_1util_1_1genericComplex.html',1,'z::util']]],
+  ['genericfloat',['genericFloat',['../classz_1_1util_1_1genericFloat.html',1,'z::util']]],
+  ['genericint',['genericInt',['../classz_1_1util_1_1genericInt.html',1,'z::util']]],
+  ['genericnull',['genericNull',['../classz_1_1util_1_1genericNull.html',1,'z::util']]],
+  ['genericpointer',['genericPointer',['../classz_1_1util_1_1genericPointer.html',1,'z::util']]],
+  ['genericstring',['genericString',['../classz_1_1util_1_1genericString.html',1,'z::util']]],
   ['get',['get',['../classz_1_1core_1_1binaryStream.html#ad2589b32ef8a1a9732b845310f3978d4',1,'z::core::binaryStream::get()'],['../classz_1_1core_1_1inputStream.html#a67fd27be1192be4894abbad5ba967241',1,'z::core::inputStream::get()'],['../classz_1_1file_1_1inputStream.html#a6abdeb036cb9e480577af5f433157a8d',1,'z::file::inputStream::get()'],['../classz_1_1system_1_1console.html#a84b3b0c6822dfb70894d5c489c0d446f',1,'z::system::console::get()']]],
   ['getchar',['getChar',['../classz_1_1core_1_1binaryStream.html#a9f37f2f1ec7df51522f10c4d758e00ba',1,'z::core::binaryStream::getChar()'],['../classz_1_1core_1_1inputStream.html#acc1bbf3f0dc7ecde4ad46f119bc06249',1,'z::core::inputStream::getChar()'],['../classz_1_1file_1_1inputStream.html#a05defc362f3f7cf5253892f02287f923',1,'z::file::inputStream::getChar()'],['../classz_1_1system_1_1console.html#a1fa39a82ad1b1ef12729d90520576b43',1,'z::system::console::getChar()']]],
   ['getflag',['getFlag',['../structz_1_1util_1_1rgxmatcher.html#a81869b172677e8c519e684a032a744a1',1,'z::util::rgxmatcher']]],

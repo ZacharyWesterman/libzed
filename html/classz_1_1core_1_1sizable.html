@@ -106,14 +106,17 @@ Inheritance diagram for z::core::sizable:</div>
  <div class="center">
   <img src="classz_1_1core_1_1sizable.png" usemap="#z::core::sizable_map" alt=""/>
   <map id="z::core::sizable_map" name="z::core::sizable_map">
-<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; uint8_t &gt;" shape="rect" coords="0,56,181,80"/>
-<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; z::util::rgxll * &gt;" shape="rect" coords="191,56,372,80"/>
-<area href="classz_1_1core_1_1string.html" alt="z::core::string&lt; ascii &gt;" shape="rect" coords="382,56,563,80"/>
-<area href="classz_1_1core_1_1array.html" title="A wrapper for std::vector. " alt="z::core::array&lt; T &gt;" shape="rect" coords="573,56,754,80"/>
-<area href="classz_1_1core_1_1string.html" title="A template class for character strings. " alt="z::core::string&lt; E &gt;" shape="rect" coords="764,56,945,80"/>
-<area href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers. " alt="z::core::refArray&lt; T &gt;" shape="rect" coords="477,112,658,136"/>
-<area href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted. " alt="z::core::sortedArray&lt; T &gt;" shape="rect" coords="668,112,849,136"/>
-<area href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::refArray class which attempts to keep all data sorted. " alt="z::core::sortedRefArray&lt; T &gt;" shape="rect" coords="477,168,658,192"/>
+<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; uint8_t &gt;" shape="rect" coords="0,56,271,80"/>
+<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; z::util::generic * &gt;" shape="rect" coords="281,56,552,80"/>
+<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; z::util::rgxll * &gt;" shape="rect" coords="562,56,833,80"/>
+<area href="classz_1_1core_1_1string.html" alt="z::core::string&lt; ascii &gt;" shape="rect" coords="843,56,1114,80"/>
+<area href="classz_1_1core_1_1string.html" alt="z::core::string&lt; ZED_GENERIC_ENCODING &gt;" shape="rect" coords="1124,56,1395,80"/>
+<area href="classz_1_1core_1_1array.html" title="A wrapper for std::vector. " alt="z::core::array&lt; T &gt;" shape="rect" coords="1405,56,1676,80"/>
+<area href="classz_1_1core_1_1string.html" title="A template class for character strings. " alt="z::core::string&lt; E &gt;" shape="rect" coords="1686,56,1957,80"/>
+<area href="classz_1_1core_1_1refArray.html" alt="z::core::refArray&lt; z::util::generic * &gt;" shape="rect" coords="281,112,552,136"/>
+<area href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers. " alt="z::core::refArray&lt; T &gt;" shape="rect" coords="1264,112,1535,136"/>
+<area href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted. " alt="z::core::sortedArray&lt; T &gt;" shape="rect" coords="1545,112,1816,136"/>
+<area href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::refArray class which attempts to keep all data sorted. " alt="z::core::sortedRefArray&lt; T &gt;" shape="rect" coords="1264,168,1535,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -154,7 +157,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Get the size of the object in memory. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes in memory this object currently consumes. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4">z::core::string&lt; E &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4">z::core::string&lt; ascii &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; uint8_t &gt;</a>, and <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; z::util::rgxll * &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4">z::core::string&lt; E &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4">z::core::string&lt; ascii &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4">z::core::string&lt; ZED_GENERIC_ENCODING &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; z::util::generic * &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; uint8_t &gt;</a>, and <a class="el" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array&lt; z::util::rgxll * &gt;</a>.</p>
 
 </div>
 </div>
