@@ -1,9 +1,10 @@
 #pragma once
 
 #include <type_traits>
-#include "stream.h"
+#include <cstdint>
+#include <cstddef>
 
-#include <iostream>
+#include "stream.h"
 
 namespace z
 {
@@ -66,9 +67,7 @@ namespace z
 			for (size_t i=0; i<length; i++)
 			{
 				data[i] = stream.get();
-				std::cout << (int)data[i] << ' ';
 			}
-			std::cout << std::endl;
 		}
 
 		/**
@@ -127,10 +126,8 @@ namespace z
 
 			for (size_t i=0; i<length; i++)
 			{
-				std::cout << (int)data[i] << ' ';
 				stream.put(data[i]);
 			}
-			std::cout << std::endl;
 		}
 
 		/**

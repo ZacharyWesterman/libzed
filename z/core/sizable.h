@@ -1,5 +1,9 @@
 #pragma once
 
+#include <type_traits>
+#include <cstdint>
+#include <cstddef>
+
 namespace z
 {
 	namespace core
