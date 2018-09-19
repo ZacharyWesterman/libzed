@@ -344,204 +344,44 @@ Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/core.h./ho
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/z/math/matrix.h:61: warning: Member det() (function) of class z::math::matrix is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/datatype.h:8: warning: Member datatype (enumeration) of namespace z::util is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:27: warning: Member boolean() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:30: warning: Member integer() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:31: warning: Member floating() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:32: warning: Member complex() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:33: warning: Member string() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:36: warning: Member type() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:37: warning: Member typeString() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:41: warning: Member isFloating() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:42: warning: Member isInteger() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:46: warning: Member isArithmetic() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:47: warning: Member isNull() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:56: warning: Member duplicate() const =0 (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:182: warning: Member duplicate() const =0 (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:16: warning: Member genericArray(const core::array< generic * > &init) (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:19: warning: Member boolean() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:21: warning: Member integer() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:22: warning: Member floating() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:23: warning: Member complex() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:24: warning: Member string() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:25: warning: Member array() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:27: warning: Member isArray() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:29: warning: Member isNull() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:31: warning: Member length() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:33: warning: Member find(generic *element) const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:34: warning: Member add(generic *element) (function) of class z::util::genericArray is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:35: warning: Member insert(generic *element, size_t index) (function) of class z::util::genericArray is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:36: warning: Member remove(size_t index, int count) (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:38: warning: Member type() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:39: warning: Member typeString() const  (function) of class z::util::genericArray is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericArray.h:41: warning: Member duplicate() const  (function) of class z::util::genericArray is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:41: warning: Member isFloating() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:42: warning: Member isInteger() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:46: warning: Member isArithmetic() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:15: warning: Member genericComplex(const std::complex< double > &init) (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:17: warning: Member boolean() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:19: warning: Member integer() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:20: warning: Member floating() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:21: warning: Member complex() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:22: warning: Member string() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:24: warning: Member isInteger() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:25: warning: Member isFloating() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:26: warning: Member isComplex() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:28: warning: Member isArithmetic() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:30: warning: Member type() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:31: warning: Member typeString() const  (function) of class z::util::genericComplex is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h:33: warning: Member duplicate() const  (function) of class z::util::genericComplex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:47: warning: Member isNull() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:15: warning: Member genericFloat(double init) (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:17: warning: Member boolean() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:19: warning: Member integer() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:20: warning: Member floating() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:21: warning: Member complex() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:22: warning: Member string() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:24: warning: Member isInteger() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:25: warning: Member isFloating() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:27: warning: Member isArithmetic() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:29: warning: Member type() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:30: warning: Member typeString() const  (function) of class z::util::genericFloat is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericFloat.h:32: warning: Member duplicate() const  (function) of class z::util::genericFloat is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:47: warning: Member isNull() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:15: warning: Member genericInt(long long init) (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:17: warning: Member boolean() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:19: warning: Member integer() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:20: warning: Member floating() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:21: warning: Member complex() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:22: warning: Member string() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:24: warning: Member isInteger() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:26: warning: Member isArithmetic() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:28: warning: Member type() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:29: warning: Member typeString() const  (function) of class z::util::genericInt is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericInt.h:31: warning: Member duplicate() const  (function) of class z::util::genericInt is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:41: warning: Member isFloating() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:47: warning: Member isNull() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:12: warning: Member boolean() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:14: warning: Member integer() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:15: warning: Member floating() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:16: warning: Member complex() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:17: warning: Member string() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:19: warning: Member type() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:20: warning: Member typeString() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:22: warning: Member isNull() const  (function) of class z::util::genericNull is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericNull.h:24: warning: Member duplicate() const  (function) of class z::util::genericNull is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:41: warning: Member isFloating() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:42: warning: Member isInteger() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:46: warning: Member isArithmetic() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:15: warning: Member genericPointer(void *init) (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:17: warning: Member boolean() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:19: warning: Member pointer() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:20: warning: Member integer() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:21: warning: Member floating() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:22: warning: Member complex() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:23: warning: Member string() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:25: warning: Member isPointer() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:27: warning: Member isNull() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:29: warning: Member type() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:30: warning: Member typeString() const  (function) of class z::util::genericPointer is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericPointer.h:32: warning: Member duplicate() const  (function) of class z::util::genericPointer is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:40: warning: Member isComplex() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:41: warning: Member isFloating() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:42: warning: Member isInteger() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:43: warning: Member isString() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:46: warning: Member isArithmetic() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:49: warning: Member length() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:51: warning: Member find(generic *element) const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:52: warning: Member add(generic *element) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:53: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:54: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:179: warning: Member insert(generic *element, size_t index) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:180: warning: Member remove(size_t index, int count) (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:15: warning: Member genericString(const core::string< ZED_GENERIC_ENCODING > &init) (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:17: warning: Member boolean() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:19: warning: Member integer() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:20: warning: Member floating() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:21: warning: Member complex() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:22: warning: Member string() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:24: warning: Member isInteger() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:25: warning: Member isFloating() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:26: warning: Member isComplex() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:27: warning: Member isString() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:29: warning: Member isArithmetic() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:30: warning: Member isNull() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:32: warning: Member length() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:34: warning: Member find(generic *element) const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:35: warning: Member add(generic *element) (function) of class z::util::genericString is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:36: warning: Member insert(generic *element, size_t index) (function) of class z::util::genericString is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:37: warning: Member remove(size_t index, int count) (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:39: warning: Member type() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:40: warning: Member typeString() const  (function) of class z::util::genericString is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericString.h:42: warning: Member duplicate() const  (function) of class z::util::genericString is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:29: warning: Member pointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:34: warning: Member array() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:39: warning: Member isPointer() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:44: warning: Member isArray() const  (function) of class z::util::generic is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:58: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.h:184: warning: Member operator==(const generic &other) const  (function) of class z::util::generic is not documented.
 ..
 Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/file.h...
 Generating docs for file /home/travis/build/ZacharyWesterman/libzed/z/math.h...
@@ -607,5 +447,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 930/65536 hits=6078 misses=998
+lookup cache used 947/65536 hits=6185 misses=1015
 finished...
