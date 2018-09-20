@@ -6,12 +6,20 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief An implementation of the generic type for integers.
+		 */
 		class genericInt : public generic
 		{
 		private:
 			long long value;
 
 		public:
+			/**
+			 * \brief Default constructor.
+			 *
+			 * \param init The integer to initialize as.
+			 */
 			genericInt(long long init);
 
 			bool boolean() const;

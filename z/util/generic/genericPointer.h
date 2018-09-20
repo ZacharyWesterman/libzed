@@ -6,12 +6,20 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief An implementation of the generic type for undefined pointers.
+		 */
 		class genericPointer : public generic
 		{
 		private:
 			void* reference;
 
 		public:
+			/**
+			 * \brief Default constructor.
+			 *
+			 * \param init The pointer to initialize as.
+			 */
 			genericPointer(void* init);
 
 			bool boolean() const;

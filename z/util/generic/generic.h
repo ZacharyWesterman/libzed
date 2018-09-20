@@ -19,6 +19,12 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \interface generic
+		 * \brief A base object for generic datatypes.
+		 *
+		 * A wrapper to allow abstraction from primitive data types.
+		 */
 		class generic //: public core::sizable, public core::serializable
 		{
 		public:
@@ -170,17 +176,64 @@ namespace z
 			virtual int find(generic* element) const;
 
 			/**
-			 * brief Add an element to the object.
+			 * brief Append an element to the object.
 			 *
+			 * If this object is a string type, the element is cast to a string and the result is appended to the end of this string.
+			 * If this object is an array type, then the element is copied and appended to the end of the array.
+			 * For all other types, this operation fails.
 			 *
-			 * \return True if add succeeded, false otherwise.
+			 * \param element The element to append.
+			 *
+			 * \return True if add succeeded, false if failed.
 			 */
 			virtual bool add(generic* element);
+
+			/**
+			 * brief Insert an element into this object.
+			 *
+			 * If this object is a string type, the element is cast to a string and the result is inserted before the given character in the string.
+			 * If this object is an array type, then the element is copied and inserted before the given index in the array.
+			 * For all other types, this operation fails.
+			 *
+			 * \param element The element to insert.
+			 * \param index The index that the element is inserted before.
+			 *
+			 * \return True if insert succeeded, false if failed.
+			 */
 			virtual bool insert(generic* element, size_t index);
+
+			/**
+			 * brief Remove elements from this object.
+			 *
+			 * If this object is a string type, then characters are removed from the string.
+			 * If this object is an array type, then elements are deleted from the array.
+			 * For all other types, this operation fails.
+			 *
+			 * \param index The first element to remove.
+			 * \param count The number of elements to remove. If negative, then elements are removed backwards. If 0, no elements are removed.
+			 *
+			 * \return True if remove succeeded, false if failed.
+			 */
 			virtual bool remove(size_t index, int count);
 
+			/**
+			 * \brief Create an exact copy of this object.
+			 *
+			 * Note that this method allocates new data for the duplicate object, so not deleting properly may lead to memory leaks or corruption.
+			 *
+			 * \return A duplicate of this object, that is, an object of the same type and containing the same data.
+			 */
 			virtual generic* duplicate() const = 0;
 
+			/**
+			 * \brief Equality operator.
+			 *
+			 * Added for compatibility with the core::array class.
+			 *
+			 * \param other The object to compare against.
+			 *
+			 * \return True if both objects are of exactly the same type and contain the same data, false otherwise.
+			 */
 			virtual bool operator==(const generic& other) const;
 		};
 	}

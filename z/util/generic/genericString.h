@@ -6,13 +6,28 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief An implementation of the generic type for strings.
+		 */
 		class genericString : public generic
 		{
 		private:
 			core::string<ZED_GENERIC_ENCODING> data;
 
 		public:
+			/**
+			 * \brief String constructor.
+			 *
+			 * \param init The string to initialize as.
+			 */
 			genericString(const core::string<ZED_GENERIC_ENCODING>& init);
+
+			/**
+			 * \brief Empty constructor.
+			 *
+			 * Initializes this object as an empty string.
+			 */
+			genericString();
 
 			bool boolean() const;
 

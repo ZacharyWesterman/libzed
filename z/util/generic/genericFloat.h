@@ -6,12 +6,20 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief An implementation of the generic type for floating-point numbers.
+		 */
 		class genericFloat : public generic
 		{
 		private:
 			double value;
 
 		public:
+			/**
+			 * \brief Default constructor.
+			 *
+			 * \param init The floating-point number to initialize as.
+			 */
 			genericFloat(double init);
 
 			bool boolean() const;

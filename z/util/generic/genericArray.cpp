@@ -10,6 +10,8 @@ namespace z
 				data.add(init.at(i));
 		}
 
+		genericArray::genericArray() {}
+
 		genericArray::~genericArray()
 		{
 			for (size_t i=0; i<data.length(); i++)
@@ -84,7 +86,7 @@ namespace z
 		{
 			if (element)
 			{
-				data.add(element);
+				data.add(element->duplicate());
 				return true;
 			}
 
@@ -95,7 +97,7 @@ namespace z
 		{
 			if (element)
 			{
-				data.insert(element, index);
+				data.insert(element->duplicate(), index);
 				return true;
 			}
 
@@ -104,6 +106,29 @@ namespace z
 
 		bool genericArray::remove(size_t index, int count)
 		{
+			size_t start, stop;
+
+			if (!(data.length() && count)) return true;
+
+			if (count < 0)
+			{
+				start = index + count + 1;
+				stop = index;
+
+				if (start > stop) start = 0;
+			}
+			else //count is positive
+			{
+				start = index;
+				stop = index + count - 1;
+
+				if (stop < start) stop = data.length() - 1;
+			}
+
+			if (!data.isValid(stop)) stop = data.length() - 1;
+			if (!data.isValid(start)) start = 0;
+
+			for (size_t i=start; i<=stop; i++) delete data.at(i);
 			data.remove(index, count);
 			return true;
 		}
