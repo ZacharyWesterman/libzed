@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>libzed: z::util::generic Class Reference</title>
+<title>libzed: z::util::generic Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,24 +90,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classz_1_1util_1_1generic-members.html">List of all members</a>  </div>
+<a href="interfacez_1_1util_1_1generic-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">z::util::generic Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">z::util::generic Interface Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A base object for generic datatypes.  
+ <a href="classz_1_1util_1_1generic.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="generic_2generic_8h_source.html">generic.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for z::util::generic:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classz_1_1util_1_1generic.png" usemap="#z::util::generic_map" alt=""/>
   <map id="z::util::generic_map" name="z::util::generic_map">
-<area href="classz_1_1util_1_1genericArray.html" alt="z::util::genericArray" shape="rect" coords="0,56,137,80"/>
-<area href="classz_1_1util_1_1genericComplex.html" alt="z::util::genericComplex" shape="rect" coords="147,56,284,80"/>
-<area href="classz_1_1util_1_1genericFloat.html" alt="z::util::genericFloat" shape="rect" coords="294,56,431,80"/>
-<area href="classz_1_1util_1_1genericInt.html" alt="z::util::genericInt" shape="rect" coords="441,56,578,80"/>
+<area href="classz_1_1util_1_1genericArray.html" title="An implementation of the generic type for arrays. " alt="z::util::genericArray" shape="rect" coords="0,56,137,80"/>
+<area href="classz_1_1util_1_1genericComplex.html" title="An implementation of the generic type for complex numbers. " alt="z::util::genericComplex" shape="rect" coords="147,56,284,80"/>
+<area href="classz_1_1util_1_1genericFloat.html" title="An implementation of the generic type for floating-point numbers. " alt="z::util::genericFloat" shape="rect" coords="294,56,431,80"/>
+<area href="classz_1_1util_1_1genericInt.html" title="An implementation of the generic type for integers. " alt="z::util::genericInt" shape="rect" coords="441,56,578,80"/>
 <area href="classz_1_1util_1_1genericNull.html" alt="z::util::genericNull" shape="rect" coords="588,56,725,80"/>
-<area href="classz_1_1util_1_1genericPointer.html" alt="z::util::genericPointer" shape="rect" coords="735,56,872,80"/>
-<area href="classz_1_1util_1_1genericString.html" alt="z::util::genericString" shape="rect" coords="882,56,1019,80"/>
+<area href="classz_1_1util_1_1genericPointer.html" title="An implementation of the generic type for undefined pointers. " alt="z::util::genericPointer" shape="rect" coords="735,56,872,80"/>
+<area href="classz_1_1util_1_1genericString.html" title="An implementation of the generic type for strings. " alt="z::util::genericString" shape="rect" coords="882,56,1019,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -177,20 +182,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a62de579a64bedc85721c90f887aad28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d9a33ed0ccdd2b4a7ed2893366a3310"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#a1d9a33ed0ccdd2b4a7ed2893366a3310">add</a> (<a class="el" href="classz_1_1util_1_1generic.html">generic</a> *element)</td></tr>
 <tr class="separator:a1d9a33ed0ccdd2b4a7ed2893366a3310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a788e313c0a623dfd342b454398e53b41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a788e313c0a623dfd342b454398e53b41"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (<a class="el" href="classz_1_1util_1_1generic.html">generic</a> *element, size_t index)</td></tr>
+<tr class="memitem:a788e313c0a623dfd342b454398e53b41"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#a788e313c0a623dfd342b454398e53b41">insert</a> (<a class="el" href="classz_1_1util_1_1generic.html">generic</a> *element, size_t index)</td></tr>
 <tr class="separator:a788e313c0a623dfd342b454398e53b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac243d290cb1b5a8eca64d6e711274594"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac243d290cb1b5a8eca64d6e711274594"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (size_t index, int count)</td></tr>
+<tr class="memitem:ac243d290cb1b5a8eca64d6e711274594"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#ac243d290cb1b5a8eca64d6e711274594">remove</a> (size_t index, int count)</td></tr>
 <tr class="separator:ac243d290cb1b5a8eca64d6e711274594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30c336c14ae84469a8fdb1275bc9f00f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30c336c14ae84469a8fdb1275bc9f00f"></a>
-virtual <a class="el" href="classz_1_1util_1_1generic.html">generic</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>duplicate</b> () const =0</td></tr>
+<tr class="memitem:a30c336c14ae84469a8fdb1275bc9f00f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classz_1_1util_1_1generic.html">generic</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#a30c336c14ae84469a8fdb1275bc9f00f">duplicate</a> () const =0</td></tr>
+<tr class="memdesc:a30c336c14ae84469a8fdb1275bc9f00f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an exact copy of this object.  <a href="#a30c336c14ae84469a8fdb1275bc9f00f">More...</a><br/></td></tr>
 <tr class="separator:a30c336c14ae84469a8fdb1275bc9f00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03dfd68fa4270604dc534ba0baf91a62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03dfd68fa4270604dc534ba0baf91a62"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classz_1_1util_1_1generic.html">generic</a> &amp;other) const </td></tr>
+<tr class="memitem:a03dfd68fa4270604dc534ba0baf91a62"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#a03dfd68fa4270604dc534ba0baf91a62">operator==</a> (const <a class="el" href="classz_1_1util_1_1generic.html">generic</a> &amp;other) const </td></tr>
+<tr class="memdesc:a03dfd68fa4270604dc534ba0baf91a62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator.  <a href="#a03dfd68fa4270604dc534ba0baf91a62">More...</a><br/></td></tr>
 <tr class="separator:a03dfd68fa4270604dc534ba0baf91a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A base object for generic datatypes. </p>
+<p>A wrapper to allow abstraction from primitive data types. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="abbe1897de599b3b59bd2552d17900f31"></a>
 <div class="memitem">
 <div class="memproto">
@@ -239,10 +245,17 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
   </tr>
 </table>
 </div><div class="memdoc">
-<p>brief Add an element to the object.</p>
-<dl class="section return"><dt>Returns</dt><dd>True if add succeeded, false otherwise. </dd></dl>
+<p>brief Append an element to the object.</p>
+<p>If this object is a string type, the element is cast to a string and the result is appended to the end of this string. If this object is an array type, then the element is copied and appended to the end of the array. For all other types, this operation fails.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>The element to append.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if add succeeded, false if failed. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#ae773d410f24fcd20a32d2943666dae3b">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericArray.html#a86a54e332fc2263f8d0b673940adddf4">z::util::genericArray</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a86a54e332fc2263f8d0b673940adddf4">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#ae773d410f24fcd20a32d2943666dae3b">z::util::genericString</a>.</p>
 
 </div>
 </div>
@@ -270,7 +283,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get the array this object holds. </p>
 <dl class="section return"><dt>Returns</dt><dd>The item array contained of this is an array object. Gives an empty array otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a2e8c84e3eae75b49b15a2ce07dd326e7">z::util::genericArray</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a2e8c84e3eae75b49b15a2ce07dd326e7">z::util::genericArray</a>.</p>
 
 </div>
 </div>
@@ -298,7 +311,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get a boolean representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can evaluate to a non-zero number, false otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a5fcdd3bbe0462627fee67d495ee9de85">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a993a3c7b2cff5500d08d6d3639a006c8">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#af2f712ccfe79b15931557afabf1737f8">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a94c6066d8bf3803c34bc1746f71f7e51">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#acfcd941e1b374683bdfb66eded5f097e">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a4aba2390a195146a57b3828ee7273642">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a18bde34d3edce8c79891c26c391ced5d">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a5fcdd3bbe0462627fee67d495ee9de85">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a4aba2390a195146a57b3828ee7273642">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a993a3c7b2cff5500d08d6d3639a006c8">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#af2f712ccfe79b15931557afabf1737f8">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a94c6066d8bf3803c34bc1746f71f7e51">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#acfcd941e1b374683bdfb66eded5f097e">z::util::genericPointer</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a18bde34d3edce8c79891c26c391ced5d">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -326,7 +339,36 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get a complex representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0+0i if this object cannot be represented by a complex number, otherwise gives the complex representation. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ae75fe5914fd76dcc75e18db735bdd410">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a353c42c883365de25ea0914316d0263a">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a5b5348cee079b2c59191f7852be91eaf">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#acd0cf64c81c01606006201f62e5e9419">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#af1b479bdd720867ab8df3a7040931e58">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ae428ee4270846fcd2e94155a46408efa">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a9b3ef51fd7c121cd74b4f041ca5bfaf2">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ae75fe5914fd76dcc75e18db735bdd410">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ae428ee4270846fcd2e94155a46408efa">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a353c42c883365de25ea0914316d0263a">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a5b5348cee079b2c59191f7852be91eaf">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#acd0cf64c81c01606006201f62e5e9419">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#af1b479bdd720867ab8df3a7040931e58">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a9b3ef51fd7c121cd74b4f041ca5bfaf2">z::util::genericNull</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30c336c14ae84469a8fdb1275bc9f00f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classz_1_1util_1_1generic.html">generic</a>* z::util::generic::duplicate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an exact copy of this object. </p>
+<p>Note that this method allocates new data for the duplicate object, so not deleting properly may lead to memory leaks or corruption.</p>
+<dl class="section return"><dt>Returns</dt><dd>A duplicate of this object, that is, an object of the same type and containing the same data. </dd></dl>
+
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a3b715319f88d077e76a62e764b59316c">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a7c239f9220b27a19d49a0afb7d06575a">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a0204a89ed4d7c49b30e64ad4fd1fbedb">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#af1a9397517bee9576c6d148b251981cc">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a75001cd5921e84f1ab685aab1a6562f2">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#ad0dc34543c8c4dfda0b3da0479606819">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a6a2d902fc84b823241a9a25954d7c9f8">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -362,7 +404,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the item was found, gives the index where it was found. Otherwise, gives -1. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#adac5f4fa561bf11dd45b8cb54c60f1dd">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericArray.html#ab65d88447305b0096a50952ad6524429">z::util::genericArray</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ab65d88447305b0096a50952ad6524429">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#adac5f4fa561bf11dd45b8cb54c60f1dd">z::util::genericString</a>.</p>
 
 </div>
 </div>
@@ -390,7 +432,53 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get a floating-point representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by a floating point value, otherwise gives the float representation. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ab76e525dc790ec1454f66d5e6fad943c">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a578930276f7ab9cd974b6f8f833238ad">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a6538b56eea1bdc7ad36c2d2e743aca21">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8d2909bba2c31207b8266d40b5fa2c8b">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a1708e2b45c085bad8167ba24d0fe9731">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ac03ed873cd722a2de8617c4970abdef3">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a3f077e742419ef8ae453c7ab80099cb8">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ab76e525dc790ec1454f66d5e6fad943c">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ac03ed873cd722a2de8617c4970abdef3">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a578930276f7ab9cd974b6f8f833238ad">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a6538b56eea1bdc7ad36c2d2e743aca21">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8d2909bba2c31207b8266d40b5fa2c8b">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a1708e2b45c085bad8167ba24d0fe9731">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a3f077e742419ef8ae453c7ab80099cb8">z::util::genericNull</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a788e313c0a623dfd342b454398e53b41"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::util::generic::insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1util_1_1generic.html">generic</a> *&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>brief Insert an element into this object.</p>
+<p>If this object is a string type, the element is cast to a string and the result is inserted before the given character in the string. If this object is an array type, then the element is copied and inserted before the given index in the array. For all other types, this operation fails.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>The element to insert. </td></tr>
+    <tr><td class="paramname">index</td><td>The index that the element is inserted before.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if insert succeeded, false if failed. </dd></dl>
+
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a6e678ae338e735e0e69a92bab16b89ed">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#ad4accb580343ea90165cc456e24f2899">z::util::genericString</a>.</p>
 
 </div>
 </div>
@@ -418,7 +506,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get an integer representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by an integer, otherwise gives the integer representation. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ae06fa90dbe8dd4043e7643b2b07ebac2">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a74e7369a2248c7053971d9cfe9908193">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aaa564e8c6eb014afacd9267db412cb13">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#aab3418daa8db7b1ae4c2c1db42d21272">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a8803517c7932b57cb3ebf0cab92f1217">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a552942f64bc0b58713640608c546202f">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#acdf95495e01efff4edcd54cbbbe88910">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ae06fa90dbe8dd4043e7643b2b07ebac2">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a552942f64bc0b58713640608c546202f">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a74e7369a2248c7053971d9cfe9908193">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aaa564e8c6eb014afacd9267db412cb13">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#aab3418daa8db7b1ae4c2c1db42d21272">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a8803517c7932b57cb3ebf0cab92f1217">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#acdf95495e01efff4edcd54cbbbe88910">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -446,7 +534,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is any kind of number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as any type of number, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#a4b494be61dd2369536bf3593e49e84d8">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#af83367663289926676f4b6058645be00">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a2e3eb1952b04b79d3ce5f5039302dd9a">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericInt.html#a90b5cd2ca2e87318d47a29e7ec82dcf3">z::util::genericInt</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a4b494be61dd2369536bf3593e49e84d8">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#af83367663289926676f4b6058645be00">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a2e3eb1952b04b79d3ce5f5039302dd9a">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericInt.html#a90b5cd2ca2e87318d47a29e7ec82dcf3">z::util::genericInt</a>.</p>
 
 </div>
 </div>
@@ -474,7 +562,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is an array. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is an array type, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a0fb50abd19ac853351af39a846af2a4f">z::util::genericArray</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a0fb50abd19ac853351af39a846af2a4f">z::util::genericArray</a>.</p>
 
 </div>
 </div>
@@ -502,7 +590,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is a complex number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as a complex number, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericComplex.html#a09c99f0659f94539fb3344bcd42922b8">z::util::genericComplex</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a89f2530eb7a7d78409a390f998bc50ae">z::util::genericString</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a89f2530eb7a7d78409a390f998bc50ae">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericComplex.html#a09c99f0659f94539fb3344bcd42922b8">z::util::genericComplex</a>.</p>
 
 </div>
 </div>
@@ -530,7 +618,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is a floating-point number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as a floating-point value, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericComplex.html#aa7ca420e83179f4be1ffa2b468d688f4">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a0cf39213b751ab975ab26875fc6182aa">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#aec439284c891d24355f21ad4c951eb43">z::util::genericString</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#aec439284c891d24355f21ad4c951eb43">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aa7ca420e83179f4be1ffa2b468d688f4">z::util::genericComplex</a>, and <a class="el" href="classz_1_1util_1_1genericFloat.html#a0cf39213b751ab975ab26875fc6182aa">z::util::genericFloat</a>.</p>
 
 </div>
 </div>
@@ -558,7 +646,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is an integer. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as an integer, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericComplex.html#a62700b254a50702dac271707dc9eac6e">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8ad343d0193868bf11f3ac7d1592d29d">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#ae5a24a368841a7ca4bbfc236e51ace4e">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a6cf11a03ee8ca0f49734ac02283cfa99">z::util::genericString</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a6cf11a03ee8ca0f49734ac02283cfa99">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a62700b254a50702dac271707dc9eac6e">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8ad343d0193868bf11f3ac7d1592d29d">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericInt.html#ae5a24a368841a7ca4bbfc236e51ace4e">z::util::genericInt</a>.</p>
 
 </div>
 </div>
@@ -586,7 +674,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is null. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a NULL object, an empty string, or an empty array. Gives false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#abff4f980bf62dbc30b183f6d1fd869ae">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericArray.html#aa42b780da39dec7d1f3b42415afaaac4">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#ad177fee733a26ef8555e908f9232543b">z::util::genericPointer</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a1b322b9aa5567ab1a332f94629da9094">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#aa42b780da39dec7d1f3b42415afaaac4">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#abff4f980bf62dbc30b183f6d1fd869ae">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#ad177fee733a26ef8555e908f9232543b">z::util::genericPointer</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a1b322b9aa5567ab1a332f94629da9094">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -614,7 +702,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is a pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a pointer type, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a437a594438271392a3c9eb17a8735e6e">z::util::genericPointer</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a437a594438271392a3c9eb17a8735e6e">z::util::genericPointer</a>.</p>
 
 </div>
 </div>
@@ -642,7 +730,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get whether this object is a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a string type, false otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#ac7697941035d81d49b371d0b0f5c4d25">z::util::genericString</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#ac7697941035d81d49b371d0b0f5c4d25">z::util::genericString</a>.</p>
 
 </div>
 </div>
@@ -670,7 +758,41 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get the number of elements this object contains. </p>
 <dl class="section return"><dt>Returns</dt><dd>If an array, gives the element count. If a string, gives the character count. Gives 0 otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericString.html#a5a274c6f1d07c9fc491dfaa3932548ad">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericArray.html#a1d4e79a8bb946b95b0ce1e42ec9df461">z::util::genericArray</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a1d4e79a8bb946b95b0ce1e42ec9df461">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a5a274c6f1d07c9fc491dfaa3932548ad">z::util::genericString</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a03dfd68fa4270604dc534ba0baf91a62"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::util::generic::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1util_1_1generic.html">generic</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Equality operator. </p>
+<p>Added for compatibility with the <a class="el" href="classz_1_1core_1_1array.html" title="A wrapper for std::vector. ">core::array</a> class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The object to compare against.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if both objects are of exactly the same type and contain the same data, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -698,7 +820,53 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get the pointer this object holds. </p>
 <dl class="section return"><dt>Returns</dt><dd>A non-specific reference if this object is a pointer type, NULL otherwise. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a9742f530abcada61542081de6266df1f">z::util::genericPointer</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a9742f530abcada61542081de6266df1f">z::util::genericPointer</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac243d290cb1b5a8eca64d6e711274594"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::util::generic::remove </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>brief Remove elements from this object.</p>
+<p>If this object is a string type, then characters are removed from the string. If this object is an array type, then elements are deleted from the array. For all other types, this operation fails.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The first element to remove. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of elements to remove. If negative, then elements are removed backwards. If 0, no elements are removed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if remove succeeded, false if failed. </dd></dl>
+
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a0b28443f1270bf1979890e1e119af5c4">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a4b1569e6ef1bcb71ae46b8a08b03b332">z::util::genericString</a>.</p>
 
 </div>
 </div>
@@ -726,7 +894,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get a string representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representation with encoding ZED_GENERIC_ENCODING. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ac8d722a3e1492d5d3338a777867e7312">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a1fbf1492e407002bad5c3d7070549ff3">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aaffdebb74f2ff120950fa6996a834e44">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a323cacd969f4e0457df69c7139ece9d5">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a6cddeb80a82fe0d622436292120613d9">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericString.html#afff8a57cdb2061eed20ddeb7ed0a3da2">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a5c5d3b1a9e439d92acc50bc1fcb0633d">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ac8d722a3e1492d5d3338a777867e7312">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#afff8a57cdb2061eed20ddeb7ed0a3da2">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a1fbf1492e407002bad5c3d7070549ff3">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aaffdebb74f2ff120950fa6996a834e44">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a323cacd969f4e0457df69c7139ece9d5">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a6cddeb80a82fe0d622436292120613d9">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a5c5d3b1a9e439d92acc50bc1fcb0633d">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -754,7 +922,7 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get this object's type. </p>
 <dl class="section return"><dt>Returns</dt><dd>A value representing the object type. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a9fbee699b0a30d82d9717bc60330ea34">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericArray.html#a3b6d524661796a5c831a6f171988e92b">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a64eedfded6c8d313be26e30e3634c746">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a5102ffffe30fcf5c3cbc4a1308b6ff56">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a1cbeb5d3b1760e41c6732ea953d5acaf">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#aaeca343775ce68353c7e29507f848a0d">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a2e0520f59ecc8488d2f9ef472e98abcf">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a3b6d524661796a5c831a6f171988e92b">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a9fbee699b0a30d82d9717bc60330ea34">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a64eedfded6c8d313be26e30e3634c746">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a5102ffffe30fcf5c3cbc4a1308b6ff56">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a1cbeb5d3b1760e41c6732ea953d5acaf">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#aaeca343775ce68353c7e29507f848a0d">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a2e0520f59ecc8488d2f9ef472e98abcf">z::util::genericNull</a>.</p>
 
 </div>
 </div>
@@ -782,11 +950,11 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b
 <p>Get this object's type as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representing this object's type with encoding ZED_GENERIC_ENCODING. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#af6982e56011e86c3fdd511ae44f99998">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericArray.html#a1e04dea16cd156805e7bcfb80e7df967">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aea89738104eadf52486161638bc02c6a">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#aa999899522d2a3e9104b6be5615c4837">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a5f226eb0de89b2daed1e56d61f99eba7">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#ab2aac9a63e8377e6b7db2db2a2f746bd">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#ae595a4fdde5e2b71589865a0b6d43dfe">z::util::genericNull</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a1e04dea16cd156805e7bcfb80e7df967">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#af6982e56011e86c3fdd511ae44f99998">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aea89738104eadf52486161638bc02c6a">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#aa999899522d2a3e9104b6be5615c4837">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a5f226eb0de89b2daed1e56d61f99eba7">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#ab2aac9a63e8377e6b7db2db2a2f746bd">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#ae595a4fdde5e2b71589865a0b6d43dfe">z::util::genericNull</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this interface was generated from the following files:<ul>
 <li>/home/travis/build/ZacharyWesterman/libzed/z/util/generic/<a class="el" href="generic_2generic_8h_source.html">generic.h</a></li>
 <li>/home/travis/build/ZacharyWesterman/libzed/z/util/generic/generic.cpp</li>
 </ul>
