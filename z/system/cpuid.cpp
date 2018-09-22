@@ -7,7 +7,7 @@ namespace z
 	{
 		void cpuid::det_vendor()
 		{
-			uint32_t eax, ebx, ecx, edx;
+			uint32_t eax(0), ebx(0), ecx(0), edx(0);
 
 			good = __get_cpuid(0, &eax, &ebx, &ecx, &edx);
 			/*asm volatile
@@ -23,9 +23,11 @@ namespace z
 				char vendor[13];
 				vendor[12] = 0;
 
-				*((uint32_t*)&vendor[0]) = ebx;
-				*((uint32_t*)&vendor[4]) = edx;
-				*((uint32_t*)&vendor[8]) = ecx;
+				uint32_t* ptr = (uint32_t*)vendor;
+
+				ptr[0] = ebx;
+				ptr[1] = edx;
+				ptr[2] = ecx;
 
 				_vendor = vendor;
 			}
@@ -33,7 +35,7 @@ namespace z
 
 		void cpuid::det_cpu()
 		{
-			uint32_t eax, ebx, ecx, edx;
+			uint32_t eax(0), ebx(0), ecx(0), edx(0);
 
 			__get_cpuid(1, &eax, &ebx, &ecx, &edx);
 
