@@ -4,7 +4,7 @@ namespace z
 {
 	namespace math
 	{
-		const long gcd(long x, long y)
+		long gcd(long x, long y)
 		{
 			if ((x == 0) && (y == 0))
 				return 1;
@@ -45,7 +45,7 @@ namespace z
 			return hi;
 		}
 
-		const std::complex<long> gcd(const std::complex<long>& x, const std::complex<long>& y)
+		std::complex<long> gcd(const std::complex<long>& x, const std::complex<long>& y)
 		{
 			long norm_x, norm_y;
 

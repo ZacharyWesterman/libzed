@@ -82,6 +82,8 @@ namespace z
 
 		static bool rgxmol(const core::array<rgxll*>& list, size_t index, rgxerr& error) // [...]
 		{
+			error = RGX_NO_ERROR;
+
 			if (list.isValid(index+2))
 			{
 				if (list[index]->id() != RGX_LBRACKET) return false;
@@ -136,6 +138,8 @@ namespace z
 
 		static bool rgxmal(const core::array<rgxll*>& list, size_t index, rgxerr& error) // (...)
 		{
+			error = RGX_NO_ERROR;
+
 			if (list.isValid(index+1))
 			{
 				if (list[index]->id() != RGX_LPAREN) return false;

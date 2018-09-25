@@ -234,7 +234,7 @@ namespace z
 		}
 
 		template <>
-		const uint32_t string<ascii>::at(size_t index) const
+		uint32_t string<ascii>::at(size_t index) const
 		{
 			if (index < character_ct)
 				return data[index];
@@ -571,7 +571,7 @@ namespace z
 		}
 
 		template <>
-		const uint32_t string<ascii>::operator[](size_t index) const
+		uint32_t string<ascii>::operator[](size_t index) const
 		{
 			return this->at(index);
 		}
@@ -671,13 +671,13 @@ namespace z
 					unsigned long mantissa : 52;
 					unsigned int exponent : 11;
 					bool sign : 1;
-				};
+				} raw;
 			};
 			float_cast number;
 			number.fval = value;
 
-			bool negative = number.sign;
-			number.sign = 0;
+			bool negative = number.raw.sign;
+			number.raw.sign = 0;
 			bool force = true;
 
 			if ((base < 2) || (base > 36)) base = 10;
@@ -699,7 +699,7 @@ namespace z
 				unsigned long tempExp = exponent;
 				bool tempNegExp = negexponent;
 
-				if (1023 <= number.exponent)// pos exponent
+				if (1023 <= number.raw.exponent)// pos exponent
 				{
 					while (temp >= base)
 					{
@@ -707,7 +707,7 @@ namespace z
 						tempExp++;
 					}
 				}
-				else if (1023 >= number.exponent)// neg exponent
+				else if (1023 >= number.raw.exponent)// neg exponent
 				{
 					tempNegExp = true;
 					double frac = 1.0 / (double)base;
@@ -728,14 +728,14 @@ namespace z
 				}
 			}
 
-			if (number.exponent < 1023)//x2^neg
+			if (number.raw.exponent < 1023)//x2^neg
 			{
 				integral = 0;
 			}
-			else if (number.exponent > 1023)//x2^(pos)
+			else if (number.raw.exponent > 1023)//x2^(pos)
 			{
-				long expo = number.exponent - 1023;
-				integral = ((long)1 << expo) + (number.mantissa >> ((long)52 - expo));
+				long expo = number.raw.exponent - 1023;
+				integral = ((long)1 << expo) + (number.raw.mantissa >> ((long)52 - expo));
 			}
 			else //x2^0
 			{
@@ -770,7 +770,7 @@ namespace z
 				}
 			}
 
-			// number.exponent - 1023;
+			// number.raw.exponent - 1023;
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
 			// size_t fbufsiz = fractionalBuf(fractional, 10, 6, 0, fbuf);
@@ -1527,7 +1527,7 @@ namespace z
 			size_t max = character_ct * this->charSize();
 			for (size_t i=len; i<max; i++)
 			{
-				if (data[i] != other.data[i]);
+				if (data[i] != other.data[i])
 					return false;
 			}
 
@@ -1557,7 +1557,7 @@ namespace z
 			size_t max = max_char * this->charSize();
 			for (size_t i=len; i<max; i++)
 			{
-				if (data[i] > other.data[i]);
+				if (data[i] > other.data[i])
 					return true;
 			}
 
@@ -1590,7 +1590,7 @@ namespace z
 			size_t max = max_char * this->charSize();
 			for (size_t i=len; i<max; i++)
 			{
-				if (data[i] < other.data[i]);
+				if (data[i] < other.data[i])
 					return true;
 			}
 

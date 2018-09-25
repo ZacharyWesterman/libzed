@@ -16,7 +16,7 @@ namespace z
 
 		bool timeout::timedOut() const
 		{
-			return ((timeout_goal >= 0) && (this->micros() >= timeout_goal));
+			return this->micros() >= timeout_goal;
 		}
 	}
 }

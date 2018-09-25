@@ -36,13 +36,13 @@ namespace z
 			 * \brief Get this symbol's character.
 			 * \return The character associated with this symbol.
 			 */
-			const uint32_t symbol() const;
+			uint32_t symbol() const;
 
 			/**
 			 * \brief Get this symbol's ID.
 			 * \return The ID of this symbol.
 			 */
-			const uint8_t id() const;
+			uint8_t id() const;
 
 			/**
 			 * \brief Equality operator.

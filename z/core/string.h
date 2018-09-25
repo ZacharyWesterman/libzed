@@ -226,7 +226,7 @@ namespace z
 			string(const string<utf32>& other);
 
 			/// Lvalue copy-constructor
-			string(string&& other)
+			explicit string(string&& other)
 			{
 				data = other.data;
 				data_len = other.data_len;
@@ -256,7 +256,7 @@ namespace z
 			 *
 			 * \see operator[]()
 			 */
-			const uint32_t at(size_t index) const;
+			uint32_t at(size_t index) const;
 
 			/**
 			 * \brief Get the character at the given index.
@@ -273,7 +273,7 @@ namespace z
 			 *
 			 * \see at()
 			 */
-			const uint32_t operator[](size_t index) const;
+			uint32_t operator[](size_t index) const;
 
 			/**
 			 * \brief Get the size of the string in memory

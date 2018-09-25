@@ -17,7 +17,7 @@ namespace z
 		 *
 		 * \see gcd(const std::complex<long>&,const std::complex<long>&)
 		 */
-		const long gcd(long x, long y);
+		long gcd(long x, long y);
 
 		/**
 		 * \brief Calculate the greatest common denominator of
@@ -30,6 +30,6 @@ namespace z
 		 *
 		 * \see gcd(long,long)
 		 */
-		const std::complex<long> gcd(const std::complex<long>& x, const std::complex<long>& y);
+		std::complex<long> gcd(const std::complex<long>& x, const std::complex<long>& y);
 	}
 }
