@@ -45,9 +45,9 @@ namespace z
 			virtual size_t add(const T&);
 			virtual void add(const array<T>&);
 
-			virtual int find(const T&) const;
+			virtual intmax_t find(const T&) const;
 
-			size_t findInsert(const T&) const;
+			virtual size_t findInsert(const T&) const;
 
 			virtual void sort();
 		};
@@ -144,17 +144,17 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		int sortedArray<T>::find(const T& object) const
+		intmax_t sortedArray<T>::find(const T& object) const
 		{
 			if (this->array_data.size() == 0)
 				return -1;
 
-			size_t left = 0;
-			size_t right = this->array_data.size()-1;
+			intmax_t left = 0;
+			intmax_t right = this->array_data.size()-1;
 
 			while (left < right)
 			{
-				size_t center = (left + right) / 2;
+				intmax_t center = (left + right) / 2;
 
 				if ((this->array_data.at(center)) < object)
 				{
@@ -194,12 +194,12 @@ namespace z
 			if (this->array_data.size() == 0)
 				return 0;
 
-			size_t left = 0;
-			size_t right = this->array_data.size()-1;
+			intmax_t left = 0;
+			intmax_t right = this->array_data.size()-1;
 
 			while (left < right)
 			{
-				size_t center = (left + right) / 2;
+				intmax_t center = (left + right) / 2;
 
 				if (this->array_data.at(center) < object)
 				{

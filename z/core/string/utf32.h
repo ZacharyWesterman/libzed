@@ -1694,20 +1694,13 @@ namespace z
 
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (max_char * this->charSize()) >> 2;
 
-			for (size_t i=0; i<len32; i++)
+			for (size_t i=0; i<max_char; i++)
 			{
 				if (data32[i] < other32[i])
 					return true;
-			}
-
-			size_t len = len32 << 2;
-			size_t max = max_char * this->charSize();
-			for (size_t i=len; i<max; i++)
-			{
-				if (data[i] < other.data[i])
-					return true;
+				else if (data32[i] > other32[i])
+					return false;
 			}
 
 			if (character_ct < other.character_ct)

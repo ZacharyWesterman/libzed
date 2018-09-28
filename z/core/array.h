@@ -78,11 +78,11 @@ namespace z
 
 			inline T& at(size_t);
 			inline const T& at(size_t) const;
-			inline T& operator[](size_t);
-			inline const T& operator[](size_t) const;
+			T& operator[](size_t);
+			const T& operator[](size_t) const;
 
 
-			virtual int find(const T& object) const;
+			virtual intmax_t find(const T& object) const;
 
 			const array& operator=(const array& other);
 
@@ -281,7 +281,7 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		int array<T>::find(const T& object) const
+		intmax_t array<T>::find(const T& object) const
 		{
 			for (size_t i=0; i<array_data.size(); i++)
 				if (array_data.at(i) == object)
@@ -485,7 +485,7 @@ namespace z
 		 * \see at(size_t)
 		 */
 		template <typename T>
-		inline T& array<T>::operator[](size_t index)
+		T& array<T>::operator[](size_t index)
 		{
 			return array_data.at(index);
 		}
@@ -503,7 +503,7 @@ namespace z
 		 * \see at(size_t) const
 		 */
 		template <typename T>
-		inline const T& array<T>::operator[](size_t index) const
+		const T& array<T>::operator[](size_t index) const
 		{
 			return array_data.at(index);
 		}

@@ -54,18 +54,20 @@ namespace z
 
 		bool word::operator==(const word& other) const
 		{
-			return _word.upper() == other._word.upper();
+			// return _word.upper() == other._word.upper();
+			return _word.length() == other._word.length();
 		}
 
 		bool word::operator>(const word& other) const
 		{
-			// return true;
-			return _word.upper() > other._word.upper();
+			// return _word.upper() > other._word.upper();
+			return _word.length() > other._word.length();
 		}
 
 		bool word::operator<(const word& other) const
 		{
-			return _word.upper() < other._word.upper();
+			// return _word.upper() < other._word.upper();
+			return _word.length() < other._word.length();
 		}
 	}
 }

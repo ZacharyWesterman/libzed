@@ -1,17 +1,21 @@
 #include <z/system/console.h>
-#include <z/util/generic.h>
+#include <z/util/dictionary.h>
+
+#define s(x) z::core::string<z::utf8>(x)
 
 int main()
 {
 	z::system::console console;
+	z::util::dictionary dict;
 
-	z::util::generic* foo = new z::util::genericComplex(std::complex<double>(123,-456));
+	s("Reading...").write(console);
+	dict.read("US.dic");
+	s("Done.").writeln(console);
 
-	auto type = foo->typeString();
-	auto value = foo->string();
+	s(dict.isWord("i")).writeln(console);
+	// dict.print(0, 50);
 
-	type.writeln(console);
-	value.writeln(console);
+
 
 	return 0;
 }

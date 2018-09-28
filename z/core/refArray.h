@@ -31,7 +31,7 @@ namespace z
 			template <typename... Args>
 			refArray(const T arg1, const Args... args);
 
-			int find(const T& object) const;
+			intmax_t find(const T& object) const;
 		};
 
 
@@ -92,9 +92,9 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		int refArray<T>::find(const T& object) const
+		intmax_t refArray<T>::find(const T& object) const
 		{
-			for (int i=0; i<((int)this->array_data.size()); i++)
+			for (intmax_t i=0; i<((int)this->array_data.size()); i++)
 			{
 				T obj1 = this->array_data.at(i);
 				if (obj1 == object) return i;

@@ -3,7 +3,7 @@
 #include <z/core/sizable.h>
 #include <z/core/serializable.h>
 #include <z/core/string.h>
-#include <z/core/sortedArray.h>
+#include <z/core/sortedRefArray.h>
 
 #include "dictionary/word.h"
 
@@ -15,7 +15,7 @@ namespace z
 		{
 		private:
 			core::string<utf32> lang;
-			core::sortedArray<word> wordList;
+			core::sortedRefArray<core::string<utf32>* > wordList;
 
 		public:
 			bool read(const core::string<utf8>& fileName);
@@ -25,6 +25,8 @@ namespace z
 			word getWord(const core::string<utf32>& name) const;
 
 			size_t wordCount() const;
+
+			void print(size_t, size_t) const;
 		};
 	}
 }

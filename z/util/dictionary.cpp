@@ -5,6 +5,8 @@
 
 #include <z/system/console.h>
 
+#include <z/core/timer.h>
+
 namespace z
 {
 	namespace util
@@ -40,37 +42,76 @@ namespace z
 			else
 				str.ut32 = new core::string<utf32>;
 
+			core::string<utf32>* result;
+			if (format == ascii)
+			{
+				str.asc->read(stream);
+				result = new core::string<utf32>(*str.asc);
+			}
+			else if (format == utf8)
+			{
+				str.ut8->read(stream);
+				result = new core::string<utf32>(*str.ut8);
+			}
+			else if (format == utf16)
+			{
+				str.ut16->read(stream);
+				result = new core::string<utf32>(*str.ut16);
+			}
+			else
+			{
+				str.ut32->read(stream);
+				result = new core::string<utf32>(*str.ut32);
+			}
+
+			// size_t read_count = 0;
+			// core::timer time;
+
 			while (!stream.empty())
 			{
-				core::string<utf32> result;
+				wordList.add(result);
+				// core::string<utf8> res = wordList.findInsert(result);
+
+				// res.writeln(console);
+				// read_count++;
+				// if (!(wordList.length() % 1000))
+				// {
+				// 	core::string<utf8>(time.micros() / read_count).writeln(console);
+				// }
 
 				if (format == ascii)
 				{
 					str.asc->read(stream);
-					result = *str.asc;
+					result = new core::string<utf32>(*str.asc);
 				}
 				else if (format == utf8)
 				{
 					str.ut8->read(stream);
-					result = *str.ut8;
+					result = new core::string<utf32>(*str.ut8);
 				}
 				else if (format == utf16)
 				{
 					str.ut16->read(stream);
-					result = *str.ut16;
+					result = new core::string<utf32>(*str.ut16);
 				}
 				else
 				{
 					str.ut32->read(stream);
-					result = *str.ut32;
+					result = new core::string<utf32>(*str.ut32);
 				}
 
 
+				// wordList.add(result);
 
-				// core::string<utf8>(wordList.add(word(result))).writeln(console);
-				wordList.add(word(result));
+
+
+				// if (!(wordList.length() % 1000))
+				// core::string<utf8>(wordList.add(result)).writeln(console);
+				// core::string<utf8>(wordList.length()).writeln(console);
 				// result.writeln(console);
 			}
+
+			delete result;
 
 			if (format == ascii)
 				delete str.asc;
@@ -86,26 +127,52 @@ namespace z
 
 		bool dictionary::isWord(const core::string<utf32>& name) const
 		{
-			word check(name);
+			// for (size_t i=0; i<wordList.length(); i++)
+			// {
+			// 	if (wordList[i] == name) return true;
+			// }
+			core::string<utf32>* check = new core::string<utf32>(name);
+			int result = wordList.find(check);
 
-			return (wordList.find(check) >= 0);
+			delete check;
+			return result >= 0;
 		}
 
 		word dictionary::getWord(const core::string<utf32>& name) const
 		{
-			word check(name);
+			// word check(name);
+			// auto check = name;
+			core::string<utf32>* check = new core::string<utf32>(name);
+
 
 			int index = wordList.find(check);
-			if (index >= 0)
-				return wordList[index];
 
-			check.set(core::string<utf32>());
-			return check;
+
+			if (index >= 0)
+				return word(*(wordList[index]));
+
+			// check.set(core::string<utf32>());
+			return word(*check);
 		}
 
 		size_t dictionary::wordCount() const
 		{
 			return wordList.length();
+		}
+
+		void dictionary::print(size_t start, size_t count) const
+		{
+			system::console con;
+
+			if (!wordList.isValid(start)) return;
+
+			size_t end = start + count;
+			if (end > wordList.length()) end = wordList.length();
+
+			for (size_t i=start; i<end; i++)
+			{
+				wordList[i]->writeln(con);
+			}
 		}
 	}
 }
