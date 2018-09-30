@@ -1393,7 +1393,7 @@ namespace z
 					return false;
 			}
 
-			return (character_ct < other.character_ct);
+			return true;
 		}
 
 		template <>
