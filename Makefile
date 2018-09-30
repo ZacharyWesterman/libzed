@@ -44,4 +44,4 @@ clear:
 
 rebuild: clean all
 
-.PHONY: rebuild clean clear all shared install uninstall driver
+.PHONY: rebuild clean clear all shared install uninstall

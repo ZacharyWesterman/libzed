@@ -42,73 +42,52 @@ namespace z
 			else
 				str.ut32 = new core::string<utf32>;
 
-			core::string<utf32>* result;
+			word* result;
 			if (format == ascii)
 			{
 				str.asc->read(stream);
-				result = new core::string<utf32>(*str.asc);
+				result = new word(*str.asc);
 			}
 			else if (format == utf8)
 			{
 				str.ut8->read(stream);
-				result = new core::string<utf32>(*str.ut8);
+				result = new word(*str.ut8);
 			}
 			else if (format == utf16)
 			{
 				str.ut16->read(stream);
-				result = new core::string<utf32>(*str.ut16);
+				result = new word(*str.ut16);
 			}
 			else
 			{
 				str.ut32->read(stream);
-				result = new core::string<utf32>(*str.ut32);
+				result = new word(*str.ut32);
 			}
-
-			// size_t read_count = 0;
-			// core::timer time;
 
 			while (!stream.empty())
 			{
 				wordList.add(result);
-				// core::string<utf8> res = wordList.findInsert(result);
-
-				// res.writeln(console);
-				// read_count++;
-				// if (!(wordList.length() % 1000))
-				// {
-				// 	core::string<utf8>(time.micros() / read_count).writeln(console);
-				// }
 
 				if (format == ascii)
 				{
 					str.asc->read(stream);
-					result = new core::string<utf32>(*str.asc);
+					result = new word(*str.asc);
 				}
 				else if (format == utf8)
 				{
 					str.ut8->read(stream);
-					result = new core::string<utf32>(*str.ut8);
+					result = new word(*str.ut8);
 				}
 				else if (format == utf16)
 				{
 					str.ut16->read(stream);
-					result = new core::string<utf32>(*str.ut16);
+					result = new word(*str.ut16);
 				}
 				else
 				{
 					str.ut32->read(stream);
-					result = new core::string<utf32>(*str.ut32);
+					result = new word(*str.ut32);
 				}
-
-
-				// wordList.add(result);
-
-
-
-				// if (!(wordList.length() % 1000))
-				// core::string<utf8>(wordList.add(result)).writeln(console);
-				// core::string<utf8>(wordList.length()).writeln(console);
-				// result.writeln(console);
 			}
 
 			delete result;
@@ -127,12 +106,8 @@ namespace z
 
 		bool dictionary::isWord(const core::string<utf32>& name) const
 		{
-			// for (size_t i=0; i<wordList.length(); i++)
-			// {
-			// 	if (wordList[i] == name) return true;
-			// }
-			core::string<utf32>* check = new core::string<utf32>(name);
-			int result = wordList.find(check);
+			word* check = new word(name);
+			auto result = wordList.find(check);
 
 			delete check;
 			return result >= 0;
@@ -140,19 +115,18 @@ namespace z
 
 		word dictionary::getWord(const core::string<utf32>& name) const
 		{
-			// word check(name);
-			// auto check = name;
-			core::string<utf32>* check = new core::string<utf32>(name);
-
-
-			int index = wordList.find(check);
-
+			word* check = new word(name);
+			auto index = wordList.find(check);
 
 			if (index >= 0)
+			{
+				delete check;
 				return word(*(wordList[index]));
+			}
 
-			// check.set(core::string<utf32>());
-			return word(*check);
+			delete check;
+			word result = word(*check);
+			return result;
 		}
 
 		size_t dictionary::wordCount() const
@@ -171,7 +145,7 @@ namespace z
 
 			for (size_t i=start; i<end; i++)
 			{
-				wordList[i]->writeln(con);
+				wordList[i]->get().writeln(con);
 			}
 		}
 	}

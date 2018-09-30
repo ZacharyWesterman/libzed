@@ -54,20 +54,62 @@ namespace z
 
 		bool word::operator==(const word& other) const
 		{
-			// return _word.upper() == other._word.upper();
-			return _word.length() == other._word.length();
+			if (_word.length() != other._word.length())
+				return false;
+
+			for (size_t i=0; i<_word.length(); i++)
+			{
+				if (core::toUpper(_word[i]) != core::toUpper(other._word[i]))
+					return false;
+			}
+
+			return true;
 		}
 
 		bool word::operator>(const word& other) const
 		{
-			// return _word.upper() > other._word.upper();
-			return _word.length() > other._word.length();
+			size_t max_char;
+			if (_word.length() < other._word.length())
+				max_char = _word.length();
+			else
+				max_char = other._word.length();
+
+			//check any remaining characters
+			for (size_t i=0; i<max_char; i++)
+			{
+				auto char1 = core::toUpper(_word[i]);
+				auto char2 = core::toUpper(other._word[i]);
+
+				if (char1 > char2)
+					return true;
+				else if (char1 < char2)
+					return false;
+			}
+
+			return (_word.length() > other._word.length());
 		}
 
 		bool word::operator<(const word& other) const
 		{
-			// return _word.upper() < other._word.upper();
-			return _word.length() < other._word.length();
+			size_t max_char;
+			if (_word.length() < other._word.length())
+				max_char = _word.length();
+			else
+				max_char = other._word.length();
+
+			//check any remaining characters
+			for (size_t i=0; i<max_char; i++)
+			{
+				auto char1 = core::toUpper(_word[i]);
+				auto char2 = core::toUpper(other._word[i]);
+
+				if (char1 > char2)
+					return false;
+				else if (char1 < char2)
+					return true;
+			}
+
+			return (_word.length() < other._word.length());
 		}
 	}
 }

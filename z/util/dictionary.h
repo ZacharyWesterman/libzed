@@ -15,7 +15,7 @@ namespace z
 		{
 		private:
 			core::string<utf32> lang;
-			core::sortedRefArray<core::string<utf32>* > wordList;
+			core::sortedRefArray<word*> wordList;
 
 		public:
 			bool read(const core::string<utf8>& fileName);
