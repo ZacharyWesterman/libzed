@@ -1629,25 +1629,31 @@ namespace z
 			if (character_ct != other.character_ct)
 				return false;
 
+			size_t fast_sz = (character_ct << 2) / sizeof(size_t);
+			size_t slow_bg = (fast_sz * sizeof(size_t)) >> 2;
+
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
+			{
+				if (data_ptr[i] != other_ptr[i])
+					return false;
+			}
+
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (character_ct * this->charSize()) >> 2;
 
-			for (size_t i=0; i<len32; i++)
+			//check any remaining characters
+			for (size_t i=slow_bg; i<character_ct; i++)
 			{
 				if (data32[i] != other32[i])
 					return false;
 			}
 
-			size_t len = len32 << 2;
-			size_t max = character_ct * this->charSize();
-			for (size_t i=len; i<max; i++)
-			{
-				if (data[i] != other.data[i])
-					return false;
-			}
-
-			return true;
+			return (character_ct < other.character_ct);
 		}
 
 		template <>
@@ -1659,28 +1665,35 @@ namespace z
 			else
 				max_char = other.character_ct;
 
+			size_t fast_sz = (max_char << 2) / sizeof(size_t);
+			size_t slow_bg = (fast_sz * sizeof(size_t)) >> 2;
+
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
+			{
+				if (data_ptr[i] > other_ptr[i])
+					return true;
+				else if (data_ptr[i] < other_ptr[i])
+					return false;
+			}
+
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (max_char * this->charSize()) >> 2;
 
-			for (size_t i=0; i<len32; i++)
+			//check any remaining characters
+			for (size_t i=slow_bg; i<max_char; i++)
 			{
 				if (data32[i] > other32[i])
 					return true;
+				else if (data32[i] < other32[i])
+					return false;
 			}
 
-			size_t len = len32 << 2;
-			size_t max = max_char * this->charSize();
-			for (size_t i=len; i<max; i++)
-			{
-				if (data[i] > other.data[i])
-					return true;
-			}
-
-			if (character_ct > other.character_ct)
-				return true;
-
-			return false;
+			return (character_ct > other.character_ct);
 		}
 
 		template <>
@@ -1692,21 +1705,35 @@ namespace z
 			else
 				max_char = other.character_ct;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
+			size_t fast_sz = (max_char << 2) / sizeof(size_t);
+			size_t slow_bg = (fast_sz * sizeof(size_t)) >> 2;
 
-			for (size_t i=0; i<max_char; i++)
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
 			{
-				if (data32[i] < other32[i])
+				if (data_ptr[i] < other_ptr[i])
 					return true;
-				else if (data32[i] > other32[i])
+				else if (data_ptr[i] > other_ptr[i])
 					return false;
 			}
 
-			if (character_ct < other.character_ct)
-				return true;
+			uint32_t* data32 = (uint32_t*)data;
+			uint32_t* other32 = (uint32_t*)other.data;
 
-			return false;
+			//check any remaining characters
+			for (size_t i=slow_bg; i<max_char; i++)
+			{
+				if (data32[i] < other32[i])
+					return true;
+				else if (data32[i] < other32[i])
+					return false;
+			}
+
+			return (character_ct < other.character_ct);
 		}
 
 		template <>
