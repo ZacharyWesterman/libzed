@@ -4,6 +4,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief Flags indicating what parts of speech a word belongs to.
+		 */
 		enum part
 		{
 			unknown      = 0x0000,

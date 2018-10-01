@@ -2,9 +2,9 @@ SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(w
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 INCLUDE = -I"../libzed"
-CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions
+CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions -O4
 CFLAGS = $(CCFLAGS) -fPIC
-LFLAGS = -ldl
+LFLAGS = -s -ldl
 
 DRIVER_FLAGS = -L. -lzed -Wl,-rpath=.
 

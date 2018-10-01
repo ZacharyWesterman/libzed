@@ -13,11 +13,6 @@ namespace z
 			part_of_speech = speechPart;
 		}
 
-		word::word(word&& other) : _word(other._word)
-		{
-			part_of_speech = other.part_of_speech;
-		}
-
 		word::word(const word& other)
 		{
 			_word = other._word;
@@ -74,7 +69,6 @@ namespace z
 			else
 				max_char = other._word.length();
 
-			//check any remaining characters
 			for (size_t i=0; i<max_char; i++)
 			{
 				auto char1 = core::toUpper(_word[i]);
@@ -97,7 +91,6 @@ namespace z
 			else
 				max_char = other._word.length();
 
-			//check any remaining characters
 			for (size_t i=0; i<max_char; i++)
 			{
 				auto char1 = core::toUpper(_word[i]);
