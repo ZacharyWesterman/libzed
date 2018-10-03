@@ -64,6 +64,29 @@ namespace z
 			 */
 			size_t wordCount() const;
 
+			/**
+			 * \brief Set a word in the dictionary.
+			 *
+			 * If the word already exists, updates its info. Otherwise, creates a new word.
+			 *
+			 * \param newWord The word to add or update.
+			 */
+			void setWord(const word& newWord);
+
+			/**
+			 * \brief Get the language of this dictionary.
+			 *
+			 * \return A reference to he language name.
+			 */
+			const core::string<Z_DICT_FORMAT>& language() const;
+
+			/**
+			 * \brief Set the language of this dictionary.
+			 *
+			 * \param newLang The string to set as the language name.
+			 */
+			void setLanguage(const core::string<Z_DICT_FORMAT>& newLang);
+
 			size_t size() const;
 
 			void serialIn(core::inputStream& stream);

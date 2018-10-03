@@ -168,27 +168,24 @@ namespace z
 				number >>= 8;
 			}
 
-			for (int i=0; i<length; i++)
+			int start;
+
+			if (length && (data[length-1] < 0x10))
 			{
-				int index = length - i - 1;
+				stream.put((((uint8_t)length - 1) << 4) + data[length-1]);
 
-				if (i)
-				{
-					stream.put(data[index]);
-				}
-				else //i = 0
-				{
-					if (data[index] < 0x10)
-					{
-						stream.put((((uint8_t)length - 1) << 4) + data[index]);
-					}
-					else
-					{
-						stream.put((uint8_t)length << 4);
-						stream.put(data[index]);
-					}
-				}
+				start = length-2;
+			}
+			else
+			{
+				stream.put((uint8_t)length << 4);
 
+				start = length-1;
+			}
+
+			for (int i=start; i>=0; i--)
+			{
+				stream.put(data[i]);
 			}
 		}
 

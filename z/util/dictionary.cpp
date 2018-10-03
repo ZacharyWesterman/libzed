@@ -143,6 +143,33 @@ namespace z
 			return wordList.length();
 		}
 
+		void dictionary::setWord(const word& newWord)
+		{
+			word* item = new word(newWord);
+
+			auto index = wordList.find(item);
+
+			if (index >= 0)
+			{
+				delete wordList[index];
+				wordList[index] = item;
+			}
+			else
+			{
+				wordList.add(item);
+			}
+		}
+
+		const core::string<Z_DICT_FORMAT>& dictionary::language() const
+		{
+			return lang;
+		}
+
+		void dictionary::setLanguage(const core::string<Z_DICT_FORMAT>& newLang)
+		{
+			lang = newLang;
+		}
+
 		size_t dictionary::size() const
 		{
 			size_t total = wordList.size();
@@ -157,6 +184,11 @@ namespace z
 		{
 			if (stream.bad()) return;
 			clear();
+
+			// the dict file was corrupted / did not finish writing.
+			if (stream.get()) return;
+
+			lang.serialIn(stream);
 
 			size_t length = 0;
 			core::serialIn(length, stream);
@@ -174,12 +206,26 @@ namespace z
 		{
 			if (stream.bad()) return;
 
+			auto start = stream.tell();
+
+			stream.put(0xFF); //indicate we're not done writing
+
+			lang.serialOut(stream);
+
 			size_t length = wordList.length();
 			core::serialOut(length, stream);
+
 			for (size_t i=0; i<wordList.length(); i++)
 			{
 				wordList[i]->serialOut(stream);
 			}
+
+			auto stop = stream.tell();
+
+			stream.seek(start);
+			stream.put(0); //we finished writing the dictionary.
+
+			stream.seek(stop);
 		}
 	}
 }

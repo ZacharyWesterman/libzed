@@ -1566,15 +1566,16 @@ namespace z
 			if (stream.bad() || !stream.binary())
 			{
 				character_ct = 0;
-				this->increase(4);
-				*((uint32_t*)data) = 0;
+				this->increase(1);
+				data[0] = 0;
 				return;
 			}
 
 			size_t datact = 0;
 			core::serialIn(datact, stream);
-			character_ct = datact / this->charSize();
-			this->increase(datact + 4);
+
+			character_ct = datact;
+			this->increase(datact + 1);
 
 			size_t i = 0;
 			while (!stream.empty() && (i < datact))
@@ -1582,7 +1583,7 @@ namespace z
 				data[i++] = stream.get();
 			}
 
-			*((uint32_t*)&data[i]) = 0;
+			data[i] = 0;
 		}
 
 		template <>
@@ -1591,13 +1592,12 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct * this->charSize();
+			size_t datact = character_ct;
 			core::serialOut(datact, stream);
 
-			size_t i = 0;
-			while ((i < datact))
+			for (size_t i=0; i<datact; i++)
 			{
-				stream.put(data[i++]);
+				stream.put(data[i]);
 			}
 		}
 

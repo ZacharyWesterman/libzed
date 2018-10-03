@@ -14,9 +14,9 @@ int main()
 
 	// // str("Reading...").write(console);
 	z::core::timer timer;
-	// dict.read("US.dic");
-	z::file::inputStream input ("us_eng.dict");
-	dict.serialIn(input);
+	dict.read("US.dic");
+	// z::file::inputStream input ("us_eng.dict");
+	// dict.serialIn(input);
 	// input.close();
 	double wc = dict.wordCount();
 	double tm = timer.micros();
@@ -43,8 +43,8 @@ int main()
 
 	(result + L"μs avg. search").writeln(console);
 
-	// z::file::outputStream stream ("us_eng.dict");
-	// dict.serialOut(stream);
+	z::file::outputStream stream ("us_eng.dict");
+	dict.serialOut(stream);
 
 	return 0;
 }

@@ -1770,7 +1770,8 @@ namespace z
 
 			size_t datact = 0;
 			core::serialIn(datact, stream);
-			character_ct = datact / this->charSize();
+
+			character_ct = datact >> 2;
 			this->increase(datact + 4);
 
 			size_t i = 0;
@@ -1788,13 +1789,12 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct * this->charSize();
+			size_t datact = character_ct << 2;
 			core::serialOut(datact, stream);
 
-			size_t i = 0;
-			while ((i < datact))
+			for (size_t i=0; i<datact; i++)
 			{
-				stream.put(data[i++]);
+				stream.put(data[i]);
 			}
 		}
 

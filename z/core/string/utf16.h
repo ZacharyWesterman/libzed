@@ -1775,13 +1775,14 @@ namespace z
 			{
 				character_ct = 0;
 				this->increase(4);
-				*((uint32_t*)data) = 0;
+				*((uint16_t*)data) = 0;
 				return;
 			}
 
 			size_t datact = 0;
 			core::serialIn(datact, stream);
-			character_ct = datact / this->charSize();
+
+			character_ct = datact >> 1;
 			this->increase(datact + 4);
 
 			size_t i = 0;
@@ -1790,7 +1791,7 @@ namespace z
 				data[i++] = stream.get();
 			}
 
-			*((uint32_t*)&data[i]) = 0;
+			*((uint16_t*)&data[i]) = 0;
 		}
 
 		template <>
@@ -1799,13 +1800,12 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct * this->charSize();
+			size_t datact = character_ct << 1;
 			core::serialOut(datact, stream);
 
-			size_t i = 0;
-			while ((i < datact))
+			for (size_t i=0; i<datact; i++)
 			{
-				stream.put(data[i++]);
+				stream.put(data[i]);
 			}
 		}
 
