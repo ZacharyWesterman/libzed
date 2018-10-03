@@ -47,11 +47,11 @@ namespace z
 			template <typename... Args>
 			sortedRefArray(const T arg1, const Args... args);
 
-			virtual int add(const T&);
+			virtual size_t add(const T&);
 			virtual void add(const refArray<T>&);
 
-			int find(const T&) const;
-			int findInsert(const T) const;
+			intmax_t find(const T&) const;
+			intmax_t findInsert(const T&) const;
 
 			virtual void sort();
 		};
@@ -114,9 +114,9 @@ namespace z
 		 * \return The index where the inserted pointer now resides.
 		 */
 		template <typename T>
-		int sortedRefArray<T>::add(const T& object)
+		size_t sortedRefArray<T>::add(const T& object)
 		{
-			int index = findInsert(object);
+			size_t index = findInsert(object);
 
 			this->insert(object, index);
 
@@ -157,13 +157,13 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		int sortedRefArray<T>::find(const T& object) const
+		intmax_t sortedRefArray<T>::find(const T& object) const
 		{
 			if (this->array_data.size() == 0)
 				return -1;
 
-			int left = 0;
-			int right = this->array_data.size()-1;
+			intmax_t left = 0;
+			intmax_t right = this->array_data.size()-1;
 
 			while (left < right)
 			{
@@ -202,13 +202,13 @@ namespace z
 		 * inserted.
 		 */
 		template <typename T>
-		int sortedRefArray<T>::findInsert(const T object) const
+		intmax_t sortedRefArray<T>::findInsert(const T& object) const
 		{
 			if (this->array_data.size() == 0)
 				return 0;
 
-			int left = 0;
-			int right = this->array_data.size()-1;
+			intmax_t left = 0;
+			intmax_t right = this->array_data.size()-1;
 
 			while (left < right)
 			{

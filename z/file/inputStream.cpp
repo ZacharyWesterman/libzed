@@ -95,7 +95,7 @@ namespace z
 		{
 			if (this->empty()) return ascii;
 
-			size_t read_max = (32 > this->end()) ? this->end() : 32;
+			const size_t read_max = (32 > this->end()) ? this->end() : 32;
 
 			size_t max_nulls = 0;
 			size_t contig_nulls = 0;
@@ -104,7 +104,7 @@ namespace z
 			size_t init_pos = this->tell();
 			this->seek(0);
 
-			uint8_t buffer[read_max];
+			uint8_t* buffer = new uint8_t[read_max];
 			for (size_t i=0; i<read_max; i++)
 				buffer[i] = this->get();
 
@@ -115,7 +115,11 @@ namespace z
 				//ascii and utf8 won't have null chars
 				if (max_nulls || !buffer[i])
 				{
-					if (contig_nulls >= 2) return utf32;
+					if (contig_nulls >= 2)
+					{
+						delete[] buffer;
+						return utf32;
+					}
 
 					contig_nulls++;
 					if (max_nulls < contig_nulls) max_nulls = contig_nulls;
@@ -126,6 +130,8 @@ namespace z
 						can_utf8 = false;
 				}
 			}
+
+			delete[] buffer;
 
 			if (max_nulls) return utf16;
 

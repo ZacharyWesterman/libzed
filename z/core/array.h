@@ -63,6 +63,9 @@ namespace z
 			virtual size_t add(const T&);
 			virtual void add(const array&);
 			const array& insert(const T&, size_t);
+
+			void append(const T&);
+
 			const array& remove(size_t);
 			const array& remove(size_t, int);
 
@@ -78,11 +81,11 @@ namespace z
 
 			inline T& at(size_t);
 			inline const T& at(size_t) const;
-			inline T& operator[](size_t);
-			inline const T& operator[](size_t) const;
+			T& operator[](size_t);
+			const T& operator[](size_t) const;
 
 
-			virtual int find(const T& object) const;
+			virtual intmax_t find(const T& object) const;
 
 			const array& operator=(const array& other);
 
@@ -281,7 +284,7 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		int array<T>::find(const T& object) const
+		intmax_t array<T>::find(const T& object) const
 		{
 			for (size_t i=0; i<array_data.size(); i++)
 				if (array_data.at(i) == object)
@@ -354,6 +357,18 @@ namespace z
 			return *this;
 		}
 
+		/**
+		 * \brief Append an object to the end of the array.
+		 *
+		 * Appends the given data to the end of the array.
+		 *
+		 * \param object the data to aappend to the array.
+		 */
+		template <typename T>
+		void array<T>::append(const T& object)
+		{
+			array_data.push_back(object);
+		}
 
 		/**
 		 * \brief Remove an object from the array.
@@ -485,7 +500,7 @@ namespace z
 		 * \see at(size_t)
 		 */
 		template <typename T>
-		inline T& array<T>::operator[](size_t index)
+		T& array<T>::operator[](size_t index)
 		{
 			return array_data.at(index);
 		}
@@ -503,7 +518,7 @@ namespace z
 		 * \see at(size_t) const
 		 */
 		template <typename T>
-		inline const T& array<T>::operator[](size_t index) const
+		const T& array<T>::operator[](size_t index) const
 		{
 			return array_data.at(index);
 		}

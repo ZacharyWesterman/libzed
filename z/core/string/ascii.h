@@ -234,7 +234,7 @@ namespace z
 		}
 
 		template <>
-		const uint32_t string<ascii>::at(size_t index) const
+		uint32_t string<ascii>::at(size_t index) const
 		{
 			if (index < character_ct)
 				return data[index];
@@ -571,7 +571,7 @@ namespace z
 		}
 
 		template <>
-		const uint32_t string<ascii>::operator[](size_t index) const
+		uint32_t string<ascii>::operator[](size_t index) const
 		{
 			return this->at(index);
 		}
@@ -671,13 +671,13 @@ namespace z
 					unsigned long mantissa : 52;
 					unsigned int exponent : 11;
 					bool sign : 1;
-				};
+				} raw;
 			};
 			float_cast number;
 			number.fval = value;
 
-			bool negative = number.sign;
-			number.sign = 0;
+			bool negative = number.raw.sign;
+			number.raw.sign = 0;
 			bool force = true;
 
 			if ((base < 2) || (base > 36)) base = 10;
@@ -699,7 +699,7 @@ namespace z
 				unsigned long tempExp = exponent;
 				bool tempNegExp = negexponent;
 
-				if (1023 <= number.exponent)// pos exponent
+				if (1023 <= number.raw.exponent)// pos exponent
 				{
 					while (temp >= base)
 					{
@@ -707,7 +707,7 @@ namespace z
 						tempExp++;
 					}
 				}
-				else if (1023 >= number.exponent)// neg exponent
+				else if (1023 >= number.raw.exponent)// neg exponent
 				{
 					tempNegExp = true;
 					double frac = 1.0 / (double)base;
@@ -728,14 +728,14 @@ namespace z
 				}
 			}
 
-			if (number.exponent < 1023)//x2^neg
+			if (number.raw.exponent < 1023)//x2^neg
 			{
 				integral = 0;
 			}
-			else if (number.exponent > 1023)//x2^(pos)
+			else if (number.raw.exponent > 1023)//x2^(pos)
 			{
-				long expo = number.exponent - 1023;
-				integral = ((long)1 << expo) + (number.mantissa >> ((long)52 - expo));
+				long expo = number.raw.exponent - 1023;
+				integral = ((long)1 << expo) + (number.raw.mantissa >> ((long)52 - expo));
 			}
 			else //x2^0
 			{
@@ -770,7 +770,7 @@ namespace z
 				}
 			}
 
-			// number.exponent - 1023;
+			// number.raw.exponent - 1023;
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
 			// size_t fbufsiz = fractionalBuf(fractional, 10, 6, 0, fbuf);
@@ -1513,21 +1513,24 @@ namespace z
 			if (character_ct != other.character_ct)
 				return false;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (character_ct * this->charSize()) >> 2;
+			size_t fast_sz = character_ct / sizeof(size_t);
+			size_t slow_bg = fast_sz * sizeof(size_t);
 
-			for (size_t i=0; i<len32; i++)
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
 			{
-				if (data32[i] != other32[i])
+				if (data_ptr[i] != other_ptr[i])
 					return false;
 			}
 
-			size_t len = len32 << 2;
-			size_t max = character_ct * this->charSize();
-			for (size_t i=len; i<max; i++)
+			//check any remaining characters
+			for (size_t i=slow_bg; i<character_ct; i++)
 			{
-				if (data[i] != other.data[i]);
+				if (data[i] != other.data[i])
 					return false;
 			}
 
@@ -1543,28 +1546,32 @@ namespace z
 			else
 				max_char = other.character_ct;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (max_char * this->charSize()) >> 2;
+			size_t fast_sz = max_char / sizeof(size_t);
+			size_t slow_bg = fast_sz * sizeof(size_t);
 
-			for (size_t i=0; i<len32; i++)
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
 			{
-				if (data32[i] > other32[i])
+				if (data_ptr[i] > other_ptr[i])
 					return true;
+				else if (data_ptr[i] < other_ptr[i])
+					return false;
 			}
 
-			size_t len = len32 << 2;
-			size_t max = max_char * this->charSize();
-			for (size_t i=len; i<max; i++)
+			//check any remaining characters
+			for (size_t i=slow_bg; i<max_char; i++)
 			{
-				if (data[i] > other.data[i]);
+				if (data[i] > other.data[i])
 					return true;
+				else if (data[i] < other.data[i])
+					return false;
 			}
 
-			if (character_ct > other.character_ct)
-				return true;
-
-			return false;
+			return (character_ct > other.character_ct);
 		}
 
 		template <>
@@ -1576,28 +1583,32 @@ namespace z
 			else
 				max_char = other.character_ct;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = (max_char * this->charSize()) >> 2;
+			size_t fast_sz = max_char / sizeof(size_t);
+			size_t slow_bg = fast_sz * sizeof(size_t);
 
-			for (size_t i=0; i<len32; i++)
+			size_t* data_ptr = (size_t*)data;
+			size_t* other_ptr = (size_t*)other.data;
+
+			//compare max number of bytes at a time (usu. 8)
+			//Minor slowdown for small strings, faster for large strings.
+			for (size_t i=0; i<fast_sz; i++)
 			{
-				if (data32[i] < other32[i])
+				if (data_ptr[i] < other_ptr[i])
 					return true;
+				else if (data_ptr[i] > other_ptr[i])
+					return false;
 			}
 
-			size_t len = len32 << 2;
-			size_t max = max_char * this->charSize();
-			for (size_t i=len; i<max; i++)
+			//check any remaining characters
+			for (size_t i=slow_bg; i<max_char; i++)
 			{
-				if (data[i] < other.data[i]);
+				if (data[i] < other.data[i])
 					return true;
+				else if (data[i] < other.data[i])
+					return false;
 			}
 
-			if (character_ct < other.character_ct)
-				return true;
-
-			return false;
+			return (character_ct < other.character_ct);
 		}
 
 		template <>
@@ -1696,15 +1707,16 @@ namespace z
 			if (stream.bad() || !stream.binary())
 			{
 				character_ct = 0;
-				this->increase(4);
-				*((uint32_t*)data) = 0;
+				this->increase(1);
+				data[0] = 0;
 				return;
 			}
 
 			size_t datact = 0;
 			core::serialIn(datact, stream);
-			character_ct = datact / this->charSize();
-			this->increase(datact + 4);
+
+			character_ct = datact;
+			this->increase(datact + 1);
 
 			size_t i = 0;
 			while (!stream.empty() && (i < datact))
@@ -1712,7 +1724,7 @@ namespace z
 				data[i++] = stream.get();
 			}
 
-			*((uint32_t*)&data[i]) = 0;
+			data[i] = 0;
 		}
 
 		template <>
@@ -1721,13 +1733,12 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct * this->charSize();
+			size_t datact = character_ct;
 			core::serialOut(datact, stream);
 
-			size_t i = 0;
-			while ((i < datact))
+			for (size_t i=0; i<datact; i++)
 			{
-				stream.put(data[i++]);
+				stream.put(data[i]);
 			}
 		}
 

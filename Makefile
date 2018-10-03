@@ -1,10 +1,10 @@
-SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/generic/*.cpp)
+SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 INCLUDE = -I"../libzed"
-CCFLAGS = $(INCLUDE) -std=c++11 -g -Wall -fexceptions -O4
+CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions -O4
 CFLAGS = $(CCFLAGS) -fPIC
-LFLAGS = -ldl -s
+LFLAGS = -s -ldl
 
 DRIVER_FLAGS = -L. -lzed -Wl,-rpath=.
 
@@ -44,4 +44,4 @@ clear:
 
 rebuild: clean all
 
-.PHONY: rebuild clean clear all shared install uninstall driver
+.PHONY: rebuild clean clear all shared install uninstall

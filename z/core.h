@@ -23,8 +23,7 @@
 #include "core/timer.h"
 #include "core/timeout.h"
 
-///Misc
-#include "core/pause.h"
+///
 #include "core/charFunctions.h"
 #include "core/serializable.h"
 #include "core/sizable.h"
