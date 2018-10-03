@@ -63,6 +63,9 @@ namespace z
 			virtual size_t add(const T&);
 			virtual void add(const array&);
 			const array& insert(const T&, size_t);
+
+			void append(const T&);
+
 			const array& remove(size_t);
 			const array& remove(size_t, int);
 
@@ -354,6 +357,18 @@ namespace z
 			return *this;
 		}
 
+		/**
+		 * \brief Append an object to the end of the array.
+		 *
+		 * Appends the given data to the end of the array.
+		 *
+		 * \param object the data to aappend to the array.
+		 */
+		template <typename T>
+		void array<T>::append(const T& object)
+		{
+			array_data.push_back(object);
+		}
 
 		/**
 		 * \brief Remove an object from the array.

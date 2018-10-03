@@ -2,6 +2,9 @@
 
 #include <z/core/string.h>
 
+#include <z/core/sizable.h>
+#include <z/core/serializable.h>
+
 #include "part.h"
 
 namespace z
@@ -11,10 +14,10 @@ namespace z
 		/**
 		 * \brief Container holding information about a word.
 		 */
-		class word
+		class word : public core::sizable, public core::serializable
 		{
 		private:
-			core::string<utf32> _word;
+			core::string<Z_DICT_FORMAT> _word;
 			part part_of_speech;
 
 		public:
@@ -27,7 +30,7 @@ namespace z
 			 * \param name The word.
 			 * \param speechPart The part of speech that this word is.
 			 */
-			word(const core::string<utf32>& name, part speechPart = unknown);
+			word(const core::string<Z_DICT_FORMAT>& name, part speechPart = unknown);
 
 			/**
 			 * \brief Copy constructor.
@@ -50,14 +53,14 @@ namespace z
 			 *
 			 * \return A reference to this word's text.
 			 */
-			const core::string<utf32>& get() const;
+			const core::string<Z_DICT_FORMAT>& get() const;
 
 			/**
 			 * \brief Set this word's text.
 			 *
 			 * \param name The word.
 			 */
-			void set(const core::string<utf32>& name);
+			void set(const core::string<Z_DICT_FORMAT>& name);
 
 			/**
 			 * \brief Get the part of speech this word is.
@@ -99,6 +102,12 @@ namespace z
 			 * \return True if this word comes before the other alphabetically, false otherwise.
 			 */
 			bool operator<(const word& other) const;
+
+			size_t size() const;
+
+			void serialIn(core::inputStream& stream);
+
+			void serialOut(core::outputStream& stream) const;
 		};
 	}
 }

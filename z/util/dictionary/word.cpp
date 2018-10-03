@@ -7,7 +7,7 @@ namespace z
 	{
 		word::word() : part_of_speech(unknown) {}
 
-		word::word(const core::string<utf32>& name, part speechPart)
+		word::word(const core::string<Z_DICT_FORMAT>& name, part speechPart)
 		{
 			_word = name;
 			part_of_speech = speechPart;
@@ -27,12 +27,12 @@ namespace z
 			return *this;
 		}
 
-		const core::string<utf32>& word::get() const
+		const core::string<Z_DICT_FORMAT>& word::get() const
 		{
 			return _word;
 		}
 
-		void word::set(const core::string<utf32>& name)
+		void word::set(const core::string<Z_DICT_FORMAT>& name)
 		{
 			_word = name;
 		}
@@ -103,6 +103,23 @@ namespace z
 			}
 
 			return (_word.length() < other._word.length());
+		}
+
+		size_t word::size() const
+		{
+			return _word.size() + sizeof(part_of_speech);
+		}
+
+		void word::serialIn(core::inputStream& stream)
+		{
+			_word.serialIn(stream);
+			part_of_speech = (part)stream.get();
+		}
+
+		void word::serialOut(core::outputStream& stream) const
+		{
+			_word.serialOut(stream);
+			stream.put((uint8_t)part_of_speech);
 		}
 	}
 }

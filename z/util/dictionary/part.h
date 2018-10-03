@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef Z_DICT_FORMAT
+#define Z_DICT_FORMAT z::utf8
+#endif
+
 namespace z
 {
 	namespace util

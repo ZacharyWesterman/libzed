@@ -7,18 +7,29 @@
 
 #include <z/core/timer.h>
 
+#include <iostream>
+
 namespace z
 {
 	namespace util
 	{
+		dictionary::~dictionary()
+		{
+			clear();
+		}
+
+		void dictionary::clear()
+		{
+			for (size_t i=0; i<wordList.length(); i++)
+			{
+				delete wordList[i];
+			}
+			wordList.clear();
+		}
+
 		bool dictionary::read(const core::string<utf8>& fileName)
 		{
-			system::console console;
-
-			// core::string<utf32> test = file::exists(fileName);
-			// test.writeln(console);
-
-			// if (!file::exists(fileName)) return false;
+			clear();
 
 			file::inputStream stream (fileName);
 			const encoding format = stream.format();
@@ -104,8 +115,10 @@ namespace z
 			return true;
 		}
 
-		bool dictionary::isWord(const core::string<utf32>& name) const
+		bool dictionary::isWord(const core::string<Z_DICT_FORMAT>& name) const
 		{
+			if (!wordList.length()) return false;
+
 			word* check = new word(name);
 			auto result = wordList.find(check);
 
@@ -113,20 +126,16 @@ namespace z
 			return result >= 0;
 		}
 
-		word dictionary::getWord(const core::string<utf32>& name) const
+		word dictionary::getWord(const core::string<Z_DICT_FORMAT>& name) const
 		{
 			word* check = new word(name);
 			auto index = wordList.find(check);
+			delete check;
 
 			if (index >= 0)
-			{
-				delete check;
 				return word(*(wordList[index]));
-			}
-
-			delete check;
-			word result = word(*check);
-			return result;
+			else
+				return word();
 		}
 
 		size_t dictionary::wordCount() const
@@ -134,18 +143,42 @@ namespace z
 			return wordList.length();
 		}
 
-		void dictionary::print(size_t start, size_t count) const
+		size_t dictionary::size() const
 		{
-			system::console con;
+			size_t total = wordList.size();
 
-			if (!wordList.isValid(start)) return;
+			for (size_t i=0; i<wordList.length(); i++)
+				total += wordList[i]->size();
 
-			size_t end = start + count;
-			if (end > wordList.length()) end = wordList.length();
+			return total;
+		}
 
-			for (size_t i=start; i<end; i++)
+		void dictionary::serialIn(core::inputStream& stream)
+		{
+			if (stream.bad()) return;
+			clear();
+
+			size_t length = 0;
+			core::serialIn(length, stream);
+
+			word temp;
+			for (size_t i=0; i<length; i++)
 			{
-				wordList[i]->get().writeln(con);
+				if (stream.empty()) return;
+				temp.serialIn(stream);
+				wordList.append(new word(temp));
+			}
+		}
+
+		void dictionary::serialOut(core::outputStream& stream) const
+		{
+			if (stream.bad()) return;
+
+			size_t length = wordList.length();
+			core::serialOut(length, stream);
+			for (size_t i=0; i<wordList.length(); i++)
+			{
+				wordList[i]->serialOut(stream);
 			}
 		}
 	}

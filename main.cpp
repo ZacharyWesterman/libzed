@@ -2,21 +2,29 @@
 #include <z/util/dictionary.h>
 #include <z/core/timer.h>
 
-#define str z::core::string<z::utf32>
+#include <z/file/inputStream.h>
+#include <z/file/outputStream.h>
+
+#define str z::core::string<z::utf8>
 
 int main()
 {
 	z::system::console console;
 	z::util::dictionary dict;
 
-	// str("Reading...").write(console);
+	// // str("Reading...").write(console);
 	z::core::timer timer;
-	dict.read("US.dic");
+	// dict.read("US.dic");
+	z::file::inputStream input ("us_eng.dict");
+	dict.serialIn(input);
+	// input.close();
 	double wc = dict.wordCount();
 	double tm = timer.micros();
 	// str("Done.").writeln(console);
+	double rt = 0.0;
+	if (wc) rt = tm/wc;
 
-	(str("Read ")+wc+" words in "+(tm/1000.0)+"ms (avg "+(tm/wc)+L" μs/w)").writeln(console);
+	(str("Read ")+wc+" words in "+(tm/1000.0)+"ms (avg "+rt+L" μs/w)").writeln(console);
 
 	// z::system::pause(1000);
 
@@ -35,8 +43,8 @@ int main()
 
 	(result + L"μs avg. search").writeln(console);
 
-
-	// s(z::util::word("I") < z::util::word('a')).writeln(console);
+	// z::file::outputStream stream ("us_eng.dict");
+	// dict.serialOut(stream);
 
 	return 0;
 }

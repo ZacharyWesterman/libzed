@@ -12,13 +12,21 @@ namespace z
 		/**
 		 * \brief A class for performing searches on a dictionary of words.
 		 */
-		class dictionary
+		class dictionary : public core::sizable, public core::serializable
 		{
 		private:
-			core::string<utf32> lang;
+			core::string<Z_DICT_FORMAT> lang;
 			core::sortedRefArray<word*> wordList;
 
 		public:
+			///Destructor
+			~dictionary();
+
+			/**
+			 * \brief Empty the word list.
+			 */
+			void clear();
+
 			/**
 			 * \brief Read this dictionary's word list from a text file.
 			 *
@@ -38,7 +46,7 @@ namespace z
 			 *
 			 * \return True if it is a valid word, false otherwise.
 			 */
-			bool isWord(const core::string<utf32>& name) const;
+			bool isWord(const core::string<Z_DICT_FORMAT>& name) const;
 
 			/**
 			 * \brief Get the word information for the given dictionary word.
@@ -47,7 +55,7 @@ namespace z
 			 *
 			 * \return Appropriate word information if this is a valid word, blank word info otherwise.
 			 */
-			word getWord(const core::string<utf32>& name) const;
+			word getWord(const core::string<Z_DICT_FORMAT>& name) const;
 
 			/**
 			 * \brief Get the word count of this dictionary.
@@ -55,6 +63,12 @@ namespace z
 			 * \return The number of words in this dictionary.
 			 */
 			size_t wordCount() const;
+
+			size_t size() const;
+
+			void serialIn(core::inputStream& stream);
+
+			void serialOut(core::outputStream& stream) const;
 		};
 	}
 }
