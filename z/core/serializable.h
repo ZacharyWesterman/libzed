@@ -73,7 +73,7 @@ namespace z
 		/**
 		 * \brief Read an integer as binary data from a stream.
 		 *
-		 * This function assumes integers are no larger than 255 bytes in size.
+		 * This function assumes integers are no larger than 15 bytes in size.
 		 * The first byte is assumed to be the number of bytes to read afterward.
 		 * Then that number of bytes is read from the stream.
 		 *
@@ -87,12 +87,21 @@ namespace z
 			if (stream.bad() || !stream.binary()) return;
 
 			uint8_t chars = stream.get();
-			number = 0;
 
-			for (size_t i=0; i<chars; i++)
+			if (chars & 0xF0)
 			{
-				number <<= 8;
-				number += stream.get();
+				number = chars & 0x0F;
+				chars = (chars & 0xF0) >> 4;
+
+				for (uint8_t i=0; i<chars; i++)
+				{
+					number <<= 8;
+					number += stream.get();
+				}
+			}
+			else
+			{
+				number = chars;
 			}
 		}
 
@@ -133,7 +142,7 @@ namespace z
 		/**
 		 * \brief Write an integer as binary data to a stream.
 		 *
-		 * This function assumes integers are no larger than 255 bytes in size.
+		 * This function assumes integers are no larger than 15 bytes in size.
 		 * Leading null bytes are ignored and then the count of remaining bytes
 		 * is written to the stream. Then all remaining bytes are written.
 		 *
@@ -144,25 +153,43 @@ namespace z
 		typename std::enable_if<std::is_integral<T>::value>::type
 		serialOut(T number, outputStream& stream)
 		{
-			if (stream.bad() || !stream.binary()) return;
+			int length = sizeof(T);
+			uint8_t data[sizeof(T)];
 
-			uint8_t c[sizeof(T)];
-			uint8_t chars = 0;
-
-			for (size_t i=0; i<sizeof(T); i++)
+			for (int i=0; i<sizeof(T); i++)
 			{
-				if (number)
+				if (!number)
 				{
-					chars++;
-					c[i] = number & 0xFF;
-					number >>= 8;
+					length = i;
+					break;
 				}
-				else break;
+
+				data[i] = number & 0xFF;
+				number >>= 8;
 			}
 
-			stream.put(chars);
-			for (size_t i=0; i<chars; i++)
-				stream.put(c[i]);
+			for (int i=0; i<length; i++)
+			{
+				int index = length - i - 1;
+
+				if (i)
+				{
+					stream.put(data[index]);
+				}
+				else //i = 0
+				{
+					if (data[index] < 0x10)
+					{
+						stream.put((((uint8_t)length - 1) << 4) + data[index]);
+					}
+					else
+					{
+						stream.put((uint8_t)length << 4);
+						stream.put(data[index]);
+					}
+				}
+
+			}
 		}
 
 	}
