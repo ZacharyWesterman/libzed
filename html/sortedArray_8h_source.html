@@ -127,9 +127,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a84e0a84363e8ba25f2a69e0a5a0a4c25">add</a>(<span class="keyword">const</span> T&amp;);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a84e0a84363e8ba25f2a69e0a5a0a4c25">add</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a>&amp;);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a79ab300d012445af0248efb6581393b2">find</a>(<span class="keyword">const</span> T&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">virtual</span> intmax_t <a class="code" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">find</a>(<span class="keyword">const</span> T&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordtype">size_t</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a5bcd1bdc338f0fc3874a6593c7b995da">findInsert</a>(<span class="keyword">const</span> T&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a5bcd1bdc338f0fc3874a6593c7b995da">findInsert</a>(<span class="keyword">const</span> T&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#ae3336fe316f7f58fee17bfa2b5edbe67">sort</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        };</div>
@@ -171,17 +171,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1sortedArray.html#a79ab300d012445af0248efb6581393b2">  147</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classz_1_1core_1_1sortedArray.html#a79ab300d012445af0248efb6581393b2">sortedArray&lt;T&gt;::find</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">  147</a></span>&#160;        intmax_t <a class="code" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">sortedArray&lt;T&gt;::find</a>(<span class="keyword">const</span> T&amp; <span class="keywordtype">object</span>)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">        </span>{</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">if</span> (this-&gt;array_data.size() == 0)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordtype">size_t</span> left = 0;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordtype">size_t</span> right = this-&gt;array_data.size()-1;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            intmax_t left = 0;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            intmax_t right = this-&gt;array_data.size()-1;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">while</span> (left &lt; right)</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordtype">size_t</span> center = (left + right) / 2;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                intmax_t center = (left + right) / 2;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span> ((this-&gt;array_data.at(center)) &lt; <span class="keywordtype">object</span>)</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                {</div>
@@ -209,12 +209,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">if</span> (this-&gt;array_data.size() == 0)</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordtype">size_t</span> left = 0;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordtype">size_t</span> right = this-&gt;array_data.size()-1;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            intmax_t left = 0;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            intmax_t right = this-&gt;array_data.size()-1;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">while</span> (left &lt; right)</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <span class="keywordtype">size_t</span> center = (left + right) / 2;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                intmax_t center = (left + right) / 2;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">if</span> (this-&gt;array_data.at(center) &lt; object)</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
@@ -264,14 +264,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#endif // SORTEDARRAY_H_INCLUDED</span></div>
-<div class="ttc" id="classz_1_1core_1_1array_html_a883c1791695d65f3ce245aea8938ea52"><div class="ttname"><a href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdoc">Get the size of the array. </div><div class="ttdef"><b>Definition:</b> array.h:422</div></div>
+<div class="ttc" id="classz_1_1core_1_1array_html_a883c1791695d65f3ce245aea8938ea52"><div class="ttname"><a href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdoc">Get the size of the array. </div><div class="ttdef"><b>Definition:</b> array.h:437</div></div>
 <div class="ttc" id="classz_1_1core_1_1sortedArray_html_a84e0a84363e8ba25f2a69e0a5a0a4c25"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#a84e0a84363e8ba25f2a69e0a5a0a4c25">z::core::sortedArray::add</a></div><div class="ttdeci">virtual size_t add(const T &amp;)</div><div class="ttdoc">Add an object to the array. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:105</div></div>
 <div class="ttc" id="classz_1_1core_1_1sortedArray_html_ae3336fe316f7f58fee17bfa2b5edbe67"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#ae3336fe316f7f58fee17bfa2b5edbe67">z::core::sortedArray::sort</a></div><div class="ttdeci">virtual void sort()</div><div class="ttdoc">Sorts the array. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:232</div></div>
-<div class="ttc" id="classz_1_1core_1_1sortedArray_html_a5bcd1bdc338f0fc3874a6593c7b995da"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#a5bcd1bdc338f0fc3874a6593c7b995da">z::core::sortedArray::findInsert</a></div><div class="ttdeci">size_t findInsert(const T &amp;) const </div><div class="ttdoc">Find an index where the given object can be inserted while keeping the array sorted. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:192</div></div>
+<div class="ttc" id="classz_1_1core_1_1sortedArray_html_a5bcd1bdc338f0fc3874a6593c7b995da"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#a5bcd1bdc338f0fc3874a6593c7b995da">z::core::sortedArray::findInsert</a></div><div class="ttdeci">virtual size_t findInsert(const T &amp;) const </div><div class="ttdoc">Find an index where the given object can be inserted while keeping the array sorted. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:192</div></div>
+<div class="ttc" id="classz_1_1core_1_1sortedArray_html_a8855c1f4390da017e180e72c8f5a9e32"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">z::core::sortedArray::find</a></div><div class="ttdeci">virtual intmax_t find(const T &amp;) const </div><div class="ttdoc">Check if a given object is in the array. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:147</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector. </div><div class="ttdef"><b>Definition:</b> array.h:28</div></div>
 <div class="ttc" id="classz_1_1core_1_1sortedArray_html"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html">z::core::sortedArray</a></div><div class="ttdoc">An extension of the core::array class which attempts to keep all data sorted. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:20</div></div>
 <div class="ttc" id="classz_1_1core_1_1sortedArray_html_accd6ea416f946ed0cb8477aaf466d929"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#accd6ea416f946ed0cb8477aaf466d929">z::core::sortedArray::sortedArray</a></div><div class="ttdeci">sortedArray()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:38</div></div>
-<div class="ttc" id="classz_1_1core_1_1sortedArray_html_a79ab300d012445af0248efb6581393b2"><div class="ttname"><a href="classz_1_1core_1_1sortedArray.html#a79ab300d012445af0248efb6581393b2">z::core::sortedArray::find</a></div><div class="ttdeci">virtual int find(const T &amp;) const </div><div class="ttdoc">Check if a given object is in the array. </div><div class="ttdef"><b>Definition:</b> sortedArray.h:147</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

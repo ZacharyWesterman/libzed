@@ -1,6 +1,7 @@
 var searchData=
 [
   ['_7earray',['~array',['../classz_1_1core_1_1array.html#aa1a7259bdf173e04f1ab908d5327a65e',1,'z::core::array']]],
+  ['_7edictionary',['~dictionary',['../classz_1_1util_1_1dictionary.html#ae322739d35760fea6fafeeabcb1e78b1',1,'z::util::dictionary']]],
   ['_7egeneric',['~generic',['../classz_1_1util_1_1generic.html#abbe1897de599b3b59bd2552d17900f31',1,'z::util::generic']]],
   ['_7einputstream',['~inputStream',['../classz_1_1core_1_1inputStream.html#a4c03397b86f9e351509c9a167cd9735f',1,'z::core::inputStream']]],
   ['_7elibrary',['~library',['../classz_1_1file_1_1library.html#a4c38ca4ce1595ad6e829964c3b450284',1,'z::file::library']]],

@@ -673,7 +673,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Read an integer as binary data from a stream. </p>
-<p>This function assumes integers are no larger than 255 bytes in size. The first byte is assumed to be the number of bytes to read afterward. Then that number of bytes is read from the stream.</p>
+<p>This function assumes integers are no larger than 15 bytes in size. The first byte is assumed to be the number of bytes to read afterward. Then that number of bytes is read from the stream.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">number</td><td>The number to read from the stream, returned by reference. </td></tr>
@@ -786,7 +786,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Write an integer as binary data to a stream. </p>
-<p>This function assumes integers are no larger than 255 bytes in size. Leading null bytes are ignored and then the count of remaining bytes is written to the stream. Then all remaining bytes are written.</p>
+<p>This function assumes integers are no larger than 15 bytes in size. Leading null bytes are ignored and then the count of remaining bytes is written to the stream. Then all remaining bytes are written.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">number</td><td>The number to write to the stream. </td></tr>

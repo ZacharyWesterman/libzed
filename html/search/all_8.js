@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id',['id',['../classz_1_1util_1_1rgxll.html#a70c5a86bd4802a3a6c954ab12ceed81c',1,'z::util::rgxll::id()'],['../classz_1_1util_1_1rgxss.html#ac50969f2ecaef3d6b8116fe953a39157',1,'z::util::rgxss::id()']]],
+  ['id',['id',['../classz_1_1util_1_1rgxll.html#a70c5a86bd4802a3a6c954ab12ceed81c',1,'z::util::rgxll::id()'],['../classz_1_1util_1_1rgxss.html#a88acfc8695edc760a25fc3a5cbc76df6',1,'z::util::rgxss::id()']]],
   ['info',['info',['../classz_1_1file_1_1info.html',1,'z::file']]],
   ['info',['info',['../classz_1_1file_1_1info.html#a1a603519cf7e614fa64e386e9a42bc45',1,'z::file::info']]],
   ['inputstream',['inputStream',['../classz_1_1core_1_1inputStream.html',1,'z::core']]],
@@ -24,5 +24,6 @@ var searchData=
   ['isutf8',['isUTF8',['../namespacez_1_1core.html#a8839d32f94cee77147fe8ec39ecd8e96',1,'z::core']]],
   ['isvalid',['isValid',['../classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7',1,'z::core::array']]],
   ['iswhitespace',['isWhiteSpace',['../namespacez_1_1core.html#a8062dc909cc41ac06a60de79532ffb00',1,'z::core']]],
+  ['isword',['isWord',['../classz_1_1util_1_1dictionary.html#adaa362b5e1569096724344b077184ec7',1,'z::util::dictionary']]],
   ['introduction',['Introduction',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_mainpage.html',1,'']]]
 ];
