@@ -13,3 +13,6 @@
 
 ///Regular expressions
 #include "util/regex.h"
+
+///Dictionary
+#include "util/dictionary.h"

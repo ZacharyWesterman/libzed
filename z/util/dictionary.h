@@ -2,6 +2,7 @@
 
 #include <z/core/string.h>
 #include <z/core/sortedRefArray.h>
+#include <z/core/timeout.h>
 
 #include "dictionary/word.h"
 
@@ -18,7 +19,15 @@ namespace z
 			core::string<Z_DICT_FORMAT> lang;
 			core::sortedRefArray<word*> wordList;
 
+			encoding streamFormat;
+			bool readingStream;
+
+			word* readWordFromStream(core::inputStream& stream);
+
 		public:
+			///Constructor
+			dictionary();
+
 			///Destructor
 			~dictionary();
 
@@ -28,16 +37,18 @@ namespace z
 			void clear();
 
 			/**
-			 * \brief Read this dictionary's word list from a text file.
+			 * \brief Read this dictionary's word list as text from a stream.
 			 *
 			 * Note that for long dictionaries (i.e. English), it may take
 			 * several seconds for this operation to complete!
 			 *
-			 * \param fileName The name of the file to read from.
+			 * \param stream The stream to read from.
+			 * \param time Optional param to force return after time out
 			 *
-			 * \return True if read succeeded, false otherwise.
+			 * \return A positive integer if finished reading successfully, 0 if not finished reading,
+			 * a negative integer if read failed.
 			 */
-			bool read(const core::string<utf8>& fileName);
+			int read(core::inputStream& stream, const core::timeout& time = -1);
 
 			/**
 			 * \brief Check if the given string is a valid word in the dictionary (case is ignored).

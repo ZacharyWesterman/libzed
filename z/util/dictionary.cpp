@@ -1,18 +1,14 @@
 #include "dictionary.h"
 
-#include <z/file/exists.h>
-#include <z/file/inputStream.h>
-
-#include <z/system/console.h>
-
-#include <z/core/timer.h>
-
-#include <iostream>
-
 namespace z
 {
 	namespace util
 	{
+		dictionary::dictionary()
+		{
+			readingStream = false;
+		}
+
 		dictionary::~dictionary()
 		{
 			clear();
@@ -27,92 +23,69 @@ namespace z
 			wordList.clear();
 		}
 
-		bool dictionary::read(const core::string<utf8>& fileName)
+		word* dictionary::readWordFromStream(core::inputStream& stream)
 		{
-			clear();
-
-			file::inputStream stream (fileName);
-			const encoding format = stream.format();
-
-			if (stream.bad()) return false;
-
-			union
-			{
-				core::string<ascii>* asc;
-				core::string<utf8>* ut8;
-				core::string<utf16>* ut16;
-				core::string<utf32>* ut32;
-			} str;
-
-			if (format == ascii)
-				str.asc = new core::string<ascii>;
-			else if (format == utf8)
-				str.ut8 = new core::string<utf8>;
-			else if (format == utf16)
-				str.ut16 = new core::string<utf16>;
-			else
-				str.ut32 = new core::string<utf32>;
-
 			word* result;
-			if (format == ascii)
+
+			if (streamFormat == ascii)
 			{
-				str.asc->read(stream);
-				result = new word(*str.asc);
+				core::string<ascii> str;
+				str.read(stream);
+				result = new word(str);
 			}
-			else if (format == utf8)
+			else if (streamFormat == utf8)
 			{
-				str.ut8->read(stream);
-				result = new word(*str.ut8);
+				core::string<utf8> str;
+				str.read(stream);
+				result = new word(str);
 			}
-			else if (format == utf16)
+			else if (streamFormat == utf16)
 			{
-				str.ut16->read(stream);
-				result = new word(*str.ut16);
+				core::string<utf16> str;
+				str.read(stream);
+				result = new word(str);
 			}
 			else
 			{
-				str.ut32->read(stream);
-				result = new word(*str.ut32);
+				core::string<utf32> str;
+				str.read(stream);
+				result = new word(str);
 			}
 
-			while (!stream.empty())
+			return result;
+		}
+
+		int dictionary::read(core::inputStream& stream, const core::timeout& time)
+		{
+			if (stream.bad()) return -1;
+			if (stream.empty()) return 1;
+
+			if (!readingStream)
 			{
-				wordList.add(result);
-
-				if (format == ascii)
-				{
-					str.asc->read(stream);
-					result = new word(*str.asc);
-				}
-				else if (format == utf8)
-				{
-					str.ut8->read(stream);
-					result = new word(*str.ut8);
-				}
-				else if (format == utf16)
-				{
-					str.ut16->read(stream);
-					result = new word(*str.ut16);
-				}
-				else
-				{
-					str.ut32->read(stream);
-					result = new word(*str.ut32);
-				}
+				clear();
+				streamFormat = stream.format();
+				readingStream = true;
 			}
 
-			delete result;
+			word* newWord = readWordFromStream(stream);
 
-			if (format == ascii)
-				delete str.asc;
-			else if (format == utf8)
-				delete str.ut8;
-			else if (format == utf16)
-				delete str.ut16;
+			while (!(stream.empty() || time.timedOut()))
+			{
+				wordList.add(newWord);
+
+				newWord = readWordFromStream(stream);
+			}
+
+			if (stream.empty())
+			{
+				delete newWord;
+				return 1;
+			}
 			else
-				delete str.ut32;
-
-			return true;
+			{
+				wordList.add(newWord);
+				return 0;
+			}
 		}
 
 		bool dictionary::isWord(const core::string<Z_DICT_FORMAT>& name) const
