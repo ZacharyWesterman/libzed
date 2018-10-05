@@ -113,6 +113,10 @@ Inheritance diagram for z::util::dictionary:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ad2ee536c9d01efb24543155a1b8f5823"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2ee536c9d01efb24543155a1b8f5823"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ad2ee536c9d01efb24543155a1b8f5823">dictionary</a> ()</td></tr>
+<tr class="memdesc:ad2ee536c9d01efb24543155a1b8f5823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr class="separator:ad2ee536c9d01efb24543155a1b8f5823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae322739d35760fea6fafeeabcb1e78b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae322739d35760fea6fafeeabcb1e78b1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ae322739d35760fea6fafeeabcb1e78b1">~dictionary</a> ()</td></tr>
 <tr class="memdesc:ae322739d35760fea6fafeeabcb1e78b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
@@ -121,9 +125,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a5800151d8087e3a6abd6f750140bb660">clear</a> ()</td></tr>
 <tr class="memdesc:a5800151d8087e3a6abd6f750140bb660"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the word list. <br/></td></tr>
 <tr class="separator:a5800151d8087e3a6abd6f750140bb660"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a835e942f04e049c9f9a272738bb6379c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a835e942f04e049c9f9a272738bb6379c">read</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName)</td></tr>
-<tr class="memdesc:a835e942f04e049c9f9a272738bb6379c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list from a text file.  <a href="#a835e942f04e049c9f9a272738bb6379c">More...</a><br/></td></tr>
-<tr class="separator:a835e942f04e049c9f9a272738bb6379c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7449fc154e1b0caf1f6d56559a2fe7eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb">read</a> (<a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;stream, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1)</td></tr>
+<tr class="memdesc:a7449fc154e1b0caf1f6d56559a2fe7eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <a href="#a7449fc154e1b0caf1f6d56559a2fe7eb">More...</a><br/></td></tr>
+<tr class="separator:a7449fc154e1b0caf1f6d56559a2fe7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaa362b5e1569096724344b077184ec7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#adaa362b5e1569096724344b077184ec7">isWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; Z_DICT_FORMAT &gt; &amp;name) const </td></tr>
 <tr class="memdesc:adaa362b5e1569096724344b077184ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a valid word in the dictionary (case is ignored).  <a href="#adaa362b5e1569096724344b077184ec7">More...</a><br/></td></tr>
 <tr class="separator:adaa362b5e1569096724344b077184ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,29 +238,40 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a835e942f04e049c9f9a272738bb6379c"></a>
+<a class="anchor" id="a7449fc154e1b0caf1f6d56559a2fe7eb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::util::dictionary::read </td>
+          <td class="memname">int z::util::dictionary::read </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read this dictionary's word list from a text file. </p>
+<p>Read this dictionary's word list as text from a stream. </p>
 <p>Note that for long dictionaries (i.e. English), it may take several seconds for this operation to complete!</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fileName</td><td>The name of the file to read from.</td></tr>
+    <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
+    <tr><td class="paramname">time</td><td>Optional param to force return after time out</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if read succeeded, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A positive integer if finished reading successfully, 0 if not finished reading, a negative integer if read failed. </dd></dl>
 
 </div>
 </div>
