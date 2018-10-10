@@ -559,10 +559,12 @@ namespace z
 
 				start = index;
 			}
-			else return;
+			else return *this;
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 			array_data.insert(array_data.begin() + start, object);
+
+			return *this;
 		}
 
 		/**
@@ -600,12 +602,14 @@ namespace z
 
 				start = index;
 			}
-			else return;
+			else return *this;
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
 			for (size_t i=0; i<other.size(); i++)
 				array_data.insert(array_data.begin() + start + i, other[i]);
+
+			return *this;
 		}
 
 
