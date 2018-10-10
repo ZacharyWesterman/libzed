@@ -429,117 +429,121 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;</div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                start = index;</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            }</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            array_data.erase(array_data.begin() + start, array_data.begin() + end);</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            array_data.insert(array_data.begin() + start, object);</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        }</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00580"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a18d7ff1a57aa5ddea4bfbb632b4f3153">  580</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a>&amp; <a class="code" href="classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee">array&lt;T&gt;::replace</a>(<span class="keywordtype">size_t</span> index, <span class="keywordtype">int</span> count, <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a>&amp; other)</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        {</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordflow">if</span> (index &gt;= array_data.size())</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;                index = array_data.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>()-1;</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="keywordtype">size_t</span> start, end;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        }</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00582"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a18d7ff1a57aa5ddea4bfbb632b4f3153">  582</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a>&amp; <a class="code" href="classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee">array&lt;T&gt;::replace</a>(<span class="keywordtype">size_t</span> index, <span class="keywordtype">int</span> count, <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a>&amp; other)</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        {</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            <span class="keywordflow">if</span> (index &gt;= array_data.size())</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                index = array_data.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>()-1;</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            {</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)-count &gt;= index)</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                    start = 0;</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                    start = index + count;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                end = index + 1;</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            }</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count)</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            {</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                end = index + count;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                <span class="keywordflow">if</span> (end &gt; array_data.size()) end = array_data.size();</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                start = index;</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            }</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            array_data.erase(array_data.begin() + start, array_data.begin() + end);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            <span class="keywordtype">size_t</span> start, end;</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)-count &gt;= index)</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                    start = 0;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                    start = index + count;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                end = index + 1;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            }</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count)</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            {</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                end = index + count;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                <span class="keywordflow">if</span> (end &gt; array_data.size()) end = array_data.size();</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                start = index;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            }</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;other.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>(); i++)</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                array_data.insert(array_data.begin() + start + i, other[i]);</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        }</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            array_data.erase(array_data.begin() + start, array_data.begin() + end);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;other.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>(); i++)</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;                array_data.insert(array_data.begin() + start + i, other[i]);</div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00626"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">  626</a></span>&#160;        <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a> <a class="code" href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">array&lt;T&gt;::subset</a>(<span class="keywordtype">size_t</span> index, <span class="keywordtype">int</span> count)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a> output;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            <span class="keywordflow">if</span> (index &gt;= array_data.size())</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                index = array_data.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>()-1;</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;            <span class="keywordtype">size_t</span> start, end;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            {</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)-count &gt;= index)</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                    start = 0;</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                    start = index + count;</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                end = index;</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                <span class="keywordtype">size_t</span> offset = end+start;</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=start; i&lt;end; i++)</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                    output.<a class="code" href="classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357">array_data</a>.push_back(array_data[offset-i]);</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            }</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count)</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            {</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                end = index + count;</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                <span class="keywordflow">if</span> (end &gt; array_data.size()) end = array_data.size();</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                start = index;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=start; i&lt;end; i++)</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                    output.<a class="code" href="classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357">array_data</a>.push_back(array_data[i]);</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            }</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        }</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00630"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">  630</a></span>&#160;        <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a> <a class="code" href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">array&lt;T&gt;::subset</a>(<span class="keywordtype">size_t</span> index, <span class="keywordtype">int</span> count)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            <a class="code" href="classz_1_1core_1_1array.html">array&lt;T&gt;</a> output;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;            <span class="keywordflow">if</span> (index &gt;= array_data.size())</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                index = array_data.<a class="code" href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">size</a>()-1;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            <span class="keywordtype">size_t</span> start, end;</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            {</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)-count &gt;= index)</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                    start = 0;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                    start = index + count;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                end = index;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                <span class="keywordtype">size_t</span> offset = end+start;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=start; i&lt;end; i++)</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                    output.<a class="code" href="classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357">array_data</a>.push_back(array_data[offset-i]);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;            }</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count)</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            {</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                end = index + count;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                <span class="keywordflow">if</span> (end &gt; array_data.size()) end = array_data.size();</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                start = index;</div>
 <div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            <span class="keywordflow">return</span> output;</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;        }</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=start; i&lt;end; i++)</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                    output.<a class="code" href="classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357">array_data</a>.push_back(array_data[i]);</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;            }</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00672"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">  672</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">array&lt;T&gt;::isValid</a>(<span class="keywordtype">size_t</span> index)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="keywordflow">return</span> (index &lt; array_data.size());</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        }</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00678"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">  678</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">array&lt;T&gt;::serialIn</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;        {</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;            <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">z::core::serialIn</a>(count, stream);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;count; i++)</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;            {</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                T object;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">z::core::serialIn</a>(<span class="keywordtype">object</span>, stream);</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                array_data.push_back(<span class="keywordtype">object</span>);</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            }</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        }</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00692"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">  692</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">array&lt;T&gt;::serialOut</a>(<a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            <span class="keywordtype">size_t</span> count = array_data.size();</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">z::core::serialOut</a>(count, stream);</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;count; i++)</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            {</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">z::core::serialOut</a>(array_data[i], stream);</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            }</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        }</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    }</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;}</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            <span class="keywordflow">return</span> output;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;        }</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00676"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">  676</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">array&lt;T&gt;::isValid</a>(<span class="keywordtype">size_t</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="keywordflow">return</span> (index &lt; array_data.size());</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;        }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00682"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">  682</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">array&lt;T&gt;::serialIn</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">inputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        {</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;            <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">z::core::serialIn</a>(count, stream);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;count; i++)</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            {</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                T object;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                <a class="code" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">z::core::serialIn</a>(<span class="keywordtype">object</span>, stream);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                array_data.push_back(<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;            }</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        }</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00696"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">  696</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">array&lt;T&gt;::serialOut</a>(<a class="code" href="classz_1_1core_1_1outputStream.html">outputStream</a>&amp; <a class="code" href="classz_1_1core_1_1stream.html">stream</a>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            <span class="keywordtype">size_t</span> count = array_data.size();</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">z::core::serialOut</a>(count, stream);</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;count; i++)</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            {</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                <a class="code" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">z::core::serialOut</a>(array_data[i], stream);</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            }</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        }</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    }</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;}</div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a6653d526d8c6fb63b8941913f63b91de"><div class="ttname"><a href="classz_1_1core_1_1array.html#a6653d526d8c6fb63b8941913f63b91de">z::core::array::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const array &amp;other) const </div><div class="ttdoc">Array less-than operator. </div><div class="ttdef"><b>Definition:</b> array.h:227</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a883c1791695d65f3ce245aea8938ea52"><div class="ttname"><a href="classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52">z::core::array::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdoc">Get the size of the array. </div><div class="ttdef"><b>Definition:</b> array.h:437</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_aa0d05b52fd3b67b2ac95c90bdfcb604c"><div class="ttname"><a href="classz_1_1core_1_1array.html#aa0d05b52fd3b67b2ac95c90bdfcb604c">z::core::array::remove</a></div><div class="ttdeci">const array &amp; remove(size_t)</div><div class="ttdoc">Remove an object from the array. </div><div class="ttdef"><b>Definition:</b> array.h:381</div></div>
@@ -549,15 +553,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classz_1_1core_1_1stream_html"><div class="ttname"><a href="classz_1_1core_1_1stream.html">z::core::stream</a></div><div class="ttdoc">A template class for character streams. </div><div class="ttdef"><b>Definition:</b> stream.h:254</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a7ceb71ed34230c2a1949dee096a183db"><div class="ttname"><a href="classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db">z::core::array::insert</a></div><div class="ttdeci">const array &amp; insert(const T &amp;, size_t)</div><div class="ttdoc">Insert an object into the array. </div><div class="ttdef"><b>Definition:</b> array.h:349</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a54f21af5f234b501b70a6ee7dfbfcc19"><div class="ttname"><a href="classz_1_1core_1_1array.html#a54f21af5f234b501b70a6ee7dfbfcc19">z::core::array::operator[]</a></div><div class="ttdeci">T &amp; operator[](size_t)</div><div class="ttdoc">Function to get the object at the given index. </div><div class="ttdef"><b>Definition:</b> array.h:503</div></div>
-<div class="ttc" id="classz_1_1core_1_1array_html_aadb37e40262693fb537ece0fc044c7d7"><div class="ttname"><a href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">z::core::array::isValid</a></div><div class="ttdeci">bool isValid(size_t position) const </div><div class="ttdoc">Check if an index is within the bounds of the array. </div><div class="ttdef"><b>Definition:</b> array.h:672</div></div>
+<div class="ttc" id="classz_1_1core_1_1array_html_aadb37e40262693fb537ece0fc044c7d7"><div class="ttname"><a href="classz_1_1core_1_1array.html#aadb37e40262693fb537ece0fc044c7d7">z::core::array::isValid</a></div><div class="ttdeci">bool isValid(size_t position) const </div><div class="ttdoc">Check if an index is within the bounds of the array. </div><div class="ttdef"><b>Definition:</b> array.h:676</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html">z::core::inputStream</a></div><div class="ttdoc">A template class for character input streams. </div><div class="ttdef"><b>Definition:</b> stream.h:22</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a74d2270b3985652cecf69c4481b2c0ae"><div class="ttname"><a href="classz_1_1core_1_1array.html#a74d2270b3985652cecf69c4481b2c0ae">z::core::array::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(const array &amp;other) const </div><div class="ttdoc">Array greater-than operator. </div><div class="ttdef"><b>Definition:</b> array.h:199</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a0c89da203efef053230d1e0736793b1a"><div class="ttname"><a href="classz_1_1core_1_1array.html#a0c89da203efef053230d1e0736793b1a">z::core::array::operator==</a></div><div class="ttdeci">bool operator==(const array &amp;other) const </div><div class="ttdoc">Check whether two arrays&#39; contents are the same. </div><div class="ttdef"><b>Definition:</b> array.h:177</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_aa1a7259bdf173e04f1ab908d5327a65e"><div class="ttname"><a href="classz_1_1core_1_1array.html#aa1a7259bdf173e04f1ab908d5327a65e">z::core::array::~array</a></div><div class="ttdeci">virtual ~array()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> array.h:59</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a48670e71295cab3fd47f40c1c84ec357"><div class="ttname"><a href="classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357">z::core::array::array_data</a></div><div class="ttdeci">std::vector&lt; T &gt; array_data</div><div class="ttdoc">The data in the array. </div><div class="ttdef"><b>Definition:</b> array.h:32</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a6074006593c1f776b9bc4cbedcb88dd9"><div class="ttname"><a href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">z::core::array::array</a></div><div class="ttdeci">array()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> array.h:50</div></div>
-<div class="ttc" id="classz_1_1core_1_1array_html_a8ee33ef7a0e354cb67b509bd98b64fbe"><div class="ttname"><a href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">z::core::array::serialOut</a></div><div class="ttdeci">void serialOut(outputStream &amp;) const </div><div class="ttdoc">Write the object&#39;s binary data to a stream. </div><div class="ttdef"><b>Definition:</b> array.h:692</div></div>
-<div class="ttc" id="classz_1_1core_1_1array_html_a089e21eae404bcc79706a5630dddb440"><div class="ttname"><a href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">z::core::array::serialIn</a></div><div class="ttdeci">void serialIn(inputStream &amp;)</div><div class="ttdoc">Read the object&#39;s binary data from a stream. </div><div class="ttdef"><b>Definition:</b> array.h:678</div></div>
+<div class="ttc" id="classz_1_1core_1_1array_html_a8ee33ef7a0e354cb67b509bd98b64fbe"><div class="ttname"><a href="classz_1_1core_1_1array.html#a8ee33ef7a0e354cb67b509bd98b64fbe">z::core::array::serialOut</a></div><div class="ttdeci">void serialOut(outputStream &amp;) const </div><div class="ttdoc">Write the object&#39;s binary data to a stream. </div><div class="ttdef"><b>Definition:</b> array.h:696</div></div>
+<div class="ttc" id="classz_1_1core_1_1array_html_a089e21eae404bcc79706a5630dddb440"><div class="ttname"><a href="classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440">z::core::array::serialIn</a></div><div class="ttdeci">void serialIn(inputStream &amp;)</div><div class="ttdoc">Read the object&#39;s binary data from a stream. </div><div class="ttdef"><b>Definition:</b> array.h:682</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a9e4325166734d7d716dbdec5f60cc5f1"><div class="ttname"><a href="classz_1_1core_1_1array.html#a9e4325166734d7d716dbdec5f60cc5f1">z::core::array::append</a></div><div class="ttdeci">void append(const T &amp;)</div><div class="ttdoc">Append an object to the end of the array. </div><div class="ttdef"><b>Definition:</b> array.h:368</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a9b3d21e13a5aa1c45234fe89f5d466ee"><div class="ttname"><a href="classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee">z::core::array::replace</a></div><div class="ttdeci">const array &amp; replace(size_t, int, const T &amp;)</div><div class="ttdoc">Replace all objects in the given range with an object. </div><div class="ttdef"><b>Definition:</b> array.h:539</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_ad8a2aac9c281acff000f3c6c8cfce66c"><div class="ttname"><a href="classz_1_1core_1_1array.html#ad8a2aac9c281acff000f3c6c8cfce66c">z::core::array::length</a></div><div class="ttdeci">size_t length() const </div><div class="ttdoc">Get the length of the array. </div><div class="ttdef"><b>Definition:</b> array.h:455</div></div>
@@ -569,7 +573,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classz_1_1core_1_1array_html_a1a56fbd2f5ffcee553fb6c5c4941c4bb"><div class="ttname"><a href="classz_1_1core_1_1array.html#a1a56fbd2f5ffcee553fb6c5c4941c4bb">z::core::array::find</a></div><div class="ttdeci">virtual intmax_t find(const T &amp;object) const </div><div class="ttdoc">Check if a given object is in the array. </div><div class="ttdef"><b>Definition:</b> array.h:287</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_afb00cc3926eb5f222662169692f62692"><div class="ttname"><a href="classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692">z::core::array::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the data in the array. </div><div class="ttdef"><b>Definition:</b> array.h:299</div></div>
 <div class="ttc" id="classz_1_1core_1_1outputStream_html"><div class="ttname"><a href="classz_1_1core_1_1outputStream.html">z::core::outputStream</a></div><div class="ttdoc">A template class for character output streams. </div><div class="ttdef"><b>Definition:</b> stream.h:136</div></div>
-<div class="ttc" id="classz_1_1core_1_1array_html_ae437f528b8d1087366bd40fd0295eca3"><div class="ttname"><a href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">z::core::array::subset</a></div><div class="ttdeci">array subset(size_t, int) const </div><div class="ttdoc">Get a contiguous subset of the elements in the array. </div><div class="ttdef"><b>Definition:</b> array.h:626</div></div>
+<div class="ttc" id="classz_1_1core_1_1array_html_ae437f528b8d1087366bd40fd0295eca3"><div class="ttname"><a href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">z::core::array::subset</a></div><div class="ttdeci">array subset(size_t, int) const </div><div class="ttdoc">Get a contiguous subset of the elements in the array. </div><div class="ttdef"><b>Definition:</b> array.h:630</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_a6491cb489a4082f67ef6b448b9aa8e7c"><div class="ttname"><a href="classz_1_1core_1_1array.html#a6491cb489a4082f67ef6b448b9aa8e7c">z::core::array::at</a></div><div class="ttdeci">T &amp; at(size_t)</div><div class="ttdoc">Function to get the object at the given index. </div><div class="ttdef"><b>Definition:</b> array.h:470</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html_af824aabbb51e2d7255c4d4c4f47f641d"><div class="ttname"><a href="classz_1_1core_1_1array.html#af824aabbb51e2d7255c4d4c4f47f641d">z::core::array::operator&gt;=</a></div><div class="ttdeci">bool operator&gt;=(const array &amp;other) const </div><div class="ttdoc">Array greater-than-or-equal operator. </div><div class="ttdef"><b>Definition:</b> array.h:255</div></div>
 <div class="ttc" id="namespacez_1_1core_html_a5b4b9a8dfc7a60b3c2142856d17a6d17"><div class="ttname"><a href="namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17">z::core::size</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::sizable, T &gt;::value &gt;::type size(const T &amp;object, size_t &amp;bytes)</div><div class="ttdoc">Get the size of a sizable object. </div><div class="ttdef"><b>Definition:</b> sizable.h:38</div></div>
