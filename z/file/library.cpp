@@ -28,7 +28,7 @@ namespace z
 		library::~library()
 		{
 #			ifdef _WIN32
-			if (lib_ptr) FreeLibrary(lib_ptr);
+			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
 #			elif __linux__
 			if (lib_ptr) dlclose(lib_ptr);
 #			endif
@@ -45,8 +45,8 @@ namespace z
 		bool library::load(const core::string<utf8>& file_name)
 		{
 #			ifdef _WIN32
-			if (lib_ptr) FreeLibrary(lib_ptr);
-			lib_ptr = LoadLibrary((char*)file_name.cstring());
+			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
+			lib_ptr = (void*)LoadLibrary((char*)file_name.cstring());
 			return (bool)lib_ptr;
 #			elif __linux__
 			if (lib_ptr) dlclose(lib_ptr);
@@ -67,7 +67,7 @@ namespace z
 		{
 #			ifdef _WIN32
 			if (lib_ptr)
-				return (bool)FreeLibrary(lib_ptr);
+				return (bool)FreeLibrary((HMODULE)lib_ptr);
 			else
 				return true;
 #			elif __linux__
@@ -119,7 +119,7 @@ namespace z
 		{
 #			ifdef _WIN32
 			if (lib_ptr)
-				return (void*)GetProcAddress(lib_ptr, (char*)symbol_name.cstring());
+				return (void*)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
 			else
 				return 0;
 #			elif __linux__
