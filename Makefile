@@ -17,20 +17,24 @@ endif
 INCLUDE = -I"../libzed"
 CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions -O4 $(CCTARGET)
 
+STATIC_LIB = $(LIBNAME).a
+
 ifeq ($(OS),Windows_NT)
 CFLAGS = $(CCFLAGS) -shared -DBUILDING_EXAMPLE_DLL
 LFLAGS = -s -shared -Wl,--out-implib,
 SHARED_LIB = $(LIBNAME).dll
+SHARED_REQ = $(STATIC_LIB)
+LINKINFO = $(LFLAGS)$(SHARED_REQ)
 else
 CFLAGS = $(CCFLAGS) -fPIC
-LFLAGS = -s -shared -ldl
 SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
+SHARED_REQ = $(OBJS)
+LINKINFO = -s -shared -ldl $(SHARED_REQ)
 endif
 
 DLFLAGS_LOCAL = -L. -l$(LIBNAME) -Wl,-rpath=. $(CCTARGET)
 DLFLAGS_GLOBL = -l $(LIBNAME) $(CCTARGET)
 
-STATIC_LIB = $(LIBNAME).a
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
@@ -65,8 +69,8 @@ static: $(STATIC_LIB)
 $(STATIC_LIB): $(OBJS)
 	ar -cvq $@ $^
 
-$(SHARED_LIB): $(OBJS)
-	$(LN) $(LFLAGS) -o $@ $^
+$(SHARED_LIB): $(SHARED_REQ)
+	$(LN) -o $@ $(LINKINFO)
 
 main.o: main.cpp
 	$(CC) $(CCFLAGS) -o $@ -c $^
