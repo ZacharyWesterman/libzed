@@ -7,18 +7,12 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
 
-ifeq ($(OS),Windows_NT)
-ARCH = $(shell echo \%PROCESSOR_ARCHITECTURE\%)
-MATCH = x86
-else
-ARCH = $(shell getconf LONG_BIT)
-MATCH = 32
-endif
+ARCH = $(shell g++ -dumpmachine)
 
-ifeq ($(ARCH),$(MATCH))
-CCTARGET = -m32
-else
+ifeq ($(findstring x86_64,$(ARCH)),x86_64)
 CCTARGET = -m64
+else
+CCTARGET = -m32
 endif
 
 INCLUDE = -I"../libzed"
