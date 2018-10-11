@@ -21,18 +21,22 @@ STATIC_LIB = $(LIBNAME).a
 DLL = $(LIBNAME).dll
 
 LFLAGS = -s -shared
+CFLAGS = $(CCFLAGS) -fPIC
 
 ifeq ($(OS),Windows_NT)
-CFLAGS = $(CCFLAGS) -shared
+RMOBJS = $(subst /,\,$(OBJS))
+RM = del
+SHARED_LIB = $(LIBNAME).dll
 else
-CFLAGS = $(CCFLAGS) -fPIC
-LFLAGS := -ldl
+LFLAGS += -ldl
+RMOBJS = $(OBJS)
+RM = rm -f
+SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 endif
 
-DLFLAGS_WIN = -L. -l$(LIBNAME) -Wl,-rpath=. $(CCTARGET)
-DLFLAGS_NIX = -l $(LIBNAME) $(CCTARGET)
+DLFLAGS_WIN = -L. -l$(LIBNAME)
+DLFLAGS_NIX = -l $(LIBNAME)
 
-SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
@@ -59,17 +63,14 @@ uninstall:
 driver: main.o
 	$(LN) $(DLFLAGS_NIX) -o $@ $^
 
-driver.exe: main.o $(DLL)
-	$(LN) $(DLFLAGS_WIN) -o $@ 
+driver.exe: main.o
+	$(LN) $(DLFLAGS_WIN) -o $@
 
 shared: $(SHARED_LIB)
 dynamic: $(SHARED_LIB)
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
-
-$(DLL): $(OBJS)
-	$(LN) -o $@ $^ -Wl,--out-implib,$(STATIC_LIB)
 
 main.o: main.cpp
 	$(CC) $(CCFLAGS) -o $@ -c $^
@@ -81,10 +82,10 @@ z/core/string.o: z/core/string.cpp z/core/string.h $(wildcard z/core/string/*.h)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean: clear
-	rm -f $(OBJS) main.o
+	$(RM) $(RMOBJS) main.o
 
 clear:
-	rm -f driver *.so *.a *.dll *.exe
+	$(RM) driver *.so *.a *.dll *.exe
 
 rebuild: clean all
 
