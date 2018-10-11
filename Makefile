@@ -18,23 +18,21 @@ INCLUDE = -I"../libzed"
 CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions -O4 $(CCTARGET)
 
 STATIC_LIB = $(LIBNAME).a
+DLL = $(LIBNAME).dll
+
+LFLAGS = -s -shared
 
 ifeq ($(OS),Windows_NT)
-CFLAGS = $(CCFLAGS) -shared -DBUILDING_EXAMPLE_DLL
-LFLAGS = -s -shared -Wl,--out-implib,
-SHARED_LIB = $(LIBNAME).dll
-SHARED_REQ = $(STATIC_LIB)
-LINKINFO = $(LFLAGS)$(SHARED_REQ)
+CFLAGS = $(CCFLAGS) -shared
 else
 CFLAGS = $(CCFLAGS) -fPIC
-SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
-SHARED_REQ = $(OBJS)
-LINKINFO = -s -shared -ldl $(SHARED_REQ)
+LFLAGS := -ldl
 endif
 
-DLFLAGS_LOCAL = -L. -l$(LIBNAME) -Wl,-rpath=. $(CCTARGET)
-DLFLAGS_GLOBL = -l $(LIBNAME) $(CCTARGET)
+DLFLAGS_WIN = -L. -l$(LIBNAME) -Wl,-rpath=. $(CCTARGET)
+DLFLAGS_NIX = -l $(LIBNAME) $(CCTARGET)
 
+SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
@@ -59,18 +57,19 @@ uninstall:
 	ldconfig
 
 driver: main.o
-	$(LN) $(DLFLAGS_GLOBL) -o $@ $^
+	$(LN) $(DLFLAGS_NIX) -o $@ $^
+
+driver.exe: main.o $(DLL)
+	$(LN) $(DLFLAGS_WIN) -o $@ 
 
 shared: $(SHARED_LIB)
 dynamic: $(SHARED_LIB)
 
-static: $(STATIC_LIB)
+$(SHARED_LIB): $(OBJS)
+	$(LN) -o $@ $^ $(LFLAGS)
 
-$(STATIC_LIB): $(OBJS)
-	ar -cvq $@ $^
-
-$(SHARED_LIB): $(SHARED_REQ)
-	$(LN) -o $@ $(LINKINFO)
+$(DLL): $(OBJS)
+	$(LN) -o $@ $^ -Wl,--out-implib,$(STATIC_LIB)
 
 main.o: main.cpp
 	$(CC) $(CCFLAGS) -o $@ -c $^
@@ -89,4 +88,4 @@ clear:
 
 rebuild: clean all
 
-.PHONY: rebuild clean clear all shared install uninstall static dynamic
+.PHONY: rebuild clean clear all shared install uninstall static dynamic dllreq
