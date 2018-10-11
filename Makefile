@@ -47,9 +47,7 @@ LIBDIR = /usr/lib
 CC = g++
 LN = g++
 
-default: shared
-
-all: shared static driver
+default: $(SHARED_LIB)
 
 install: $(SHARED_LIB)
 	cp $(SHARED_LIB) $(LIBDIR)/$(SHARED_LIB)
@@ -67,9 +65,6 @@ driver: main.o
 
 driver.exe: main.o
 	$(LN) $(DLFLAGS_WIN) -o $@ $^
-
-shared: $(SHARED_LIB)
-dynamic: $(SHARED_LIB)
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
@@ -89,6 +84,6 @@ clean: clear
 clear:
 	$(RM) driver *.so *.a *.dll *.exe
 
-rebuild: clean all
+rebuild: clean default
 
-.PHONY: rebuild clean clear all shared install uninstall static dynamic dllreq
+.PHONY: rebuild clean clear default install uninstall
