@@ -21,13 +21,15 @@ STATIC_LIB = $(LIBNAME).a
 DLL = $(LIBNAME).dll
 
 LFLAGS = -s -shared
-CFLAGS = $(CCFLAGS) -fPIC
 
 ifeq ($(OS),Windows_NT)
+CFLAGS = $(CCFLAGS) -shared
+LFLAGS += -fPIC
 RMOBJS = $(subst /,\,$(OBJS))
 RM = del
 SHARED_LIB = $(LIBNAME).dll
 else
+CFLAGS = $(CCFLAGS) -fPIC
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 RM = rm -f
@@ -64,7 +66,7 @@ driver: main.o
 	$(LN) $(DLFLAGS_NIX) -o $@ $^
 
 driver.exe: main.o
-	$(LN) $(DLFLAGS_WIN) -o $@
+	$(LN) $(DLFLAGS_WIN) -o $@ $^
 
 shared: $(SHARED_LIB)
 dynamic: $(SHARED_LIB)
