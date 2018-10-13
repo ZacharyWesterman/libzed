@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
 
-Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯
-I think it should compile on any flavor of these OS's, the only requirements are **make** and **g++** that supports *at least* C++11
+Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
+It should compile on any flavor of these OS's. The only requirements are **make** and **g++** that supports *at least* C++11.
 
 To compile, run make. Something like `make -j32` will work.<br>
 On Windows, you're done. Just copy the DLL into the directory where you want it.<br>
