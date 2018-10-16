@@ -1,12 +1,16 @@
 #include <z/system.h>
 #include <z/core.h>
+#include <z/file.h>
 
 int main()
 {
-	z::system::console console;
-	z::core::string<z::utf8> message = "Hello, world!";
+	z::file::outputStream stream ("out.txt");
 
-	message.writeln(console);
+	z::encoding format = stream.format();
+
+	z::core::string<z::utf32> message = L"Hello, world!";
+
+	message.writeln(stream, format);
 
 	return 0;
 }

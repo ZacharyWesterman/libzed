@@ -868,8 +868,9 @@ namespace z
 			 *
 			 * \param stream The stream to read from.
 			 * \param delim The delimiter to read until.
+			 * \param enc The encoding of characters on the stream.
 			 */
-			void read(inputStream& stream, uint32_t delim = 0);
+			void read(inputStream& stream, uint32_t delim = 0, encoding enc = E);
 
 			/**
 			 * \brief Read string data from a stream until a newline is encountered.
@@ -879,15 +880,17 @@ namespace z
 			 * Any data this string contains is wiped when this function is called.
 			 *
 			 * \param stream The stream to read from.
+			 * \param enc The encoding of characters on the stream.
 			 */
-			void readln(inputStream& stream);
+			void readln(inputStream& stream, encoding enc = E);
 
 			/**
 			 * \brief Write string data to a stream.
 			 *
 			 * \param stream The stream to write to.
+			 * \param enc The encoding of characters on the stream.
 			 */
-			void write(outputStream& stream) const;
+			void write(outputStream& stream, encoding enc = E) const;
 
 			/**
 			 * \brief Write string data to a stream, appending a newline.
@@ -895,8 +898,9 @@ namespace z
 			 * Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
 			 *
 			 * \param stream The stream to write to.
+			 * \param enc The encoding of characters on the stream.
 			 */
-			void writeln(outputStream& stream) const;
+			void writeln(outputStream& stream, encoding enc = E) const;
 		};
 
 	}

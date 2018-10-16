@@ -1471,58 +1471,77 @@ namespace z
 		}
 
 		template <>
-		void string<utf8>::read(inputStream& stream, uint32_t delim)
+		void string<utf8>::read(inputStream& stream, uint32_t delim, encoding enc)
 		{
 			character_ct = 0;
 			this->increase(1);
 
-			if (stream.bad())
+			if (stream.bad() || stream.empty())
 			{
 				data[character_ct] = 0;
 				return;
 			}
 
-			uint32_t last = stream.getChar(utf8);
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(utf8);
+				last = stream.getChar(enc);
 
 			while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
-				data[character_ct++] = last;
-				this->increase(character_ct+1);
+				if (enc == utf8)
+				{
+					data[character_ct++] = last;
+					this->increase(character_ct+1);
+				}
+				else
+				{
+					uint8_t c[4];
+					int len = toUTF8(c, last);
+					this->increase(character_ct + len + 1);
+					for (int i=0; i<len; i++)
+						data[character_ct+i] = c[i];
 
-				last = stream.getChar(utf8);
+					character_ct += len;
+				}
+
+				last = stream.getChar(enc);
 			}
 
 			data[character_ct] = 0;
 		}
 
 		template <>
-		void string<utf8>::readln(inputStream& stream)
+		void string<utf8>::readln(inputStream& stream, encoding enc)
 		{
 			character_ct = 0;
 			this->increase(1);
 
-			if (stream.bad())
+			if (stream.bad() || stream.empty())
 			{
 				data[character_ct] = 0;
 				return;
 			}
 
-			uint32_t last = stream.getChar(utf8);
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty())
 			{
 				if (last == '\r')
 				{
-					last = stream.getChar(utf8);
+					last = stream.getChar(enc);
 					if (last == '\n')
 					{
 						data[character_ct] = 0;
 						return;
 					}
 					data[character_ct++] = '\r';
+					this->increase(character_ct+1);
+					if (stream.empty())
+					{
+						data[character_ct] = 0;
+						return;
+					}
 				}
 				else if (last == '\n')
 				{
@@ -1530,34 +1549,84 @@ namespace z
 					return;
 				}
 
-				data[character_ct++] = last;
-				this->increase(character_ct+1);
+				if (enc == utf8)
+				{
+					data[character_ct++] = last;
+					this->increase(character_ct+1);
+				}
+				else
+				{
+					uint8_t c[4];
+					int len = toUTF8(c, last);
+					this->increase(character_ct + len + 1);
+					for (int i=0; i<len; i++)
+						data[character_ct+i] = c[i];
 
-				last = stream.getChar(utf8);
+					character_ct += len;
+				}
+
+				last = stream.getChar(enc);
 			}
 
 			data[character_ct] = 0;
 		}
 
 		template <>
-		void string<utf8>::write(outputStream& stream) const
+		void string<utf8>::write(outputStream& stream, encoding enc) const
 		{
 			if (stream.bad()) return;
 
-			if (character_ct)
-				stream.put(data, character_ct, utf8);
+			for (size_t i=0; i<character_ct; i++)
+			{
+				if (enc == utf8)
+				{
+					stream.put(data[i]);
+				}
+				else
+				{
+					int len = lenFromUTF8(&data[i]);
+					uint32_t chr = fromUTF8(&data[i]);
+
+					if (enc == ascii)
+					{
+						stream.put((chr > 0xFF) ? '?' : chr);
+					}
+					else if (enc == utf16)
+					{
+						if (chr > 0xFFFF)
+						{
+							stream.put('?');
+						}
+						else
+						{
+							uint16_t c = chr;
+							uint8_t* ptr = (uint8_t*)&c;
+							stream.put(ptr[0]);
+							stream.put(ptr[1]);
+						}
+					}
+					else
+					{
+						uint8_t* ptr = (uint8_t*)&chr;
+						stream.put(ptr[0]);
+						stream.put(ptr[1]);
+						stream.put(ptr[2]);
+						stream.put(ptr[3]);
+					}
+
+					i += len - 1;
+				}
+			}
 		}
 
 		template <>
-		void string<utf8>::writeln(outputStream& stream) const
+		void string<utf8>::writeln(outputStream& stream, encoding enc) const
 		{
 			if (stream.bad()) return;
-
-			if (character_ct)
-				stream.put(data, character_ct, utf8);
-
 			string<utf8> newl = "\n";
-			stream.put(newl.data, newl.character_ct, utf8);
+
+			this->write(stream, enc);
+			newl.write(stream, enc);
 		}
 
 		template <>

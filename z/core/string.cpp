@@ -84,7 +84,7 @@ size_t fractionalBuf(double fractional, unsigned int base, unsigned int precisio
 	}
 }
 
-#include "string/utf32.h"
-#include "string/utf16.h"
 #include "string/ascii.h"
+#include "string/utf16.h"
+#include "string/utf32.h"
 #include "string/utf8.h"
