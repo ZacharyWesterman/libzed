@@ -1576,45 +1576,26 @@ namespace z
 		{
 			if (stream.bad()) return;
 
-			for (size_t i=0; i<character_ct; i++)
+			if (character_ct)
 			{
 				if (enc == utf8)
 				{
-					stream.put(data[i]);
+					stream.put(data, character_ct, enc);
+				}
+				else if (enc == utf16)
+				{
+					string<utf16> temp (*this);
+					temp.write(stream, enc);
+				}
+				else if (enc == utf32)
+				{
+					string<utf32> temp (*this);
+					temp.write(stream, enc);
 				}
 				else
 				{
-					int len = lenFromUTF8(&data[i]);
-					uint32_t chr = fromUTF8(&data[i]);
-
-					if (enc == ascii)
-					{
-						stream.put((chr > 0xFF) ? '?' : chr);
-					}
-					else if (enc == utf16)
-					{
-						if (chr > 0xFFFF)
-						{
-							stream.put('?');
-						}
-						else
-						{
-							uint16_t c = chr;
-							uint8_t* ptr = (uint8_t*)&c;
-							stream.put(ptr[0]);
-							stream.put(ptr[1]);
-						}
-					}
-					else
-					{
-						uint8_t* ptr = (uint8_t*)&chr;
-						stream.put(ptr[0]);
-						stream.put(ptr[1]);
-						stream.put(ptr[2]);
-						stream.put(ptr[3]);
-					}
-
-					i += len - 1;
+					string<ascii> temp (*this);
+					temp.write(stream, enc);
 				}
 			}
 		}

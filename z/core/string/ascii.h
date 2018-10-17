@@ -1719,32 +1719,26 @@ namespace z
 		{
 			if (stream.bad()) return;
 
-			for (size_t i=0; i<character_ct; i++)
+			if (character_ct)
 			{
-				if (enc == utf8)
+				if (enc == ascii)
 				{
-					uint8_t c[4];
-
-					int len = toUTF8(c, data[i]);
-
-					for (int k=0; k<len; k++)
-					{
-						stream.put(c[k]);
-					}
+					stream.put(data, character_ct, enc);
+				}
+				else if (enc == utf16)
+				{
+					string<utf16> temp (*this);
+					temp.write(stream, enc);
+				}
+				else if (enc == utf8)
+				{
+					string<utf8> temp (*this);
+					temp.write(stream, enc);
 				}
 				else
 				{
-					if (enc == utf32)
-					{
-						stream.put(0);
-						stream.put(0);
-						stream.put(0);
-					}
-					else if (enc == utf16)
-					{
-						stream.put(0);
-					}
-					stream.put(data[i]);
+					string<utf32> temp (*this);
+					temp.write(stream, enc);
 				}
 			}
 		}
