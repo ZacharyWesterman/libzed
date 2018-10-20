@@ -9,7 +9,7 @@ namespace z
 	{
 		void console::put(uint8_t ch)
 		{
-			std::cout << ch << std::flush;
+			std::cout << ch;
 		}
 
 		void console::put(uint8_t* str, size_t count, encoding format)
@@ -45,8 +45,6 @@ namespace z
 					std::cout << str[i];
 				}
 			}
-
-			std::cout << std::flush;
 		}
 
 		uint8_t console::get()
@@ -102,6 +100,11 @@ namespace z
 		encoding console::format()
 		{
 			return utf8;
+		}
+
+		void console::flush()
+		{
+			std::cout << std::flush;
 		}
 	}
 }

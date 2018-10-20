@@ -11,6 +11,7 @@ int main()
 	z::core::string<z::utf32> message = L"Hello, world!";
 
 	message.writeln(stream, format);
+	stream.flush();
 
 	return 0;
 }

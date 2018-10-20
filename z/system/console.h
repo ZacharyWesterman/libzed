@@ -50,6 +50,8 @@ namespace z
 			 * \return utf8, the default formatting of the console.
 			 */
 			encoding format();
+
+			void flush();
  		};
 	}
 }

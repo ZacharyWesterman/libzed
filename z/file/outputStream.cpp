@@ -97,5 +97,10 @@ namespace z
 		{
 			return ascii;
 		}
+
+		void outputStream::flush()
+		{
+			filestream.flush();
+		}
 	}
 }

@@ -65,9 +65,11 @@ namespace z
 			 * Additionally results will be inaccurate if the stream contains
 			 * raw binary data.
 			 *
-			 * \return 0 (ascii), as the format of output streams should be determined beforehand.
+			 * \return 0 (ascii), as the format of file output streams should be determined beforehand.
 			 */
 			encoding format();
+
+			void flush();
 		};
 	}
 }

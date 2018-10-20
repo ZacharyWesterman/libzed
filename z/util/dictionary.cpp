@@ -23,38 +23,6 @@ namespace z
 			wordList.clear();
 		}
 
-		word* dictionary::readWordFromStream(core::inputStream& stream)
-		{
-			word* result;
-
-			if (streamFormat == ascii)
-			{
-				core::string<ascii> str;
-				str.read(stream);
-				result = new word(str);
-			}
-			else if (streamFormat == utf8)
-			{
-				core::string<utf8> str;
-				str.read(stream);
-				result = new word(str);
-			}
-			else if (streamFormat == utf16)
-			{
-				core::string<utf16> str;
-				str.read(stream);
-				result = new word(str);
-			}
-			else
-			{
-				core::string<utf32> str;
-				str.read(stream);
-				result = new word(str);
-			}
-
-			return result;
-		}
-
 		int dictionary::read(core::inputStream& stream, const core::timeout& time)
 		{
 			if (stream.bad()) return -1;
@@ -67,25 +35,17 @@ namespace z
 				readingStream = true;
 			}
 
-			word* newWord = readWordFromStream(stream);
+			core::string<Z_DICT_FORMAT> name;
 
+			name.read(stream, 0, streamFormat);
 			while (!(stream.empty() || time.timedOut()))
 			{
-				wordList.add(newWord);
+				wordList.add(new word(name));
 
-				newWord = readWordFromStream(stream);
+				name.read(stream, 0, streamFormat);
 			}
 
-			if (stream.empty())
-			{
-				delete newWord;
-				return 1;
-			}
-			else
-			{
-				wordList.add(newWord);
-				return 0;
-			}
+			return stream.empty();
 		}
 
 		bool dictionary::isWord(const core::string<Z_DICT_FORMAT>& name) const
@@ -182,6 +142,7 @@ namespace z
 			auto start = stream.tell();
 
 			stream.put(0xFF); //indicate we're not done writing
+			stream.flush();
 
 			lang.serialOut(stream);
 
@@ -196,7 +157,10 @@ namespace z
 			auto stop = stream.tell();
 
 			stream.seek(start);
+
+			stream.flush();
 			stream.put(0); //we finished writing the dictionary.
+			stream.flush();
 
 			stream.seek(stop);
 		}

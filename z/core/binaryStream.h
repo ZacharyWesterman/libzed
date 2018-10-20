@@ -38,6 +38,8 @@ namespace z
  			size_t end();
 
 			encoding format();
+
+			void flush();
 		};
 	}
 }

@@ -236,7 +236,14 @@ namespace z
 			 *
 			 * \return The determined encoding format of the stream.
 			 */
-			 virtual encoding format() = 0;
+			virtual encoding format() = 0;
+
+			 /**
+			 * \brief Flush all data from the stream buffer.
+			 *
+			 * Writes any buffered stream data and clears the buffer.
+			 */
+			virtual void flush() = 0;
 		};
 
 		/**

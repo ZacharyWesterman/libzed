@@ -167,5 +167,7 @@ namespace z
 
 			return can_utf8 ? utf8 : ascii;
 		}
+
+		void binaryStream::flush() {}
 	}
 }
