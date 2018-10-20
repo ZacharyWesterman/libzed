@@ -1,5 +1,8 @@
-#include <cpuid.h>
 #include "cpuid.h"
+
+#ifndef __arm__
+#include <cpuid.h>
+#endif
 
 namespace z
 {
@@ -7,6 +10,9 @@ namespace z
 	{
 		void cpuid::det_vendor()
 		{
+#			ifdef __arm__
+			_vendor = "ARM";
+#			else
 			uint32_t eax(0), ebx(0), ecx(0), edx(0);
 
 			good = __get_cpuid(0, &eax, &ebx, &ecx, &edx);
@@ -31,10 +37,15 @@ namespace z
 
 				_vendor = vendor;
 			}
+#			endif
 		}
 
 		void cpuid::det_cpu()
 		{
+#			ifdef __arm__
+			_cpus = 1;
+			_cores = 1;
+#			else
 			uint32_t eax(0), ebx(0), ecx(0), edx(0);
 
 			__get_cpuid(1, &eax, &ebx, &ecx, &edx);
@@ -58,6 +69,7 @@ namespace z
 			}
 
 			_allow_smt = _cpuFeatures & (1 << 28) && _cores < _cpus;
+#			endif
 		}
 
 		cpuid::cpuid()
