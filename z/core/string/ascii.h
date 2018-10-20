@@ -43,167 +43,6 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string()
-		{
-			data = new uint8_t[1];
-			data[0] = 0;
-
-			data_len = 1;
-			character_ct = 0;
-		}
-
-		template <>
-		string<ascii>::string(char chr)
-		{
-			data = new uint8_t[2];
-			data[0] = chr;
-			data[1] = 0;
-
-			data_len = 2;
-			character_ct = 1;
-		}
-
-		template <>
-		string<ascii>::string(wchar_t chr)
-		{
-			data = new uint8_t[2];
-			data[0] = (chr > 0xFF) ? '?' : chr;
-			data[1] = 0;
-
-			data_len = 2;
-			character_ct = 1;
-		}
-
-		template <>
-		string<ascii>::string(const uint32_t& chr)
-		{
-			data = new uint8_t[2];
-			data[0] = (chr > 0xFF) ? '?' : chr;
-			data[1] = 0;
-
-			data_len = 2;
-			character_ct = 1;
-		}
-
-		template <>
-		string<ascii>::string(const char* str)
-		{
-			if (str)
-			{
-				size_t len = 0;
-				while (str[len]) len++;
-
-				character_ct = len;
-				data = new uint8_t[++len];
-				data_len = len;
-
-				for (size_t i=0; i<len; i++)
-					data[i] = str[i];
-			}
-			else
-			{
-				data = new uint8_t[1];
-				data[0] = 0;
-
-				data_len = 1;
-				character_ct = 0;
-			}
-		}
-
-		template <>
-		string<ascii>::string(const wchar_t* str)
-		{
-			if (str)
-			{
-				size_t len = 0;
-				while (str[len]) len++;
-
-				character_ct = len;
-				data = new uint8_t[++len];
-				data_len = len;
-
-				for (size_t i=0; i<len; i++)
-				{
-					if (str[i] > 0xFF)
-						data[i] = '?';
-					else
-						data[i] = str[i];
-				}
-			}
-			else
-			{
-				data = new uint8_t[1];
-				data[0] = 0;
-
-				data_len = 1;
-				character_ct = 0;
-			}
-		}
-
-		template <>
-		string<ascii>::string(const string<ascii>& other)
-		{
-			data_len = other.character_ct + 1;
-			character_ct = other.character_ct;
-
-			data = new uint8_t[data_len];
-
-			for (size_t i=0; i<data_len; i++)
-				data[i] = other.data[i];
-		}
-
-		template <>
-		string<ascii>::string(const string<utf8>& other)
-		{
-			data_len = other.character_ct + 1;
-			character_ct = other.character_ct;
-
-			data = new uint8_t[data_len];
-			data[character_ct] = 0;
-
-			size_t pos = 0;
-			for (size_t i=0; i<data_len; i++)
-			{
-				uint32_t val = fromUTF8(&other.data[pos]);
-				pos += lenFromUTF8(&other.data[pos]);
-
-				data[i] = (val > 0xFF) ? '?' : val;
-			}
-		}
-
-		template <>
-		string<ascii>::string(const string<utf16>& other)
-		{
-			data_len = other.character_ct + 1;
-			character_ct = other.character_ct;
-
-			data = new uint8_t[data_len];
-			data[character_ct] = 0;
-
-			uint16_t* data16 = (uint16_t*)other.data;
-
-			for (size_t i=0; i<data_len; i++)
-			{
-				data[i] = (data16[i] > 0xFF) ? '?' : data16[i];
-			}
-		}
-
-		template <>
-		string<ascii>::string(const string<utf32>& other)
-		{
-			data_len = other.character_ct + 1;
-			character_ct = other.character_ct;
-
-			data = new uint8_t[data_len];
-			data[character_ct] = 0;
-
-			uint32_t* data32 = (uint32_t*)other.data;
-
-			for (size_t i=0; i<= character_ct; i++)
-				data[i] = (data32[i] > 0xFF) ? '?' : (uint8_t)data32[i];
-		}
-
-		template <>
 		const uint8_t* string<ascii>::cstring() const
 		{
 			return data;
@@ -1612,58 +1451,78 @@ namespace z
 		}
 
 		template <>
-		void string<ascii>::read(inputStream& stream, uint32_t delim)
+		void string<ascii>::read(inputStream& stream, uint32_t delim, encoding enc)
 		{
 			character_ct = 0;
 			this->increase(1);
 
-			if (stream.bad())
+			if (stream.bad() || stream.empty())
 			{
 				data[character_ct] = 0;
 				return;
 			}
 
-			uint32_t last = stream.getChar(ascii);
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(ascii);
+				last = stream.getChar(enc);
 
 			while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
-				data[character_ct++] = last;
-				this->increase(character_ct+1);
+				if (enc == utf8)
+				{
+					uint8_t c[4];
+					c[0] = last;
 
-				last = stream.getChar(ascii);
+					int len = lenFromUTF8(c);
+					if (len)
+					{
+						for (int i=1; i<len; i++)
+							c[i] = stream.getChar(enc);
+
+						last = fromUTF8(c);
+					}
+				}
+
+				data[character_ct++] = (last > 0xFF) ? '?' : last;
+				this->increase(character_ct + 1);
+				last = stream.getChar(enc);
 			}
 
 			data[character_ct] = 0;
 		}
 
 		template <>
-		void string<ascii>::readln(inputStream& stream)
+		void string<ascii>::readln(inputStream& stream, encoding enc)
 		{
 			character_ct = 0;
 			this->increase(1);
 
-			if (stream.bad())
+			if (stream.bad() || stream.empty())
 			{
 				data[character_ct] = 0;
 				return;
 			}
 
-			uint32_t last = stream.getChar(ascii);
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty())
 			{
 				if (last == '\r')
 				{
-					last = stream.getChar(ascii);
+					last = stream.getChar(enc);
 					if (last == '\n')
 					{
 						data[character_ct] = 0;
 						return;
 					}
 					data[character_ct++] = '\r';
+					this->increase(character_ct+1);
+					if (stream.empty())
+					{
+						data[character_ct] = 0;
+						return;
+					}
 				}
 				else if (last == '\n')
 				{
@@ -1671,34 +1530,66 @@ namespace z
 					return;
 				}
 
-				data[character_ct++] = last;
-				this->increase(character_ct+1);
+				if (enc == utf8)
+				{
+					uint8_t c[4];
+					c[0] = last;
 
-				last = stream.getChar(ascii);
+					int len = lenFromUTF8(c);
+					if (len)
+					{
+						for (int i=1; i<len; i++)
+							c[i] = stream.getChar(enc);
+
+						last = fromUTF8(c);
+					}
+				}
+
+				data[character_ct++] = (last > 0xFF) ? '?' : last;
+				this->increase(character_ct+1);
+				last = stream.getChar(enc);
 			}
 
 			data[character_ct] = 0;
 		}
 
 		template <>
-		void string<ascii>::write(outputStream& stream) const
+		void string<ascii>::write(outputStream& stream, encoding enc) const
 		{
 			if (stream.bad()) return;
 
 			if (character_ct)
-				stream.put(data, character_ct, ascii);
+			{
+				if (enc == ascii)
+				{
+					stream.put(data, character_ct, enc);
+				}
+				else if (enc == utf16)
+				{
+					string<utf16> temp (*this);
+					stream.put(temp.data, temp.character_ct, enc);
+				}
+				else if (enc == utf8)
+				{
+					string<utf8> temp (*this);
+					stream.put(temp.data, temp.character_ct, enc);
+				}
+				else
+				{
+					string<utf32> temp (*this);
+					stream.put(temp.data, temp.character_ct, enc);
+				}
+			}
 		}
 
 		template <>
-		void string<ascii>::writeln(outputStream& stream) const
+		void string<ascii>::writeln(outputStream& stream, encoding enc) const
 		{
 			if (stream.bad()) return;
-
-			if (character_ct)
-				stream.put(data, character_ct, ascii);
-
 			string<ascii> newl = "\n";
-			stream.put(newl.data, newl.character_ct, ascii);
+
+			this->write(stream, enc);
+			newl.write(stream, enc);
 		}
 
 		template <>
