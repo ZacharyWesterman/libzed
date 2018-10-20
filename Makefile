@@ -12,7 +12,11 @@ ARCH = $(shell g++ -dumpmachine)
 ifeq ($(findstring x86_64,$(ARCH)),x86_64)
 CCTARGET = -m64
 else
+ifeq ($(findstring i686,$(ARCH)),i686)
 CCTARGET = -m32
+else
+CCTARGET =
+endif
 endif
 
 INCLUDE = -I"../libzed"
