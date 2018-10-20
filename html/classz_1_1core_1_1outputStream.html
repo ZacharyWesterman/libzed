@@ -152,6 +152,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a3eb08c3fe541ce38d5df428918f83a49"><td class="memItemLeft" align="right" valign="top">virtual encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49">format</a> ()=0</td></tr>
 <tr class="memdesc:a3eb08c3fe541ce38d5df428918f83a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#a3eb08c3fe541ce38d5df428918f83a49">More...</a><br/></td></tr>
 <tr class="separator:a3eb08c3fe541ce38d5df428918f83a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cbea1cc2f7ac6a7468861212c5ff3d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a26cbea1cc2f7ac6a7468861212c5ff3d">flush</a> ()=0</td></tr>
+<tr class="memdesc:a26cbea1cc2f7ac6a7468861212c5ff3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="#a26cbea1cc2f7ac6a7468861212c5ff3d">More...</a><br/></td></tr>
+<tr class="separator:a26cbea1cc2f7ac6a7468861212c5ff3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A template class for character output streams. </p>
@@ -270,6 +273,34 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>The end position of the character stream. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a87e3ba6437f10d4aa2fb98755d7b1a94">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1console.html#abd81cf6fd0da597a49df01d20584f0a1">z::system::console</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a844f1012b1469ecf5149d47ef7f3d4a9">z::core::binaryStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a26cbea1cc2f7ac6a7468861212c5ff3d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void z::core::outputStream::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flush all data from the stream buffer. </p>
+<p>Writes any buffered stream data and clears the buffer. </p>
+
+<p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#adb42c31c6f3b5d280838c7d9fb045029">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1console.html#af0996c59e317126ecba4a85f7538e3e0">z::system::console</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
