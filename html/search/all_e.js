@@ -1,8 +1,8 @@
 var searchData=
 [
   ['regex',['Regex',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_examples_util_regex.html',1,'']]],
-  ['read',['read',['../classz_1_1core_1_1string.html#a047e728df74bc7ea0ab801716640fbc8',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
-  ['readln',['readln',['../classz_1_1core_1_1string.html#afa9e2cfd0c1f533783214e36b7943879',1,'z::core::string']]],
+  ['read',['read',['../classz_1_1core_1_1string.html#a6d356130d852218e7b4c4d208973c069',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
+  ['readln',['readln',['../classz_1_1core_1_1string.html#ab5210769bf6b26126d4532a663f9802b',1,'z::core::string']]],
   ['refarray',['refArray',['../classz_1_1core_1_1refArray.html',1,'z::core']]],
   ['refarray',['refArray',['../classz_1_1core_1_1refArray.html#a548929573a92872bc5c3fe48a1761d11',1,'z::core::refArray::refArray()'],['../classz_1_1core_1_1refArray.html#a0e4a62b2e732285011aa16bb886f19af',1,'z::core::refArray::refArray(const array&lt; T &gt; &amp;)'],['../classz_1_1core_1_1refArray.html#a6e12dd90559344783c390bc0a6a4a341',1,'z::core::refArray::refArray(const T)'],['../classz_1_1core_1_1refArray.html#a745243df18b2bdbe1849f35999f05572',1,'z::core::refArray::refArray(const T arg1, const Args...args)']]],
   ['refarray_3c_20z_3a_3autil_3a_3ageneric_20_2a_20_3e',['refArray&lt; z::util::generic * &gt;',['../classz_1_1core_1_1refArray.html',1,'z::core']]],
