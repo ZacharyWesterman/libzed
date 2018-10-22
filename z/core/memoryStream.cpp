@@ -1,20 +1,21 @@
-#include "binaryStream.h"
+#include "memoryStream.h"
 #include "charFunctions.h"
 
 namespace z
 {
 	namespace core
 	{
-		binaryStream::binaryStream() : streamIndex(0) {}
-
-		void binaryStream::put(uint8_t ch)
+		void memoryStream::put(uint8_t ch)
 		{
-			data.add(ch);
+			if (!data) return;
+
+			if (streamIndex < dataSize)
+				data[streamIndex++] = ch;
 		}
 
-		void binaryStream::put(uint8_t* str, size_t count, encoding format)
+		void memoryStream::put(uint8_t* str, size_t count, encoding format)
 		{
-			if (!str) return;
+			if (!(str && data)) return;
 			size_t datact;
 
 			switch (format)
@@ -31,23 +32,26 @@ namespace z
 				datact = count;
 			}
 
+			if ((streamIndex + datact) > dataSize)
+				datact = dataSize - streamIndex;
+
 			for (size_t i=0; i<datact; i++)
 			{
-				data.add(str[i]);
+				data[streamIndex++] = str[i];
 			}
 		}
 
-		uint8_t binaryStream::get()
+		uint8_t memoryStream::get()
 		{
-			if (streamIndex < data.length())
+			if (streamIndex < dataSize)
 				return data[streamIndex++];
 			else
 				return 0;
 		}
 
-		uint32_t binaryStream::getChar(encoding format)
+		uint32_t memoryStream::getChar(encoding format)
 		{
-			if (streamIndex >= data.length()) return 0;
+			if (streamIndex >= dataSize) return 0;
 
 			size_t datact;
 
@@ -73,9 +77,9 @@ namespace z
 				str = (uint8_t*)&res8;
 			}
 
-			if (streamIndex+datact > data.length())
+			if ((streamIndex + datact) > dataSize)
 			{
-				streamIndex = data.length();
+				streamIndex = dataSize;
 				return 0;
 			}
 
@@ -93,54 +97,51 @@ namespace z
 			}
 		}
 
-		bool binaryStream::empty()
+		bool memoryStream::empty()
 		{
-			return (streamIndex >= data.length());
+			return (streamIndex >= dataSize);
 		}
 
-		bool binaryStream::good()
+		bool memoryStream::good()
 		{
-			return true;
+			return (data && dataSize);
 		}
 
-		bool binaryStream::bad()
+		bool memoryStream::bad()
 		{
-			return false;
+			return !(data && dataSize);
 		}
 
-		bool binaryStream::binary()
-		{
-			return true;
-		}
-
-		bool binaryStream::seekable()
+		bool memoryStream::binary()
 		{
 			return true;
 		}
 
-		void binaryStream::seek(size_t index)
+		bool memoryStream::seekable()
 		{
-			if (index > data.length())
-				streamIndex = data.length();
-			else
-				streamIndex = index;
+			return true;
 		}
 
-		size_t binaryStream::tell()
+		void memoryStream::seek(size_t index)
+		{
+			streamIndex = (index > dataSize) ? dataSize : index;
+		}
+
+		size_t memoryStream::tell()
 		{
 			return streamIndex;
 		}
 
-		size_t binaryStream::end()
+		size_t memoryStream::end()
 		{
-			return data.length();
+			return dataSize;
 		}
 
-		encoding binaryStream::format()
+		encoding memoryStream::format()
 		{
 			if (this->empty()) return ascii;
 
-			size_t read_max = (32 > data.length()) ? data.length() : 32;
+			size_t read_max = (32 > dataSize) ? dataSize : 32;
 
 			size_t contig_nulls = 0;
 			bool found_nulls = false;
@@ -161,7 +162,7 @@ namespace z
 					contig_nulls = 0;
 					if (can_utf8)
 					{
-						if (!core::isUTF8(&data[i], data.length()-i))
+						if (!core::isUTF8(&data[i], dataSize-i))
 							can_utf8 = false;
 					}
 				}
@@ -172,6 +173,6 @@ namespace z
 			return can_utf8 ? utf8 : ascii;
 		}
 
-		void binaryStream::flush() {}
+		void memoryStream::flush() {}
 	}
 }

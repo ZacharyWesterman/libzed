@@ -31,3 +31,4 @@
 ///Streams
 #include "core/stream.h"
 #include "core/binaryStream.h"
+#include "core/memoryStream.h"

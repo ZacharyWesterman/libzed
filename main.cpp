@@ -4,14 +4,20 @@
 
 int main()
 {
-	z::file::outputStream stream ("out.txt");
+	z::system::console console;
 
-	z::encoding format = stream.format();
+	z::core::string<z::utf8> str = "this is a memory stream test!";
+	z::core::memoryStream stream (str.cstring(), 29);
 
-	z::core::string<z::utf32> message = L"Hello, world!";
+	z::core::string<z::utf8> repl = "prebus";
+	stream.seek(10);
 
-	message.writeln(stream, format);
-	stream.flush();
+	// std::cout << (void*)buffer << std::endl;
+
+	// stream.put('G');
+	repl.write(stream);
+
+	str.writeln(console);
 
 	return 0;
 }
