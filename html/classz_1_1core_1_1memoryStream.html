@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>libzed: z::core::binaryStream Class Reference</title>
+<title>libzed: z::core::memoryStream Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,78 +84,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>z</b></li><li class="navelem"><a class="el" href="namespacez_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classz_1_1core_1_1binaryStream.html">binaryStream</a></li>  </ul>
+<li class="navelem"><b>z</b></li><li class="navelem"><a class="el" href="namespacez_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classz_1_1core_1_1memoryStream.html">memoryStream</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classz_1_1core_1_1binaryStream-members.html">List of all members</a>  </div>
+<a href="classz_1_1core_1_1memoryStream-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">z::core::binaryStream Class Reference</div>  </div>
+<div class="title">z::core::memoryStream Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A class for binary data streams.  
- <a href="classz_1_1core_1_1binaryStream.html#details">More...</a></p>
+<p>A class for streaming directly to and from memory.  
+ <a href="classz_1_1core_1_1memoryStream.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="binaryStream_8h_source.html">binaryStream.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="memoryStream_8h_source.html">memoryStream.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for z::core::binaryStream:</div>
+Inheritance diagram for z::core::memoryStream:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classz_1_1core_1_1binaryStream.png" usemap="#z::core::binaryStream_map" alt=""/>
-  <map id="z::core::binaryStream_map" name="z::core::binaryStream_map">
-<area href="classz_1_1core_1_1stream.html" title="A template class for character streams. " alt="z::core::stream" shape="rect" coords="70,56,201,80"/>
-<area href="classz_1_1core_1_1inputStream.html" title="A template class for character input streams. " alt="z::core::inputStream" shape="rect" coords="0,0,131,24"/>
-<area href="classz_1_1core_1_1outputStream.html" title="A template class for character output streams. " alt="z::core::outputStream" shape="rect" coords="141,0,272,24"/>
+  <img src="classz_1_1core_1_1memoryStream.png" usemap="#z::core::memoryStream_map" alt=""/>
+  <map id="z::core::memoryStream_map" name="z::core::memoryStream_map">
+<area href="classz_1_1core_1_1stream.html" title="A template class for character streams. " alt="z::core::stream" shape="rect" coords="74,56,213,80"/>
+<area href="classz_1_1core_1_1inputStream.html" title="A template class for character input streams. " alt="z::core::inputStream" shape="rect" coords="0,0,139,24"/>
+<area href="classz_1_1core_1_1outputStream.html" title="A template class for character output streams. " alt="z::core::outputStream" shape="rect" coords="149,0,288,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a605b704946d12046597a46a15db0f592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a605b704946d12046597a46a15db0f592">put</a> (uint8_t ch)</td></tr>
-<tr class="memdesc:a605b704946d12046597a46a15db0f592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#a605b704946d12046597a46a15db0f592">More...</a><br/></td></tr>
-<tr class="separator:a605b704946d12046597a46a15db0f592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d8b1837cdb5958d8a18b7def30f6292"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a5d8b1837cdb5958d8a18b7def30f6292">put</a> (uint8_t *str, size_t count, encoding <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">format</a>=ascii)</td></tr>
-<tr class="memdesc:a5d8b1837cdb5958d8a18b7def30f6292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="#a5d8b1837cdb5958d8a18b7def30f6292">More...</a><br/></td></tr>
-<tr class="separator:a5d8b1837cdb5958d8a18b7def30f6292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2589b32ef8a1a9732b845310f3978d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#ad2589b32ef8a1a9732b845310f3978d4">get</a> ()</td></tr>
-<tr class="memdesc:ad2589b32ef8a1a9732b845310f3978d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="#ad2589b32ef8a1a9732b845310f3978d4">More...</a><br/></td></tr>
-<tr class="separator:ad2589b32ef8a1a9732b845310f3978d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f37f2f1ec7df51522f10c4d758e00ba"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a9f37f2f1ec7df51522f10c4d758e00ba">getChar</a> (encoding <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">format</a>=ascii)</td></tr>
-<tr class="memdesc:a9f37f2f1ec7df51522f10c4d758e00ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the given encoding.  <a href="#a9f37f2f1ec7df51522f10c4d758e00ba">More...</a><br/></td></tr>
-<tr class="separator:a9f37f2f1ec7df51522f10c4d758e00ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8ae668a561d847d6f378578be72bf81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aa8ae668a561d847d6f378578be72bf81">empty</a> ()</td></tr>
-<tr class="memdesc:aa8ae668a561d847d6f378578be72bf81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether we have consumed the last character in the stream.  <a href="#aa8ae668a561d847d6f378578be72bf81">More...</a><br/></td></tr>
-<tr class="separator:aa8ae668a561d847d6f378578be72bf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4689fa69dcad903f04fcf3598b54c67c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c">good</a> ()</td></tr>
-<tr class="memdesc:a4689fa69dcad903f04fcf3598b54c67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is a valid stream object.  <a href="#a4689fa69dcad903f04fcf3598b54c67c">More...</a><br/></td></tr>
-<tr class="separator:a4689fa69dcad903f04fcf3598b54c67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000c6166e7f7dace16806eeca0dbd2ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a000c6166e7f7dace16806eeca0dbd2ba">bad</a> ()</td></tr>
-<tr class="memdesc:a000c6166e7f7dace16806eeca0dbd2ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is an invalid stream object.  <a href="#a000c6166e7f7dace16806eeca0dbd2ba">More...</a><br/></td></tr>
-<tr class="separator:a000c6166e7f7dace16806eeca0dbd2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64191abc14968d727aba00c8b57a5cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aa64191abc14968d727aba00c8b57a5cd">binary</a> ()</td></tr>
-<tr class="memdesc:aa64191abc14968d727aba00c8b57a5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream supports any binary format.  <a href="#aa64191abc14968d727aba00c8b57a5cd">More...</a><br/></td></tr>
-<tr class="separator:aa64191abc14968d727aba00c8b57a5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80f81ff9e2683fd7dc21e5450faa4060"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">seekable</a> ()</td></tr>
-<tr class="memdesc:a80f81ff9e2683fd7dc21e5450faa4060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream allows seeking to an index.  <a href="#a80f81ff9e2683fd7dc21e5450faa4060">More...</a><br/></td></tr>
-<tr class="separator:a80f81ff9e2683fd7dc21e5450faa4060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaf73b7b79f199c1f1f6c251be97eb85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aaaf73b7b79f199c1f1f6c251be97eb85">seek</a> (size_t index)</td></tr>
-<tr class="memdesc:aaaf73b7b79f199c1f1f6c251be97eb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek a position in the stream.  <a href="#aaaf73b7b79f199c1f1f6c251be97eb85">More...</a><br/></td></tr>
-<tr class="separator:aaaf73b7b79f199c1f1f6c251be97eb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba1b61e5197fb5acb86b8a3a3cc02524"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aba1b61e5197fb5acb86b8a3a3cc02524">tell</a> ()</td></tr>
-<tr class="memdesc:aba1b61e5197fb5acb86b8a3a3cc02524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give the current position in the stream.  <a href="#aba1b61e5197fb5acb86b8a3a3cc02524">More...</a><br/></td></tr>
-<tr class="separator:aba1b61e5197fb5acb86b8a3a3cc02524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a844f1012b1469ecf5149d47ef7f3d4a9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a844f1012b1469ecf5149d47ef7f3d4a9">end</a> ()</td></tr>
-<tr class="memdesc:a844f1012b1469ecf5149d47ef7f3d4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of the stream.  <a href="#a844f1012b1469ecf5149d47ef7f3d4a9">More...</a><br/></td></tr>
-<tr class="separator:a844f1012b1469ecf5149d47ef7f3d4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c5a3b3748093122148a8bf59b32f5e9"><td class="memItemLeft" align="right" valign="top">encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">format</a> ()</td></tr>
-<tr class="memdesc:a6c5a3b3748093122148a8bf59b32f5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#a6c5a3b3748093122148a8bf59b32f5e9">More...</a><br/></td></tr>
-<tr class="separator:a6c5a3b3748093122148a8bf59b32f5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e4906434ef1324ae488f73198c1697"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">flush</a> ()</td></tr>
-<tr class="memdesc:ac9e4906434ef1324ae488f73198c1697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="#ac9e4906434ef1324ae488f73198c1697">More...</a><br/></td></tr>
-<tr class="separator:ac9e4906434ef1324ae488f73198c1697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplParams" colspan="2"><a class="anchor" id="abe9d78201534dda9b498cdcf84282357"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>memoryStream</b> (T *streamData=0, size_t count=1)</td></tr>
+<tr class="separator:abe9d78201534dda9b498cdcf84282357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplParams" colspan="2"><a class="anchor" id="ac07c8286b37507cf89ad6ee6f1fa1cf9"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>set</b> (T *streamData, size_t count=1)</td></tr>
+<tr class="separator:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d2948e7639bb7cfd197ef7d6378fc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a04d2948e7639bb7cfd197ef7d6378fc2">put</a> (uint8_t ch)</td></tr>
+<tr class="memdesc:a04d2948e7639bb7cfd197ef7d6378fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#a04d2948e7639bb7cfd197ef7d6378fc2">More...</a><br/></td></tr>
+<tr class="separator:a04d2948e7639bb7cfd197ef7d6378fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b107e3b731070e0fd4cff83cab59ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a04b107e3b731070e0fd4cff83cab59ab">put</a> (uint8_t *str, size_t count, encoding <a class="el" href="classz_1_1core_1_1memoryStream.html#ad5da03e45c9f98d9211af60db85e09ca">format</a>=ascii)</td></tr>
+<tr class="memdesc:a04b107e3b731070e0fd4cff83cab59ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="#a04b107e3b731070e0fd4cff83cab59ab">More...</a><br/></td></tr>
+<tr class="separator:a04b107e3b731070e0fd4cff83cab59ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500fcd6ae7e502b6af0b5a7babdf3ace"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a500fcd6ae7e502b6af0b5a7babdf3ace">get</a> ()</td></tr>
+<tr class="memdesc:a500fcd6ae7e502b6af0b5a7babdf3ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="#a500fcd6ae7e502b6af0b5a7babdf3ace">More...</a><br/></td></tr>
+<tr class="separator:a500fcd6ae7e502b6af0b5a7babdf3ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a4244a29172d3cd1f0f6afd2157b8b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a39a4244a29172d3cd1f0f6afd2157b8b">getChar</a> (encoding <a class="el" href="classz_1_1core_1_1memoryStream.html#ad5da03e45c9f98d9211af60db85e09ca">format</a>=ascii)</td></tr>
+<tr class="memdesc:a39a4244a29172d3cd1f0f6afd2157b8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the given encoding.  <a href="#a39a4244a29172d3cd1f0f6afd2157b8b">More...</a><br/></td></tr>
+<tr class="separator:a39a4244a29172d3cd1f0f6afd2157b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb76a01643f463f2d18f6b30b365dd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a0bb76a01643f463f2d18f6b30b365dd9">empty</a> ()</td></tr>
+<tr class="memdesc:a0bb76a01643f463f2d18f6b30b365dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether we have consumed the last character in the stream.  <a href="#a0bb76a01643f463f2d18f6b30b365dd9">More...</a><br/></td></tr>
+<tr class="separator:a0bb76a01643f463f2d18f6b30b365dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1abb6e3cab02c3ce9ccec1af3f630a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#acd1abb6e3cab02c3ce9ccec1af3f630a">good</a> ()</td></tr>
+<tr class="memdesc:acd1abb6e3cab02c3ce9ccec1af3f630a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is a valid stream object.  <a href="#acd1abb6e3cab02c3ce9ccec1af3f630a">More...</a><br/></td></tr>
+<tr class="separator:acd1abb6e3cab02c3ce9ccec1af3f630a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53e698aa2390dd0c6db5e74f293da1b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a53e698aa2390dd0c6db5e74f293da1b6">bad</a> ()</td></tr>
+<tr class="memdesc:a53e698aa2390dd0c6db5e74f293da1b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is an invalid stream object.  <a href="#a53e698aa2390dd0c6db5e74f293da1b6">More...</a><br/></td></tr>
+<tr class="separator:a53e698aa2390dd0c6db5e74f293da1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6728f23051a7f691bad151bb586c83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a0e6728f23051a7f691bad151bb586c83">binary</a> ()</td></tr>
+<tr class="memdesc:a0e6728f23051a7f691bad151bb586c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream supports any binary format.  <a href="#a0e6728f23051a7f691bad151bb586c83">More...</a><br/></td></tr>
+<tr class="separator:a0e6728f23051a7f691bad151bb586c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738a8658740e2ac5f630faae93812ff1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a738a8658740e2ac5f630faae93812ff1">seekable</a> ()</td></tr>
+<tr class="memdesc:a738a8658740e2ac5f630faae93812ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream allows seeking to an index.  <a href="#a738a8658740e2ac5f630faae93812ff1">More...</a><br/></td></tr>
+<tr class="separator:a738a8658740e2ac5f630faae93812ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac757effd605c28b5ca8754fb3d2983f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#ac757effd605c28b5ca8754fb3d2983f3">seek</a> (size_t index)</td></tr>
+<tr class="memdesc:ac757effd605c28b5ca8754fb3d2983f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek a position in the stream.  <a href="#ac757effd605c28b5ca8754fb3d2983f3">More...</a><br/></td></tr>
+<tr class="separator:ac757effd605c28b5ca8754fb3d2983f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3b566d2a568e38d504da7103a7d7bb8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#aa3b566d2a568e38d504da7103a7d7bb8">tell</a> ()</td></tr>
+<tr class="memdesc:aa3b566d2a568e38d504da7103a7d7bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Give the current position in the stream.  <a href="#aa3b566d2a568e38d504da7103a7d7bb8">More...</a><br/></td></tr>
+<tr class="separator:aa3b566d2a568e38d504da7103a7d7bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04dbac54c849fef6ab18e5d7e37ae4e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#af04dbac54c849fef6ab18e5d7e37ae4e">end</a> ()</td></tr>
+<tr class="memdesc:af04dbac54c849fef6ab18e5d7e37ae4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of the stream.  <a href="#af04dbac54c849fef6ab18e5d7e37ae4e">More...</a><br/></td></tr>
+<tr class="separator:af04dbac54c849fef6ab18e5d7e37ae4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5da03e45c9f98d9211af60db85e09ca"><td class="memItemLeft" align="right" valign="top">encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#ad5da03e45c9f98d9211af60db85e09ca">format</a> ()</td></tr>
+<tr class="memdesc:ad5da03e45c9f98d9211af60db85e09ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#ad5da03e45c9f98d9211af60db85e09ca">More...</a><br/></td></tr>
+<tr class="separator:ad5da03e45c9f98d9211af60db85e09ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f9d182293aad316fc2f511780ebd0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a35f9d182293aad316fc2f511780ebd0e">flush</a> ()</td></tr>
+<tr class="memdesc:a35f9d182293aad316fc2f511780ebd0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="#a35f9d182293aad316fc2f511780ebd0e">More...</a><br/></td></tr>
+<tr class="separator:a35f9d182293aad316fc2f511780ebd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1inputStream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1inputStream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1inputStream.html">z::core::inputStream</a></td></tr>
 <tr class="memitem:a4c03397b86f9e351509c9a167cd9735f inherit pub_methods_classz_1_1core_1_1inputStream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c03397b86f9e351509c9a167cd9735f"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1inputStream.html#a4c03397b86f9e351509c9a167cd9735f">~inputStream</a> ()</td></tr>
@@ -168,10 +176,10 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:a007c3fd0e3590c86de7258f8c915470e inherit pub_methods_classz_1_1core_1_1outputStream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class for binary data streams. </p>
-<p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1stream.html" title="A template class for character streams. ">core::stream</a> for binary data in memory. </p>
+<div class="textblock"><p>A class for streaming directly to and from memory. </p>
+<p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1stream.html" title="A template class for character streams. ">core::stream</a> for raw data in memory. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a000c6166e7f7dace16806eeca0dbd2ba"></a>
+<a class="anchor" id="a53e698aa2390dd0c6db5e74f293da1b6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -179,7 +187,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::core::binaryStream::bad </td>
+          <td class="memname">bool z::core::memoryStream::bad </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -199,7 +207,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="aa64191abc14968d727aba00c8b57a5cd"></a>
+<a class="anchor" id="a0e6728f23051a7f691bad151bb586c83"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -207,7 +215,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::core::binaryStream::binary </td>
+          <td class="memname">bool z::core::memoryStream::binary </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -227,7 +235,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="aa8ae668a561d847d6f378578be72bf81"></a>
+<a class="anchor" id="a0bb76a01643f463f2d18f6b30b365dd9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -235,7 +243,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::core::binaryStream::empty </td>
+          <td class="memname">bool z::core::memoryStream::empty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -255,7 +263,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a844f1012b1469ecf5149d47ef7f3d4a9"></a>
+<a class="anchor" id="af04dbac54c849fef6ab18e5d7e37ae4e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -263,7 +271,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t z::core::binaryStream::end </td>
+          <td class="memname">size_t z::core::memoryStream::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -284,7 +292,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="ac9e4906434ef1324ae488f73198c1697"></a>
+<a class="anchor" id="a35f9d182293aad316fc2f511780ebd0e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -292,7 +300,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::core::binaryStream::flush </td>
+          <td class="memname">void z::core::memoryStream::flush </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -312,7 +320,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a6c5a3b3748093122148a8bf59b32f5e9"></a>
+<a class="anchor" id="ad5da03e45c9f98d9211af60db85e09ca"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -320,7 +328,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">encoding z::core::binaryStream::format </td>
+          <td class="memname">encoding z::core::memoryStream::format </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -341,7 +349,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="ad2589b32ef8a1a9732b845310f3978d4"></a>
+<a class="anchor" id="a500fcd6ae7e502b6af0b5a7babdf3ace"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -349,7 +357,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t z::core::binaryStream::get </td>
+          <td class="memname">uint8_t z::core::memoryStream::get </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -370,7 +378,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a9f37f2f1ec7df51522f10c4d758e00ba"></a>
+<a class="anchor" id="a39a4244a29172d3cd1f0f6afd2157b8b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -378,7 +386,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t z::core::binaryStream::getChar </td>
+          <td class="memname">uint32_t z::core::memoryStream::getChar </td>
           <td>(</td>
           <td class="paramtype">encoding&#160;</td>
           <td class="paramname"><em>format</em> = <code>ascii</code></td><td>)</td>
@@ -406,7 +414,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a4689fa69dcad903f04fcf3598b54c67c"></a>
+<a class="anchor" id="acd1abb6e3cab02c3ce9ccec1af3f630a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -414,7 +422,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::core::binaryStream::good </td>
+          <td class="memname">bool z::core::memoryStream::good </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -434,7 +442,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a605b704946d12046597a46a15db0f592"></a>
+<a class="anchor" id="a04d2948e7639bb7cfd197ef7d6378fc2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -442,7 +450,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::core::binaryStream::put </td>
+          <td class="memname">void z::core::memoryStream::put </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>ch</em></td><td>)</td>
@@ -469,7 +477,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a5d8b1837cdb5958d8a18b7def30f6292"></a>
+<a class="anchor" id="a04b107e3b731070e0fd4cff83cab59ab"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -477,7 +485,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::core::binaryStream::put </td>
+          <td class="memname">void z::core::memoryStream::put </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -522,7 +530,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="aaaf73b7b79f199c1f1f6c251be97eb85"></a>
+<a class="anchor" id="ac757effd605c28b5ca8754fb3d2983f3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -530,7 +538,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::core::binaryStream::seek </td>
+          <td class="memname">void z::core::memoryStream::seek </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -557,7 +565,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a80f81ff9e2683fd7dc21e5450faa4060"></a>
+<a class="anchor" id="a738a8658740e2ac5f630faae93812ff1"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -565,7 +573,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::core::binaryStream::seekable </td>
+          <td class="memname">bool z::core::memoryStream::seekable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -585,7 +593,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="aba1b61e5197fb5acb86b8a3a3cc02524"></a>
+<a class="anchor" id="aa3b566d2a568e38d504da7103a7d7bb8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -593,7 +601,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t z::core::binaryStream::tell </td>
+          <td class="memname">size_t z::core::memoryStream::tell </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -614,8 +622,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/travis/build/ZacharyWesterman/libzed/z/core/<a class="el" href="binaryStream_8h_source.html">binaryStream.h</a></li>
-<li>/home/travis/build/ZacharyWesterman/libzed/z/core/binaryStream.cpp</li>
+<li>/home/travis/build/ZacharyWesterman/libzed/z/core/<a class="el" href="memoryStream_8h_source.html">memoryStream.h</a></li>
+<li>/home/travis/build/ZacharyWesterman/libzed/z/core/memoryStream.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
