@@ -134,7 +134,9 @@ namespace z
 			 * then the hex part of the string is padded up to
 			 * `Z_STR_POINTER_CHARS` characters (default is 8).
 			 */
-			template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value,PTR>::type>
+			template <typename PTR, typename = typename std::enable_if<
+				std::is_pointer<PTR>::value && !std::is_same<PTR,char*>::value && !std::is_same<PTR,wchar_t*>::value
+				,PTR>::type>
 			string(PTR pointer)
 			{
 				this->initPointer((void*)pointer);
