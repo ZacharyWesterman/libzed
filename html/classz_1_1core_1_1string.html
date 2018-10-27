@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0668671800b1a23d2c779b36eee78e5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ab0668671800b1a23d2c779b36eee78e5">string</a> (INT value, unsigned int base=10, unsigned int padSize=0)</td></tr>
 <tr class="memdesc:ab0668671800b1a23d2c779b36eee78e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from an integer.  <a href="#ab0668671800b1a23d2c779b36eee78e5">More...</a><br/></td></tr>
 <tr class="separator:ab0668671800b1a23d2c779b36eee78e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89d462e29dc6627b94752c1fb420c84d"><td class="memTemplParams" colspan="2">template&lt;typename PTR , typename  = typename std::enable_if&lt;std::is_pointer&lt;PTR&gt;::value,PTR&gt;::type&gt; </td></tr>
+<tr class="memitem:a89d462e29dc6627b94752c1fb420c84d"><td class="memTemplParams" colspan="2">template&lt;typename PTR , typename  = typename std::enable_if&lt;				std::is_pointer&lt;PTR&gt;::value &amp;&amp; !std::is_same&lt;PTR,char*&gt;::value &amp;&amp; !std::is_same&lt;PTR,wchar_t*&gt;::value				,PTR&gt;::type&gt; </td></tr>
 <tr class="memitem:a89d462e29dc6627b94752c1fb420c84d"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a89d462e29dc6627b94752c1fb420c84d">string</a> (PTR pointer)</td></tr>
 <tr class="memdesc:a89d462e29dc6627b94752c1fb420c84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a pointer.  <a href="#a89d462e29dc6627b94752c1fb420c84d">More...</a><br/></td></tr>
 <tr class="separator:a89d462e29dc6627b94752c1fb420c84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -550,7 +550,7 @@ template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integr
 <div class="memtemplate">
 template&lt;encoding E&gt; </div>
 <div class="memtemplate">
-template&lt;typename PTR , typename  = typename std::enable_if&lt;std::is_pointer&lt;PTR&gt;::value,PTR&gt;::type&gt; </div>
+template&lt;typename PTR , typename  = typename std::enable_if&lt;				std::is_pointer&lt;PTR&gt;::value &amp;&amp; !std::is_same&lt;PTR,char*&gt;::value &amp;&amp; !std::is_same&lt;PTR,wchar_t*&gt;::value				,PTR&gt;::type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
