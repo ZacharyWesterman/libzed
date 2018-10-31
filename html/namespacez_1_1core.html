@@ -150,12 +150,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a8c13665f8a14c6d5c3fc24dcad779a38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a8c13665f8a14c6d5c3fc24dcad779a38">isLowerAlpha</a> (uint32_t ch)</td></tr>
 <tr class="memdesc:a8c13665f8a14c6d5c3fc24dcad779a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given character is a lowercase alphabetic character.  <a href="#a8c13665f8a14c6d5c3fc24dcad779a38">More...</a><br/></td></tr>
 <tr class="separator:a8c13665f8a14c6d5c3fc24dcad779a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26b29ea2dadb5a2dbc8d6e254efd0af1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a26b29ea2dadb5a2dbc8d6e254efd0af1">toUpper</a> (uint32_t ch)</td></tr>
-<tr class="memdesc:a26b29ea2dadb5a2dbc8d6e254efd0af1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the given character to uppercase.  <a href="#a26b29ea2dadb5a2dbc8d6e254efd0af1">More...</a><br/></td></tr>
-<tr class="separator:a26b29ea2dadb5a2dbc8d6e254efd0af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dbdfb6f606616e638a8c7589777d240"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a0dbdfb6f606616e638a8c7589777d240">toLower</a> (uint32_t ch)</td></tr>
-<tr class="memdesc:a0dbdfb6f606616e638a8c7589777d240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the given character to lowercase.  <a href="#a0dbdfb6f606616e638a8c7589777d240">More...</a><br/></td></tr>
-<tr class="separator:a0dbdfb6f606616e638a8c7589777d240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3911409384cfa32f3618b8bbd0beac18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3911409384cfa32f3618b8bbd0beac18"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isUpper</b> (uint32_t ch)</td></tr>
+<tr class="separator:a3911409384cfa32f3618b8bbd0beac18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc642abc0838cd585b351c2dd3aa4305"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc642abc0838cd585b351c2dd3aa4305"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isLower</b> (uint32_t ch)</td></tr>
+<tr class="separator:abc642abc0838cd585b351c2dd3aa4305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeff8ef7b1393028043c05416be6f18d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afeff8ef7b1393028043c05416be6f18d">toUpper</a> (uint32_t ch, bool camel=false)</td></tr>
+<tr class="memdesc:afeff8ef7b1393028043c05416be6f18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the given character to uppercase.  <a href="#afeff8ef7b1393028043c05416be6f18d">More...</a><br/></td></tr>
+<tr class="separator:afeff8ef7b1393028043c05416be6f18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a31abc54c8efa7d632d8df268c64b8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#af9a31abc54c8efa7d632d8df268c64b8">toLower</a> (uint32_t ch, bool alternate=false)</td></tr>
+<tr class="memdesc:af9a31abc54c8efa7d632d8df268c64b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the given character to lowercase.  <a href="#af9a31abc54c8efa7d632d8df268c64b8">More...</a><br/></td></tr>
+<tr class="separator:af9a31abc54c8efa7d632d8df268c64b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92a36496e468ae0ae8c2f668d12b85ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a92a36496e468ae0ae8c2f668d12b85ae">isAlpha</a> (uint32_t ch)</td></tr>
 <tr class="memdesc:a92a36496e468ae0ae8c2f668d12b85ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given character is an alphabetic character.  <a href="#a92a36496e468ae0ae8c2f668d12b85ae">More...</a><br/></td></tr>
 <tr class="separator:a92a36496e468ae0ae8c2f668d12b85ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -879,7 +885,7 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0dbdfb6f606616e638a8c7589777d240"></a>
+<a class="anchor" id="af9a31abc54c8efa7d632d8df268c64b8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -887,8 +893,18 @@ template&lt;typename T &gt; </div>
           <td class="memname">uint32_t z::core::toLower </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>alternate</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -904,7 +920,7 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a26b29ea2dadb5a2dbc8d6e254efd0af1"></a>
+<a class="anchor" id="afeff8ef7b1393028043c05416be6f18d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -912,8 +928,18 @@ template&lt;typename T &gt; </div>
           <td class="memname">uint32_t z::core::toUpper </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>camel</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

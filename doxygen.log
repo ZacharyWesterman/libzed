@@ -337,6 +337,12 @@ Generating code for file /home/travis/build/ZacharyWesterman/libzed/z/util/gener
 Generating code for file /home/travis/build/ZacharyWesterman/libzed/z/util/generic/genericComplex.h...
 Gene/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:16: warning: unable to resolve reference to `Doxypages/examples/core/string.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
+/home/travis/build/ZacharyWesterman/libzed/z/core/charFunctions.cpp:135: warning: Member isUpper(uint32_t ch) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/charFunctions.cpp:140: warning: Member isLower(uint32_t ch) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/charFunctions.h:45: warning: The following parameters of z::core::toLower(uint32_t ch, bool alternate=false) are not documented:
+  parameter 'alternate'
+/home/travis/build/ZacharyWesterman/libzed/z/core/charFunctions.h:35: warning: The following parameters of z::core::toUpper(uint32_t ch, bool camel=false) are not documented:
+  parameter 'camel'
 /home/travis/build/ZacharyWesterman/libzed/z/core/memoryStream.h:24: warning: Member memoryStream(T *streamData=0, size_t count=1) (function) of class z::core::memoryStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/memoryStream.h:32: warning: Member set(T *streamData, size_t count=1) (function) of class z::core::memoryStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/math/matrix.h:61: warning: Member det() (function) of class z::math::matrix is not documented.
@@ -426,5 +432,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 1096/65536 hits=7022 misses=1183
+lookup cache used 1100/65536 hits=7030 misses=1187
 finished...
