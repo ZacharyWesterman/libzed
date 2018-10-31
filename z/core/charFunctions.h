@@ -27,6 +27,10 @@ namespace z
 		 */
 		bool isLowerAlpha(uint32_t ch);
 
+		bool isUpper(uint32_t ch);
+
+		bool isLower(uint32_t ch);
+
 		/**
 		 * \brief Convert the given character to uppercase.
 		 *
@@ -35,7 +39,7 @@ namespace z
 		 * \return The character, converted to uppercase if
 		 * applicable.
 		 */
-		uint32_t toUpper(uint32_t ch);
+		uint32_t toUpper(uint32_t ch, bool camel = false);
 
 		/**
 		 * \brief Convert the given character to lowercase.
@@ -45,7 +49,7 @@ namespace z
 		 * \return The character, converted to lowercase if
 		 * applicable.
 		 */
-		uint32_t toLower(uint32_t ch);
+		uint32_t toLower(uint32_t ch, bool alternate = false);
 
 		/**
 		 * \brief Check if the given character is an
