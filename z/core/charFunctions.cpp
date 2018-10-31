@@ -1,31 +1,280 @@
 #include "charFunctions.h"
 
+static const uint32_t begRangesGroup[] =
+{
+	L'A', L'a',
+	L'À', L'à',
+	L'Ø', L'ø',
+	L'Έ', L'έ',
+	L'Ό', L'ό',
+	L'Α', L'α',
+	L'Σ', L'σ',
+	L'Ϙ', L'ϙ',
+	L'Ϟ', L'ϟ',
+	L'А', L'а',
+	L'Ѐ', L'ѐ',
+	0, 0
+};
+
+static const uint32_t endRangesGroup[] =
+{
+	L'Z', L'z',
+	L'Ö', L'ö',
+	L'Þ', L'þ',
+	L'Ί', L'ί',
+	L'Ώ', L'ώ',
+	L'Ρ', L'ρ',
+	L'Ϋ', L'ϋ',
+	L'Ϝ', L'ϝ',
+	L'Ϯ', L'ϯ',
+	L'Я', L'я',
+	L'Џ', L'џ',
+	0, 0
+};
+
+static const uint32_t begRangesSequence[] =
+{
+	L'Ā', L'ā',
+	L'Ĳ', L'ĳ',
+	L'Ĺ', L'ĺ',
+	L'Ŋ', L'ŋ',
+	L'Ź', L'ź',
+	L'Ơ', L'ơ',
+	L'Ǎ', L'ǎ',
+	L'Ǟ', L'ǟ',
+	L'Ǹ', L'ǹ',
+	L'Ȣ', L'ȣ',
+	L'Ɇ', L'ɇ',
+	L'Ḃ', L'ḃ',
+	L'Ͱ', L'ͱ',
+	L'Ѡ', L'ѡ',
+	L'Ҋ', L'ҋ',
+	L'Ӂ', L'ӂ',
+	L'Ӑ', L'ӑ',
+	0, 0
+};
+
+static const uint32_t endRangesSequence[] =
+{
+	L'Į', L'į',
+	L'Ķ', L'ķ',
+	L'Ň', L'ň',
+	L'Ŷ', L'ŷ',
+	L'Ž', L'ž',
+	L'Ƥ', L'ƥ',
+	L'Ǜ', L'ǜ',
+	L'Ǯ', L'ǯ',
+	L'Ȟ', L'ȟ',
+	L'Ȳ', L'ȳ',
+	L'Ɏ', L'ɏ',
+	L'Ẅ', L'ẅ',
+	L'Ͷ', L'ͷ',
+	L'Ҁ', L'ҁ',
+	L'Ҿ', L'ҿ',
+	L'Ӎ', L'ӎ',
+	L'Ӿ', L'ӿ',
+	0, 0
+};
+
+static const uint32_t directCases[] =
+{
+	L'Ÿ', L'ÿ',
+	L'Ƃ', L'ƃ',
+	L'Ƅ', L'ƅ',
+	L'Ƈ', L'ƈ',
+	L'Ƌ', L'ƌ',
+	L'Ƒ', L'ƒ',
+	L'Ƙ', L'ƙ',
+	L'Ƨ', L'ƨ',
+	L'Ƭ', L'ƭ',
+	L'Ư', L'ư',
+	L'Ƴ', L'ƴ',
+	L'Ƶ', L'ƶ',
+	L'Ƹ', L'ƹ',
+	L'Ƽ', L'ƽ',
+	L'Ǵ', L'ǵ',
+	L'Ȼ', L'ȼ',
+	L'Ɂ', L'ɂ',
+	L'Ỳ', L'ỳ',
+	L'Ά', L'ά',
+	L'Ϸ', L'ϸ',
+	L'Ϻ', L'ϻ',
+	0, 0
+};
+
+//These lowercase characters convert to uppercase, but not the other way
+static const uint32_t alternateUpper[] =
+{
+	L'Σ', L'ς',
+	0, 0
+};
+
+static const uint32_t camelConvs[] =
+{
+	L'Ǆ', L'ǅ', L'ǆ',
+	L'Ǉ', L'ǈ', L'ǉ',
+	L'Ǌ', L'ǋ', L'ǌ',
+	L'Ǳ', L'ǲ', L'ǳ',
+	0, 0, 0
+};
+
 namespace z
 {
 	namespace core
 	{
 		bool isUpperAlpha(uint32_t ch)
 		{
-			return ((ch >= 'A') &&  //from A
-					(ch <= 'Z'));	//to Z
+			return ((ch >= 'A') && (ch <= 'Z'));
 		}
 
 		bool isLowerAlpha(uint32_t ch)
 		{
-			return ((ch >= 'a') &&  //from a
-					(ch <= 'z'));	//to z
+			return ((ch >= 'a') &&  (ch <= 'z'));
 		}
 
-		uint32_t toUpper(uint32_t ch)
+		bool isUpper(uint32_t ch)
 		{
-			if (isLowerAlpha(ch)) ch = ch - 'a' + 'A';
+			return (toLower(ch) != ch);
+		}
+
+		bool isLower(uint32_t ch)
+		{
+			return (toUpper(ch) != ch);
+		}
+
+		uint32_t toUpper(uint32_t ch, bool camel)
+		{
+			uint32_t beg;
+
+			int i=1;
+			while((beg = begRangesGroup[i]))
+			{
+				if (ch < beg) break;
+
+				if ((ch >= beg) && (ch <= endRangesGroup[i]))
+					return (ch - beg + begRangesGroup[i-1]);
+
+				i+=2;
+			}
+
+			i=1;
+			while((beg = begRangesSequence[i]))
+			{
+				if (ch < beg) break;
+
+				if ((ch >= beg) && (ch <= endRangesSequence[i]))
+					return (ch - 1);
+
+				i+=2;
+			}
+
+			i=1;
+			while((beg = directCases[i]))
+			{
+				if (ch < beg) break;
+
+				if (beg == ch)
+					return directCases[i-1];
+
+				i+=2;
+			}
+
+			i=1;
+			while((beg = alternateUpper[i]))
+			{
+				if (ch < beg) break;
+
+				if (beg == ch)
+					return alternateUpper[i-1];
+
+				i+=2;
+			}
+
+			i=0;
+			while((beg = camelConvs[i]))
+			{
+				if (ch < beg) break;
+
+				if (camel)
+				{
+					if ((ch == beg) || (ch == camelConvs[i+2]))
+						return camelConvs[i+1];
+				}
+				else
+				{
+					if ((ch == camelConvs[i+1]) || (ch == camelConvs[i+2]))
+						return beg;
+				}
+
+				i+=3;
+			}
 
 			return ch;
 		}
 
-		uint32_t toLower(uint32_t ch)
+		uint32_t toLower(uint32_t ch, bool alternate)
 		{
-			if (isUpperAlpha(ch)) ch = ch - 'A' + 'a';
+			uint32_t beg;
+
+			int i;
+
+			if (alternate)
+			{
+				i=0;
+				while((beg = alternateUpper[i]))
+				{
+					if (ch < beg) break;
+
+					if (beg == ch)
+						return alternateUpper[i+1];
+
+					i+=2;
+				}
+			}
+
+			i=0;
+			while((beg = begRangesGroup[i]))
+			{
+				if (ch < beg) break;
+
+				if ((ch >= beg) && (ch <= endRangesGroup[i]))
+					return (ch - beg + begRangesGroup[i+1]);
+
+				i+=2;
+			}
+
+			i=0;
+			while((beg = begRangesSequence[i]))
+			{
+				if (ch < beg) break;
+
+				if ((ch >= beg) && (ch <= endRangesSequence[i]))
+					return (ch + 1);
+
+				i+=2;
+			}
+
+			i=0;
+			while((beg = directCases[i]))
+			{
+				if (ch < beg) break;
+
+				if (beg == ch)
+					return directCases[i+1];
+
+				i+=2;
+			}
+
+			i=0;
+			while((beg = camelConvs[i]))
+			{
+				if (ch < beg) break;
+
+				if ((ch == beg) || (ch == camelConvs[i+1]))
+					return camelConvs[i+2];
+
+				i+=3;
+			}
 
 			return ch;
 		}
