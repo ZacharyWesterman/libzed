@@ -27,7 +27,7 @@ namespace z
 		 * <B>RE-ENTRANCE:</B><br/>
 		 * Simultaneous accesses to the same object can cause data races.
 		 */
-		template <encoding E>
+		template <encoding E = utf32>
 		class string : public serializable, public sizable
 		{
 			friend string<ascii>;

@@ -1143,10 +1143,23 @@ namespace z
 		template <>
 		string<utf8> string<utf8>::upper() const
 		{
-			string<utf8> result (*this);
+			string<utf8> result;
 
-			for (size_t i=0; i<character_ct; i++)
-				result.data[i] = toUpper(result.data[i]);
+			uint8_t buf[4];
+			size_t i=0;
+			while (i < character_ct)
+			{
+				auto ch = toUpper(fromUTF8(&data[i]));
+
+				int len = toUTF8(buf, ch);
+				result.increase(result.character_ct + len + 1);
+
+				for (int k=0; k<len; k++)
+					result.data[result.character_ct++] = buf[k];
+				result.data[result.character_ct] = 0;
+
+				i += lenFromUTF8(&data[i]);
+			}
 
 			return result;
 		}
@@ -1154,10 +1167,23 @@ namespace z
 		template <>
 		string<utf8> string<utf8>::lower() const
 		{
-			string<utf8> result (*this);
+			string<utf8> result;
 
-			for (size_t i=0; i<character_ct; i++)
-				result.data[i] = toLower(result.data[i]);
+			uint8_t buf[4];
+			size_t i=0;
+			while (i < character_ct)
+			{
+				auto ch = toLower(fromUTF8(&data[i]));
+
+				int len = toUTF8(buf, ch);
+				result.increase(result.character_ct + len + 1);
+
+				for (int k=0; k<len; k++)
+					result.data[result.character_ct++] = buf[k];
+				result.data[result.character_ct] = 0;
+
+				i += lenFromUTF8(&data[i]);
+			}
 
 			return result;
 		}
@@ -1165,15 +1191,26 @@ namespace z
 		template <>
 		string<utf8> string<utf8>::camel() const
 		{
-			string<utf8> result (*this);
+			string<utf8> result;
 
 			bool doLower = false;
-			for (size_t i=0; i<character_ct; i++)
+
+			uint8_t buf[4];
+			size_t i=0;
+			while (i < character_ct)
 			{
-				uint32_t ch = result.data[i];
-				result.data[i] = (doLower ? toLower(ch) : toUpper(ch));
+				auto ch = fromUTF8(&data[i]);
+				ch = (doLower ? toLower(ch) : toUpper(ch));
+
+				int len = toUTF8(buf, ch);
+				result.increase(result.character_ct + len + 1);
+
+				for (int k=0; k<len; k++)
+					result.data[result.character_ct++] = buf[k];
+				result.data[result.character_ct] = 0;
 
 				doLower = isAlphaNumeric(ch) || (ch == '_');
+				i += lenFromUTF8(&data[i]);
 			}
 
 			return result;
