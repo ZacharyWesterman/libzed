@@ -24,9 +24,9 @@ namespace z
 			return 0;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericNull::string() const
+		core::string<> genericNull::string() const
 		{
-			return core::string<ZED_GENERIC_ENCODING>();
+			return core::string<>();
 		}
 
 		datatype genericNull::type() const
@@ -34,7 +34,7 @@ namespace z
 			return datatype::null;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericNull::typeString() const
+		core::string<> genericNull::typeString() const
 		{
 			return "NULL";
 		}

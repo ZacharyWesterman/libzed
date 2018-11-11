@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericFloat::string() const
+		core::string<> genericFloat::string() const
 		{
 			return value;
 		}
@@ -51,7 +51,7 @@ namespace z
 			return datatype::floating;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericFloat::typeString() const
+		core::string<> genericFloat::typeString() const
 		{
 			return "FLOAT";
 		}

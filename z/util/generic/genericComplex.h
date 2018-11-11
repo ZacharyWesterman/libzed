@@ -27,7 +27,7 @@ namespace z
 			long long integer() const;
 			double floating() const;
 			std::complex<double> complex() const;
-			core::string<ZED_GENERIC_ENCODING> string() const;
+			core::string<> string() const;
 
 			bool isInteger() const;
 			bool isFloating() const;
@@ -36,7 +36,7 @@ namespace z
 			bool isArithmetic() const;
 
 			datatype type() const;
-			core::string<ZED_GENERIC_ENCODING> typeString() const;
+			core::string<> typeString() const;
 
 			generic* duplicate() const;
 		};

@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericComplex::string() const
+		core::string<> genericComplex::string() const
 		{
 			return value;
 		}
@@ -56,7 +56,7 @@ namespace z
 			return datatype::complex;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericComplex::typeString() const
+		core::string<> genericComplex::typeString() const
 		{
 			return "COMPLEX";
 		}

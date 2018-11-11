@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericInt::string() const
+		core::string<> genericInt::string() const
 		{
 			return value;
 		}
@@ -46,7 +46,7 @@ namespace z
 			return datatype::integer;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericInt::typeString() const
+		core::string<> genericInt::typeString() const
 		{
 			return "INT";
 		}
