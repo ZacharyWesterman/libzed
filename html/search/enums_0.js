@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['part',['part',['../namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0',1,'z::util']]]
+  ['datatype',['datatype',['../namespacez_1_1util.html#ad8ad184dd64ac345920c48cc00ad12d3',1,'z::util']]]
 ];

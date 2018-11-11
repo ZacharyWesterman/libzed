@@ -13,7 +13,7 @@ var indexSectionsWithContent =
   3: "cfmsu",
   4: "abcdefghilmnoprstuvwz~",
   5: "acefnpsv",
-  6: "pr",
+  6: "dpr",
   7: "ilrs"
 };
 

@@ -8,6 +8,5 @@ var searchData=
   ['stream',['stream',['../classz_1_1core_1_1stream.html',1,'z::core']]],
   ['string',['string',['../classz_1_1core_1_1string.html',1,'z::core']]],
   ['string_3c_20ascii_20_3e',['string&lt; ascii &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]],
-  ['string_3c_20z_5fdict_5fformat_20_3e',['string&lt; Z_DICT_FORMAT &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]],
-  ['string_3c_20zed_5fgeneric_5fencoding_20_3e',['string&lt; ZED_GENERIC_ENCODING &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]]
+  ['string_3c_20z_5fdict_5fformat_20_3e',['string&lt; Z_DICT_FORMAT &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]]
 ];

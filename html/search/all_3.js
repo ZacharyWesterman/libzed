@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['datatype',['datatype',['../namespacez_1_1util.html#ad8ad184dd64ac345920c48cc00ad12d3',1,'z::util']]],
   ['det',['det',['../classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb',1,'z::math::matrix']]],
   ['devicenumber',['deviceNumber',['../classz_1_1file_1_1info.html#a3fd6f2fdce2b4d218ca715b3f5506b62',1,'z::file::info']]],
   ['dictionary',['dictionary',['../classz_1_1util_1_1dictionary.html#ad2ee536c9d01efb24543155a1b8f5823',1,'z::util::dictionary']]],

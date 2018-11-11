@@ -107,20 +107,20 @@ Inheritance diagram for z::core::memoryStream:</div>
   <img src="classz_1_1core_1_1memoryStream.png" usemap="#z::core::memoryStream_map" alt=""/>
   <map id="z::core::memoryStream_map" name="z::core::memoryStream_map">
 <area href="classz_1_1core_1_1stream.html" title="A template class for character streams. " alt="z::core::stream" shape="rect" coords="74,56,213,80"/>
-<area href="classz_1_1core_1_1inputStream.html" title="A template class for character input streams. " alt="z::core::inputStream" shape="rect" coords="0,0,139,24"/>
-<area href="classz_1_1core_1_1outputStream.html" title="A template class for character output streams. " alt="z::core::outputStream" shape="rect" coords="149,0,288,24"/>
+<area href="classz_1_1core_1_1inputStream.html" title="An interface for data input streams. " alt="z::core::inputStream" shape="rect" coords="0,0,139,24"/>
+<area href="classz_1_1core_1_1outputStream.html" title="An interface for data output streams. " alt="z::core::outputStream" shape="rect" coords="149,0,288,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplParams" colspan="2"><a class="anchor" id="abe9d78201534dda9b498cdcf84282357"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>memoryStream</b> (T *streamData=0, size_t count=1)</td></tr>
+<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abe9d78201534dda9b498cdcf84282357"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#abe9d78201534dda9b498cdcf84282357">memoryStream</a> (T *streamData=0, size_t count=1)</td></tr>
+<tr class="memdesc:abe9d78201534dda9b498cdcf84282357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic constructor.  <a href="#abe9d78201534dda9b498cdcf84282357">More...</a><br/></td></tr>
 <tr class="separator:abe9d78201534dda9b498cdcf84282357"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplParams" colspan="2"><a class="anchor" id="ac07c8286b37507cf89ad6ee6f1fa1cf9"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>set</b> (T *streamData, size_t count=1)</td></tr>
+<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#ac07c8286b37507cf89ad6ee6f1fa1cf9">set</a> (T *streamData, size_t count=1)</td></tr>
+<tr class="memdesc:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the section of memory that this stream may access.  <a href="#ac07c8286b37507cf89ad6ee6f1fa1cf9">More...</a><br/></td></tr>
 <tr class="separator:ac07c8286b37507cf89ad6ee6f1fa1cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04d2948e7639bb7cfd197ef7d6378fc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoryStream.html#a04d2948e7639bb7cfd197ef7d6378fc2">put</a> (uint8_t ch)</td></tr>
 <tr class="memdesc:a04d2948e7639bb7cfd197ef7d6378fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#a04d2948e7639bb7cfd197ef7d6378fc2">More...</a><br/></td></tr>
@@ -178,7 +178,54 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for streaming directly to and from memory. </p>
 <p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1stream.html" title="A template class for character streams. ">core::stream</a> for raw data in memory. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abe9d78201534dda9b498cdcf84282357"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">z::core::memoryStream::memoryStream </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>streamData</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generic constructor. </p>
+<p>Optionally specify the section of memory that this stream may access.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">streamData</td><td>The first data element this stream may access. </td></tr>
+    <tr><td class="paramname">count</td><td>The total number of elements this stream may access. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a53e698aa2390dd0c6db5e74f293da1b6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -590,6 +637,51 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>True if seeking is possible for this stream. False otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1inputStream.html#ae1c0856a681a860f2069d4aaa8e6de20">z::core::inputStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac07c8286b37507cf89ad6ee6f1fa1cf9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::core::memoryStream::set </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>streamData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the section of memory that this stream may access. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">streamData</td><td>The first data element this stream may access. </td></tr>
+    <tr><td class="paramname">count</td><td>The total number of elements this stream may access. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
