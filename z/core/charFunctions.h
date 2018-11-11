@@ -11,6 +11,9 @@ namespace z
 		 * \brief Check if the given character is an uppercase
 		 * alphabetic character.
 		 *
+		 * This function differs from isUpper() in that it only
+		 * returns true for characters `A-Z`.
+		 *
 		 * \param ch the character to check.
 		 *
 		 * \return True if the character is uppercase. False otherwise.
@@ -21,23 +24,42 @@ namespace z
 		 * \brief Check if the given character is a lowercase
 		 * alphabetic character.
 		 *
+		 * This function differs from isLower() in that it only
+		 * returns true for characters `a-z`.
+		 *
 		 * \param ch the character to check.
 		 *
 		 * \return True if the character is lowercase. False otherwise.
 		 */
 		bool isLowerAlpha(uint32_t ch);
 
+		/**
+		 * \brief Check if the given character is an uppercase character.
+		 *
+		 * \param ch the character to check.
+		 *
+		 * \return True if the character is uppercase. False otherwise.
+		 */
 		bool isUpper(uint32_t ch);
 
+		/**
+		 * \brief Check if the given character is a lowercase character.
+		 *
+		 * \param ch the character to check.
+		 *
+		 * \return True if the character is lowercase. False otherwise.
+		 */
 		bool isLower(uint32_t ch);
 
 		/**
 		 * \brief Convert the given character to uppercase.
 		 *
 		 * \param ch the character to convert.
+		 * \param camel If true, convert characters with a camelCase
+		 * version (e.g. `Ǌ` vs `ǋ` vs `ǌ`). If false, convert only
+		 * to uppercase.
 		 *
-		 * \return The character, converted to uppercase if
-		 * applicable.
+		 * \return The character, converted to uppercase if applicable.
 		 */
 		uint32_t toUpper(uint32_t ch, bool camel = false);
 
@@ -45,9 +67,10 @@ namespace z
 		 * \brief Convert the given character to lowercase.
 		 *
 		 * \param ch the character to convert.
+		 * \param alternate If true, use whatever alternate lowercase version
+		 * a character has, if any (e.g. `Σ`&rarr;`ς` instead of `Σ`&rarr;`σ`).
 		 *
-		 * \return The character, converted to lowercase if
-		 * applicable.
+		 * \return The character, converted to lowercase if applicable.
 		 */
 		uint32_t toLower(uint32_t ch, bool alternate = false);
 

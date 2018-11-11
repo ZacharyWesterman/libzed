@@ -11,7 +11,7 @@ namespace z
 	{
 		/**
 		 * \interface inputStream
-		 * \brief A template class for character input streams.
+		 * \brief An interface for data input streams.
 		 *
 		 * This class provides an interface for
 		 * input streams.
@@ -125,7 +125,7 @@ namespace z
 
 		/**
 		 * \interface outputStream
-		 * \brief A template class for character output streams.
+		 * \brief An interface for data output streams.
 		 *
 		 * This class provides an interface for
 		 * output streams.
