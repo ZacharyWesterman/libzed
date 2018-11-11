@@ -2,6 +2,7 @@
 
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
 It should compile on any flavor of these OS's. The only requirements are **make** and **g++** that supports *at least* C++11.
+Technically this also does compile on the Raspberry Pi, but I haven't checked it for bugs on that platform..
 
 To compile, run make. Something like `make -j32` will work.<br>
 On Windows, you're done. Just copy the DLL into the directory where you want it.<br>
