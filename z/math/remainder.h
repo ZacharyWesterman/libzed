@@ -16,7 +16,7 @@ namespace z
 		 *
 		 * \see remainder(const std::complex<long>&,const std::complex<long>&)
 		 */
-		const long remainder(long x, long y);
+		long remainder(long x, long y);
 
 		/**
 		 * \brief Calculate the remainder of complex division \b x/y.
@@ -31,6 +31,6 @@ namespace z
 		 *
 		 * \see remainder(long,long)
 		 */
-		const std::complex<long> remainder(const std::complex<long>& x, const std::complex<long>& y);
+		std::complex<long> remainder(const std::complex<long>& x, const std::complex<long>& y);
 	}
 }

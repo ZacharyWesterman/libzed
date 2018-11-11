@@ -76,7 +76,8 @@ namespace z
 			if (lo.imag() < 0)
 				lo = std::complex<long>(lo.real(), -lo.imag());
 
-
+			norm_hi = (hi.real()*hi.real()) + (hi.imag()*hi.imag());
+			norm_lo = (lo.real()*lo.real()) + (lo.imag()*lo.imag());
 			do
 			{
 				while (norm_hi >= norm_lo)

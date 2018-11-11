@@ -1200,7 +1200,7 @@ namespace z
 			while (i < character_ct)
 			{
 				auto ch = fromUTF8(&data[i]);
-				ch = (doLower ? toLower(ch) : toUpper(ch));
+				ch = (doLower ? toLower(ch) : toUpper(ch, true));
 
 				int len = toUTF8(buf, ch);
 				result.increase(result.character_ct + len + 1);
