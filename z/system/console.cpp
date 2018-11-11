@@ -54,7 +54,15 @@ namespace z
 
 		uint32_t console::getChar(encoding format)
 		{
-			return std::cin.get();
+			if (format == z::utf8) return std::cin.get();
+
+			uint8_t buf[4];
+			buf[0] = std::cin.get();
+			int len = core::lenFromUTF8(buf);
+			for (int i=1; i<len; i++)
+				buf[i] = std::cin.get();
+
+			return core::fromUTF8(buf);
 		}
 
 		bool console::empty()

@@ -38,7 +38,7 @@ namespace z
 			return 0;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericArray::string() const
+		core::string<> genericArray::string() const
 		{
 			return "Array";
 		}
@@ -67,7 +67,7 @@ namespace z
 			return datatype::array;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericArray::typeString() const
+		core::string<> genericArray::typeString() const
 		{
 			return "ARRAY";
 		}

@@ -20,6 +20,14 @@ namespace z
 			size_t streamIndex;
 
 		public:
+			/**
+			 * \brief Generic constructor.
+			 *
+			 * Optionally specify the section of memory that this stream may access.
+			 *
+			 * \param streamData The first data element this stream may access.
+			 * \param count The total number of elements this stream may access.
+			 */
 			template<typename T>
 			memoryStream(T* streamData = 0, size_t count = 1)
 			{
@@ -28,6 +36,12 @@ namespace z
 				streamIndex = 0;
 			}
 
+			/**
+			 * \brief Set the section of memory that this stream may access.
+			 *
+			 * \param streamData The first data element this stream may access.
+			 * \param count The total number of elements this stream may access.
+			 */
 			template<typename T>
 			void set(T* streamData, size_t count = 1)
 			{

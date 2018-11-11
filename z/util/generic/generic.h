@@ -11,10 +11,6 @@
 
 #include <complex>
 
-#ifndef ZED_GENERIC_ENCODING
-#define ZED_GENERIC_ENCODING z::utf32
-#endif
-
 namespace z
 {
 	namespace util
@@ -74,9 +70,9 @@ namespace z
 			/**
 			 * \brief Get a string representation of this object.
 			 *
-			 * \return A string representation with encoding ZED_GENERIC_ENCODING.
+			 * \return A string representation of default string encoding.
 			 */
-			virtual core::string<ZED_GENERIC_ENCODING> string() const = 0;
+			virtual core::string<> string() const = 0;
 
 			/**
 			 * \brief Get the array this object holds.
@@ -95,9 +91,9 @@ namespace z
 			/**
 			 * \brief Get this object's type as a string.
 			 *
-			 * \return A string representing this object's type with encoding ZED_GENERIC_ENCODING.
+			 * \return A string representing this object's type with encoding .
 			 */
-			virtual core::string<ZED_GENERIC_ENCODING> typeString() const = 0;
+			virtual core::string<> typeString() const = 0;
 
 			/**
 			 * \brief Get whether this object is a pointer.

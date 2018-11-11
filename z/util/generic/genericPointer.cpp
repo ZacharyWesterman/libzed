@@ -31,7 +31,7 @@ namespace z
 			return 0;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericPointer::string() const
+		core::string<> genericPointer::string() const
 		{
 			return reference;
 		}
@@ -51,7 +51,7 @@ namespace z
 			return datatype::pointer;
 		}
 
-		core::string<ZED_GENERIC_ENCODING> genericPointer::typeString() const
+		core::string<> genericPointer::typeString() const
 		{
 			return "POINTER";
 		}
