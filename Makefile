@@ -20,12 +20,29 @@ endif
 endif
 
 INCLUDE = -I"../libzed"
-CCFLAGS = $(INCLUDE) -std=c++11 -g -W -Wall -Wextra -pedantic -fexceptions -O4 $(CCTARGET)
+CCFLAGS = $(INCLUDE) -std=c++11 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+LFLAGS = -shared
 
 STATIC_LIB = $(LIBNAME).a
 DLL = $(LIBNAME).dll
 
-LFLAGS = -s -shared
+# opt defaults to -O3
+ifndef OPT
+OLEVEL = 3
+endif
+
+#if opt flag is true
+ifneq (,$(findstring $(OPT),S size Size SIZE))
+OLEVEL = s
+endif
+
+# if debug flag is false
+ifeq (,$(findstring $(DEBUG),1 true True TRUE))
+CCFLAGS += -O$(OLEVEL) -g0
+LFLAGS += -s
+else
+CCFLAGS += -g3 -O$(OLEVEL) -DDEBUG
+endif
 
 ifeq ($(OS),Windows_NT)
 CFLAGS = $(CCFLAGS) -shared
