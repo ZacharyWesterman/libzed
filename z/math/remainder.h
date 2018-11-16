@@ -14,6 +14,8 @@ namespace z
 		 *
 		 * \return The remainder of integer \b x/y.
 		 *
+		 * \threadsafe_function_yes
+		 *
 		 * \see remainder(const std::complex<long>&,const std::complex<long>&)
 		 */
 		long remainder(long x, long y);
@@ -28,6 +30,8 @@ namespace z
 		 * \param y the denominator.
 		 *
 		 * \return The remainder of complex integer division \b x/y.
+		 *
+		 * \threadsafe_function_yes
 		 *
 		 * \see remainder(long,long)
 		 */

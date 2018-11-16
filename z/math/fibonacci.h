@@ -34,6 +34,8 @@ namespace z
 		 *
 		 * \return The value of the n<SUP>th</SUP>
 		 * number in the Fibonacci sequence.
+		 *
+		 * \threadsafe_function_yes
 		 */
 		double fibonacci(double n);
 	}

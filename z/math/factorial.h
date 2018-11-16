@@ -12,6 +12,8 @@ namespace z
 		 *
 		 * \return The factorial of \b n, if <B>n>0</B> and
 		 * the factorial is able to be represented. \b 0 otherwise.
+		 *
+		 * \threadsafe_function_yes
 		 */
 		long long factorial(long long n);
 
@@ -24,6 +26,8 @@ namespace z
 		 *
 		 * \return The factorial of \b n, if <B>n>0</B> and
 		 * the factorial is able to be represented. \b 0 otherwise.
+		 *
+		 * \threadsafe_function_ref
 		 */
 		long long factorial(long long n, bool& did_overflow);
 	}
