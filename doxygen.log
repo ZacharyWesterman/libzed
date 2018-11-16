@@ -1,3 +1,20 @@
+Warning: ignoring unknown tag `The' at line 18, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `name' at line 18, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `class' at line 18, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `The' at line 19, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `name' at line 19, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `widget' at line 19, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `The' at line 20, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `name' at line 20, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `file' at line 20, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `is' at line 21, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `provides' at line 22, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `specifies' at line 23, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `contains' at line 24, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `represents' at line 25, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `a' at line 26, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `an' at line 27, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
+Warning: ignoring unknown tag `the' at line 28, file /home/travis/build/ZacharyWesterman/libzed/Doxyfile-travis-ci
 Searching for include files...
 Searching for example files...
 Searching for images...
