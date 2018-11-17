@@ -49,6 +49,8 @@ namespace z
 			 *
 			 * \param flag The flag to set.
 			 * \param state The state to set the flag to.
+			 *
+			 * \threadsafe_member_no
 			 */
 			void setFlag(rgxflag flag, bool state);
 
@@ -58,13 +60,21 @@ namespace z
 			 * \param flag The flag to get.
 			 *
 			 * \return The state of the flag.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			bool getFlag(rgxflag flag) const;
 
-			///Copy the state of all current flags, and push them onto the stack.
+			/**
+			 * \brief Copy the state of all current flags, and push them onto the stack.
+			 * \threadsafe_member_no
+			 */
 			void pushFlags();
 
-			///Pop the old flag states off the stack, replacing all current flags.
+			/**
+			 * \brief Pop the old flag states off the stack, replacing all current flags.
+			 * \threadsafe_member_no
+			 */
 			void popFlags();
 
 			/**
@@ -73,9 +83,10 @@ namespace z
 			 * \param charCount The number of characters.
 			 *
 			 * \return 2 if this matcher's format is UTF16, 4 if it's UTF32, 1 otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			size_t charsToOffset(size_t charCount) const;
-
 		};
 	}
 }

@@ -48,6 +48,8 @@ namespace z
 			 * raw binary data.
 			 *
 			 * \return utf8, the default formatting of the console.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			encoding format();
 

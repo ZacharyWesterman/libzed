@@ -6,6 +6,9 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		 * \brief An implementation of the generic type for null data.
+		 */
 		class genericNull : public generic
 		{
 		public:

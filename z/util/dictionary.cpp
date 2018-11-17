@@ -35,7 +35,7 @@ namespace z
 				readingStream = true;
 			}
 
-			core::string<Z_DICT_FORMAT> name;
+			core::string<> name;
 
 			name.read(stream, 0, streamFormat);
 			while (!(stream.empty() || time.timedOut()))
@@ -48,7 +48,7 @@ namespace z
 			return stream.empty();
 		}
 
-		bool dictionary::isWord(const core::string<Z_DICT_FORMAT>& name) const
+		bool dictionary::isWord(const core::string<>& name) const
 		{
 			if (!wordList.length()) return false;
 
@@ -59,7 +59,7 @@ namespace z
 			return result >= 0;
 		}
 
-		word dictionary::getWord(const core::string<Z_DICT_FORMAT>& name) const
+		word dictionary::getWord(const core::string<>& name) const
 		{
 			word* check = new word(name);
 			auto index = wordList.find(check);
@@ -93,12 +93,12 @@ namespace z
 			}
 		}
 
-		const core::string<Z_DICT_FORMAT>& dictionary::language() const
+		const core::string<>& dictionary::language() const
 		{
 			return lang;
 		}
 
-		void dictionary::setLanguage(const core::string<Z_DICT_FORMAT>& newLang)
+		void dictionary::setLanguage(const core::string<>& newLang)
 		{
 			lang = newLang;
 		}
