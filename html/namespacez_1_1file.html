@@ -129,6 +129,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2a4a46d522e67653f27b2dc371afbee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a2a4a46d522e67653f27b2dc371afbee0">makeDir</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;dir)</td></tr>
 <tr class="memdesc:a2a4a46d522e67653f27b2dc371afbee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a directory with the given path.  <a href="#a2a4a46d522e67653f27b2dc371afbee0">More...</a><br/></td></tr>
 <tr class="separator:a2a4a46d522e67653f27b2dc371afbee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee2aa5e35b7722f3387359318042c89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a9ee2aa5e35b7722f3387359318042c89">path</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;filePath)</td></tr>
+<tr class="memdesc:a9ee2aa5e35b7722f3387359318042c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the full file path from a relative path.  <a href="#a9ee2aa5e35b7722f3387359318042c89">More...</a><br/></td></tr>
+<tr class="separator:a9ee2aa5e35b7722f3387359318042c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaa62ebf8adf8b6b1f795c03579df0d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#abaa62ebf8adf8b6b1f795c03579df0d7">shorten</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;dir)</td></tr>
 <tr class="memdesc:abaa62ebf8adf8b6b1f795c03579df0d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shorten the given directory string.  <a href="#abaa62ebf8adf8b6b1f795c03579df0d7">More...</a><br/></td></tr>
 <tr class="separator:abaa62ebf8adf8b6b1f795c03579df0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,6 +300,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>True</b> if the directory was created successfully. <b>False</b> otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ee2aa5e35b7722f3387359318042c89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; z::file::path </td>
+          <td>(</td>
+          <td class="paramtype">const core::string&lt; utf8 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filePath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the full file path from a relative path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filePath</td><td>The path to a file object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the full path to that file object. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
