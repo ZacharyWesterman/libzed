@@ -12,6 +12,7 @@
 #include "file/makeDir.h"
 #include "file/workingDir.h"
 #include "file/path.h"
+#include "file/dir.h"
 
 ///Manage file contents
 #include "file/copy.h"
