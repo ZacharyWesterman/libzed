@@ -1,6 +1,7 @@
 #include "path.h"
 
 #ifdef _WIN32
+#include <Tchar.h>
 #include <windows.h>
 #elif __linux__
 #include <limits.h>
