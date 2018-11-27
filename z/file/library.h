@@ -6,6 +6,8 @@ namespace z
 {
 	namespace file
 	{
+		typedef void (* function)();
+
 		/**
 		 * \brief A class for loading dynamic libraries.
 		 *
@@ -78,7 +80,7 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			void* symbol(const core::string<utf8>&);
+			function symbol(const core::string<utf8>&);
 		};
 	}
 }

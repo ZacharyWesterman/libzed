@@ -88,7 +88,7 @@ namespace z
 		 *
 		 * \see bad()
 		 */
-		inline bool library::good()
+		bool library::good()
 		{
 			return (bool)lib_ptr;
 		}
@@ -101,7 +101,7 @@ namespace z
 		 *
 		 * \see good()
 		 */
-		inline bool library::bad()
+		bool library::bad()
 		{
 			return !lib_ptr;
 		}
@@ -115,16 +115,16 @@ namespace z
 		 * a pointer to the symbol. Otherwise, if the symbol was not
 		 * found or the library hasn't been loaded, returns \b NULL.
 		 */
-		void* library::symbol(const core::string<utf8>& symbol_name)
+		function library::symbol(const core::string<utf8>& symbol_name)
 		{
 #			ifdef _WIN32
 			if (lib_ptr)
-				return (void*)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
+				return (function)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
 			else
 				return 0;
 #			elif __linux__
 			if(lib_ptr)
-				return (void*)dlsym(lib_ptr, (char*)symbol_name.cstring());
+				return (function)dlsym(lib_ptr, (char*)symbol_name.cstring());
 			else
 				return 0;
 #			else
