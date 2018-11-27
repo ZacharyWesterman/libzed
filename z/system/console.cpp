@@ -92,7 +92,7 @@ namespace z
 
 		void console::seek(size_t index)
 		{
-
+			(void)index;
 		}
 
 		size_t console::tell()

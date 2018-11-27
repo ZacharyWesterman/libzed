@@ -23,21 +23,27 @@ namespace z
 
 		int generic::find(generic* element) const
 		{
+			(void)element;
 			return -1;
 		}
 
 		bool generic::add(generic* element)
 		{
+			(void)element;
 			return false;
 		}
 
 		bool generic::insert(generic* element, size_t index)
 		{
+			(void)element;
+			(void)index;
 			return false;
 		}
 
 		bool generic::remove(size_t index, int count)
 		{
+			(void)index;
+			(void)count;
 			return false;
 		}
 
