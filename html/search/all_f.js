@@ -43,6 +43,6 @@ var searchData=
   ['string_3c_20z_5fdict_5fformat_20_3e',['string&lt; Z_DICT_FORMAT &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]],
   ['subset',['subset',['../classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3',1,'z::core::array']]],
   ['substr',['substr',['../classz_1_1core_1_1string.html#a85444b48a6d7fc97801080db8679e0ac',1,'z::core::string']]],
-  ['symbol',['symbol',['../classz_1_1file_1_1library.html#a1a3902202a728347733fdf36d4f8c4ad',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]],
+  ['symbol',['symbol',['../classz_1_1file_1_1library.html#ab7c9afc5bf86fefd573e02f9892de0d8',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]],
   ['system_2eh',['system.h',['../system_8h.html',1,'']]]
 ];
