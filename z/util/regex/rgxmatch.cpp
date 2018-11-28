@@ -381,6 +381,63 @@ namespace z
 			return !negate;
 		}
 
+		static bool rgxmatchnewline(rgxmatcher* matcher, bool forward)
+		{
+			if (forward)
+			{
+				auto ch = matcher->stream->getChar(matcher->format);
+				if (ch == '\n')
+				{
+					auto pos = matcher->stream->tell();
+					ch = matcher->stream->getChar(matcher->format);
+					if (ch != '\r') matcher->stream->seek(pos);
+
+					return true;
+				}
+				else return false;
+			}
+			else
+			{
+				auto pos = matcher->stream->tell();
+				auto charSz = matcher->charsToOffset(1);
+
+				matcher->stream->seek(pos-charSz);
+				auto ch = matcher->stream->getChar(matcher->format);
+				if (ch == '\r')
+				{
+					matcher->stream->seek(pos-(charSz<<1));
+					ch = matcher->stream->getChar(matcher->format);
+				}
+
+				matcher->stream->seek(pos);
+				return ch == '\n';
+			}
+		}
+
+		static bool rgxmatchbegin(rgxmatcher* matcher)
+		{
+			if (matcher->stream->tell())
+			{
+				if (matcher->getFlag(RGX_FLAG_ENDLINE))
+				{
+					return rgxmatchnewline(matcher, false);
+				}
+				return false;
+			}
+			return true;
+		}
+
+		static bool rgxmatchend(rgxmatcher* matcher)
+		{
+			if (matcher->stream->empty()) return true;
+
+			if (matcher->getFlag(RGX_FLAG_ENDLINE))
+			{
+				return rgxmatchnewline(matcher, true);
+			}
+			return false;
+		}
+
 		static bool rgxsetflag(rgxmatcher* matcher, bool state)
 		{
 			uint32_t ch = matcher->node->beg();
@@ -394,6 +451,9 @@ namespace z
 				case 's':
 					matcher->setFlag(RGX_FLAG_NEWLINE, state);
 					return true;
+
+				case 'n':
+					matcher->setFlag(RGX_FLAG_ENDLINE, state);
 
 				default:
 					return false;
@@ -429,6 +489,9 @@ namespace z
 				case RGX_SYMBOL:
 					result = rgxmatchsymbol(matcher);
 					break;
+
+				case RGX_NEWLINE:
+					result = rgxmatchnewline(matcher, true);
 
 				case RGX_NOT_WORD:
 					negate = true;
@@ -483,11 +546,11 @@ namespace z
 					break;
 
 				case RGX_BEGIN:
-					result = !(matcher->stream->tell());
+					result = rgxmatchbegin(matcher);
 					break;
 
 				case RGX_END:
-					result = !(matcher->stream->empty());
+					result = rgxmatchend(matcher);
 					break;
 
 				case RGX_NEG_LOOKAHEAD:

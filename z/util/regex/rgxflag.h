@@ -9,8 +9,9 @@ namespace z
 		 */
 		enum rgxflag
 		{
-			RGX_FLAG_CASEI,
-			RGX_FLAG_NEWLINE,
+			RGX_FLAG_CASEI, //case-sensitivity
+			RGX_FLAG_NEWLINE,//whether . matches newlines
+			RGX_FLAG_ENDLINE,//whether $ matches newlines
 
 			RGX_FLAG_COUNT
 		};

@@ -30,6 +30,7 @@ namespace z
 				uint32_t ch = list[index+2]->beg();
 				if (ch == 'i') return true;
 				if (ch == 's') return true;
+				if (ch == 'n') return true;
 			}
 			else return false;
 
@@ -59,6 +60,7 @@ namespace z
 				uint32_t ch = list[index+3]->beg();
 				if (ch == 'i') return true;
 				if (ch == 's') return true;
+				if (ch == 'n') return true;
 			}
 			else return false;
 
