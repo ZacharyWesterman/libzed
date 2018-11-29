@@ -29,14 +29,14 @@ namespace z
 			 *
 			 * \param fileName a string containing the name of the file to read from.
 			 */
-			inputStream(const core::string<utf8>& fileName);
+			inputStream(const zpath& fileName);
 
 			/**
 			 * \brief Reopen a stream to the given file.
 			 *
 			 * \param fileName a string containing the name of the file to read from.
 			 */
-			void open(const core::string<utf8>& fileName);
+			void open(const zpath& fileName);
 
 			///Close the current file stream.
 			void close();

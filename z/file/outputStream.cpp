@@ -5,7 +5,7 @@ namespace z
 {
 	namespace file
 	{
-		outputStream::outputStream(const core::string<utf8>& fileName, bool append)
+		outputStream::outputStream(const zpath& fileName, bool append)
 		{
 			if (append)
 				filestream.open((const char*)fileName.cstring(), std::ios::app | std::ios::out);
@@ -13,7 +13,7 @@ namespace z
 				filestream.open((const char*)fileName.cstring(), std::ios::out);
 		}
 
-		void outputStream::open(const core::string<utf8>& fileName, bool append)
+		void outputStream::open(const zpath& fileName, bool append)
 		{
 			filestream.close();
 			if (append)

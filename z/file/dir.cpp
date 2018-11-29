@@ -14,7 +14,7 @@ namespace z
 {
 	namespace file
 	{
-		core::string<utf8> dir()
+		zpath dir()
 		{
 #			if defined(_WIN32) || defined(__linux__)
 			char buf[FILENAME_MAX];

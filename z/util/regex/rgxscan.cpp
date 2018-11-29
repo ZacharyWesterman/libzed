@@ -8,7 +8,7 @@ namespace z
 {
 	namespace util
 	{
-		rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output)
+		rgxerr rgxscan(const zpath& pattern, core::array<rgxss>& output)
 		{
 			bool inOr = false;
 			bool startOr = false;
@@ -18,7 +18,7 @@ namespace z
 			uint8_t last = 0;
 			rgxss esc(0);
 
-			core::string<utf8> res;
+			zpath res;
 
 			for (size_t i=0; i<pattern.length(); i++)
 			{

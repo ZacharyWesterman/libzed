@@ -41,7 +41,7 @@ namespace z
 			 * \return \b True if the library loaded successfully.
 			 * \b False otherwise.
 			 */
-			bool load(const core::string<utf8>&);
+			bool load(const zpath&);
 
 			/**
 			 * \brief Unload the dynamic library.
@@ -80,7 +80,7 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			function symbol(const core::string<utf8>&);
+			function symbol(const zpath&);
 		};
 	}
 }

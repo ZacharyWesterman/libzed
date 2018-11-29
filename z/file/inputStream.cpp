@@ -5,12 +5,12 @@ namespace z
 {
 	namespace file
 	{
-		inputStream::inputStream(const core::string<utf8>& fileName)
+		inputStream::inputStream(const zpath& fileName)
 		{
 			filestream.open((const char*)fileName.cstring(), std::ios::in);
 		}
 
-		void inputStream::open(const core::string<utf8>& fileName)
+		void inputStream::open(const zpath& fileName)
 		{
 			filestream.close();
 			filestream.open((const char*)fileName.cstring(), std::ios::in);

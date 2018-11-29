@@ -4,7 +4,7 @@ namespace z
 {
 	namespace file
 	{
-		info::info(const core::string<utf8>& path)
+		info::info(const zpath& path)
 		{
 			does_exist = _stat((char*)path.cstring(), &fileStat);
 		}

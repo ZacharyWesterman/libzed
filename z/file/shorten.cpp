@@ -4,15 +4,15 @@ namespace z
 {
 	namespace file
 	{
-		core::string<utf8> shorten(const core::string<utf8>& dir)
+		zpath shorten(const zpath& dir)
 		{
-			core::string<utf8> output = dir;
+			zpath output = dir;
 			output.replace("\\", "/");
 			output.cutDuplicates("/");
 			output.replace("/./", "/");
 
-			core::string<utf8> lastDir = "/../";
-			core::string<utf8> slash = "/";
+			zpath lastDir = "/../";
+			zpath slash = "/";
 			int index = output.find(lastDir);
 
 			while (index >= 0)

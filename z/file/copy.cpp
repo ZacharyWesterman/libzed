@@ -5,7 +5,7 @@ namespace z
 {
 	namespace file
 	{
-		bool copy(const core::string<utf8>& fileInput, const core::string<utf8>& fileOutput)
+		bool copy(const zpath& fileInput, const zpath& fileOutput)
 		{
 			std::ifstream src((char*)fileInput.cstring(), std::ios::binary);
 			std::ofstream dest((char*)fileOutput.cstring(), std::ios::binary);

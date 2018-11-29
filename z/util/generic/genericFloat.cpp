@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<> genericFloat::string() const
+		zstring genericFloat::string() const
 		{
 			return value;
 		}
@@ -51,7 +51,7 @@ namespace z
 			return datatype::floating;
 		}
 
-		core::string<> genericFloat::typeString() const
+		zstring genericFloat::typeString() const
 		{
 			return "FLOAT";
 		}

@@ -42,7 +42,7 @@ namespace z
 		 * \return \b True if the library loaded successfully.
 		 * \b False otherwise.
 		 */
-		bool library::load(const core::string<utf8>& file_name)
+		bool library::load(const zpath& file_name)
 		{
 #			ifdef _WIN32
 			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
@@ -115,7 +115,7 @@ namespace z
 		 * a pointer to the symbol. Otherwise, if the symbol was not
 		 * found or the library hasn't been loaded, returns \b NULL.
 		 */
-		function library::symbol(const core::string<utf8>& symbol_name)
+		function library::symbol(const zpath& symbol_name)
 		{
 #			ifdef _WIN32
 			if (lib_ptr)

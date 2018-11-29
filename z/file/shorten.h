@@ -19,6 +19,6 @@ namespace z
 		 *
 		 * \return The directory with redundant symbols removed.
 		 */
-		core::string<utf8> shorten(const core::string<utf8>& dir);
+		zpath shorten(const zpath& dir);
 	}
 }

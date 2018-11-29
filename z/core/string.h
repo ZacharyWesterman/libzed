@@ -907,3 +907,6 @@ namespace z
 
 	}
 }
+
+typedef z::core::string<> zstring;
+typedef z::core::string<z::utf8> zpath;

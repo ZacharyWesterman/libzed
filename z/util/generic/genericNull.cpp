@@ -24,9 +24,9 @@ namespace z
 			return 0;
 		}
 
-		core::string<> genericNull::string() const
+		zstring genericNull::string() const
 		{
-			return core::string<>();
+			return zstring();
 		}
 
 		datatype genericNull::type() const
@@ -34,7 +34,7 @@ namespace z
 			return datatype::null;
 		}
 
-		core::string<> genericNull::typeString() const
+		zstring genericNull::typeString() const
 		{
 			return "NULL";
 		}

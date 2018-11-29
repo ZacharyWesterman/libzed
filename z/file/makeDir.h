@@ -17,6 +17,6 @@ namespace z
 		 * \return \b True if the directory was created
 		 * successfully. \b False otherwise.
 		 */
-		bool makeDir(const core::string<utf8>& dir);
+		bool makeDir(const zpath& dir);
 	}
 }

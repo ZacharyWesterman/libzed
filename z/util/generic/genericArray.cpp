@@ -38,7 +38,7 @@ namespace z
 			return 0;
 		}
 
-		core::string<> genericArray::string() const
+		zstring genericArray::string() const
 		{
 			return "Array";
 		}
@@ -67,7 +67,7 @@ namespace z
 			return datatype::array;
 		}
 
-		core::string<> genericArray::typeString() const
+		zstring genericArray::typeString() const
 		{
 			return "ARRAY";
 		}

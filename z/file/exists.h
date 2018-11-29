@@ -16,6 +16,6 @@ namespace z
 		 * \return \b True if the file or directory exists.
 		 * \b False otherwise.
 		 */
-		bool exists(const core::string<utf8>& pathname);
+		bool exists(const zpath& pathname);
 	}
 }

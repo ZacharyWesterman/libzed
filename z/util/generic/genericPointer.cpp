@@ -31,7 +31,7 @@ namespace z
 			return 0;
 		}
 
-		core::string<> genericPointer::string() const
+		zstring genericPointer::string() const
 		{
 			return reference;
 		}
@@ -51,7 +51,7 @@ namespace z
 			return datatype::pointer;
 		}
 
-		core::string<> genericPointer::typeString() const
+		zstring genericPointer::typeString() const
 		{
 			return "POINTER";
 		}

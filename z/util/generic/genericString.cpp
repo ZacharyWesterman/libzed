@@ -4,7 +4,7 @@ namespace z
 {
 	namespace util
 	{
-		genericString::genericString(const core::string<>& init) : data(init) {}
+		genericString::genericString(const zstring& init) : data(init) {}
 
 		bool genericString::boolean() const
 		{
@@ -27,7 +27,7 @@ namespace z
 			return data.complex();
 		}
 
-		core::string<> genericString::string() const
+		zstring genericString::string() const
 		{
 			return data;
 		}
@@ -67,7 +67,7 @@ namespace z
 			return datatype::string;
 		}
 
-		core::string<> genericString::typeString() const
+		zstring genericString::typeString() const
 		{
 			return "STRING";
 		}

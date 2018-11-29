@@ -12,11 +12,11 @@ namespace z
 {
 	namespace file
 	{
-		core::array< core::string<utf8> > listFiles(const core::string<utf8>& dir, const core::string<utf8>& file_type)
+		core::array< zpath > listFiles(const zpath& dir, const zpath& file_type)
 		{
-			core::array< core::string<utf8> > output;
+			core::array< zpath > output;
 
-			core::string<utf8> search_path = dir;
+			zpath search_path = dir;
 
 			if (!dir.length())
 				search_path += "./";
@@ -39,7 +39,7 @@ namespace z
 				{
 					if(!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
 					{
-						output.add(core::string<utf8>(fd.cFileName));
+						output.add(zpath(fd.cFileName));
 					}
 				}
 				while (FindNextFile(hFind, &fd));
@@ -63,7 +63,7 @@ namespace z
 			{
 				while ((epdf = readdir(dpdf)))
 				{
-					core::string<utf8> filename (epdf->d_name);
+					zpath filename (epdf->d_name);
 
 					if (epdf->d_type != DT_DIR)
 					{
@@ -75,7 +75,7 @@ namespace z
 						{
 
 
-							if (filename.endsWith(core::string<utf8>('.') + file_type))
+							if (filename.endsWith(zpath('.') + file_type))
 								output.add(filename);
 						}
 					}
@@ -89,11 +89,11 @@ namespace z
 		}
 
 
-		core::array< core::string<utf8> > listDirs(const core::string<utf8>& dir, bool showAll)
+		core::array< zpath > listDirs(const zpath& dir, bool showAll)
 		{
-			core::array< core::string<utf8> > output;
+			core::array< zpath > output;
 
-			core::string<utf8> search_path = dir;
+			zpath search_path = dir;
 
 			if (!dir.length())
 				search_path += "./";
@@ -114,7 +114,7 @@ namespace z
 				{
 					if(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 					{
-						core::string<utf8> filename = fd.cFileName;
+						zpath filename = fd.cFileName;
 
 						if (showAll || (filename[0] != '.'))
 							output.add(filename);
@@ -135,7 +135,7 @@ namespace z
 			{
 				while ((epdf = readdir(dpdf)))
 				{
-					core::string<utf8> filename (epdf->d_name);
+					zpath filename (epdf->d_name);
 
 					if (epdf->d_type == DT_DIR)
 					{

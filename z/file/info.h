@@ -37,7 +37,7 @@ namespace z
 			 * \param path a string of the path to
 			 * the file object.
 			 */
-			info(const core::string<utf8>&);
+			info(const zpath&);
 
 			/**
 			 * \brief Get whether the file object exists

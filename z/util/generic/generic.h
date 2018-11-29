@@ -72,7 +72,7 @@ namespace z
 			 *
 			 * \return A string representation of default string encoding.
 			 */
-			virtual core::string<> string() const = 0;
+			virtual zstring string() const = 0;
 
 			/**
 			 * \brief Get the array this object holds.
@@ -93,7 +93,7 @@ namespace z
 			 *
 			 * \return A string representing this object's type with encoding .
 			 */
-			virtual core::string<> typeString() const = 0;
+			virtual zstring typeString() const = 0;
 
 			/**
 			 * \brief Get whether this object is a pointer.

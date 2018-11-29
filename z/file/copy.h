@@ -16,6 +16,6 @@ namespace z
 		 * \return \b True if the file was copied successfully.
 		 * \b False otherwise.
 		 */
-		bool copy(const core::string<utf8>& fileInput, const core::string<utf8>& fileOutput);
+		bool copy(const zpath& fileInput, const zpath& fileOutput);
 	}
 }

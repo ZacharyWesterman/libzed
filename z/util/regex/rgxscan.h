@@ -16,6 +16,6 @@ namespace z
 		 *
 		 * \return The first error encountered in the pattern. If no error, gives RGX_NO_ERROR (0).
 		 */
-		rgxerr rgxscan(const core::string<utf8>& pattern, core::array<rgxss>& output);
+		rgxerr rgxscan(const zpath& pattern, core::array<rgxss>& output);
 	}
 }

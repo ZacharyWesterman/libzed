@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<> genericComplex::string() const
+		zstring genericComplex::string() const
 		{
 			return value;
 		}
@@ -56,7 +56,7 @@ namespace z
 			return datatype::complex;
 		}
 
-		core::string<> genericComplex::typeString() const
+		zstring genericComplex::typeString() const
 		{
 			return "COMPLEX";
 		}

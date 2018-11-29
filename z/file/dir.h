@@ -11,6 +11,6 @@ namespace z
 		 * \return A string containing the current directory the executable is running from.
 		 * \threadsafe_function_yes
 		 */
-		core::string<utf8> dir();
+		zpath dir();
 	}
 }

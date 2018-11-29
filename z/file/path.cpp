@@ -14,7 +14,7 @@ namespace z
 {
 	namespace file
 	{
-		core::string<utf8> path(const core::string<utf8>& filePath)
+		zpath path(const zpath& filePath)
 		{
 #			ifdef _WIN32
 			TCHAR fullPath[MAX_PATH];

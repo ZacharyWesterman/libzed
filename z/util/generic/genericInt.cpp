@@ -26,7 +26,7 @@ namespace z
 			return value;
 		}
 
-		core::string<> genericInt::string() const
+		zstring genericInt::string() const
 		{
 			return value;
 		}
@@ -46,7 +46,7 @@ namespace z
 			return datatype::integer;
 		}
 
-		core::string<> genericInt::typeString() const
+		zstring genericInt::typeString() const
 		{
 			return "INT";
 		}

@@ -26,7 +26,7 @@ namespace z
 		 * \return An array containing the names of all files of
 		 * the given type in the given directory.
 		 */
-		core::array< core::string<utf8> > listFiles(const core::string<utf8>& dir, const core::string<utf8>& file_type);
+		core::array< zpath > listFiles(const zpath& dir, const zpath& file_type);
 
 
 
@@ -48,6 +48,6 @@ namespace z
 		 * \return An array containing the names of all
 		 * sub-directories in the given directory.
 		 */
-		core::array< core::string<utf8> > listDirs(const core::string<utf8>& dir, bool showAll = false);
+		core::array< zpath > listDirs(const zpath& dir, bool showAll = false);
 	}
 }

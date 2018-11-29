@@ -5,7 +5,7 @@ namespace z
 {
 	namespace file
 	{
-		bool exists(const core::string<utf8>& pathname)
+		bool exists(const zpath& pathname)
 		{
 			struct stat info;
 

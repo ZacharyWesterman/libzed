@@ -12,7 +12,7 @@ namespace z
 		class genericString : public generic
 		{
 		private:
-			core::string<> data;
+			zstring data;
 
 		public:
 			/**
@@ -20,7 +20,7 @@ namespace z
 			 *
 			 * \param init The string to initialize as.
 			 */
-			genericString(const core::string<>& init);
+			genericString(const zstring& init);
 
 			/**
 			 * \brief Empty constructor.
@@ -34,7 +34,7 @@ namespace z
 			long long integer() const;
 			double floating() const;
 			std::complex<double> complex() const;
-			core::string<> string() const;
+			zstring string() const;
 
 			bool isInteger() const;
 			bool isFloating() const;
@@ -52,7 +52,7 @@ namespace z
 			bool remove(size_t index, int count);
 
 			datatype type() const;
-			core::string<> typeString() const;
+			zstring typeString() const;
 
 			generic* duplicate() const;
 		};

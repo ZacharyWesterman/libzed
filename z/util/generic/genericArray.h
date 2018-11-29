@@ -41,7 +41,7 @@ namespace z
 			long long integer() const;
 			double floating() const;
 			std::complex<double> complex() const;
-			core::string<> string() const;
+			zstring string() const;
 			core::array<generic*> array() const;
 
 			bool isArray() const;
@@ -56,7 +56,7 @@ namespace z
 			bool remove(size_t index, int count);
 
 			datatype type() const;
-			core::string<> typeString() const;
+			zstring typeString() const;
 
 			generic* duplicate() const;
 		};
