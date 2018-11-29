@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['open',['open',['../classz_1_1file_1_1inputStream.html#af7831622d2dbaecf159c95b8fb1ff2ee',1,'z::file::inputStream::open()'],['../classz_1_1file_1_1outputStream.html#a7f5775e1bf19daf35c9414e2ac2cd04c',1,'z::file::outputStream::open()']]],
+  ['open',['open',['../classz_1_1file_1_1inputStream.html#a85e93b329038527a0e71a51c51442477',1,'z::file::inputStream::open()'],['../classz_1_1file_1_1outputStream.html#a7796ea9e85486ba62690d45d2d5904ce',1,'z::file::outputStream::open()']]],
   ['operator_21_3d',['operator!=',['../classz_1_1core_1_1string.html#a83d92960f8b55d2726607ae72d9d3e50',1,'z::core::string']]],
   ['operator_2b',['operator+',['../classz_1_1core_1_1string.html#aa47ffefe13f1ee573e4f0a020cd3afe7',1,'z::core::string']]],
   ['operator_2b_3d',['operator+=',['../classz_1_1core_1_1string.html#a74e91ace781f0f0d0b30011ab6d3922a',1,'z::core::string']]],
@@ -13,5 +13,5 @@ var searchData=
   ['operator_5b_5d',['operator[]',['../classz_1_1core_1_1array.html#a54f21af5f234b501b70a6ee7dfbfcc19',1,'z::core::array::operator[](size_t)'],['../classz_1_1core_1_1array.html#aa6107d431a3e8992b73f3acb34dcd657',1,'z::core::array::operator[](size_t) const '],['../classz_1_1core_1_1string.html#aa7fef7b87b351d545968a364ee5f22a9',1,'z::core::string::operator[]()']]],
   ['outputstream',['outputStream',['../classz_1_1core_1_1outputStream.html',1,'z::core']]],
   ['outputstream',['outputStream',['../classz_1_1file_1_1outputStream.html',1,'z::file']]],
-  ['outputstream',['outputStream',['../classz_1_1file_1_1outputStream.html#ab81d48d6f67a8198a415b661c48acb23',1,'z::file::outputStream']]]
+  ['outputstream',['outputStream',['../classz_1_1file_1_1outputStream.html#a0f0de25bc51b525f03a8b6fee6712b78',1,'z::file::outputStream']]]
 ];

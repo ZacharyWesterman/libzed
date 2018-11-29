@@ -12,7 +12,7 @@ var searchData=
   ['rgxll',['rgxll',['../classz_1_1util_1_1rgxll.html#ad94b835ef62ae1dc6d4e822d218a56c7',1,'z::util::rgxll::rgxll(uint8_t ID)'],['../classz_1_1util_1_1rgxll.html#a2de043d5f3ae5a02af508d97ce7a25bc',1,'z::util::rgxll::rgxll(const rgxss &amp;init)']]],
   ['rgxmatch',['rgxmatch',['../namespacez_1_1util.html#a54d9217a3dddaea781eb9d2df63d636c',1,'z::util']]],
   ['rgxmatcher',['rgxmatcher',['../structz_1_1util_1_1rgxmatcher.html#a2f431991b0cec9c6cc39739114389636',1,'z::util::rgxmatcher']]],
-  ['rgxscan',['rgxscan',['../namespacez_1_1util.html#aaebefd6595b79a02f70d99115662f54e',1,'z::util']]],
+  ['rgxscan',['rgxscan',['../namespacez_1_1util.html#a5562ced719c64f94c0001c9e18e7c76f',1,'z::util']]],
   ['rgxsesc',['rgxsesc',['../namespacez_1_1util.html#ad1e57bda68243aeb4cea4b8906bf0ec0',1,'z::util']]],
   ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#a184eeb037a25012d36f19624430d7023',1,'z::util::rgxss::rgxss(const uint8_t regexID)']]]
 ];

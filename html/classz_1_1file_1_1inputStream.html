@@ -112,12 +112,12 @@ Inheritance diagram for z::file::inputStream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#af8a6fa319286e01893b1b8ba9c05b0c0">inputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName)</td></tr>
-<tr class="memdesc:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#af8a6fa319286e01893b1b8ba9c05b0c0">More...</a><br/></td></tr>
-<tr class="separator:af8a6fa319286e01893b1b8ba9c05b0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#af7831622d2dbaecf159c95b8fb1ff2ee">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;fileName)</td></tr>
-<tr class="memdesc:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen a stream to the given file.  <a href="#af7831622d2dbaecf159c95b8fb1ff2ee">More...</a><br/></td></tr>
-<tr class="separator:af7831622d2dbaecf159c95b8fb1ff2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbcee58130acb9536d4808631886d1d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#acbcee58130acb9536d4808631886d1d8">inputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileName)</td></tr>
+<tr class="memdesc:acbcee58130acb9536d4808631886d1d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#acbcee58130acb9536d4808631886d1d8">More...</a><br/></td></tr>
+<tr class="separator:acbcee58130acb9536d4808631886d1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e93b329038527a0e71a51c51442477"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a85e93b329038527a0e71a51c51442477">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileName)</td></tr>
+<tr class="memdesc:a85e93b329038527a0e71a51c51442477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen a stream to the given file.  <a href="#a85e93b329038527a0e71a51c51442477">More...</a><br/></td></tr>
+<tr class="separator:a85e93b329038527a0e71a51c51442477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a254ea28bf149375def8faff38e004973"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a254ea28bf149375def8faff38e004973"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a254ea28bf149375def8faff38e004973">close</a> ()</td></tr>
 <tr class="memdesc:a254ea28bf149375def8faff38e004973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the current file stream. <br/></td></tr>
@@ -165,14 +165,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <div class="textblock"><p>A class for file input streams. </p>
 <p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1inputStream.html" title="An interface for data input streams. ">core::inputStream</a> for files. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af8a6fa319286e01893b1b8ba9c05b0c0"></a>
+<a class="anchor" id="acbcee58130acb9536d4808631886d1d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">z::file::inputStream::inputStream </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>fileName</em></td><td>)</td>
           <td></td>
         </tr>
@@ -426,14 +426,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="af7831622d2dbaecf159c95b8fb1ff2ee"></a>
+<a class="anchor" id="a85e93b329038527a0e71a51c51442477"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void z::file::inputStream::open </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; utf8 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>fileName</em></td><td>)</td>
           <td></td>
         </tr>
