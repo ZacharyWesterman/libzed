@@ -1,24 +1,34 @@
 #include "inputStream.h"
 #include <z/core/charFunctions.h>
 
+#define MAX_BYTE_READ 32
+
 namespace z
 {
 	namespace file
 	{
+		inputStream::inputStream()
+		{
+			initialized = false;
+		}
+
 		inputStream::inputStream(const zpath& fileName)
 		{
 			filestream.open((const char*)fileName.cstring(), std::ios::in);
+			initialized = false;
 		}
 
 		void inputStream::open(const zpath& fileName)
 		{
 			filestream.close();
 			filestream.open((const char*)fileName.cstring(), std::ios::in);
+			initialized = false;
 		}
 
 		void inputStream::close()
 		{
 			filestream.close();
+			initialized = false;
 		}
 
 		uint8_t inputStream::get()
@@ -28,27 +38,68 @@ namespace z
 
 		uint32_t inputStream::getChar(encoding format)
 		{
-			uint32_t result;
-
-			switch (format)
+			if (format == utf32)
 			{
-				case utf16:
-					result = filestream.get();
-					result = (result << 8) + filestream.get();
-					break;
+				uint32_t result;
+				uint8_t* buf = (uint8_t*)&result;
 
-				case utf32:
-					result = filestream.get();
-					result = (result << 8) + filestream.get();
-					result = (result << 8) + filestream.get();
-					result = (result << 8) + filestream.get();
-					break;
-
-				default:
-					result = filestream.get();
+				//If the file's endianness != system endianness, swap byte order
+#				if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+				if (endianness == __ORDER_LITTLE_ENDIAN__)
+				{
+					buf[3] = filestream.get();
+					buf[2] = filestream.get();
+					buf[1] = filestream.get();
+					buf[0] = filestream.get();
+				}
+#				else
+				if (endianness == __ORDER_BIG_ENDIAN__)
+				{
+					buf[3] = filestream.get();
+					buf[2] = filestream.get();
+					buf[1] = filestream.get();
+					buf[0] = filestream.get();
+				}
+#				endif
+				else
+				{
+					buf[0] = filestream.get();
+					buf[1] = filestream.get();
+					buf[2] = filestream.get();
+					buf[3] = filestream.get();
+				}
+				return result;
 			}
+			else if (format == utf16)
+			{
+				uint16_t result;
+				uint8_t* buf = (uint8_t*)&result;
 
-			return result;
+				//If the file's endianness != system endianness, swap byte order
+#				if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+				if (endianness == __ORDER_LITTLE_ENDIAN__)
+				{
+					buf[1] = filestream.get();
+					buf[0] = filestream.get();
+				}
+#				else
+				if (endianness == __ORDER_BIG_ENDIAN__)
+				{
+					buf[1] = filestream.get();
+					buf[0] = filestream.get();
+				}
+#				endif
+				else
+				{
+					buf[0] = filestream.get();
+					buf[1] = filestream.get();
+				}
+				return result;
+			}
+			else
+			{
+				return filestream.get();
+			}
 		}
 
 		void inputStream::seek(size_t index)
@@ -93,49 +144,103 @@ namespace z
 
 		encoding inputStream::format()
 		{
-			if (this->empty()) return ascii;
+			if (bad()) return ascii;
+			if (initialized) return streamFormat;
 
-			const size_t read_max = (32 > this->end()) ? this->end() : 32;
+			endianness = __BYTE_ORDER__;
 
-			size_t max_nulls = 0;
-			size_t contig_nulls = 0;
-			bool can_utf8 = true;
+			size_t init_pos = tell();
+			size_t read_max = end() - init_pos;
+			read_max = (MAX_BYTE_READ > read_max) ? read_max : MAX_BYTE_READ;
 
-			size_t init_pos = this->tell();
-			this->seek(0);
+			bool has_null = false;
+			bool can_ascii = true;
 
-			uint8_t* buffer = new uint8_t[read_max];
-			for (size_t i=0; i<read_max; i++)
-				buffer[i] = this->get();
-
-			this->seek(init_pos);
+			uint8_t buf[4];
+			int b_i = 0;
 
 			for (size_t i=0; i<read_max; i++)
 			{
-				//ascii and utf8 won't have null chars
-				if (max_nulls || !buffer[i])
+				uint8_t ch = get();
+				if (ch > 127) can_ascii = false;
+
+				if (b_i >= 4)
 				{
-					if (contig_nulls >= 2)
+					//Read the BOM if it exists. if it has one, consume the BOM so the user does not read it.
+					if (tell() <= (init_pos + 4))
 					{
-						delete[] buffer;
-						return utf32;
+						if ((buf[0] == 0xFE) && (buf[1] == 0xFF)) //FE FF
+						{
+							endianness = __ORDER_BIG_ENDIAN__;
+							return streamFormat = utf16;
+						}
+						else if ((buf[0] == 0xFF) && (buf[1] == 0xFE)) //FF FE ?? ??
+						{
+							endianness = __ORDER_LITTLE_ENDIAN__;
+
+							if ((buf[2] == 0xFF) && (buf[3] == 0xFE)) //FF FE
+							{
+								seek(init_pos+2);
+								return streamFormat = utf16;
+							}
+							else if (!(buf[2] | buf[3])) //FF FE 00 00
+							{
+								return streamFormat = utf32;
+							}
+						}
+						else if (!(buf[0] | buf[1]) && (buf[2] == 0xFE) && (buf[3] == 0xFF)) //00 00 FE FF
+						{
+							endianness = __ORDER_BIG_ENDIAN__;
+							return streamFormat = utf32;
+						}
 					}
 
-					contig_nulls++;
-					if (max_nulls < contig_nulls) max_nulls = contig_nulls;
+					//last 4 chars, each byte is false if that char is null.
+					uint8_t key = ((char)buf[0] << 3) + ((char)buf[1] << 2) + ((char)buf[2] << 1) + (char)buf[3];
+
+					if (!key)//0000
+					{
+						initialized = true;
+						seek(init_pos);
+						return streamFormat = ascii;
+					}
+					else if (!(key & 0xC))//00..
+					{
+						initialized = true;
+						endianness = __ORDER_BIG_ENDIAN__;
+						seek(init_pos);
+						return streamFormat = utf32;
+					}
+					else if (!(key & 0x3))//..00
+					{
+						initialized = true;
+						endianness = __ORDER_LITTLE_ENDIAN__;
+						seek(init_pos);
+						return streamFormat = utf32;
+					}
+					else if (!(key & 0x8) || !(key & 0x2))//0... or ..0.
+					{
+						endianness = __ORDER_BIG_ENDIAN__;
+						has_null = true;
+					}
+					else if (!(key & 0x4) || !(key & 0x1))//.0.. or ...0
+					{
+						endianness = __ORDER_LITTLE_ENDIAN__;
+						has_null = true;
+					}
+
+					b_i = 0;
 				}
-				else if (can_utf8)
+				else
 				{
-					if (!core::isUTF8(&buffer[i], read_max-i))
-						can_utf8 = false;
+					buf[b_i++] = ch;
 				}
 			}
 
-			delete[] buffer;
-
-			if (max_nulls) return utf16;
-
-			return can_utf8 ? utf8 : ascii;
+			initialized = true;
+			seek(init_pos);
+			if (has_null) return streamFormat = utf16;
+			return streamFormat = (can_ascii ? ascii : utf8);
 		}
 	}
 }
