@@ -21,7 +21,7 @@ namespace z
 		private:
 			std::ifstream filestream;
 
-			size_t endianness;
+			size_t endianness_;
 			encoding streamFormat;
 			bool initialized;
 
@@ -64,6 +64,7 @@ namespace z
 			size_t end();
 
 			encoding format();
+			size_t endianness();
 		};
 	}
 }

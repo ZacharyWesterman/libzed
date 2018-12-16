@@ -41,7 +41,7 @@ namespace z
 			size_t character_ct;
 
 			void initChar(uint32_t, size_t);
-			void increase(size_t); //increase number of data bytes up to the given amount
+			void increase(size_t); //increase number of characters up to the given amount
 			constexpr size_t charSize() const;
 
 			void initInt(long long, unsigned int, unsigned int);

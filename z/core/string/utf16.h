@@ -1,12 +1,13 @@
 #pragma once
-
+#include <iostream>
 namespace z
 {
 	namespace core
 	{
 		template <>
-		void string<utf16>::increase(size_t goal)
+		void string<utf16>::increase(size_t max_chars)
 		{
+			size_t goal = (max_chars << 1) + 2; //account for null byte at the end
 			if (data_len >= goal) return;
 
 			uint8_t* old_data = data;
@@ -40,6 +41,8 @@ namespace z
 
 				remain--;
 			}
+
+			delete[] old_data;
 		}
 
 		template <>
@@ -89,7 +92,7 @@ namespace z
 		const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)
 		{
 			size_t new_size = character_ct + other.character_ct + 1;
-			this->increase(new_size << 1);
+			this->increase(new_size);
 
 			uint16_t* data16 = (uint16_t*)data;
 			uint16_t* other16 = (uint16_t*)other.data;
@@ -350,7 +353,7 @@ namespace z
 		template <>
 		const string<utf16>& string<utf16>::operator=(const string<utf16>& other)
 		{
-			size_t new_len = (other.character_ct + 1) * this->charSize();
+			size_t new_len = other.character_ct;
 			this->increase(new_len);
 			// data = new uint8_t[data_len];
 
@@ -383,7 +386,7 @@ namespace z
 
 				count = -count;
 				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 1);
+				result.increase(1+count);
 
 				result16 = (uint16_t*)result.data;
 
@@ -400,7 +403,7 @@ namespace z
 				if (index >= character_ct) return result;
 
 				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 1);
+				result.increase(1+count);
 
 				result16 = (uint16_t*)result.data;
 
@@ -424,7 +427,7 @@ namespace z
 
 			size_t start = index + other.character_ct;
 			size_t end = character_ct + other.character_ct;
-			this->increase(end << 1);
+			this->increase(end);
 
 			uint16_t* data16 = (uint16_t*)data;
 			uint16_t* other16 = (uint16_t*)other.data;
@@ -538,7 +541,7 @@ namespace z
 
 				size_t offset = end - start;
 				size_t newCharCt = character_ct - offset + other.character_ct;
-				this->increase((newCharCt + 1) << 1);
+				this->increase(newCharCt + 1);
 
 				uint16_t* data16 = (uint16_t*)data;
 				uint16_t* other16 = (uint16_t*)other.data;
@@ -618,7 +621,7 @@ namespace z
 		void string<utf16>::read(inputStream& stream, uint32_t delim, encoding enc)
 		{
 			character_ct = 0;
-			this->increase(2);
+			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
 
@@ -628,36 +631,42 @@ namespace z
 				return;
 			}
 
+			// enc = utf16;
+			enc = stream.format();
+			// stream.getChar(enc);
 			uint32_t last = stream.getChar(enc);
 
-			while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(utf16);
+			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
+				last = stream.getChar(enc);
 
-			while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
+			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
-				if (enc == utf8)
-				{
-					uint8_t c[4];
-					c[0] = last;
+				// if (enc == utf8)
+				// {
+				// 	uint8_t c[4];
+				// 	c[0] = last;
+				//
+				// 	int len = lenFromUTF8(c);
+				// 	if (len)
+				// 	{
+				// 		for (int i=1; i<len; i++)
+				// 			c[i] = stream.getChar(enc);
+				//
+				// 		last = fromUTF8(c);
+				// 	}
+				// }
 
-					int len = lenFromUTF8(c);
-					if (len)
-					{
-						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+				// data16[character_ct++] = last//'?';//= (last > 0xFF00) ? '?' : last;
+				std::cout << (data_len >> 1) << std::endl;
 
-						last = fromUTF8(c);
-					}
-				}
-
-				data[character_ct++] = (last > 0xFFFF) ? '?' : last;
-
-				data16[character_ct++] = last;
-				this->increase((character_ct+1) << 1);
+				increase(character_ct);
+				data16[character_ct] = last;//'?';//(last > 0xFFFF) ? '?' : last;
+				++character_ct;
 
 				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
 			data16[character_ct] = 0;
 		}
 
@@ -665,7 +674,7 @@ namespace z
 		void string<utf16>::readln(inputStream& stream, encoding enc)
 		{
 			character_ct = 0;
-			this->increase(2);
+			this->increase(1);
 
 			uint16_t* data16 = (uint16_t*)data;
 
@@ -688,7 +697,7 @@ namespace z
 						return;
 					}
 					data16[character_ct++] = '\r';
-					this->increase((character_ct+1) << 1);
+					this->increase(character_ct);
 					if (stream.empty())
 					{
 						data16[character_ct] = 0;
@@ -717,7 +726,7 @@ namespace z
 				}
 
 				data[character_ct++] = (last > 0xFFFF) ? '?' : last;
-				this->increase((character_ct+1) << 1);
+				this->increase(character_ct);
 
 				last = stream.getChar(utf16);
 			}
@@ -1621,6 +1630,13 @@ namespace z
 				if (enc == utf16)
 				{
 					stream.put(data, character_ct, enc);
+					std::cout <<'[';
+					for (size_t i=0; i<character_ct; ++i)
+					{
+						if (i) std::cout << ' ';
+						std::cout << (int)data[i];
+					}
+					std::cout << ']'<< std::endl;
 				}
 				else if (enc == utf32)
 				{
