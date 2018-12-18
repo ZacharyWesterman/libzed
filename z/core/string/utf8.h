@@ -5,8 +5,9 @@ namespace z
 	namespace core
 	{
 		template <>
-		void string<utf8>::increase(size_t goal)
+		void string<utf8>::increase(size_t max_chars)
 		{
+			size_t goal = max_chars + 1; //account for null byte at the end
 			if (data_len >= goal) return;
 
 			uint8_t* old_data = data;
@@ -14,7 +15,7 @@ namespace z
 
 			//~1.5x string growth
 			while (data_len < goal)
-				data_len += (data_len >> 1) + 4;
+				data_len += (data_len + 4) >> 1;
 			data = new uint8_t[data_len];
 
 			size_t remain = old_data_len;
@@ -24,7 +25,7 @@ namespace z
 			size_t i = 0;
 
 			//copy as much data as possible in 32-bit chunks
-			while (remain > 4)
+			while (remain >= 4)
 			{
 				data32[i] = old32[i];
 
@@ -40,6 +41,8 @@ namespace z
 
 				remain--;
 			}
+
+			delete[] old_data;
 		}
 
 		template <>
@@ -1331,10 +1334,10 @@ namespace z
 		}
 
 		template <>
-		void string<utf8>::read(inputStream& stream, uint32_t delim, encoding enc)
+		void string<utf8>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			this->increase(1);
+			increase(character_ct);
 
 			if (stream.bad() || stream.empty())
 			{
@@ -1342,6 +1345,7 @@ namespace z
 				return;
 			}
 
+			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
@@ -1351,14 +1355,15 @@ namespace z
 			{
 				if (enc == utf8)
 				{
+					increase(character_ct);
 					data[character_ct++] = last;
-					this->increase(character_ct+1);
 				}
 				else
 				{
 					uint8_t c[4];
 					int len = toUTF8(c, last);
-					this->increase(character_ct + len + 1);
+					increase(character_ct+len);
+
 					for (int i=0; i<len; i++)
 						data[character_ct+i] = c[i];
 
@@ -1368,14 +1373,15 @@ namespace z
 				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
 			data[character_ct] = 0;
 		}
 
 		template <>
-		void string<utf8>::readln(inputStream& stream, encoding enc)
+		void string<utf8>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			this->increase(1);
+			increase(character_ct);
 
 			if (stream.bad() || stream.empty())
 			{
@@ -1383,42 +1389,46 @@ namespace z
 				return;
 			}
 
-			uint32_t last = stream.getChar(enc);
+			encoding enc = stream.format();
+			uint32_t last = stream.getChar(utf8);
 
 			while (!stream.empty())
 			{
 				if (last == '\r')
 				{
+					auto pos = stream.tell();
 					last = stream.getChar(enc);
-					if (last == '\n')
+					if (last != '\n')
 					{
-						data[character_ct] = 0;
-						return;
+						stream.seek(pos);
 					}
-					data[character_ct++] = '\r';
-					this->increase(character_ct+1);
-					if (stream.empty())
-					{
-						data[character_ct] = 0;
-						return;
-					}
+
+					data[character_ct] = 0;
+					return;
 				}
 				else if (last == '\n')
 				{
+					auto pos = stream.tell();
+					last = stream.getChar(enc);
+					if (last != '\r')
+					{
+						stream.seek(pos);
+					}
+
 					data[character_ct] = 0;
 					return;
 				}
 
 				if (enc == utf8)
 				{
+					increase(character_ct);
 					data[character_ct++] = last;
-					this->increase(character_ct+1);
 				}
 				else
 				{
 					uint8_t c[4];
 					int len = toUTF8(c, last);
-					this->increase(character_ct + len + 1);
+					increase(character_ct + len);
 					for (int i=0; i<len; i++)
 						data[character_ct+i] = c[i];
 
@@ -1428,6 +1438,7 @@ namespace z
 				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
 			data[character_ct] = 0;
 		}
 

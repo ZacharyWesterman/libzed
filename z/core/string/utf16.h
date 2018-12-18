@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+
 namespace z
 {
 	namespace core
@@ -15,7 +15,7 @@ namespace z
 
 			//~1.5x string growth
 			while (data_len < goal)
-				data_len += (data_len >> 1) + 4;
+				data_len += (data_len + 4) >> 1;
 			data = new uint8_t[data_len];
 
 			size_t remain = old_data_len;
@@ -25,7 +25,7 @@ namespace z
 			size_t i = 0;
 
 			//copy as much data as possible in 32-bit chunks
-			while (remain > 4)
+			while (remain >= 4)
 			{
 				data32[i] = old32[i];
 
@@ -618,7 +618,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf16>::read(inputStream& stream, uint32_t delim, encoding enc)
+		void string<utf16>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
 			increase(character_ct);
@@ -631,9 +631,7 @@ namespace z
 				return;
 			}
 
-			// enc = utf16;
-			enc = stream.format();
-			// stream.getChar(enc);
+			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
@@ -641,40 +639,38 @@ namespace z
 
 			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
-				// if (enc == utf8)
-				// {
-				// 	uint8_t c[4];
-				// 	c[0] = last;
-				//
-				// 	int len = lenFromUTF8(c);
-				// 	if (len)
-				// 	{
-				// 		for (int i=1; i<len; i++)
-				// 			c[i] = stream.getChar(enc);
-				//
-				// 		last = fromUTF8(c);
-				// 	}
-				// }
+				if (enc == utf8)
+				{
+					uint8_t c[4];
+					c[0] = last;
 
-				// data16[character_ct++] = last//'?';//= (last > 0xFF00) ? '?' : last;
-				std::cout << (data_len >> 1) << std::endl;
+					int len = lenFromUTF8(c);
+					if (len)
+					{
+						for (int i=1; i<len; i++)
+							c[i] = stream.getChar(enc);
+
+						last = fromUTF8(c);
+					}
+				}
 
 				increase(character_ct);
-				data16[character_ct] = last;//'?';//(last > 0xFFFF) ? '?' : last;
-				++character_ct;
+				data16 = (uint16_t*)data;
+				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
 				last = stream.getChar(enc);
 			}
 
 			increase(character_ct);
+			data16 = (uint16_t*)data;
 			data16[character_ct] = 0;
 		}
 
 		template <>
-		void string<utf16>::readln(inputStream& stream, encoding enc)
+		void string<utf16>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			this->increase(1);
+			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
 
@@ -684,28 +680,32 @@ namespace z
 				return;
 			}
 
-			uint32_t last = stream.getChar(utf16);
+			encoding enc = stream.format();
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty())
 			{
 				if (last == '\r')
 				{
-					last = stream.getChar(utf16);
-					if (last == '\n')
+					auto pos = stream.tell();
+					last = stream.getChar(enc);
+					if (last != '\n')
 					{
-						data16[character_ct] = 0;
-						return;
+						stream.seek(pos);
 					}
-					data16[character_ct++] = '\r';
-					this->increase(character_ct);
-					if (stream.empty())
-					{
-						data16[character_ct] = 0;
-						return;
-					}
+
+					data16[character_ct] = 0;
+					return;
 				}
 				else if (last == '\n')
 				{
+					auto pos = stream.tell();
+					last = stream.getChar(enc);
+					if (last != '\r')
+					{
+						stream.seek(pos);
+					}
+
 					data16[character_ct] = 0;
 					return;
 				}
@@ -725,12 +725,15 @@ namespace z
 					}
 				}
 
-				data[character_ct++] = (last > 0xFFFF) ? '?' : last;
-				this->increase(character_ct);
+				increase(character_ct);
+				data16 = (uint16_t*)data;
+				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
-				last = stream.getChar(utf16);
+				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
+			data16 = (uint16_t*)data;
 			data16[character_ct] = 0;
 		}
 
@@ -1630,13 +1633,6 @@ namespace z
 				if (enc == utf16)
 				{
 					stream.put(data, character_ct, enc);
-					std::cout <<'[';
-					for (size_t i=0; i<character_ct; ++i)
-					{
-						if (i) std::cout << ' ';
-						std::cout << (int)data[i];
-					}
-					std::cout << ']'<< std::endl;
 				}
 				else if (enc == utf32)
 				{

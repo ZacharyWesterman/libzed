@@ -80,30 +80,26 @@ namespace z
 				{
 					if (endianness_ == __ORDER_BIG_ENDIAN__)
 					{
-						filestream.put(0x00);
-						filestream.put(0x00);
-						filestream.put(0xFE);
-						filestream.put(0xFF);
+						char buf[] = {0,0,(char)254,(char)255};
+						filestream.write(buf,4);
 					}
 					else
 					{
-						filestream.put(0xFF);
-						filestream.put(0xFE);
-						filestream.put(0x00);
-						filestream.put(0x00);
+						char buf[] = {(char)255,(char)254,0,0};
+						filestream.write(buf,4);
 					}
 				}
 				else if (streamFormat == utf16)
 				{
 					if (endianness_ == __ORDER_BIG_ENDIAN__)
 					{
-						filestream.put(0xFE);
-						filestream.put(0xFF);
+						char buf[] = {(char)254,(char)255};
+						filestream.write(buf,2);
 					}
 					else
 					{
-						filestream.put(0xFF);
-						filestream.put(0xFE);
+						char buf[] = {(char)255,(char)254};
+						filestream.write(buf,2);
 					}
 				}
 			}

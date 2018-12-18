@@ -3,8 +3,6 @@
 
 #define MAX_BYTE_READ 32
 
-#include <iostream>
-
 namespace z
 {
 	namespace file
@@ -153,11 +151,11 @@ namespace z
 				buf[b_i] = get();
 				if (buf[b_i] == BOM[b_i])
 				{
-					endianness_ = __ORDER_BIG_ENDIAN__;
+					endianness_ = __ORDER_LITTLE_ENDIAN__;
 				}
 				else if (buf[b_i] == BOM[4-b_i])
 				{
-					endianness_ = __ORDER_LITTLE_ENDIAN__;
+					endianness_ = __ORDER_BIG_ENDIAN__;
 				}
 				else
 				{
@@ -168,15 +166,18 @@ namespace z
 			if (b_i == 2)
 			{
 				initialized = true;
+				seek(2);
 				return streamFormat = utf16;
 			}
 			else if (b_i == 4)
 			{
 				initialized = true;
+				seek(4);
 				return streamFormat = utf32;
 			}
+			seek(0);
 
-			/*for (size_t i=0; i<read_max; i++)
+			for (size_t i=0; i<read_max; i++)
 			{
 				uint8_t ch = get();
 				if (ch > 127) can_ascii = false;
@@ -224,7 +225,7 @@ namespace z
 					buf[b_i++] = ch;
 				}
 			}
-			*/
+
 			initialized = true;
 			seek(init_pos);
 			if (has_null) return streamFormat = utf16;

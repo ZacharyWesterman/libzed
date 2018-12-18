@@ -21,24 +21,33 @@ namespace z
 		private:
 			std::ofstream filestream;
 
+			size_t endianness_;
+			encoding streamFormat;
+
+			bool initialized;
+
 		public:
+			outputStream();
+
 			/**
 			 * \brief Constructor
 			 *
 			 * As this is a file stream, it must be constructed with a file name.
 			 *
 			 * \param fileName a string containing the name of the file to read from.
+			 * \param fileFormat the format to write to the file. If append is set and the file exists, then this parameter is ignored in favor of the file's original encoding.
 			 * \param append set to \b true to append to the file, \b false to overwrite.
 			 */
-			outputStream(const zpath&, bool append = false);
+			outputStream(const zpath&, encoding fileFormat, bool append = false);
 
 			/**
 			 * \brief Reopen the stream to the given file.
 			 *
 			 * \param fileName a string containing the name of the file to read from.
+			 * \param fileFormat the format to write to the file. If append is set, then this parameter is ignored if the file already exists.
 			 * \param append set to \b true to append to the file, \b false to overwrite.
 			 */
-			void open(const zpath& fileName, bool append = false);
+			void open(const zpath& fileName, encoding fileFormat, bool append = false);
 
 			///Close the current file stream.
 			void close();
@@ -70,6 +79,8 @@ namespace z
 			encoding format();
 
 			void flush();
+
+			size_t endianness();
 		};
 	}
 }

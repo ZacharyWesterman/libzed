@@ -37,12 +37,12 @@ namespace z
 
 			core::string<Z_DICT_FORMAT> name;
 
-			name.read(stream, 0, streamFormat);
+			name.read(stream);
 			while (!(stream.empty() || time.timedOut()))
 			{
 				wordList.add(new word(name));
 
-				name.read(stream, 0, streamFormat);
+				name.read(stream);
 			}
 
 			return stream.empty();
