@@ -139,7 +139,10 @@ namespace z
 
 		encoding memoryStream::format()
 		{
-			if (this->empty()) return ascii;
+			if (initialized) return streamFormat;
+			initialized = true;
+
+			if (this->empty()) return streamFormat = ascii;
 
 			size_t read_max = (32 > dataSize) ? dataSize : 32;
 
@@ -153,7 +156,7 @@ namespace z
 				if (found_nulls || !data[i])
 				{
 					found_nulls = true;
-					if (contig_nulls >= 2) return utf32;
+					if (contig_nulls >= 2) return streamFormat = utf32;
 
 					contig_nulls++;
 				}
@@ -168,9 +171,18 @@ namespace z
 				}
 			}
 
-			if (found_nulls) return utf16;
+			if (found_nulls) return streamFormat = utf16;
 
-			return can_utf8 ? utf8 : ascii;
+			return streamFormat = (can_utf8 ? utf8 : ascii);
+		}
+
+		void memoryStream::setFormat(encoding enc, bool force)
+		{
+			if (!initialized || force)
+			{
+				streamFormat = enc;
+				initialized = true;
+			}
 		}
 
 		void memoryStream::flush() {}

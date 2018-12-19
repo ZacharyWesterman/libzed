@@ -51,6 +51,8 @@ namespace z
 			 */
 			encoding format();
 
+			void setFormat(encoding enc, bool force = false);
+
 			void flush();
  		};
 	}

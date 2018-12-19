@@ -110,6 +110,12 @@ namespace z
 			return utf8;
 		}
 
+		void console::setFormat(encoding enc, bool force)
+		{
+			(void)enc;
+			(void)force;
+		}
+
 		void console::flush()
 		{
 			std::cout << std::flush;

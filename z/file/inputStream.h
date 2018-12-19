@@ -21,7 +21,16 @@ namespace z
 		private:
 			std::ifstream filestream;
 
+			size_t endianness_;
+			encoding streamFormat;
+			bool initialized;
+
 		public:
+			/**
+			 * \brief Empty constructor.
+			 */
+			inputStream();
+
 			/**
 			 * \brief Constructor
 			 *
@@ -55,6 +64,8 @@ namespace z
 			size_t end();
 
 			encoding format();
+			void setFormat(encoding enc, bool force = false);
+			size_t endianness();
 		};
 	}
 }

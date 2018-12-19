@@ -120,7 +120,9 @@ namespace z
 			 *
 			 * \return The determined encoding format of the stream.
 			 */
-			 virtual encoding format() = 0;
+			virtual encoding format() = 0;
+
+			virtual void setFormat(encoding enc, bool force = false) = 0;
 		};
 
 		/**
@@ -237,6 +239,8 @@ namespace z
 			 * \return The determined encoding format of the stream.
 			 */
 			virtual encoding format() = 0;
+
+			virtual void setFormat(encoding enc, bool force = false) = 0;
 
 			 /**
 			 * \brief Flush all data from the stream buffer.

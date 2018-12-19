@@ -41,7 +41,7 @@ namespace z
 			size_t character_ct;
 
 			void initChar(uint32_t, size_t);
-			void increase(size_t); //increase number of data bytes up to the given amount
+			void increase(size_t); //increase number of characters up to the given amount
 			constexpr size_t charSize() const;
 
 			void initInt(long long, unsigned int, unsigned int);
@@ -870,9 +870,8 @@ namespace z
 			 *
 			 * \param stream The stream to read from.
 			 * \param delim The delimiter to read until.
-			 * \param enc The encoding of characters on the stream.
 			 */
-			void read(inputStream& stream, uint32_t delim = 0, encoding enc = E);
+			void read(inputStream& stream, uint32_t delim = 0);
 
 			/**
 			 * \brief Read string data from a stream until a newline is encountered.
@@ -882,9 +881,8 @@ namespace z
 			 * Any data this string contains is wiped when this function is called.
 			 *
 			 * \param stream The stream to read from.
-			 * \param enc The encoding of characters on the stream.
 			 */
-			void readln(inputStream& stream, encoding enc = E);
+			void readln(inputStream& stream);
 
 			/**
 			 * \brief Write string data to a stream.
@@ -892,7 +890,20 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void write(outputStream& stream, encoding enc = E) const;
+			void write(outputStream& stream, encoding enc) const;
+
+			/**
+			 * \brief Write string data to a stream in that stream's encoding.
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void write(outputStream& stream) const
+			{
+				stream.setFormat(E);
+				encoding enc = stream.format();
+
+				write(stream, enc);
+			}
 
 			/**
 			 * \brief Write string data to a stream, appending a newline.
@@ -902,7 +913,22 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void writeln(outputStream& stream, encoding enc = E) const;
+			void writeln(outputStream& stream, encoding enc) const;
+
+			/**
+			 * \brief Write string data to a stream in its format, appending a newline.
+			 *
+			 * Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void writeln(outputStream& stream) const
+			{
+				stream.setFormat(E);
+				encoding enc = stream.format();
+
+				writeln(stream, enc);
+			}
 		};
 
 	}

@@ -5,8 +5,9 @@ namespace z
 	namespace core
 	{
 		template <>
-		void string<utf16>::increase(size_t goal)
+		void string<utf16>::increase(size_t max_chars)
 		{
+			size_t goal = (max_chars << 1) + 2; //account for null byte at the end
 			if (data_len >= goal) return;
 
 			uint8_t* old_data = data;
@@ -14,7 +15,7 @@ namespace z
 
 			//~1.5x string growth
 			while (data_len < goal)
-				data_len += (data_len >> 1) + 4;
+				data_len += (data_len + 4) >> 1;
 			data = new uint8_t[data_len];
 
 			size_t remain = old_data_len;
@@ -24,7 +25,7 @@ namespace z
 			size_t i = 0;
 
 			//copy as much data as possible in 32-bit chunks
-			while (remain > 4)
+			while (remain >= 4)
 			{
 				data32[i] = old32[i];
 
@@ -40,6 +41,8 @@ namespace z
 
 				remain--;
 			}
+
+			delete[] old_data;
 		}
 
 		template <>
@@ -89,7 +92,7 @@ namespace z
 		const string<utf16>& string<utf16>::operator+=(const string<utf16>& other)
 		{
 			size_t new_size = character_ct + other.character_ct + 1;
-			this->increase(new_size << 1);
+			this->increase(new_size);
 
 			uint16_t* data16 = (uint16_t*)data;
 			uint16_t* other16 = (uint16_t*)other.data;
@@ -350,7 +353,7 @@ namespace z
 		template <>
 		const string<utf16>& string<utf16>::operator=(const string<utf16>& other)
 		{
-			size_t new_len = (other.character_ct + 1) * this->charSize();
+			size_t new_len = other.character_ct;
 			this->increase(new_len);
 			// data = new uint8_t[data_len];
 
@@ -383,7 +386,7 @@ namespace z
 
 				count = -count;
 				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 1);
+				result.increase(1+count);
 
 				result16 = (uint16_t*)result.data;
 
@@ -400,7 +403,7 @@ namespace z
 				if (index >= character_ct) return result;
 
 				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 1);
+				result.increase(1+count);
 
 				result16 = (uint16_t*)result.data;
 
@@ -424,7 +427,7 @@ namespace z
 
 			size_t start = index + other.character_ct;
 			size_t end = character_ct + other.character_ct;
-			this->increase(end << 1);
+			this->increase(end);
 
 			uint16_t* data16 = (uint16_t*)data;
 			uint16_t* other16 = (uint16_t*)other.data;
@@ -538,7 +541,7 @@ namespace z
 
 				size_t offset = end - start;
 				size_t newCharCt = character_ct - offset + other.character_ct;
-				this->increase((newCharCt + 1) << 1);
+				this->increase(newCharCt + 1);
 
 				uint16_t* data16 = (uint16_t*)data;
 				uint16_t* other16 = (uint16_t*)other.data;
@@ -615,10 +618,10 @@ namespace z
 		}
 
 		template <>
-		void string<utf16>::read(inputStream& stream, uint32_t delim, encoding enc)
+		void string<utf16>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			this->increase(2);
+			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
 
@@ -628,12 +631,13 @@ namespace z
 				return;
 			}
 
+			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
 
-			while (!stream.empty() && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(utf16);
+			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
+				last = stream.getChar(enc);
 
-			while (!stream.empty() && !(delim ? (last == delim) : isWhiteSpace(last)))
+			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
 				if (enc == utf8)
 				{
@@ -650,22 +654,23 @@ namespace z
 					}
 				}
 
-				data[character_ct++] = (last > 0xFFFF) ? '?' : last;
-
-				data16[character_ct++] = last;
-				this->increase((character_ct+1) << 1);
+				increase(character_ct);
+				data16 = (uint16_t*)data;
+				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
 				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
+			data16 = (uint16_t*)data;
 			data16[character_ct] = 0;
 		}
 
 		template <>
-		void string<utf16>::readln(inputStream& stream, encoding enc)
+		void string<utf16>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			this->increase(2);
+			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
 
@@ -675,28 +680,32 @@ namespace z
 				return;
 			}
 
-			uint32_t last = stream.getChar(utf16);
+			encoding enc = stream.format();
+			uint32_t last = stream.getChar(enc);
 
 			while (!stream.empty())
 			{
 				if (last == '\r')
 				{
-					last = stream.getChar(utf16);
-					if (last == '\n')
+					auto pos = stream.tell();
+					last = stream.getChar(enc);
+					if (last != '\n')
 					{
-						data16[character_ct] = 0;
-						return;
+						stream.seek(pos);
 					}
-					data16[character_ct++] = '\r';
-					this->increase((character_ct+1) << 1);
-					if (stream.empty())
-					{
-						data16[character_ct] = 0;
-						return;
-					}
+
+					data16[character_ct] = 0;
+					return;
 				}
 				else if (last == '\n')
 				{
+					auto pos = stream.tell();
+					last = stream.getChar(enc);
+					if (last != '\r')
+					{
+						stream.seek(pos);
+					}
+
 					data16[character_ct] = 0;
 					return;
 				}
@@ -716,12 +725,15 @@ namespace z
 					}
 				}
 
-				data[character_ct++] = (last > 0xFFFF) ? '?' : last;
-				this->increase((character_ct+1) << 1);
+				increase(character_ct);
+				data16 = (uint16_t*)data;
+				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
-				last = stream.getChar(utf16);
+				last = stream.getChar(enc);
 			}
 
+			increase(character_ct);
+			data16 = (uint16_t*)data;
 			data16[character_ct] = 0;
 		}
 

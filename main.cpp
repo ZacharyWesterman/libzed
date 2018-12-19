@@ -5,19 +5,37 @@
 int main()
 {
 	z::system::console console;
+	z::file::outputStream out("out.txt", z::utf32, true);
+	// z::file::inputStream in("out.txt");
 
-	z::core::string<z::utf8> str = "this is a memory stream test!";
-	z::core::memoryStream stream (str.cstring(), 29);
+	// zpath(in.good() ? "good" : "bad").writeln(console);
 
-	z::core::string<z::utf8> repl = "prebus";
-	stream.seek(10);
+	z::core::string<z::utf8> str = "test";
+	// str.read(in);
+	// switch (in.format())
+	// {
+	// 	case z::ascii:
+	// 		str = "ascii";
+	// 	break;
+	//
+	// 	case z::utf8:
+	// 		str = "utf8";
+	// 	break;
+	//
+	// 	case z::utf16:
+	// 		str = "utf16";
+	// 	break;
+	//
+	// 	case z::utf32:
+	// 		str = "utf32";
+	// 	break;
+	//
+	// 	default:
+	// 		str = "unknown";
+	// }
 
-	// std::cout << (void*)buffer << std::endl;
-
-	// stream.put('G');
-	repl.write(stream);
-
-	str.writeln(console);
+	str.writeln(out);
+	// z::core::string<z::utf16>("hello, this is a test.").writeln(out);
 
 	return 0;
 }

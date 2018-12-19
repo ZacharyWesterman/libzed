@@ -17,6 +17,8 @@ namespace z
 		private:
 			array<uint8_t> data;
 			size_t streamIndex;
+			encoding streamFormat;
+			bool initialized;
 
 		public:
 			binaryStream();
@@ -38,6 +40,7 @@ namespace z
  			size_t end();
 
 			encoding format();
+			void setFormat(encoding enc, bool force = false);
 
 			void flush();
 		};
