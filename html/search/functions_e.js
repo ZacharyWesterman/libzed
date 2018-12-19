@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['read',['read',['../classz_1_1core_1_1string.html#a6d356130d852218e7b4c4d208973c069',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
-  ['readln',['readln',['../classz_1_1core_1_1string.html#ab5210769bf6b26126d4532a663f9802b',1,'z::core::string']]],
+  ['read',['read',['../classz_1_1core_1_1string.html#a047e728df74bc7ea0ab801716640fbc8',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
+  ['readln',['readln',['../classz_1_1core_1_1string.html#afa9e2cfd0c1f533783214e36b7943879',1,'z::core::string']]],
   ['refarray',['refArray',['../classz_1_1core_1_1refArray.html#a548929573a92872bc5c3fe48a1761d11',1,'z::core::refArray::refArray()'],['../classz_1_1core_1_1refArray.html#a0e4a62b2e732285011aa16bb886f19af',1,'z::core::refArray::refArray(const array&lt; T &gt; &amp;)'],['../classz_1_1core_1_1refArray.html#a6e12dd90559344783c390bc0a6a4a341',1,'z::core::refArray::refArray(const T)'],['../classz_1_1core_1_1refArray.html#a745243df18b2bdbe1849f35999f05572',1,'z::core::refArray::refArray(const T arg1, const Args...args)']]],
   ['regex',['regex',['../classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e',1,'z::util::regex::regex()'],['../classz_1_1util_1_1regex.html#a902e1c1e2baaf7a6ad852a6e11d169b2',1,'z::util::regex::regex(const core::string&lt; E &gt; &amp;)']]],
   ['remainder',['remainder',['../namespacez_1_1math.html#aa6f3bd71b5ed758c3ccbbbbc7f6ad209',1,'z::math::remainder(long x, long y)'],['../namespacez_1_1math.html#a2cbcc012cd4fe51c6372521a0832b229',1,'z::math::remainder(const std::complex&lt; long &gt; &amp;x, const std::complex&lt; long &gt; &amp;y)']]],
