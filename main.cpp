@@ -5,13 +5,13 @@
 int main()
 {
 	z::system::console console;
-	// z::file::outputStream out("out.txt", z::utf16);
-	z::file::inputStream in("out.txt");
+	z::file::outputStream out("out.txt", z::utf32, true);
+	// z::file::inputStream in("out.txt");
 
-	zpath(in.good() ? "good" : "bad").writeln(console);
+	// zpath(in.good() ? "good" : "bad").writeln(console);
 
-	z::core::string<z::utf16> str;
-	str.read(in);
+	z::core::string<z::utf8> str = "test";
+	// str.read(in);
 	// switch (in.format())
 	// {
 	// 	case z::ascii:
@@ -34,7 +34,7 @@ int main()
 	// 		str = "unknown";
 	// }
 
-	str.writeln(console);
+	str.writeln(out);
 	// z::core::string<z::utf16>("hello, this is a test.").writeln(out);
 
 	return 0;

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stream.h"
-#include <iostream>
 
 namespace z
 {
@@ -18,6 +17,8 @@ namespace z
 			uint8_t* data;
 			size_t dataSize;
 			size_t streamIndex;
+			encoding streamFormat;
+			bool initialized;
 
 		public:
 			/**
@@ -34,6 +35,8 @@ namespace z
 				data = (uint8_t*)streamData;
 				dataSize = data ? (sizeof(T)*count) : 0;
 				streamIndex = 0;
+				streamFormat = ascii;
+				initialized = false;
 			}
 
 			/**
@@ -66,6 +69,7 @@ namespace z
  			size_t end();
 
 			encoding format();
+			void setFormat(encoding enc, bool force = false);
 
 			void flush();
 		};

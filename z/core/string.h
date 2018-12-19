@@ -890,7 +890,20 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void write(outputStream& stream, encoding enc = E) const;
+			void write(outputStream& stream, encoding enc) const;
+
+			/**
+			 * \brief Write string data to a stream in that stream's encoding.
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void write(outputStream& stream) const
+			{
+				stream.setFormat(E);
+				encoding enc = stream.format();
+
+				write(stream, enc);
+			}
 
 			/**
 			 * \brief Write string data to a stream, appending a newline.
@@ -900,7 +913,22 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void writeln(outputStream& stream, encoding enc = E) const;
+			void writeln(outputStream& stream, encoding enc) const;
+
+			/**
+			 * \brief Write string data to a stream in its format, appending a newline.
+			 *
+			 * Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
+			 *
+			 * \param stream The stream to write to.
+			 */
+			void writeln(outputStream& stream) const
+			{
+				stream.setFormat(E);
+				encoding enc = stream.format();
+
+				writeln(stream, enc);
+			}
 		};
 
 	}

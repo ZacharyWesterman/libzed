@@ -232,6 +232,12 @@ namespace z
 			return streamFormat = (can_ascii ? ascii : utf8);
 		}
 
+		void inputStream::setFormat(encoding enc, bool force)
+		{
+			format();
+			if (force) streamFormat = enc;
+		}
+
 		size_t inputStream::endianness()
 		{
 			return endianness_;

@@ -64,6 +64,7 @@ namespace z
 			size_t end();
 
 			encoding format();
+			void setFormat(encoding enc, bool force = false);
 			size_t endianness();
 		};
 	}

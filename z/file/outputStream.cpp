@@ -104,79 +104,44 @@ namespace z
 				}
 			}
 
-			for (size_t i=0; i<count; i++)
-			{
-				if (format == utf32)
-				{
-// 					size_t index = i << 2;
-// 					uint32_t ch = *((uint32_t*)&str[index]);
-// 					// uint8_t* buf = (uint8_t*)&ch;
-// 					if (streamFormat == utf16)
-// 					{
-//
-// 					}
-//
-// #					if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-// 					if (endianness_ == __ORDER_LITTLE_ENDIAN__)
-// 					{
-// 						buf[0] = str[index+3];
-// 						buf[1] = str[index+2];
-// 						buf[2] = str[index+1];
-// 						buf[3] = str[index];
-// 					}
-// #					else
-// 					if (endianness_ == __ORDER_BIG_ENDIAN__)
-// 					{
-// 						buf[0] = str[index+3];
-// 						buf[1] = str[index+2];
-// 						buf[2] = str[index+1];
-// 						buf[3] = str[index];
-// 					}
-// #					endif
-// 					else
-// 					{
-// 						buf[0] = str[index];
-// 						buf[1] = str[index+1];
-// 						buf[2] = str[index+2];
-// 						buf[3] = str[index+3];
-// 					}
-//
-// 					if (streamFormat == utf16)
-// 					{
-// 						uint16_t = ch16;
-// 						buf = (uint16_t*)&ch16;
-// 						if (ch > 0xFFFF)
-// 						{
-//
-// 						}
-// 					}
-				}
-				else if (format == utf16)
-				{
-					size_t index = i << 1;
 
-#					if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-					if (endianness_ == __ORDER_LITTLE_ENDIAN__)
-					{
-						filestream.put(str[index+1]);
-						filestream.put(str[index]);
-					}
-#					else
-					if (endianness_ == __ORDER_BIG_ENDIAN__)
-					{
-						filestream.put(str[index+1]);
-						filestream.put(str[index]);
-					}
-#					endif
-					else
-					{
-						filestream.put(str[index]);
-						filestream.put(str[index+1]);
-					}
+			if ((format == utf8) || (format == ascii))
+			{
+				filestream.write((char*)str, count);
+			}
+			else
+			{
+				if (endianness_ == __BYTE_ORDER__)
+				{
+					if (format == utf32)
+						filestream.write((char*)str, count << 2);
+					else //(format == utf16)
+						filestream.write((char*)str, count << 1);
 				}
 				else
 				{
-					filestream.put(str[i]);
+					char buf[4];
+					size_t index;
+
+					for (size_t i=0; i<count; i++)
+					{
+						if (format == utf32)
+						{
+							index = i << 2;
+							buf[0] = str[index+3];
+							buf[1] = str[index+2];
+							buf[2] = str[index+1];
+							buf[3] = str[index];
+							filestream.write(buf,4);
+						}
+						else //(format == utf16)
+						{
+							index = i << 1;
+							buf[0] = str[index+1];
+							buf[1] = str[index];
+							filestream.write(buf,2);
+						}
+					}
 				}
 			}
 		}
@@ -224,6 +189,11 @@ namespace z
 		encoding outputStream::format()
 		{
 			return streamFormat;
+		}
+
+		void outputStream::setFormat(encoding enc, bool force)
+		{
+			if (force || !tell()) streamFormat = enc;
 		}
 
 		void outputStream::flush()
