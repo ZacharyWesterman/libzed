@@ -1610,19 +1610,15 @@ namespace z
 			if (stream.bad() || !stream.binary())
 			{
 				character_ct = 0;
-				this->increase(1);
 				data[0] = 0;
 				return;
 			}
 
-			size_t datact = 0;
-			core::serialIn(datact, stream);
-
-			character_ct = datact;
-			this->increase(datact + 1);
+			core::serialIn(character_ct, stream);
+			increase(character_ct);
 
 			size_t i = 0;
-			while (!stream.empty() && (i < datact))
+			while (!stream.empty() && (i < character_ct))
 			{
 				data[i++] = stream.get();
 			}
@@ -1639,10 +1635,7 @@ namespace z
 			size_t datact = character_ct;
 			core::serialOut(datact, stream);
 
-			for (size_t i=0; i<datact; i++)
-			{
-				stream.put(data[i]);
-			}
+			stream.put(data, character_ct, ascii);
 		}
 
 	} //end of core namespace

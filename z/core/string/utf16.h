@@ -1668,24 +1668,32 @@ namespace z
 			if (stream.bad() || !stream.binary())
 			{
 				character_ct = 0;
-				this->increase(4);
 				*((uint16_t*)data) = 0;
 				return;
 			}
 
-			size_t datact = 0;
-			core::serialIn(datact, stream);
+			core::serialIn(character_ct, stream);
+			increase(character_ct);
 
-			character_ct = datact >> 1;
-			this->increase(datact + 4);
-
+#			if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+			for (k=1; k<=character_ct; ++k)
+			{
+				if (stream.empty()) break;
+				for (i=1; i<=2; ++i)
+				{
+					data[(k<<1)-i] = stream.get();
+				}
+			}
+#			else
+			size_t datact = character_ct << 1;
 			size_t i = 0;
 			while (!stream.empty() && (i < datact))
 			{
 				data[i++] = stream.get();
 			}
+#			endif
 
-			*((uint16_t*)&data[i]) = 0;
+			((uint16_t*)data)[character_ct] = 0;
 		}
 
 		template <>
@@ -1694,13 +1702,19 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct << 1;
-			core::serialOut(datact, stream);
+			core::serialOut(character_ct, stream);
 
-			for (size_t i=0; i<datact; i++)
+#			if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+			for (k=1; k<=character_ct; ++k)
 			{
-				stream.put(data[i]);
+				for (i=1; i<=2; ++i)
+				{
+					stream.put(data[(k<<1)-i]);
+				}
 			}
+#			else
+			stream.put(data, character_ct, utf16);
+#			endif
 		}
 
 	} //end of core namespace
