@@ -472,79 +472,9 @@ namespace z
 		}
 
 		template <>
-		bool string<utf32>::isInteger(int base) const
+		int string<utf32>::type(int base, uint32_t decimal) const
 		{
-			if ((base < 2) || (base > 36)) return false;
-
-			uint32_t* data32 = (uint32_t*)data;
-
-			if (!character_ct) return false;
-
-			size_t start = ((data32[0] == '-') || (data32[0] == '+'));
-
-			for (size_t i=start; i<character_ct; i++)
-			{
-				if (!isNumeric(data32[i], base))
-					return false;
-			}
-
-			return true;
-		}
-
-		template <>
-		bool string<utf32>::isFloating(int base) const
-		{
-			if ((base < 2) || (base > 36)) return false;
-
-			if (!character_ct) return false;
-
-			uint32_t* data32 = (uint32_t*)data;
-
-			bool pastDecimal, pastExponent;
-			pastDecimal = pastExponent = false;
-
-			size_t start = ((data32[0] == '-') || (data32[0] == '+'));
-
-			if (start >= character_ct) return 0;
-
-			for (size_t i=start; i<character_ct; i++)
-			{
-				if (!isNumeric(data32[i], base))
-				{
-					if (data32[i] == '.')
-					{
-						if (pastDecimal || pastExponent)
-							return false;
-						else
-						{
-							if (i >= character_ct-1) return false;
-							pastDecimal = true;
-						}
-					}
-					else if (toLower(data32[i]) == 'e')
-					{
-						if (pastExponent)
-							return false;
-						else
-						{
-							pastExponent = true;
-							if ((data32[i+1] == '+') || (data32[i+1] == '-'))
-								i++;
-						}
-					}
-					else return false;
-				}
-			}
-
-			return true;
-		}
-
-		template <>
-		bool string<utf32>::isComplex(int base) const
-		{
-			if ((base < 2) || (base > 36)) return false;
-
-			if (!character_ct) return false;
+			if ((base < 2) || (base > 36) || !character_ct) return zstr::string;
 
 			bool pastDecimal, pastExponent, imag, ir;
 			pastDecimal = pastExponent = imag = ir = false;
@@ -553,27 +483,27 @@ namespace z
 
 			size_t start = ((data32[0] == '-') || (data32[0] == '+'));
 
-			if (start >= character_ct) return 0;
+			if (start >= character_ct) return zstr::string;
 
 			for (size_t i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data32[i], 10))
 				{
-					if (data32[i] == '.')
+					if (data32[i] == decimal)
 					{
 						if (pastDecimal || pastExponent)
-							return false;
+							return zstr::string;
 						else
 						{
 							if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
-								return false;
+								return zstr::string;
 							pastDecimal = true;
 						}
 					}
 					else if (toLower(data32[i]) == 'e')
 					{
 						if (pastExponent)
-							return false;
+							return zstr::string;
 						else
 						{
 							pastExponent = true;
@@ -584,7 +514,7 @@ namespace z
 					else if (toLower(data32[i]) == 'i')
 					{
 						if (imag)
-							return false;
+							return zstr::string;
 						else
 						{
 							pastExponent = pastDecimal = false;
@@ -594,18 +524,25 @@ namespace z
 					else if ((data32[i] == '-') || (data32[i] == '+'))
 					{
 						if (ir || (i >= character_ct-1))
-							return false;
+							return zstr::string;
 						else
 						{
 							pastDecimal = pastExponent = false;
 							ir = true;
 						}
 					}
-					else return false;
+					else return zstr::string;
 				}
 			}
 
-			return true;
+			if (imag)
+			{
+				return zstr::complex;
+			}
+			else
+			{
+				return pastDecimal ? zstr::floating : zstr::integer;
+			}
 		}
 
 		///mutators

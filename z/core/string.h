@@ -11,6 +11,17 @@ namespace z
 {
 	namespace core
 	{
+		namespace zstr
+		{
+			enum
+			{
+				string   = 0,
+				integer  = 1,
+				floating = 2,
+				complex  = 4
+			};
+		}
+
 		/**
 		 * \brief A template class for character strings.
 		 *
@@ -519,7 +530,10 @@ namespace z
 			 *
 			 * \see integer()
 			 */
-			bool isInteger(int base = 10) const;
+			bool isInteger(int base = 10) const
+			{
+				return type(base) & (zstr::integer);
+			}
 
 			/**
 			 * \brief Check if this string can convert to a floating-point value.
@@ -536,7 +550,10 @@ namespace z
 			 *
 			 * \see floating()
 			 */
-			bool isFloating(int base = 10) const;
+			bool isFloating(int base = 10, uint32_t decimal = '.') const
+			{
+				return type(base,decimal) & (zstr::integer | zstr::floating);
+			}
 
 			/**
 			 * \brief Check if this string can convert to a complex value.
@@ -553,7 +570,12 @@ namespace z
 			 * \see isFloating()
 			 * \see complex()
 			 */
-			bool isComplex(int base = 10) const;
+			bool isComplex(int base = 10, uint32_t decimal = '.') const
+			{
+				return type(base,decimal) & (zstr::integer | zstr::floating | zstr::complex);
+			}
+
+			int type(int base = 10, uint32_t decimal = '.') const;
 
 			/**
 			 * \brief Get a sub-string from this string.
