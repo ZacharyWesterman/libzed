@@ -939,6 +939,78 @@ namespace z
 			return std::complex<double>(realResult, imagResult);
 		}
 
+		template <>
+		int string<utf8>::type(int base, uint32_t decimal) const
+		{
+			if ((base < 2) || (base > 36) || !character_ct) return zstr::string;
+
+			bool pastDecimal, pastExponent, imag, ir;
+			pastDecimal = pastExponent = imag = ir = false;
+
+			size_t start = ((data[0] == '-') || (data[0] == '+'));
+
+			if (start >= character_ct) return zstr::string;
+
+			for (size_t i=start; i<character_ct; i++)
+			{
+				if (!isNumeric(data[i], 10))
+				{
+					if (data[i] == decimal)
+					{
+						if (pastDecimal || pastExponent)
+							return zstr::string;
+						else
+						{
+							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+								return zstr::string;
+							pastDecimal = true;
+						}
+					}
+					else if (toLower(data[i]) == 'e')
+					{
+						if (pastExponent)
+							return zstr::string;
+						else
+						{
+							pastExponent = true;
+							if ((data[i+1] == '+') || (data[i+1] == '-'))
+								i++;
+						}
+					}
+					else if (toLower(data[i]) == 'i')
+					{
+						if (imag)
+							return zstr::string;
+						else
+						{
+							pastExponent = pastDecimal = false;
+							imag = true;
+						}
+					}
+					else if ((data[i] == '-') || (data[i] == '+'))
+					{
+						if (ir || (i >= character_ct-1))
+							return zstr::string;
+						else
+						{
+							pastDecimal = pastExponent = false;
+							ir = true;
+						}
+					}
+					else return zstr::string;
+				}
+			}
+
+			if (imag)
+			{
+				return zstr::complex;
+			}
+			else
+			{
+				return pastDecimal ? zstr::floating : zstr::integer;
+			}
+		}
+
 		///analyzers
 		template <>
 		bool string<utf8>::foundAt(const string<utf8>& other, size_t index) const
