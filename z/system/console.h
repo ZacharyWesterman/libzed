@@ -54,6 +54,8 @@ namespace z
 			void setFormat(encoding enc, bool force = false);
 
 			void flush();
+
+			void clear();
  		};
 	}
 }

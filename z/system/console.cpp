@@ -49,11 +49,13 @@ namespace z
 
 		uint8_t console::get()
 		{
+			if (std::cin.eof()) return 0;
 			return std::cin.get();
 		}
 
 		uint32_t console::getChar(encoding format)
 		{
+			if (std::cin.eof()) return 0;
 			if (format == z::utf8) return std::cin.get();
 
 			uint8_t buf[4];
@@ -67,6 +69,10 @@ namespace z
 
 		bool console::empty()
 		{
+			if (std::cin.eof())
+			{
+				return true;
+			}
 			return false;
 		}
 
@@ -119,6 +125,11 @@ namespace z
 		void console::flush()
 		{
 			std::cout << std::flush;
+		}
+
+		void console::clear()
+		{
+			std::cin.clear();
 		}
 	}
 }

@@ -7,11 +7,11 @@ zstring strtype(const zstring& str)
 	switch (str.type())
 	{
 		case z::core::zstr::complex:
-			return "complex";
+			return zstring("complex : ")+str.complex();
 		case z::core::zstr::floating:
-			return "float";
+			return zstring("float : ")+str.floating();
 		case z::core::zstr::integer:
-			return "int";
+			return zstring("int : ")+str.integer();
 		default:
 			return "string";
 	}
@@ -22,7 +22,7 @@ int main()
 	z::system::console console;
 
 	zstring item;
-	while (true)
+	while (!console.empty())
 	{
 		item.read(console);
 
