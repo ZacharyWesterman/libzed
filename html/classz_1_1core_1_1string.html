@@ -229,12 +229,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6dde7e9fb2c7006fc653e173c64fb7fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a6dde7e9fb2c7006fc653e173c64fb7fe">isInteger</a> (int base=10) const </td></tr>
 <tr class="memdesc:a6dde7e9fb2c7006fc653e173c64fb7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to an integer.  <a href="#a6dde7e9fb2c7006fc653e173c64fb7fe">More...</a><br/></td></tr>
 <tr class="separator:a6dde7e9fb2c7006fc653e173c64fb7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c25c7b1c7b83f89f27b817067435918"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a3c25c7b1c7b83f89f27b817067435918">isFloating</a> (int base=10) const </td></tr>
-<tr class="memdesc:a3c25c7b1c7b83f89f27b817067435918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to a floating-point value.  <a href="#a3c25c7b1c7b83f89f27b817067435918">More...</a><br/></td></tr>
-<tr class="separator:a3c25c7b1c7b83f89f27b817067435918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acacd7da8f29459c70c0049ccb1ab42bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#acacd7da8f29459c70c0049ccb1ab42bb">isComplex</a> (int base=10) const </td></tr>
-<tr class="memdesc:acacd7da8f29459c70c0049ccb1ab42bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to a complex value.  <a href="#acacd7da8f29459c70c0049ccb1ab42bb">More...</a><br/></td></tr>
-<tr class="separator:acacd7da8f29459c70c0049ccb1ab42bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a5a63ea8675895d66a6db6eec89052d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a2a5a63ea8675895d66a6db6eec89052d">isFloating</a> (int base=10, uint32_t decimal= '.') const </td></tr>
+<tr class="memdesc:a2a5a63ea8675895d66a6db6eec89052d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to a floating-point value.  <a href="#a2a5a63ea8675895d66a6db6eec89052d">More...</a><br/></td></tr>
+<tr class="separator:a2a5a63ea8675895d66a6db6eec89052d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d1dc9326a9530792aa9692b2c485b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a25d1dc9326a9530792aa9692b2c485b6">isComplex</a> (int base=10, uint32_t decimal= '.') const </td></tr>
+<tr class="memdesc:a25d1dc9326a9530792aa9692b2c485b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to a complex value.  <a href="#a25d1dc9326a9530792aa9692b2c485b6">More...</a><br/></td></tr>
+<tr class="separator:a25d1dc9326a9530792aa9692b2c485b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82e6caa8e72288b7d454e3b33ee6da2e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>type</b> (int base=10, uint32_t decimal= '.') const </td></tr>
+<tr class="separator:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85444b48a6d7fc97801080db8679e0ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a85444b48a6d7fc97801080db8679e0ac">substr</a> (size_t index, int <a class="el" href="classz_1_1core_1_1string.html#a64e4d260010465ba4c9b6042d1b04e96">count</a>) const </td></tr>
 <tr class="memdesc:a85444b48a6d7fc97801080db8679e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sub-string from this string.  <a href="#a85444b48a6d7fc97801080db8679e0ac">More...</a><br/></td></tr>
 <tr class="separator:a85444b48a6d7fc97801080db8679e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1007,7 +1010,7 @@ template&lt;encoding E = utf32&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The floating-point complex representation of this string, if it is a valid complex float. 0 otherwise.</dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#acacd7da8f29459c70c0049ccb1ab42bb" title="Check if this string can convert to a complex value. ">isComplex()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a25d1dc9326a9530792aa9692b2c485b6" title="Check if this string can convert to a complex value. ">isComplex()</a> </dd></dl>
 
 </div>
 </div>
@@ -1331,7 +1334,7 @@ template&lt;encoding E = utf32&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The floating-point representation of this string, if it is a valid float. 0 otherwise.</dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a3c25c7b1c7b83f89f27b817067435918" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a2a5a63ea8675895d66a6db6eec89052d" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd></dl>
 
 </div>
 </div>
@@ -1507,20 +1510,38 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acacd7da8f29459c70c0049ccb1ab42bb"></a>
+<a class="anchor" id="a25d1dc9326a9530792aa9692b2c485b6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::isComplex </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Check if this string can convert to a complex value. </p>
@@ -1532,26 +1553,44 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the string contains only characters representing a floating-point complex number. False otherwise.</dd></dl>
 <p>Valid strings must follow the form <code>X+Yi</code> or <code>Xi+Y</code>, where <code>X</code> and <code>Y</code> are floating-point values. <code>X</code> may optionally have a <code>+</code> or <code>-</code> preceding it, and <code>Y</code> may be preceded by a <code>-</code> instead of a <code>+</code>.</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a3c25c7b1c7b83f89f27b817067435918" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a2a5a63ea8675895d66a6db6eec89052d" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd>
 <dd>
 <a class="el" href="classz_1_1core_1_1string.html#af8669c07cf59dc85ebbd27c3a21771a8" title="Convert this string to a complex value. ">complex()</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a3c25c7b1c7b83f89f27b817067435918"></a>
+<a class="anchor" id="a2a5a63ea8675895d66a6db6eec89052d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::isFloating </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Check if this string can convert to a floating-point value. </p>
@@ -1572,6 +1611,9 @@ template&lt;encoding E = utf32&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::isInteger </td>
@@ -1581,6 +1623,11 @@ template&lt;encoding E = utf32&gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Check if this string can convert to an integer. </p>
