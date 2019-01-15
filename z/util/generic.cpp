@@ -8,7 +8,7 @@ namespace z
 		{
 			if (object)
 			{
-				try{delete object;} catch(...){}
+				delete object;
 			}
 
 			int type = 0;
