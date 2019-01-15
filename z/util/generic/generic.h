@@ -4,7 +4,6 @@
 
 #include <z/encoding.h>
 #include <z/core/sizable.h>
-#include <z/core/serializable.h>
 
 #include <z/core/string.h>
 #include <z/core/array.h>
@@ -21,7 +20,7 @@ namespace z
 		 *
 		 * A wrapper to allow abstraction from primitive data types.
 		 */
-		class generic //: public core::sizable, public core::serializable
+		class generic : public core::sizable
 		{
 		public:
 
@@ -231,6 +230,8 @@ namespace z
 			 * \return True if both objects are of exactly the same type and contain the same data, false otherwise.
 			 */
 			virtual bool operator==(const generic& other) const;
+
+			virtual size_t size() const;
 		};
 	}
 }

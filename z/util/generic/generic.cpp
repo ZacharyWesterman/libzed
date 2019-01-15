@@ -113,5 +113,10 @@ namespace z
 
 			return false;
 		}
+
+		size_t generic::size() const
+		{
+			return sizeof(*this);
+		}
 	}
 }

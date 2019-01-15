@@ -144,5 +144,16 @@ namespace z
 
 			return new genericArray(list);
 		}
+
+		size_t genericArray::size() const
+		{
+			size_t total = sizeof(*this);
+			for (size_t i=0; i<data.length(); ++i)
+			{
+				if (data[i]) total += data[i]->size();
+			}
+
+			return total;
+		}
 	}
 }

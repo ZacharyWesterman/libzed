@@ -7,3 +7,15 @@
 #include "generic/genericComplex.h"
 #include "generic/genericString.h"
 #include "generic/genericArray.h"
+
+#include <z/core/serializable.h>
+
+namespace z
+{
+	namespace core
+	{
+		void serialIn(util::generic*& object, core::inputStream& stream);
+
+		void serialOut(const util::generic*& object, core::inputStream& stream);
+	}
+}

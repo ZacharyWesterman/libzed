@@ -55,6 +55,7 @@ namespace z
 			zstring typeString() const;
 
 			generic* duplicate() const;
+			size_t size() const;
 		};
 	}
 }
