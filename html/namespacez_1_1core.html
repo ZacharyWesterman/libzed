@@ -202,14 +202,21 @@ Functions</h2></td></tr>
 ::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
 <tr class="memdesc:afeeb64c7e9d461c49844c8c064638bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a serializable object as binary data from a stream.  <a href="#afeeb64c7e9d461c49844c8c064638bf4">More...</a><br/></td></tr>
 <tr class="separator:afeeb64c7e9d461c49844c8c064638bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff9d8ae4556e01c199964e38abc39e36"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aff9d8ae4556e01c199964e38abc39e36"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
+<tr class="memitem:a5f06128d31a04ae524ce1a2ad8c402f0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5f06128d31a04ae524ce1a2ad8c402f0"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt;!std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
 ::value &amp;&amp;!std::is_integral&lt; T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#aff9d8ae4556e01c199964e38abc39e36">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
-<tr class="memdesc:aff9d8ae4556e01c199964e38abc39e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a non-serializable object or datatype as binary data from a stream.  <a href="#aff9d8ae4556e01c199964e38abc39e36">More...</a><br/></td></tr>
-<tr class="separator:aff9d8ae4556e01c199964e38abc39e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+::value &amp;&amp;!std::is_pointer&lt; T &gt;<br class="typebreak"/>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a5f06128d31a04ae524ce1a2ad8c402f0">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:a5f06128d31a04ae524ce1a2ad8c402f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a non-serializable object or datatype as binary data from a stream.  <a href="#a5f06128d31a04ae524ce1a2ad8c402f0">More...</a><br/></td></tr>
+<tr class="separator:a5f06128d31a04ae524ce1a2ad8c402f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b252a35a765e16b9a83364da9041c13"><td class="memTemplParams" colspan="2"><a class="anchor" id="a9b252a35a765e16b9a83364da9041c13"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9b252a35a765e16b9a83364da9041c13"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
+&lt; std::is_pointer&lt; T &gt;::value &gt;<br class="typebreak"/>
+::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialIn</b> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="separator:a9b252a35a765e16b9a83364da9041c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8ec3a0ec2e13b46cd89ebb0d01f1030e"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt; std::is_integral&lt; T &gt;::value &gt;<br class="typebreak"/>
@@ -223,14 +230,21 @@ Functions</h2></td></tr>
 ::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a7db138c141b66449f9b8b1b22fa7af16">serialOut</a> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
 <tr class="memdesc:a7db138c141b66449f9b8b1b22fa7af16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a serializable object as binary data to a stream.  <a href="#a7db138c141b66449f9b8b1b22fa7af16">More...</a><br/></td></tr>
 <tr class="separator:a7db138c141b66449f9b8b1b22fa7af16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27f0cebd2ce5747e6942d1438e84a490"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a27f0cebd2ce5747e6942d1438e84a490"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
+<tr class="memitem:a6fbc97dddf681b0d0e194710a376c8c0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6fbc97dddf681b0d0e194710a376c8c0"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt;!std::is_base_of<br class="typebreak"/>
 &lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;<br class="typebreak"/>
 ::value &amp;&amp;!std::is_integral&lt; T &gt;<br class="typebreak"/>
-::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a27f0cebd2ce5747e6942d1438e84a490">serialOut</a> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
-<tr class="memdesc:a27f0cebd2ce5747e6942d1438e84a490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a non-serializable object or datatype as binary data to a stream.  <a href="#a27f0cebd2ce5747e6942d1438e84a490">More...</a><br/></td></tr>
-<tr class="separator:a27f0cebd2ce5747e6942d1438e84a490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+::value &amp;&amp;!std::is_pointer&lt; T &gt;<br class="typebreak"/>
+::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a6fbc97dddf681b0d0e194710a376c8c0">serialOut</a> (const T &amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="memdesc:a6fbc97dddf681b0d0e194710a376c8c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a non-serializable object or datatype as binary data to a stream.  <a href="#a6fbc97dddf681b0d0e194710a376c8c0">More...</a><br/></td></tr>
+<tr class="separator:a6fbc97dddf681b0d0e194710a376c8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab6e008a82afa2e3170df8a66096aac"><td class="memTemplParams" colspan="2"><a class="anchor" id="a8ab6e008a82afa2e3170df8a66096aac"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a8ab6e008a82afa2e3170df8a66096aac"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
+&lt; std::is_pointer&lt; T &gt;::value &gt;<br class="typebreak"/>
+::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialOut</b> (T const object, <a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="separator:a8ab6e008a82afa2e3170df8a66096aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a314a8b54daea7da36daa047fc7f97ddd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a314a8b54daea7da36daa047fc7f97ddd"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if<br class="typebreak"/>
 &lt; std::is_integral&lt; T &gt;::value &gt;<br class="typebreak"/>
@@ -251,15 +265,14 @@ Functions</h2></td></tr>
 ::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a2abbcf5218be9ebd97d4f7d31eadc454">size</a> (const T &amp;object, size_t &amp;bytes)</td></tr>
 <tr class="memdesc:a2abbcf5218be9ebd97d4f7d31eadc454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a non-sizable object or datatype.  <a href="#a2abbcf5218be9ebd97d4f7d31eadc454">More...</a><br/></td></tr>
 <tr class="separator:a2abbcf5218be9ebd97d4f7d31eadc454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afac7875a041ad1c0725210a357b46682"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afac7875a041ad1c0725210a357b46682"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serialIn</b> (<a class="el" href="classz_1_1util_1_1generic.html">util::generic</a> *&amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
-<tr class="separator:afac7875a041ad1c0725210a357b46682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a655fdc47fd58e4e1a37433b864f54053"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a655fdc47fd58e4e1a37433b864f54053"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serialOut</b> (const <a class="el" href="classz_1_1util_1_1generic.html">util::generic</a> *&amp;object, <a class="el" href="classz_1_1core_1_1outputStream.html">core::outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
-<tr class="separator:a655fdc47fd58e4e1a37433b864f54053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ad7174dbb42ea3662cac07380f7e17e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ad7174dbb42ea3662cac07380f7e17e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serialOut</b> (const <a class="el" href="classz_1_1util_1_1generic.html">util::generic</a> *&amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
-<tr class="separator:a2ad7174dbb42ea3662cac07380f7e17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fa7a3940313e99e63f6360a9eda5cd"><td class="memTemplParams" colspan="2"><a class="anchor" id="a06fa7a3940313e99e63f6360a9eda5cd"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a06fa7a3940313e99e63f6360a9eda5cd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialIn</b> (<a class="el" href="classz_1_1util_1_1generic.html">util::generic</a> *&amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="separator:a06fa7a3940313e99e63f6360a9eda5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31915efac8ea745fa440eb9d7edcbf53"><td class="memTemplParams" colspan="2"><a class="anchor" id="a31915efac8ea745fa440eb9d7edcbf53"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a31915efac8ea745fa440eb9d7edcbf53"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialOut</b> (<a class="el" href="classz_1_1util_1_1generic.html">z::util::generic</a> *const object, <a class="el" href="classz_1_1core_1_1outputStream.html">core::outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
+<tr class="separator:a31915efac8ea745fa440eb9d7edcbf53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Library containing core functions and classes. </p>
@@ -679,14 +692,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aff9d8ae4556e01c199964e38abc39e36"></a>
+<a class="anchor" id="a5f06128d31a04ae524ce1a2ad8c402f0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type z::core::serialIn </td>
+          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value &amp;&amp; !std::is_pointer&lt;T&gt;::value&gt;::type z::core::serialIn </td>
           <td>(</td>
           <td class="paramtype">T &amp;&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -792,14 +805,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a27f0cebd2ce5747e6942d1438e84a490"></a>
+<a class="anchor" id="a6fbc97dddf681b0d0e194710a376c8c0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value&gt;::type z::core::serialOut </td>
+          <td class="memname">std::enable_if&lt;!std::is_base_of&lt;<a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T&gt;::value &amp;&amp; !std::is_integral&lt;T&gt;::value &amp;&amp; !std::is_pointer&lt;T&gt;::value&gt;::type z::core::serialOut </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>object</em>, </td>

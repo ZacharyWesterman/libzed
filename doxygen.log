@@ -356,9 +356,10 @@ Generating code for file /home/travis/build/ZacharyWesterman/libzed/z/system/con
 Generating code for file /home/travis/build/ZacharyWesterman/libzed/z/system/cpuid.h...
 Generating code for fi/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:16: warning: unable to resolve reference to `Doxypages/examples/core/string.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic.cpp:7: warning: Member serialIn(util::generic *&object, core::inputStream &stream) (function) of namespace z::core is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic.cpp:65: warning: Member serialOut(const util::generic *&object, core::outputStream &stream) (function) of namespace z::core is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/generic.h:19: warning: Member serialOut(const util::generic *&object, core::inputStream &stream) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/serializable.h:75: warning: Member serialIn(T &object, inputStream &stream) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/serializable.h:152: warning: Member serialOut(T const object, outputStream &stream) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic.cpp:8: warning: Member serialIn(util::generic *&object, core::inputStream &stream) (function) of namespace z::core is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/generic.cpp:67: warning: Member serialOut(z::util::generic *const object, core::outputStream &stream) (function) of namespace z::core is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/binaryStream.h:43: warning: Member setFormat(encoding enc, bool force=false) (function) of class z::core::binaryStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/memoryStream.h:72: warning: Member setFormat(encoding enc, bool force=false) (function) of class z::core::memoryStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.h:125: warning: Member setFormat(encoding enc, bool force=false)=0 (function) of class z::core::inputStream is not documented.
@@ -473,5 +474,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 1122/65536 hits=7214 misses=1213
+lookup cache used 1129/65536 hits=7275 misses=1220
 finished...
