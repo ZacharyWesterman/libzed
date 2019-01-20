@@ -1,33 +1,23 @@
 #include <z/system.h>
 #include <z/core.h>
+#include <z/util.h>
 #include <z/file.h>
-
-zstring strtype(const zstring& str)
-{
-	switch (str.type())
-	{
-		case z::core::zstr::complex:
-			return zstring("complex : ")+str.complex();
-		case z::core::zstr::floating:
-			return zstring("float : ")+str.floating();
-		case z::core::zstr::integer:
-			return zstring("int : ")+str.integer();
-		default:
-			return "string";
-	}
-}
 
 int main()
 {
 	z::system::console console;
 
-	zstring item;
-	while (!console.empty())
-	{
-		item.read(console);
+	z::file::outputStream out ("temp", z::ascii);
+	z::util::generic* g1 = new z::util::genericInt(260);
+	z::core::serialOut(g1,out);
 
-		strtype(item).writeln(console);
-	}
+	out.close();
+	z::util::generic* g2 = NULL;
+
+	z::file::inputStream in ("temp");
+	z::core::serialIn(g2, in);
+
+	(g2->typeString() + " : " + g2->string()).writeln(console);
 
 	return 0;
 }

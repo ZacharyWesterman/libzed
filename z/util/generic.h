@@ -14,8 +14,10 @@ namespace z
 {
 	namespace core
 	{
+		template<>
 		void serialIn(util::generic*& object, core::inputStream& stream);
 
-		void serialOut(const util::generic*& object, core::inputStream& stream);
+		template<>
+		void serialOut(util::generic* const object, core::outputStream& stream);
 	}
 }

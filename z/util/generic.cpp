@@ -4,6 +4,7 @@ namespace z
 {
 	namespace core
 	{
+		template<>
 		void serialIn(util::generic*& object, core::inputStream& stream)
 		{
 			if (object)
@@ -22,7 +23,7 @@ namespace z
 
 			if (type == util::pointer)
 			{
-				void* val;
+				void* val = NULL;
 				serialIn(val, stream);
 				object = new util::genericPointer(val);
 			}
@@ -62,7 +63,8 @@ namespace z
 			}
 		}
 
-		void serialOut(const util::generic*& object, core::outputStream& stream)
+		template<>
+		void serialOut(z::util::generic* const object, core::outputStream& stream)
 		{
 			if (!(stream.good() && stream.binary())) return;
 

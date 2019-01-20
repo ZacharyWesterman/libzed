@@ -58,7 +58,7 @@ namespace z
 		 * \param stream The stream to read from.
 		 */
 		template <typename T>
-		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value && !std::is_pointer<T>::value>::type
 		serialIn(T& object, inputStream& stream)
 		{
 			size_t length = sizeof(T);
@@ -68,6 +68,14 @@ namespace z
 			{
 				data[i] = stream.get();
 			}
+		}
+
+		template <typename T>
+		typename std::enable_if<std::is_pointer<T>::value>::type
+		serialIn(T& object, inputStream& stream)
+		{
+			(void)object;
+			(void)stream;
 		}
 
 		/**
@@ -127,7 +135,7 @@ namespace z
 		* \param stream The stream to write to.
 		*/
 		template <typename T>
-		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value>::type
+		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value && !std::is_pointer<T>::value>::type
 		serialOut(const T& object, outputStream& stream)
 		{
 			size_t length = sizeof(T);
@@ -137,6 +145,14 @@ namespace z
 			{
 				stream.put(data[i]);
 			}
+		}
+
+		template <typename T>
+		typename std::enable_if<std::is_pointer<T>::value>::type
+		serialOut(T const object, outputStream& stream)
+		{
+			(void)object;
+			(void)stream;
 		}
 
 		/**
