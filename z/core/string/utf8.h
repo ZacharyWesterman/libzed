@@ -1466,29 +1466,40 @@ namespace z
 
 			while (!stream.empty())
 			{
-				if (last == '\r')
+				if (stream.seekable())
 				{
-					auto pos = stream.tell();
-					last = stream.getChar(enc);
-					if (last != '\n')
+					if (last == '\r')
 					{
-						stream.seek(pos);
-					}
+						auto pos = stream.tell();
+						last = stream.getChar(enc);
+						if (last != '\n')
+						{
+							stream.seek(pos);
+						}
 
-					data[character_ct] = 0;
-					return;
+						data[character_ct] = 0;
+						return;
+					}
+					else if (last == '\n')
+					{
+						auto pos = stream.tell();
+						last = stream.getChar(enc);
+						if (last != '\r')
+						{
+							stream.seek(pos);
+						}
+
+						data[character_ct] = 0;
+						return;
+					}
 				}
-				else if (last == '\n')
+				else
 				{
-					auto pos = stream.tell();
-					last = stream.getChar(enc);
-					if (last != '\r')
+					if ((last == '\n') || (last == '\r'))
 					{
-						stream.seek(pos);
+						data[character_ct] = 0;
+						return;
 					}
-
-					data[character_ct] = 0;
-					return;
 				}
 
 				if (enc == utf8)

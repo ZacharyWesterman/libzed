@@ -125,10 +125,6 @@ namespace z
 		void console::flush()
 		{
 			std::cout << std::flush;
-		}
-
-		void console::clear()
-		{
 			std::cin.clear();
 		}
 	}
