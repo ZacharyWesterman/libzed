@@ -82,6 +82,11 @@ namespace z
 
 			void flush();
 
+			/**
+			 * \brief Get the endianness of this stream.
+			 *
+			 * return The determined endianness of the stream, either __ORDER_LITTLE_ENDIAN__ or __ORDER_BIG_ENDIAN__
+			 */
 			size_t endianness();
 		};
 	}

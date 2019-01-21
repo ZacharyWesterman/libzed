@@ -6,6 +6,7 @@ namespace z
 {
 	namespace file
 	{
+		///Typedef for library functions
 		typedef void (* function)();
 
 		/**

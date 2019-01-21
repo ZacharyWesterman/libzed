@@ -70,6 +70,14 @@ namespace z
 			}
 		}
 
+		/**
+		 * \brief Read data from a stream in as an object pointer.
+		 *
+		 * Note that by default, this function does nothing and must be overloaded.
+		 *
+		 * \param object Pointer to data to read from the stream.
+		 * \param stream The stream to read from.
+		 */
 		template <typename T>
 		typename std::enable_if<std::is_pointer<T>::value>::type
 		serialIn(T& object, inputStream& stream)
@@ -114,13 +122,13 @@ namespace z
 		}
 
 		/**
-		* \brief Write a serializable object as binary data to a stream.
-		*
-		* Calls the object's serialOut() member method.
-		*
-		* \param object The object to write to the stream.
-		* \param stream The stream to write to.
-		*/
+		 * \brief Write a serializable object as binary data to a stream.
+		 *
+		 * Calls the object's serialOut() member method.
+		 *
+		 * \param object The object to write to the stream.
+		 * \param stream The stream to write to.
+		 */
 		template <typename T>
 		typename std::enable_if<std::is_base_of<z::core::serializable, T>::value>::type
 		serialOut(const T& object, outputStream& stream)
@@ -129,11 +137,11 @@ namespace z
 		}
 
 		/**
-		* \brief Write a non-serializable object or datatype as binary data to a stream.
-		*
-		* \param object The object to write to the stream.
-		* \param stream The stream to write to.
-		*/
+		 * \brief Write a non-serializable object or datatype as binary data to a stream.
+		 *
+		 * \param object The object to write to the stream.
+		 * \param stream The stream to write to.
+		 */
 		template <typename T>
 		typename std::enable_if<!std::is_base_of<z::core::serializable, T>::value && !std::is_integral<T>::value && !std::is_pointer<T>::value>::type
 		serialOut(const T& object, outputStream& stream)
@@ -147,6 +155,14 @@ namespace z
 			}
 		}
 
+		/**
+		 * \brief Write data of a pointer to a stream.
+		 *
+		 * Note that by default, this function does nothing and must be overloaded.
+		 *
+		 * \param object Pointer to data to write to the stream.
+		 * \param stream The stream to write to.
+		 */
 		template <typename T>
 		typename std::enable_if<std::is_pointer<T>::value>::type
 		serialOut(T const object, outputStream& stream)

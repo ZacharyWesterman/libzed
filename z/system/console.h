@@ -20,23 +20,23 @@ namespace z
 		 * util::regex class.
 		 */
 		class console : public core::stream
- 		{
- 		public:
- 			void put(uint8_t ch);
- 			void put(uint8_t* str, size_t count, encoding format = ascii);
+		{
+		public:
+			void put(uint8_t ch);
+			void put(uint8_t* str, size_t count, encoding format = ascii);
 
- 			uint8_t get();
- 			uint32_t getChar(encoding format = ascii);
+			uint8_t get();
+			uint32_t getChar(encoding format = ascii);
 
- 			bool empty();
+			bool empty();
 			bool good();
 			bool bad();
 			bool binary();
 			bool seekable();
 
- 			void seek(size_t index);
- 			size_t tell();
- 			size_t end();
+			void seek(size_t index);
+			size_t tell();
+			size_t end();
 
 			/**
 			 * \brief Get the expected format of the stream.
@@ -56,8 +56,6 @@ namespace z
 			void setFormat(encoding enc, bool force = false);
 
 			void flush();
-
-			void clear();
- 		};
+		};
 	}
 }

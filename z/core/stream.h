@@ -122,6 +122,12 @@ namespace z
 			 */
 			virtual encoding format() = 0;
 
+			/**
+			 * \brief Set the default character encoding of this stream.
+			 *
+			 * \param enc The character encoding to set to.
+			 * \param force If true, forces the stream to change encoding from this point onwards.
+			 */
 			virtual void setFormat(encoding enc, bool force = false) = 0;
 		};
 
@@ -240,6 +246,12 @@ namespace z
 			 */
 			virtual encoding format() = 0;
 
+			/**
+			 * \brief Set the default character encoding of this stream.
+			 *
+			 * \param enc The character encoding to set to.
+			 * \param force If true, forces the stream to change encoding from this point onwards.
+			 */
 			virtual void setFormat(encoding enc, bool force = false) = 0;
 
 			 /**

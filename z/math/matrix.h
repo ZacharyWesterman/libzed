@@ -17,7 +17,10 @@ namespace z
 		public:
 			double value[N][N]; ///< Array of all elements in the matrix.
 
-			///Method for calculating the determinant of NxN matrix
+			/**
+			 * \brief Calculate the determinant of NxN matrix
+			 * \return The determinant.
+			 */
 			double det()
 			{
 				//the determinant of an NxN matrix requires
@@ -55,8 +58,10 @@ namespace z
 			}
 		};
 
-
-		///Default determinant method for 2x2 matrices.
+		/**
+		 * \brief Calculate the determinant of a 2x2 matrix
+		 * \return The determinant.
+		 */
 		template<>
 		double matrix<2>::det()
 		{

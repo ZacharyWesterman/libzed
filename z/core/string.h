@@ -539,6 +539,7 @@ namespace z
 			 * \brief Check if this string can convert to a floating-point value.
 			 *
 			 * \param base The base this string is being interpreted as.
+			 * \param decimal The character that is used as a decimal separator.
 			 *
 			 * \return True if the string contains only characters representing a
 			 * float. False otherwise.
@@ -559,6 +560,7 @@ namespace z
 			 * \brief Check if this string can convert to a complex value.
 			 *
 			 * \param base The base this string is being interpreted as.
+			 * \param decimal The character that is used as a decimal separator.
 			 *
 			 * \return True if the string contains only characters representing a
 			 * floating-point complex number. False otherwise.
@@ -575,6 +577,19 @@ namespace z
 				return type(base,decimal) & (zstr::integer | zstr::floating | zstr::complex);
 			}
 
+			/**
+			 * \brief Determine the most basic type that this string can cast to.
+			 *
+			 * \param base The base that numbers are assumed to be in.
+			 * \param decimal The character that is used as a decimal separator.
+			 *
+			 * \return A value from the zstr enum representing the type.
+			 *
+			 * \see isInteger()
+			 * \see isFloating()
+			 * \see isComplex()
+			 * \see isString()
+			 */
 			int type(int base = 10, uint32_t decimal = '.') const;
 
 			/**
