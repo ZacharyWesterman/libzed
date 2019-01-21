@@ -10,6 +10,8 @@
  *
  * \return \b True if the normalization of \b arg1 is
  * greater than that of \b arg2. \b False otherwise.
+ *
+ * \threadsafe_function_yes
  */
 template <typename T>
 const bool operator>(const std::complex<T>& arg1, const std::complex<T>& arg2)
@@ -28,6 +30,8 @@ const bool operator>(const std::complex<T>& arg1, const std::complex<T>& arg2)
  *
  * \return \b True if the normalization of \b arg1 is
  * less than that of \b arg2. \b False otherwise.
+ *
+ * \threadsafe_function_yes
  */
 template <typename T>
 const bool operator<(const std::complex<T>& arg1, const std::complex<T>& arg2)
@@ -47,6 +51,8 @@ const bool operator<(const std::complex<T>& arg1, const std::complex<T>& arg2)
  * \return \b True if the normalization of \b arg1 is
  * greater than or equal to that of \b arg2. \b False
  * otherwise.
+ *
+ * \threadsafe_function_yes
  */
 template <typename T>
 inline const bool operator>=(const std::complex<T>& arg1, const std::complex<T>& arg2)
@@ -63,6 +69,8 @@ inline const bool operator>=(const std::complex<T>& arg1, const std::complex<T>&
  * \return \b True if the normalization of \b arg1 is
  * less than or equal to that of \b arg2. \b False
  * otherwise.
+ *
+ * \threadsafe_function_yes
  */
 template <typename T>
 inline const bool operator<=(const std::complex<T>& arg1, const std::complex<T>& arg2)

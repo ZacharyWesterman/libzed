@@ -19,6 +19,8 @@ namespace z
 		 * \param ch The character that has been escaped.
 		 *
 		 * \return The regex symbol resulting from the escaped character.
+		 *
+		 * \threadsafe_function_yes
 		 */
 		rgxss rgxsesc(uint32_t ch);
 	}

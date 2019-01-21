@@ -17,7 +17,7 @@ namespace z
 		class word : public core::sizable, public core::serializable
 		{
 		private:
-			core::string<Z_DICT_FORMAT> _word;
+			core::string<> _word;
 			part part_of_speech;
 
 		public:
@@ -30,7 +30,7 @@ namespace z
 			 * \param name The word.
 			 * \param speechPart The part of speech that this word is.
 			 */
-			word(const core::string<Z_DICT_FORMAT>& name, part speechPart = unknown);
+			word(const core::string<>& name, part speechPart = unknown);
 
 			/**
 			 * \brief Copy constructor.
@@ -45,6 +45,8 @@ namespace z
 			 * \param other The word to copy from.
 			 *
 			 * \return A reference to this word after assignment.
+			 *
+			 * \threadsafe_member_no
 			 */
 			const word& operator=(const word& other);
 
@@ -52,20 +54,26 @@ namespace z
 			 * \brief Get the text pertaining to this word.
 			 *
 			 * \return A reference to this word's text.
+			 *
+			 * \threadsafe_member_yes
 			 */
-			const core::string<Z_DICT_FORMAT>& get() const;
+			const core::string<>& get() const;
 
 			/**
 			 * \brief Set this word's text.
 			 *
 			 * \param name The word.
+			 *
+			 * \threadsafe_member_yes
 			 */
-			void set(const core::string<Z_DICT_FORMAT>& name);
+			void set(const core::string<>& name);
 
 			/**
 			 * \brief Get the part of speech this word is.
 			 *
 			 * \return The assigned speech part for this word.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			part getPart() const;
 
@@ -73,6 +81,8 @@ namespace z
 			 * \brief Set this word's part of speech.
 			 *
 			 * \param speechPart The part of speech this word is.
+			 *
+			 * \threadsafe_member_no
 			 */
 			void setPart(part speechPart);
 
@@ -82,6 +92,8 @@ namespace z
 			 * \param other The word to compare to.
 			 *
 			 * \return True if referencing the same word, false otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			bool operator==(const word& other) const;
 
@@ -91,6 +103,8 @@ namespace z
 			 * \param other The word to compare to.
 			 *
 			 * \return True if this word comes after the other alphabetically, false otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			bool operator>(const word& other) const;
 
@@ -100,6 +114,8 @@ namespace z
 			 * \param other The word to compare to.
 			 *
 			 * \return True if this word comes before the other alphabetically, false otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			bool operator<(const word& other) const;
 

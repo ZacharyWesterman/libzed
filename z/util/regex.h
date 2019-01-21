@@ -20,8 +20,6 @@ namespace z
 		 *
 		 * Note that because the class requires seeking locations in a stream,
 		 * it will not work with the system::console class.
-		 *
-		 * RE-ENTRANCE: Multiple accesses to the same object can cause data races.
 		 */
 		template <encoding E>
 		class regex
@@ -77,6 +75,8 @@ namespace z
 		 * \brief Set the matching pattern
 		 *
 		 * \param pattern The pattern to match against.
+		 *
+		 * \threadsafe_member_no
 		 */
 		template <encoding E>
 		void regex<E>::setPattern(const core::string<E>& pattern)
@@ -100,6 +100,8 @@ namespace z
 		 * \param stream The input stream to read from.
 		 *
 		 * \return True if the stream is seekable and the pattern matched at the current stream index. False otherwise.
+		 *
+		 * \threadsafe_member_no
 		 */
 		template <encoding E>
 		bool regex<E>::match(core::inputStream& stream)
@@ -152,6 +154,8 @@ namespace z
 		 * \brief Get whether the regex pattern is valid.
 		 *
 		 * \return True if the pattern is valid, false otherwise.
+		 *
+		 * \threadsafe_member_yes
 		 */
 		template <encoding E>
 		bool regex<E>::good() const
@@ -163,6 +167,8 @@ namespace z
 		 * \brief Get whether the regex pattern is invalid.
 		 *
 		 * \return False if the pattern is valid, true otherwise.
+		 *
+		 * \threadsafe_member_yes
 		 */
 		template <encoding E>
 		bool regex<E>::bad() const
@@ -174,6 +180,8 @@ namespace z
 		 * \brief Get the regex pattern error, if any.
 		 *
 		 * \return The code for the pattern error. If no error, this will be RGX_NO_ERROR, which equals 0.
+		 *
+		 * \threadsafe_member_yes
 		 */
 		template <encoding E>
 		rgxerr regex<E>::error() const
@@ -185,6 +193,8 @@ namespace z
 		 * \brief Get a string indicating the regex pattern error.
 		 *
 		 * \return A message describing the first encountered regex error.
+		 *
+		 * \threadsafe_member_yes
 		 */
 		template <encoding E>
 		core::string<E> regex<E>::errstr() const
@@ -219,6 +229,8 @@ namespace z
 		 * \brief Get the last string that the regex pattern matched.
 		 *
 		 * \return The last string of characters that this regex matched.
+		 *
+		 * \threadsafe_member_yes
 		 */
 		template <encoding E>
 		const core::string<E>& regex<E>::matched() const

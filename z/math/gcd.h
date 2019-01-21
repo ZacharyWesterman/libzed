@@ -15,6 +15,8 @@ namespace z
 		 *
 		 * \return The greatest common denominator of both numbers.
 		 *
+		 * \threadsafe_function_yes
+		 *
 		 * \see gcd(const std::complex<long>&,const std::complex<long>&)
 		 */
 		long gcd(long x, long y);
@@ -27,6 +29,8 @@ namespace z
 		 * \param y the second integer of type \b std::complex.
 		 *
 		 * \return The greatest common denominator of both numbers.
+		 *
+		 * \threadsafe_function_yes
 		 *
 		 * \see gcd(long,long)
 		 */
