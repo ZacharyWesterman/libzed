@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['det',['det',['../classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb',1,'z::math::matrix']]],
+  ['det',['det',['../classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb',1,'z::math::matrix::det()'],['../classz_1_1math_1_1matrix.html#a3121015726f9119825a47ef491a11279',1,'z::math::matrix::det()']]],
   ['devicenumber',['deviceNumber',['../classz_1_1file_1_1info.html#a3fd6f2fdce2b4d218ca715b3f5506b62',1,'z::file::info']]],
   ['dictionary',['dictionary',['../classz_1_1util_1_1dictionary.html#ad2ee536c9d01efb24543155a1b8f5823',1,'z::util::dictionary']]],
   ['dir',['dir',['../namespacez_1_1file.html#a70b374629853a30bdaebb22d1ffd6eb3',1,'z::file']]],

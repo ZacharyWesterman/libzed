@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,13 +104,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7074f9a277ba75f5893aa17610dbb9cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7074f9a277ba75f5893aa17610dbb9cb"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb">det</a> ()</td></tr>
-<tr class="memdesc:a7074f9a277ba75f5893aa17610dbb9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for calculating the determinant of NxN matrix. <br/></td></tr>
+<tr class="memitem:a7074f9a277ba75f5893aa17610dbb9cb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1math_1_1matrix.html#a7074f9a277ba75f5893aa17610dbb9cb">det</a> ()</td></tr>
+<tr class="memdesc:a7074f9a277ba75f5893aa17610dbb9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the determinant of NxN matrix.  <a href="#a7074f9a277ba75f5893aa17610dbb9cb">More...</a><br/></td></tr>
 <tr class="separator:a7074f9a277ba75f5893aa17610dbb9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3121015726f9119825a47ef491a11279"></a>
-template&lt;&gt; </td></tr>
-<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><b>det</b> ()</td></tr>
+<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a3121015726f9119825a47ef491a11279"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1math_1_1matrix.html#a3121015726f9119825a47ef491a11279">det</a> ()</td></tr>
 <tr class="separator:a3121015726f9119825a47ef491a11279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -126,7 +124,54 @@ class z::math::matrix&lt; N &gt;</h3>
 
 <p>A class for managing square matrices. </p>
 <p>Template class for square matrices of size at least 2x2. Includes methods for calculating determinants. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7074f9a277ba75f5893aa17610dbb9cb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classz_1_1math_1_1matrix.html">z::math::matrix</a>&lt; N &gt;::det </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the determinant of NxN matrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>The determinant. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3121015726f9119825a47ef491a11279"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classz_1_1math_1_1matrix.html">z::math::matrix</a>&lt; 2 &gt;::det </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The determinant. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/ZacharyWesterman/libzed/z/math/<a class="el" href="matrix_8h_source.html">matrix.h</a></li>
 </ul>
 </div><!-- contents -->

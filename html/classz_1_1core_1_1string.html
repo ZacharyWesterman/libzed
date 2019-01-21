@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -235,8 +235,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a25d1dc9326a9530792aa9692b2c485b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a25d1dc9326a9530792aa9692b2c485b6">isComplex</a> (int base=10, uint32_t decimal= '.') const </td></tr>
 <tr class="memdesc:a25d1dc9326a9530792aa9692b2c485b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string can convert to a complex value.  <a href="#a25d1dc9326a9530792aa9692b2c485b6">More...</a><br/></td></tr>
 <tr class="separator:a25d1dc9326a9530792aa9692b2c485b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82e6caa8e72288b7d454e3b33ee6da2e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>type</b> (int base=10, uint32_t decimal= '.') const </td></tr>
+<tr class="memitem:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a82e6caa8e72288b7d454e3b33ee6da2e">type</a> (int base=10, uint32_t decimal= '.') const </td></tr>
+<tr class="memdesc:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine the most basic type that this string can cast to.  <a href="#a82e6caa8e72288b7d454e3b33ee6da2e">More...</a><br/></td></tr>
 <tr class="separator:a82e6caa8e72288b7d454e3b33ee6da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85444b48a6d7fc97801080db8679e0ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a85444b48a6d7fc97801080db8679e0ac">substr</a> (size_t index, int <a class="el" href="classz_1_1core_1_1string.html#a64e4d260010465ba4c9b6042d1b04e96">count</a>) const </td></tr>
 <tr class="memdesc:a85444b48a6d7fc97801080db8679e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sub-string from this string.  <a href="#a85444b48a6d7fc97801080db8679e0ac">More...</a><br/></td></tr>
@@ -1547,7 +1547,8 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Check if this string can convert to a complex value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">base</td><td>The base this string is being interpreted as.</td></tr>
+    <tr><td class="paramname">base</td><td>The base this string is being interpreted as. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character that is used as a decimal separator.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1596,7 +1597,8 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Check if this string can convert to a floating-point value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">base</td><td>The base this string is being interpreted as.</td></tr>
+    <tr><td class="paramname">base</td><td>The base this string is being interpreted as. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character that is used as a decimal separator.</td></tr>
   </table>
   </dd>
 </dl>
@@ -2548,6 +2550,51 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after removing right-padding.</dd></dl>
 <p>Removes all occurrences of the given pad string from the right side of this string. </p>
+
+</div>
+</div>
+<a class="anchor" id="a82e6caa8e72288b7d454e3b33ee6da2e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::type </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determine the most basic type that this string can cast to. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>The base that numbers are assumed to be in. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character that is used as a decimal separator.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A value from the zstr enum representing the type.</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a6dde7e9fb2c7006fc653e173c64fb7fe" title="Check if this string can convert to an integer. ">isInteger()</a> </dd>
+<dd>
+<a class="el" href="classz_1_1core_1_1string.html#a2a5a63ea8675895d66a6db6eec89052d" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd>
+<dd>
+<a class="el" href="classz_1_1core_1_1string.html#a25d1dc9326a9530792aa9692b2c485b6" title="Check if this string can convert to a complex value. ">isComplex()</a> </dd>
+<dd>
+isString() </dd></dl>
 
 </div>
 </div>

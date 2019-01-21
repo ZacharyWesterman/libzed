@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -153,8 +153,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a3eb08c3fe541ce38d5df428918f83a49"><td class="memItemLeft" align="right" valign="top">virtual encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49">format</a> ()=0</td></tr>
 <tr class="memdesc:a3eb08c3fe541ce38d5df428918f83a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#a3eb08c3fe541ce38d5df428918f83a49">More...</a><br/></td></tr>
 <tr class="separator:a3eb08c3fe541ce38d5df428918f83a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad590408c5b417583c16f9b43c0aee45d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad590408c5b417583c16f9b43c0aee45d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setFormat</b> (encoding enc, bool force=false)=0</td></tr>
+<tr class="memitem:ad590408c5b417583c16f9b43c0aee45d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#ad590408c5b417583c16f9b43c0aee45d">setFormat</a> (encoding enc, bool force=false)=0</td></tr>
+<tr class="memdesc:ad590408c5b417583c16f9b43c0aee45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default character encoding of this stream.  <a href="#ad590408c5b417583c16f9b43c0aee45d">More...</a><br/></td></tr>
 <tr class="separator:ad590408c5b417583c16f9b43c0aee45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26cbea1cc2f7ac6a7468861212c5ff3d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1outputStream.html#a26cbea1cc2f7ac6a7468861212c5ff3d">flush</a> ()=0</td></tr>
 <tr class="memdesc:a26cbea1cc2f7ac6a7468861212c5ff3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="#a26cbea1cc2f7ac6a7468861212c5ff3d">More...</a><br/></td></tr>
@@ -513,6 +513,51 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setFormat</b>
 <dl class="section return"><dt>Returns</dt><dd>True if seeking is possible for this stream. False otherwise. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1core_1_1memoryStream.html#a738a8658740e2ac5f630faae93812ff1">z::core::memoryStream</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a1065857f9dca1bb7f8f035bd18ba4d73">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">z::core::binaryStream</a>, and <a class="el" href="classz_1_1system_1_1console.html#ab88400e18c840c0764b3741b58ff3f8e">z::system::console</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad590408c5b417583c16f9b43c0aee45d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void z::core::outputStream::setFormat </td>
+          <td>(</td>
+          <td class="paramtype">encoding&#160;</td>
+          <td class="paramname"><em>enc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>force</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the default character encoding of this stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enc</td><td>The character encoding to set to. </td></tr>
+    <tr><td class="paramname">force</td><td>If true, forces the stream to change encoding from this point onwards. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a1a04ebb367d6378baf8e24c212f72b91">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ab57bd62fa8851f32259536beae3309b8">z::core::memoryStream</a>, <a class="el" href="classz_1_1system_1_1console.html#a363c9b20b8fe1ba8dc840a8c47a860f3">z::system::console</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a5fd47ae859f083da8b3258de0075040b">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
