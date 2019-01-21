@@ -38,7 +38,7 @@ namespace z
 			 * \param fileFormat the format to write to the file. If append is set and the file exists, then this parameter is ignored in favor of the file's original encoding.
 			 * \param append set to \b true to append to the file, \b false to overwrite.
 			 */
-			outputStream(const zpath&, encoding fileFormat, bool append = false);
+			outputStream(const zpath&, encoding fileFormat = ascii, bool append = false);
 
 			/**
 			 * \brief Reopen the stream to the given file.
@@ -47,7 +47,7 @@ namespace z
 			 * \param fileFormat the format to write to the file. If append is set, then this parameter is ignored if the file already exists.
 			 * \param append set to \b true to append to the file, \b false to overwrite.
 			 */
-			void open(const zpath& fileName, encoding fileFormat, bool append = false);
+			void open(const zpath& fileName, encoding fileFormat = ascii, bool append = false);
 
 			///Close the current file stream.
 			void close();
