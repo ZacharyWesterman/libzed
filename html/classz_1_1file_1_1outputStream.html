@@ -112,12 +112,12 @@ Inheritance diagram for z::file::outputStream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac287bb9220b8e49aceea40a938dff004"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#ac287bb9220b8e49aceea40a938dff004">outputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;, encoding fileFormat, bool append=false)</td></tr>
-<tr class="memdesc:ac287bb9220b8e49aceea40a938dff004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac287bb9220b8e49aceea40a938dff004">More...</a><br/></td></tr>
-<tr class="separator:ac287bb9220b8e49aceea40a938dff004"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecd0e6459b24077512c2782cb68f283b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#aecd0e6459b24077512c2782cb68f283b">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileName, encoding fileFormat, bool append=false)</td></tr>
-<tr class="memdesc:aecd0e6459b24077512c2782cb68f283b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen the stream to the given file.  <a href="#aecd0e6459b24077512c2782cb68f283b">More...</a><br/></td></tr>
-<tr class="separator:aecd0e6459b24077512c2782cb68f283b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1affa186f536d7ca1306dfd1f2514ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#aa1affa186f536d7ca1306dfd1f2514ae">outputStream</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;, encoding fileFormat=ascii, bool append=false)</td></tr>
+<tr class="memdesc:aa1affa186f536d7ca1306dfd1f2514ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aa1affa186f536d7ca1306dfd1f2514ae">More...</a><br/></td></tr>
+<tr class="separator:aa1affa186f536d7ca1306dfd1f2514ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52545174c798fd7014db7688702cded2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#a52545174c798fd7014db7688702cded2">open</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileName, encoding fileFormat=ascii, bool append=false)</td></tr>
+<tr class="memdesc:a52545174c798fd7014db7688702cded2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen the stream to the given file.  <a href="#a52545174c798fd7014db7688702cded2">More...</a><br/></td></tr>
+<tr class="separator:a52545174c798fd7014db7688702cded2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c3fa9f4b743fb5dcda7d6944653333a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c3fa9f4b743fb5dcda7d6944653333a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1outputStream.html#a9c3fa9f4b743fb5dcda7d6944653333a">close</a> ()</td></tr>
 <tr class="memdesc:a9c3fa9f4b743fb5dcda7d6944653333a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the current file stream. <br/></td></tr>
@@ -174,7 +174,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <div class="textblock"><p>A class for file output streams. </p>
 <p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1outputStream.html" title="An interface for data output streams. ">core::outputStream</a> for files. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac287bb9220b8e49aceea40a938dff004"></a>
+<a class="anchor" id="aa1affa186f536d7ca1306dfd1f2514ae"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -188,7 +188,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">encoding&#160;</td>
-          <td class="paramname"><em>fileFormat</em>, </td>
+          <td class="paramname"><em>fileFormat</em> = <code>ascii</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -416,7 +416,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="aecd0e6459b24077512c2782cb68f283b"></a>
+<a class="anchor" id="a52545174c798fd7014db7688702cded2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -430,7 +430,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">encoding&#160;</td>
-          <td class="paramname"><em>fileFormat</em>, </td>
+          <td class="paramname"><em>fileFormat</em> = <code>ascii</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
