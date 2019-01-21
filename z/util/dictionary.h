@@ -16,7 +16,7 @@ namespace z
 		class dictionary : public core::sizable, public core::serializable
 		{
 		private:
-			core::string<Z_DICT_FORMAT> lang;
+			core::string<> lang;
 			core::sortedRefArray<word*> wordList;
 
 			encoding streamFormat;
@@ -47,6 +47,8 @@ namespace z
 			 *
 			 * \return A positive integer if finished reading successfully, 0 if not finished reading,
 			 * a negative integer if read failed.
+			 *
+			 * \threadsafe_member_ref
 			 */
 			int read(core::inputStream& stream, const core::timeout& time = -1);
 
@@ -56,8 +58,10 @@ namespace z
 			 * \param name The word to search for.
 			 *
 			 * \return True if it is a valid word, false otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
-			bool isWord(const core::string<Z_DICT_FORMAT>& name) const;
+			bool isWord(const core::string<>& name) const;
 
 			/**
 			 * \brief Get the word information for the given dictionary word.
@@ -65,13 +69,17 @@ namespace z
 			 * \param name The word to get info for.
 			 *
 			 * \return Appropriate word information if this is a valid word, blank word info otherwise.
+			 *
+			 * \threadsafe_member_yes
 			 */
-			word getWord(const core::string<Z_DICT_FORMAT>& name) const;
+			word getWord(const core::string<>& name) const;
 
 			/**
 			 * \brief Get the word count of this dictionary.
 			 *
 			 * \return The number of words in this dictionary.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			size_t wordCount() const;
 
@@ -81,6 +89,8 @@ namespace z
 			 * If the word already exists, updates its info. Otherwise, creates a new word.
 			 *
 			 * \param newWord The word to add or update.
+			 *
+			 * \threadsafe_member_no
 			 */
 			void setWord(const word& newWord);
 
@@ -88,15 +98,17 @@ namespace z
 			 * \brief Get the language of this dictionary.
 			 *
 			 * \return A reference to he language name.
+			 *
+			 * \threadsafe_member_yes
 			 */
-			const core::string<Z_DICT_FORMAT>& language() const;
+			const core::string<>& language() const;
 
 			/**
 			 * \brief Set the language of this dictionary.
 			 *
 			 * \param newLang The string to set as the language name.
 			 */
-			void setLanguage(const core::string<Z_DICT_FORMAT>& newLang);
+			void setLanguage(const core::string<>& newLang);
 
 			size_t size() const;
 

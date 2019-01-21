@@ -35,12 +35,14 @@ namespace z
 			/**
 			 * \brief Get this symbol's character.
 			 * \return The character associated with this symbol.
+			 * \threadsafe_member_yes
 			 */
 			uint32_t symbol() const;
 
 			/**
 			 * \brief Get this symbol's ID.
 			 * \return The ID of this symbol.
+			 * \threadsafe_member_yes
 			 */
 			uint8_t id() const;
 
@@ -51,6 +53,7 @@ namespace z
 			 *
 			 * \param other Symbol to compare against.
 			 * \return True if the symbols are equivalent, false otherwise.
+			 * \threadsafe_member_yes
 			 */
 			bool operator==(const rgxss& other) const;
 
@@ -59,6 +62,7 @@ namespace z
 			 *
 			 * \param other Symbol to assign as.
 			 * \return A reference to this symbol after assignment.
+			 * \threadsafe_member_no
 			 */
 			const rgxss& operator=(const rgxss& other);
 		};

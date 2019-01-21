@@ -34,6 +34,8 @@ namespace z
 			 * \brief Get the CPU vendor.
 			 *
 			 * \return A string containing the vendor CPU id.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			const core::string<ascii>& vendor();
 
@@ -41,6 +43,8 @@ namespace z
 			 * \brief Get the number of CPUs.
 			 *
 			 * \return The number of CPUs on this machine.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			int cpus();
 
@@ -48,6 +52,8 @@ namespace z
 			 * \brief Get the number of cores.
 			 *
 			 * \return The number of individual cores on this machine.
+			 *
+			 * \threadsafe_member_yes
 			 */
 			int cores();
 		};

@@ -15,6 +15,8 @@ namespace z
 		 * doing anything important.
 		 *
 		 * \param ms the number of \b milliseconds to wait.
+		 *
+		 * \threadsafe_function_yes
 		 */
 		void pause(double ms);
 	}

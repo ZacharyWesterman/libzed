@@ -7,7 +7,7 @@ namespace z
 	namespace util
 	{
 		/**
-		 * \brief An implementation of the generic type for undefined pointers.
+		 * \brief An implementation of the generic type for nonspecific pointers.
 		 */
 		class genericPointer : public generic
 		{

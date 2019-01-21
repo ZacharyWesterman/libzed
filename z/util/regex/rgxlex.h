@@ -16,6 +16,8 @@ namespace z
 		 * Note that root is dynamically allocated, so it must be deleted after calling if not NULL.
 		 *
 		 * \return A flag representing the first error encountered. If no errors, returns RGX_NO_ERROR, which is equivalent to 0.
+		 *
+		 * \threadsafe_function_ref
 		 */
 		rgxerr rgxlex(const core::array<rgxss>& input, rgxll*& root);
 	}

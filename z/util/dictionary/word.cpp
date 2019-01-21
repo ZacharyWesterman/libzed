@@ -7,7 +7,7 @@ namespace z
 	{
 		word::word() : part_of_speech(unknown) {}
 
-		word::word(const core::string<Z_DICT_FORMAT>& name, part speechPart)
+		word::word(const core::string<>& name, part speechPart)
 		{
 			_word = name;
 			part_of_speech = speechPart;
@@ -27,12 +27,12 @@ namespace z
 			return *this;
 		}
 
-		const core::string<Z_DICT_FORMAT>& word::get() const
+		const core::string<>& word::get() const
 		{
 			return _word;
 		}
 
-		void word::set(const core::string<Z_DICT_FORMAT>& name)
+		void word::set(const core::string<>& name)
 		{
 			_word = name;
 		}
