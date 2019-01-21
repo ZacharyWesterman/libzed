@@ -106,48 +106,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">namespace </span>util</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html">   27</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classz_1_1util_1_1regex.html">regex</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="classz_1_1util_1_1rgxll.html">rgxll</a>* root;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> parseError;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html">   25</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classz_1_1util_1_1regex.html">regex</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classz_1_1util_1_1rgxll.html">rgxll</a>* root;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> parseError;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> matchedString;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> matchedString;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp;);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp;);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50">setPattern</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp;);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50">setPattern</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp;);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">match</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">core::inputStream</a>&amp;);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">match</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">core::inputStream</a>&amp;);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">good</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">bad</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> <a class="code" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">error</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> <a class="code" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">errstr</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; <a class="code" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">matched</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        };</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">   56</a></span>&#160;        <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex&lt;E&gt;::regex</a>() : root(0), parseError(RGX_NO_ERROR) {}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a902e1c1e2baaf7a6ad852a6e11d169b2">   64</a></span>&#160;        <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex&lt;E&gt;::regex</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; pattern)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            root = 0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="classz_1_1core_1_1array.html">core::array&lt;rgxss&gt;</a> symbols; <span class="comment">//intermediate</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            parseError = <a class="code" href="namespacez_1_1util.html#a5562ced719c64f94c0001c9e18e7c76f">rgxscan</a>(pattern, symbols);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (!parseError)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                parseError = <a class="code" href="namespacez_1_1util.html#a68a92180e523e4d720282496205fcf15">rgxlex</a>(symbols, root);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">good</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">bad</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> <a class="code" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">error</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> <a class="code" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">errstr</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; <a class="code" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">matched</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        };</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">   54</a></span>&#160;        <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex&lt;E&gt;::regex</a>() : root(0), parseError(RGX_NO_ERROR) {}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a902e1c1e2baaf7a6ad852a6e11d169b2">   62</a></span>&#160;        <a class="code" href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">regex&lt;E&gt;::regex</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; pattern)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            root = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classz_1_1core_1_1array.html">core::array&lt;rgxss&gt;</a> symbols; <span class="comment">//intermediate</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            parseError = <a class="code" href="namespacez_1_1util.html#a5562ced719c64f94c0001c9e18e7c76f">rgxscan</a>(pattern, symbols);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (!parseError)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                parseError = <a class="code" href="namespacez_1_1util.html#a68a92180e523e4d720282496205fcf15">rgxlex</a>(symbols, root);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50">   82</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50">regex&lt;E&gt;::setPattern</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; pattern)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
@@ -162,128 +162,128 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">  105</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">regex&lt;E&gt;::match</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">core::inputStream</a>&amp; stream)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (!root)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                parseError = RGX_ERROR;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            matchedString = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">  107</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">regex&lt;E&gt;::match</a>(<a class="code" href="classz_1_1core_1_1inputStream.html">core::inputStream</a>&amp; stream)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (!root)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                parseError = RGX_ERROR;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">if</span> (parseError) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">bad</a>())</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                parseError = RGX_BAD_STREAM;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">if</span> (!stream.<a class="code" href="classz_1_1core_1_1inputStream.html#ae1c0856a681a860f2069d4aaa8e6de20">seekable</a>())</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                parseError = RGX_NOT_SEEKABLE;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <a class="code" href="structz_1_1util_1_1rgxmatcher.html">rgxmatcher</a> matcher (&amp;stream, root, E);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            matchedString = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">if</span> (parseError) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">if</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">bad</a>())</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                parseError = RGX_BAD_STREAM;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (!stream.<a class="code" href="classz_1_1core_1_1inputStream.html#ae1c0856a681a860f2069d4aaa8e6de20">seekable</a>())</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                parseError = RGX_NOT_SEEKABLE;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordtype">size_t</span> startIndex = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">bool</span> result = <a class="code" href="namespacez_1_1util.html#a54d9217a3dddaea781eb9d2df63d636c">rgxmatch</a>(&amp;matcher);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordtype">size_t</span> endIndex = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            stream.<a class="code" href="classz_1_1core_1_1inputStream.html#adb3ba69ab9562c6911379a34fd9a9d13">seek</a>(startIndex);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <a class="code" href="structz_1_1util_1_1rgxmatcher.html">rgxmatcher</a> matcher (&amp;stream, root, E);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordtype">size_t</span> startIndex = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">bool</span> result = <a class="code" href="namespacez_1_1util.html#a54d9217a3dddaea781eb9d2df63d636c">rgxmatch</a>(&amp;matcher);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordtype">size_t</span> endIndex = stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>();</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (matcher.<a class="code" href="structz_1_1util_1_1rgxmatcher.html#a63e2be39eeb06145f751cf98c1422168">fail</a>)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                parseError = RGX_BAD_STREAM;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">while</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>() &lt; endIndex)</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    matchedString += stream.<a class="code" href="classz_1_1core_1_1inputStream.html#acc1bbf3f0dc7ecde4ad46f119bc06249">getChar</a>(E);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">  157</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">regex&lt;E&gt;::good</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)root;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">  168</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">regex&lt;E&gt;::bad</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">return</span> !root;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">  179</a></span>&#160;        <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> <a class="code" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">regex&lt;E&gt;::error</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">return</span> parseError;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">  190</a></span>&#160;        <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> <a class="code" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">regex&lt;E&gt;::errstr</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span>* msgs[] =</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="stringliteral">&quot;No errors&quot;</span>,</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="stringliteral">&quot;Regex error&quot;</span>,</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="stringliteral">&quot;Mismatched parentheses&quot;</span>,</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="stringliteral">&quot;Mismatched brackets&quot;</span>,</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="stringliteral">&quot;Mismatched braces&quot;</span>,</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="stringliteral">&quot;Braces contain invalid characters&quot;</span>,</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="stringliteral">&quot;Unable to parse pattern&quot;</span>,</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="stringliteral">&quot;Invalid hexadecimal characters&quot;</span>,</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <span class="stringliteral">&quot;Improper character range&quot;</span>,</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="stringliteral">&quot;Bad position for count struct&quot;</span>,</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="stringliteral">&quot;Improper count struct format&quot;</span>,</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="stringliteral">&quot;Misplaced greed suppressor&quot;</span>,</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="stringliteral">&quot;Ineffective greed suppressor&quot;</span>,</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="stringliteral">&quot;Invalid lookahead symbol&quot;</span>,</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="stringliteral">&quot;Invalid lookbehind symbol&quot;</span>,</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="stringliteral">&quot;Unknown negative flag&quot;</span>,</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="stringliteral">&quot;Unknown positive flag&quot;</span>,</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="stringliteral">&quot;Unable to analyze stream&quot;</span>,</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="stringliteral">&quot;Unable to seek stream indices&quot;</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            };</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">return</span> msgs[parseError];</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
-<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">  224</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; <a class="code" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">regex&lt;E&gt;::matched</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">return</span> matchedString;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_a4a509ae831940ac6e4a0e8edecaec302"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">z::util::regex::match</a></div><div class="ttdeci">bool match(core::inputStream &amp;)</div><div class="ttdoc">Attempt to match the pattern from a stream. </div><div class="ttdef"><b>Definition:</b> regex.h:105</div></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            stream.<a class="code" href="classz_1_1core_1_1inputStream.html#adb3ba69ab9562c6911379a34fd9a9d13">seek</a>(startIndex);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (matcher.<a class="code" href="structz_1_1util_1_1rgxmatcher.html#a63e2be39eeb06145f751cf98c1422168">fail</a>)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                parseError = RGX_BAD_STREAM;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">while</span> (stream.<a class="code" href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">tell</a>() &lt; endIndex)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    matchedString += stream.<a class="code" href="classz_1_1core_1_1inputStream.html#acc1bbf3f0dc7ecde4ad46f119bc06249">getChar</a>(E);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">  161</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">regex&lt;E&gt;::good</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)root;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">  174</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">regex&lt;E&gt;::bad</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">return</span> !root;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">  187</a></span>&#160;        <a class="code" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> <a class="code" href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">regex&lt;E&gt;::error</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">return</span> parseError;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">  200</a></span>&#160;        <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a> <a class="code" href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">regex&lt;E&gt;::errstr</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span>* msgs[] =</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="stringliteral">&quot;No errors&quot;</span>,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="stringliteral">&quot;Regex error&quot;</span>,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="stringliteral">&quot;Mismatched parentheses&quot;</span>,</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="stringliteral">&quot;Mismatched brackets&quot;</span>,</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="stringliteral">&quot;Mismatched braces&quot;</span>,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="stringliteral">&quot;Braces contain invalid characters&quot;</span>,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="stringliteral">&quot;Unable to parse pattern&quot;</span>,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="stringliteral">&quot;Invalid hexadecimal characters&quot;</span>,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="stringliteral">&quot;Improper character range&quot;</span>,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="stringliteral">&quot;Bad position for count struct&quot;</span>,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="stringliteral">&quot;Improper count struct format&quot;</span>,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="stringliteral">&quot;Misplaced greed suppressor&quot;</span>,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="stringliteral">&quot;Ineffective greed suppressor&quot;</span>,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="stringliteral">&quot;Invalid lookahead symbol&quot;</span>,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="stringliteral">&quot;Invalid lookbehind symbol&quot;</span>,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="stringliteral">&quot;Unknown negative flag&quot;</span>,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="stringliteral">&quot;Unknown positive flag&quot;</span>,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="stringliteral">&quot;Unable to analyze stream&quot;</span>,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="stringliteral">&quot;Unable to seek stream indices&quot;</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            };</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> msgs[parseError];</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keyword">template</span> &lt;encoding E&gt;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">  236</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">core::string&lt;E&gt;</a>&amp; <a class="code" href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">regex&lt;E&gt;::matched</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">return</span> matchedString;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_a4a509ae831940ac6e4a0e8edecaec302"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a4a509ae831940ac6e4a0e8edecaec302">z::util::regex::match</a></div><div class="ttdeci">bool match(core::inputStream &amp;)</div><div class="ttdoc">Attempt to match the pattern from a stream. </div><div class="ttdef"><b>Definition:</b> regex.h:107</div></div>
 <div class="ttc" id="structz_1_1util_1_1rgxmatcher_html"><div class="ttname"><a href="structz_1_1util_1_1rgxmatcher.html">z::util::rgxmatcher</a></div><div class="ttdoc">Data structure for regex pattern matching. </div><div class="ttdef"><b>Definition:</b> rgxmatcher.h:15</div></div>
 <div class="ttc" id="classz_1_1util_1_1regex_html_a3e58007e4e0d785e9d7996d435710a50"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a3e58007e4e0d785e9d7996d435710a50">z::util::regex::setPattern</a></div><div class="ttdeci">void setPattern(const core::string&lt; E &gt; &amp;)</div><div class="ttdoc">Set the matching pattern. </div><div class="ttdef"><b>Definition:</b> regex.h:82</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html"><div class="ttname"><a href="classz_1_1util_1_1regex.html">z::util::regex</a></div><div class="ttdoc">A class for parsing and matching regular expressions. </div><div class="ttdef"><b>Definition:</b> regex.h:27</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html"><div class="ttname"><a href="classz_1_1util_1_1regex.html">z::util::regex</a></div><div class="ttdoc">A class for parsing and matching regular expressions. </div><div class="ttdef"><b>Definition:</b> regex.h:25</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_adb3ba69ab9562c6911379a34fd9a9d13"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#adb3ba69ab9562c6911379a34fd9a9d13">z::core::inputStream::seek</a></div><div class="ttdeci">virtual void seek(size_t index)=0</div><div class="ttdoc">Seek a position in the stream. </div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_a4fcf2e9a5fc3cb5f495c1c5b2e409a8c"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">z::util::regex::good</a></div><div class="ttdeci">bool good() const </div><div class="ttdoc">Get whether the regex pattern is valid. </div><div class="ttdef"><b>Definition:</b> regex.h:157</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_a4fcf2e9a5fc3cb5f495c1c5b2e409a8c"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a4fcf2e9a5fc3cb5f495c1c5b2e409a8c">z::util::regex::good</a></div><div class="ttdeci">bool good() const </div><div class="ttdoc">Get whether the regex pattern is valid. </div><div class="ttdef"><b>Definition:</b> regex.h:161</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html">z::core::inputStream</a></div><div class="ttdoc">An interface for data input streams. </div><div class="ttdef"><b>Definition:</b> stream.h:22</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_a5aab166bdbdb693302f1f33ca48fad6b"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">z::util::regex::bad</a></div><div class="ttdeci">bool bad() const </div><div class="ttdoc">Get whether the regex pattern is invalid. </div><div class="ttdef"><b>Definition:</b> regex.h:168</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_a5aab166bdbdb693302f1f33ca48fad6b"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a5aab166bdbdb693302f1f33ca48fad6b">z::util::regex::bad</a></div><div class="ttdeci">bool bad() const </div><div class="ttdoc">Get whether the regex pattern is invalid. </div><div class="ttdef"><b>Definition:</b> regex.h:174</div></div>
 <div class="ttc" id="namespacez_1_1util_html_a68a92180e523e4d720282496205fcf15"><div class="ttname"><a href="namespacez_1_1util.html#a68a92180e523e4d720282496205fcf15">z::util::rgxlex</a></div><div class="ttdeci">rgxerr rgxlex(const core::array&lt; rgxss &gt; &amp;input, rgxll *&amp;root)</div><div class="ttdoc">Regex pattern lexical analyzer. </div><div class="ttdef"><b>Definition:</b> rgxlex.cpp:409</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_a43d1a1edb8949f3f644ac7bbf667aedf"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#a43d1a1edb8949f3f644ac7bbf667aedf">z::core::inputStream::bad</a></div><div class="ttdeci">virtual bool bad()=0</div><div class="ttdoc">Tell whether this is an invalid stream object. </div></div>
 <div class="ttc" id="namespacez_1_1util_html_a5562ced719c64f94c0001c9e18e7c76f"><div class="ttname"><a href="namespacez_1_1util.html#a5562ced719c64f94c0001c9e18e7c76f">z::util::rgxscan</a></div><div class="ttdeci">rgxerr rgxscan(const zpath &amp;pattern, core::array&lt; rgxss &gt; &amp;output)</div><div class="ttdoc">Scan a string, creating a list of regex symbols. </div><div class="ttdef"><b>Definition:</b> rgxscan.cpp:11</div></div>
 <div class="ttc" id="classz_1_1util_1_1rgxll_html"><div class="ttname"><a href="classz_1_1util_1_1rgxll.html">z::util::rgxll</a></div><div class="ttdoc">Regex pattern node object. </div><div class="ttdef"><b>Definition:</b> rgxll.h:20</div></div>
 <div class="ttc" id="classz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector. </div><div class="ttdef"><b>Definition:</b> array.h:28</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_ae0573e53786f2fe1d3e354f69f41a6ea"><div class="ttname"><a href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">z::util::regex::matched</a></div><div class="ttdeci">const core::string&lt; E &gt; &amp; matched() const </div><div class="ttdoc">Get the last string that the regex pattern matched. </div><div class="ttdef"><b>Definition:</b> regex.h:224</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_ae817d414661f53cab45e356b9dfb8f4e"><div class="ttname"><a href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">z::util::regex::regex</a></div><div class="ttdeci">regex()</div><div class="ttdoc">Empty constructor. </div><div class="ttdef"><b>Definition:</b> regex.h:56</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_ae0573e53786f2fe1d3e354f69f41a6ea"><div class="ttname"><a href="classz_1_1util_1_1regex.html#ae0573e53786f2fe1d3e354f69f41a6ea">z::util::regex::matched</a></div><div class="ttdeci">const core::string&lt; E &gt; &amp; matched() const </div><div class="ttdoc">Get the last string that the regex pattern matched. </div><div class="ttdef"><b>Definition:</b> regex.h:236</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_ae817d414661f53cab45e356b9dfb8f4e"><div class="ttname"><a href="classz_1_1util_1_1regex.html#ae817d414661f53cab45e356b9dfb8f4e">z::util::regex::regex</a></div><div class="ttdeci">regex()</div><div class="ttdoc">Empty constructor. </div><div class="ttdef"><b>Definition:</b> regex.h:54</div></div>
 <div class="ttc" id="namespacez_1_1util_html_a35373b3c1154a49f3b768c34a1eaa710"><div class="ttname"><a href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">z::util::rgxerr</a></div><div class="ttdeci">rgxerr</div><div class="ttdoc">Regex error flags. </div><div class="ttdef"><b>Definition:</b> rgxerr.h:10</div></div>
 <div class="ttc" id="namespacez_1_1util_html_a54d9217a3dddaea781eb9d2df63d636c"><div class="ttname"><a href="namespacez_1_1util.html#a54d9217a3dddaea781eb9d2df63d636c">z::util::rgxmatch</a></div><div class="ttdeci">bool rgxmatch(rgxmatcher *matcher)</div><div class="ttdoc">Match a regex pattern according to a matcher. </div><div class="ttdef"><b>Definition:</b> rgxmatch.cpp:74</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_a450617b20b07b06e158cdaddfcac68e0"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#a450617b20b07b06e158cdaddfcac68e0">z::core::inputStream::tell</a></div><div class="ttdeci">virtual size_t tell()=0</div><div class="ttdoc">Give the current position in the stream. </div></div>
 <div class="ttc" id="classz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings. </div><div class="ttdef"><b>Definition:</b> string.h:42</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_a0bb01f86e2d32791d8a66964d6bcde03"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">z::util::regex::error</a></div><div class="ttdeci">rgxerr error() const </div><div class="ttdoc">Get the regex pattern error, if any. </div><div class="ttdef"><b>Definition:</b> regex.h:179</div></div>
-<div class="ttc" id="classz_1_1util_1_1regex_html_a9235660414bb780e3fe7e31fa26fba8a"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">z::util::regex::errstr</a></div><div class="ttdeci">core::string&lt; E &gt; errstr() const </div><div class="ttdoc">Get a string indicating the regex pattern error. </div><div class="ttdef"><b>Definition:</b> regex.h:190</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_a0bb01f86e2d32791d8a66964d6bcde03"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03">z::util::regex::error</a></div><div class="ttdeci">rgxerr error() const </div><div class="ttdoc">Get the regex pattern error, if any. </div><div class="ttdef"><b>Definition:</b> regex.h:187</div></div>
+<div class="ttc" id="classz_1_1util_1_1regex_html_a9235660414bb780e3fe7e31fa26fba8a"><div class="ttname"><a href="classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a">z::util::regex::errstr</a></div><div class="ttdeci">core::string&lt; E &gt; errstr() const </div><div class="ttdoc">Get a string indicating the regex pattern error. </div><div class="ttdef"><b>Definition:</b> regex.h:200</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_acc1bbf3f0dc7ecde4ad46f119bc06249"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#acc1bbf3f0dc7ecde4ad46f119bc06249">z::core::inputStream::getChar</a></div><div class="ttdeci">virtual uint32_t getChar(encoding format=ascii)=0</div><div class="ttdoc">Get the next chracter on the stream in the given encoding. </div></div>
 <div class="ttc" id="structz_1_1util_1_1rgxmatcher_html_a63e2be39eeb06145f751cf98c1422168"><div class="ttname"><a href="structz_1_1util_1_1rgxmatcher.html#a63e2be39eeb06145f751cf98c1422168">z::util::rgxmatcher::fail</a></div><div class="ttdeci">bool fail</div><div class="ttdoc">Flag indicating whether an unexpected error was encountered. </div><div class="ttdef"><b>Definition:</b> rgxmatcher.h:27</div></div>
 <div class="ttc" id="classz_1_1core_1_1inputStream_html_ae1c0856a681a860f2069d4aaa8e6de20"><div class="ttname"><a href="classz_1_1core_1_1inputStream.html#ae1c0856a681a860f2069d4aaa8e6de20">z::core::inputStream::seekable</a></div><div class="ttdeci">virtual bool seekable()=0</div><div class="ttdoc">Tell whether this stream allows seeking to an index. </div></div>

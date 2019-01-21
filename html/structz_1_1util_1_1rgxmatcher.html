@@ -117,13 +117,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a81869b172677e8c519e684a032a744a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#a81869b172677e8c519e684a032a744a1">getFlag</a> (<a class="el" href="namespacez_1_1util.html#a3509b3c93adf7807600ed1f6043f7969">rgxflag</a> flag) const </td></tr>
 <tr class="memdesc:a81869b172677e8c519e684a032a744a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a regex flag's state.  <a href="#a81869b172677e8c519e684a032a744a1">More...</a><br/></td></tr>
 <tr class="separator:a81869b172677e8c519e684a032a744a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee91b70448c3421fc4b6f7013dfe5ed6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee91b70448c3421fc4b6f7013dfe5ed6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#aee91b70448c3421fc4b6f7013dfe5ed6">pushFlags</a> ()</td></tr>
-<tr class="memdesc:aee91b70448c3421fc4b6f7013dfe5ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the state of all current flags, and push them onto the stack. <br/></td></tr>
+<tr class="memitem:aee91b70448c3421fc4b6f7013dfe5ed6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#aee91b70448c3421fc4b6f7013dfe5ed6">pushFlags</a> ()</td></tr>
+<tr class="memdesc:aee91b70448c3421fc4b6f7013dfe5ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the state of all current flags, and push them onto the stack.  <a href="#aee91b70448c3421fc4b6f7013dfe5ed6">More...</a><br/></td></tr>
 <tr class="separator:aee91b70448c3421fc4b6f7013dfe5ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3790502d4da366b10d4a778f206ae3b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3790502d4da366b10d4a778f206ae3b0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#a3790502d4da366b10d4a778f206ae3b0">popFlags</a> ()</td></tr>
-<tr class="memdesc:a3790502d4da366b10d4a778f206ae3b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop the old flag states off the stack, replacing all current flags. <br/></td></tr>
+<tr class="memitem:a3790502d4da366b10d4a778f206ae3b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#a3790502d4da366b10d4a778f206ae3b0">popFlags</a> ()</td></tr>
+<tr class="memdesc:a3790502d4da366b10d4a778f206ae3b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop the old flag states off the stack, replacing all current flags.  <a href="#a3790502d4da366b10d4a778f206ae3b0">More...</a><br/></td></tr>
 <tr class="separator:a3790502d4da366b10d4a778f206ae3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11e8e8a809e3ba1ecb04840ac529f14a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1rgxmatcher.html#a11e8e8a809e3ba1ecb04840ac529f14a">charsToOffset</a> (size_t charCount) const </td></tr>
 <tr class="memdesc:a11e8e8a809e3ba1ecb04840ac529f14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of bytes the given number of characters would consume.  <a href="#a11e8e8a809e3ba1ecb04840ac529f14a">More...</a><br/></td></tr>
@@ -223,7 +221,8 @@ std::stack&lt; bool * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>2 if this matcher's format is UTF16, 4 if it's UTF32, 1 otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>2 if this matcher's format is UTF16, 4 if it's UTF32, 1 otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -248,7 +247,44 @@ std::stack&lt; bool * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The state of the flag. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The state of the flag.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3790502d4da366b10d4a778f206ae3b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::util::rgxmatcher::popFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pop the old flag states off the stack, replacing all current flags. </p>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aee91b70448c3421fc4b6f7013dfe5ed6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::util::rgxmatcher::pushFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the state of all current flags, and push them onto the stack. </p>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
 
 </div>
 </div>
@@ -280,10 +316,11 @@ std::stack&lt; bool * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flag</td><td>The flag to set. </td></tr>
-    <tr><td class="paramname">state</td><td>The state to set the flag to. </td></tr>
+    <tr><td class="paramname">state</td><td>The state to set the flag to.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
 
 </div>
 </div>

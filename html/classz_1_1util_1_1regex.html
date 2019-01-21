@@ -137,8 +137,7 @@ Public Member Functions</h2></td></tr>
 class z::util::regex&lt; E &gt;</h3>
 
 <p>A class for parsing and matching regular expressions. </p>
-<p>Note that because the class requires seeking locations in a stream, it will not work with the <a class="el" href="classz_1_1system_1_1console.html" title="Class for interacting with the console. ">system::console</a> class.</p>
-<p>RE-ENTRANCE: Multiple accesses to the same object can cause data races. </p>
+<p>Note that because the class requires seeking locations in a stream, it will not work with the <a class="el" href="classz_1_1system_1_1console.html" title="Class for interacting with the console. ">system::console</a> class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a902e1c1e2baaf7a6ad852a6e11d169b2"></a>
 <div class="memitem">
@@ -183,7 +182,8 @@ template&lt;encoding E&gt; </div>
 </div><div class="memdoc">
 
 <p>Get whether the regex pattern is invalid. </p>
-<dl class="section return"><dt>Returns</dt><dd>False if the pattern is valid, true otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>False if the pattern is valid, true otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -203,7 +203,8 @@ template&lt;encoding E&gt; </div>
 </div><div class="memdoc">
 
 <p>Get the regex pattern error, if any. </p>
-<dl class="section return"><dt>Returns</dt><dd>The code for the pattern error. If no error, this will be RGX_NO_ERROR, which equals 0. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The code for the pattern error. If no error, this will be RGX_NO_ERROR, which equals 0.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -223,7 +224,8 @@ template&lt;encoding E&gt; </div>
 </div><div class="memdoc">
 
 <p>Get a string indicating the regex pattern error. </p>
-<dl class="section return"><dt>Returns</dt><dd>A message describing the first encountered regex error. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A message describing the first encountered regex error.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -243,7 +245,8 @@ template&lt;encoding E&gt; </div>
 </div><div class="memdoc">
 
 <p>Get whether the regex pattern is valid. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the pattern is valid, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the pattern is valid, false otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -271,7 +274,8 @@ template&lt;encoding E&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the stream is seekable and the pattern matched at the current stream index. False otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the stream is seekable and the pattern matched at the current stream index. False otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
 
 </div>
 </div>
@@ -291,7 +295,8 @@ template&lt;encoding E&gt; </div>
 </div><div class="memdoc">
 
 <p>Get the last string that the regex pattern matched. </p>
-<dl class="section return"><dt>Returns</dt><dd>The last string of characters that this regex matched. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The last string of characters that this regex matched.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -314,10 +319,11 @@ template&lt;encoding E&gt; </div>
 <p>Set the matching pattern. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pattern</td><td>The pattern to match against. </td></tr>
+    <tr><td class="paramname">pattern</td><td>The pattern to match against.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
 
 </div>
 </div>

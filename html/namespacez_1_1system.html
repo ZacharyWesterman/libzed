@@ -133,10 +133,11 @@ Functions</h2></td></tr>
 <p>This function is meant to be a platform-independent way of allowing the user to put the program to sleep for a little while. Ideally, this could be used to keep the program from taking up too much CPU time when it's not doing anything important.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ms</td><td>the number of <b>milliseconds</b> to wait. </td></tr>
+    <tr><td class="paramname">ms</td><td>the number of <b>milliseconds</b> to wait.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>

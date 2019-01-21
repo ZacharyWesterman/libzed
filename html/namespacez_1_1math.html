@@ -178,7 +178,8 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -214,7 +215,8 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this function with the same reference parameter(s) may cause data races. </dd></dl>
 
 </div>
 </div>
@@ -242,7 +244,8 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the n<sup>th</sup> number in the Fibonacci sequence. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the n<sup>th</sup> number in the Fibonacci sequence.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
@@ -279,6 +282,7 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The greatest common denominator of both numbers.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="namespacez_1_1math.html#aacf0acaccd46307555f86f014264cae3" title="Calculate the greatest common denominator of two complex integers. ">gcd(const std::complex&lt;long&gt;&amp;,const std::complex&lt;long&gt;&amp;)</a> </dd></dl>
 
 </div>
@@ -316,6 +320,7 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The greatest common denominator of both numbers.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="namespacez_1_1math.html#a41568c1aea47567652d760fcfa965db0" title="Calculate the greatest common denominator of two integers. ">gcd(long,long)</a> </dd></dl>
 
 </div>
@@ -353,6 +358,7 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The remainder of integer <b>x/y</b>.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="namespacez_1_1math.html#a2cbcc012cd4fe51c6372521a0832b229" title="Calculate the remainder of complex division x/y. ">remainder(const std::complex&lt;long&gt;&amp;,const std::complex&lt;long&gt;&amp;)</a> </dd></dl>
 
 </div>
@@ -391,6 +397,7 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The remainder of complex integer division <b>x/y</b>.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="namespacez_1_1math.html#aa6f3bd71b5ed758c3ccbbbbc7f6ad209" title="Calculate the remainder of integer division x/y. ">remainder(long,long)</a> </dd></dl>
 
 </div>
@@ -410,14 +417,15 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>A function for approximating Reimann-zeta sums. </p>
+<p>Computes zeta(s) with reasonable precision.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>an integer greater than 1 </td></tr>
+    <tr><td class="paramname">s</td><td>An integer greater than 1</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An approximation of zeta(s)</dd></dl>
-<p>Computes zeta(s) with reasonable precision. </p>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>

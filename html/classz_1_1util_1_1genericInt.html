@@ -248,7 +248,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get a boolean representation of this object. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if this object can evaluate to a non-zero number, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this object can evaluate to a non-zero number, false otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#aacd9a16fa2f7345db3c1af9147ff577e">z::util::generic</a>.</p>
 
@@ -276,7 +277,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get a complex representation of this object. </p>
-<dl class="section return"><dt>Returns</dt><dd>0+0i if this object cannot be represented by a complex number, otherwise gives the complex representation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0+0i if this object cannot be represented by a complex number, otherwise gives the complex representation.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a0fc1dbe343388f17b971f21961ffa506">z::util::generic</a>.</p>
 
@@ -305,7 +307,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Create an exact copy of this object. </p>
 <p>Note that this method allocates new data for the duplicate object, so not deleting properly may lead to memory leaks or corruption.</p>
-<dl class="section return"><dt>Returns</dt><dd>A duplicate of this object, that is, an object of the same type and containing the same data. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A duplicate of this object, that is, an object of the same type and containing the same data.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a30c336c14ae84469a8fdb1275bc9f00f">z::util::generic</a>.</p>
 
@@ -333,7 +336,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get a floating-point representation of this object. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by a floating point value, otherwise gives the float representation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by a floating point value, otherwise gives the float representation.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#ad3c8ebdc34ec6f827cf201159273bd57">z::util::generic</a>.</p>
 
@@ -361,7 +365,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get an integer representation of this object. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by an integer, otherwise gives the integer representation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by an integer, otherwise gives the integer representation.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a3588cb2927e51e58f8fd78944aa99386">z::util::generic</a>.</p>
 
@@ -389,7 +394,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get whether this object is any kind of number. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as any type of number, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as any type of number, false otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a3318827ba520aff5c34fda69e5687510">z::util::generic</a>.</p>
 
@@ -417,7 +423,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get whether this object is an integer. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as an integer, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as an integer, false otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a385cf966b193322960bc2c3397ff2941">z::util::generic</a>.</p>
 
@@ -445,7 +452,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get a string representation of this object. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of default string encoding. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of default string encoding.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#ab5698be8ee25244acf0d7574ada94af1">z::util::generic</a>.</p>
 
@@ -473,7 +481,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get this object's type. </p>
-<dl class="section return"><dt>Returns</dt><dd>A value representing the object type. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A value representing the object type.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a01d388ac2e62841b89f4c1200f73daec">z::util::generic</a>.</p>
 
@@ -501,7 +510,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Get this object's type as a string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representing this object's type with encoding . </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representing this object's type with default string encoding.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1util_1_1generic.html#a91e9134ec250979dea1cea609d2c7d78">z::util::generic</a>.</p>
 

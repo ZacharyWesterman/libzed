@@ -122,9 +122,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the generic type for integers.  <a href="classz_1_1util_1_1genericInt.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1genericNull.html">genericNull</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the generic type for null data.  <a href="classz_1_1util_1_1genericNull.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1genericPointer.html">genericPointer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the generic type for undefined pointers.  <a href="classz_1_1util_1_1genericPointer.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the generic type for nonspecific pointers.  <a href="classz_1_1util_1_1genericPointer.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1genericString.html">genericString</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the generic type for strings.  <a href="classz_1_1util_1_1genericString.html#details">More...</a><br/></td></tr>
@@ -326,7 +327,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A flag representing the first error encountered. If no errors, returns RGX_NO_ERROR, which is equivalent to 0. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A flag representing the first error encountered. If no errors, returns RGX_NO_ERROR, which is equivalent to 0.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this function with the same reference parameter(s) may cause data races. </dd></dl>
 
 </div>
 </div>
@@ -351,7 +353,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the regex pattern matched at the stream's index, false if it did not match. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the regex pattern matched at the stream's index, false if it did not match.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this function with the same reference parameter(s) may cause data races. </dd></dl>
 
 </div>
 </div>
@@ -387,7 +390,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The first error encountered in the pattern. If no error, gives RGX_NO_ERROR (0). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The first error encountered in the pattern. If no error, gives RGX_NO_ERROR (0).</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this function with the same reference parameter(s) may cause data races. </dd></dl>
 
 </div>
 </div>
@@ -413,7 +417,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The regex symbol resulting from the escaped character. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The regex symbol resulting from the escaped character.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
 
 </div>
 </div>
