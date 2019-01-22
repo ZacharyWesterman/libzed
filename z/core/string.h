@@ -7,6 +7,8 @@
 #include "serializable.h"
 #include "sizable.h"
 
+#include "stringIterator.h"
+
 namespace z
 {
 	namespace core
@@ -966,8 +968,10 @@ namespace z
 
 				writeln(stream, enc);
 			}
-		};
 
+			stringIterator<E> begin() const {return stringIterator<E>(data,0);}
+			stringIterator<E> end() const {return stringIterator<E>(data,character_ct);}
+		};
 	}
 }
 

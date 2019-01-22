@@ -7,12 +7,11 @@ int main()
 {
 	z::system::console console;
 
-	zstring line;
-	while (!console.empty())
+	zstring line = "sample";
+
+	for (auto& chr : line)
 	{
-		zpath("input: ").write(console);
-		line.readln(console);
-		line.writeln(console);
+		zpath((int)chr).writeln(console);
 	}
 
 	return 0;
