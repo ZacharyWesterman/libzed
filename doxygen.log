@@ -1,2 +1,17 @@
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.h:13: warning: Compound z::core::stringIterator is not documented.
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:16: warning: unable to resolve reference to `Doxypages/examples/core/string.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
+/home/travis/build/ZacharyWesterman/libzed/z/core/string.h:972: warning: Member begin() const  (function) of class z::core::string is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/string.h:973: warning: Member end() const  (function) of class z::core::string is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.h:18: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.h:19: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.h:20: warning: Member operator!=(const stringIterator &other) const  (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.h:21: warning: Member operator*() const  (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:9: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:17: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:25: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:32: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:39: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:48: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:57: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:65: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
