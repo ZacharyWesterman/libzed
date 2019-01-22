@@ -100,6 +100,9 @@ namespace z
 
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
+
+			std::vector<int, std::allocator<int> >::iterator begin() {return array_data.begin();}
+			std::vector<int, std::allocator<int> >::iterator end() {return array_data.end();}
 		};
 
 
