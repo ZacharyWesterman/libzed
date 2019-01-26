@@ -101,12 +101,12 @@ namespace z
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
 
-			T* begin()
+			T* begin() const
 			{
-				return array_data.size() ? &array_data[0] : 0;
+				return array_data.size() ? const_cast<T*>(&array_data[0]) : 0;
 			}
 
-			T* end()
+			T* end() const
 			{
 				return begin() + array_data.size();
 			}

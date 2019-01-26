@@ -8,23 +8,19 @@ using z::core::array;
 using z::core::string;
 
 using z::core::split;
+using z::core::join;
 
 int main()
 {
 	console con;
 
-	string<z::utf32> input = "the,quick,brown,fox";
-	string<z::utf32> delim = ",";
-
-	input.substr(0,3).writeln(con);
+	zstring input = "the,quick,brown,fox";
+	zstring delim = ",";
 
 	auto list = split(input,delim);
-	zpath(list.length()).writeln(con);
 
-	for (auto& item : list)
-	{
-		zpath(item+"::").writeln(con);
-	}
+	delim = " : ";
+	(zstring("{")+join(list,delim)+"}").writeln(con);
 
 	return 0;
 }
