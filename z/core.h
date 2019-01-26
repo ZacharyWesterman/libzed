@@ -23,10 +23,12 @@
 #include "core/timer.h"
 #include "core/timeout.h"
 
-///
+///Miscellaneous
 #include "core/charFunctions.h"
 #include "core/serializable.h"
 #include "core/sizable.h"
+#include "core/split.h"
+#include "core/glue.h"
 
 ///Streams
 #include "core/stream.h"
