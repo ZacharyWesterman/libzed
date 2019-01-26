@@ -576,8 +576,8 @@ namespace z
 				if (index >= character_ct) index = character_ct - 1;
 
 				count = -count;
-				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 2);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				result32 = (uint32_t*)result.data;
 
@@ -593,8 +593,8 @@ namespace z
 			{
 				if (index >= character_ct) return result;
 
-				if ((size_t)count > index+1) count = index+1;
-				result.increase((1+count) << 2);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				result32 = (uint32_t*)result.data;
 
@@ -618,7 +618,7 @@ namespace z
 
 			size_t start = index + other.character_ct;
 			size_t end = character_ct + other.character_ct;
-			this->increase(end << 2);
+			increase(end);
 
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;

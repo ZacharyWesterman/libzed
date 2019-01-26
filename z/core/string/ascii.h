@@ -233,8 +233,8 @@ namespace z
 				if (index >= character_ct) index = character_ct - 1;
 
 				count = -count;
-				if ((size_t)count > index+1) count = index+1;
-				result.increase(1+count);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				size_t beg = index - count + 1;
 				for (size_t i=beg; i<=index; i++)
@@ -248,8 +248,8 @@ namespace z
 			{
 				if (index >= character_ct) return result;
 
-				if ((size_t)count > index+1) count = index+1;
-				result.increase(1+count);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				size_t end = index + count;
 				for (size_t i=index; i<end; i++)

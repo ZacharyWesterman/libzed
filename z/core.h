@@ -28,7 +28,7 @@
 #include "core/serializable.h"
 #include "core/sizable.h"
 #include "core/split.h"
-#include "core/glue.h"
+#include "core/join.h"
 
 ///Streams
 #include "core/stream.h"

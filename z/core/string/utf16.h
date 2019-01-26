@@ -322,8 +322,8 @@ namespace z
 				if (index >= character_ct) index = character_ct - 1;
 
 				count = -count;
-				if ((size_t)count > index+1) count = index+1;
-				result.increase(1+count);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				result16 = (uint16_t*)result.data;
 
@@ -339,8 +339,8 @@ namespace z
 			{
 				if (index >= character_ct) return result;
 
-				if ((size_t)count > index+1) count = index+1;
-				result.increase(1+count);
+				if ((size_t)count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
 
 				result16 = (uint16_t*)result.data;
 
