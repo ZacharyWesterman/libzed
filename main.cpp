@@ -3,15 +3,27 @@
 #include <z/util.h>
 #include <z/file.h>
 
+using z::system::console;
+using z::core::array;
+using z::core::string;
+
+using z::core::split;
+
 int main()
 {
-	z::system::console console;
+	console con;
 
-	z::core::array<int> list = {1,2,4,8,16,32};
+	string<z::utf32> input = "the,quick,brown,fox";
+	string<z::utf32> delim = ",";
 
-	for (auto& num : list)
+	input.substr(0,3).writeln(con);
+
+	auto list = split(input,delim);
+	zpath(list.length()).writeln(con);
+
+	for (auto& item : list)
 	{
-		zpath(num).writeln(console);
+		zpath(item+"::").writeln(con);
 	}
 
 	return 0;
