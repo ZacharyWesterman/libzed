@@ -4,11 +4,3 @@
 /home/travis/build/ZacharyWesterman/libzed/z/core/split.h:17: warning: Found unknown command `\function_threadsafe_yes'
 /home/travis/build/ZacharyWesterman/libzed/z/core/string.h:972: warning: Member begin() const  (function) of class z::core::string is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/string.h:973: warning: Member end() const  (function) of class z::core::string is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:9: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:17: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:25: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:32: warning: Member stringIterator(uint8_t *ptr, size_t offset) (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:39: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:48: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:57: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/stringIterator.cpp:65: warning: Member operator++() (function) of class z::core::stringIterator is not documented.
