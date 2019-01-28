@@ -101,11 +101,27 @@ namespace z
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
 
+			/**
+			 * \brief Get pointer to the beginning of the array.
+			 *
+			 * This member function should not be used directly.
+			 * It is meant for C++11's range-based for loop syntax.
+			 *
+			 * \return A pointer to the first element in the array. 0 if no elements.
+			 */
 			T* begin() const
 			{
 				return array_data.size() ? const_cast<T*>(&array_data[0]) : 0;
 			}
 
+			/**
+			 * \brief Get pointer to the end of the array.
+			 *
+			 * This member function should not be used directly.
+			 * It is meant for C++11's range-based for loop syntax.
+			 *
+			 * \return A pointer to right after the last element in the array. 0 if no elements.
+			 */
 			T* end() const
 			{
 				return begin() + array_data.size();
