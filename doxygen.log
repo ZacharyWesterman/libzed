@@ -2,5 +2,3 @@
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `Doxypages/examples/util/regex.md' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/z/core/join.h:16: warning: Found unknown command `\function_threadsafe_yes'
 /home/travis/build/ZacharyWesterman/libzed/z/core/split.h:17: warning: Found unknown command `\function_threadsafe_yes'
-/home/travis/build/ZacharyWesterman/libzed/z/core/string.h:972: warning: Member begin() const  (function) of class z::core::string is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/string.h:973: warning: Member end() const  (function) of class z::core::string is not documented.
