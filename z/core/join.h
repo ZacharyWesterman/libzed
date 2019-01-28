@@ -15,7 +15,7 @@ namespace z
 		 *
 		 * \return A string containing all elements in order, separated by the delimiter.
 		 *
-		 * \function_threadsafe_yes
+		 * \threadsafe_function_yes
 		 */
 		template <encoding E>
 		string<E> join(const array< string<E> >& list, const string<E>& delim)
