@@ -969,7 +969,24 @@ namespace z
 				writeln(stream, enc);
 			}
 
+			/**
+			 * \brief Get an iterator for the beginning of the string.
+			 *
+			 * This member function should not be used directly.
+			 * It is meant for C++11's range-based for loop syntax.
+			 *
+			 * \return An iterator on the first character in the string.
+			 */
 			stringIterator<E> begin() const {return stringIterator<E>(data,0);}
+
+			/**
+			 * \brief Get an iterator for the end of the string.
+			 *
+			 * This member function should not be used directly.
+			 * It is meant for C++11's range-based for loop syntax.
+			 *
+			 * \return An iterator after the last character in the string.
+			 */
 			stringIterator<E> end() const {return stringIterator<E>(data,character_ct);}
 		};
 	}
