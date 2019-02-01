@@ -21,7 +21,7 @@ The only exceptions are the three basic type definitions z::Char, z::Int and z::
 Contains core functionality such as strings, arrays, and timers. No dependencies apart from stl.
 
 #### Examples:
-[Strings](Doxypages/examples/core/string.md)
+[Strings](@ref md_Doxypages_examples_core_string)
 
 
 ## z::file
@@ -36,7 +36,7 @@ Mathematical constants and functions are defined here. No dependencies apart fro
 Contains classes that provide more complicated functionality.
 
 #### Examples:
-[Regex](Doxypages/examples/util/regex.md)
+[Regex](@ref md_Doxypages_examples_util_regex)
 
 
 ## z::system
@@ -44,4 +44,4 @@ Contains classes that allow interaction with and information about the user's sy
 
 --------------------------
 Download or fork: [GitHub repo](https://github.com/ZacharyWesterman/zLibraries).  
-Review the [License](md_Doxypages_LICENSE.html).
+Review the [License](@ref md_Doxypages_LICENSE).
