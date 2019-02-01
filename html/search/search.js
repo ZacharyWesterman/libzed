@@ -15,7 +15,7 @@ var indexSectionsWithContent =
   5: "acefnpsv",
   6: "f",
   7: "dpr",
-  8: "ilrs"
+  8: "ilmrs"
 };
 
 var indexSectionNames =
