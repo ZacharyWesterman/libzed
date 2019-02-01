@@ -37,12 +37,12 @@ namespace z
 			/**
 			 * \brief Load a dynamic library with the given file name.
 			 *
-			 * \param file_name the path of the library to load.
+			 * \param fileName the path of the library to load.
 			 *
 			 * \return \b True if the library loaded successfully.
 			 * \b False otherwise.
 			 */
-			bool load(const zpath&);
+			bool load(const zpath& fileName);
 
 			/**
 			 * \brief Unload the dynamic library.
@@ -75,13 +75,13 @@ namespace z
 			/**
 			 * \brief Get a pointer to the symbol with the given name.
 			 *
-			 * \param symbol_name the name of the symbol to retrieve.
+			 * \param symbolName the name of the symbol to retrieve.
 			 *
 			 * \return If a symbol with the given name was found, returns
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			function symbol(const zpath&);
+			function symbol(const zpath& symbolName);
 		};
 	}
 }
