@@ -239,16 +239,6 @@ namespace z
 			 */
 			string(const string<utf32>& other);
 
-			/// Lvalue copy-constructor
-			// string(string&& other)
-			// {
-			// 	data = other.data;
-			// 	data_len = other.data_len;
-			// 	character_ct = other.character_ct;
-			//
-			// 	other.data = 0;
-			// }
-
 			///Destructor
 			~string()
 			{
