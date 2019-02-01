@@ -4,7 +4,7 @@ This library contains useful classes and functions for quick and simple data man
 The idea is that this will help decrease development time of other projects.  
 
 --------------------------
-All code is under the `z` namespace. Currently, there are four other namespaces below that:  
+All code is under the `z` namespace, with 5 namespaces below that:  
 
 z::core<br/>
 z::file<br/>
