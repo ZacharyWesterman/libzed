@@ -54,7 +54,6 @@ namespace z
 			size_t character_ct;
 
 			void initChar(uint32_t, size_t);
-			void increase(size_t); //increase number of characters up to the given amount
 			constexpr size_t charSize() const;
 
 			void initInt(long long, unsigned int, unsigned int);
@@ -255,6 +254,18 @@ namespace z
 			{
 				if (data) delete[] data;
 			}
+
+			/**
+			 * \brief Increase the space allocated for this string.
+			 *
+			 * If this string currently has fewer than max_chars allocated,
+			 * enough space is reallocated to hold at least that many characters.
+			 * Note that strings follow an approximate 1.5x growth pattern.
+			 *
+			 * \param charCount The minimum number of characters this string should be able to contain before reallocating.
+			 */
+			void increase(size_t charCount);
+
 
 			/**
 			 * \brief Get the character at the given index.
