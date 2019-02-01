@@ -1,6 +1,7 @@
 var searchData=
 [
   ['id',['id',['../classz_1_1util_1_1rgxll.html#a70c5a86bd4802a3a6c954ab12ceed81c',1,'z::util::rgxll::id()'],['../classz_1_1util_1_1rgxss.html#a88acfc8695edc760a25fc3a5cbc76df6',1,'z::util::rgxss::id()']]],
+  ['increase',['increase',['../classz_1_1core_1_1string.html#a1686128e5890296ead8e6a5224f6abc3',1,'z::core::string']]],
   ['info',['info',['../classz_1_1file_1_1info.html#a50701c4a79eee02f6361faae27a7efad',1,'z::file::info']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#ab9001ef637450d5f6b4c083d6368eab2',1,'z::file::inputStream::inputStream()'],['../classz_1_1file_1_1inputStream.html#acbcee58130acb9536d4808631886d1d8',1,'z::file::inputStream::inputStream(const zpath &amp;fileName)']]],
   ['insert',['insert',['../classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aca681e97ec1f2142c36bc15a2d6deba4',1,'z::core::string::insert()'],['../classz_1_1util_1_1generic.html#a788e313c0a623dfd342b454398e53b41',1,'z::util::generic::insert()'],['../classz_1_1util_1_1genericArray.html#a6e678ae338e735e0e69a92bab16b89ed',1,'z::util::genericArray::insert()'],['../classz_1_1util_1_1genericString.html#ad4accb580343ea90165cc456e24f2899',1,'z::util::genericString::insert()']]],

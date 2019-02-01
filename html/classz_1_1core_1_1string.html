@@ -160,9 +160,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a7edd60be02b0a5174af2abe27cabc7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a2a7edd60be02b0a5174af2abe27cabc7">string</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; utf32 &gt; &amp;other)</td></tr>
 <tr class="memdesc:a2a7edd60be02b0a5174af2abe27cabc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a UTF32 string.  <a href="#a2a7edd60be02b0a5174af2abe27cabc7">More...</a><br/></td></tr>
 <tr class="separator:a2a7edd60be02b0a5174af2abe27cabc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdc074690cfd42fd243b6718fccc86fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#abdc074690cfd42fd243b6718fccc86fe">~string</a> ()</td></tr>
-<tr class="memdesc:abdc074690cfd42fd243b6718fccc86fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lvalue copy-constructor.  <a href="#abdc074690cfd42fd243b6718fccc86fe">More...</a><br/></td></tr>
+<tr class="memitem:abdc074690cfd42fd243b6718fccc86fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdc074690cfd42fd243b6718fccc86fe"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#abdc074690cfd42fd243b6718fccc86fe">~string</a> ()</td></tr>
+<tr class="memdesc:abdc074690cfd42fd243b6718fccc86fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
 <tr class="separator:abdc074690cfd42fd243b6718fccc86fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1686128e5890296ead8e6a5224f6abc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a1686128e5890296ead8e6a5224f6abc3">increase</a> (size_t charCount)</td></tr>
+<tr class="memdesc:a1686128e5890296ead8e6a5224f6abc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the space allocated for this string.  <a href="#a1686128e5890296ead8e6a5224f6abc3">More...</a><br/></td></tr>
+<tr class="separator:a1686128e5890296ead8e6a5224f6abc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab808c847f34b92d16ce7b5d03feb77f5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ab808c847f34b92d16ce7b5d03feb77f5">at</a> (size_t index) const </td></tr>
 <tr class="memdesc:ab808c847f34b92d16ce7b5d03feb77f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character at the given index.  <a href="#ab808c847f34b92d16ce7b5d03feb77f5">More...</a><br/></td></tr>
 <tr class="separator:ab808c847f34b92d16ce7b5d03feb77f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -821,34 +825,6 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="abdc074690cfd42fd243b6718fccc86fe"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;encoding E = utf32&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::~<a class="el" href="classz_1_1core_1_1string.html">string</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lvalue copy-constructor. </p>
-<p>Destructor </p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7ebc6a5b873a2d834dbd604548256a38"></a>
 <div class="memitem">
@@ -1504,6 +1480,33 @@ template&lt;encoding E = utf32&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the sub-string was found ending at the given index. False otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1686128e5890296ead8e6a5224f6abc3"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::increase </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>charCount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increase the space allocated for this string. </p>
+<p>If this string currently has fewer than max_chars allocated, enough space is reallocated to hold at least that many characters. Note that strings follow an approximate 1.5x growth pattern.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">charCount</td><td>The minimum number of characters this string should be able to contain before reallocating. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
