@@ -10,6 +10,6 @@ var searchData=
   ['library',['library',['../classz_1_1file_1_1library.html#ad52b777f1dc8b2f44f715f61eb4a229f',1,'z::file::library']]],
   ['listdirs',['listDirs',['../namespacez_1_1file.html#a6161db5314cc45d7b5899e0d55ce7a8d',1,'z::file']]],
   ['listfiles',['listFiles',['../namespacez_1_1file.html#a68441d093ea7bd918a17b9e18fa055a4',1,'z::file']]],
-  ['load',['load',['../classz_1_1file_1_1library.html#a1c76ddf26488761dc0ae141bad0bd435',1,'z::file::library']]],
+  ['load',['load',['../classz_1_1file_1_1library.html#a5861cf44c428916162f0e92024211a79',1,'z::file::library']]],
   ['lower',['lower',['../classz_1_1core_1_1string.html#aab4c1fb525e6d99631fa34594ce37856',1,'z::core::string']]]
 ];

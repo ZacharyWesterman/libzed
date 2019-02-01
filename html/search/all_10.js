@@ -46,6 +46,6 @@ var searchData=
   ['stringiterator',['stringIterator',['../classz_1_1core_1_1stringIterator.html',1,'z::core']]],
   ['subset',['subset',['../classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3',1,'z::core::array']]],
   ['substr',['substr',['../classz_1_1core_1_1string.html#a85444b48a6d7fc97801080db8679e0ac',1,'z::core::string']]],
-  ['symbol',['symbol',['../classz_1_1file_1_1library.html#a8995dc2442ef7fcbc44708cedbd3b1a4',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]],
+  ['symbol',['symbol',['../classz_1_1file_1_1library.html#a9d7f96f85df4d00bc993e8d31ad3c6ed',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]],
   ['system_2eh',['system.h',['../system_8h.html',1,'']]]
 ];

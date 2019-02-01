@@ -4,7 +4,7 @@ var searchData=
   ['increase',['increase',['../classz_1_1core_1_1string.html#a1686128e5890296ead8e6a5224f6abc3',1,'z::core::string']]],
   ['introduction',['Introduction',['../index.html',1,'']]],
   ['info',['info',['../classz_1_1file_1_1info.html',1,'z::file']]],
-  ['info',['info',['../classz_1_1file_1_1info.html#a50701c4a79eee02f6361faae27a7efad',1,'z::file::info']]],
+  ['info',['info',['../classz_1_1file_1_1info.html#a843cc360b92f2b54b2f571a472bfbe4e',1,'z::file::info']]],
   ['inputstream',['inputStream',['../classz_1_1core_1_1inputStream.html',1,'z::core']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html',1,'z::file']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#ab9001ef637450d5f6b4c083d6368eab2',1,'z::file::inputStream::inputStream()'],['../classz_1_1file_1_1inputStream.html#acbcee58130acb9536d4808631886d1d8',1,'z::file::inputStream::inputStream(const zpath &amp;fileName)']]],
