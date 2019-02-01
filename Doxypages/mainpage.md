@@ -1,6 +1,6 @@
-## Introduction				{#mainpage}
+/** \mainpage Introduction
 
-This collection of header-only C++ libraries contains useful classes and functions for quick and simple data manipulation.  
+This library contains useful classes and functions for quick and simple data manipulation.  
 The idea is that this will help decrease development time of other projects.  
 
 --------------------------
