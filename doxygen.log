@@ -1,3 +1,7 @@
+/home/travis/build/ZacharyWesterman/libzed/z/file/info.h:35: warning: argument 'path' of command @param is not found in the argument list of z::file::info::info(const zpath &)
+/home/travis/build/ZacharyWesterman/libzed/z/file/library.h:38: warning: argument 'file_name' of command @param is not found in the argument list of z::file::library::load(const zpath &)
+/home/travis/build/ZacharyWesterman/libzed/z/file/library.h:76: warning: argument 'symbol_name' of command @param is not found in the argument list of z::file::library::symbol(const zpath &)
+/home/travis/build/ZacharyWesterman/libzed/z/file/outputStream.h:33: warning: argument 'fileName' of command @param is not found in the argument list of z::file::outputStream::outputStream(const zpath &, encoding fileFormat=ascii, bool append=false)
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:16: warning: unable to resolve reference to `md_Doxypages_examples_core_string' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:31: warning: unable to resolve reference to `md_Doxypages_examples_util_regex' for \ref command
 /home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:38: warning: unable to resolve reference to `md_Doxypages_LICENSE' for \ref command
