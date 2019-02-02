@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['regex',['Regex',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_examples_util_regex.html',1,'']]],
   ['read',['read',['../classz_1_1core_1_1string.html#a047e728df74bc7ea0ab801716640fbc8',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
   ['readln',['readln',['../classz_1_1core_1_1string.html#afa9e2cfd0c1f533783214e36b7943879',1,'z::core::string']]],
   ['refarray',['refArray',['../classz_1_1core_1_1refArray.html',1,'z::core']]],

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>libzed: Strings Examples</title>
+<title>libzed: /home/travis/build/ZacharyWesterman/libzed/z/encoding.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,10 +38,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,6 +60,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,56 +79,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b1ea3149c562e0da55f16dba37143c92.html">z</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">Strings Examples </div>  </div>
+<div class="title">encoding.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Hello World</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8h.html">z/core.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="system_8h.html">z/system.h</a>&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="keyword">using</span> z::cotruere::string;</div>
-<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1system_1_1console.html">z::system::console</a>;</div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">    string&lt;z::utf8&gt; foo = <span class="stringliteral">&quot;Hello world!&quot;</span>;</div>
-<div class="line">    console bar;</div>
-<div class="line"></div>
-<div class="line">    foo.writeln(bar);</div>
-<div class="line"></div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Output:</b> </p>
-<div class="fragment"><div class="line">Hello world!</div>
-</div><!-- fragment --> <hr/>
- <h2>Uppercase vs. Lowercase</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8h.html">z/core.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="system_8h.html">z/system.h</a>&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1core_1_1string.html">z::core::string</a>;</div>
-<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1system_1_1console.html">z::system::console</a>;</div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">    string&lt;z::utf8&gt; foo = <span class="stringliteral">&quot;aN eXAMple StRiNg&quot;</span>;</div>
-<div class="line">    console bar;</div>
-<div class="line"></div>
-<div class="line">    foo.writeln(bar);</div>
-<div class="line">    foo.upper().writeln(bar);</div>
-<div class="line">    foo.lower().writeln(bar);</div>
-<div class="line">    foo.camel().writeln(bar);</div>
-<div class="line"></div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Output:</b> </p>
-<div class="fragment"><div class="line">aN eXAMple StRiNg</div>
-<div class="line">AN EXAMPLE STRING</div>
-<div class="line">an example <span class="keywordtype">string</span></div>
-<div class="line">An Example String</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+
+<p>Supported string encoding schemes.  
+<a href="#details">More...</a></p>
+
+<p><a href="encoding_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:abb9b3bdd67c870c617a43438ebb64c17"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>encoding</b> { <b>ascii</b>, 
+<b>utf8</b>, 
+<b>utf16</b>, 
+<b>utf32</b>
+ }</td></tr>
+<tr class="separator:abb9b3bdd67c870c617a43438ebb64c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Supported string encoding schemes. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
