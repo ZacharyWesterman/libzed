@@ -3,7 +3,8 @@
 namespace z
 {
 	/**
-	 * \brief Enum for string encoding schemes.
+	 * \file z/encoding.h
+	 * \brief Supported string encoding schemes.
 	 */
 	enum encoding
 	{
