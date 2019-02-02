@@ -10,4 +10,4 @@ On Linux, type `sudo make install` to install the library and `sudo make uninsta
 If you want to test out some code, `make driver` (or `make driver.exe` on Windows) will compile main.cpp into an executable.<br>
 Last, `make clean` removes all generated binaries and object files.
 
-[Documentation](zacharywesterman.github.io)
+[Documentation](https://zacharywesterman.github.io)
