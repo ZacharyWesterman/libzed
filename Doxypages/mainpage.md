@@ -28,7 +28,7 @@ Contains classes that allow interaction with and information about the user's sy
 
 --------------------------
 
-## [Example programs](@ref md_Doxypages_examples)
+[Example programs](@ref md_Doxypages_examples)
 
 --------------------------
 Download or fork: [GitHub repo](https://github.com/ZacharyWesterman/zLibraries).

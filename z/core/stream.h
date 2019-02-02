@@ -15,9 +15,6 @@ namespace z
 		 *
 		 * This class provides an interface for
 		 * input streams.
-		 * <br/><br/>
-		 * <B>RE-ENTRANCE:</B><br/>
-		 * Simultaneous accesses to the same object can cause data races.
 		 */
 		class inputStream
 		{
@@ -137,9 +134,6 @@ namespace z
 		 *
 		 * This class provides an interface for
 		 * output streams.
-		 * <br/><br/>
-		 * <B>RE-ENTRANCE:</B><br/>
-		 * Simultaneous accesses to the same object can cause data races.
 		 */
 		class outputStream
 		{
@@ -264,15 +258,10 @@ namespace z
 
 		/**
 		 * \interface stream
-		 * \brief A template class for character streams.
+		 * \brief An interface for character streams.
 		 *
-		 * This class provides an interface for both input
-		 * and output streams.
-		 *
-		 * <br/><br/>
-		 * <B>RE-ENTRANCE:</B><br/>
-		 * Simultaneous accesses to the same object can cause data races.
-		 *
+		 * This class provides an interface for streams that allow both input
+		 * and output.
 		 */
 		class stream : public inputStream, public outputStream
 		{};

@@ -1,9 +1,13 @@
 #pragma once
 
+/**
+ * \file z/encoding.h
+ * \namespace z
+ */
+
 namespace z
 {
 	/**
-	 * \file z/encoding.h
 	 * \brief Supported string encoding schemes.
 	 */
 	enum encoding

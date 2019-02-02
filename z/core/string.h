@@ -4,6 +4,8 @@
 #include <complex>
 
 #include <z/encoding.h>
+#include "zstr.h"
+
 #include "serializable.h"
 #include "sizable.h"
 
@@ -13,22 +15,12 @@ namespace z
 {
 	namespace core
 	{
-		namespace zstr
-		{
-			enum
-			{
-				string   = 0,
-				integer  = 1,
-				floating = 2,
-				complex  = 4
-			};
-		}
 
 		/**
 		 * \brief A template class for character strings.
 		 *
 		 * This class focuses on how characters are encoded rather than character size.
-		 * Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.
+		 * Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.<br/>
 		 * When characters are input or output, they are converted to or from their
 		 * encoding scheme to a single UTF32 character. Thus, the "default" character
 		 * type is `uint32_t`.
@@ -36,9 +28,9 @@ namespace z
 		 * Allocated memory is increased as needed with approximate 1.5x growth, and
 		 * is not decreased on subsequent data changes, except in the case where
 		 * data is copied over to a different string.
-		 * <br/><br/>
-		 * <B>RE-ENTRANCE:</B><br/>
-		 * Simultaneous accesses to the same object can cause data races.
+		 *
+		 * \see encoding.h
+		 * \see zstr.h
 		 */
 		template <encoding E = utf32>
 		class string : public serializable, public sizable

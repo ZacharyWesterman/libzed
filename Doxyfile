@@ -32,7 +32,7 @@ ALIASES                =\
 	"threadsafe_function_yes=@par Re-Entry:\nThis function is thread-safe. Simultaneous calls will not cause data races."\
 	"threadsafe_member_no=@par Re-Entry:\nSimultaneous calls to this member function of the same object can cause data races."\
 	"threadsafe_member_ref=@par Re-Entry:\nSimultaneous calls to this member function with the same reference parameter(s) may cause data races."\
-	"threadsafe_member_yes=@par Re-Entry:\nThis member function is thread-safe. Simultaneous calls will not cause data races."
+	"threadsafe_member_yes=@par Re-Entry:\nThis member function is thread-safe. Simultaneous calls will not cause data races."\
 
 TCL_SUBST              =
 OPTIMIZE_OUTPUT_FOR_C  = NO
