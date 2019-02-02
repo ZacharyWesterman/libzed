@@ -9,3 +9,5 @@ On Windows, you're done. Just copy the DLL into the directory where you want it.
 On Linux, type `sudo make install` to install the library and `sudo make uninstall` to remove it.<br>
 If you want to test out some code, `make driver` (or `make driver.exe` on Windows) will compile main.cpp into an executable.<br>
 Last, `make clean` removes all generated binaries and object files.
+
+[Documentation](https://zacharywesterman.github.io)
