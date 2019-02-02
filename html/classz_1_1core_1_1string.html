@@ -363,12 +363,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 class z::core::string&lt; E &gt;</h3>
 
 <p>A template class for character strings. </p>
-<p>This class focuses on how characters are encoded rather than character size. Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32. When characters are input or output, they are converted to or from their encoding scheme to a single UTF32 character. Thus, the "default" character type is <code>uint32_t</code>. <br/>
+<p>This class focuses on how characters are encoded rather than character size. Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.<br/>
+ When characters are input or output, they are converted to or from their encoding scheme to a single UTF32 character. Thus, the "default" character type is <code>uint32_t</code>. <br/>
 <br/>
- Allocated memory is increased as needed with approximate 1.5x growth, and is not decreased on subsequent data changes, except in the case where data is copied over to a different string. <br/>
-<br/>
- <b>RE-ENTRANCE:</b><br/>
- Simultaneous accesses to the same object can cause data races. </p>
+ Allocated memory is increased as needed with approximate 1.5x growth, and is not decreased on subsequent data changes, except in the case where data is copied over to a different string.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="encoding_8h.html">encoding.h</a> </dd>
+<dd>
+<a class="el" href="zstr_8h.html">zstr.h</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5b4e304679fb50e54ba6567cac5f8586"></a>
 <div class="memitem">
@@ -1403,7 +1404,7 @@ template&lt;encoding E = utf32&gt; </div>
 
 <p>Get the encoding of this string. </p>
 <dl class="section return"><dt>Returns</dt><dd>An integer indicating this string's encoding.</dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="encoding_8h.html" title="Supported string encoding schemes. ">encoding.h</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="encoding_8h.html">encoding.h</a> </dd></dl>
 
 </div>
 </div>
