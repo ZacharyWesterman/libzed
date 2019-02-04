@@ -100,6 +100,9 @@ main.o: main.cpp
 z/core/string.o: z/core/string.cpp z/core/string.h $(wildcard z/core/string/*.h)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
+z/file/library.o: z/file/library.cpp z/file/library.h
+	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
+
 clean: clear
 	$(RM) $(RMOBJS) main.o
 
