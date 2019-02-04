@@ -4,3 +4,5 @@ driver
 *.so
 *.exe
 *.dll
+html/
+doxygen.log
