@@ -89,6 +89,5 @@ $ g++ -lzed -L. -o example example.o
 
 ___
 Download or fork: [GitHub repo][repo].
-Review the [License](@ref md_Doxypages_LICENSE).
 
 [repo]: https://github.com/ZacharyWesterman/zLibraries
