@@ -90,4 +90,4 @@ $ g++ -lzed -L. -o example example.o
 ___
 Download or fork: [GitHub repo][repo].
 
-[repo]: https://github.com/ZacharyWesterman/zLibraries
+[repo]: https://github.com/ZacharyWesterman/libzed
