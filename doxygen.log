@@ -1,2 +1,1 @@
-/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:10: warning: unable to resolve reference to `md_Doxypages_examples' for \ref command
-/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:13: warning: unable to resolve reference to `md_Doxypages_LICENSE' for \ref command
+/home/travis/build/ZacharyWesterman/libzed/Doxypages/mainpage.md:74: warning: unable to resolve reference to `md_Doxypages_LICENSE' for \ref command

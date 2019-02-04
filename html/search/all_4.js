@@ -8,6 +8,5 @@ var searchData=
   ['endswith',['endsWith',['../classz_1_1core_1_1string.html#ab9683b4fd5015aa3f9b73489cb4fa0a5',1,'z::core::string']]],
   ['error',['error',['../classz_1_1util_1_1regex.html#a0bb01f86e2d32791d8a66964d6bcde03',1,'z::util::regex']]],
   ['errstr',['errstr',['../classz_1_1util_1_1regex.html#a9235660414bb780e3fe7e31fa26fba8a',1,'z::util::regex']]],
-  ['exists',['exists',['../classz_1_1file_1_1info.html#a12c1ba5294c7ee6cb52497d3e21fec94',1,'z::file::info::exists()'],['../namespacez_1_1file.html#a2014ffe0445a42242db5540adbc16a7e',1,'z::file::exists()']]],
-  ['examples',['examples',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_examples.html',1,'']]]
+  ['exists',['exists',['../classz_1_1file_1_1info.html#a12c1ba5294c7ee6cb52497d3e21fec94',1,'z::file::info::exists()'],['../namespacez_1_1file.html#a2014ffe0445a42242db5540adbc16a7e',1,'z::file::exists()']]]
 ];
