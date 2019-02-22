@@ -108,11 +108,11 @@ WARN_LOGFILE           = "doxygen.log"
 #---------------------------------------------------------------------------
 INPUT                  = z Doxypages
 INPUT_ENCODING         = UTF-8
-FILE_PATTERNS          = *.cpp *.h *.md
+FILE_PATTERNS          = *.h *.md
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = */core/string/* *.cpp
+EXCLUDE_PATTERNS       = */core/string/*
 EXCLUDE_SYMBOLS        =
 EXAMPLE_PATH           =
 EXAMPLE_PATTERNS       = *
