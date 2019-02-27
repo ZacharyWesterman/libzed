@@ -30,7 +30,7 @@ namespace z
 			 *
 			 * \param regexID The ID of this symbol.
 			 */
-			rgxss(const uint8_t regexID);
+			rgxss(const uint8_t regexID = 0);
 
 			/**
 			 * \brief Get this symbol's character.
