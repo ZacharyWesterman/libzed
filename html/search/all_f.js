@@ -24,5 +24,5 @@ var searchData=
   ['rgxscan',['rgxscan',['../namespacez_1_1util.html#a5562ced719c64f94c0001c9e18e7c76f',1,'z::util']]],
   ['rgxsesc',['rgxsesc',['../namespacez_1_1util.html#ad1e57bda68243aeb4cea4b8906bf0ec0',1,'z::util']]],
   ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html',1,'z::util']]],
-  ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#a184eeb037a25012d36f19624430d7023',1,'z::util::rgxss::rgxss(const uint8_t regexID)']]]
+  ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#ab3615f95987561a1b057975515f109c4',1,'z::util::rgxss::rgxss(const uint8_t regexID=0)']]]
 ];
