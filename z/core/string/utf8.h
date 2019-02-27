@@ -1472,7 +1472,7 @@ namespace z
 					{
 						auto pos = stream.tell();
 						last = stream.getChar(enc);
-						if (last != '\n')
+						if (!stream.empty() && (last != '\n'))
 						{
 							stream.seek(pos);
 						}
@@ -1484,7 +1484,7 @@ namespace z
 					{
 						auto pos = stream.tell();
 						last = stream.getChar(enc);
-						if (last != '\r')
+						if (!stream.empty() && (last != '\r'))
 						{
 							stream.seek(pos);
 						}
