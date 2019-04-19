@@ -3,6 +3,9 @@
 
 #define MAX_BYTE_READ 32
 
+#include <iostream>
+#include <string.h>
+
 namespace z
 {
 	namespace file
@@ -39,6 +42,7 @@ namespace z
 		{
 			char ch = 0;
 			filestream.read(&ch, 1);
+			if (filestream.eof()) filestream.clear(std::ios::failbit);
 			return ch;
 		}
 
@@ -61,6 +65,8 @@ namespace z
 					filestream.read(&buf[1],1);
 					filestream.read(&buf[0],1);
 				}
+
+				if (filestream.eof()) filestream.clear(std::ios::failbit);
 				return result;
 			}
 			else if (format == utf16)
@@ -79,6 +85,7 @@ namespace z
 					filestream.read(&buf[0],1);
 				}
 				// std::cout << '(' << (int)buf[0] << ' '<<(int)buf[1] << ')' << std::endl;
+				if (filestream.eof()) filestream.clear(std::ios::failbit);
 				return result;
 			}
 			else
@@ -99,7 +106,7 @@ namespace z
 
 		bool inputStream::empty()
 		{
-			return filestream.eof();
+			return filestream.eof() || (tell() > end());
 		}
 
 		bool inputStream::good()
@@ -109,7 +116,7 @@ namespace z
 
 		bool inputStream::bad()
 		{
-			return filestream.bad() || !filestream.is_open();
+			return filestream.bad() || !good();
 		}
 
 		bool inputStream::binary()
@@ -124,6 +131,7 @@ namespace z
 
 		size_t inputStream::end()
 		{
+			std::cout << filestream.beg << " - " << filestream.end << std::endl;
 			return filestream.end - filestream.beg;
 		}
 
@@ -228,6 +236,7 @@ namespace z
 
 			initialized = true;
 			seek(init_pos);
+			filestream.clear();
 			if (has_null) return streamFormat = utf16;
 			return streamFormat = (can_ascii ? ascii : utf8);
 		}

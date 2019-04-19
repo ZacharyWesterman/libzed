@@ -22,6 +22,7 @@ namespace z
 
 		public:
 			binaryStream();
+			~binaryStream();
 
 			void put(uint8_t ch);
  			void put(uint8_t* str, size_t count, encoding format = ascii);

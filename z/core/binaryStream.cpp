@@ -5,7 +5,15 @@ namespace z
 {
 	namespace core
 	{
-		binaryStream::binaryStream() : streamIndex(0) {}
+		binaryStream::binaryStream() : streamIndex(0)
+		{
+			data.clear();
+		}
+
+		binaryStream::~binaryStream()
+		{
+			data.clear();
+		}
 
 		void binaryStream::put(uint8_t ch)
 		{
