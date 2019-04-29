@@ -7,10 +7,13 @@ namespace z
 	{
 		namespace rgx
 		{
-			class andlist : public compound
+			class orlist : public compound
 			{
 			public:
+				orlist(bool negate=false, size_t min=1, size_t max=1, bool greedy=true);
 				bool match(core::inputStream& stream) const;
+
+				bool negate;
 			};
 		}
 	}

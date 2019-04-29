@@ -5,36 +5,6 @@ namespace z
 	{
 		namespace rgx
 		{
-			bool matchRule(rule* node, core::inputStream& stream)
-			{
-				if (node->base())
-				{
-					auto ch = stream.getChar();
-					if (stream.empty()) return false;
-					if (!(node->match(ch))) return false;
-				}
-				else
-				{
-					if (!(node->match(stream))) return false;
-				}
-
-				return true;
-			}
-
-			bool matchMin(rule* node, core::inputStream& stream)
-			{
-				for (size_t i=0; i<(node->min); ++i)
-				{
-					if (!matchRule(node, stream)) return false;
-				}
-				return true;
-			}
-
-			andlist::~andlist()
-			{
-				for (auto& child : children) delete child;
-			}
-
 			bool andlist::match(core::inputStream& stream) const
 			{
 				auto pos = stream.tell();
@@ -81,8 +51,6 @@ namespace z
 
 				return true;
 			}
-
-			bool andlist::base() const {return false;}
 		}
 	}
 }
