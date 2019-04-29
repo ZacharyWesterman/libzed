@@ -13,10 +13,10 @@ namespace z
 				auto pos = stream.tell();
 				for (auto& child : children)
 				{
-					if (matchRule(child, stream)) return true;
+					if (matchRule(child, stream)) return !negate;
 					stream.seek(pos);
 				}
-				return false;
+				return negate;
 			}
 		}
 	}
