@@ -6,9 +6,12 @@ namespace z
 	{
 		namespace rgx
 		{
+			space::space(bool negate, size_t min, size_t max, bool greedy):
+				rule(min,max,greedy), negate(negate) {}
+
 			bool space::match(uint32_t current) const
 			{
-				return core::isWhiteSpace(current);
+				return negate ^ core::isWhiteSpace(current);
 			}
 
 #			ifdef DEBUG

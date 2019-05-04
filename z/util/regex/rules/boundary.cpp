@@ -6,6 +6,9 @@ namespace z
 	{
 		namespace rgx
 		{
+			boundary::boundary(bool negate, size_t min, size_t max, bool greedy):
+				rule(min,max,greedy), negate(negate) {}
+
 			bool boundary::match(core::inputStream& stream) const
 			{
 				auto pos = stream.tell();
@@ -44,7 +47,8 @@ namespace z
 
 				stream.seek(pos);
 
-				return bbeg ^ bend; //word boundary at the beginning xor end.
+				//word boundary at the beginning xor end, but invert if we're negating.
+				return negate ^ (bbeg ^ bend);
 			}
 
 			bool boundary::base() const
