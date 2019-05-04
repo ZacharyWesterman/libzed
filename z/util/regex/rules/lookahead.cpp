@@ -55,6 +55,21 @@ namespace z
 				stream.seek(pos);
 				return !negate;
 			}
+
+#			ifdef DEBUG
+			void lookahead::print(core::outputStream& stream, int level)
+			{
+				if (negate)
+					(zpath().padLeft(" ",(level)<<1)+"?!").writeln(stream);
+				else
+					(zpath().padLeft(" ",(level)<<1)+"?=").writeln(stream);
+
+				for (auto& child : children)
+				{
+					child->print(stream,level+1);
+				}
+			}
+#			endif
 		}
 	}
 }

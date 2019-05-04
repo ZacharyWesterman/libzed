@@ -16,6 +16,10 @@ namespace z
 
 				uint32_t value;
 				bool insensitive;
+
+#			ifdef DEBUG
+				void print(core::outputStream& stream, int level=0);
+#			endif
 			};
 		}
 	}

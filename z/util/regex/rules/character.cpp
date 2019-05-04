@@ -12,6 +12,13 @@ namespace z
 			{
 				return current == value;
 			}
+
+#			ifdef DEBUG
+			void character::print(core::outputStream& stream, int level)
+			{
+				(zpath().padLeft(" ",(level)<<1)+(uint32_t)value).writeln(stream);
+			}
+#			endif
 		}
 	}
 }

@@ -10,6 +10,13 @@ namespace z
 			{
 				return ('_' == current) || core::isAlphaNumeric(current);
 			}
+
+#			ifdef DEBUG
+			void word::print(core::outputStream& stream, int level)
+			{
+				(zpath().padLeft(" ",(level)<<1)+"\\w").writeln(stream);
+			}
+#			endif
 		}
 	}
 }

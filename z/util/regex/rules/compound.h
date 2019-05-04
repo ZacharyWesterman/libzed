@@ -22,6 +22,14 @@ namespace z
 				bool base() const {return false;};
 
 				core::array<rule*> children;
+
+#			ifdef DEBUG
+				virtual void print(core::outputStream& stream, int level=0)
+				{
+					(void)stream;
+					(void)level;
+				}
+#			endif
 			};
 		}
 	}

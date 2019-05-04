@@ -15,6 +15,10 @@ namespace z
 
 				bool negate;
 				size_t width;
+
+#			ifdef DEBUG
+				void print(core::outputStream& stream, int level=0);
+#			endif
 			};
 		}
 	}

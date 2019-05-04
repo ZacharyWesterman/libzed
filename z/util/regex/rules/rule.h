@@ -1,6 +1,10 @@
 #pragma once
 #include <z/core/stream.h>
 
+#ifdef DEBUG
+#include <z/core/string.h>
+#endif
+
 namespace z
 {
 	namespace util
@@ -20,6 +24,10 @@ namespace z
 				size_t min;
 				size_t max;
 				bool greedy;
+
+#			ifdef DEBUG
+				virtual void print(core::outputStream& stream, int level=0)=0;
+#			endif
 			};
 
 		}

@@ -11,6 +11,9 @@ namespace z
 			{
 			public:
 				bool match(uint32_t current) const;
+#			ifdef DEBUG
+				void print(core::outputStream& stream, int level=0);
+#			endif
 			};
 		}
 	}
