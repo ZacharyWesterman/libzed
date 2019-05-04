@@ -36,12 +36,13 @@ ifneq (,$(findstring $(OPT),S size Size SIZE))
 OLEVEL = s
 endif
 
-# if debug flag is false
-ifeq (,$(findstring $(DEBUG),1 true True TRUE))
+# if debug flag is not set
+ifndef DEBUG
 CCFLAGS += -O$(OLEVEL) -g0
 LFLAGS += -s
-else
-CCFLAGS += -g3 -O$(OLEVEL) -DDEBUG
+endif
+ifdef DEBUG
+CCFLAGS += -g$(DEBUG) -O$(OLEVEL) -DDEBUG
 endif
 
 ifeq ($(OS),Windows_NT)
