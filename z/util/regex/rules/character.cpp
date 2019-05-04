@@ -1,4 +1,5 @@
 #include "character.h"
+#include <z/core/charFunctions.h>
 namespace z
 {
 	namespace util
@@ -10,13 +11,23 @@ namespace z
 
 			bool character::match(uint32_t current) const
 			{
-				return current == value;
+				if (insensitive)
+					return core::toUpper(current) == core::toUpper(value);
+				else
+					return current == value;
 			}
 
 #			ifdef DEBUG
 			void character::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+(uint32_t)value).writeln(stream);
+				zpath s;
+				s.padLeft(" ",(level)<<1);
+				if ((value<'!')||(value>'~'))
+					s += "x";
+				else
+					s += value;
+				if (insensitive) s += " i";
+				s.writeln(stream);
 			}
 #			endif
 		}
