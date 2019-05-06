@@ -23,7 +23,7 @@ namespace z
 				zpath s;
 				s.padLeft(" ",(level)<<1);
 				if ((value<'!')||(value>'~'))
-					s += "x";
+					s = s + "x" + (int)value;
 				else
 					s += value;
 				if (insensitive) s += " i";

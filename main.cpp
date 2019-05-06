@@ -1,26 +1,39 @@
 #include <z/system.h>
-#include <z/core.h>
-#include <z/util.h>
-#include <z/file.h>
-
-using z::system::console;
-using z::core::array;
-using z::core::string;
-
-using z::core::split;
-using z::core::join;
+#include <z/util/regex/rgxscan.h>
+#include <z/util/regex/rgxlex.h>
 
 int main()
 {
-	console con;
+	z::system::console stream;
+	zstring pattern;
 
-	zstring input = "the,quick,brown,fox";
-	zstring delim = ",";
+	while(!stream.empty())
+	{
+		pattern.readln(stream);
+		if (!pattern.length()) continue;
 
-	auto list = split(input,delim);
+		z::core::array<z::util::rgxss> symbols;
+		int err = z::util::rgxscan(pattern,symbols);
+		if (err)
+		{
+			(zpath("Scan error ")+err).writeln(stream);
+			continue;
+		}
 
-	delim = " : ";
-	(zstring("{")+join(list,delim)+"}").writeln(con);
+		size_t position = 0;
+		z::util::rgx::compound* root = NULL;
+		err = z::util::rgxlex(symbols, &root, position);
+		if (err)
+		{
+			(zpath("Lex error ")+err).writeln(stream);
+			continue;
+		}
+
+		zpath("Valid: ").writeln(stream);
+#		ifdef DEBUG
+		root->print(stream);
+#		endif
+	}
 
 	return 0;
 }
