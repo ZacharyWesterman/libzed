@@ -12,6 +12,7 @@ namespace z
 			public:
 				orlist(bool negate=false, size_t min=1, size_t max=1, bool greedy=true);
 				bool match(core::inputStream& stream) const;
+				bool isOr() const {return true;}
 
 				bool negate;
 

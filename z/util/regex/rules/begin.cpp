@@ -5,14 +5,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			begin::begin(bool newline, size_t min, size_t max, bool greedy):
-				rule(min,max,greedy), newline(newline) {}
-
 			bool begin::match(core::inputStream& stream) const
 			{
 				auto pos = stream.tell();
 				if (!pos) return true;
-				if (!newline) return false;
 
 				auto ch = stream.getChar();
 				if (stream.empty()) return false;

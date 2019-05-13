@@ -16,13 +16,14 @@ namespace z
 			bool escaped = false;
 			bool orForward = false;
 			bool inBrace = false;
-			int startAnd = 0;
 			int paren = 0;
 			int amount = 0;
 			bool canGreedy = false;
 
-			for (auto& ch : pattern)
+			for (size_t i=0; i<pattern.length(); ++i)
 			{
+				auto ch = pattern[i];
+
 				if (inBrace)
 				{
 					if (ch == '}')
@@ -42,40 +43,6 @@ namespace z
 						output.add(rgxss(RGX_COMMA));
 					}
 					continue;
-				}
-
-				switch (startAnd)
-				{
-					case 1:
-						if (ch != '?') break;
-						output.add(rgxss(RGX_QUERY));
-						startAnd = 2;
-						continue;
-					case 2:
-						if (ch == '<')
-						{
-							output.add(rgxss(RGX_PREVIOUS));
-							startAnd = 3;
-							continue;
-						}
-						else if (ch == '-')
-						{
-							output.add(rgxss(RGX_DASH));
-							startAnd = 0;
-							continue;
-						}
-					case 3:
-						if (ch == '!')
-						{
-							output.add(rgxss(RGX_BANG));
-							continue;
-						}
-						else if (ch == '=')
-						{
-							output.add(rgxss(RGX_EQUALS));
-							continue;
-						}
-						startAnd = 0;
 				}
 
 				if (escaped)
@@ -130,9 +97,53 @@ namespace z
 
 				if (ch == '(')
 				{
+					if (pattern[i+1] == '?')
+					{
+						auto ch2 = pattern[i+2];
+						if (ch2 == '<')
+						{
+							auto ch3 = pattern[i+3];
+							if (ch3 == '=')
+							{
+								i += 2;
+								output.add(rgxss(RGX_POS_LOOKBEHIND));
+							}
+							else if (ch3 == '!')
+							{
+								i += 2;
+								output.add(rgxss(RGX_NEG_LOOKBEHIND));
+							}
+							else
+							{
+								output.add(rgxss(RGX_POS_FLAG));
+							}
+						}
+						else if (ch2 == '=')
+						{
+							++i;
+							output.add(rgxss(RGX_POS_LOOKAHEAD));
+						}
+						else if (ch2 == '!')
+						{
+							++i;
+							output.add(rgxss(RGX_NEG_LOOKAHEAD));
+						}
+						else if (ch2 == '-')
+						{
+							++i;
+							output.add(rgxss(RGX_NEG_FLAG));
+						}
+						else
+						{
+							output.add(rgxss(RGX_POS_FLAG));
+						}
+						++i;
+					}
+					else
+					{
+						output.add(rgxss(RGX_LPAREN));
+					}
 					++paren;
-					startAnd = 1;
-					output.add(rgxss(RGX_LPAREN));
 					continue;
 				}
 

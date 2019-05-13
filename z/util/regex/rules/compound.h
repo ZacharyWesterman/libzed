@@ -20,6 +20,7 @@ namespace z
 				compound(size_t min=1, size_t max=1, bool greedy=true): rule(min,max,greedy){}
 
 				bool base() const {return false;};
+				bool parent() const {return true;};
 
 				core::array<rule*> children;
 

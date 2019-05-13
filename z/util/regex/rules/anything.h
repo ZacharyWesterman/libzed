@@ -1,5 +1,5 @@
 #pragma once
-#include "compound.h"
+#include "rule.h"
 
 namespace z
 {
@@ -7,14 +7,15 @@ namespace z
 	{
 		namespace rgx
 		{
-			class lookbehind : public compound
+			class anything : public rule
 			{
 			public:
-				lookbehind(bool negate=false, size_t min=1, size_t max=1, bool greedy=true);
-				bool match(core::inputStream& stream) const;
+				anything(bool newline=false, size_t min=1, size_t max=1, bool greedy=true);
 
-				bool negate;
-				size_t width;
+				bool match(core::inputStream& stream) const;
+				bool base() const;
+
+				bool newline;
 
 #			ifdef DEBUG
 				void print(core::outputStream& stream, int level=0);

@@ -13,6 +13,8 @@ namespace z
 		{
 			class rule
 			{
+			private:
+
 			public:
 				rule(size_t min=1, size_t max=1, bool greedy=true): min(min), max(max), greedy(greedy){}
 				virtual ~rule(){}
@@ -20,6 +22,8 @@ namespace z
 				virtual bool match(uint32_t) const {return false;}
 				virtual bool match(core::inputStream&) const {return false;}
 				virtual bool base() const {return true;}
+				virtual bool parent() const {return false;};
+				bool isOr() const {return false;}
 
 				size_t min;
 				size_t max;
