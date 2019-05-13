@@ -558,15 +558,11 @@ namespace z
 		void string<utf16>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
+			data16[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data16[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
@@ -607,15 +603,11 @@ namespace z
 		void string<utf16>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			increase(character_ct);
 
 			uint16_t* data16 = (uint16_t*)data;
+			data16[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data16[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
@@ -632,9 +624,7 @@ namespace z
 						{
 							stream.seek(pos);
 						}
-
-						data16[character_ct] = 0;
-						return;
+						break;
 					}
 					else if (last == '\n')
 					{
@@ -644,18 +634,12 @@ namespace z
 						{
 							stream.seek(pos);
 						}
-
-						data16[character_ct] = 0;
-						return;
+						break;
 					}
 				}
 				else
 				{
-					if ((last == '\n') || (last == '\r'))
-					{
-						data16[character_ct] = 0;
-						return;
-					}
+					if ((last == '\n') || (last == '\r')) break;
 				}
 
 				if (enc == utf8)

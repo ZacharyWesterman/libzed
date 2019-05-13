@@ -812,15 +812,10 @@ namespace z
 		void string<utf32>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			increase(character_ct);
-
 			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data32[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
@@ -847,7 +842,7 @@ namespace z
 
 				increase(character_ct);
 				data32 = (uint32_t*)data;
-				data32[character_ct++] = (last > 0xFFFF) ? '?' : last;
+				data32[character_ct++] = last;
 
 				last = stream.getChar(enc);
 			}
@@ -861,15 +856,11 @@ namespace z
 		void string<utf32>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			increase(character_ct);
 
 			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data32[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar(enc);
@@ -886,9 +877,7 @@ namespace z
 						{
 							stream.seek(pos);
 						}
-
-						data32[character_ct] = 0;
-						return;
+						break;
 					}
 					else if (last == '\n')
 					{
@@ -898,18 +887,12 @@ namespace z
 						{
 							stream.seek(pos);
 						}
-
-						data32[character_ct] = 0;
-						return;
+						break;
 					}
 				}
 				else
 				{
-					if ((last == '\n') || (last == '\r'))
-					{
-						data32[character_ct] = 0;
-						return;
-					}
+					if ((last == '\n') || (last == '\r')) break;
 				}
 
 				if (enc == utf8)
@@ -929,7 +912,7 @@ namespace z
 
 				increase(character_ct);
 				data32 = (uint32_t*)data;
-				data32[character_ct++] = (last > 0xFFFF) ? '?' : last;
+				data32[character_ct++] = last;
 
 				last = stream.getChar(enc);
 			}
