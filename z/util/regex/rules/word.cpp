@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void word::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+(negate?"\\W":"\\w")).writeln(stream);
+				(zpath().padLeft(" ",(level)<<1)+(negate?"\\W":"\\w")+meta()).writeln(stream);
 			}
 #			endif
 		}

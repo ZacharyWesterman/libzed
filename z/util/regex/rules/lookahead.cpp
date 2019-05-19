@@ -60,9 +60,9 @@ namespace z
 			void lookahead::print(core::outputStream& stream, int level)
 			{
 				if (negate)
-					(zpath().padLeft(" ",(level)<<1)+"?!").writeln(stream);
+					(zpath().padLeft(" ",(level)<<1)+"?!"+meta()).writeln(stream);
 				else
-					(zpath().padLeft(" ",(level)<<1)+"?=").writeln(stream);
+					(zpath().padLeft(" ",(level)<<1)+"?="+meta()).writeln(stream);
 
 				for (auto& child : children)
 				{

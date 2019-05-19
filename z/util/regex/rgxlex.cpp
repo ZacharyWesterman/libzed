@@ -10,9 +10,11 @@
 #include "rules/space.h"
 #include "rules/word.h"
 #include "rules/anything.h"
+#include "rules/range.h"
+#include "rules/digit.h"
 
 #include "rgxid.h"
-
+#include <iostream>
 namespace z
 {
 	namespace util
@@ -27,7 +29,7 @@ namespace z
 
 		enum
 		{
-			CASEI=1,
+			INSENSITIVE=1,
 			NEWLINE=2,
 			NEGATE=4,
 		};
@@ -54,9 +56,8 @@ namespace z
 				if (isOr)
 				{
 					if (setw && (width != neww)) return -1;
-					return -1;
-					// setw = true;
-					// width = neww;
+					setw = true;
+					width = neww;
 				}
 				else
 				{
@@ -67,22 +68,64 @@ namespace z
 			return width;
 		}
 
-		rgxerr rgxlex(const core::array<rgxss>& input, rgx::compound** nodeOut, size_t& position, int inType, int flags)
+		static rgx::compound* makeParent(int inType, int flags)
 		{
 			switch (inType)
 			{
 				case INOR:
-					*nodeOut = new rgx::orlist;
-					break;
+					return new rgx::orlist;
 				case INAHEAD:
-					*nodeOut = new rgx::lookahead(flags & NEGATE);
-					break;
+					return new rgx::lookahead(flags & NEGATE);
 				case INBEHIND:
-					*nodeOut = new rgx::lookbehind(flags & NEGATE);
-					break;
+					return new rgx::lookbehind(flags & NEGATE);
 				default:
-					*nodeOut = new rgx::andlist;
+					return new rgx::andlist;
 			}
+		}
+
+		static rgxerr getFlags(const core::array<rgxss>& input, size_t& position, int& flags, bool negate)
+		{
+			rgxerr err = negate ? RGX_BAD_NEG_FLAG : RGX_BAD_POS_FLAG;
+
+			if (position >= input.length()) return err;
+			while (position < input.length())
+			{
+				auto id = input[position].id();
+
+				if (id == RGX_RPAREN) break;
+				else if (id != RGX_SYMBOL) return err;
+
+				switch (input[position].symbol())
+				{
+					case 'i':
+						flags = negate ? (flags & !INSENSITIVE) : (flags | INSENSITIVE);
+						break;
+					case 's':
+						flags = negate ? (flags & !NEWLINE) : (flags | NEWLINE);
+						break;
+					default:
+						return err;
+				}
+
+				++position;
+			}
+
+			return RGX_NO_ERROR;
+		}
+
+		static rgxerr setCount(rgx::compound** nodeOut, size_t min, size_t max)
+		{
+			auto len = (*nodeOut)->children.length();
+			if (!len) return RGX_BAD_COUNT_LOC;
+			auto child = (*nodeOut)->children[len-1];
+			child->min = min;
+			child->max = max;
+			return RGX_NO_ERROR;
+		}
+
+		rgxerr rgxlex(const core::array<rgxss>& input, rgx::compound** nodeOut, size_t& position, int inType, int flags)
+		{
+			*nodeOut = makeParent(inType, flags);
 
 			rgx::compound* andOptions = NULL;
 			rgxerr err = RGX_NO_ERROR;
@@ -98,7 +141,21 @@ namespace z
 				switch (id)
 				{
 					case RGX_SYMBOL:
-						child = new rgx::character(chr);
+						if (input.isValid(position+1) && (input[position+1].id() == RGX_DASH))
+						{
+							position+=2;
+							child = new rgx::range(chr, input[position].symbol(), flags & INSENSITIVE);
+						}
+						else
+						{
+							child = new rgx::character(chr, flags & INSENSITIVE);
+						}
+						break;
+					case RGX_BREAK:
+						child = new rgx::boundary(false);
+						break;
+					case RGX_NOT_BREAK:
+						child = new rgx::boundary(true);
 						break;
 					case RGX_LPAREN:
 						++position;
@@ -110,7 +167,7 @@ namespace z
 					case RGX_COLUMN:
 						if (!andOptions) andOptions = new rgx::orlist;
 						andOptions->children.add(*nodeOut);
-						*nodeOut = new rgx::andlist;
+						*nodeOut = makeParent(inType, flags);
 						break;
 					case RGX_LBRACKET:
 						++position;
@@ -150,6 +207,45 @@ namespace z
 						break;
 					case RGX_PERIOD:
 						child = new rgx::anything(flags & NEWLINE);
+						break;
+					case RGX_POS_FLAG:
+						++position;
+						err = getFlags(input, position, flags, false);
+						break;
+					case RGX_NEG_FLAG:
+						++position;
+						err = getFlags(input, position, flags, true);
+						break;
+					case RGX_DIGIT:
+						child = new rgx::digit;
+						break;
+					case RGX_PLUS:
+						err = setCount(nodeOut,1,-1);
+						break;
+					case RGX_ASTERISK:
+						err = setCount(nodeOut,0,-1);
+						break;
+					case RGX_LBRACE:
+						id = input[++position].id();
+						chr = input[position].symbol();
+						if (input[++position].id() == RGX_RBRACE)//{x}
+						{
+							err = setCount(nodeOut,chr,chr);
+						}
+						else if (id == RGX_COUNT)//{,x} {x,} {x,x} -> all come in as {x,} or {x,x}
+						{
+							id = input[++position].id();
+							if (id == RGX_RBRACE)
+								err = setCount(nodeOut,chr,-1);
+							else if ((id == RGX_COUNT) && (input[position+1].id() == RGX_RBRACE))
+								err = setCount(nodeOut,chr,input[position++].symbol());
+							else
+								err = RGX_BAD_COUNT_FORM;
+						}
+						else
+						{
+							err = RGX_BAD_COUNT_FORM;
+						}
 						break;
 					default:
 						err = RGX_ERROR;

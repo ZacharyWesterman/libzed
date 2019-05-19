@@ -27,7 +27,7 @@ namespace z
 				else
 					s += value;
 				if (insensitive) s += " i";
-				s.writeln(stream);
+				(s+meta()).writeln(stream);
 			}
 #			endif
 		}

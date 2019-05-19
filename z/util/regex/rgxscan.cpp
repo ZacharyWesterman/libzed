@@ -28,7 +28,8 @@ namespace z
 				{
 					if (ch == '}')
 					{
-						output.add(rgxss(RGX_COUNT, amount));
+						if (pattern[i-1] != ',')
+							output.add(rgxss(RGX_COUNT, amount));
 						output.add(rgxss(RGX_RBRACE));
 						inBrace = false;
 						canGreedy = true;
@@ -41,6 +42,7 @@ namespace z
 					{
 						output.add(rgxss(RGX_COUNT, amount));
 						output.add(rgxss(RGX_COMMA));
+						amount = 0;
 					}
 					continue;
 				}
@@ -48,10 +50,10 @@ namespace z
 				if (escaped)
 				{
 					output.add(rgxsesc(ch));
+					escaped = false;
 					continue;
 				}
-
-				if (ch == '\\')
+				else if (ch == '\\')
 				{
 					escaped = true;
 					continue;
@@ -75,7 +77,7 @@ namespace z
 							output.add(rgxss(RGX_RBRACKET));
 							inOr = startOr = false;
 						}
-						else if ((ch == '-') && orForward)
+						else if ((ch == '-') && orForward && (pattern[i-1] != '[') && (pattern[i+1] != ']'))
 						{
 							output.add(rgxss(RGX_DASH));
 						}
@@ -149,6 +151,13 @@ namespace z
 
 				if (ch == '{')
 				{
+					if (pattern[i+1] == '}')
+					{
+						output.add(rgxss(RGX_SYMBOL,'{'));
+						output.add(rgxss(RGX_SYMBOL,'}'));
+						++i;
+						continue;
+					}
 					inBrace = true;
 					output.add(rgxss(RGX_LBRACE));
 					continue;

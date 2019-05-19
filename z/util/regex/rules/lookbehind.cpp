@@ -46,10 +46,10 @@ namespace z
 #			ifdef DEBUG
 			void lookbehind::print(core::outputStream& stream, int level)
 			{
-				if (negate)
-					(zpath().padLeft(" ",(level)<<1)+"?<!").writeln(stream);
-				else
-					(zpath().padLeft(" ",(level)<<1)+"?<").writeln(stream);
+				zpath s;
+				s.padLeft(" ",(level)<<1);
+				s += negate ? "?<!" : "?<=";
+				(s+meta()).writeln(stream);
 
 				for (auto& child : children)
 				{

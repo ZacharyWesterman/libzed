@@ -64,7 +64,10 @@ void printSS(z::core::outputStream& stream, const z::util::rgxss& ss)
 	if (ss.symbol())
 	{
 		s += " ";
-		s += ss.symbol();
+		if (ss.id() == z::util::RGX_COUNT)
+			s += (int)ss.symbol();
+		else
+			s += ss.symbol();
 	}
 	s.writeln(stream);
 }

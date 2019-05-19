@@ -59,7 +59,7 @@ namespace z
 #			ifdef DEBUG
 			void boundary::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+"\\b").writeln(stream);
+				(zpath().padLeft(" ",(level)<<1)+"\\b"+meta()).writeln(stream);
 			}
 #			endif
 		}

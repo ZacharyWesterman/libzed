@@ -51,7 +51,7 @@ namespace z
 #			ifdef DEBUG
 			void anything::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+".").writeln(stream);
+				(zpath().padLeft(" ",(level)<<1)+"."+meta()).writeln(stream);
 			}
 #			endif
 		}

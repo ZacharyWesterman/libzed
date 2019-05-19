@@ -55,7 +55,10 @@ namespace z
 #			ifdef DEBUG
 			void andlist::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+"()").writeln(stream);
+				zpath s;
+				s.padLeft(" ",(level)<<1);
+				s += "()";
+				(s+meta()).writeln(stream);
 				for (auto& child : children)
 				{
 					child->print(stream,level+1);

@@ -24,7 +24,7 @@ namespace z
 			{
 				auto s = zpath().padLeft(" ",(level)<<1)+"[]";
 				if (negate) s += " ~";
-				s.writeln(stream);
+				(s+meta()).writeln(stream);
 				for (auto& child : children)
 				{
 					child->print(stream,level+1);
