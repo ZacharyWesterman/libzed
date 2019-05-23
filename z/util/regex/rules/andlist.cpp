@@ -1,4 +1,5 @@
 #include "andlist.h"
+#include <iostream>
 namespace z
 {
 	namespace util
@@ -17,28 +18,32 @@ namespace z
 						return false;
 					}
 
-					if (child->greedy || (i >= children.length()))
+					if (child->greedy || (i+1 >= children.length()))
 					{
 						for (size_t k=(child->min); k<(child->max); ++k)
 						{
-							if (!matchRule(child, stream)) continue;
+							auto lastPos = stream.tell();
+							if (!matchRule(child, stream))
+							{
+								stream.seek(lastPos);
+								break;
+							}
 						}
 					}
 					else //if not greedy, only consume until the next node matches.
 					{
-						auto lastPos = stream.tell();
+						size_t lastPos;
 						auto sibling = children[i+1];
-						if (matchMin(sibling, stream))
-						{
-							stream.seek(lastPos);
-							continue;
-						}
-
 						for (size_t k=(child->min); k<(child->max); ++k)
 						{
-							if (!matchRule(child, stream)) break;
 							lastPos = stream.tell();
 							if (matchMin(sibling, stream))
+							{
+								stream.seek(lastPos);
+								break;
+							}
+							stream.seek(lastPos);
+							if (!matchRule(child, stream))
 							{
 								stream.seek(lastPos);
 								break;

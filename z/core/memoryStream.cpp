@@ -1,6 +1,5 @@
 #include "memoryStream.h"
 #include "charFunctions.h"
-
 namespace z
 {
 	namespace core
@@ -49,9 +48,9 @@ namespace z
 				return 0;
 		}
 
-		uint32_t memoryStream::getChar(encoding format)
+		uint32_t memoryStream::getChar()
 		{
-			if (streamIndex >= dataSize) return 0;
+			if (streamIndex > dataSize) return 0;
 
 			size_t datact;
 
@@ -60,7 +59,7 @@ namespace z
 			uint32_t res32;
 			uint8_t* str;
 
-			switch (format)
+			switch (format())
 			{
 			case utf16:
 				datact = 2;
@@ -79,14 +78,14 @@ namespace z
 
 			if ((streamIndex + datact) > dataSize)
 			{
-				streamIndex = dataSize;
+				streamIndex = dataSize+1;
 				return 0;
 			}
 
 			for (size_t i=0; i<datact; i++)
 				str[i] = data[streamIndex++];
 
-			switch (format)
+			switch (format())
 			{
 				case utf16:
 					return res16;
@@ -99,7 +98,7 @@ namespace z
 
 		bool memoryStream::empty()
 		{
-			return (streamIndex >= dataSize);
+			return (streamIndex > dataSize);
 		}
 
 		bool memoryStream::good()

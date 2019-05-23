@@ -818,10 +818,10 @@ namespace z
 			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(enc);
+				last = stream.getChar();
 
 			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
@@ -834,7 +834,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -844,7 +844,7 @@ namespace z
 				data32 = (uint32_t*)data;
 				data32[character_ct++] = last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);
@@ -863,7 +863,7 @@ namespace z
 			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty())
 			{
@@ -872,7 +872,7 @@ namespace z
 					if (last == '\r')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\n'))
 						{
 							stream.seek(pos);
@@ -882,7 +882,7 @@ namespace z
 					else if (last == '\n')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\r'))
 						{
 							stream.seek(pos);
@@ -904,7 +904,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -914,7 +914,7 @@ namespace z
 				data32 = (uint32_t*)data;
 				data32[character_ct++] = last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);

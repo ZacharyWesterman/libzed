@@ -34,15 +34,13 @@ namespace z
 			virtual uint8_t get() = 0;
 
 			/**
-			 * \brief Get the next chracter on the stream in the given encoding.
+			 * \brief Get the next chracter on the stream in the stream's determined encoding.
 			 *
 			 * Increments the stream index.
 			 *
-			 * \param format The character encoding scheme.
-			 *
 			 * \return The character previously at the beginning of the stream.
 			 */
-			virtual uint32_t getChar(encoding format = ascii) = 0;
+			virtual uint32_t getChar() = 0;
 
 			/**
 			 * \brief Tell whether we have consumed the last character in the stream.

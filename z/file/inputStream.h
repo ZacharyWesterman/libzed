@@ -51,7 +51,7 @@ namespace z
 			void close();
 
 			uint8_t get();
-			uint32_t getChar(encoding format = ascii);
+			uint32_t getChar();
 
 			bool empty();
 			bool good();

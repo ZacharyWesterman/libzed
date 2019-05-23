@@ -1,20 +1,25 @@
 #include "rgxlex.h"
+#include "rgxid.h"
 
+#include "rules/alpha.h"
+#include "rules/alnum.h"
 #include "rules/andlist.h"
+#include "rules/anything.h"
+#include "rules/begin.h"
 #include "rules/boundary.h"
 #include "rules/character.h"
 #include "rules/compound.h"
+#include "rules/digit.h"
+#include "rules/end.h"
 #include "rules/lookahead.h"
 #include "rules/lookbehind.h"
+#include "rules/newline.h"
 #include "rules/orlist.h"
+#include "rules/punct.h"
+#include "rules/range.h"
 #include "rules/space.h"
 #include "rules/word.h"
-#include "rules/anything.h"
-#include "rules/range.h"
-#include "rules/digit.h"
 
-#include "rgxid.h"
-#include <iostream>
 namespace z
 {
 	namespace util
@@ -31,7 +36,8 @@ namespace z
 		{
 			INSENSITIVE=1,
 			NEWLINE=2,
-			NEGATE=4,
+			ENDLINE=4,
+			NEGATE=8,
 		};
 
 		//get char width of compound node, or -1 if it is not a constant width.
@@ -103,6 +109,9 @@ namespace z
 					case 's':
 						flags = negate ? (flags & !NEWLINE) : (flags | NEWLINE);
 						break;
+					case 'n':
+						flags = negate ? (flags & !ENDLINE) : (flags | ENDLINE);
+						break;
 					default:
 						return err;
 				}
@@ -120,6 +129,15 @@ namespace z
 			auto child = (*nodeOut)->children[len-1];
 			child->min = min;
 			child->max = max;
+			return RGX_NO_ERROR;
+		}
+
+		static rgxerr setGreed(rgx::compound** nodeOut, bool greedy)
+		{
+			auto len = (*nodeOut)->children.length();
+			if (!len) return RGX_BAD_GREED_LOC;
+			auto child = (*nodeOut)->children[len-1];
+			child->greedy = greedy;
 			return RGX_NO_ERROR;
 		}
 
@@ -156,6 +174,33 @@ namespace z
 						break;
 					case RGX_NOT_BREAK:
 						child = new rgx::boundary(true);
+						break;
+					case RGX_WORD:
+						child = new rgx::word(false);
+						break;
+					case RGX_NOT_WORD:
+						child = new rgx::word(true);
+						break;
+					case RGX_ALPHA:
+						child = new rgx::alpha(false);
+						break;
+					case RGX_NOT_ALPHA:
+						child = new rgx::alpha(true);
+						break;
+					case RGX_ALNUM:
+						child = new rgx::alnum(false);
+						break;
+					case RGX_NOT_ALNUM:
+						child = new rgx::alnum(true);
+						break;
+					case RGX_NEWLINE:
+						child = new rgx::newline;
+						break;
+					case RGX_PUNCT:
+						child = new rgx::punct(false);
+						break;
+					case RGX_NOT_PUNCT:
+						child = new rgx::punct(true);
 						break;
 					case RGX_LPAREN:
 						++position;
@@ -247,6 +292,18 @@ namespace z
 							err = RGX_BAD_COUNT_FORM;
 						}
 						break;
+					case RGX_BEGIN:
+						child = new rgx::begin;
+						break;
+					case RGX_END:
+						child = new rgx::end(flags & ENDLINE);
+						break;
+					case RGX_QUESTION:
+						err = setCount(nodeOut,0,1);
+						break;
+					case RGX_GREEDY:
+						err = setGreed(nodeOut,false);
+						break;
 					default:
 						err = RGX_ERROR;
 				}
@@ -266,6 +323,17 @@ namespace z
 				andOptions->children.add(*nodeOut);
 				*nodeOut = andOptions;
 			}
+
+			//If possible, trim child nodes to reduce regex size
+			bool canReduce = (inType == INAND) || ((inType == INOR) && !((rgx::orlist*)*nodeOut)->negate);
+			if (canReduce && ((*nodeOut)->children.length() == 1) && (position < input.length()))
+			{
+				auto temp = (*nodeOut)->children[0];
+				(*nodeOut)->children.clear();
+				delete *nodeOut;
+				*nodeOut = (rgx::compound*)temp;
+			}
+
 			return err;
 		}
 	}

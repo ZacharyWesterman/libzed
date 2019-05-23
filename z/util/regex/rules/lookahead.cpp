@@ -17,14 +17,19 @@ namespace z
 					if (!matchMin(child, stream))
 					{
 						stream.seek(pos);
-						return negate;
+						return false;
 					}
 
 					if (child->greedy || (i >= children.length()))
 					{
 						for (size_t k=(child->min); k<(child->max); ++k)
 						{
-							if (!matchRule(child, stream)) continue;
+							auto lastPos = stream.tell();
+							if (!matchRule(child, stream))
+							{
+								stream.seek(lastPos);
+								break;
+							}
 						}
 					}
 					else //if not greedy, only consume until the next node matches.
@@ -34,6 +39,7 @@ namespace z
 						if (matchMin(sibling, stream))
 						{
 							stream.seek(lastPos);
+							++i;
 							continue;
 						}
 

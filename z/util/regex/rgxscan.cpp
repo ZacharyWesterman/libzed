@@ -55,6 +55,21 @@ namespace z
 				}
 				else if (ch == '\\')
 				{
+					if (pattern[i+1] == 'x')
+					{
+						if (core::isNumeric(pattern[i+2],16) && core::isNumeric(pattern[i+3],16))
+						{
+							uint32_t val = core::numeralValue(pattern[i+2]) << 4;
+							val += core::numeralValue(pattern[i+3]);
+							output.add(rgxss(RGX_SYMBOL, val));
+							i += 3;
+							continue;
+						}
+						else
+						{
+							return RGX_BAD_HEX;
+						}
+					}
 					escaped = true;
 					continue;
 				}
@@ -186,6 +201,7 @@ namespace z
 				if (ch == '?')
 				{
 					output.add(rgxss(canGreedy?RGX_GREEDY:RGX_QUESTION));
+					continue;
 				}
 
 				if (ch == ']') return RGX_BRACKET_MISMATCH;

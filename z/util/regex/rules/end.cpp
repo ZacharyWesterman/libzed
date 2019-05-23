@@ -11,26 +11,29 @@ namespace z
 			bool end::match(core::inputStream& stream) const
 			{
 				if (stream.empty()) return true;
-				if (!newline) return false;
 
 				auto pos = stream.tell();
 				auto ch = stream.getChar();
-				if (stream.empty()) return false;
-				if (ch == '\n')
+				if (stream.empty()) return true;
+
+				if (newline)
 				{
-					pos = stream.tell();
-					ch = stream.getChar();
-					if (stream.empty()) return true;
-					if (ch != '\r') stream.seek(pos);
-					return true;
-				}
-				else if (ch == '\r')
-				{
-					pos = stream.tell();
-					ch = stream.getChar();
-					if (stream.empty()) return true;
-					if (ch != '\n') stream.seek(pos);
-					return true;
+					if (ch == '\n')
+					{
+						pos = stream.tell();
+						ch = stream.getChar();
+						if (stream.empty()) return true;
+						if (ch != '\r') stream.seek(pos);
+						return true;
+					}
+					else if (ch == '\r')
+					{
+						pos = stream.tell();
+						ch = stream.getChar();
+						if (stream.empty()) return true;
+						if (ch != '\n') stream.seek(pos);
+						return true;
+					}
 				}
 
 				stream.seek(pos);

@@ -16,14 +16,12 @@ namespace z
 				{
 					auto ch = stream.getChar();
 					if (stream.empty()) return false;
-					if (!(rgxRule->match(ch))) return false;
+					return rgxRule->match(ch);
 				}
 				else
 				{
-					if (!(rgxRule->match(stream))) return false;
+					return rgxRule->match(stream);
 				}
-
-				return true;
 			}
 
 			bool compound::matchMin(rule* rgxRule, core::inputStream& stream) const

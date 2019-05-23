@@ -46,9 +46,10 @@ namespace z
 			return ch;
 		}
 
-		uint32_t inputStream::getChar(encoding format)
+		uint32_t inputStream::getChar()
 		{
-			if (format == utf32)
+			auto fmt = format();
+			if (fmt == utf32)
 			{
 				uint32_t result;
 				char* buf = (char*)&result;
@@ -69,7 +70,7 @@ namespace z
 				if (filestream.eof()) filestream.clear(std::ios::failbit);
 				return result;
 			}
-			else if (format == utf16)
+			else if (fmt == utf16)
 			{
 				uint16_t result = 0;
 				char* buf = (char*)&result;

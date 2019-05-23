@@ -1,4 +1,5 @@
 #include <z/system.h>
+#include <z/core.h>
 #include <z/util/regex/rgxscan.h>
 #include <z/util/regex/rgxlex.h>
 #include <z/util/regex/rgxid.h>
@@ -105,6 +106,19 @@ int main()
 #		ifdef DEBUG
 		root->print(stream);
 #		endif
+
+		zpath(":").write(stream);
+		zpath text;
+		text.readln(stream);
+		z::core::memoryStream temp(text.cstring(), text.length());
+		if (root->match(temp))
+		{
+			(text.substr(0,temp.tell()) + " matches!").writeln(stream);
+		}
+		else
+		{
+			zpath("does not match.").writeln(stream);
+		}
 	}
 
 	return 0;

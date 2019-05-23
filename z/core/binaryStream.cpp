@@ -53,7 +53,7 @@ namespace z
 				return 0;
 		}
 
-		uint32_t binaryStream::getChar(encoding format)
+		uint32_t binaryStream::getChar()
 		{
 			if (streamIndex >= data.length()) return 0;
 
@@ -64,7 +64,7 @@ namespace z
 			uint32_t res32;
 			uint8_t* str;
 
-			switch (format)
+			switch (format())
 			{
 			case utf16:
 				datact = 2;
@@ -90,7 +90,7 @@ namespace z
 			for (size_t i=0; i<datact; i++)
 				str[i] = data[streamIndex++];
 
-			switch (format)
+			switch (format())
 			{
 				case utf16:
 					return res16;

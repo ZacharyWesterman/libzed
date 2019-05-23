@@ -28,7 +28,7 @@ namespace z
 							stream.seek(pos-1);
 					}
 					auto ch = stream.getChar();
-					bbeg = (ch == '_') || core::isAlphaNumeric(ch);
+					bbeg = !((ch == '_') || core::isAlphaNumeric(ch));
 				}
 				else
 				{
@@ -42,7 +42,7 @@ namespace z
 				else
 				{
 					auto ch = stream.getChar();
-					bend = (ch == '_') || core::isAlphaNumeric(ch);
+					bend = stream.empty() || !((ch == '_') || core::isAlphaNumeric(ch));
 				}
 
 				stream.seek(pos);
