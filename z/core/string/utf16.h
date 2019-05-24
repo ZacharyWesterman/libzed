@@ -355,6 +355,20 @@ namespace z
 			return result;
 		}
 
+		template<>
+		const string<utf16>& string<utf16>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				increase(character_ct+1);
+				uint16_t* data16 = (uint16_t*)data;
+				data16[character_ct] = (chr > 0xFFFF) ? '?' : chr;
+				++character_ct;
+				data16[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<utf16>& string<utf16>::insert(const string<utf16>& other, size_t index)//insert before index
 		{
@@ -1412,6 +1426,13 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template<>
+		void string<utf16>::clear()
+		{
+			uint16_t* data16 = (uint16_t*)data;
+			data16[0] = 0;
 		}
 
 		template <>

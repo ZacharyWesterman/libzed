@@ -609,6 +609,20 @@ namespace z
 			return result;
 		}
 
+		template<>
+		const string<utf32>& string<utf32>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				increase(character_ct+1);
+				uint32_t* data32 = (uint32_t*)data;
+				data32[character_ct] = chr;
+				++character_ct;
+				data32[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<utf32>& string<utf32>::insert(const string<utf32>& other, size_t index)//insert before index
 		{
@@ -1405,6 +1419,13 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template<>
+		void string<utf32>::clear()
+		{
+			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 		}
 
 		template <>

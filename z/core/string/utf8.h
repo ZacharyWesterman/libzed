@@ -242,6 +242,23 @@ namespace z
 			return string<utf8>(string<utf32>(*this).substr(index,count));
 		}
 
+		template<>
+		const string<utf8>& string<utf8>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				uint8_t c[4];
+				int len = toUTF8(c, chr);
+				increase(character_ct+len);
+
+				for (int i=0; i<len; ++i)
+					data[character_ct++] = c[i];
+
+				data[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<utf8>& string<utf8>::insert(const string<utf8>& other, size_t index)//insert before index
 		{
@@ -1195,6 +1212,12 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template<>
+		void string<utf8>::clear()
+		{
+			data[0] = 0;
 		}
 
 		template <>

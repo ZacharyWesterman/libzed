@@ -262,6 +262,19 @@ namespace z
 			return result;
 		}
 
+		template<>
+		const string<ascii>& string<ascii>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				increase(character_ct+1);
+				data[character_ct] = (chr > 0xFF) ? '?' : chr;
+				++character_ct;
+				data[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<ascii>& string<ascii>::insert(const string<ascii>& other, size_t index)//insert before index
 		{
@@ -1221,6 +1234,12 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template<>
+		void string<ascii>::clear()
+		{
+			data[0] = 0;
 		}
 
 		template <>

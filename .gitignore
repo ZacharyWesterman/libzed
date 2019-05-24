@@ -5,3 +5,5 @@ driver
 *.dll
 html/
 doxygen.log
+examples/binary
+examples/object

@@ -83,11 +83,8 @@ uninstall:
 	rm -f $(LIBDIR)/lib$(LIBNAME)*
 	ldconfig
 
-driver: main.o
-	$(LN) $(DLFLAGS_NIX) -o $@ $^
-
-driver.exe: main.o
-	$(LN) $(DLFLAGS_WIN) -o $@ $^
+examples:
+	$(MAKE) -C examples/
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
@@ -112,4 +109,4 @@ clear:
 
 rebuild: clean default
 
-.PHONY: rebuild clean clear default install uninstall
+.PHONY: rebuild clean clear default install uninstall examples

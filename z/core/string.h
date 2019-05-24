@@ -617,6 +617,20 @@ namespace z
 			}
 
 			/**
+			 * \brief Append a single character to the end of the string.
+			 *
+			 * Use this method if you need to append raw characters (i.e. they're coming from a stream),
+			 * as it is more efficient than first casting the character to a string and appending that way.
+			 *
+			 * \param chr The character to append, in UTF32 format.
+			 *
+			 * \return A reference to this string after the character is appended.
+			 *
+			 * \see operator+=()
+			 */
+			const string& append(uint32_t chr);
+
+			/**
 			 * \brief Insert another string into this one.
 			 *
 			 * \param other The string to insert.
@@ -757,6 +771,11 @@ namespace z
 				this->trimLeft(other);
 				return this->trimRight(other);
 			}
+
+			/**
+			 * \brief Reset to a null string.
+			 */
+			void clear();
 
 			/**
 			 * \brief Remove all sequential duplicates from this string.
