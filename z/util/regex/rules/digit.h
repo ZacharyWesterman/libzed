@@ -7,6 +7,9 @@ namespace z
 	{
 		namespace rgx
 		{
+			/**
+			 * \brief Regex rule for matching a digit 0-9
+			 */
 			class digit : public rule
 			{
 			public:

@@ -7,6 +7,9 @@ namespace z
 	{
 		namespace rgx
 		{
+			/**
+			 * \brief Regex rule for matching newlines (\\n, \\r\\n, or just \\r).
+			 */
 			class newline : public rule
 			{
 			public:
