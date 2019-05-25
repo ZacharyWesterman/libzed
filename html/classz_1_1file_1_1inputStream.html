@@ -129,9 +129,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a6abdeb036cb9e480577af5f433157a8d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a6abdeb036cb9e480577af5f433157a8d">get</a> ()</td></tr>
 <tr class="memdesc:a6abdeb036cb9e480577af5f433157a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="#a6abdeb036cb9e480577af5f433157a8d">More...</a><br/></td></tr>
 <tr class="separator:a6abdeb036cb9e480577af5f433157a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05defc362f3f7cf5253892f02287f923"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a05defc362f3f7cf5253892f02287f923">getChar</a> (encoding <a class="el" href="classz_1_1file_1_1inputStream.html#a8674f7d18d96f4a15af70e606eb96df1">format</a>=ascii)</td></tr>
-<tr class="memdesc:a05defc362f3f7cf5253892f02287f923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the given encoding.  <a href="#a05defc362f3f7cf5253892f02287f923">More...</a><br/></td></tr>
-<tr class="separator:a05defc362f3f7cf5253892f02287f923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b01587354848e0b7bbc502c62622f3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a52b01587354848e0b7bbc502c62622f3">getChar</a> ()</td></tr>
+<tr class="memdesc:a52b01587354848e0b7bbc502c62622f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the stream's determined encoding.  <a href="#a52b01587354848e0b7bbc502c62622f3">More...</a><br/></td></tr>
+<tr class="separator:a52b01587354848e0b7bbc502c62622f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92df4cca9beda12c28b2e0b4342f6d29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1inputStream.html#a92df4cca9beda12c28b2e0b4342f6d29">empty</a> ()</td></tr>
 <tr class="memdesc:a92df4cca9beda12c28b2e0b4342f6d29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether we have consumed the last character in the stream.  <a href="#a92df4cca9beda12c28b2e0b4342f6d29">More...</a><br/></td></tr>
 <tr class="separator:a92df4cca9beda12c28b2e0b4342f6d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -390,7 +390,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a05defc362f3f7cf5253892f02287f923"></a>
+<a class="anchor" id="a52b01587354848e0b7bbc502c62622f3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -400,8 +400,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">uint32_t z::file::inputStream::getChar </td>
           <td>(</td>
-          <td class="paramtype">encoding&#160;</td>
-          <td class="paramname"><em>format</em> = <code>ascii</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -412,17 +411,11 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </table>
 </div><div class="memdoc">
 
-<p>Get the next chracter on the stream in the given encoding. </p>
+<p>Get the next chracter on the stream in the stream's determined encoding. </p>
 <p>Increments the stream index.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>The character encoding scheme.</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>The character previously at the beginning of the stream. </dd></dl>
 
-<p>Implements <a class="el" href="classz_1_1core_1_1inputStream.html#acc1bbf3f0dc7ecde4ad46f119bc06249">z::core::inputStream</a>.</p>
+<p>Implements <a class="el" href="classz_1_1core_1_1inputStream.html#ac1e3446f2e70e3ff974fd9ee18e83568">z::core::inputStream</a>.</p>
 
 </div>
 </div>

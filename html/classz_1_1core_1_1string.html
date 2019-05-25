@@ -248,6 +248,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7ebc6a5b873a2d834dbd604548256a38"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a7ebc6a5b873a2d834dbd604548256a38">append</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other)</td></tr>
 <tr class="memdesc:a7ebc6a5b873a2d834dbd604548256a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append another string to the end of this one.  <a href="#a7ebc6a5b873a2d834dbd604548256a38">More...</a><br/></td></tr>
 <tr class="separator:a7ebc6a5b873a2d834dbd604548256a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad32e81a3cb2e2d263ea2ae5396224ef"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aad32e81a3cb2e2d263ea2ae5396224ef">append</a> (uint32_t chr)</td></tr>
+<tr class="memdesc:aad32e81a3cb2e2d263ea2ae5396224ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a single character to the end of the string.  <a href="#aad32e81a3cb2e2d263ea2ae5396224ef">More...</a><br/></td></tr>
+<tr class="separator:aad32e81a3cb2e2d263ea2ae5396224ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca681e97ec1f2142c36bc15a2d6deba4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aca681e97ec1f2142c36bc15a2d6deba4">insert</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, size_t index)</td></tr>
 <tr class="memdesc:aca681e97ec1f2142c36bc15a2d6deba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert another string into this one.  <a href="#aca681e97ec1f2142c36bc15a2d6deba4">More...</a><br/></td></tr>
 <tr class="separator:aca681e97ec1f2142c36bc15a2d6deba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,6 +281,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4692a7a8aceb41ba7f5281183d642afc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a4692a7a8aceb41ba7f5281183d642afc">trim</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other)</td></tr>
 <tr class="memdesc:a4692a7a8aceb41ba7f5281183d642afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove padding from the both sides of this string.  <a href="#a4692a7a8aceb41ba7f5281183d642afc">More...</a><br/></td></tr>
 <tr class="separator:a4692a7a8aceb41ba7f5281183d642afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8157c07a098bd870d87a4fd7b4fb7333"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8157c07a098bd870d87a4fd7b4fb7333"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a8157c07a098bd870d87a4fd7b4fb7333">clear</a> ()</td></tr>
+<tr class="memdesc:a8157c07a098bd870d87a4fd7b4fb7333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset to a null string. <br/></td></tr>
+<tr class="separator:a8157c07a098bd870d87a4fd7b4fb7333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11a5b51d54ba1a67e232ce459c76e178"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a11a5b51d54ba1a67e232ce459c76e178">cutDuplicates</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other)</td></tr>
 <tr class="memdesc:a11a5b51d54ba1a67e232ce459c76e178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all sequential duplicates from this string.  <a href="#a11a5b51d54ba1a67e232ce459c76e178">More...</a><br/></td></tr>
 <tr class="separator:a11a5b51d54ba1a67e232ce459c76e178"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -859,6 +866,35 @@ template&lt;encoding E = utf32&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after the other string is appended.</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a74e91ace781f0f0d0b30011ab6d3922a" title="Append another string to the end of this one. ">operator+=()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aad32e81a3cb2e2d263ea2ae5396224ef"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&amp; <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>chr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Append a single character to the end of the string. </p>
+<p>Use this method if you need to append raw characters (i.e. they're coming from a stream), as it is more efficient than first casting the character to a string and appending that way.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chr</td><td>The character to append, in UTF32 format.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this string after the character is appended.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a74e91ace781f0f0d0b30011ab6d3922a" title="Append another string to the end of this one. ">operator+=()</a> </dd></dl>
 
 </div>

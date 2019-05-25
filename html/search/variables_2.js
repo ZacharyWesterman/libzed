@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['e',['e',['../namespacez_1_1math.html#a535fb6bfa1434facff36d8726a4767ec',1,'z::math']]]
+  ['children',['children',['../classz_1_1util_1_1rgx_1_1compound.html#aed38bba22516d29f6f3d009cf7726582',1,'z::util::rgx::compound']]]
 ];

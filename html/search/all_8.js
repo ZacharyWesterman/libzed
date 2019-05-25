@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id',['id',['../classz_1_1util_1_1rgxll.html#a70c5a86bd4802a3a6c954ab12ceed81c',1,'z::util::rgxll::id()'],['../classz_1_1util_1_1rgxss.html#a88acfc8695edc760a25fc3a5cbc76df6',1,'z::util::rgxss::id()']]],
+  ['id',['id',['../classz_1_1util_1_1rgxss.html#a88acfc8695edc760a25fc3a5cbc76df6',1,'z::util::rgxss']]],
   ['increase',['increase',['../classz_1_1core_1_1string.html#a1686128e5890296ead8e6a5224f6abc3',1,'z::core::string']]],
   ['introduction',['Introduction',['../index.html',1,'']]],
   ['info',['info',['../classz_1_1file_1_1info.html',1,'z::file']]],
@@ -8,6 +8,7 @@ var searchData=
   ['inputstream',['inputStream',['../classz_1_1core_1_1inputStream.html',1,'z::core']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html',1,'z::file']]],
   ['inputstream',['inputStream',['../classz_1_1file_1_1inputStream.html#ab9001ef637450d5f6b4c083d6368eab2',1,'z::file::inputStream::inputStream()'],['../classz_1_1file_1_1inputStream.html#acbcee58130acb9536d4808631886d1d8',1,'z::file::inputStream::inputStream(const zpath &amp;fileName)']]],
+  ['insensitive',['insensitive',['../classz_1_1util_1_1rgx_1_1character.html#ab9bf5525c43f55ecaae6ec24caa686ee',1,'z::util::rgx::character::insensitive()'],['../classz_1_1util_1_1rgx_1_1range.html#a663a30ccc186cb96b35ae3587e496c8f',1,'z::util::rgx::range::insensitive()']]],
   ['insert',['insert',['../classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aca681e97ec1f2142c36bc15a2d6deba4',1,'z::core::string::insert()'],['../classz_1_1util_1_1generic.html#a1148df70a38a9862341d0f5c5f0f9988',1,'z::util::generic::insert()'],['../classz_1_1util_1_1genericArray.html#a6e678ae338e735e0e69a92bab16b89ed',1,'z::util::genericArray::insert()'],['../classz_1_1util_1_1genericString.html#ad4accb580343ea90165cc456e24f2899',1,'z::util::genericString::insert()']]],
   ['integer',['integer',['../classz_1_1core_1_1string.html#a14b2c3667a94126667653e8266b6577e',1,'z::core::string::integer()'],['../classz_1_1util_1_1generic.html#a3588cb2927e51e58f8fd78944aa99386',1,'z::util::generic::integer()'],['../classz_1_1util_1_1genericArray.html#ae06fa90dbe8dd4043e7643b2b07ebac2',1,'z::util::genericArray::integer()'],['../classz_1_1util_1_1genericComplex.html#aaa564e8c6eb014afacd9267db412cb13',1,'z::util::genericComplex::integer()'],['../classz_1_1util_1_1genericFloat.html#aab3418daa8db7b1ae4c2c1db42d21272',1,'z::util::genericFloat::integer()'],['../classz_1_1util_1_1genericInt.html#a8803517c7932b57cb3ebf0cab92f1217',1,'z::util::genericInt::integer()'],['../classz_1_1util_1_1genericNull.html#acdf95495e01efff4edcd54cbbbe88910',1,'z::util::genericNull::integer()'],['../classz_1_1util_1_1genericPointer.html#a74e7369a2248c7053971d9cfe9908193',1,'z::util::genericPointer::integer()'],['../classz_1_1util_1_1genericString.html#a552942f64bc0b58713640608c546202f',1,'z::util::genericString::integer()']]],
   ['isalpha',['isAlpha',['../namespacez_1_1core.html#a92a36496e468ae0ae8c2f668d12b85ae',1,'z::core']]],
@@ -21,6 +22,7 @@ var searchData=
   ['isloweralpha',['isLowerAlpha',['../namespacez_1_1core.html#a8c13665f8a14c6d5c3fc24dcad779a38',1,'z::core']]],
   ['isnull',['isNull',['../classz_1_1util_1_1generic.html#a891240802b6d111ff94fde9df8519b23',1,'z::util::generic::isNull()'],['../classz_1_1util_1_1genericArray.html#aa42b780da39dec7d1f3b42415afaaac4',1,'z::util::genericArray::isNull()'],['../classz_1_1util_1_1genericNull.html#a1b322b9aa5567ab1a332f94629da9094',1,'z::util::genericNull::isNull()'],['../classz_1_1util_1_1genericPointer.html#ad177fee733a26ef8555e908f9232543b',1,'z::util::genericPointer::isNull()'],['../classz_1_1util_1_1genericString.html#abff4f980bf62dbc30b183f6d1fd869ae',1,'z::util::genericString::isNull()']]],
   ['isnumeric',['isNumeric',['../namespacez_1_1core.html#a91507df7b280485658f03492563c7caf',1,'z::core']]],
+  ['isor',['isOr',['../classz_1_1util_1_1rgx_1_1orlist.html#a8eb0dfa531c9e5f7090eb540912b9b75',1,'z::util::rgx::orlist::isOr()'],['../classz_1_1util_1_1rgx_1_1rule.html#a84a59a2102852d1ad5aa55b13c6dff69',1,'z::util::rgx::rule::isOr()']]],
   ['ispointer',['isPointer',['../classz_1_1util_1_1generic.html#a59a05fd80afa02c42656c271941c1102',1,'z::util::generic::isPointer()'],['../classz_1_1util_1_1genericPointer.html#a437a594438271392a3c9eb17a8735e6e',1,'z::util::genericPointer::isPointer()']]],
   ['isstring',['isString',['../classz_1_1util_1_1generic.html#ab2176a930132a4a7597592f6965560f5',1,'z::util::generic::isString()'],['../classz_1_1util_1_1genericString.html#ac7697941035d81d49b371d0b0f5c4d25',1,'z::util::genericString::isString()']]],
   ['isupper',['isUpper',['../namespacez_1_1core.html#a3911409384cfa32f3618b8bbd0beac18',1,'z::core']]],

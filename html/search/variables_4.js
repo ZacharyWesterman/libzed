@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node',['node',['../structz_1_1util_1_1rgxmatcher.html#a4041a1610a690148d60e5634117942a3',1,'z::util::rgxmatcher']]]
+  ['greedy',['greedy',['../classz_1_1util_1_1rgx_1_1rule.html#ad8bf45cc3e968a2e9243681648a348d3',1,'z::util::rgx::rule']]]
 ];
