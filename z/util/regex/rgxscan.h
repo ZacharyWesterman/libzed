@@ -1,6 +1,8 @@
 #pragma once
 
 #include <z/core/string.h>
+#include <z/core/array.h>
+
 #include "rgxss.h"
 #include "rgxerr.h"
 
@@ -18,6 +20,6 @@ namespace z
 		 *
 		 * \threadsafe_function_ref
 		 */
-		rgxerr rgxscan(const zpath& pattern, core::array<rgxss>& output);
+		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output);
 	}
 }

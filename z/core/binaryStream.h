@@ -22,12 +22,13 @@ namespace z
 
 		public:
 			binaryStream();
+			~binaryStream();
 
 			void put(uint8_t ch);
  			void put(uint8_t* str, size_t count, encoding format = ascii);
 
  			uint8_t get();
- 			uint32_t getChar(encoding format = ascii);
+ 			uint32_t getChar();
 
  			bool empty();
 			bool good();

@@ -262,6 +262,19 @@ namespace z
 			return result;
 		}
 
+		template<>
+		const string<ascii>& string<ascii>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				increase(character_ct+1);
+				data[character_ct] = (chr > 0xFF) ? '?' : chr;
+				++character_ct;
+				data[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<ascii>& string<ascii>::insert(const string<ascii>& other, size_t index)//insert before index
 		{
@@ -1223,6 +1236,12 @@ namespace z
 			return this->remove(index+other.character_ct, character_ct);
 		}
 
+		template<>
+		void string<ascii>::clear()
+		{
+			data[0] = 0;
+		}
+
 		template <>
 		const string<ascii>& string<ascii>::cutDuplicates(const string<ascii>& other)
 		{
@@ -1398,19 +1417,15 @@ namespace z
 		void string<ascii>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			increase(character_ct);
+			data[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(enc);
+				last = stream.getChar();
 
 			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
@@ -1423,7 +1438,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -1432,7 +1447,7 @@ namespace z
 				increase(character_ct);
 				data[character_ct++] = (last > 0xFF) ? '?' : last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);
@@ -1443,16 +1458,12 @@ namespace z
 		void string<ascii>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			increase(character_ct);
+			data[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty())
 			{
@@ -1461,35 +1472,27 @@ namespace z
 					if (last == '\r')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\n'))
 						{
 							stream.seek(pos);
 						}
-
-						data[character_ct] = 0;
-						return;
+						break;
 					}
 					else if (last == '\n')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\r'))
 						{
 							stream.seek(pos);
 						}
-
-						data[character_ct] = 0;
-						return;
+						break;
 					}
 				}
 				else
 				{
-					if ((last == '\n') || (last == '\r'))
-					{
-						data[character_ct] = 0;
-						return;
-					}
+					if ((last == '\n') || (last == '\r')) break;
 				}
 
 				if (enc == utf8)
@@ -1501,7 +1504,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -1510,7 +1513,7 @@ namespace z
 				increase(character_ct);
 				data[character_ct++] = (last > 0xFF) ? '?' : last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);

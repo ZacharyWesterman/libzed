@@ -2,7 +2,7 @@ LIBNAME = zed
 VERSION = 1
 VER_SUB = 3
 
-SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
+SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/regex/rules/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
@@ -36,12 +36,13 @@ ifneq (,$(findstring $(OPT),S size Size SIZE))
 OLEVEL = s
 endif
 
-# if debug flag is false
-ifeq (,$(findstring $(DEBUG),1 true True TRUE))
+# if debug flag is not set
+ifndef DEBUG
 CCFLAGS += -O$(OLEVEL) -g0
 LFLAGS += -s
-else
-CCFLAGS += -g3 -O$(OLEVEL) -DDEBUG
+endif
+ifdef DEBUG
+CCFLAGS += -g$(DEBUG) -O$(OLEVEL) -DDEBUG
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -82,11 +83,8 @@ uninstall:
 	rm -f $(LIBDIR)/lib$(LIBNAME)*
 	ldconfig
 
-driver: main.o
-	$(LN) $(DLFLAGS_NIX) -o $@ $^
-
-driver.exe: main.o
-	$(LN) $(DLFLAGS_WIN) -o $@ $^
+examples:
+	$(MAKE) -C examples/
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
@@ -111,4 +109,4 @@ clear:
 
 rebuild: clean default
 
-.PHONY: rebuild clean clear default install uninstall
+.PHONY: rebuild clean clear default install uninstall examples

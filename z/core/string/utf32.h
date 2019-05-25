@@ -609,6 +609,20 @@ namespace z
 			return result;
 		}
 
+		template<>
+		const string<utf32>& string<utf32>::append(uint32_t chr)
+		{
+			if (chr)
+			{
+				increase(character_ct+1);
+				uint32_t* data32 = (uint32_t*)data;
+				data32[character_ct] = chr;
+				++character_ct;
+				data32[character_ct] = 0;
+			}
+			return *this;
+		}
+
 		template <>
 		const string<utf32>& string<utf32>::insert(const string<utf32>& other, size_t index)//insert before index
 		{
@@ -812,21 +826,16 @@ namespace z
 		void string<utf32>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
-			increase(character_ct);
-
 			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data32[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar(enc);
+				last = stream.getChar();
 
 			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
@@ -839,7 +848,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -847,9 +856,9 @@ namespace z
 
 				increase(character_ct);
 				data32 = (uint32_t*)data;
-				data32[character_ct++] = (last > 0xFFFF) ? '?' : last;
+				data32[character_ct++] = last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);
@@ -861,18 +870,14 @@ namespace z
 		void string<utf32>::readln(inputStream& stream)
 		{
 			character_ct = 0;
-			increase(character_ct);
 
 			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 
-			if (stream.bad() || stream.empty())
-			{
-				data32[character_ct] = 0;
-				return;
-			}
+			if (stream.bad() || stream.empty()) return;
 
 			encoding enc = stream.format();
-			uint32_t last = stream.getChar(enc);
+			uint32_t last = stream.getChar();
 
 			while (!stream.empty())
 			{
@@ -881,35 +886,27 @@ namespace z
 					if (last == '\r')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\n'))
 						{
 							stream.seek(pos);
 						}
-
-						data32[character_ct] = 0;
-						return;
+						break;
 					}
 					else if (last == '\n')
 					{
 						auto pos = stream.tell();
-						last = stream.getChar(enc);
+						last = stream.getChar();
 						if (!stream.empty() && (last != '\r'))
 						{
 							stream.seek(pos);
 						}
-
-						data32[character_ct] = 0;
-						return;
+						break;
 					}
 				}
 				else
 				{
-					if ((last == '\n') || (last == '\r'))
-					{
-						data32[character_ct] = 0;
-						return;
-					}
+					if ((last == '\n') || (last == '\r')) break;
 				}
 
 				if (enc == utf8)
@@ -921,7 +918,7 @@ namespace z
 					if (len)
 					{
 						for (int i=1; i<len; i++)
-							c[i] = stream.getChar(enc);
+							c[i] = stream.getChar();
 
 						last = fromUTF8(c);
 					}
@@ -929,9 +926,9 @@ namespace z
 
 				increase(character_ct);
 				data32 = (uint32_t*)data;
-				data32[character_ct++] = (last > 0xFFFF) ? '?' : last;
+				data32[character_ct++] = last;
 
-				last = stream.getChar(enc);
+				last = stream.getChar();
 			}
 
 			increase(character_ct);
@@ -1422,6 +1419,13 @@ namespace z
 			}
 
 			return this->remove(index+other.character_ct, character_ct);
+		}
+
+		template<>
+		void string<utf32>::clear()
+		{
+			uint32_t* data32 = (uint32_t*)data;
+			data32[0] = 0;
 		}
 
 		template <>

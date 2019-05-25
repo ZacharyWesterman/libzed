@@ -53,10 +53,9 @@ namespace z
 			return std::cin.get();
 		}
 
-		uint32_t console::getChar(encoding format)
+		uint32_t console::getChar()
 		{
 			if (std::cin.eof()) return 0;
-			if (format == z::utf8) return std::cin.get();
 
 			uint8_t buf[4];
 			buf[0] = std::cin.get();

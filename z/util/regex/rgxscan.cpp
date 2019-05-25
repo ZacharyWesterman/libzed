@@ -1,211 +1,225 @@
-#include <z/core/array.h>
+#include "rgxscan.h"
 
 #include "rgxid.h"
-#include "rgxscan.h"
 #include "rgxsesc.h"
+
+#include <z/core/charFunctions.h>
 
 namespace z
 {
 	namespace util
 	{
-		rgxerr rgxscan(const zpath& pattern, core::array<rgxss>& output)
+		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output)
 		{
 			bool inOr = false;
 			bool startOr = false;
+			bool escaped = false;
+			bool orForward = false;
 			bool inBrace = false;
 			int paren = 0;
+			int amount = 0;
+			bool canGreedy = false;
 
-			uint8_t last = 0;
-			rgxss esc(0);
-
-			zpath res;
-
-			for (size_t i=0; i<pattern.length(); i++)
+			for (size_t i=0; i<pattern.length(); ++i)
 			{
-				uint32_t ch = pattern[i];
-				uint32_t next = pattern[i+1];
+				auto ch = pattern[i];
 
-				bool braceValid = false;
-
-				switch (ch)
+				if (inBrace)
 				{
-					case '(':
-						if (inOr)
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						else
-						{
-							output.add(rgxss(last=RGX_LPAREN));
-							paren++;
-						}
-						break;
-					case ')':
-						if (inOr)
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						else
-						{
-							output.add(rgxss(last=RGX_RPAREN));
-							paren--;
-						}
-						break;
-					case '[':
-						if (inOr)
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						else
-						{
-							inOr = startOr = true;
-							output.add(rgxss(last=RGX_LBRACKET));
-						}
-						break;
-					case ']':
-						if (inOr)
-						{
-							if (startOr || (last == RGX_NOT))
-							{
-								output.add(rgxss(last=RGX_SYMBOL, ch));
-							}
-							else
-							{
-								inOr = false;
-								output.add(rgxss(last=RGX_RBRACKET));
-							}
-						}
-						else return RGX_BRACKET_MISMATCH;
-						break;
-					case '-':
-						if (inOr)
-						{
-							if (startOr || (next == ']'))
-							{
-								output.add(rgxss(last=RGX_SYMBOL, ch));
-							}
-							else
-							{
-								if (last == RGX_NOT)
-									output.add(rgxss(last=RGX_SYMBOL, ch));
-								else
-									output.add(rgxss(last=RGX_DASH));
-							}
-						}
-						else if (last == RGX_QUERY)
-						{
-							output.add(rgxss(last=RGX_DASH));
-						}
-						else
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						break;
-					case '.':
-						output.add(rgxss(last=RGX_PERIOD));
-						break;
-					case '?':
-						if (inOr)
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						else if (last == RGX_LPAREN)
-							output.add(rgxss(last=RGX_QUERY));
-						else if ((last == RGX_ASTERISK) || (last == RGX_PLUS) || (last == RGX_RBRACE))
-							output.add(rgxss(last=RGX_GREEDY));
-						else
-							output.add(rgxss(last=RGX_QUESTION));
-						break;
-					case '!':
-						if ((last == RGX_QUERY) || (last == RGX_PREVIOUS))
-							output.add(rgxss(last=RGX_BANG));
-						else
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						break;
-					case '<':
-						if (last == RGX_QUERY)
-							output.add(rgxss(last=RGX_PREVIOUS));
-						else
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						break;
-					case '=':
-						if ((last == RGX_QUERY) || (last == RGX_PREVIOUS))
-							output.add(rgxss(last=RGX_EQUALS));
-						else
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						break;
-					case '|':
-						if (inOr)
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						else
-							output.add(rgxss(last=RGX_COLUMN));
-						break;
-					case '\\':
-						esc = rgxsesc(next);
-						last = esc.id();
-						output.add(esc);
-						i++;
-						break;
-					case '*':
-						if (inOr || (!i) || (last == RGX_LPAREN))
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						else
-							output.add(rgxss(last=RGX_ASTERISK));
-						break;
-					case '+':
-						if (inOr || (!i) || (last == RGX_LPAREN))
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						else
-							output.add(rgxss(last=RGX_PLUS));
-						break;
-					case ',':
-						braceValid = true;
-						if (inBrace)
-							output.add(rgxss(last=RGX_COMMA));
-						else
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						break;
-					case '{':
-						if (inOr || (last == RGX_LPAREN))
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						else
-						{
-							inBrace = braceValid = true;
-							output.add(rgxss(last=RGX_LBRACE));
-						}
-						break;
-					case '}':
-						if (inBrace)
-						{
-							inBrace = false;
-							output.add(rgxss(last=RGX_RBRACE));
-						}
-						else
-						{
-							output.add(rgxss(last=RGX_SYMBOL, ch));
-						}
-						break;
-					case '^':
-						if (startOr)
-							output.add(rgxss(last=RGX_NOT));
-						else
-							output.add(rgxss(last=RGX_BEGIN));
-						break;
-					case '$':
-						output.add(rgxss(last=RGX_END));
-						break;
-					default:
-						braceValid = ((ch >= '0') && (ch <= '9'));
-						output.add(rgxss(last=RGX_SYMBOL, ch));
+					if (ch == '}')
+					{
+						if (pattern[i-1] != ',')
+							output.add(rgxss(RGX_COUNT, amount));
+						output.add(rgxss(RGX_RBRACE));
+						inBrace = false;
+						canGreedy = true;
+					}
+					else if (core::isNumeric(ch))
+					{
+						amount = (amount*10)+core::numeralValue(ch);
+					}
+					else if (ch == ',')
+					{
+						output.add(rgxss(RGX_COUNT, amount));
+						output.add(rgxss(RGX_COMMA));
+						amount = 0;
+					}
+					continue;
 				}
 
-				if (inBrace && !braceValid) return RGX_BRACE_INVALID;
-				if (startOr && (ch != '[')) startOr = false;
+				if (escaped)
+				{
+					output.add(rgxsesc(ch));
+					escaped = false;
+					continue;
+				}
+				else if (ch == '\\')
+				{
+					if (pattern[i+1] == 'x')
+					{
+						if (core::isNumeric(pattern[i+2],16) && core::isNumeric(pattern[i+3],16))
+						{
+							uint32_t val = core::numeralValue(pattern[i+2]) << 4;
+							val += core::numeralValue(pattern[i+3]);
+							output.add(rgxss(RGX_SYMBOL, val));
+							i += 3;
+							continue;
+						}
+						else
+						{
+							return RGX_BAD_HEX;
+						}
+					}
+					escaped = true;
+					continue;
+				}
+
+				if (inOr)
+				{
+					if (startOr)
+					{
+						orForward = !(ch == '^');
+						if (ch == '^')
+							output.add(rgxss(RGX_NOT));
+						else
+							output.add(rgxss(RGX_SYMBOL, ch));
+						startOr = false;
+					}
+					else
+					{
+						if (ch == ']')
+						{
+							output.add(rgxss(RGX_RBRACKET));
+							inOr = startOr = false;
+						}
+						else if ((ch == '-') && orForward && (pattern[i-1] != '[') && (pattern[i+1] != ']'))
+						{
+							output.add(rgxss(RGX_DASH));
+						}
+						else
+						{
+							output.add(rgxss(RGX_SYMBOL,ch));
+						}
+						orForward = true;
+					}
+					continue;
+				}
+
+				if (ch == '[')
+				{
+					inOr = startOr = true;
+					output.add(rgxss(RGX_LBRACKET));
+					continue;
+				}
+
+				if (ch == '(')
+				{
+					if (pattern[i+1] == '?')
+					{
+						auto ch2 = pattern[i+2];
+						if (ch2 == '<')
+						{
+							auto ch3 = pattern[i+3];
+							if (ch3 == '=')
+							{
+								i += 2;
+								output.add(rgxss(RGX_POS_LOOKBEHIND));
+							}
+							else if (ch3 == '!')
+							{
+								i += 2;
+								output.add(rgxss(RGX_NEG_LOOKBEHIND));
+							}
+							else
+							{
+								output.add(rgxss(RGX_POS_FLAG));
+							}
+						}
+						else if (ch2 == '=')
+						{
+							++i;
+							output.add(rgxss(RGX_POS_LOOKAHEAD));
+						}
+						else if (ch2 == '!')
+						{
+							++i;
+							output.add(rgxss(RGX_NEG_LOOKAHEAD));
+						}
+						else if (ch2 == '-')
+						{
+							++i;
+							output.add(rgxss(RGX_NEG_FLAG));
+						}
+						else
+						{
+							output.add(rgxss(RGX_POS_FLAG));
+						}
+						++i;
+					}
+					else
+					{
+						output.add(rgxss(RGX_LPAREN));
+					}
+					++paren;
+					continue;
+				}
+
+				if (ch == '{')
+				{
+					if (pattern[i+1] == '}')
+					{
+						output.add(rgxss(RGX_SYMBOL,'{'));
+						output.add(rgxss(RGX_SYMBOL,'}'));
+						++i;
+						continue;
+					}
+					inBrace = true;
+					output.add(rgxss(RGX_LBRACE));
+					continue;
+				}
+
+				if (ch == ')')
+				{
+					if (!paren) return RGX_PARENTH_MISMATCH;
+					--paren;
+					output.add(rgxss(RGX_RPAREN));
+					continue;
+				}
+
+				if (ch == '*')
+				{
+					canGreedy = true;
+					output.add(rgxss(RGX_ASTERISK));
+					continue;
+				}
+				if (ch == '+')
+				{
+					canGreedy = true;
+					output.add(rgxss(RGX_PLUS));
+					continue;
+				}
+				if (ch == '?')
+				{
+					output.add(rgxss(canGreedy?RGX_GREEDY:RGX_QUESTION));
+					continue;
+				}
+
+				if (ch == ']') return RGX_BRACKET_MISMATCH;
+				else if (ch == '}') return RGX_BRACE_MISMATCH;
+				else if (ch == '.') output.add(rgxss(RGX_PERIOD));
+				else if (ch == '|') output.add(rgxss(RGX_COLUMN));
+				else if (ch == '^') output.add(rgxss(RGX_BEGIN));
+				else if (ch == '$') output.add(rgxss(RGX_END));
+				else output.add(rgxss(RGX_SYMBOL,ch));
+
+				canGreedy = false;
 			}
 
 			if (inBrace) return RGX_BRACE_MISMATCH;
 			if (inOr) return RGX_BRACKET_MISMATCH;
 			if (paren) return RGX_PARENTH_MISMATCH;
+
+			if (escaped) output.add(rgxss(RGX_SYMBOL, '\\'));
 
 			return RGX_NO_ERROR;
 		}

@@ -38,8 +38,6 @@ namespace z
 					return rgxss(RGX_PUNCT);
 				case 'P':
 					return rgxss(RGX_NOT_PUNCT);
-				case 'x':
-					return rgxss(RGX_HEXDIGIT);
 				default:
 					if (ch)
 						return rgxss(RGX_SYMBOL, ch);
