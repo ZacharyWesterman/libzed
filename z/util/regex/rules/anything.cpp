@@ -14,9 +14,9 @@ namespace z
 
 				auto pos = stream.tell();
 				auto ch = stream.getChar();
+				if (stream.empty()) return false;
 				if (newline)
 				{
-					if (stream.empty()) return false;
 					if (ch == '\n')
 					{
 						pos = stream.tell();

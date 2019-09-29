@@ -42,7 +42,8 @@ namespace z
 				else
 				{
 					auto ch = stream.getChar();
-					bend = stream.empty() || !((ch == '_') || core::isAlphaNumeric(ch));
+					if (stream.empty()) return stream.empty();
+					bend = !((ch == '_') || core::isAlphaNumeric(ch));
 				}
 
 				stream.seek(pos);

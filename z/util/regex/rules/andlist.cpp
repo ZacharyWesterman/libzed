@@ -1,5 +1,5 @@
 #include "andlist.h"
-#include <iostream>
+
 namespace z
 {
 	namespace util
@@ -25,7 +25,7 @@ namespace z
 							auto lastPos = stream.tell();
 							if (!matchRule(child, stream))
 							{
-								stream.seek(lastPos);
+								if (!stream.empty()) stream.seek(lastPos);
 								break;
 							}
 						}

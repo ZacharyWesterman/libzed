@@ -47,7 +47,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			 void set(const zstring& pattern);
+			void set(const zstring& pattern);
 
 			/**
 			 * \brief Attempt to match the pattern from a stream.
@@ -78,7 +78,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			 bool bad() const;
+			bool bad() const;
 
 			/**
 			 * \brief Get the regex pattern error, if any.

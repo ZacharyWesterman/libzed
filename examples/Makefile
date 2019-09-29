@@ -1,5 +1,5 @@
 
-all: binary object binary/regexConsole
+all: binary object binary/regexConsole binary/fileStream
 
 binary:
 	mkdir -p $@

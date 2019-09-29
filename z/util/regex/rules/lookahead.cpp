@@ -10,6 +10,7 @@ namespace z
 
 			bool lookahead::match(core::inputStream& stream) const
 			{
+				if (stream.empty()) return negate;
 				auto pos = stream.tell();
 				size_t i = 0;
 				for (auto& child : children)

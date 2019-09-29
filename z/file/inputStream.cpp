@@ -3,8 +3,8 @@
 
 #define MAX_BYTE_READ 32
 
-#include <iostream>
 #include <string.h>
+#include <utility> //for std::swap
 
 namespace z
 {
@@ -19,7 +19,7 @@ namespace z
 
 		inputStream::inputStream(const zpath& fileName)
 		{
-			filestream.open((const char*)fileName.cstring(), std::ios::in);
+			filestream.open((const char*)fileName.cstring(), std::ios::in | std::ios::binary);
 			initialized = false;
 			endianness_ = __BYTE_ORDER__;
 			streamFormat = ascii;
@@ -28,7 +28,7 @@ namespace z
 		void inputStream::open(const zpath& fileName)
 		{
 			filestream.close();
-			filestream.open((const char*)fileName.cstring(), std::ios::in);
+			filestream.open((const char*)fileName.cstring(), std::ios::in | std::ios::binary);
 			initialized = false;
 		}
 
@@ -42,12 +42,12 @@ namespace z
 		{
 			char ch = 0;
 			filestream.read(&ch, 1);
-			if (filestream.eof()) filestream.clear(std::ios::failbit);
 			return ch;
 		}
 
 		uint32_t inputStream::getChar()
 		{
+			if (empty()) return 0;
 			auto fmt = format();
 			if (fmt == utf32)
 			{
@@ -55,19 +55,13 @@ namespace z
 				char* buf = (char*)&result;
 
 				//If the file's endianness != system endianness, swap byte order
-				if (endianness_ == __BYTE_ORDER__)
+				filestream.read(buf, 4);
+				if (endianness_ != __BYTE_ORDER__)
 				{
-					filestream.read(buf, 4);
-				}
-				else
-				{
-					filestream.read(&buf[3],1);
-					filestream.read(&buf[2],1);
-					filestream.read(&buf[1],1);
-					filestream.read(&buf[0],1);
+					std::swap(buf[0], buf[3]);
+					std::swap(buf[1], buf[2]);
 				}
 
-				if (filestream.eof()) filestream.clear(std::ios::failbit);
 				return result;
 			}
 			else if (fmt == utf16)
@@ -76,17 +70,12 @@ namespace z
 				char* buf = (char*)&result;
 
 				//If the file's endianness != system endianness, swap byte order
-				if (endianness_ == __BYTE_ORDER__)
+				filestream.read(buf, 2);
+				if (endianness_ != __BYTE_ORDER__)
 				{
-					filestream.read(buf, 2);
+					std::swap(buf[0], buf[1]);
 				}
-				else
-				{
-					filestream.read(&buf[1],1);
-					filestream.read(&buf[0],1);
-				}
-				// std::cout << '(' << (int)buf[0] << ' '<<(int)buf[1] << ')' << std::endl;
-				if (filestream.eof()) filestream.clear(std::ios::failbit);
+
 				return result;
 			}
 			else
@@ -97,6 +86,7 @@ namespace z
 
 		void inputStream::seek(size_t index)
 		{
+			filestream.clear();
 			filestream.seekg(index, filestream.beg);
 		}
 
@@ -107,7 +97,7 @@ namespace z
 
 		bool inputStream::empty()
 		{
-			return filestream.eof() || (tell() > end());
+			return filestream.eof() || filestream.bad();
 		}
 
 		bool inputStream::good()
@@ -132,7 +122,6 @@ namespace z
 
 		size_t inputStream::end()
 		{
-			std::cout << filestream.beg << " - " << filestream.end << std::endl;
 			return filestream.end - filestream.beg;
 		}
 

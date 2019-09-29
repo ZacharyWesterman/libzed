@@ -510,7 +510,7 @@ namespace z
 		template <typename T>
 		inline const T& array<T>::at(size_t index) const
 		{
-		   return array_data.at(index);
+			return array_data.at(index);
 		}
 
 		/**
