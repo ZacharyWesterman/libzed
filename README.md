@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
 
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
-It should compile on any flavor of these systems.<br>
+It should compile on any flavor of these systems.
+
 The only requirements are **make** and a **g++** version that supports *at least* C++11.<br>
 Technically you could use another C++ compiler, but I use **g++**.<br>
 This also does compile on the Raspberry Pi, but I haven't checked it for bugs.<br>
