@@ -146,6 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ace617626b35a1b48e77970037658b3dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ace617626b35a1b48e77970037658b3dd">shorten</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a70b374629853a30bdaebb22d1ffd6eb3">dir</a>)</td></tr>
 <tr class="memdesc:ace617626b35a1b48e77970037658b3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shorten the given directory string.  <a href="#ace617626b35a1b48e77970037658b3dd">More...</a><br /></td></tr>
 <tr class="separator:ace617626b35a1b48e77970037658b3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a">size</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a0dfeb9e0cbc8b4daab0051602081ae22">path</a>)</td></tr>
+<tr class="memdesc:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a file in bytes.  <a href="#a4f8eff2e02ed88ca3b04d76c1008885a">More...</a><br /></td></tr>
+<tr class="separator:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae924a867db81760c77b4942759d6f8cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ae924a867db81760c77b4942759d6f8cf">workingDir</a> ()</td></tr>
 <tr class="memdesc:ae924a867db81760c77b4942759d6f8cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current working directory of the executable.  <a href="#ae924a867db81760c77b4942759d6f8cf">More...</a><br /></td></tr>
 <tr class="separator:ae924a867db81760c77b4942759d6f8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -383,6 +386,31 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The directory with redundant symbols removed. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4f8eff2e02ed88ca3b04d76c1008885a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t z::file::size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the size of a file in bytes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of the file in bytes, or 0 if the file does not exist. </dd></dl>
 
 </div>
 </div>
