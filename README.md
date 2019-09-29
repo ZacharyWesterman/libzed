@@ -1,9 +1,10 @@
 [![Build Status](https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
 
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
-It should compile on any flavor of these systems. The only requirements are **make** and a **g++** version that supports *at least* C++11.
-Technically you could use another C++ compiler, but I use **g++**.
-This also does compile on the Raspberry Pi, but I haven't checked it for bugs.
+It should compile on any flavor of these systems.<br>
+The only requirements are **make** and a **g++** version that supports *at least* C++11.<br>
+Technically you could use another C++ compiler, but I use **g++**.<br>
+This also does compile on the Raspberry Pi, but I haven't checked it for bugs.<br>
 Since this library doesn't really mess with hardware though, I would expect it to behave just like x86 linux.
 
 To compile, run make. Something like `make -j32` will work.<br>
