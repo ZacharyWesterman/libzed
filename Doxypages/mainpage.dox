@@ -4,7 +4,7 @@ This library contains useful classes and functions for quick and simple data man
 The idea is that this will help decrease development time of other projects.
 
 Currently only Linux and Windows builds are supported, as those are the only machines I own.<br/>
-I did also get it to compile on a Raspberry Pi (running Raspbian Stretch),
+I did also get it to compile on a Raspberry Pi,
 but I am not sure of any bugs that exist.
 Should behave the same as on any other Linux system though.
 ___
@@ -40,7 +40,7 @@ $ make -j32
 
 so that make will compile on as many cores as possible.
 
-You should get no errors and only one warning (in library.cpp).
+You should get no errors and exactly one warning (from library.cpp).
 Open an issue on [GitHub][repo] if any other warnings pop up while compiling.
 
 ###Installing
@@ -91,3 +91,4 @@ ___
 Download or fork: [GitHub repo][repo].
 
 [repo]: https://github.com/ZacharyWesterman/libzed
+*/
