@@ -14,17 +14,11 @@ namespace z
 {
 	namespace file
 	{
-		/**
-		 * \brief Default empty constructor.
-		 */
 		library::library()
 		{
 			lib_ptr = 0;
 		}
 
-		/**
-		 * \brief Destructor frees any loaded library.
-		 */
 		library::~library()
 		{
 #			ifdef _WIN32
@@ -34,14 +28,6 @@ namespace z
 #			endif
 		}
 
-		/**
-		 * \brief Load a dynamic library with the given file name.
-		 *
-		 * \param file_name the path of the library to load.
-		 *
-		 * \return \b True if the library loaded successfully.
-		 * \b False otherwise.
-		 */
 		bool library::load(const zpath& file_name)
 		{
 #			ifdef _WIN32
@@ -57,12 +43,6 @@ namespace z
 #			endif
 		}
 
-		/**
-		 * \brief Unload the dynamic library.
-		 *
-		 * \return \b False if unable to unload previously
-		 * loaded library. \b True otherwise.
-		 */
 		bool library::unload()
 		{
 #			ifdef _WIN32
@@ -80,27 +60,11 @@ namespace z
 #			endif
 		}
 
-		/**
-		 * \brief Get whether the library has been loaded.
-		 *
-		 * \return \b True if the library has been loaded.
-		 * \b False otherwise.
-		 *
-		 * \see bad()
-		 */
 		bool library::good()
 		{
 			return (bool)lib_ptr;
 		}
 
-		/**
-		 * \brief Get whether the library has not been loaded.
-		 *
-		 * \return \b False if the library has been loaded.
-		 * \b True otherwise.
-		 *
-		 * \see good()
-		 */
 		bool library::bad()
 		{
 			return !lib_ptr;
