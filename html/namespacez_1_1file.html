@@ -122,6 +122,9 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ac7170014de2d005d2fe01d0384004ce8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ac7170014de2d005d2fe01d0384004ce8">chdir</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a0dfeb9e0cbc8b4daab0051602081ae22">path</a>)</td></tr>
+<tr class="memdesc:ac7170014de2d005d2fe01d0384004ce8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the current working directory.  <a href="#ac7170014de2d005d2fe01d0384004ce8">More...</a><br /></td></tr>
+<tr class="separator:ac7170014de2d005d2fe01d0384004ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab302a9a0fe26a2de534f4f8f78c5e08f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ab302a9a0fe26a2de534f4f8f78c5e08f">copy</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileInput, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileOutput)</td></tr>
 <tr class="memdesc:ab302a9a0fe26a2de534f4f8f78c5e08f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from one file to another.  <a href="#ab302a9a0fe26a2de534f4f8f78c5e08f">More...</a><br /></td></tr>
 <tr class="separator:ab302a9a0fe26a2de534f4f8f78c5e08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,13 +152,36 @@ Functions</h2></td></tr>
 <tr class="memitem:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a">size</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a0dfeb9e0cbc8b4daab0051602081ae22">path</a>)</td></tr>
 <tr class="memdesc:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a file in bytes.  <a href="#a4f8eff2e02ed88ca3b04d76c1008885a">More...</a><br /></td></tr>
 <tr class="separator:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae924a867db81760c77b4942759d6f8cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ae924a867db81760c77b4942759d6f8cf">workingDir</a> ()</td></tr>
-<tr class="memdesc:ae924a867db81760c77b4942759d6f8cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current working directory of the executable.  <a href="#ae924a867db81760c77b4942759d6f8cf">More...</a><br /></td></tr>
-<tr class="separator:ae924a867db81760c77b4942759d6f8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Library of file management functions and classes. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ac7170014de2d005d2fe01d0384004ce8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::file::chdir </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the current working directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>A string containing the new working directory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, false on failure. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ab302a9a0fe26a2de534f4f8f78c5e08f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -411,24 +437,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The length of the file in bytes, or 0 if the file does not exist. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ae924a867db81760c77b4942759d6f8cf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">zpath</a> z::file::workingDir </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the current working directory of the executable. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string containing the current working directory. </dd></dl>
 
 </div>
 </div>
