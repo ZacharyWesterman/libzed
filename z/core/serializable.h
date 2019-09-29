@@ -188,7 +188,7 @@ namespace z
 			int length = sizeof(T);
 			uint8_t data[sizeof(T)];
 
-			for (int i=0; i<sizeof(T); i++)
+			for (int i=0; i<(int)sizeof(T); i++)
 			{
 				if (!number)
 				{

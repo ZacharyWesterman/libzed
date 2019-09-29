@@ -60,7 +60,7 @@ namespace z
 		template <typename T>
 		sortedRefArray<T>::sortedRefArray(const refArray<T>& other)
 		{
-			for (int i=0; i<other.size(); i++)
+			for (size_t i=0; i<other.length(); i++)
 				add(other[i]);
 		}
 
@@ -136,7 +136,7 @@ namespace z
 		template <typename T>
 		void sortedRefArray<T>::add(const refArray<T>& other)
 		{
-			for (int i=0; i<other.size(); i++)
+			for (size_t i=0; i<other.length(); i++)
 			{
 				int index = findInsert(other[i]);
 

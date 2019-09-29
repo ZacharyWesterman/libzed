@@ -124,7 +124,7 @@ namespace z
 		template <typename T>
 		void sortedArray<T>::add(const array<T>& other)
 		{
-			for (size_t i=0; i<other.size(); i++)
+			for (size_t i=0; i<other.length(); i++)
 			{
 				size_t index = findInsert(other[i]);
 
