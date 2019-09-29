@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['function',['function',['../namespacez_1_1file.html#ae67fa193bf72f36d312af9eb04b1ec8e',1,'z::file']]]
+  ['func',['func',['../namespacez_1_1file.html#a9c03bcefd698a41bff4a4c238f24ad4d',1,'z::file']]]
 ];

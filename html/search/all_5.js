@@ -14,5 +14,6 @@ var searchData=
   ['foundat',['foundAt',['../classz_1_1core_1_1string.html#a9556b726933f79af8bdf4a5794768f66',1,'z::core::string']]],
   ['foundendat',['foundEndAt',['../classz_1_1core_1_1string.html#aadc3f1f53816a5309fddc8f370862def',1,'z::core::string']]],
   ['fromutf8',['fromUTF8',['../namespacez_1_1core.html#a0502234321f83247b136dfde87b8a41a',1,'z::core']]],
-  ['function',['function',['../namespacez_1_1file.html#ae67fa193bf72f36d312af9eb04b1ec8e',1,'z::file']]]
+  ['func',['func',['../namespacez_1_1file.html#a9c03bcefd698a41bff4a4c238f24ad4d',1,'z::file']]],
+  ['function',['function',['../classz_1_1file_1_1library.html#a9c34a90cc4c4084f6c264c2dd17d5859',1,'z::file::library']]]
 ];

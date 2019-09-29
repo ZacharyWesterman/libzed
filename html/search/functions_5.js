@@ -12,5 +12,6 @@ var searchData=
   ['format',['format',['../classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9',1,'z::core::binaryStream::format()'],['../classz_1_1core_1_1memoryStream.html#ad5da03e45c9f98d9211af60db85e09ca',1,'z::core::memoryStream::format()'],['../classz_1_1core_1_1inputStream.html#ac2e19c2ab8141accf2e00bdb50888a87',1,'z::core::inputStream::format()'],['../classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49',1,'z::core::outputStream::format()'],['../classz_1_1core_1_1string.html#ac160a02dcc5ca76456bfcbf4638c28d7',1,'z::core::string::format()'],['../classz_1_1file_1_1inputStream.html#a8674f7d18d96f4a15af70e606eb96df1',1,'z::file::inputStream::format()'],['../classz_1_1file_1_1outputStream.html#a469b4b0116ab980f20141cc434bec96e',1,'z::file::outputStream::format()'],['../classz_1_1system_1_1console.html#a7f7329a6069edb7aed26cdf4617c6380',1,'z::system::console::format()']]],
   ['foundat',['foundAt',['../classz_1_1core_1_1string.html#a9556b726933f79af8bdf4a5794768f66',1,'z::core::string']]],
   ['foundendat',['foundEndAt',['../classz_1_1core_1_1string.html#aadc3f1f53816a5309fddc8f370862def',1,'z::core::string']]],
-  ['fromutf8',['fromUTF8',['../namespacez_1_1core.html#a0502234321f83247b136dfde87b8a41a',1,'z::core']]]
+  ['fromutf8',['fromUTF8',['../namespacez_1_1core.html#a0502234321f83247b136dfde87b8a41a',1,'z::core']]],
+  ['function',['function',['../classz_1_1file_1_1library.html#a9c34a90cc4c4084f6c264c2dd17d5859',1,'z::file::library']]]
 ];
