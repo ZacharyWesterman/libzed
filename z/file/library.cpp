@@ -106,30 +106,38 @@ namespace z
 			return !lib_ptr;
 		}
 
-		/**
-		 * \brief Get a pointer to the symbol with the given name.
-		 *
-		 * \param symbol_name the name of the symbol to retrieve.
-		 *
-		 * \return If a symbol with the given name was found, returns
-		 * a pointer to the symbol. Otherwise, if the symbol was not
-		 * found or the library hasn't been loaded, returns \b NULL.
-		 */
-		function library::symbol(const zpath& symbol_name)
+		void* library::symbol(const zpath& symbol_name)
 		{
+			void* symbol_pointer = NULL;
 #			ifdef _WIN32
 			if (lib_ptr)
-				return (function)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
-			else
-				return 0;
+				symbol_pointer = GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
 #			elif __linux__
 			if(lib_ptr)
-				return (function)dlsym(lib_ptr, (char*)symbol_name.cstring());
-			else
-				return 0;
-#			else
-			return 0;
+				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());
 #			endif
+			return symbol_pointer;
+		}
+
+		func library::function(const zpath& symbol_name)
+		{
+			void* symbol_pointer = NULL;
+			func func_pointer = NULL;
+#			ifdef _WIN32
+			if (lib_ptr)
+				symbol_pointer = GetProcAddress((HMODULE)lib_ptr, (const char*)symbol_name.cstring());
+#			elif __linux__
+			if(lib_ptr)
+				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());
+#			endif
+			if (symbol_pointer)
+			{
+				if (sizeof(void*) == 8) //64 bit pointers
+					func_pointer = reinterpret_cast<func>(reinterpret_cast<long long>(symbol_pointer));
+				else
+					func_pointer = reinterpret_cast<func>(reinterpret_cast<long>(symbol_pointer));
+			}
+			return func_pointer;
 		}
 
 	}

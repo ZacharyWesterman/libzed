@@ -7,7 +7,7 @@ namespace z
 	namespace file
 	{
 		///Typedef for library functions
-		typedef void (* function)();
+		typedef void (* func)();
 
 		/**
 		 * \brief A class for loading dynamic libraries.
@@ -81,7 +81,22 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			function symbol(const zpath& symbolName);
+			void* symbol(const zpath& symbolName);
+
+			/**
+			 * \brief Get a pointer to the function with the given name.
+			 *
+			 * This is similar to symbol(), except the symbol is assumed
+			 * to be a function. Note it is up to the program to cast to
+			 * the correct function type.
+			 *
+			 * \param symbolName the name of the symbol to retrieve.
+			 *
+			 * \return If a symbol with the given name was found, returns
+			 * a pointer to the symbol. Otherwise, if the symbol was not
+			 * found or the library hasn't been loaded, returns \b NULL.
+			 */
+			func function(const zpath& symbolName);
 		};
 	}
 }
