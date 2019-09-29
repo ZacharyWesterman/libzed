@@ -2,7 +2,6 @@ var searchData=
 [
   ['id',['id',['../classz_1_1util_1_1rgxss.html#a88acfc8695edc760a25fc3a5cbc76df6',1,'z::util::rgxss']]],
   ['increase',['increase',['../classz_1_1core_1_1string.html#a1686128e5890296ead8e6a5224f6abc3',1,'z::core::string']]],
-  ['introduction',['Introduction',['../index.html',1,'']]],
   ['info',['info',['../classz_1_1file_1_1info.html',1,'z::file']]],
   ['info',['info',['../classz_1_1file_1_1info.html#a843cc360b92f2b54b2f571a472bfbe4e',1,'z::file::info']]],
   ['inputstream',['inputStream',['../classz_1_1core_1_1inputStream.html',1,'z::core']]],

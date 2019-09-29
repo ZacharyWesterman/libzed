@@ -8,7 +8,6 @@ var searchData=
   ['math_2eh',['math.h',['../math_8h.html',1,'']]],
   ['matrix',['matrix',['../classz_1_1math_1_1matrix.html',1,'z::math']]],
   ['max',['max',['../classz_1_1util_1_1rgx_1_1rule.html#a987a9fa26ad69c3dccb6e6434b5cfe6e',1,'z::util::rgx::rule']]],
-  ['mainpage',['mainpage',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_mainpage.html',1,'']]],
   ['memorystream',['memoryStream',['../classz_1_1core_1_1memoryStream.html',1,'z::core']]],
   ['memorystream',['memoryStream',['../classz_1_1core_1_1memoryStream.html#abe9d78201534dda9b498cdcf84282357',1,'z::core::memoryStream']]],
   ['micros',['micros',['../classz_1_1core_1_1timer.html#a76fa4d8534b790daf37ac86d1fe69ebd',1,'z::core::timer']]],

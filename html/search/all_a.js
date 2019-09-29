@@ -12,10 +12,9 @@ var searchData=
   ['listdirs',['listDirs',['../namespacez_1_1file.html#a6161db5314cc45d7b5899e0d55ce7a8d',1,'z::file']]],
   ['listfiles',['listFiles',['../namespacez_1_1file.html#a68441d093ea7bd918a17b9e18fa055a4',1,'z::file']]],
   ['load',['load',['../classz_1_1file_1_1library.html#a5861cf44c428916162f0e92024211a79',1,'z::file::library']]],
-  ['lookahead',['lookahead',['../classz_1_1util_1_1rgx_1_1lookahead.html',1,'z::util::rgx']]],
   ['lookahead',['lookahead',['../classz_1_1util_1_1rgx_1_1lookahead.html#a08ae6e25632d95164629caab978e3fc4',1,'z::util::rgx::lookahead']]],
+  ['lookahead',['lookahead',['../classz_1_1util_1_1rgx_1_1lookahead.html',1,'z::util::rgx']]],
   ['lookbehind',['lookbehind',['../classz_1_1util_1_1rgx_1_1lookbehind.html#adb8e3c11eb93f8b4a939d1f9b66f2072',1,'z::util::rgx::lookbehind']]],
   ['lookbehind',['lookbehind',['../classz_1_1util_1_1rgx_1_1lookbehind.html',1,'z::util::rgx']]],
-  ['lower',['lower',['../classz_1_1core_1_1string.html#aab4c1fb525e6d99631fa34594ce37856',1,'z::core::string']]],
-  ['license',['LICENSE',['../md__home_travis_build_ZacharyWesterman_libzed_Doxypages_LICENSE.html',1,'']]]
+  ['lower',['lower',['../classz_1_1core_1_1string.html#aab4c1fb525e6d99631fa34594ce37856',1,'z::core::string']]]
 ];
