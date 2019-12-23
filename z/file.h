@@ -10,9 +10,10 @@
 #include "file/shorten.h"
 #include "file/exists.h"
 #include "file/makeDir.h"
-#include "file/workingDir.h"
 #include "file/path.h"
 #include "file/dir.h"
+#include "file/chdir.h"
+#include "file/size.h"
 
 ///Manage file contents
 #include "file/copy.h"

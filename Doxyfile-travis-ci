@@ -28,11 +28,12 @@ TAB_SIZE               = 4
 
 ALIASES                =\
 	"threadsafe_function_no=@par Re-Entry:\nSimultaneous calls to this function can cause data races."\
-	"threadsafe_function_ref=@par Re-Entry:\nSimultaneous calls to this function with the same reference parameter(s) may cause data races."\
+	"threadsafe_function_ref=@par Re-Entry:\nSimultaneous calls to this function with the same parameters may cause data races."\
 	"threadsafe_function_yes=@par Re-Entry:\nThis function is thread-safe. Simultaneous calls will not cause data races."\
-	"threadsafe_member_no=@par Re-Entry:\nSimultaneous calls to this member function of the same object can cause data races."\
-	"threadsafe_member_ref=@par Re-Entry:\nSimultaneous calls to this member function with the same reference parameter(s) may cause data races."\
-	"threadsafe_member_yes=@par Re-Entry:\nThis member function is thread-safe. Simultaneous calls will not cause data races."\
+	"threadsafe_member_no=@par Re-Entry:\nSimultaneous calls to this member function on the same object can cause data races."\
+	"threadsafe_member_ref=@par Re-Entry:\nSimultaneous calls to this member function with the same parameters may cause data races."\
+	"threadsafe_member_yes=@par Re-Entry:\nThis member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering."\
+	"threadsafe_class_const=@par Re-Entry:\nAll const member functions are thread-safe. Simultaneous calls will not cause data races, and any other thread-safe members may be called concurrently without interfering."
 
 TCL_SUBST              =
 OPTIMIZE_OUTPUT_FOR_C  = NO
@@ -157,7 +158,7 @@ HTML_EXTRA_STYLESHEET  =
 HTML_EXTRA_FILES       =
 HTML_COLORSTYLE_HUE    = 166
 HTML_COLORSTYLE_SAT    = 27
-HTML_COLORSTYLE_GAMMA  = 30
+HTML_COLORSTYLE_GAMMA  = 80
 HTML_TIMESTAMP         = NO
 HTML_DYNAMIC_SECTIONS  = NO
 HTML_INDEX_NUM_ENTRIES = 100
