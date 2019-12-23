@@ -178,7 +178,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get whether the regex pattern is invalid. </p>
 <dl class="section return"><dt>Returns</dt><dd>False if the pattern is valid, true otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -197,7 +197,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the regex pattern error, if any. </p>
 <dl class="section return"><dt>Returns</dt><dd>The code for the pattern error. If no error, this will be RGX_NO_ERROR, which equals 0.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -216,7 +216,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a string indicating the regex pattern error. </p>
 <dl class="section return"><dt>Returns</dt><dd>A message describing the first encountered regex error.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -235,7 +235,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get whether the regex pattern is valid. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the pattern is valid, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the stream is seekable and the pattern matched at the current stream index. False otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 </div>
 </div>
@@ -281,7 +281,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the last string that the regex pattern matched. </p>
 <dl class="section return"><dt>Returns</dt><dd>The last string of characters that this regex matched.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -306,7 +306,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 </div>
 </div>

@@ -202,7 +202,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get this symbol's ID. </p>
 <dl class="section return"><dt>Returns</dt><dd>The ID of this symbol. </dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -228,7 +228,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this symbol after assignment. </dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 </div>
 </div>
@@ -255,7 +255,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the symbols are equivalent, false otherwise. </dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -274,7 +274,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get this symbol's character. </p>
 <dl class="section return"><dt>Returns</dt><dd>The character associated with this symbol. </dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>

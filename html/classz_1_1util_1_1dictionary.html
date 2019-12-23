@@ -193,7 +193,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Appropriate word information if this is a valid word, blank word info otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -219,7 +219,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it is a valid word, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -238,7 +238,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get the language of this dictionary. </p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to he language name.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -276,7 +276,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A positive integer if finished reading successfully, 0 if not finished reading, a negative integer if read failed.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function with the same reference parameter(s) may cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function with the same parameters may cause data races. </dd></dl>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 </div>
 </div>
@@ -441,7 +441,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get the word count of this dictionary. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of words in this dictionary.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>

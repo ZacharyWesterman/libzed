@@ -263,7 +263,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if add succeeded, false if failed.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a86a54e332fc2263f8d0b673940adddf4">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#ae773d410f24fcd20a32d2943666dae3b">z::util::genericString</a>.</p>
 
@@ -292,7 +292,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get the array this object holds. </p>
 <dl class="section return"><dt>Returns</dt><dd>The item array contained of this is an array object. Gives an empty array otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ace097aa2365c6a5dc88315ea4e13ba65">z::util::genericArray</a>.</p>
 
@@ -321,7 +321,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get a boolean representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can evaluate to a non-zero number, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a5fcdd3bbe0462627fee67d495ee9de85">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a4aba2390a195146a57b3828ee7273642">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a993a3c7b2cff5500d08d6d3639a006c8">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#af2f712ccfe79b15931557afabf1737f8">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a94c6066d8bf3803c34bc1746f71f7e51">z::util::genericInt</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#acfcd941e1b374683bdfb66eded5f097e">z::util::genericPointer</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a18bde34d3edce8c79891c26c391ced5d">z::util::genericNull</a>.</p>
 
@@ -350,7 +350,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get a complex representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0+0i if this object cannot be represented by a complex number, otherwise gives the complex representation.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ad23cb9ceb016f03faea41e1d0249303f">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ad9c3ab7b97df85a7da510d48e7c68704">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a002ac7f30f17d3ee47addd575c5af206">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aa9aad85311647f7936ceb23663f847a5">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a160c3a774a35a3688bd776f21a8c9901">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#ae5c41d11e13c3ca6225d4eb7455962b4">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a6e6a34980c1bdb44a6a6c5dc6387aeac">z::util::genericNull</a>.</p>
 
@@ -380,7 +380,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Create an exact copy of this object. </p>
 <p>Note that this method allocates new data for the duplicate object, so not deleting properly may lead to memory leaks or corruption.</p>
 <dl class="section return"><dt>Returns</dt><dd>A duplicate of this object, that is, an object of the same type and containing the same data.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a8f37a35239686eccd232f9e352e2dc57">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a9e64f40770675a6fdfe43f0bb07ff846">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a7c6ce19b186c8f4bd35ff0dc50b07c54">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a171f087181f14747802d8b9e2ed93e6e">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a7de525a86e0384aa1dee264bdebe1860">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a03e077022a03b0a8b12f7c9f05e2bfe0">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a55884081b0f3d9221c4d11a0b5d3437d">z::util::genericNull</a>.</p>
 
@@ -417,7 +417,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the item was found, gives the index where it was found. Otherwise, gives -1.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ab65d88447305b0096a50952ad6524429">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#adac5f4fa561bf11dd45b8cb54c60f1dd">z::util::genericString</a>.</p>
 
@@ -446,7 +446,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get a floating-point representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by a floating point value, otherwise gives the float representation.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ab76e525dc790ec1454f66d5e6fad943c">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#ac03ed873cd722a2de8617c4970abdef3">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a578930276f7ab9cd974b6f8f833238ad">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a6538b56eea1bdc7ad36c2d2e743aca21">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8d2909bba2c31207b8266d40b5fa2c8b">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a1708e2b45c085bad8167ba24d0fe9731">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a3f077e742419ef8ae453c7ab80099cb8">z::util::genericNull</a>.</p>
 
@@ -493,7 +493,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if insert succeeded, false if failed.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a6e678ae338e735e0e69a92bab16b89ed">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#ad4accb580343ea90165cc456e24f2899">z::util::genericString</a>.</p>
 
@@ -522,7 +522,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get an integer representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 if this object cannot be represented by an integer, otherwise gives the integer representation.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#ae06fa90dbe8dd4043e7643b2b07ebac2">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a552942f64bc0b58713640608c546202f">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a74e7369a2248c7053971d9cfe9908193">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aaa564e8c6eb014afacd9267db412cb13">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#aab3418daa8db7b1ae4c2c1db42d21272">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a8803517c7932b57cb3ebf0cab92f1217">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#acdf95495e01efff4edcd54cbbbe88910">z::util::genericNull</a>.</p>
 
@@ -551,7 +551,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is any kind of number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as any type of number, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a4b494be61dd2369536bf3593e49e84d8">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#af83367663289926676f4b6058645be00">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a2e3eb1952b04b79d3ce5f5039302dd9a">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericInt.html#a90b5cd2ca2e87318d47a29e7ec82dcf3">z::util::genericInt</a>.</p>
 
@@ -580,7 +580,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is an array. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is an array type, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a0fb50abd19ac853351af39a846af2a4f">z::util::genericArray</a>.</p>
 
@@ -609,7 +609,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is a complex number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as a complex number, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a89f2530eb7a7d78409a390f998bc50ae">z::util::genericString</a>, and <a class="el" href="classz_1_1util_1_1genericComplex.html#a09c99f0659f94539fb3344bcd42922b8">z::util::genericComplex</a>.</p>
 
@@ -638,7 +638,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is a floating-point number. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as a floating-point value, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#aec439284c891d24355f21ad4c951eb43">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#aa7ca420e83179f4be1ffa2b468d688f4">z::util::genericComplex</a>, and <a class="el" href="classz_1_1util_1_1genericFloat.html#a0cf39213b751ab975ab26875fc6182aa">z::util::genericFloat</a>.</p>
 
@@ -667,7 +667,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is an integer. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this object can be accurately represented as an integer, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#a6cf11a03ee8ca0f49734ac02283cfa99">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a62700b254a50702dac271707dc9eac6e">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a8ad343d0193868bf11f3ac7d1592d29d">z::util::genericFloat</a>, and <a class="el" href="classz_1_1util_1_1genericInt.html#ae5a24a368841a7ca4bbfc236e51ace4e">z::util::genericInt</a>.</p>
 
@@ -696,7 +696,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is null. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a NULL object, an empty string, or an empty array. Gives false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#aa42b780da39dec7d1f3b42415afaaac4">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#abff4f980bf62dbc30b183f6d1fd869ae">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#ad177fee733a26ef8555e908f9232543b">z::util::genericPointer</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a1b322b9aa5567ab1a332f94629da9094">z::util::genericNull</a>.</p>
 
@@ -725,7 +725,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is a pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a pointer type, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a437a594438271392a3c9eb17a8735e6e">z::util::genericPointer</a>.</p>
 
@@ -754,7 +754,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get whether this object is a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a string type, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericString.html#ac7697941035d81d49b371d0b0f5c4d25">z::util::genericString</a>.</p>
 
@@ -783,7 +783,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get the number of elements this object contains. </p>
 <dl class="section return"><dt>Returns</dt><dd>If an array, gives the element count. If a string, gives the character count. Gives 0 otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a1d4e79a8bb946b95b0ce1e42ec9df461">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a5a274c6f1d07c9fc491dfaa3932548ad">z::util::genericString</a>.</p>
 
@@ -820,7 +820,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if both objects are of exactly the same type and contain the same data, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 </div>
 </div>
@@ -847,7 +847,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get the pointer this object holds. </p>
 <dl class="section return"><dt>Returns</dt><dd>A non-specific reference if this object is a pointer type, NULL otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericPointer.html#a3166836d4b0c2dbd4fb7a474de7b889f">z::util::genericPointer</a>.</p>
 
@@ -894,7 +894,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if remove succeeded, false if failed.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function of the same object can cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>Simultaneous calls to this member function on the same object can cause data races. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a0b28443f1270bf1979890e1e119af5c4">z::util::genericArray</a>, and <a class="el" href="classz_1_1util_1_1genericString.html#a4b1569e6ef1bcb71ae46b8a08b03b332">z::util::genericString</a>.</p>
 
@@ -953,7 +953,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get a string representation of this object. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representation of default string encoding.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#aef2159ea24e0ab3559e6786788568363">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a18ea592058750da9c15e9e165aed2a52">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a5d2384d875d0cec6f7fbea442068f642">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a175e16a6086a3932086b66ca22962f25">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a3ef277ebb9eaad85c5f74dc191209b9e">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a3d31fe37c90016dee5064a3490a1ec8f">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a7d5773874c96e20934a29d836d456004">z::util::genericNull</a>.</p>
 
@@ -982,7 +982,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get this object's type. </p>
 <dl class="section return"><dt>Returns</dt><dd>A value representing the object type.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a3b6d524661796a5c831a6f171988e92b">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a9fbee699b0a30d82d9717bc60330ea34">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a64eedfded6c8d313be26e30e3634c746">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a5102ffffe30fcf5c3cbc4a1308b6ff56">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#a1cbeb5d3b1760e41c6732ea953d5acaf">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#aaeca343775ce68353c7e29507f848a0d">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#a2e0520f59ecc8488d2f9ef472e98abcf">z::util::genericNull</a>.</p>
 
@@ -1011,7 +1011,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Get this object's type as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representing this object's type with default string encoding.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implemented in <a class="el" href="classz_1_1util_1_1genericArray.html#a5f6eb322876a2ff8698df0e12a089488">z::util::genericArray</a>, <a class="el" href="classz_1_1util_1_1genericString.html#a43bcb4d92b0009ff6efe98e60fd9fa86">z::util::genericString</a>, <a class="el" href="classz_1_1util_1_1genericComplex.html#a5f69ef26f2291d765a786905423c8d71">z::util::genericComplex</a>, <a class="el" href="classz_1_1util_1_1genericFloat.html#a9853a6452178c64c07b10b78dd224e48">z::util::genericFloat</a>, <a class="el" href="classz_1_1util_1_1genericPointer.html#aff42c40506d3b30ad910c316e1bc87ba">z::util::genericPointer</a>, <a class="el" href="classz_1_1util_1_1genericInt.html#a0163f60021ef1eb723e786f45d2f69ed">z::util::genericInt</a>, and <a class="el" href="classz_1_1util_1_1genericNull.html#ac093f700e77ba7cf80e69940bb9ee360">z::util::genericNull</a>.</p>
 

@@ -341,7 +341,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Get the expected format of the stream. </p>
 <p>Analyzes a portion of the stream in an attempt to determine how Characters on it are formatted. Note that this only gives an assumption of the most likely encoding so it may not be correct in some cases. Additionally results will be inaccurate if the stream contains raw binary data.</p>
 <dl class="section return"><dt>Returns</dt><dd>utf8, the default formatting of the console.</dd></dl>
-<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1inputStream.html#ac2e19c2ab8141accf2e00bdb50888a87">z::core::inputStream</a>.</p>
 
