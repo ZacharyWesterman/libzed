@@ -3,6 +3,7 @@
 #include <type_traits>
 #include <complex>
 
+#include "charFunctions.h"
 #include <z/encoding.h>
 #include "zstr.h"
 
@@ -733,6 +734,75 @@ namespace z
 			const string& padRight(const string& other, size_t padSize);
 
 			/**
+			 * \brief Copies this string and removes padding from the left side of the result.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A copy of this string with left-padding removed.
+			 *
+			 * Removes all occurrences of the given pad string from the left
+			 * side of this string.
+			 */
+			string trimLeft(const string& other = "") const
+			{
+				if ((character_ct < other.character_ct) || !character_ct) return *this;
+
+				size_t index = 0;
+				if (other.length())
+				{
+					while (foundAt(other, index))
+					{
+						index += other.character_ct;
+					}
+				}
+				else
+				{
+					while (isWhiteSpace(at(index)))
+					{
+						++index;
+					}
+				}
+
+				return substr(index+other.character_ct, character_ct-index);
+			}
+
+			/**
+			 * \brief Copies this string and removes padding from the right side of the result.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A copy of this string with right-padding removed.
+			 *
+			 * Removes all occurrences of the given pad string from the right
+			 * side of this string.
+			 */
+			string trimRight(const string& other = "") const
+			{
+				if ((character_ct < other.character_ct) || !character_ct) return *this;
+
+				size_t index = character_ct-other.character_ct;
+				int count = 0;
+				if (other.length())
+				{
+					while (foundAt(other, index))
+					{
+						index -= other.character_ct;
+						count += other.character_ct;
+					}
+				}
+				else
+				{
+					while (isWhiteSpace(at(index)))
+					{
+						--index;
+						++count;
+					}
+				}
+
+				return *this;
+			}
+
+			/**
 			 * \brief Remove padding from the left side of this string.
 			 *
 			 * \param other The pad string to remove.
@@ -742,7 +812,28 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			const string& trimLeft(const string& other);
+			const string& trimLeftIn(const string& other = "")
+			{
+				if ((character_ct < other.character_ct) || !character_ct) return *this;
+
+				size_t index = 0;
+				if (other.length())
+				{
+					while (foundAt(other, index))
+					{
+						index += other.character_ct;
+					}
+				}
+				else
+				{
+					while (isWhiteSpace(this->at(index)))
+					{
+						++index;
+					}
+				}
+
+				return remove(0, index);
+			}
 
 			/**
 			 * \brief Remove padding from the right side of this string.
@@ -754,7 +845,47 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			const string& trimRight(const string& other);
+			const string& trimRightIn(const string& other = "")
+			{
+				if ((character_ct < other.character_ct) || !character_ct) return *this;
+
+				size_t index = character_ct-other.character_ct;
+				int count = 0;
+				if (other.length())
+				{
+					while (foundAt(other, index))
+					{
+						index -= other.character_ct;
+						count += other.character_ct;
+					}
+				}
+				else
+				{
+					while (isWhiteSpace(at(index)))
+					{
+						--index;
+						++count;
+					}
+				}
+
+				return remove(index+other.character_ct+1, character_ct);
+			}
+
+			/**
+			 * \brief Copies this string and removes padding from both sides of the result.
+			 *
+			 * \param other The pad string to remove.
+			 *
+			 * \return A copy of this string with right-padding removed.
+			 *
+			 * Removes all occurrences of the given pad string from the left
+			 * and right sides of this string.
+			 */
+			string trim(const string& other = "") const
+			{
+				auto result = trimLeft(other);
+				return result.trimRightIn(other);
+			}
 
 			/**
 			 * \brief Remove padding from the both sides of this string.
@@ -766,10 +897,10 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			const string& trim(const string& other)
+			const string& trimIn(const string& other = "")
 			{
-				this->trimLeft(other);
-				return this->trimRight(other);
+				trimLeftIn(other);
+				return trimRightIn(other);
 			}
 
 			/**

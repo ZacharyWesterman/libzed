@@ -1206,36 +1206,6 @@ namespace z
 			return operator+=(padStr);
 		}
 
-		template <>
-		const string<ascii>& string<ascii>::trimLeft(const string<ascii>& other)
-		{
-			if (character_ct < other.character_ct) return *this;
-
-			size_t index = 0;
-			while (this->foundAt(other, index))
-			{
-				index += other.character_ct;
-			}
-
-			return this->remove(0, index);
-		}
-
-		template <>
-		const string<ascii>& string<ascii>::trimRight(const string<ascii>& other)
-		{
-			if (character_ct < other.character_ct) return *this;
-
-			size_t index = character_ct-other.character_ct;
-			int count = 0;
-			while (this->foundAt(other, index))
-			{
-				index -= other.character_ct;
-				count += other.character_ct;
-			}
-
-			return this->remove(index+other.character_ct, character_ct);
-		}
-
 		template<>
 		void string<ascii>::clear()
 		{
