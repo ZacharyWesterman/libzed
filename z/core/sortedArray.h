@@ -45,7 +45,7 @@ namespace z
 			virtual size_t add(const T&);
 			virtual void add(const array<T>&);
 
-			virtual intmax_t find(const T&) const;
+			intmax_t find(const T&) const;
 
 			virtual size_t findInsert(const T&) const;
 
@@ -137,6 +137,9 @@ namespace z
 		 *
 		 * Locates the desired index using a binary search,
 		 * as the array is expected to be sorted.
+		 *
+		 * /note The objects this array contains must be trivially
+		 * comparable, or have operator>() and operator<() defined.
 		 *
 		 * \param object the object to search for.
 		 *

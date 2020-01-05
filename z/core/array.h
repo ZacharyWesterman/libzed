@@ -4,6 +4,7 @@
 #include "stream.h"
 #include "sizable.h"
 #include "serializable.h"
+#include "typeChecks.h"
 
 namespace z
 {
@@ -84,8 +85,30 @@ namespace z
 			T& operator[](size_t);
 			const T& operator[](size_t) const;
 
+			/**
+			 * \brief Check if a given object is in the array.
+			 *
+			 * Locates the desired index using a linear search,
+			 * as the array is expected to be unsorted.
+			 *
+			 * /note If this is an array of objects that are not trivially
+			 * comparable and do not have a definition of operator==(), this
+			 * method will not be available.
+			 *
+			 * \param object the object to search for.
+			 *
+			 * \return The first index that the object was found at.
+			 * \b -1 if it was not found.
+			 */
+			template <typename U = T, typename std::enable_if<types::equalExists<U>::value>::type>
+			intmax_t find(const U& object) const
+			{
+				for (size_t i=0; i<array_data.size(); i++)
+					if (array_data.at(i) == object)
+						return i;
 
-			virtual intmax_t find(const T& object) const;
+				return -1;
+			}
 
 			const array& operator=(const array& other);
 
@@ -296,27 +319,6 @@ namespace z
 		inline bool array<T>::operator<=(const array<T>& other) const
 		{
 			return !operator>(other);
-		}
-
-		/**
-		 * \brief Check if a given object is in the array.
-		 *
-		 * Locates the desired index using a linear search,
-		 * as the array is expected to be unsorted.
-		 *
-		 * \param object the object to search for.
-		 *
-		 * \return The first index that the object was found at.
-		 * \b -1 if it was not found.
-		 */
-		template <typename T>
-		intmax_t array<T>::find(const T& object) const
-		{
-			for (size_t i=0; i<array_data.size(); i++)
-				if (array_data.at(i) == object)
-					return i;
-
-			return -1;
 		}
 
 
