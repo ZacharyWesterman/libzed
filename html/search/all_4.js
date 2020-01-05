@@ -8,6 +8,7 @@ var searchData=
   ['end',['end',['../classz_1_1util_1_1rgx_1_1end.html',1,'z::util::rgx']]],
   ['endianness',['endianness',['../classz_1_1file_1_1inputStream.html#aaabdfde32e959ba0708f33f1ccc495ca',1,'z::file::inputStream::endianness()'],['../classz_1_1file_1_1outputStream.html#a9b4747a9e49f83563ad4363ee9b3974f',1,'z::file::outputStream::endianness()']]],
   ['endswith',['endsWith',['../classz_1_1core_1_1string.html#ab9683b4fd5015aa3f9b73489cb4fa0a5',1,'z::core::string']]],
+  ['equalexists',['equalExists',['../structz_1_1core_1_1types_1_1equalExists.html',1,'z::core::types']]],
   ['error',['error',['../classz_1_1util_1_1regex.html#a86aec6eb593083ef5c4b607ea2d6d6fa',1,'z::util::regex']]],
   ['errorstring',['errorString',['../classz_1_1util_1_1regex.html#a91b401a7b36e6167c416d65c14f96bed',1,'z::util::regex']]],
   ['exists',['exists',['../classz_1_1file_1_1info.html#a12c1ba5294c7ee6cb52497d3e21fec94',1,'z::file::info::exists()'],['../namespacez_1_1file.html#a2014ffe0445a42242db5540adbc16a7e',1,'z::file::exists()']]]

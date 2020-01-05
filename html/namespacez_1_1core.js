@@ -1,5 +1,9 @@
 var namespacez_1_1core =
 [
+    [ "types", null, [
+      [ "equalExists", "structz_1_1core_1_1types_1_1equalExists.html", "structz_1_1core_1_1types_1_1equalExists" ],
+      [ "no", "classz_1_1core_1_1types_1_1no.html", null ]
+    ] ],
     [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],
     [ "binaryStream", "classz_1_1core_1_1binaryStream.html", "classz_1_1core_1_1binaryStream" ],
     [ "inputStream", "classz_1_1core_1_1inputStream.html", "classz_1_1core_1_1inputStream" ],

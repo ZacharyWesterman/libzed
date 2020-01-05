@@ -187,9 +187,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:aa6107d431a3e8992b73f3acb34dcd657"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aa6107d431a3e8992b73f3acb34dcd657">operator[]</a> (size_t) const </td></tr>
 <tr class="memdesc:aa6107d431a3e8992b73f3acb34dcd657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const function to get the object at the given index.  <a href="#aa6107d431a3e8992b73f3acb34dcd657">More...</a><br /></td></tr>
 <tr class="separator:aa6107d431a3e8992b73f3acb34dcd657"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a56fbd2f5ffcee553fb6c5c4941c4bb"><td class="memItemLeft" align="right" valign="top">virtual intmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a1a56fbd2f5ffcee553fb6c5c4941c4bb">find</a> (const T &amp;object) const </td></tr>
-<tr class="memdesc:a1a56fbd2f5ffcee553fb6c5c4941c4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a1a56fbd2f5ffcee553fb6c5c4941c4bb">More...</a><br /></td></tr>
-<tr class="separator:a1a56fbd2f5ffcee553fb6c5c4941c4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memTemplParams" colspan="2">template&lt;typename U  = T, typename std::enable_if&lt; types::equalExists&lt; U &gt;::value &gt;::type &gt; </td></tr>
+<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memTemplItemLeft" align="right" valign="top">intmax_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9e5f2d1b93a04b98bcc8404b100c8143">find</a> (const U &amp;object) const </td></tr>
+<tr class="memdesc:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a9e5f2d1b93a04b98bcc8404b100c8143">More...</a><br /></td></tr>
+<tr class="separator:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5162ba5dda86e3a4c96ed583deddf87f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5162ba5dda86e3a4c96ed583deddf87f">operator=</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
 <tr class="memdesc:a5162ba5dda86e3a4c96ed583deddf87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array assignment operator.  <a href="#a5162ba5dda86e3a4c96ed583deddf87f">More...</a><br /></td></tr>
 <tr class="separator:a5162ba5dda86e3a4c96ed583deddf87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -561,11 +562,13 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1a56fbd2f5ffcee553fb6c5c4941c4bb"></a>
+<a class="anchor" id="a9e5f2d1b93a04b98bcc8404b100c8143"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename U  = T, typename std::enable_if&lt; types::equalExists&lt; U &gt;::value &gt;::type &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -573,20 +576,21 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname">intmax_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramtype">const U &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Check if a given object is in the array. </p>
 <p>Locates the desired index using a linear search, as the array is expected to be unsorted.</p>
+<p>/note If this is an array of objects that are not trivially comparable and do not have a definition of <a class="el" href="classz_1_1core_1_1array.html#a0c89da203efef053230d1e0736793b1a" title="Check whether two arrays&#39; contents are the same. ">operator==()</a>, this method will not be available.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>the object to search for.</td></tr>
@@ -594,8 +598,6 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first index that the object was found at. <b>-1</b> if it was not found. </dd></dl>
-
-<p>Reimplemented in <a class="el" href="classz_1_1core_1_1sortedRefArray.html#a18cd5bcfec3c6d8e4c014cd0fdcd2151">z::core::sortedRefArray&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1sortedRefArray.html#a18cd5bcfec3c6d8e4c014cd0fdcd2151">z::core::sortedRefArray&lt; z::util::word * &gt;</a>, <a class="el" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">z::core::sortedArray&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1refArray.html#af9850b7a4d15601607f59eca58f5ef31">z::core::refArray&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1refArray.html#af9850b7a4d15601607f59eca58f5ef31">z::core::refArray&lt; z::util::generic * &gt;</a>, and <a class="el" href="classz_1_1core_1_1refArray.html#af9850b7a4d15601607f59eca58f5ef31">z::core::refArray&lt; z::util::word * &gt;</a>.</p>
 
 </div>
 </div>

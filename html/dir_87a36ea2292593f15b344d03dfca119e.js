@@ -16,5 +16,6 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "stringIterator.h", "stringIterator_8h_source.html", null ],
     [ "timeout.h", "timeout_8h_source.html", null ],
     [ "timer.h", "timer_8h_source.html", null ],
+    [ "typeChecks.h", "typeChecks_8h_source.html", null ],
     [ "zstr.h", "zstr_8h.html", "zstr_8h" ]
 ];

@@ -133,7 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3de903afb451de15325fdfd3ccc93c68"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a3de903afb451de15325fdfd3ccc93c68">add</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;)</td></tr>
 <tr class="memdesc:a3de903afb451de15325fdfd3ccc93c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the contents of another array to this one.  <a href="#a3de903afb451de15325fdfd3ccc93c68">More...</a><br /></td></tr>
 <tr class="separator:a3de903afb451de15325fdfd3ccc93c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8855c1f4390da017e180e72c8f5a9e32"><td class="memItemLeft" align="right" valign="top">virtual intmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">find</a> (const T &amp;) const </td></tr>
+<tr class="memitem:a8855c1f4390da017e180e72c8f5a9e32"><td class="memItemLeft" align="right" valign="top">intmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a8855c1f4390da017e180e72c8f5a9e32">find</a> (const T &amp;) const </td></tr>
 <tr class="memdesc:a8855c1f4390da017e180e72c8f5a9e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a8855c1f4390da017e180e72c8f5a9e32">More...</a><br /></td></tr>
 <tr class="separator:a8855c1f4390da017e180e72c8f5a9e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bcd1bdc338f0fc3874a6593c7b995da"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a5bcd1bdc338f0fc3874a6593c7b995da">findInsert</a> (const T &amp;) const </td></tr>
@@ -205,6 +205,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:aa6107d431a3e8992b73f3acb34dcd657 inherit pub_methods_classz_1_1core_1_1array"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aa6107d431a3e8992b73f3acb34dcd657">operator[]</a> (size_t) const </td></tr>
 <tr class="memdesc:aa6107d431a3e8992b73f3acb34dcd657 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const function to get the object at the given index.  <a href="#aa6107d431a3e8992b73f3acb34dcd657">More...</a><br /></td></tr>
 <tr class="separator:aa6107d431a3e8992b73f3acb34dcd657 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplParams" colspan="2">template&lt;typename U  = T, typename std::enable_if&lt; types::equalExists&lt; U &gt;::value &gt;::type &gt; </td></tr>
+<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top">intmax_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9e5f2d1b93a04b98bcc8404b100c8143">find</a> (const U &amp;object) const </td></tr>
+<tr class="memdesc:a9e5f2d1b93a04b98bcc8404b100c8143 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a9e5f2d1b93a04b98bcc8404b100c8143">More...</a><br /></td></tr>
+<tr class="separator:a9e5f2d1b93a04b98bcc8404b100c8143 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5162ba5dda86e3a4c96ed583deddf87f inherit pub_methods_classz_1_1core_1_1array"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5162ba5dda86e3a4c96ed583deddf87f">operator=</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
 <tr class="memdesc:a5162ba5dda86e3a4c96ed583deddf87f inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array assignment operator.  <a href="#a5162ba5dda86e3a4c96ed583deddf87f">More...</a><br /></td></tr>
 <tr class="separator:a5162ba5dda86e3a4c96ed583deddf87f inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -420,9 +424,6 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">intmax_t <a class="el" href="classz_1_1core_1_1sortedArray.html">z::core::sortedArray</a>&lt; T &gt;::find </td>
@@ -432,15 +433,11 @@ template&lt;typename T &gt; </div>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Check if a given object is in the array. </p>
 <p>Locates the desired index using a binary search, as the array is expected to be sorted.</p>
+<p>/note The objects this array contains must be trivially comparable, or have <a class="el" href="classz_1_1core_1_1array.html#a74d2270b3985652cecf69c4481b2c0ae" title="Array greater-than operator. ">operator&gt;()</a> and <a class="el" href="classz_1_1core_1_1array.html#a6653d526d8c6fb63b8941913f63b91de" title="Array less-than operator. ">operator&lt;()</a> defined.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>the object to search for.</td></tr>
@@ -448,8 +445,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first index that the object was found at. <b>-1</b> if it was not found. </dd></dl>
-
-<p>Reimplemented from <a class="el" href="classz_1_1core_1_1array.html#a1a56fbd2f5ffcee553fb6c5c4941c4bb">z::core::array&lt; T &gt;</a>.</p>
 
 </div>
 </div>

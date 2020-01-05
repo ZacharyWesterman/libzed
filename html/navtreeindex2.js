@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classz_1_1util_1_1rgx_1_1begin.html":[2,0,0,4,0,4],
+"classz_1_1util_1_1rgx_1_1begin.html#a139fa4ed24e9506c99f6525066a70c25":[2,0,0,4,0,4,0],
 "classz_1_1util_1_1rgx_1_1begin.html#a2f075c0f4e2232c30b3a23840b0339fc":[2,0,0,4,0,4,1],
 "classz_1_1util_1_1rgx_1_1boundary.html":[2,0,0,4,0,5],
 "classz_1_1util_1_1rgx_1_1boundary.html#a046d9d9558c20c0998fca12ecc1cbbd5":[2,0,0,4,0,5,3],
@@ -139,8 +141,8 @@ var NAVTREEINDEX2 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_0x7e.html":[2,3,1,20],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
@@ -187,8 +189,8 @@ var NAVTREEINDEX2 =
 "generic_2generic_8h_source.html":[3,0,0,4,1,1],
 "generic_8h_source.html":[3,0,0,4,4],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "info_8h_source.html":[3,0,0,1,4],
 "inputStream_8h_source.html":[3,0,0,1,5],
 "join_8h_source.html":[3,0,0,0,3],
@@ -213,8 +215,8 @@ var NAVTREEINDEX2 =
 "namespacez_1_1file.html":[1,0,0,1],
 "namespacez_1_1math.html":[1,0,0,2],
 "namespacez_1_1math.html":[2,0,0,2],
-"namespacez_1_1system.html":[1,0,0,3],
 "namespacez_1_1system.html":[2,0,0,3],
+"namespacez_1_1system.html":[1,0,0,3],
 "namespacez_1_1util.html":[2,0,0,4],
 "namespacez_1_1util.html":[1,0,0,4],
 "namespacez_1_1util_1_1rgx.html":[2,0,0,4,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "sizable_8h_source.html":[3,0,0,0,7],
 "size_8h_source.html":[3,0,0,1,12],
 "sortedArray_8h_source.html":[3,0,0,0,8],
-"sortedRefArray_8h_source.html":[3,0,0,0,9],
-"space_8h_source.html":[3,0,0,4,2,0,17],
-"split_8h_source.html":[3,0,0,0,10]
+"sortedRefArray_8h_source.html":[3,0,0,0,9]
 };
