@@ -100,7 +100,7 @@ namespace z
 			 * \return The first index that the object was found at.
 			 * \b -1 if it was not found.
 			 */
-			template <typename U = T, typename std::enable_if<types::equalExists<U>::value>::type>
+			template <typename U = T, typename = typename std::enable_if<types::equalExists<U>::value>::type>
 			intmax_t find(const U& object) const
 			{
 				for (size_t i=0; i<array_data.size(); i++)
