@@ -40,6 +40,12 @@ namespace z
 			 */
 			regex(const zstring& pattern);
 
+			regex(const regex&) = delete;
+			regex& operator=(const regex&) = delete;
+
+			regex(regex&&) = default;
+			regex& operator=(regex&&) = default;
+
 			/**
 			 * \brief Set the matching pattern
 			 *
