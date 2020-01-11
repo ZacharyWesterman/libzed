@@ -178,6 +178,12 @@ namespace z
 					case RGX_NOT_PUNCT:
 						child = new rgx::punct(true);
 						break;
+					case RGX_SPACE:
+						child = new rgx::space(false);
+						break;
+					case RGX_NOT_SPACE:
+						child = new rgx::space(true);
+						break;
 					case RGX_LPAREN:
 						++position;
 						err = rgxlex(input,(rgx::compound**)&child, position, INAND, flags);
