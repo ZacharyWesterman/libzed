@@ -142,12 +142,16 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692">clear</a> ()</td></tr>
 <tr class="memdesc:afb00cc3926eb5f222662169692f62692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the data in the array. <br /></td></tr>
 <tr class="separator:afb00cc3926eb5f222662169692f62692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e412197ece492d4e16e4960d5fc68c"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ad3e412197ece492d4e16e4960d5fc68c">add</a> (const T &amp;)</td></tr>
+<tr class="memitem:ad3e412197ece492d4e16e4960d5fc68c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ad3e412197ece492d4e16e4960d5fc68c">add</a> (const T &amp;)</td></tr>
 <tr class="memdesc:ad3e412197ece492d4e16e4960d5fc68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the array.  <a href="#ad3e412197ece492d4e16e4960d5fc68c">More...</a><br /></td></tr>
 <tr class="separator:ad3e412197ece492d4e16e4960d5fc68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93e6e68f8cf029a29fb1300651475128"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a93e6e68f8cf029a29fb1300651475128">add</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;)</td></tr>
-<tr class="memdesc:a93e6e68f8cf029a29fb1300651475128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <a href="#a93e6e68f8cf029a29fb1300651475128">More...</a><br /></td></tr>
-<tr class="separator:a93e6e68f8cf029a29fb1300651475128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9471edac0f433ae7a06d0e7dcf1547c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9471edac0f433ae7a06d0e7dcf1547c"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (T &amp;&amp;)</td></tr>
+<tr class="separator:ad9471edac0f433ae7a06d0e7dcf1547c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87051ff28b4b8291f5ef325c684230dd"><td class="memTemplParams" colspan="2">template&lt;bool Condition = std::is_nothrow_move_constructible&lt;T&gt;::value, typename  = typename std::enable_if&lt;Condition&gt;::type&gt; </td></tr>
+<tr class="memitem:a87051ff28b4b8291f5ef325c684230dd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a87051ff28b4b8291f5ef325c684230dd">add</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
+<tr class="memdesc:a87051ff28b4b8291f5ef325c684230dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <a href="#a87051ff28b4b8291f5ef325c684230dd">More...</a><br /></td></tr>
+<tr class="separator:a87051ff28b4b8291f5ef325c684230dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ceb71ed34230c2a1949dee096a183db"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db">insert</a> (const T &amp;, size_t)</td></tr>
 <tr class="memdesc:a7ceb71ed34230c2a1949dee096a183db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an object into the array.  <a href="#a7ceb71ed34230c2a1949dee096a183db">More...</a><br /></td></tr>
 <tr class="separator:a7ceb71ed34230c2a1949dee096a183db"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -335,9 +339,6 @@ template&lt;typename... Args&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::add </td>
@@ -347,11 +348,6 @@ template&lt;typename T&gt; </div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Add an object to the array. </p>
@@ -364,15 +360,15 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index where the inserted object now resides. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classz_1_1core_1_1sortedRefArray.html#ae92e2afb0930ccefcd82b8426385b49e">z::core::sortedRefArray&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1sortedRefArray.html#ae92e2afb0930ccefcd82b8426385b49e">z::core::sortedRefArray&lt; z::util::word * &gt;</a>, and <a class="el" href="classz_1_1core_1_1sortedArray.html#a84e0a84363e8ba25f2a69e0a5a0a4c25">z::core::sortedArray&lt; T &gt;</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a93e6e68f8cf029a29fb1300651475128"></a>
+<a class="anchor" id="a87051ff28b4b8291f5ef325c684230dd"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;bool Condition = std::is_nothrow_move_constructible&lt;T&gt;::value, typename  = typename std::enable_if&lt;Condition&gt;::type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -387,21 +383,20 @@ template&lt;typename T&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Add another array to this array. </p>
 <p>Copies the contents of another array and appends them to the end of this array.</p>
+<p>/note If the objects this array contains are not copyable, this method will not be available.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the array to copy from. </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented in <a class="el" href="classz_1_1core_1_1sortedArray.html#a3de903afb451de15325fdfd3ccc93c68">z::core::sortedArray&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -437,9 +432,6 @@ template&lt;typename T&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::at </td>
@@ -449,11 +441,6 @@ template&lt;typename T &gt; </div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Function to get the object at the given index. </p>
@@ -473,9 +460,6 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const T &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::at </td>
@@ -485,11 +469,6 @@ template&lt;typename T &gt; </div>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Const function to get the object at the given index. </p>

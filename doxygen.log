@@ -1,2 +1,8 @@
 /home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.h:17: warning: Compound z::core::types::equalExists is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.h:9: warning: Compound z::core::types::no is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.h:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.h:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.h:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.h:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex.h:46: warning: Member regex(regex &&)=default (function) of class z::util::regex is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex.h:47: warning: Member operator=(regex &&)=default (function) of class z::util::regex is not documented.

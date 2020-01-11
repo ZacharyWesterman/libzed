@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"shorten_8h_source.html":[3,0,0,1,11],
+"sizable_8h_source.html":[3,0,0,0,7],
+"size_8h_source.html":[3,0,0,1,12],
+"sortedArray_8h_source.html":[3,0,0,0,8],
+"sortedRefArray_8h_source.html":[3,0,0,0,9],
 "space_8h_source.html":[3,0,0,4,2,0,17],
 "split_8h_source.html":[3,0,0,0,10],
 "stream_8h_source.html":[3,0,0,0,11],
