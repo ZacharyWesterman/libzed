@@ -1396,6 +1396,7 @@ namespace z
 		{
 			uint32_t* data32 = (uint32_t*)data;
 			data32[0] = 0;
+			character_ct = 0;
 		}
 
 		template <>

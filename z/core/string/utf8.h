@@ -1188,6 +1188,7 @@ namespace z
 		void string<utf8>::clear()
 		{
 			data[0] = 0;
+			character_ct = 0;
 		}
 
 		template <>

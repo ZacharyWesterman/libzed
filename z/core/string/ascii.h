@@ -1210,6 +1210,7 @@ namespace z
 		void string<ascii>::clear()
 		{
 			data[0] = 0;
+			character_ct = 0;
 		}
 
 		template <>

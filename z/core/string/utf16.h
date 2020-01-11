@@ -1403,6 +1403,7 @@ namespace z
 		{
 			uint16_t* data16 = (uint16_t*)data;
 			data16[0] = 0;
+			character_ct = 0;
 		}
 
 		template <>
