@@ -61,8 +61,27 @@ namespace z
 
 			inline void clear();
 
-			virtual size_t add(const T&);
-			virtual void add(const array&);
+			size_t add(const T&);
+			size_t add(T&&);
+
+			/**
+			 * \brief Add another array to this array.
+			 *
+			 * Copies the contents of another array and
+			 * appends them to the end of this array.
+			 *
+			 * /note If the objects this array contains are not
+			 * copyable, this method will not be available.
+			 *
+			 * \param other the array to copy from.
+			 */
+			template<bool Condition = std::is_nothrow_move_constructible<T>::value, typename = typename std::enable_if<Condition>::type>
+			void add(const array& other)
+			{
+				for (size_t i=0; i<other.size(); i++)
+					array_data.push_back(other.array_data[i]);
+			}
+
 			const array& insert(const T&, size_t);
 
 			void append(const T&);
@@ -80,8 +99,8 @@ namespace z
 
 			size_t length() const;
 
-			inline T& at(size_t);
-			inline const T& at(size_t) const;
+			T& at(size_t);
+			const T& at(size_t) const;
 			T& operator[](size_t);
 			const T& operator[](size_t) const;
 
@@ -134,7 +153,7 @@ namespace z
 			 */
 			T* begin() const
 			{
-				return array_data.size() ? const_cast<T*>(&array_data[0]) : 0;
+				return array_data.empty() ? NULL : (T*)&array_data.front();
 			}
 
 			/**
@@ -329,7 +348,6 @@ namespace z
 			array_data.clear();
 		}
 
-
 		/**
 		 * \brief Add an object to the array.
 		 *
@@ -347,21 +365,13 @@ namespace z
 			return (array_data.size() - 1);
 		}
 
-		/**
-		 * \brief Add another array to this array.
-		 *
-		 * Copies the contents of another array and
-		 * appends them to the end of this array.
-		 *
-		 * \param other the array to copy from.
-		 */
 		template <typename T>
-		void array<T>::add(const array& other)
+		size_t array<T>::add(T&& object)
 		{
-			for (size_t i=0; i<other.size(); i++)
-				array_data.push_back(other[i]);
-		}
+			array_data.push_back(std::move(object));
 
+			return (array_data.size() - 1);
+		}
 
 		/**
 		 * \brief Insert an object into the array.
@@ -495,7 +505,7 @@ namespace z
 		 * \see operator[](size_t)
 		 */
 		template <typename T>
-		inline T& array<T>::at(size_t index)
+		T& array<T>::at(size_t index)
 		{
 			return array_data.at(index);
 		}
@@ -510,7 +520,7 @@ namespace z
 		 * \see operator[](size_t) const
 		 */
 		template <typename T>
-		inline const T& array<T>::at(size_t index) const
+		const T& array<T>::at(size_t index) const
 		{
 			return array_data.at(index);
 		}
@@ -716,7 +726,7 @@ namespace z
 			{
 				T object;
 				z::core::serialIn(object, stream);
-				array_data.push_back(object);
+				array_data.push_back(std::move(object));
 			}
 		}
 
