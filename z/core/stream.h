@@ -252,6 +252,8 @@ namespace z
 			 * Writes any buffered stream data and clears the buffer.
 			 */
 			virtual void flush() = 0;
+
+			virtual bool istty() const { return false; }
 		};
 
 		/**

@@ -3,6 +3,14 @@
 #include <iostream>
 #include <z/core/charFunctions.h>
 
+#ifdef _WIN32
+#include <io.h>
+#define STDOUT_TTY _isatty(_fileno(stdout))
+#else
+#include <unistd.h>
+#define STDOUT_TTY isatty(fileno(stdout))
+#endif
+
 namespace z
 {
 	namespace system
@@ -125,6 +133,11 @@ namespace z
 		{
 			std::cout << std::flush;
 			std::cin.clear();
+		}
+
+		bool console::istty() const
+		{
+			return STDOUT_TTY;
 		}
 	}
 }
