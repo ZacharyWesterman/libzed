@@ -704,7 +704,7 @@ namespace z
 			const string& replace(size_t index, int count, const string& other);
 
 			/**
-			 * \brief Left-pad this string up to a given chracter count.
+			 * \brief Left-pad this string up to a given character count.
 			 *
 			 * \param other The string to pad on the left of this string.
 			 * \param padSize the number of characters to pad up to.
@@ -719,9 +719,9 @@ namespace z
 			const string& padLeft(const string& other, size_t padSize);
 
 			/**
-			 * \brief Right-pad this string up to a given chracter count.
+			 * \brief Right-pad this string up to a given character count.
 			 *
-			 * \param other The string to pad on the left of this string.
+			 * \param other The string to pad on the right of this string.
 			 * \param padSize the number of characters to pad up to.
 			 *
 			 * \return A reference to this string after padding.
@@ -732,6 +732,21 @@ namespace z
 			 * padding will be added.
 			 */
 			const string& padRight(const string& other, size_t padSize);
+
+			/**
+			 * \brief Append text onto this string a specific number of times.
+			 *
+			 * \param other The string to append on the end of this string.
+			 * \param count the number of times to repeat the input string.
+			 *
+			 * \return A reference to this string after appending.
+			 */
+			const string& repeat(const string& other, size_t count)
+			{
+				increase(character_ct + (other.character_ct * count));
+				for (size_t i=0; i<count; ++i) append(other);
+				return *this;
+			}
 
 			/**
 			 * \brief Copies this string and removes padding from the left side of the result.
