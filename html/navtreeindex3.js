@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"serializable_8h_source.html":[3,0,0,0,6],
 "shorten_8h_source.html":[3,0,0,1,11],
 "sizable_8h_source.html":[3,0,0,0,7],
 "size_8h_source.html":[3,0,0,1,12],

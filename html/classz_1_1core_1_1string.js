@@ -62,6 +62,7 @@ var classz_1_1core_1_1string =
     [ "readln", "classz_1_1core_1_1string.html#afa9e2cfd0c1f533783214e36b7943879", null ],
     [ "remove", "classz_1_1core_1_1string.html#aa1ceba196566b8c42e61e860411f6a6c", null ],
     [ "remove", "classz_1_1core_1_1string.html#aef27468b8aa1926f0d771e05f06562f3", null ],
+    [ "repeat", "classz_1_1core_1_1string.html#afa1b4a337d5fb552c7b864e5cff74c01", null ],
     [ "replace", "classz_1_1core_1_1string.html#ae3a352e8676093675d0fb029bc8d9c19", null ],
     [ "replace", "classz_1_1core_1_1string.html#a48d012318f44f3e5e3e2e1bd971341f2", null ],
     [ "serialIn", "classz_1_1core_1_1string.html#a0515d4ce68ea76fd5d480c4e9ab9a252", null ],

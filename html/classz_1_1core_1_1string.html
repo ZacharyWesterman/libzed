@@ -269,11 +269,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a48d012318f44f3e5e3e2e1bd971341f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace a subset of the string.  <a href="#a48d012318f44f3e5e3e2e1bd971341f2">More...</a><br /></td></tr>
 <tr class="separator:a48d012318f44f3e5e3e2e1bd971341f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c751f00887e9aec65ca0fecdf2888ea"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a5c751f00887e9aec65ca0fecdf2888ea">padLeft</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, size_t padSize)</td></tr>
-<tr class="memdesc:a5c751f00887e9aec65ca0fecdf2888ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Left-pad this string up to a given chracter count.  <a href="#a5c751f00887e9aec65ca0fecdf2888ea">More...</a><br /></td></tr>
+<tr class="memdesc:a5c751f00887e9aec65ca0fecdf2888ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Left-pad this string up to a given character count.  <a href="#a5c751f00887e9aec65ca0fecdf2888ea">More...</a><br /></td></tr>
 <tr class="separator:a5c751f00887e9aec65ca0fecdf2888ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99afadac69e5c4b1ea90e0c80d73092e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a99afadac69e5c4b1ea90e0c80d73092e">padRight</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, size_t padSize)</td></tr>
-<tr class="memdesc:a99afadac69e5c4b1ea90e0c80d73092e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right-pad this string up to a given chracter count.  <a href="#a99afadac69e5c4b1ea90e0c80d73092e">More...</a><br /></td></tr>
+<tr class="memdesc:a99afadac69e5c4b1ea90e0c80d73092e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right-pad this string up to a given character count.  <a href="#a99afadac69e5c4b1ea90e0c80d73092e">More...</a><br /></td></tr>
 <tr class="separator:a99afadac69e5c4b1ea90e0c80d73092e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa1b4a337d5fb552c7b864e5cff74c01"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#afa1b4a337d5fb552c7b864e5cff74c01">repeat</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, size_t <a class="el" href="classz_1_1core_1_1string.html#a64e4d260010465ba4c9b6042d1b04e96">count</a>)</td></tr>
+<tr class="memdesc:afa1b4a337d5fb552c7b864e5cff74c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append text onto this string a specific number of times.  <a href="#afa1b4a337d5fb552c7b864e5cff74c01">More...</a><br /></td></tr>
+<tr class="separator:afa1b4a337d5fb552c7b864e5cff74c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a306cbdc63a336e00b78dad428e3d5dd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a306cbdc63a336e00b78dad428e3d5dd4">trimLeft</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other=&quot;&quot;) const </td></tr>
 <tr class="memdesc:a306cbdc63a336e00b78dad428e3d5dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies this string and removes padding from the left side of the result.  <a href="#a306cbdc63a336e00b78dad428e3d5dd4">More...</a><br /></td></tr>
 <tr class="separator:a306cbdc63a336e00b78dad428e3d5dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2147,7 +2150,7 @@ template&lt;encoding E = utf32&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Left-pad this string up to a given chracter count. </p>
+<p>Left-pad this string up to a given character count. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>The string to pad on the left of this string. </td></tr>
@@ -2186,10 +2189,10 @@ template&lt;encoding E = utf32&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Right-pad this string up to a given chracter count. </p>
+<p>Right-pad this string up to a given character count. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The string to pad on the left of this string. </td></tr>
+    <tr><td class="paramname">other</td><td>The string to pad on the right of this string. </td></tr>
     <tr><td class="paramname">padSize</td><td>the number of characters to pad up to.</td></tr>
   </table>
   </dd>
@@ -2339,6 +2342,52 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after the characters are removed.</dd></dl>
 <p>If count is 0, no characters are removed. If count is negative, characters are removed in reverse order. </p>
+
+</div>
+</div>
+<a class="anchor" id="afa1b4a337d5fb552c7b864e5cff74c01"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&amp; <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::repeat </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Append text onto this string a specific number of times. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The string to append on the end of this string. </td></tr>
+    <tr><td class="paramname">count</td><td>the number of times to repeat the input string.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this string after appending. </dd></dl>
 
 </div>
 </div>
