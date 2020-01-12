@@ -8,6 +8,7 @@ var classz_1_1core_1_1outputStream =
     [ "flush", "classz_1_1core_1_1outputStream.html#a26cbea1cc2f7ac6a7468861212c5ff3d", null ],
     [ "format", "classz_1_1core_1_1outputStream.html#a3eb08c3fe541ce38d5df428918f83a49", null ],
     [ "good", "classz_1_1core_1_1outputStream.html#a2b70a3b3d27f7b28ea9452184d67aa4f", null ],
+    [ "istty", "classz_1_1core_1_1outputStream.html#a34f1343b58c3f72defb29ee91f4b56aa", null ],
     [ "put", "classz_1_1core_1_1outputStream.html#ab8bdcd226d9f0ab4ecb9c0c589d26e1a", null ],
     [ "put", "classz_1_1core_1_1outputStream.html#ab3e1986ba2a709677cfd685851373eed", null ],
     [ "seek", "classz_1_1core_1_1outputStream.html#a27a0aff0fa101f8b3b2bf8da77e1ae6c", null ],

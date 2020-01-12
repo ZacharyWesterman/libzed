@@ -9,6 +9,7 @@ var classz_1_1system_1_1console =
     [ "get", "classz_1_1system_1_1console.html#a84b3b0c6822dfb70894d5c489c0d446f", null ],
     [ "getChar", "classz_1_1system_1_1console.html#a1543d549684647b37b5c3251b7280b5c", null ],
     [ "good", "classz_1_1system_1_1console.html#a0907bcaf4846956343088abab4fec194", null ],
+    [ "istty", "classz_1_1system_1_1console.html#abf89a16be2a4115f0f6aaa9dc1e24ebc", null ],
     [ "put", "classz_1_1system_1_1console.html#ad3afa682da74028d6b7585241de76b74", null ],
     [ "put", "classz_1_1system_1_1console.html#a09dc00789602e89bfd2269de9c1d9440", null ],
     [ "seek", "classz_1_1system_1_1console.html#a6e97ef81038fbe2d69b02680e8bae229", null ],
