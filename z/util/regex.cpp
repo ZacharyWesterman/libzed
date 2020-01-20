@@ -110,7 +110,7 @@ namespace z
 				"Unable to seek stream indices",
 			};
 
-			if (!root) return "No pattern specified";
+			if (!(root || parseError)) return "No pattern specified";
 			if (parseError >= RGX_ERR_COUNT) return msgs[1];
 			return msgs[parseError];
 		}
