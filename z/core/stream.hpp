@@ -164,13 +164,6 @@ namespace z
 			virtual void put(uint8_t* str, size_t count, encoding format = ascii) = 0;
 
 			/**
-			 * \brief Tell whether we have consumed the last character in the stream.
-			 *
-			 * \return True if the last character has been consumed. False otherwise.
-			 */
-			virtual bool empty() = 0;
-
-			/**
 			 * \brief Tell whether this is a valid stream object.
 			 *
 			 * \return True if we can properly read to and write from the stream. False otherwise.
