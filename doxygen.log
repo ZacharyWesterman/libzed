@@ -1,0 +1,25 @@
+/home/travis/build/ZacharyWesterman/libzed/z/core/zstr.hpp:4: warning: the name `z/core/zstr.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/core.hpp:3: warning: the name `z/core.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/encoding.hpp:4: warning: the name `z/encoding.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/file.hpp:3: warning: the name `z/file.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/math.hpp:3: warning: the name `z/math.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/system.hpp:3: warning: the name `z/system.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgx.hpp:3: warning: the name `z/util/regex/rgx.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/util.hpp:3: warning: the name `z/util.h' supplied as the second argument in the \file statement is not an input file
+/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:17: warning: Compound z::core::types::equalExists is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:9: warning: Compound z::core::types::no is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/file/outputStream.hpp:58: warning: Member empty() (function) of class z::file::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/system/stdout.hpp:54: warning: Member istty() const override (function) of class z::system::stdout is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/system/stderr.hpp:54: warning: Member istty() const override (function) of class z::system::stderr is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/system/stdout.hpp:54: warning: Member istty() const override (function) of class z::system::stdout is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex.hpp:46: warning: Member regex(regex &&)=default (function) of class z::util::regex is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex.hpp:47: warning: Member operator=(regex &&)=default (function) of class z::util::regex is not documented.
