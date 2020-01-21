@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = libzed
-PROJECT_NUMBER         = 1.3
+PROJECT_NUMBER         = 1.4
 PROJECT_BRIEF          = "Code libraries for use in other projects"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       =
@@ -109,7 +109,7 @@ WARN_LOGFILE           = "doxygen.log"
 #---------------------------------------------------------------------------
 INPUT                  = z Doxypages
 INPUT_ENCODING         = UTF-8
-FILE_PATTERNS          = *.h *.md *.dox
+FILE_PATTERNS          = *.hpp *.md *.dox
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
