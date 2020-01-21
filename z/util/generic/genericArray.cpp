@@ -1,4 +1,4 @@
-#include "genericArray.h"
+#include "genericArray.hpp"
 
 namespace z
 {

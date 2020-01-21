@@ -1,5 +1,5 @@
-#include "binaryStream.h"
-#include "charFunctions.h"
+#include "binaryStream.hpp"
+#include "charFunctions.hpp"
 
 namespace z
 {

@@ -1,10 +1,10 @@
 #pragma once
 
 #include <vector>
-#include "stream.h"
-#include "sizable.h"
-#include "serializable.h"
-#include "typeChecks.h"
+#include "stream.hpp"
+#include "sizable.hpp"
+#include "serializable.hpp"
+#include "typeChecks.hpp"
 
 namespace z
 {

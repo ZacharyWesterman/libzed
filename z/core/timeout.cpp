@@ -1,4 +1,4 @@
-#include "timeout.h"
+#include "timeout.hpp"
 
 namespace z
 {

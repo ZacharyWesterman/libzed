@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <cstddef>
 
-#include "rgxid.h"
-#include "rgxss.h"
+#include "rgxid.hpp"
+#include "rgxss.hpp"
 
 namespace z
 {

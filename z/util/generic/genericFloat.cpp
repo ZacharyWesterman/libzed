@@ -1,4 +1,4 @@
-#include "genericFloat.h"
+#include "genericFloat.hpp"
 
 namespace z
 {

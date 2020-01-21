@@ -92,13 +92,13 @@ $(SHARED_LIB): $(OBJS)
 main.o: main.cpp
 	$(CC) $(CCFLAGS) -o $@ -c $^
 
-%.o: %.cpp %.h
+%.o: %.cpp %.hpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-z/core/string.o: z/core/string.cpp z/core/string.h $(wildcard z/core/string/*.h)
+z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-z/file/library.o: z/file/library.cpp z/file/library.h
+z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
 
 clean: clear

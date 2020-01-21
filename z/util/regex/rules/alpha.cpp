@@ -1,5 +1,5 @@
-#include "alpha.h"
-#include <z/core/charFunctions.h>
+#include "alpha.hpp"
+#include <z/core/charFunctions.hpp>
 namespace z
 {
 	namespace util

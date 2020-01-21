@@ -1,8 +1,8 @@
-#include "rgxlex.h"
-#include "rgxid.h"
-#include "rgxflag.h"
+#include "rgxlex.hpp"
+#include "rgxid.hpp"
+#include "rgxflag.hpp"
 
-#include "rgx.h" //all regex rules
+#include "rgx.hpp" //all regex rules
 
 namespace z
 {

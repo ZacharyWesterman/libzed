@@ -1,6 +1,6 @@
-#include <z/core/string.h>
-#include <z/file/inputStream.h>
-#include <z/system/console.h>
+#include <z/core/string.hpp>
+#include <z/file/inputStream.hpp>
+#include <z/system/console.hpp>
 
 int main()
 {

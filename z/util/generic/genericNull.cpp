@@ -1,4 +1,4 @@
-#include "genericNull.h"
+#include "genericNull.hpp"
 
 namespace z
 {

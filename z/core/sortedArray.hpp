@@ -2,7 +2,7 @@
 #ifndef SORTEDARRAY_H_INCLUDED
 #define SORTEDARRAY_H_INCLUDED
 
-#include "array.h"
+#include "array.hpp"
 
 namespace z
 {

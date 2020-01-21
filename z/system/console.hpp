@@ -1,7 +1,7 @@
 #pragma once
 
-#include <z/encoding.h>
-#include <z/core/stream.h>
+#include <z/encoding.hpp>
+#include <z/core/stream.hpp>
 
 namespace z
 {

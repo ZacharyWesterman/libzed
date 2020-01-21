@@ -2,8 +2,8 @@
 #include <cstdint>
 #include <cstddef>
 
-#include "charFunctions.h"
-#include "string.h"
+#include "charFunctions.hpp"
+#include "string.hpp"
 
 #ifndef Z_STR_INT_BUFSIZE
 	#define Z_STR_INT_BUFSIZE 64
@@ -84,12 +84,12 @@ size_t fractionalBuf(double fractional, unsigned int base, unsigned int precisio
 	}
 }
 
-#include "string/asciiConstructors.h"
-#include "string/utf8Constructors.h"
-#include "string/utf16Constructors.h"
-#include "string/utf32Constructors.h"
+#include "string/asciiConstructors.hpp"
+#include "string/utf8Constructors.hpp"
+#include "string/utf16Constructors.hpp"
+#include "string/utf32Constructors.hpp"
 
-#include "string/ascii.h"
-#include "string/utf16.h"
-#include "string/utf32.h"
-#include "string/utf8.h"
+#include "string/ascii.hpp"
+#include "string/utf16.hpp"
+#include "string/utf32.hpp"
+#include "string/utf8.hpp"

@@ -1,5 +1,5 @@
-#include "alnum.h"
-#include <z/core/charFunctions.h>
+#include "alnum.hpp"
+#include <z/core/charFunctions.hpp>
 namespace z
 {
 	namespace util

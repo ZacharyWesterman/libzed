@@ -1,4 +1,4 @@
-#include "cpuid.h"
+#include "cpuid.hpp"
 
 #ifndef __arm__
 #include <cpuid.h>

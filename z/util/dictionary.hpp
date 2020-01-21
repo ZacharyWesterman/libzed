@@ -1,10 +1,10 @@
 #pragma once
 
-#include <z/core/string.h>
-#include <z/core/sortedRefArray.h>
-#include <z/core/timeout.h>
+#include <z/core/string.hpp>
+#include <z/core/sortedRefArray.hpp>
+#include <z/core/timeout.hpp>
 
-#include "dictionary/word.h"
+#include "dictionary/word.hpp"
 
 namespace z
 {

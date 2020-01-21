@@ -1,4 +1,4 @@
-#include "makeDir.h"
+#include "makeDir.hpp"
 
 #ifdef __linux__
 #include <sys/stat.h>

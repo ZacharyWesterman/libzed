@@ -2,7 +2,7 @@
 #ifndef SORTEDREFARRAY_H_INCLUDED
 #define SORTEDREFARRAY_H_INCLUDED
 
-#include "refArray.h"
+#include "refArray.hpp"
 
 namespace z
 {

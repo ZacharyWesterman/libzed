@@ -1,4 +1,4 @@
-#include "genericInt.h"
+#include "genericInt.hpp"
 
 namespace z
 {

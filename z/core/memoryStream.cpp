@@ -1,5 +1,5 @@
-#include "memoryStream.h"
-#include "charFunctions.h"
+#include "memoryStream.hpp"
+#include "charFunctions.hpp"
 namespace z
 {
 	namespace core

@@ -1,4 +1,4 @@
-#include "pause.h"
+#include "pause.hpp"
 
 #ifdef __linux__
 #include <unistd.h>

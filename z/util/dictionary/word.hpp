@@ -1,11 +1,11 @@
 #pragma once
 
-#include <z/core/string.h>
+#include <z/core/string.hpp>
 
-#include <z/core/sizable.h>
-#include <z/core/serializable.h>
+#include <z/core/sizable.hpp>
+#include <z/core/serializable.hpp>
 
-#include "part.h"
+#include "part.hpp"
 
 namespace z
 {

@@ -2,9 +2,9 @@
 * A short example to demonstrate stream IO and regex pattern matching.
 */
 
-#include <z/system/console.h>
-#include <z/core.h> //for core::memoryStream and core::string
-#include <z/util/regex.h>
+#include <z/system/console.hpp>
+#include <z/core.hpp> //for core::memoryStream and core::string
+#include <z/util/regex.hpp>
 
 int main()
 {

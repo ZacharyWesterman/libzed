@@ -11,26 +11,26 @@
 **/
 
 ///Strings
-#include "core/string.h"
+#include "core/string.hpp"
 
 ///Arrays
-#include "core/array.h"
-#include "core/sortedArray.h"
-#include "core/refArray.h"
-#include "core/sortedRefArray.h"
+#include "core/array.hpp"
+#include "core/sortedArray.hpp"
+#include "core/refArray.hpp"
+#include "core/sortedRefArray.hpp"
 
 ///Timers
-#include "core/timer.h"
-#include "core/timeout.h"
+#include "core/timer.hpp"
+#include "core/timeout.hpp"
 
 ///Miscellaneous
-#include "core/charFunctions.h"
-#include "core/serializable.h"
-#include "core/sizable.h"
-#include "core/split.h"
-#include "core/join.h"
+#include "core/charFunctions.hpp"
+#include "core/serializable.hpp"
+#include "core/sizable.hpp"
+#include "core/split.hpp"
+#include "core/join.hpp"
 
 ///Streams
-#include "core/stream.h"
-#include "core/binaryStream.h"
-#include "core/memoryStream.h"
+#include "core/stream.hpp"
+#include "core/binaryStream.hpp"
+#include "core/memoryStream.hpp"

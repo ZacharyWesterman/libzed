@@ -6,17 +6,17 @@
 **/
 
 ///Constants
-#include "math/constants.h"
+#include "math/constants.hpp"
 
 ///Functions
-#include "math/factorial.h"
-#include "math/fibonacci.h"
-#include "math/gcd.h"
-#include "math/remainder.h"
-#include "math/zeta.h"
+#include "math/factorial.hpp"
+#include "math/fibonacci.hpp"
+#include "math/gcd.hpp"
+#include "math/remainder.hpp"
+#include "math/zeta.hpp"
 
 ///Operators
-#include "math/complexOps.h"
+#include "math/complexOps.hpp"
 
 ///Matrices
-#include "math/matrix.h"
+#include "math/matrix.hpp"

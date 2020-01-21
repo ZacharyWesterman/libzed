@@ -1,5 +1,5 @@
-#include "space.h"
-#include <z/core/charFunctions.h>
+#include "space.hpp"
+#include <z/core/charFunctions.hpp>
 namespace z
 {
 	namespace util

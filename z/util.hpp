@@ -9,10 +9,10 @@
 **/
 
 ///Generic class
-#include "util/generic.h"
+#include "util/generic.hpp"
 
 ///Regular expressions
-#include "util/regex.h"
+#include "util/regex.hpp"
 
 ///Dictionary
-#include "util/dictionary.h"
+#include "util/dictionary.hpp"

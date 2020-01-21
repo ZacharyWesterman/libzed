@@ -1,4 +1,4 @@
-#include "dir.h"
+#include "dir.hpp"
 
 #include <stdio.h>
 #ifdef _WIN32

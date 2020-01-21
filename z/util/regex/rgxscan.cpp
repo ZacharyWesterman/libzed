@@ -1,9 +1,9 @@
-#include "rgxscan.h"
+#include "rgxscan.hpp"
 
-#include "rgxid.h"
-#include "rgxsesc.h"
+#include "rgxid.hpp"
+#include "rgxsesc.hpp"
 
-#include <z/core/charFunctions.h>
+#include <z/core/charFunctions.hpp>
 
 namespace z
 {

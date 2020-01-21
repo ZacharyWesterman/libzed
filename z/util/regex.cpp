@@ -1,7 +1,7 @@
-#include "regex.h"
+#include "regex.hpp"
 
-#include "regex/rgxscan.h"
-#include "regex/rgxlex.h"
+#include "regex/rgxscan.hpp"
+#include "regex/rgxlex.hpp"
 
 namespace z
 {

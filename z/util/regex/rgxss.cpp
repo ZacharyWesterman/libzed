@@ -1,4 +1,4 @@
-#include "rgxss.h"
+#include "rgxss.hpp"
 
 namespace z
 {

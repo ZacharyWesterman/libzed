@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <cstddef>
 
-#include "stream.h"
+#include "stream.hpp"
 
 namespace z
 {

@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cstddef>
 
-#include <z/encoding.h>
+#include <z/encoding.hpp>
 
 namespace z
 {

@@ -1,4 +1,4 @@
-#include "gcd.h"
+#include "gcd.hpp"
 
 namespace z
 {

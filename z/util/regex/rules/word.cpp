@@ -1,5 +1,5 @@
-#include "word.h"
-#include <z/core/charFunctions.h>
+#include "word.hpp"
+#include <z/core/charFunctions.hpp>
 namespace z
 {
 	namespace util

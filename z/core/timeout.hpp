@@ -1,6 +1,6 @@
 #pragma once
 
-#include "timer.h"
+#include "timer.hpp"
 
 namespace z
 {

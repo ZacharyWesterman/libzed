@@ -59,8 +59,8 @@ and tell g++ to load it from there.
 Suppose you have some simple project called `example.cpp`.
 Let's have this file contain the following:
 ~~~{.cpp}
-#include <z/core.h>
-#include <z/system.h>
+#include <z/core.hpp>
+#include <z/system.hpp>
 
 int main()
 {

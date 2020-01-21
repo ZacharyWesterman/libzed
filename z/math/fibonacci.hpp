@@ -1,6 +1,6 @@
 #pragma once
 
-#include "constants.h"
+#include "constants.hpp"
 #include <math.h>
 
 namespace z

@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-#include "array.h"
+#include "array.hpp"
 
 namespace z
 {

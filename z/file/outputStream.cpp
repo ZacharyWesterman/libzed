@@ -1,7 +1,7 @@
-#include "outputStream.h"
-#include <z/core/charFunctions.h>
+#include "outputStream.hpp"
+#include <z/core/charFunctions.hpp>
 
-#include "inputStream.h"
+#include "inputStream.hpp"
 
 namespace z
 {

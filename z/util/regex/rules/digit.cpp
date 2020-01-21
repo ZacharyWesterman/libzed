@@ -1,5 +1,5 @@
-#include "digit.h"
-#include <z/core/charFunctions.h>
+#include "digit.hpp"
+#include <z/core/charFunctions.hpp>
 namespace z
 {
 	namespace util

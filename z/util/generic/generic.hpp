@@ -1,12 +1,12 @@
 #pragma once
 
-#include "datatype.h"
+#include "datatype.hpp"
 
-#include <z/encoding.h>
-#include <z/core/sizable.h>
+#include <z/encoding.hpp>
+#include <z/core/sizable.hpp>
 
-#include <z/core/string.h>
-#include <z/core/array.h>
+#include <z/core/string.hpp>
+#include <z/core/array.hpp>
 
 #include <complex>
 

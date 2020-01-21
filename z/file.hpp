@@ -6,20 +6,20 @@
 **/
 
 ///Directory operations
-#include "file/list.h"
-#include "file/shorten.h"
-#include "file/exists.h"
-#include "file/makeDir.h"
-#include "file/path.h"
-#include "file/dir.h"
-#include "file/chdir.h"
-#include "file/size.h"
+#include "file/list.hpp"
+#include "file/shorten.hpp"
+#include "file/exists.hpp"
+#include "file/makeDir.hpp"
+#include "file/path.hpp"
+#include "file/dir.hpp"
+#include "file/chdir.hpp"
+#include "file/size.hpp"
 
 ///Manage file contents
-#include "file/copy.h"
-#include "file/info.h"
-#include "file/inputStream.h"
-#include "file/outputStream.h"
+#include "file/copy.hpp"
+#include "file/info.hpp"
+#include "file/inputStream.hpp"
+#include "file/outputStream.hpp"
 
 ///Dynamic library loading
-#include "file/library.h"
+#include "file/library.hpp"

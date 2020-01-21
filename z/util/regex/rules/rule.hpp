@@ -1,8 +1,8 @@
 #pragma once
-#include <z/core/stream.h>
+#include <z/core/stream.hpp>
 
 #ifdef DEBUG
-#include <z/core/string.h>
+#include <z/core/string.hpp>
 #endif
 
 namespace z

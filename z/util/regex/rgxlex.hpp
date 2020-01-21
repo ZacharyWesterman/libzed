@@ -1,10 +1,10 @@
 #pragma once
 
-#include <z/core/array.h>
-#include "rules/compound.h"
+#include <z/core/array.hpp>
+#include "rules/compound.hpp"
 
-#include "rgxss.h"
-#include "rgxerr.h"
+#include "rgxss.hpp"
+#include "rgxerr.hpp"
 
 namespace z
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include "rule.h"
-#include <z/core/array.h>
+#include "rule.hpp"
+#include <z/core/array.hpp>
 
 namespace z
 {

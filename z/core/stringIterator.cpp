@@ -1,5 +1,5 @@
-#include "stringIterator.h"
-#include "charFunctions.h"
+#include "stringIterator.hpp"
+#include "charFunctions.hpp"
 
 namespace z
 {

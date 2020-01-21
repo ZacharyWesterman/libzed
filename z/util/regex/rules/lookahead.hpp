@@ -1,5 +1,5 @@
 #pragma once
-#include "compound.h"
+#include "compound.hpp"
 
 namespace z
 {

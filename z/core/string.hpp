@@ -3,14 +3,14 @@
 #include <type_traits>
 #include <complex>
 
-#include "charFunctions.h"
-#include <z/encoding.h>
-#include "zstr.h"
+#include "charFunctions.hpp"
+#include <z/encoding.hpp>
+#include "zstr.hpp"
 
-#include "serializable.h"
-#include "sizable.h"
+#include "serializable.hpp"
+#include "sizable.hpp"
 
-#include "stringIterator.h"
+#include "stringIterator.hpp"
 
 namespace z
 {

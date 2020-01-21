@@ -1,6 +1,6 @@
 #pragma once
 
-#include "stream.h"
+#include "stream.hpp"
 
 namespace z
 {

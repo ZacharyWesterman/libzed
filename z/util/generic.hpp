@@ -1,14 +1,14 @@
 #pragma once
 
-#include "generic/genericNull.h"
-#include "generic/genericPointer.h"
-#include "generic/genericInt.h"
-#include "generic/genericFloat.h"
-#include "generic/genericComplex.h"
-#include "generic/genericString.h"
-#include "generic/genericArray.h"
+#include "generic/genericNull.hpp"
+#include "generic/genericPointer.hpp"
+#include "generic/genericInt.hpp"
+#include "generic/genericFloat.hpp"
+#include "generic/genericComplex.hpp"
+#include "generic/genericString.hpp"
+#include "generic/genericArray.hpp"
 
-#include <z/core/serializable.h>
+#include <z/core/serializable.hpp>
 
 namespace z
 {

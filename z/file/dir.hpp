@@ -1,6 +1,6 @@
 #pragma once
 
-#include <z/core/string.h>
+#include <z/core/string.hpp>
 
 namespace z
 {

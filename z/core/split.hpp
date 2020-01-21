@@ -1,7 +1,7 @@
 #pragma once
 
-#include "string.h"
-#include "array.h"
+#include "string.hpp"
+#include "array.hpp"
 
 namespace z
 {

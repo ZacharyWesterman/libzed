@@ -1,4 +1,4 @@
-#include "factorial.h"
+#include "factorial.hpp"
 
 namespace z
 {

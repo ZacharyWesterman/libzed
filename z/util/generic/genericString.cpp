@@ -1,4 +1,4 @@
-#include "genericString.h"
+#include "genericString.hpp"
 
 namespace z
 {

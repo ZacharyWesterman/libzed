@@ -1,5 +1,5 @@
-#include "fibonacci.h"
-#include "constants.h"
+#include "fibonacci.hpp"
+#include "constants.hpp"
 #include <math.h>
 
 namespace z

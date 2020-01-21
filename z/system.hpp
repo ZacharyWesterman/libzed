@@ -6,6 +6,6 @@
  *
 **/
 
-#include "system/console.h"
-#include "system/cpuid.h"
-#include "system/pause.h"
+#include "system/console.hpp"
+#include "system/cpuid.hpp"
+#include "system/pause.hpp"

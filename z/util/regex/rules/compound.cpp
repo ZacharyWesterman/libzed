@@ -1,4 +1,4 @@
-#include "compound.h"
+#include "compound.hpp"
 namespace z
 {
 	namespace util

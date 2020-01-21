@@ -1,7 +1,7 @@
-#include "console.h"
+#include "console.hpp"
 
 #include <iostream>
-#include <z/core/charFunctions.h>
+#include <z/core/charFunctions.hpp>
 
 #ifdef _WIN32
 #include <io.h>

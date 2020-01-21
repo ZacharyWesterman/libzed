@@ -1,4 +1,4 @@
-#include "charFunctions.h"
+#include "charFunctions.hpp"
 
 static const uint32_t begRangesGroup[] =
 {

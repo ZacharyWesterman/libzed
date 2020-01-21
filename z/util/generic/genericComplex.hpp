@@ -1,6 +1,6 @@
 #pragma once
 
-#include "generic.h"
+#include "generic.hpp"
 
 namespace z
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "rule.h"
+#include "rule.hpp"
 
 namespace z
 {
