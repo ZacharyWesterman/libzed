@@ -232,6 +232,40 @@ namespace z
 			 */
 			string(const string<utf32>& other);
 
+			/**
+			 * \brief Move constructor.
+			 *
+			 * Moves a string of the same encoding. Just does a mem copy.
+			 *
+			 * \param other The string to move.
+			 */
+			string(string&& other)
+			{
+				data = other.data;
+				data_len = other.data_len;
+				character_ct = other.character_ct;
+				other.data = NULL;
+			}
+
+			/**
+			 * \brief Move assignment operator.
+			 *
+			 * Moves a string of the same encoding. Since this string has already been
+			 * allocated data, we must first deallocate, then do a mem copy.
+			 *
+			 * \param other The string to move.
+			 */
+			string& operator=(string&& other)
+			{
+				delete[] data;
+				data = other.data;
+				data_len = other.data_len;
+				character_ct = other.character_ct;
+				other.data = NULL;
+
+				return *this;
+			}
+
 			///Destructor
 			~string()
 			{
@@ -936,25 +970,46 @@ namespace z
 			const string& cutDuplicates(const string& other);
 
 			/**
-			 * \brief Convert all characters in the string to uppercase.
+			 * \brief Get an uppercase version of this string.
 			 *
 			 * \return A duplicate of this string, converted to uppercase.
 			 */
-			string upper() const;
+			string upper() const { return string(*this).toUpper(); }
+
+			/**
+			 * \brief Get a lowercase version of this string.
+			 *
+			 * \return A duplicate of this string, converted to lowercase.
+			 */
+			string lower() const { return string(*this).toLower(); }
+
+			/**
+			 * \brief Get a camelcase version of this string.
+			 *
+			 * \return A duplicate of this string, converted to camelcase.
+			 */
+			string camel() const { return string(*this).toCamel(); }
+
+			/**
+			 * \brief Convert all characters in the string to uppercase.
+			 *
+			 * \return A reference to this string after converting to uppercase.
+			 */
+			string& toUpper();
 
 			/**
 			 * \brief Convert all characters in the string to lowercase.
 			 *
-			 * \return A duplicate of this string, converted to lowercase.
+			 * \return A reference to this string after converting to lowercase.
 			 */
-			string lower() const;
+			string& toLower();
 
 			/**
 			 * \brief Convert all characters in the string to camelcase.
 			 *
-			 * \return A duplicate of this string, converted to camelcase.
+			 * \return A reference to this string after converting to camelcase.
 			 */
-			string camel() const;
+			string& toCamel();
 
 			/**
 			 * \brief Concatenate two strings.

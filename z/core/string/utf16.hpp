@@ -236,12 +236,12 @@ namespace z
 							return zstr::string;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data16[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data16[i+1]) == 'i'))
 								return zstr::string;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data16[i]) == 'e')
+					else if (core::toLower(data16[i]) == 'e')
 					{
 						if (pastExponent)
 							return zstr::string;
@@ -252,7 +252,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data16[i]) == 'i')
+					else if (core::toLower(data16[i]) == 'i')
 					{
 						if (imag)
 							return zstr::string;
@@ -527,45 +527,42 @@ namespace z
 		}
 
 		template <>
-		string<utf16> string<utf16>::upper() const
+		string<utf16>& string<utf16>::toUpper()
 		{
-			string<utf16> result (*this);
-			uint16_t* data16 = (uint16_t*)result.data;
+			uint16_t* data16 = (uint16_t*)data;
 
 			for (size_t i=0; i<character_ct; i++)
-				data16[i] = toUpper(data16[i]);
+				data16[i] = core::toUpper(data16[i]);
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf16> string<utf16>::lower() const
+		string<utf16>& string<utf16>::toLower()
 		{
-			string<utf16> result (*this);
-			uint16_t* data16 = (uint16_t*)result.data;
+			uint16_t* data16 = (uint16_t*)data;
 
 			for (size_t i=0; i<character_ct; i++)
-				data16[i] = toLower(data16[i]);
+				data16[i] = core::toLower(data16[i]);
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf16> string<utf16>::camel() const
+		string<utf16>& string<utf16>::toCamel()
 		{
-			string<utf16> result (*this);
-			uint16_t* data16 = (uint16_t*)result.data;
+			uint16_t* data16 = (uint16_t*)data;
 
 			bool doLower = false;
 			for (size_t i=0; i<character_ct; i++)
 			{
 				uint32_t ch = data16[i];
-				data16[i] = (doLower ? toLower(ch) : toUpper(ch));
+				data16[i] = (doLower ? core::toLower(ch) : core::toUpper(ch, true));
 
 				doLower = isAlphaNumeric(ch) || (ch == '_');
 			}
 
-			return result;
+			return *this;
 		}
 
 		template <>
@@ -1041,7 +1038,7 @@ namespace z
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data[i]) == 'e')
+					else if (core::toLower(data[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -1122,12 +1119,12 @@ namespace z
 							return 0;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data[i+1]) == 'i'))
 								return 0;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data[i]) == 'e')
+					else if (core::toLower(data[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -1140,7 +1137,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data[i]) == 'i')
+					else if (core::toLower(data[i]) == 'i')
 					{
 						if (imag)
 							return 0;

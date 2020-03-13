@@ -149,7 +149,7 @@ namespace z
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data32[i]) == 'e')
+					else if (core::toLower(data32[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -232,12 +232,12 @@ namespace z
 							return 0;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data32[i+1]) == 'i'))
 								return 0;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data32[i]) == 'e')
+					else if (core::toLower(data32[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -250,7 +250,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data32[i]) == 'i')
+					else if (core::toLower(data32[i]) == 'i')
 					{
 						if (imag)
 							return 0;
@@ -495,12 +495,12 @@ namespace z
 							return zstr::string;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data32[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data32[i+1]) == 'i'))
 								return zstr::string;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data32[i]) == 'e')
+					else if (core::toLower(data32[i]) == 'e')
 					{
 						if (pastExponent)
 							return zstr::string;
@@ -511,7 +511,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data32[i]) == 'i')
+					else if (core::toLower(data32[i]) == 'i')
 					{
 						if (imag)
 							return zstr::string;
@@ -781,45 +781,42 @@ namespace z
 		}
 
 		template <>
-		string<utf32> string<utf32>::upper() const
+		string<utf32>& string<utf32>::toUpper()
 		{
-			string<utf32> result (*this);
-			uint32_t* data32 = (uint32_t*)result.data;
+			uint32_t* data32 = (uint32_t*)data;
 
 			for (size_t i=0; i<character_ct; i++)
-				data32[i] = toUpper(data32[i]);
+				data32[i] = core::toUpper(data32[i]);
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf32> string<utf32>::lower() const
+		string<utf32>& string<utf32>::toLower()
 		{
-			string<utf32> result (*this);
-			uint32_t* data32 = (uint32_t*)result.data;
+			uint32_t* data32 = (uint32_t*)data;
 
 			for (size_t i=0; i<character_ct; i++)
-				data32[i] = toLower(data32[i]);
+				data32[i] = core::toLower(data32[i]);
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf32> string<utf32>::camel() const
+		string<utf32>& string<utf32>::toCamel()
 		{
-			string<utf32> result (*this);
-			uint32_t* data32 = (uint32_t*)result.data;
+			uint32_t* data32 = (uint32_t*)data;
 
 			bool doLower = false;
 			for (size_t i=0; i<character_ct; i++)
 			{
 				uint32_t ch = data32[i];
-				data32[i] = (doLower ? toLower(ch) : toUpper(ch));
+				data32[i] = (doLower ? core::toLower(ch) : core::toUpper(ch, true));
 
 				doLower = isAlphaNumeric(ch) || (ch == '_');
 			}
 
-			return result;
+			return *this;
 		}
 
 		template <>

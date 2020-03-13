@@ -761,7 +761,7 @@ namespace z
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data[i]) == 'e')
+					else if (core::toLower(data[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -842,12 +842,12 @@ namespace z
 							return 0;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data[i+1]) == 'i'))
 								return 0;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data[i]) == 'e')
+					else if (core::toLower(data[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
@@ -860,7 +860,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data[i]) == 'i')
+					else if (core::toLower(data[i]) == 'i')
 					{
 						if (imag)
 							return 0;
@@ -978,12 +978,12 @@ namespace z
 							return zstr::string;
 						else
 						{
-							if ((i >= character_ct-1) || (toLower(data[i+1]) == 'i'))
+							if ((i >= character_ct-1) || (core::toLower(data[i+1]) == 'i'))
 								return zstr::string;
 							pastDecimal = true;
 						}
 					}
-					else if (toLower(data[i]) == 'e')
+					else if (core::toLower(data[i]) == 'e')
 					{
 						if (pastExponent)
 							return zstr::string;
@@ -994,7 +994,7 @@ namespace z
 								i++;
 						}
 					}
-					else if (toLower(data[i]) == 'i')
+					else if (core::toLower(data[i]) == 'i')
 					{
 						if (imag)
 							return zstr::string;
@@ -1210,79 +1210,51 @@ namespace z
 		}
 
 		template <>
-		string<utf8> string<utf8>::upper() const
+		string<utf8>& string<utf8>::toUpper()
 		{
-			string<utf8> result;
-
-			uint8_t buf[4];
+			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
 			size_t i=0;
 			while (i < character_ct)
 			{
-				auto ch = toUpper(fromUTF8(&data[i]));
-
-				int len = toUTF8(buf, ch);
-				result.increase(result.character_ct + len + 1);
-
-				for (int k=0; k<len; k++)
-					result.data[result.character_ct++] = buf[k];
-				result.data[result.character_ct] = 0;
-
-				i += lenFromUTF8(&data[i]);
+				auto ch = core::toUpper(fromUTF8(&data[i]));
+				int len = toUTF8(&data[i], ch);
+				i += len;
 			}
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf8> string<utf8>::lower() const
+		string<utf8>& string<utf8>::toLower()
 		{
-			string<utf8> result;
-
-			uint8_t buf[4];
+			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
 			size_t i=0;
 			while (i < character_ct)
 			{
-				auto ch = toLower(fromUTF8(&data[i]));
-
-				int len = toUTF8(buf, ch);
-				result.increase(result.character_ct + len + 1);
-
-				for (int k=0; k<len; k++)
-					result.data[result.character_ct++] = buf[k];
-				result.data[result.character_ct] = 0;
-
-				i += lenFromUTF8(&data[i]);
+				auto ch = core::toLower(fromUTF8(&data[i]));
+				int len = toUTF8(&data[i], ch);
+				i += len;
 			}
 
-			return result;
+			return *this;
 		}
 
 		template <>
-		string<utf8> string<utf8>::camel() const
+		string<utf8>& string<utf8>::toCamel()
 		{
-			string<utf8> result;
-
 			bool doLower = false;
-
-			uint8_t buf[4];
+			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
 			size_t i=0;
 			while (i < character_ct)
 			{
 				auto ch = fromUTF8(&data[i]);
-				ch = (doLower ? toLower(ch) : toUpper(ch, true));
-
-				int len = toUTF8(buf, ch);
-				result.increase(result.character_ct + len + 1);
-
-				for (int k=0; k<len; k++)
-					result.data[result.character_ct++] = buf[k];
-				result.data[result.character_ct] = 0;
-
+				ch = (doLower ? core::toLower(ch) : core::toUpper(ch, true));
+				int len = toUTF8(&data[i], ch);
 				doLower = isAlphaNumeric(ch) || (ch == '_');
-				i += lenFromUTF8(&data[i]);
+				i += len;
 			}
 
-			return result;
+			return *this;
 		}
 
 		///operators
