@@ -83,10 +83,10 @@ namespace z
 						flags = negate ? (flags & !INSENSITIVE) : (flags | INSENSITIVE);
 						break;
 					case 's':
-						flags = negate ? (flags & !NEWLINE) : (flags | NEWLINE);
+						flags = negate ? (flags & !static_cast<int>(NEWLINE)) : (flags | NEWLINE);
 						break;
 					case 'n':
-						flags = negate ? (flags & !ENDLINE) : (flags | ENDLINE);
+						flags = negate ? (flags & !static_cast<int>(ENDLINE)) : (flags | ENDLINE);
 						break;
 					default:
 						return err;
