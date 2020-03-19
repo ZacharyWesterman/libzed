@@ -1,6 +1,7 @@
 #include <climits>
 #include <cstdint>
 #include <cstddef>
+#include <cfloat>
 
 #include "charFunctions.hpp"
 #include "string.hpp"
@@ -28,6 +29,8 @@
 #ifndef Z_STR_POINTER_CHARS
 	#define Z_STR_POINTER_CHARS 8
 #endif
+
+#define DBL_EXP_DIG ((sizeof(double) << 3) - DBL_MANT_DIG - 1)
 
 size_t integralBuf(unsigned long integral, unsigned int base, uint8_t* buf)
 {
