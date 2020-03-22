@@ -5,6 +5,7 @@
 #include "sizable.hpp"
 #include "serializable.hpp"
 #include "typeChecks.hpp"
+#include "compare.hpp"
 
 namespace z
 {
@@ -14,12 +15,10 @@ namespace z
 		 * \brief A wrapper for std::vector.
 		 *
 		 * This class is a wrapper for the std::vector class
-		 * that adds ease of use.<BR>Additionally, if I ever decide to
-		 * stop using std::vector, I won't have to change all of my code,
-		 * just this class.
-		 * <br/><br/>
-		 * <B>RE-ENTRANCE:</B><br/>
-		 * Simultaneous accesses to the same object can cause data races.
+		 * that adds ease of use and hides implementation from the user.
+		 *
+		 * /note This will only compile for objects that are copyable.
+		 * Use std::vector for non-copyable objects.
 		 *
 		 * \see refArray
 		 * \see sortedArray
@@ -32,18 +31,32 @@ namespace z
 			///The data in the array.
 			std::vector<T> array_data;
 
-		private:
 			inline void init(const T& arg1)
 			{
-				array_data.push_back(arg1);
+				add(arg1);
 			}
 
 			template <typename... Args>
 			inline void init(const T& arg1, const Args&... args)
 			{
-				array_data.push_back(arg1);
+				add(arg1);
 
 				init(args...);
+			}
+
+			virtual bool eq(const T& arg1, const T& arg2) const
+			{
+				return equals(arg1, arg2);
+			}
+
+			virtual bool gt(const T& arg1, const T& arg2) const
+			{
+				return greater(arg1, arg2);
+			}
+
+			virtual bool lt(const T& arg1, const T& arg2) const
+			{
+				return lesser(arg1, arg2);
 			}
 
 		public:
@@ -61,8 +74,22 @@ namespace z
 
 			inline void clear();
 
-			size_t add(const T&);
-			size_t add(T&&);
+			/**
+			 * \brief Add an object to the array.
+			 *
+			 * Adds the given data to a position in the array. That
+			 * position is up to implementation.
+			 *
+			 * \param object the data to add to the array.
+			 *
+			 * \return The index where the inserted object now resides.
+			 */
+			virtual size_t add(const T& object)
+			{
+				array_data.push_back(object);
+
+				return (array_data.size() - 1);
+			}
 
 			/**
 			 * \brief Add another array to this array.
@@ -70,27 +97,23 @@ namespace z
 			 * Copies the contents of another array and
 			 * appends them to the end of this array.
 			 *
-			 * /note If the objects this array contains are not
-			 * copyable, this method will not be available.
-			 *
 			 * \param other the array to copy from.
 			 */
-			template<bool Condition = std::is_nothrow_move_constructible<T>::value, typename = typename std::enable_if<Condition>::type>
 			void add(const array& other)
 			{
 				for (size_t i=0; i<other.size(); i++)
-					array_data.push_back(other.array_data[i]);
+					add(other.array_data[i]);
 			}
 
-			const array& insert(const T&, size_t);
+			array& insert(const T&, size_t);
 
 			void append(const T&);
 
-			const array& remove(size_t);
-			const array& remove(size_t, int);
+			array& remove(size_t);
+			array& remove(size_t, int);
 
-			const array& replace(size_t, int, const T&);
-			const array& replace(size_t, int, const array<T>&);
+			array& replace(size_t, int, const T&);
+			array& replace(size_t, int, const array<T>&);
 
 
 			array subset(size_t, int) const;
@@ -110,26 +133,21 @@ namespace z
 			 * Locates the desired index using a linear search,
 			 * as the array is expected to be unsorted.
 			 *
-			 * /note If this is an array of objects that are not trivially
-			 * comparable and do not have a definition of operator==(), this
-			 * method will not be available.
-			 *
 			 * \param object the object to search for.
 			 *
 			 * \return The first index that the object was found at.
 			 * \b -1 if it was not found.
 			 */
-			template <typename U = T, typename = typename std::enable_if<types::equalExists<U>::value>::type>
-			intmax_t find(const U& object) const
+			virtual intmax_t find(const T& object) const
 			{
 				for (size_t i=0; i<array_data.size(); i++)
-					if (array_data.at(i) == object)
+					if (eq(array_data.at(i),object))
 						return i;
 
 				return -1;
 			}
 
-			const array& operator=(const array& other);
+			array& operator=(const array& other);
 
 			bool operator==(const array& other) const;
 			bool operator>(const array& other) const;
@@ -179,22 +197,6 @@ namespace z
 		}
 
 		/**
-		 * \brief Constructor with one argument.
-		 *
-		 * Constructs the array with one
-		 * element already contained.<BR>
-		 *
-		 * \b Syntax: array<T> X (arg1); array<T> X = arg1;
-		 *
-		 * \param arg1 initializing data.
-		 */
-		template <typename T>
-		array<T>::array(const T& arg1)
-		{
-			array_data.push_back(arg1);
-		}
-
-		/**
 		 * \brief List-initialized constructor.
 		 *
 		 * Constructs the array with an arbitrary
@@ -225,7 +227,7 @@ namespace z
 		 * \b a=b=c type expressions).
 		 */
 		template <typename T>
-		const array<T>& array<T>::operator=(const array<T>& other)
+		array<T>& array<T>::operator=(const array<T>& other)
 		{
 			array_data = other.array_data;
 
@@ -248,7 +250,7 @@ namespace z
 				return false;
 
 			for (size_t i=0; i<array_data.size(); i++)
-				if (array_data.at(i) != other.array_data.at(i))
+				if (!eq(array_data.at(i),other.array_data.at(i)))
 					return false;
 
 			return true;
@@ -273,9 +275,9 @@ namespace z
 
 			for (size_t i=0; i<array_data.size(); i++)
 			{
-				if (array_data.at(i) > other.array_data.at(i))
+				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
-				else if (array_data.at(i) < other.array_data.at(i))
+				else if (lt(array_data.at(i),other.array_data.at(i)))
 					gt_count--;
 			}
 
@@ -301,9 +303,9 @@ namespace z
 
 			for (size_t i=0; i<array_data.size(); i++)
 			{
-				if (array_data.at(i) > other.array_data.at(i))
+				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
-				else if (array_data.at(i) < other.array_data.at(i))
+				else if (lt(array_data.at(i),other.array_data.at(i)))
 					gt_count--;
 			}
 
@@ -349,31 +351,6 @@ namespace z
 		}
 
 		/**
-		 * \brief Add an object to the array.
-		 *
-		 * Appends the given data to the end of the array.
-		 *
-		 * \param object the data to add to the array.
-		 *
-		 * \return The index where the inserted object now resides.
-		 */
-		template <typename T>
-		size_t array<T>::add(const T& object)
-		{
-			array_data.push_back(object);
-
-			return (array_data.size() - 1);
-		}
-
-		template <typename T>
-		size_t array<T>::add(T&& object)
-		{
-			array_data.push_back(std::move(object));
-
-			return (array_data.size() - 1);
-		}
-
-		/**
 		 * \brief Insert an object into the array.
 		 *
 		 * Inserts an object into the given index in the array, if possible.
@@ -384,7 +361,7 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		const array<T>& array<T>::insert(const T& object, size_t index)
+		array<T>& array<T>::insert(const T& object, size_t index)
 		{
 			//if invalid index, return false
 			if (index > array_data.size())
@@ -416,7 +393,7 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		const array<T>& array<T>::remove(size_t index)
+		array<T>& array<T>::remove(size_t index)
 		{
 			if (index >= array_data.size())
 				return *this;
@@ -435,7 +412,7 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		const array<T>& array<T>::remove(size_t index, int count)
+		array<T>& array<T>::remove(size_t index, int count)
 		{
 			if (index >= array_data.size())
 				index = array_data.size()-1;
@@ -574,7 +551,7 @@ namespace z
 		 * \see replace(size_t,int,const array&)
 		 */
 		template <typename T>
-		const array<T>& array<T>::replace(size_t index, int count, const T& object)
+		array<T>& array<T>::replace(size_t index, int count, const T& object)
 		{
 			if (index >= array_data.size())
 				index = array_data.size()-1;
@@ -617,7 +594,7 @@ namespace z
 		 * \see replace(size_t,int,const T&)
 		 */
 		template <typename T>
-		const array<T>& array<T>::replace(size_t index, int count, const array<T>& other)
+		array<T>& array<T>::replace(size_t index, int count, const array<T>& other)
 		{
 			if (index >= array_data.size())
 				index = array_data.size()-1;
@@ -724,7 +701,7 @@ namespace z
 
 			for (size_t i=0; i<count; i++)
 			{
-				T object;
+				T object{};
 				z::core::serialIn(object, stream);
 				array_data.push_back(std::move(object));
 			}

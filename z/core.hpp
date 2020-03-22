@@ -29,6 +29,7 @@
 #include "core/sizable.hpp"
 #include "core/split.hpp"
 #include "core/join.hpp"
+#include "core/compare.hpp"
 
 ///Streams
 #include "core/stream.hpp"
