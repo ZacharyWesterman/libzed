@@ -1,6 +1,7 @@
 #pragma once
 
 #include <z/core/string.hpp>
+#include <z/core/refArray.hpp>
 #include <z/core/sortedRefArray.hpp>
 #include <z/core/timeout.hpp>
 
@@ -17,7 +18,8 @@ namespace z
 		{
 		private:
 			core::string<> lang;
-			core::sortedRefArray<word*> wordList;
+			// core::sortedRefArray<word*> wordList;
+			core::refArray<word*> wordList;
 
 			encoding streamFormat;
 			bool readingStream;
