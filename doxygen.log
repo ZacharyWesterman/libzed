@@ -21,5 +21,6 @@
 /home/travis/build/ZacharyWesterman/libzed/z/system/stdout.hpp:54: warning: Member istty() const override (function) of class z::system::stdout is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/system/stderr.hpp:54: warning: Member istty() const override (function) of class z::system::stderr is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/system/stdout.hpp:54: warning: Member istty() const override (function) of class z::system::stdout is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex.hpp:46: warning: Member regex(regex &&)=default (function) of class z::util::regex is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/util/regex.hpp:47: warning: Member operator=(regex &&)=default (function) of class z::util::regex is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxlex.hpp:16: warning: argument 'nodeOut' of command @param is not found in the argument list of z::util::rgxlex(const core::array< rgxss > &input, rgxerr &parseError, size_t &position, int inType=0, int flags=0)
+/home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgxlex.hpp:24: warning: The following parameters of z::util::rgxlex(const core::array< rgxss > &input, rgxerr &parseError, size_t &position, int inType=0, int flags=0) are not documented:
+  parameter 'parseError'

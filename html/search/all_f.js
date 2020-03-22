@@ -18,7 +18,7 @@ var searchData=
   ['rgxerr',['rgxerr',['../namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710',1,'z::util']]],
   ['rgxflag',['rgxflag',['../namespacez_1_1util.html#a3509b3c93adf7807600ed1f6043f7969',1,'z::util']]],
   ['rgxid',['rgxid',['../namespacez_1_1util.html#a10ab9dfc3e7882616b247bb6c56f8cc1',1,'z::util']]],
-  ['rgxlex',['rgxlex',['../namespacez_1_1util.html#a0070f75a6a87037288f2b98e2b401247',1,'z::util']]],
+  ['rgxlex',['rgxlex',['../namespacez_1_1util.html#a16dfb697fb7bc427f92292a3e00751c6',1,'z::util']]],
   ['rgxscan',['rgxscan',['../namespacez_1_1util.html#a39474799c608d6bbec2b192f004b598f',1,'z::util']]],
   ['rgxsesc',['rgxsesc',['../namespacez_1_1util.html#ad1e57bda68243aeb4cea4b8906bf0ec0',1,'z::util']]],
   ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#ab3615f95987561a1b057975515f109c4',1,'z::util::rgxss::rgxss(const uint8_t regexID=0)']]],

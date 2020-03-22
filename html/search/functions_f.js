@@ -10,7 +10,7 @@ var searchData=
   ['repeat',['repeat',['../classz_1_1core_1_1string.html#afa1b4a337d5fb552c7b864e5cff74c01',1,'z::core::string']]],
   ['replace',['replace',['../classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee',1,'z::core::array::replace(size_t, int, const T &amp;)'],['../classz_1_1core_1_1array.html#a18d7ff1a57aa5ddea4bfbb632b4f3153',1,'z::core::array::replace(size_t, int, const array&lt; T &gt; &amp;)'],['../classz_1_1core_1_1string.html#ae3a352e8676093675d0fb029bc8d9c19',1,'z::core::string::replace(const string &amp;findStr, const string &amp;replStr, int occurrence=0)'],['../classz_1_1core_1_1string.html#a48d012318f44f3e5e3e2e1bd971341f2',1,'z::core::string::replace(size_t index, int count, const string &amp;other)']]],
   ['reset',['reset',['../classz_1_1core_1_1timer.html#adce1b5488fb16b1987956c344e274466',1,'z::core::timer']]],
-  ['rgxlex',['rgxlex',['../namespacez_1_1util.html#a0070f75a6a87037288f2b98e2b401247',1,'z::util']]],
+  ['rgxlex',['rgxlex',['../namespacez_1_1util.html#a16dfb697fb7bc427f92292a3e00751c6',1,'z::util']]],
   ['rgxscan',['rgxscan',['../namespacez_1_1util.html#a39474799c608d6bbec2b192f004b598f',1,'z::util']]],
   ['rgxsesc',['rgxsesc',['../namespacez_1_1util.html#ad1e57bda68243aeb4cea4b8906bf0ec0',1,'z::util']]],
   ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#ab3615f95987561a1b057975515f109c4',1,'z::util::rgxss::rgxss(const uint8_t regexID=0)']]],
