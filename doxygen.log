@@ -6,15 +6,43 @@
 /home/travis/build/ZacharyWesterman/libzed/z/system.hpp:3: warning: the name `z/system.h' supplied as the second argument in the \file statement is not an input file
 /home/travis/build/ZacharyWesterman/libzed/z/util/regex/rgx.hpp:3: warning: the name `z/util/regex/rgx.h' supplied as the second argument in the \file statement is not an input file
 /home/travis/build/ZacharyWesterman/libzed/z/util.hpp:3: warning: the name `z/util.h' supplied as the second argument in the \file statement is not an input file
-/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:17: warning: Compound z::core::types::equalExists is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:31: warning: Compound z::core::types::greaterExists is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:19: warning: Compound z::core::types::equalExists is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:9: warning: Compound z::core::types::no is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/typeChecks.hpp:25: warning: Compound z::core::types::lesserExists is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:67: warning: Member array(const T &) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:34: warning: Member init(const T &arg1) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:40: warning: Member init(const T &arg1, const Args &...args) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:47: warning: Member eq(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:52: warning: Member gt(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:57: warning: Member lt(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
-/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:65: warning: Member add(T &&) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/refArray.hpp:49: warning: Member refArray(const T &arg1, const Args &...args) (function) of class z::core::refArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:67: warning: Member array(const T &) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/refArray.hpp:26: warning: Member eq(const T &arg1, const T &arg2) const override (function) of class z::core::refArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/refArray.hpp:31: warning: Member gt(const T &arg1, const T &arg2) const override (function) of class z::core::refArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/refArray.hpp:38: warning: Member lt(const T &arg1, const T &arg2) const override (function) of class z::core::refArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:34: warning: Member init(const T &arg1) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:40: warning: Member init(const T &arg1, const Args &...args) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedArray.hpp:26: warning: Member sortedArray(const T &arg1, const Args &...args) (function) of class z::core::sortedArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:67: warning: Member array(const T &) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:34: warning: Member init(const T &arg1) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:40: warning: Member init(const T &arg1, const Args &...args) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:47: warning: Member eq(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:52: warning: Member gt(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:57: warning: Member lt(const T &arg1, const T &arg2) const  (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedArray.hpp:34: warning: The following parameters of z::core::sortedArray::findInsert(const T &object, bool allowDuplicates=true) const are not documented:
+  parameter 'allowDuplicates'
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedRefArray.hpp:58: warning: Member sortedRefArray(const T &arg1, const Args &...args) (function) of class z::core::sortedRefArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedArray.hpp:26: warning: Member sortedArray(const T &arg1, const Args &...args) (function) of class z::core::sortedArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:67: warning: Member array(const T &) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedRefArray.hpp:35: warning: Member eq(const T &arg1, const T &arg2) const override (function) of class z::core::sortedRefArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedRefArray.hpp:40: warning: Member gt(const T &arg1, const T &arg2) const override (function) of class z::core::sortedRefArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/sortedRefArray.hpp:47: warning: Member lt(const T &arg1, const T &arg2) const override (function) of class z::core::sortedRefArray is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:34: warning: Member init(const T &arg1) (function) of class z::core::array is not documented.
+/home/travis/build/ZacharyWesterman/libzed/z/core/array.hpp:40: warning: Member init(const T &arg1, const Args &...args) (function) of class z::core::array is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/file/outputStream.hpp:58: warning: Member empty() (function) of class z::file::outputStream is not documented.
 /home/travis/build/ZacharyWesterman/libzed/z/core/stream.hpp:249: warning: Member istty() const  (function) of class z::core::outputStream is not documented.

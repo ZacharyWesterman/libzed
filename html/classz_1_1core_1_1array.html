@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('classz_1_1core_1_1array.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classz_1_1core_1_1array-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -113,7 +114,7 @@ Inheritance diagram for z::core::array&lt; T &gt;:</div>
 <area href="classz_1_1core_1_1serializable.html" title="An interface for reading and writing object binary data to streams. " alt="z::core::serializable" shape="rect" coords="184,0,358,24"/>
 <area href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers. " alt="z::core::refArray&lt; T &gt;" shape="rect" coords="0,112,174,136"/>
 <area href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted. " alt="z::core::sortedArray&lt; T &gt;" shape="rect" coords="184,112,358,136"/>
-<area href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::refArray class which attempts to keep all data sorted. " alt="z::core::sortedRefArray&lt; T &gt;" shape="rect" coords="0,168,174,192"/>
+<area href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::sortedArray class, specialized for pointers. " alt="z::core::sortedRefArray&lt; T &gt;" shape="rect" coords="184,168,358,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -127,8 +128,8 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a0630c1e7f65c7ec4eaff0dddf1408156">array</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;)</td></tr>
 <tr class="memdesc:a0630c1e7f65c7ec4eaff0dddf1408156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor. <br /></td></tr>
 <tr class="separator:a0630c1e7f65c7ec4eaff0dddf1408156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af92fa6358e68bf09c0634b267bc1489f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af92fa6358e68bf09c0634b267bc1489f">array</a> (const T &amp;)</td></tr>
-<tr class="memdesc:af92fa6358e68bf09c0634b267bc1489f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with one argument.  <a href="#af92fa6358e68bf09c0634b267bc1489f">More...</a><br /></td></tr>
+<tr class="memitem:af92fa6358e68bf09c0634b267bc1489f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92fa6358e68bf09c0634b267bc1489f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array</b> (const T &amp;)</td></tr>
 <tr class="separator:af92fa6358e68bf09c0634b267bc1489f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eb59da79dc5b03c05437c4f61014695"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:a4eb59da79dc5b03c05437c4f61014695"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a4eb59da79dc5b03c05437c4f61014695">array</a> (const T &amp;arg1, const Args &amp;...args)</td></tr>
@@ -142,34 +143,30 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692">clear</a> ()</td></tr>
 <tr class="memdesc:afb00cc3926eb5f222662169692f62692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the data in the array. <br /></td></tr>
 <tr class="separator:afb00cc3926eb5f222662169692f62692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e412197ece492d4e16e4960d5fc68c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ad3e412197ece492d4e16e4960d5fc68c">add</a> (const T &amp;)</td></tr>
-<tr class="memdesc:ad3e412197ece492d4e16e4960d5fc68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the array.  <a href="#ad3e412197ece492d4e16e4960d5fc68c">More...</a><br /></td></tr>
-<tr class="separator:ad3e412197ece492d4e16e4960d5fc68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9471edac0f433ae7a06d0e7dcf1547c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9471edac0f433ae7a06d0e7dcf1547c"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (T &amp;&amp;)</td></tr>
-<tr class="separator:ad9471edac0f433ae7a06d0e7dcf1547c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87051ff28b4b8291f5ef325c684230dd"><td class="memTemplParams" colspan="2">template&lt;bool Condition = std::is_nothrow_move_constructible&lt;T&gt;::value, typename  = typename std::enable_if&lt;Condition&gt;::type&gt; </td></tr>
-<tr class="memitem:a87051ff28b4b8291f5ef325c684230dd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a87051ff28b4b8291f5ef325c684230dd">add</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
-<tr class="memdesc:a87051ff28b4b8291f5ef325c684230dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <a href="#a87051ff28b4b8291f5ef325c684230dd">More...</a><br /></td></tr>
-<tr class="separator:a87051ff28b4b8291f5ef325c684230dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ceb71ed34230c2a1949dee096a183db"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a7ceb71ed34230c2a1949dee096a183db">insert</a> (const T &amp;, size_t)</td></tr>
-<tr class="memdesc:a7ceb71ed34230c2a1949dee096a183db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an object into the array.  <a href="#a7ceb71ed34230c2a1949dee096a183db">More...</a><br /></td></tr>
-<tr class="separator:a7ceb71ed34230c2a1949dee096a183db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d307dc9e5b70b0e09bc367165dadecb"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a6d307dc9e5b70b0e09bc367165dadecb">add</a> (const T &amp;object)</td></tr>
+<tr class="memdesc:a6d307dc9e5b70b0e09bc367165dadecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the array.  <a href="#a6d307dc9e5b70b0e09bc367165dadecb">More...</a><br /></td></tr>
+<tr class="separator:a6d307dc9e5b70b0e09bc367165dadecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60999f0a64d2c6a0eddab40760a8d939"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a60999f0a64d2c6a0eddab40760a8d939">add</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
+<tr class="memdesc:a60999f0a64d2c6a0eddab40760a8d939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <a href="#a60999f0a64d2c6a0eddab40760a8d939">More...</a><br /></td></tr>
+<tr class="separator:a60999f0a64d2c6a0eddab40760a8d939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ac75f298bee465288e1915506fc66f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9ac75f298bee465288e1915506fc66f9">insert</a> (const T &amp;, size_t)</td></tr>
+<tr class="memdesc:a9ac75f298bee465288e1915506fc66f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an object into the array.  <a href="#a9ac75f298bee465288e1915506fc66f9">More...</a><br /></td></tr>
+<tr class="separator:a9ac75f298bee465288e1915506fc66f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e4325166734d7d716dbdec5f60cc5f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9e4325166734d7d716dbdec5f60cc5f1">append</a> (const T &amp;)</td></tr>
 <tr class="memdesc:a9e4325166734d7d716dbdec5f60cc5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append an object to the end of the array.  <a href="#a9e4325166734d7d716dbdec5f60cc5f1">More...</a><br /></td></tr>
 <tr class="separator:a9e4325166734d7d716dbdec5f60cc5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0d05b52fd3b67b2ac95c90bdfcb604c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aa0d05b52fd3b67b2ac95c90bdfcb604c">remove</a> (size_t)</td></tr>
-<tr class="memdesc:aa0d05b52fd3b67b2ac95c90bdfcb604c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an object from the array.  <a href="#aa0d05b52fd3b67b2ac95c90bdfcb604c">More...</a><br /></td></tr>
-<tr class="separator:aa0d05b52fd3b67b2ac95c90bdfcb604c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae389ee561230045ddbce9130a45393db"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ae389ee561230045ddbce9130a45393db">remove</a> (size_t, int)</td></tr>
-<tr class="memdesc:ae389ee561230045ddbce9130a45393db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all elements in a subset of the array.  <a href="#ae389ee561230045ddbce9130a45393db">More...</a><br /></td></tr>
-<tr class="separator:ae389ee561230045ddbce9130a45393db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b3d21e13a5aa1c45234fe89f5d466ee"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee">replace</a> (size_t, int, const T &amp;)</td></tr>
-<tr class="memdesc:a9b3d21e13a5aa1c45234fe89f5d466ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an object.  <a href="#a9b3d21e13a5aa1c45234fe89f5d466ee">More...</a><br /></td></tr>
-<tr class="separator:a9b3d21e13a5aa1c45234fe89f5d466ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18d7ff1a57aa5ddea4bfbb632b4f3153"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a18d7ff1a57aa5ddea4bfbb632b4f3153">replace</a> (size_t, int, const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;)</td></tr>
-<tr class="memdesc:a18d7ff1a57aa5ddea4bfbb632b4f3153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an array of objects.  <a href="#a18d7ff1a57aa5ddea4bfbb632b4f3153">More...</a><br /></td></tr>
-<tr class="separator:a18d7ff1a57aa5ddea4bfbb632b4f3153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43dfa4a2bcc47b2c6db8d71db59a5271"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a43dfa4a2bcc47b2c6db8d71db59a5271">remove</a> (size_t)</td></tr>
+<tr class="memdesc:a43dfa4a2bcc47b2c6db8d71db59a5271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an object from the array.  <a href="#a43dfa4a2bcc47b2c6db8d71db59a5271">More...</a><br /></td></tr>
+<tr class="separator:a43dfa4a2bcc47b2c6db8d71db59a5271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d9d606231ba6880140d44d63bc038f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a7d9d606231ba6880140d44d63bc038f2">remove</a> (size_t, int)</td></tr>
+<tr class="memdesc:a7d9d606231ba6880140d44d63bc038f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all elements in a subset of the array.  <a href="#a7d9d606231ba6880140d44d63bc038f2">More...</a><br /></td></tr>
+<tr class="separator:a7d9d606231ba6880140d44d63bc038f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a607f065242c8736d6a97979fed9a63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a1a607f065242c8736d6a97979fed9a63">replace</a> (size_t, int, const T &amp;)</td></tr>
+<tr class="memdesc:a1a607f065242c8736d6a97979fed9a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an object.  <a href="#a1a607f065242c8736d6a97979fed9a63">More...</a><br /></td></tr>
+<tr class="separator:a1a607f065242c8736d6a97979fed9a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87c42ffbd5ebbd69af1d6d381e55742f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a87c42ffbd5ebbd69af1d6d381e55742f">replace</a> (size_t, int, const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;)</td></tr>
+<tr class="memdesc:a87c42ffbd5ebbd69af1d6d381e55742f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an array of objects.  <a href="#a87c42ffbd5ebbd69af1d6d381e55742f">More...</a><br /></td></tr>
+<tr class="separator:a87c42ffbd5ebbd69af1d6d381e55742f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae437f528b8d1087366bd40fd0295eca3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3">subset</a> (size_t, int) const </td></tr>
 <tr class="memdesc:ae437f528b8d1087366bd40fd0295eca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a contiguous subset of the elements in the array.  <a href="#ae437f528b8d1087366bd40fd0295eca3">More...</a><br /></td></tr>
 <tr class="separator:ae437f528b8d1087366bd40fd0295eca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,13 +188,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (T &amp;&am
 <tr class="memitem:aa6107d431a3e8992b73f3acb34dcd657"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aa6107d431a3e8992b73f3acb34dcd657">operator[]</a> (size_t) const </td></tr>
 <tr class="memdesc:aa6107d431a3e8992b73f3acb34dcd657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const function to get the object at the given index.  <a href="#aa6107d431a3e8992b73f3acb34dcd657">More...</a><br /></td></tr>
 <tr class="separator:aa6107d431a3e8992b73f3acb34dcd657"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memTemplParams" colspan="2">template&lt;typename U  = T, typename  = typename std::enable_if&lt;types::equalExists&lt;U&gt;::value&gt;::type&gt; </td></tr>
-<tr class="memitem:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memTemplItemLeft" align="right" valign="top">intmax_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9e5f2d1b93a04b98bcc8404b100c8143">find</a> (const U &amp;object) const </td></tr>
-<tr class="memdesc:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a9e5f2d1b93a04b98bcc8404b100c8143">More...</a><br /></td></tr>
-<tr class="separator:a9e5f2d1b93a04b98bcc8404b100c8143"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5162ba5dda86e3a4c96ed583deddf87f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5162ba5dda86e3a4c96ed583deddf87f">operator=</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
-<tr class="memdesc:a5162ba5dda86e3a4c96ed583deddf87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array assignment operator.  <a href="#a5162ba5dda86e3a4c96ed583deddf87f">More...</a><br /></td></tr>
-<tr class="separator:a5162ba5dda86e3a4c96ed583deddf87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aaf9efdffd68c055dbbdc4a3bd0b5ed"><td class="memItemLeft" align="right" valign="top">virtual intmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a6aaf9efdffd68c055dbbdc4a3bd0b5ed">find</a> (const T &amp;object) const </td></tr>
+<tr class="memdesc:a6aaf9efdffd68c055dbbdc4a3bd0b5ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <a href="#a6aaf9efdffd68c055dbbdc4a3bd0b5ed">More...</a><br /></td></tr>
+<tr class="separator:a6aaf9efdffd68c055dbbdc4a3bd0b5ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54792a72b41df67ea9b055c9e86e0cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a54792a72b41df67ea9b055c9e86e0cf0">operator=</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other)</td></tr>
+<tr class="memdesc:a54792a72b41df67ea9b055c9e86e0cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array assignment operator.  <a href="#a54792a72b41df67ea9b055c9e86e0cf0">More...</a><br /></td></tr>
+<tr class="separator:a54792a72b41df67ea9b055c9e86e0cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c89da203efef053230d1e0736793b1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a0c89da203efef053230d1e0736793b1a">operator==</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;other) const </td></tr>
 <tr class="memdesc:a0c89da203efef053230d1e0736793b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether two arrays' contents are the same.  <a href="#a0c89da203efef053230d1e0736793b1a">More...</a><br /></td></tr>
 <tr class="separator:a0c89da203efef053230d1e0736793b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,6 +235,25 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:a531923d38bc223a5255223efd22ede98 inherit pub_methods_classz_1_1core_1_1serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:a531923d38bc223a5255223efd22ede98 inherit pub_methods_classz_1_1core_1_1serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a3e92206f09413a1724056a4a290baed3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e92206f09413a1724056a4a290baed3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const T &amp;arg1)</td></tr>
+<tr class="separator:a3e92206f09413a1724056a4a290baed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8baac7448507925fc559e1d310809c6e"><td class="memTemplParams" colspan="2"><a class="anchor" id="a8baac7448507925fc559e1d310809c6e"></a>
+template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a8baac7448507925fc559e1d310809c6e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>init</b> (const T &amp;arg1, const Args &amp;...args)</td></tr>
+<tr class="separator:a8baac7448507925fc559e1d310809c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f8297a3fddaeca9c831e12212d4808"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75f8297a3fddaeca9c831e12212d4808"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>eq</b> (const T &amp;arg1, const T &amp;arg2) const </td></tr>
+<tr class="separator:a75f8297a3fddaeca9c831e12212d4808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8feaca9329c28ae04a5e5ef2c5870138"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8feaca9329c28ae04a5e5ef2c5870138"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>gt</b> (const T &amp;arg1, const T &amp;arg2) const </td></tr>
+<tr class="separator:a8feaca9329c28ae04a5e5ef2c5870138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161cefd1fdaf79c32171731e83046161"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a161cefd1fdaf79c32171731e83046161"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>lt</b> (const T &amp;arg1, const T &amp;arg2) const </td></tr>
+<tr class="separator:a161cefd1fdaf79c32171731e83046161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a48670e71295cab3fd47f40c1c84ec357"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48670e71295cab3fd47f40c1c84ec357"></a>
@@ -251,46 +266,14 @@ std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a cla
 class z::core::array&lt; T &gt;</h3>
 
 <p>A wrapper for std::vector. </p>
-<p>This class is a wrapper for the std::vector class that adds ease of use.<br />
-Additionally, if I ever decide to stop using std::vector, I won't have to change all of my code, just this class. <br />
-<br />
- <b>RE-ENTRANCE:</b><br />
- Simultaneous accesses to the same object can cause data races.</p>
+<p>This class is a wrapper for the std::vector class that adds ease of use and hides implementation from the user.</p>
+<p>/note This will only compile for objects that are copyable. Use std::vector for non-copyable objects.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers. ">refArray</a> </dd>
 <dd>
 <a class="el" href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted. ">sortedArray</a> </dd>
 <dd>
-<a class="el" href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::refArray class which attempts to keep all data sorted. ">sortedRefArray</a> </dd></dl>
+<a class="el" href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::sortedArray class, specialized for pointers. ">sortedRefArray</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af92fa6358e68bf09c0634b267bc1489f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::<a class="el" href="classz_1_1core_1_1array.html">array</a> </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>arg1</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructor with one argument. </p>
-<p>Constructs the array with one element already contained.<br />
-</p>
-<p><b>Syntax:</b> array&lt;T&gt; X (arg1); array&lt;T&gt; X = arg1;</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">arg1</td><td>initializing data. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a4eb59da79dc5b03c05437c4f61014695"></a>
 <div class="memitem">
 <div class="memproto">
@@ -334,24 +317,32 @@ template&lt;typename... Args&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ad3e412197ece492d4e16e4960d5fc68c"></a>
+<a class="anchor" id="a6d307dc9e5b70b0e09bc367165dadecb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::add </td>
+          <td class="memname">virtual size_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::add </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Add an object to the array. </p>
-<p>Appends the given data to the end of the array.</p>
+<p>Adds the given data to a position in the array. That position is up to implementation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>the data to add to the array.</td></tr>
@@ -360,15 +351,15 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index where the inserted object now resides. </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classz_1_1core_1_1sortedArray.html#a42e5e20c66c114af7eefc50af58b97c9">z::core::sortedArray&lt; T &gt;</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a87051ff28b4b8291f5ef325c684230dd"></a>
+<a class="anchor" id="a60999f0a64d2c6a0eddab40760a8d939"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;bool Condition = std::is_nothrow_move_constructible&lt;T&gt;::value, typename  = typename std::enable_if&lt;Condition&gt;::type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -390,7 +381,6 @@ template&lt;bool Condition = std::is_nothrow_move_constructible&lt;T&gt;::value,
 
 <p>Add another array to this array. </p>
 <p>Copies the contents of another array and appends them to the end of this array.</p>
-<p>/note If the objects this array contains are not copyable, this method will not be available.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the array to copy from. </td></tr>
@@ -541,35 +531,32 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9e5f2d1b93a04b98bcc8404b100c8143"></a>
+<a class="anchor" id="a6aaf9efdffd68c055dbbdc4a3bd0b5ed"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename U  = T, typename  = typename std::enable_if&lt;types::equalExists&lt;U&gt;::value&gt;::type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">intmax_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::find </td>
+          <td class="memname">virtual intmax_t <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">const U &amp;&#160;</td>
+          <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Check if a given object is in the array. </p>
 <p>Locates the desired index using a linear search, as the array is expected to be unsorted.</p>
-<p>/note If this is an array of objects that are not trivially comparable and do not have a definition of <a class="el" href="classz_1_1core_1_1array.html#a0c89da203efef053230d1e0736793b1a" title="Check whether two arrays&#39; contents are the same. ">operator==()</a>, this method will not be available.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>the object to search for.</td></tr>
@@ -578,16 +565,18 @@ template&lt;typename U  = T, typename  = typename std::enable_if&lt;types::equal
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The first index that the object was found at. <b>-1</b> if it was not found. </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classz_1_1core_1_1sortedArray.html#a4c996bcb1cd45e9a969c2b94148ba765">z::core::sortedArray&lt; T &gt;</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a7ceb71ed34230c2a1949dee096a183db"></a>
+<a class="anchor" id="a9ac75f298bee465288e1915506fc66f9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::insert </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::insert </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -728,14 +717,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5162ba5dda86e3a4c96ed583deddf87f"></a>
+<a class="anchor" id="a54792a72b41df67ea9b055c9e86e0cf0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::operator= </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::operator= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
@@ -903,14 +892,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aa0d05b52fd3b67b2ac95c90bdfcb604c"></a>
+<a class="anchor" id="a43dfa4a2bcc47b2c6db8d71db59a5271"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::remove </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::remove </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -930,14 +919,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae389ee561230045ddbce9130a45393db"></a>
+<a class="anchor" id="a7d9d606231ba6880140d44d63bc038f2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::remove </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::remove </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>index</em>, </td>
@@ -968,14 +957,14 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9b3d21e13a5aa1c45234fe89f5d466ee"></a>
+<a class="anchor" id="a1a607f065242c8736d6a97979fed9a63"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::replace </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::replace </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>index</em>, </td>
@@ -1010,18 +999,18 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this array after modification.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#a18d7ff1a57aa5ddea4bfbb632b4f3153" title="Replace all objects in the given range with an array of objects. ">replace(size_t,int,const array&amp;)</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#a87c42ffbd5ebbd69af1d6d381e55742f" title="Replace all objects in the given range with an array of objects. ">replace(size_t,int,const array&amp;)</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a18d7ff1a57aa5ddea4bfbb632b4f3153"></a>
+<a class="anchor" id="a87c42ffbd5ebbd69af1d6d381e55742f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::replace </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; T &gt;::replace </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>index</em>, </td>
@@ -1056,7 +1045,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this array after modification.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#a9b3d21e13a5aa1c45234fe89f5d466ee" title="Replace all objects in the given range with an object. ">replace(size_t,int,const T&amp;)</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#a1a607f065242c8736d6a97979fed9a63" title="Replace all objects in the given range with an object. ">replace(size_t,int,const T&amp;)</a> </dd></dl>
 
 </div>
 </div>

@@ -2,8 +2,8 @@ var searchData=
 [
   ['gcd',['gcd',['../namespacez_1_1math.html#a41568c1aea47567652d760fcfa965db0',1,'z::math::gcd(long x, long y)'],['../namespacez_1_1math.html#afe04a36d023d1bf0814a6e096ae1840c',1,'z::math::gcd(const std::complex&lt; long &gt; &amp;x, const std::complex&lt; long &gt; &amp;y)']]],
   ['generic',['generic',['../classz_1_1util_1_1generic.html',1,'z::util']]],
-  ['genericarray',['genericArray',['../classz_1_1util_1_1genericArray.html#a8423430a81e6b7439af4808e41f25dd5',1,'z::util::genericArray::genericArray(const core::array&lt; generic * &gt; &amp;init)'],['../classz_1_1util_1_1genericArray.html#aeea296d230361865a32efa30b8c51f1a',1,'z::util::genericArray::genericArray()']]],
   ['genericarray',['genericArray',['../classz_1_1util_1_1genericArray.html',1,'z::util']]],
+  ['genericarray',['genericArray',['../classz_1_1util_1_1genericArray.html#a8423430a81e6b7439af4808e41f25dd5',1,'z::util::genericArray::genericArray(const core::array&lt; generic * &gt; &amp;init)'],['../classz_1_1util_1_1genericArray.html#aeea296d230361865a32efa30b8c51f1a',1,'z::util::genericArray::genericArray()']]],
   ['genericcomplex',['genericComplex',['../classz_1_1util_1_1genericComplex.html#a00f9272982552dbac49b8ec60f0219b1',1,'z::util::genericComplex']]],
   ['genericcomplex',['genericComplex',['../classz_1_1util_1_1genericComplex.html',1,'z::util']]],
   ['genericfloat',['genericFloat',['../classz_1_1util_1_1genericFloat.html',1,'z::util']]],
@@ -20,5 +20,6 @@ var searchData=
   ['getpart',['getPart',['../classz_1_1util_1_1word.html#ad2569f60368fef386bca5dd16f74976d',1,'z::util::word']]],
   ['getword',['getWord',['../classz_1_1util_1_1dictionary.html#a47c863ab57704b3813351a6e4509eab8',1,'z::util::dictionary']]],
   ['good',['good',['../classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c',1,'z::core::binaryStream::good()'],['../classz_1_1core_1_1memoryStream.html#acd1abb6e3cab02c3ce9ccec1af3f630a',1,'z::core::memoryStream::good()'],['../classz_1_1core_1_1inputStream.html#ab75530182e22d918d42d8300999edd11',1,'z::core::inputStream::good()'],['../classz_1_1core_1_1outputStream.html#a2b70a3b3d27f7b28ea9452184d67aa4f',1,'z::core::outputStream::good()'],['../classz_1_1file_1_1inputStream.html#ad6362f73fa8d443a57ef81f6eea4bad3',1,'z::file::inputStream::good()'],['../classz_1_1file_1_1library.html#add22880f6da9f81255be679523e9e04b',1,'z::file::library::good()'],['../classz_1_1file_1_1outputStream.html#a8ab6a500680cad3c8ac46ea5ceca871a',1,'z::file::outputStream::good()'],['../classz_1_1system_1_1stderr.html#a05140eb8d9b67b57ef92f30c73af91e2',1,'z::system::stderr::good()'],['../classz_1_1system_1_1stdin.html#a9652ebd9461cbb4a24f123a2f21447d8',1,'z::system::stdin::good()'],['../classz_1_1system_1_1stdout.html#a4bd39a288f71c5ca118ab784b1879c67',1,'z::system::stdout::good()'],['../classz_1_1util_1_1regex.html#aaacb0db0b96d4a77ab076c62680d1880',1,'z::util::regex::good()']]],
+  ['greaterexists',['greaterExists',['../structz_1_1core_1_1types_1_1greaterExists.html',1,'z::core::types']]],
   ['greedy',['greedy',['../classz_1_1util_1_1rgx_1_1rule.html#ad8bf45cc3e968a2e9243681648a348d3',1,'z::util::rgx::rule']]]
 ];

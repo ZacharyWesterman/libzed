@@ -3,6 +3,7 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "array.hpp", "array_8hpp_source.html", null ],
     [ "binaryStream.hpp", "binaryStream_8hpp_source.html", null ],
     [ "charFunctions.hpp", "charFunctions_8hpp_source.html", null ],
+    [ "compare.hpp", "compare_8hpp_source.html", null ],
     [ "join.hpp", "join_8hpp_source.html", null ],
     [ "memoryStream.hpp", "memoryStream_8hpp_source.html", null ],
     [ "refArray.hpp", "refArray_8hpp_source.html", null ],

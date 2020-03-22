@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
+    [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::file::info", "classz_1_1file_1_1info.html", null ],
     [ "z::core::inputStream", "classz_1_1core_1_1inputStream.html", [
       [ "z::core::stream", "classz_1_1core_1_1stream.html", [
@@ -13,6 +14,7 @@ var hierarchy =
         [ "z::system::console", "classz_1_1system_1_1console.html", null ]
       ] ]
     ] ],
+    [ "z::core::types::lesserExists< T, Arg >", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
     [ "z::file::library", "classz_1_1file_1_1library.html", null ],
     [ "z::math::matrix< N >", "classz_1_1math_1_1matrix.html", null ],
     [ "z::core::types::no", "classz_1_1core_1_1types_1_1no.html", null ],
@@ -58,10 +60,10 @@ var hierarchy =
       ] ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
-        [ "z::core::refArray< T >", "classz_1_1core_1_1refArray.html", [
+        [ "z::core::refArray< T >", "classz_1_1core_1_1refArray.html", null ],
+        [ "z::core::sortedArray< T >", "classz_1_1core_1_1sortedArray.html", [
           [ "z::core::sortedRefArray< T >", "classz_1_1core_1_1sortedRefArray.html", null ]
-        ] ],
-        [ "z::core::sortedArray< T >", "classz_1_1core_1_1sortedArray.html", null ]
+        ] ]
       ] ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
       [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ],

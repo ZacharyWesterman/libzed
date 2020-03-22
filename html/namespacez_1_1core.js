@@ -2,6 +2,8 @@ var namespacez_1_1core =
 [
     [ "types", null, [
       [ "equalExists", "structz_1_1core_1_1types_1_1equalExists.html", "structz_1_1core_1_1types_1_1equalExists" ],
+      [ "greaterExists", "structz_1_1core_1_1types_1_1greaterExists.html", "structz_1_1core_1_1types_1_1greaterExists" ],
+      [ "lesserExists", "structz_1_1core_1_1types_1_1lesserExists.html", "structz_1_1core_1_1types_1_1lesserExists" ],
       [ "no", "classz_1_1core_1_1types_1_1no.html", null ]
     ] ],
     [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],

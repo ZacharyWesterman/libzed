@@ -131,7 +131,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An extension of the <a class="el" href="classz_1_1core_1_1array.html" title="A wrapper for std::vector. ">core::array</a> class which attempts to keep all data sorted.  <a href="classz_1_1core_1_1sortedArray.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html">sortedRefArray</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An extension of the <a class="el" href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers. ">core::refArray</a> class which attempts to keep all data sorted.  <a href="classz_1_1core_1_1sortedRefArray.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An extension of the <a class="el" href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted. ">core::sortedArray</a> class, specialized for pointers.  <a href="classz_1_1core_1_1sortedRefArray.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1stream.html">stream</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An interface for character streams.  <a href="classz_1_1core_1_1stream.html#details">More...</a><br /></td></tr>
@@ -210,6 +210,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a1cbb6ce03273d9019b99adf2df300b4b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zstring</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a1cbb6ce03273d9019b99adf2df300b4b">join</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;list, const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;delim)</td></tr>
 <tr class="memdesc:a1cbb6ce03273d9019b99adf2df300b4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate elements in an array into a string, separated by a delimiter.  <a href="#a1cbb6ce03273d9019b99adf2df300b4b">More...</a><br /></td></tr>
 <tr class="separator:a1cbb6ce03273d9019b99adf2df300b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bdcb629f52819f66a5cae9706042164"><td class="memTemplParams" colspan="2">template&lt;typename T , encoding E&gt; </td></tr>
+<tr class="memitem:a4bdcb629f52819f66a5cae9706042164"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a4bdcb629f52819f66a5cae9706042164">joinDeref</a> (const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;list, const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;delim)</td></tr>
+<tr class="memdesc:a4bdcb629f52819f66a5cae9706042164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference elements in an array and concatenate them into a string, separated by a delimiter.  <a href="#a4bdcb629f52819f66a5cae9706042164">More...</a><br /></td></tr>
+<tr class="separator:a4bdcb629f52819f66a5cae9706042164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:afeeb64c7e9d461c49844c8c064638bf4"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_base_of&lt; <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a>, T &gt;::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afeeb64c7e9d461c49844c8c064638bf4">serialIn</a> (T &amp;object, <a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>)</td></tr>
 <tr class="memdesc:afeeb64c7e9d461c49844c8c064638bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a serializable object as binary data from a stream.  <a href="#afeeb64c7e9d461c49844c8c064638bf4">More...</a><br /></td></tr>
@@ -610,6 +614,45 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>An array whose elements can implicitly convert to strings. </td></tr>
+    <tr><td class="paramname">delim</td><td>The delimiter to go between items.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing all elements in order, separated by the delimiter.</dd></dl>
+<dl class="section user"><dt>Re-Entry:</dt><dd>This function is thread-safe. Simultaneous calls will not cause data races. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4bdcb629f52819f66a5cae9706042164"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , encoding E&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">string</a>&lt;E&gt; z::core::joinDeref </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>delim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dereference elements in an array and concatenate them into a string, separated by a delimiter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>An array of pointers whose objects can implicitly convert to strings. </td></tr>
     <tr><td class="paramname">delim</td><td>The delimiter to go between items.</td></tr>
   </table>
   </dd>

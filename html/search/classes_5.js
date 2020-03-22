@@ -7,5 +7,6 @@ var searchData=
   ['genericint',['genericInt',['../classz_1_1util_1_1genericInt.html',1,'z::util']]],
   ['genericnull',['genericNull',['../classz_1_1util_1_1genericNull.html',1,'z::util']]],
   ['genericpointer',['genericPointer',['../classz_1_1util_1_1genericPointer.html',1,'z::util']]],
-  ['genericstring',['genericString',['../classz_1_1util_1_1genericString.html',1,'z::util']]]
+  ['genericstring',['genericString',['../classz_1_1util_1_1genericString.html',1,'z::util']]],
+  ['greaterexists',['greaterExists',['../structz_1_1core_1_1types_1_1greaterExists.html',1,'z::core::types']]]
 ];
