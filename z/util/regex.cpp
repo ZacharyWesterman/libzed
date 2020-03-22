@@ -7,20 +7,16 @@ namespace z
 {
 	namespace util
 	{
-		regex::regex() : root(NULL), parseError(RGX_NO_ERROR) {}
+		regex::regex() : parseError(RGX_NO_ERROR) {}
 
-		regex::regex(const zstring& pattern) : root(NULL)
+		regex::regex(const zstring& pattern)
 		{
 			set(pattern);
 		}
 
 		void regex::set(const zstring& pattern)
 		{
-			if (root)
-			{
-				delete root;
-				root = NULL;
-			}
+			root.reset();
 
 			core::array<rgxss> symbols;
 			parseError = rgxscan(pattern, symbols);
@@ -28,12 +24,8 @@ namespace z
 			if (!parseError)
 			{
 				size_t position = 0;
-				parseError = rgxlex(symbols, &root, position);
-				if (parseError && root)
-				{
-					delete root;
-					root = NULL;
-				}
+				root.reset(rgxlex(symbols, parseError, position));
+				if (parseError && root) root.reset();
 			}
 		}
 

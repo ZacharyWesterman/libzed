@@ -6,6 +6,7 @@
 #include "regex/rgxerr.hpp"
 #include "regex/rules/compound.hpp"
 
+#include <memory>
 
 namespace z
 {
@@ -21,7 +22,7 @@ namespace z
 		class regex
 		{
 		private:
-			rgx::compound* root;
+			std::shared_ptr<rgx::compound> root;
 			rgxerr parseError;
 
 			zstring matchedString;
@@ -39,12 +40,6 @@ namespace z
 			 * \param pattern The regex pattern to match against.
 			 */
 			regex(const zstring& pattern);
-
-			regex(const regex&) = delete;
-			regex& operator=(const regex&) = delete;
-
-			regex(regex&&) = default;
-			regex& operator=(regex&&) = default;
 
 			/**
 			 * \brief Set the matching pattern
