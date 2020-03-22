@@ -507,8 +507,8 @@ namespace z
 
 				struct
 				{
-					unsigned long mantissa : 52;
-					unsigned int exponent : 11;
+					unsigned long mantissa : DBL_MANT_DIG;
+					unsigned int exponent : DBL_EXP_DIG;
 					bool sign : 1;
 				} raw;
 			};
@@ -538,7 +538,7 @@ namespace z
 				unsigned long tempExp = exponent;
 				bool tempNegExp = negexponent;
 
-				if (1023 <= number.raw.exponent)// pos exponent
+				if (DBL_MAX_EXP < number.raw.exponent)// pos exponent
 				{
 					while (temp >= base)
 					{
@@ -546,7 +546,7 @@ namespace z
 						tempExp++;
 					}
 				}
-				else if (1023 >= number.raw.exponent)// neg exponent
+				else if (DBL_MAX_EXP > number.raw.exponent)// neg exponent
 				{
 					tempNegExp = true;
 					double frac = 1.0 / (double)base;
@@ -567,14 +567,14 @@ namespace z
 				}
 			}
 
-			if (number.raw.exponent < 1023)//x2^neg
+			if (number.raw.exponent < (DBL_MAX_EXP-1))//x2^neg
 			{
 				integral = 0;
 			}
-			else if (number.raw.exponent > 1023)//x2^(pos)
+			else if (number.raw.exponent > (DBL_MAX_EXP-1))//x2^(pos)
 			{
-				long expo = number.raw.exponent - 1023;
-				integral = ((long)1 << expo) + (number.raw.mantissa >> ((long)52 - expo));
+				long expo = number.raw.exponent - (DBL_MAX_EXP-1);
+				integral = ((long)1 << expo) + (number.raw.mantissa >> ((long)(DBL_EXP_DIG-1) - expo));
 			}
 			else //x2^0
 			{
