@@ -1379,12 +1379,12 @@ namespace z
 		}
 
 		template <>
-		void string<ascii>::read(inputStream& stream, uint32_t delim)
+		string<ascii>& string<ascii>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
 			data[0] = 0;
 
-			if (stream.bad() || stream.empty()) return;
+			if (stream.bad() || stream.empty()) return *this;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar();
@@ -1417,15 +1417,17 @@ namespace z
 
 			increase(character_ct);
 			data[character_ct] = 0;
+
+			return *this;
 		}
 
 		template <>
-		void string<ascii>::readln(inputStream& stream)
+		string<ascii>& string<ascii>::readln(inputStream& stream)
 		{
 			character_ct = 0;
 			data[0] = 0;
 
-			if (stream.bad() || stream.empty()) return;
+			if (stream.bad() || stream.empty()) return *this;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar();
@@ -1483,6 +1485,8 @@ namespace z
 
 			increase(character_ct);
 			data[character_ct] = 0;
+
+			return *this;
 		}
 
 		template <>

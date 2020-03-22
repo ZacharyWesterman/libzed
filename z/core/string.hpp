@@ -1122,8 +1122,10 @@ namespace z
 			 *
 			 * \param stream The stream to read from.
 			 * \param delim The delimiter to read until.
+			 *
+			 * \return A reference to this string after reading.
 			 */
-			void read(inputStream& stream, uint32_t delim = 0);
+			string& read(inputStream& stream, uint32_t delim = 0);
 
 			/**
 			 * \brief Read string data from a stream until a newline is encountered.
@@ -1133,8 +1135,10 @@ namespace z
 			 * Any data this string contains is wiped when this function is called.
 			 *
 			 * \param stream The stream to read from.
+			 *
+			 * \return A reference to this string after reading the line.
 			 */
-			void readln(inputStream& stream);
+			string& readln(inputStream& stream);
 
 			/**
 			 * \brief Write string data to a stream.

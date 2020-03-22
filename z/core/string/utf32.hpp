@@ -820,13 +820,13 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::read(inputStream& stream, uint32_t delim)
+		string<utf32>& string<utf32>::read(inputStream& stream, uint32_t delim)
 		{
 			character_ct = 0;
 			uint32_t* data32 = (uint32_t*)data;
 			data32[0] = 0;
 
-			if (stream.bad() || stream.empty()) return;
+			if (stream.bad() || stream.empty()) return *this;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar();
@@ -861,17 +861,19 @@ namespace z
 			increase(character_ct);
 			data32 = (uint32_t*)data;
 			data32[character_ct] = 0;
+
+			return *this;
 		}
 
 		template <>
-		void string<utf32>::readln(inputStream& stream)
+		string<utf32>& string<utf32>::readln(inputStream& stream)
 		{
 			character_ct = 0;
 
 			uint32_t* data32 = (uint32_t*)data;
 			data32[0] = 0;
 
-			if (stream.bad() || stream.empty()) return;
+			if (stream.bad() || stream.empty()) return *this;
 
 			encoding enc = stream.format();
 			uint32_t last = stream.getChar();
@@ -931,6 +933,8 @@ namespace z
 			increase(character_ct);
 			data32 = (uint32_t*)data;
 			data32[character_ct] = 0;
+
+			return *this;
 		}
 
 		template <>
