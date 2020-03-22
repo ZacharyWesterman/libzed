@@ -6,6 +6,8 @@
 #include "rgxss.hpp"
 #include "rgxerr.hpp"
 
+#include <memory>
+
 namespace z
 {
 	namespace util
@@ -19,6 +21,6 @@ namespace z
 		 * \param flags Regex flags for the current level. These are defined in z/util/regex/rgxflag.h
 		 * \return If an error is encountered, returns a nonzero value indicating the first error. Otherwise, returns RGX_NO_ERROR (0).
 		 */
-		rgxerr rgxlex(const core::array<rgxss>& input, rgx::compound** nodeOut, size_t& position, int inType=0, int flags=0);
+		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& parseError, size_t& position, int inType=0, int flags=0);
 	}
 }

@@ -117,12 +117,12 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		rgxerr rgxlex(const core::array<rgxss>& input, rgx::compound** nodeOut, size_t& position, int inType, int flags)
+		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& err, size_t& position, int inType, int flags)
 		{
-			*nodeOut = makeParent(inType, flags);
+			auto nodeOut = makeParent(inType, flags);
 
 			rgx::compound* andOptions = NULL;
-			rgxerr err = RGX_NO_ERROR;
+			err = RGX_NO_ERROR;
 			bool done = false;
 
 			while ((position < input.length()) && !done)
@@ -186,37 +186,37 @@ namespace z
 						break;
 					case RGX_LPAREN:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INAND, flags);
+						child = rgxlex(input, err, position, INAND, flags);
 						break;
 					case RGX_RPAREN:
 						done = true;
 						continue;
 					case RGX_COLUMN:
 						if (!andOptions) andOptions = new rgx::orlist;
-						andOptions->children.add(*nodeOut);
-						*nodeOut = makeParent(inType, flags);
+						andOptions->children.add(nodeOut);
+						nodeOut = makeParent(inType, flags);
 						break;
 					case RGX_LBRACKET:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INOR, flags);
+						child = rgxlex(input, err, position, INOR, flags);
 						break;
 					case RGX_RBRACKET:
 						done = true;
 						continue;
 					case RGX_NOT:
-						((rgx::orlist*)*nodeOut)->negate = true;
+						((rgx::orlist*)nodeOut)->negate = true;
 						break;
 					case RGX_POS_LOOKAHEAD:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INAHEAD, flags);
+						child = rgxlex(input, err, position, INAHEAD, flags);
 						break;
 					case RGX_NEG_LOOKAHEAD:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INAHEAD, flags | NEGATE);
+						child = rgxlex(input, err, position, INAHEAD, flags | NEGATE);
 						break;
 					case RGX_POS_LOOKBEHIND:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INBEHIND, flags);
+						child = rgxlex(input, err, position, INBEHIND, flags);
 						if (!err)
 						{
 							int width = getLBwidth((rgx::compound*)child);
@@ -225,7 +225,7 @@ namespace z
 						break;
 					case RGX_NEG_LOOKBEHIND:
 						++position;
-						err = rgxlex(input,(rgx::compound**)&child, position, INBEHIND, flags | NEGATE);
+						child = rgxlex(input, err, position, INBEHIND, flags | NEGATE);
 						if (!err)
 						{
 							int width = getLBwidth((rgx::compound*)child);
@@ -247,25 +247,25 @@ namespace z
 						child = new rgx::digit;
 						break;
 					case RGX_PLUS:
-						err = setCount(nodeOut,1,-1);
+						err = setCount(&nodeOut,1,-1);
 						break;
 					case RGX_ASTERISK:
-						err = setCount(nodeOut,0,-1);
+						err = setCount(&nodeOut,0,-1);
 						break;
 					case RGX_LBRACE:
 						id = input[++position].id();
 						chr = input[position].symbol();
 						if (input[++position].id() == RGX_RBRACE)//{x}
 						{
-							err = setCount(nodeOut,chr,chr);
+							err = setCount(&nodeOut,chr,chr);
 						}
 						else if (id == RGX_COUNT)//{,x} {x,} {x,x} -> all come in as {x,} or {x,x}
 						{
 							id = input[++position].id();
 							if (id == RGX_RBRACE)
-								err = setCount(nodeOut,chr,-1);
+								err = setCount(&nodeOut,chr,-1);
 							else if ((id == RGX_COUNT) && (input[position+1].id() == RGX_RBRACE))
-								err = setCount(nodeOut,chr,input[position++].symbol());
+								err = setCount(&nodeOut,chr,input[position++].symbol());
 							else
 								err = RGX_BAD_COUNT_FORM;
 						}
@@ -281,10 +281,10 @@ namespace z
 						child = new rgx::end(flags & ENDLINE);
 						break;
 					case RGX_QUESTION:
-						err = setCount(nodeOut,0,1);
+						err = setCount(&nodeOut,0,1);
 						break;
 					case RGX_GREEDY:
-						err = setGreed(nodeOut,false);
+						err = setGreed(&nodeOut,false);
 						break;
 					default:
 						err = RGX_ERROR;
@@ -296,27 +296,27 @@ namespace z
 					break;
 				}
 
-				if (child) (*nodeOut)->children.add(child);
+				if (child) nodeOut->children.add(child);
 				++position;
 			}
 
 			if (andOptions)
 			{
-				andOptions->children.add(*nodeOut);
-				*nodeOut = andOptions;
+				andOptions->children.add(nodeOut);
+				nodeOut = andOptions;
 			}
 
 			//If possible, trim child nodes to reduce regex size
-			bool canReduce = (inType == INAND) || ((inType == INOR) && !((rgx::orlist*)*nodeOut)->negate);
-			if (canReduce && ((*nodeOut)->children.length() == 1) && (position < input.length()))
+			bool canReduce = (inType == INAND) || ((inType == INOR) && !((rgx::orlist*)nodeOut)->negate);
+			if (canReduce && (nodeOut->children.length() == 1) && (position < input.length()))
 			{
-				auto temp = (*nodeOut)->children[0];
-				(*nodeOut)->children.clear();
-				delete *nodeOut;
-				*nodeOut = (rgx::compound*)temp;
+				auto temp = nodeOut->children[0];
+				nodeOut->children.clear();
+				delete nodeOut;
+				nodeOut = (rgx::compound*)temp;
 			}
 
-			return err;
+			return nodeOut;
 		}
 	}
 }
