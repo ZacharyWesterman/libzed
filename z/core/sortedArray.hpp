@@ -19,76 +19,22 @@ namespace z
 		template <typename T>
 		class sortedArray : public array<T>
 		{
-		private:
-			inline void init(const T& arg1)
-			{
-				add(arg1);
-			}
-
-			template <typename... Args>
-			inline void init(const T& arg1, const Args&... args)
-			{
-				add(arg1);
-
-				init(args...);
-			}
-
 		public:
-			///Default constructor
 			sortedArray() {}
 
-			sortedArray(const T&);
-
 			template <typename... Args>
-			sortedArray(const T& arg1, const Args&... args);
+			sortedArray(const T& arg1, const Args&... args)
+			{
+				this->init(arg1, args...);
+			}
 
-			virtual size_t add(const T&);
-			virtual void add(const array<T>&);
+			virtual size_t add(const T&) override;
 
-			intmax_t find(const T&) const;
-
-			virtual size_t findInsert(const T&) const;
+			virtual intmax_t find(const T&) const override;
+			virtual intmax_t findInsert(const T&, bool allowDuplicates = true) const;
 
 			virtual void sort();
 		};
-
-
-		/**
-		 * \brief Constructor with one argument.
-		 *
-		 * Constructs the array with one
-		 * element already contained.<BR>
-		 *
-		 * \b Syntax: array<T> X (arg1); array<T> X = arg1;
-		 *
-		 * \param arg1 initializing data.
-		 */
-		template <typename T>
-		sortedArray<T>::sortedArray(const T& arg1)
-		{
-			this->array_data.push_back(arg1);
-		}
-
-		/**
-		 * \brief List-initialized constructor.
-		 *
-		 * Constructs the array with an arbitrary
-		 * number of elements already contained and
-		 * sorted.<BR>
-		 *
-		 * \b Syntax: array<T> X {arg1, arg2, ...};
-		 * array<T> X = {arg1, arg2, ...};
-		 *
-		 * \param arg1 initializing data.
-		 * \param args cont. initializing data.
-		 */
-		template <typename T>
-		template <typename... Args>
-		sortedArray<T>::sortedArray(const T& arg1, const Args&... args)
-		{
-			init(arg1, args...);
-		}
-
 
 		/**
 		 * \brief Add an object to the array.
@@ -109,27 +55,6 @@ namespace z
 			this->insert(object, index);
 
 			return index;
-		}
-
-		/**
-		 * \brief Add the contents of another array to this one.
-		 *
-		 * For each of the elements in the other array,
-		 * this function finds an appropriate location in this
-		 * array and inserts the object, such that this array
-		 * remains sorted.
-		 *
-		 * \param other the array to copy from.
-		 */
-		template <typename T>
-		void sortedArray<T>::add(const array<T>& other)
-		{
-			for (size_t i=0; i<other.length(); i++)
-			{
-				size_t index = findInsert(other[i]);
-
-				this->insert(other[i], index);
-			}
 		}
 
 		/**
@@ -159,11 +84,11 @@ namespace z
 			{
 				intmax_t center = (left + right) / 2;
 
-				if ((this->array_data.at(center)) < object)
+				if (this->lt(this->array_data.at(center), object))
 				{
 					left = center + 1;
 				}
-				else if (this->array_data.at(center) > object)
+				else if (this->gt(this->array_data.at(center), object))
 				{
 					right = center - 1;
 				}
@@ -173,7 +98,7 @@ namespace z
 				}
 			}
 
-			if (this->array_data.at(left) == object)
+			if (this->eq(this->array_data.at(left), object))
 				return left;
 			else
 				return -1;
@@ -192,7 +117,7 @@ namespace z
 		 * inserted.
 		 */
 		template <typename T>
-		size_t sortedArray<T>::findInsert(const T& object) const
+		intmax_t sortedArray<T>::findInsert(const T& object, bool allowDuplicates) const
 		{
 			if (this->array_data.size() == 0)
 				return 0;
@@ -204,11 +129,11 @@ namespace z
 			{
 				intmax_t center = (left + right) / 2;
 
-				if (this->array_data.at(center) < object)
+				if (this->lt(this->array_data.at(center), object))
 				{
 					left = center + 1;
 				}
-				else if (this->array_data.at(center) > object)
+				else if (this->gt(this->array_data.at(center), object))
 				{
 					right = center - 1;
 				}
@@ -218,7 +143,7 @@ namespace z
 				}
 			}
 
-			if (this->array_data.at(left) < object)
+			if (this->lt(this->array_data.at(left), object))
 				return left+1;
 			else
 				return left;
@@ -243,7 +168,7 @@ namespace z
 
 				for (size_t i=0; i<(size_t)this->array_data.size()-1; i++)
 				{
-					if (this->array_data[i] > this->array_data[i+1])
+					if (this->gt(this->array_data[i],this->array_data[i+1]))
 					{
 						done = false;
 
