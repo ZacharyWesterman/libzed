@@ -54,9 +54,7 @@ var hierarchy =
       ] ],
       [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", [
-        [ "z::core::refArray< z::util::word * >", "classz_1_1core_1_1refArray.html", [
-          [ "z::core::sortedRefArray< z::util::word * >", "classz_1_1core_1_1sortedRefArray.html", null ]
-        ] ]
+        [ "z::core::refArray< z::util::word * >", "classz_1_1core_1_1refArray.html", null ]
       ] ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
