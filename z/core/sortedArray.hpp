@@ -156,7 +156,7 @@ namespace z
 
 			if (this->lt(this->array_data.at(left), object))
 				return left+1;
-			else if (allowDuplicates && this->eq(this->array_data.at(left), object))
+			else if (allowDuplicates || !this->eq(this->array_data.at(left), object))
 				return left;
 			else
 				return -1;
