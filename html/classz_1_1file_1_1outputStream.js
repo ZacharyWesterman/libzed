@@ -5,7 +5,6 @@ var classz_1_1file_1_1outputStream =
     [ "bad", "classz_1_1file_1_1outputStream.html#abb24cdaabcbdfd138b4d5e5d2e52d2a2", null ],
     [ "binary", "classz_1_1file_1_1outputStream.html#ad21c8b3cf219e81851f82113876d9aa4", null ],
     [ "close", "classz_1_1file_1_1outputStream.html#a9c3fa9f4b743fb5dcda7d6944653333a", null ],
-    [ "empty", "classz_1_1file_1_1outputStream.html#a0f054c35b7d13bdcb6f9092e51639580", null ],
     [ "end", "classz_1_1file_1_1outputStream.html#a87e3ba6437f10d4aa2fb98755d7b1a94", null ],
     [ "endianness", "classz_1_1file_1_1outputStream.html#a9b4747a9e49f83563ad4363ee9b3974f", null ],
     [ "flush", "classz_1_1file_1_1outputStream.html#adb42c31c6f3b5d280838c7d9fb045029", null ],

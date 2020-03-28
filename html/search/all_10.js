@@ -16,10 +16,12 @@ var searchData=
   ['sizable',['sizable',['../classz_1_1core_1_1sizable.html',1,'z::core']]],
   ['size',['size',['../classz_1_1core_1_1array.html#a883c1791695d65f3ce245aea8938ea52',1,'z::core::array::size()'],['../classz_1_1core_1_1sizable.html#ac608fc50670d4616c956c7663e7d5714',1,'z::core::sizable::size()'],['../classz_1_1core_1_1string.html#a53eeb89cc5d269014a945968597e38c4',1,'z::core::string::size()'],['../classz_1_1util_1_1word.html#a133dcda7626cba9ae0ede4d037f712cd',1,'z::util::word::size()'],['../classz_1_1util_1_1dictionary.html#a2b835d74bb3a9a428c5378245191d267',1,'z::util::dictionary::size()'],['../classz_1_1util_1_1generic.html#a9cd003d81a5ec65cc564cbe220377931',1,'z::util::generic::size()'],['../classz_1_1util_1_1genericArray.html#aef4a11150d312779453995823cfddb8e',1,'z::util::genericArray::size()'],['../classz_1_1util_1_1genericString.html#a3e4252c2b77458d2e7726e6667ba0e49',1,'z::util::genericString::size()'],['../namespacez_1_1core.html#a5b4b9a8dfc7a60b3c2142856d17a6d17',1,'z::core::size(const T &amp;object, size_t &amp;bytes)'],['../namespacez_1_1core.html#a2abbcf5218be9ebd97d4f7d31eadc454',1,'z::core::size(const T &amp;object, size_t &amp;bytes)'],['../namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a',1,'z::file::size()']]],
   ['sort',['sort',['../classz_1_1core_1_1sortedArray.html#ae3336fe316f7f58fee17bfa2b5edbe67',1,'z::core::sortedArray']]],
+  ['sortedarray',['sortedArray',['../classz_1_1core_1_1sortedArray.html#accd6ea416f946ed0cb8477aaf466d929',1,'z::core::sortedArray::sortedArray()'],['../classz_1_1core_1_1sortedArray.html#a0426c1d898d3c961d11de31a6d9dcee6',1,'z::core::sortedArray::sortedArray(const T &amp;arg1, const Args &amp;...args)']]],
   ['sortedarray',['sortedArray',['../classz_1_1core_1_1sortedArray.html',1,'z::core']]],
   ['sortedrefarray',['sortedRefArray',['../classz_1_1core_1_1sortedRefArray.html',1,'z::core']]],
-  ['space',['space',['../classz_1_1util_1_1rgx_1_1space.html',1,'z::util::rgx']]],
+  ['sortedrefarray',['sortedRefArray',['../classz_1_1core_1_1sortedRefArray.html#ae5fdb62c9dc04f85f2cbbbaf6487bc36',1,'z::core::sortedRefArray::sortedRefArray()'],['../classz_1_1core_1_1sortedRefArray.html#ab55e41d44f75674e651a506a41e5ee20',1,'z::core::sortedRefArray::sortedRefArray(const T &amp;arg1, const Args &amp;...args)']]],
   ['space',['space',['../classz_1_1util_1_1rgx_1_1space.html#abf345824fbc267a93a4d3323d8976e56',1,'z::util::rgx::space']]],
+  ['space',['space',['../classz_1_1util_1_1rgx_1_1space.html',1,'z::util::rgx']]],
   ['split',['split',['../namespacez_1_1core.html#a00c7367d89c4d87ae096fc7131141ee7',1,'z::core']]],
   ['sqrt2',['sqrt2',['../namespacez_1_1math.html#a97e7c45e6eb2b403283aca84e1f06a61',1,'z::math']]],
   ['sqrt5',['sqrt5',['../namespacez_1_1math.html#a0ee3b1a5ef81cd2e066f9ac7f68a4150',1,'z::math']]],
@@ -34,5 +36,6 @@ var searchData=
   ['stringiterator',['stringIterator',['../classz_1_1core_1_1stringIterator.html',1,'z::core']]],
   ['subset',['subset',['../classz_1_1core_1_1array.html#ae437f528b8d1087366bd40fd0295eca3',1,'z::core::array']]],
   ['substr',['substr',['../classz_1_1core_1_1string.html#a85444b48a6d7fc97801080db8679e0ac',1,'z::core::string']]],
-  ['symbol',['symbol',['../classz_1_1file_1_1library.html#a70b73e77690b5501057ea448e2f103a9',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]]
+  ['symbol',['symbol',['../classz_1_1file_1_1library.html#a70b73e77690b5501057ea448e2f103a9',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#ae8c9a541c32764d7167f029c1daa65a9',1,'z::util::rgxss::symbol()']]],
+  ['system_2ehpp',['system.hpp',['../system_8hpp.html',1,'']]]
 ];

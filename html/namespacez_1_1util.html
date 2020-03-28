@@ -343,14 +343,14 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>The regex scan symbol list. </td></tr>
-    <tr><td class="paramname">nodeOut</td><td>Double pointer to where the root rule will be initialized. This will always be of type <a class="el" href="classz_1_1util_1_1rgx_1_1andlist.html" title="Regex rule for matching a group of rules. ">rgx::andlist</a>. </td></tr>
+    <tr><td class="paramname">parseError</td><td>If an error is encountered, gives a nonzero value indicating the first error. Otherwise, gives RGX_NO_ERROR (0). </td></tr>
     <tr><td class="paramname">position</td><td>The index of the next scan symbol we are looking at. Should be set to 0 when calling externally. </td></tr>
     <tr><td class="paramname">inType</td><td>The type of compound rule we are creating. Should be set to 0 when calling externally. </td></tr>
-    <tr><td class="paramname">flags</td><td>Regex flags for the current level. These are defined in z/util/regex/rgxflag.h </td></tr>
+    <tr><td class="paramname">flags</td><td>Regex flags for the current level. These are defined in <a class="el" href="rgxflag_8hpp_source.html">z/util/regex/rgxflag.hpp</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If an error is encountered, returns a nonzero value indicating the first error. Otherwise, returns RGX_NO_ERROR (0). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to an initialized root rule. If not null, deallocation must be handled by the caller. </dd></dl>
 
 </div>
 </div>

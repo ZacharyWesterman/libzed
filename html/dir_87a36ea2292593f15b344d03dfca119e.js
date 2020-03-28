@@ -18,5 +18,5 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "timeout.hpp", "timeout_8hpp_source.html", null ],
     [ "timer.hpp", "timer_8hpp_source.html", null ],
     [ "typeChecks.hpp", "typeChecks_8hpp_source.html", null ],
-    [ "zstr.hpp", "zstr_8hpp_source.html", null ]
+    [ "zstr.hpp", "zstr_8hpp.html", "zstr_8hpp" ]
 ];

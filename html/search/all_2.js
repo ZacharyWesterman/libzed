@@ -13,6 +13,7 @@ var searchData=
   ['compound',['compound',['../classz_1_1util_1_1rgx_1_1compound.html#af6531b104c33126dadab29c3d9572571',1,'z::util::rgx::compound']]],
   ['console',['console',['../classz_1_1system_1_1console.html',1,'z::system']]],
   ['copy',['copy',['../namespacez_1_1file.html#ab302a9a0fe26a2de534f4f8f78c5e08f',1,'z::file']]],
+  ['core_2ehpp',['core.hpp',['../core_8hpp.html',1,'']]],
   ['cores',['cores',['../classz_1_1system_1_1cpuid.html#a5aeee5e97bf3b39839270b99c2e7ab00',1,'z::system::cpuid']]],
   ['count',['count',['../classz_1_1core_1_1string.html#a64e4d260010465ba4c9b6042d1b04e96',1,'z::core::string']]],
   ['cpuid',['cpuid',['../classz_1_1system_1_1cpuid.html',1,'z::system']]],

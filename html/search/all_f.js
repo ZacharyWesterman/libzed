@@ -5,6 +5,7 @@ var searchData=
   ['read',['read',['../classz_1_1core_1_1string.html#a21e21d869c2bacc6acc5dfc22e70e46b',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb',1,'z::util::dictionary::read()']]],
   ['readln',['readln',['../classz_1_1core_1_1string.html#a0d7c3cf14bcc6e220d798e19b64f292c',1,'z::core::string']]],
   ['refarray',['refArray',['../classz_1_1core_1_1refArray.html',1,'z::core']]],
+  ['refarray',['refArray',['../classz_1_1core_1_1refArray.html#a548929573a92872bc5c3fe48a1761d11',1,'z::core::refArray::refArray()'],['../classz_1_1core_1_1refArray.html#a6515ef547fb7cb83651c36ed50ad6544',1,'z::core::refArray::refArray(const T &amp;arg1, const Args &amp;...args)']]],
   ['refarray_3c_20z_3a_3autil_3a_3ageneric_20_2a_20_3e',['refArray&lt; z::util::generic * &gt;',['../classz_1_1core_1_1refArray.html',1,'z::core']]],
   ['refarray_3c_20z_3a_3autil_3a_3aword_20_2a_20_3e',['refArray&lt; z::util::word * &gt;',['../classz_1_1core_1_1refArray.html',1,'z::core']]],
   ['regex',['regex',['../classz_1_1util_1_1regex.html',1,'z::util']]],
@@ -14,14 +15,15 @@ var searchData=
   ['repeat',['repeat',['../classz_1_1core_1_1string.html#afa1b4a337d5fb552c7b864e5cff74c01',1,'z::core::string']]],
   ['replace',['replace',['../classz_1_1core_1_1array.html#a1a607f065242c8736d6a97979fed9a63',1,'z::core::array::replace(size_t, int, const T &amp;)'],['../classz_1_1core_1_1array.html#a87c42ffbd5ebbd69af1d6d381e55742f',1,'z::core::array::replace(size_t, int, const array&lt; T &gt; &amp;)'],['../classz_1_1core_1_1string.html#ae3a352e8676093675d0fb029bc8d9c19',1,'z::core::string::replace(const string &amp;findStr, const string &amp;replStr, int occurrence=0)'],['../classz_1_1core_1_1string.html#a48d012318f44f3e5e3e2e1bd971341f2',1,'z::core::string::replace(size_t index, int count, const string &amp;other)']]],
   ['reset',['reset',['../classz_1_1core_1_1timer.html#adce1b5488fb16b1987956c344e274466',1,'z::core::timer']]],
+  ['rgx_2ehpp',['rgx.hpp',['../rgx_8hpp.html',1,'']]],
   ['rgxerr',['rgxerr',['../namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710',1,'z::util']]],
   ['rgxflag',['rgxflag',['../namespacez_1_1util.html#a3509b3c93adf7807600ed1f6043f7969',1,'z::util']]],
   ['rgxid',['rgxid',['../namespacez_1_1util.html#a10ab9dfc3e7882616b247bb6c56f8cc1',1,'z::util']]],
   ['rgxlex',['rgxlex',['../namespacez_1_1util.html#a16dfb697fb7bc427f92292a3e00751c6',1,'z::util']]],
   ['rgxscan',['rgxscan',['../namespacez_1_1util.html#a39474799c608d6bbec2b192f004b598f',1,'z::util']]],
   ['rgxsesc',['rgxsesc',['../namespacez_1_1util.html#ad1e57bda68243aeb4cea4b8906bf0ec0',1,'z::util']]],
-  ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html',1,'z::util']]],
   ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html#acfef3ce2188b0c86bf07f042165c88a8',1,'z::util::rgxss::rgxss(const uint8_t regexID, const uint32_t regexSymbol)'],['../classz_1_1util_1_1rgxss.html#ab3615f95987561a1b057975515f109c4',1,'z::util::rgxss::rgxss(const uint8_t regexID=0)']]],
-  ['rule',['rule',['../classz_1_1util_1_1rgx_1_1rule.html',1,'z::util::rgx']]],
-  ['rule',['rule',['../classz_1_1util_1_1rgx_1_1rule.html#a62265d7513962bcbda129c14acd36084',1,'z::util::rgx::rule']]]
+  ['rgxss',['rgxss',['../classz_1_1util_1_1rgxss.html',1,'z::util']]],
+  ['rule',['rule',['../classz_1_1util_1_1rgx_1_1rule.html#a62265d7513962bcbda129c14acd36084',1,'z::util::rgx::rule']]],
+  ['rule',['rule',['../classz_1_1util_1_1rgx_1_1rule.html',1,'z::util::rgx']]]
 ];

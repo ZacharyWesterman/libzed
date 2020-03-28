@@ -5,6 +5,7 @@ var searchData=
   ['matched',['matched',['../classz_1_1util_1_1regex.html#a5d03649c3d0615a75f4e71eaae3f3272',1,'z::util::regex']]],
   ['matchmin',['matchMin',['../classz_1_1util_1_1rgx_1_1compound.html#a3ce6c4a4e8faea66ce1d68491ccccefa',1,'z::util::rgx::compound']]],
   ['matchrule',['matchRule',['../classz_1_1util_1_1rgx_1_1compound.html#a4af6b2bfb70d9a5d28b46839c93516e2',1,'z::util::rgx::compound']]],
+  ['math_2ehpp',['math.hpp',['../math_8hpp.html',1,'']]],
   ['matrix',['matrix',['../classz_1_1math_1_1matrix.html',1,'z::math']]],
   ['max',['max',['../classz_1_1util_1_1rgx_1_1rule.html#a987a9fa26ad69c3dccb6e6434b5cfe6e',1,'z::util::rgx::rule']]],
   ['memorystream',['memoryStream',['../classz_1_1core_1_1memoryStream.html',1,'z::core']]],

@@ -117,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a790fe8bed79a3c90db078645ac2058b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a790fe8bed79a3c90db078645ac2058b1">put</a> (uint8_t ch) override</td></tr>
 <tr class="memdesc:a790fe8bed79a3c90db078645ac2058b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="#a790fe8bed79a3c90db078645ac2058b1">More...</a><br /></td></tr>
 <tr class="separator:a790fe8bed79a3c90db078645ac2058b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedbd0da95b960cca919bd2eea0a8e109"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#aedbd0da95b960cca919bd2eea0a8e109">put</a> (uint8_t *str, size_t count, encoding <a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">format</a>=ascii) override</td></tr>
+<tr class="memitem:aedbd0da95b960cca919bd2eea0a8e109"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#aedbd0da95b960cca919bd2eea0a8e109">put</a> (uint8_t *str, size_t count, <a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> <a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">format</a>=ascii) override</td></tr>
 <tr class="memdesc:aedbd0da95b960cca919bd2eea0a8e109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="#aedbd0da95b960cca919bd2eea0a8e109">More...</a><br /></td></tr>
 <tr class="separator:aedbd0da95b960cca919bd2eea0a8e109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05140eb8d9b67b57ef92f30c73af91e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a05140eb8d9b67b57ef92f30c73af91e2">good</a> () override</td></tr>
@@ -141,17 +141,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5035f1e4d527d81fd5850349d43f36a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#ac5035f1e4d527d81fd5850349d43f36a">end</a> () override</td></tr>
 <tr class="memdesc:ac5035f1e4d527d81fd5850349d43f36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of the stream.  <a href="#ac5035f1e4d527d81fd5850349d43f36a">More...</a><br /></td></tr>
 <tr class="separator:ac5035f1e4d527d81fd5850349d43f36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f14cec10d217e2e6cc91f8fdacaa7d"><td class="memItemLeft" align="right" valign="top">encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">format</a> () override</td></tr>
+<tr class="memitem:a53f14cec10d217e2e6cc91f8fdacaa7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">format</a> () override</td></tr>
 <tr class="memdesc:a53f14cec10d217e2e6cc91f8fdacaa7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="#a53f14cec10d217e2e6cc91f8fdacaa7d">More...</a><br /></td></tr>
 <tr class="separator:a53f14cec10d217e2e6cc91f8fdacaa7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bd818cfd253a499cb1d3c7795089c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a0bd818cfd253a499cb1d3c7795089c2e">setFormat</a> (encoding enc, bool force=false) override</td></tr>
+<tr class="memitem:a0bd818cfd253a499cb1d3c7795089c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a0bd818cfd253a499cb1d3c7795089c2e">setFormat</a> (<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> enc, bool force=false) override</td></tr>
 <tr class="memdesc:a0bd818cfd253a499cb1d3c7795089c2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default character encoding of this stream.  <a href="#a0bd818cfd253a499cb1d3c7795089c2e">More...</a><br /></td></tr>
 <tr class="separator:a0bd818cfd253a499cb1d3c7795089c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f3962f2a0d6fa74a9d177524f51a5db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#a5f3962f2a0d6fa74a9d177524f51a5db">flush</a> () override</td></tr>
 <tr class="memdesc:a5f3962f2a0d6fa74a9d177524f51a5db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="#a5f3962f2a0d6fa74a9d177524f51a5db">More...</a><br /></td></tr>
 <tr class="separator:a5f3962f2a0d6fa74a9d177524f51a5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd82a5c9978c82e25ab1cc9e82897163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd82a5c9978c82e25ab1cc9e82897163"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>istty</b> () const override</td></tr>
+<tr class="memitem:abd82a5c9978c82e25ab1cc9e82897163"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1system_1_1stderr.html#abd82a5c9978c82e25ab1cc9e82897163">istty</a> () const override</td></tr>
+<tr class="memdesc:abd82a5c9978c82e25ab1cc9e82897163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this stream is outputting to a TTY device.  <a href="#abd82a5c9978c82e25ab1cc9e82897163">More...</a><br /></td></tr>
 <tr class="separator:abd82a5c9978c82e25ab1cc9e82897163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1outputStream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1outputStream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1outputStream.html">z::core::outputStream</a></td></tr>
 <tr class="memitem:a007c3fd0e3590c86de7258f8c915470e inherit pub_methods_classz_1_1core_1_1outputStream"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a007c3fd0e3590c86de7258f8c915470e"></a>
@@ -284,7 +284,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">encoding z::system::stderr::format </td>
+          <td class="memname"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> z::system::stderr::format </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -331,6 +331,35 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <dl class="section return"><dt>Returns</dt><dd>True if we can properly read to and write from the stream. False otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1outputStream.html#a2b70a3b3d27f7b28ea9452184d67aa4f">z::core::outputStream</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abd82a5c9978c82e25ab1cc9e82897163"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::system::stderr::istty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if this stream is outputting to a TTY device. </p>
+<p>This can be useful when deciding whether to add special formatting to a stream, for example one may want to add colors if we're writing to stdout, but not if it's to a file as the output would just look garbled.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if this stream is a TTY, false otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1outputStream.html#a34f1343b58c3f72defb29ee91f4b56aa">z::core::outputStream</a>.</p>
 
 </div>
 </div>
@@ -391,7 +420,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">encoding&#160;</td>
+          <td class="paramtype"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td>
           <td class="paramname"><em>format</em> = <code>ascii</code>&#160;</td>
         </tr>
         <tr>
@@ -495,7 +524,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">void z::system::stderr::setFormat </td>
           <td>(</td>
-          <td class="paramtype">encoding&#160;</td>
+          <td class="paramtype"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td>
           <td class="paramname"><em>enc</em>, </td>
         </tr>
         <tr>
