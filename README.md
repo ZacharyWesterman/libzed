@@ -6,7 +6,7 @@ It should compile on any flavor of these systems.
 The only requirements are **make** and a **g++** version that supports *at least* C++11.<br>
 Technically you could use another C++ compiler, but I use **g++**.<br>
 This also does compile on the Raspberry Pi, but I haven't checked it for bugs.<br>
-Since this library doesn't really mess with hardware though, I would expect it to behave just like x86 linux.
+Since this library doesn't really mess with hardware though, it should behave fine on a 32-bit system as it does 64-bit.
 
 To compile, run make. Something like `make -j32` will work.<br>
 On Windows, you're done. Just copy the DLL into the directory where you want it.<br>
@@ -14,4 +14,6 @@ On Linux, type `sudo make install` to install the library and `sudo make uninsta
 If you want to test out some code, `make examples` will run the makefile in the examples/ subdirectory.<br>
 Last, `make clean` removes all generated binaries and object files.
 
-[Documentation](https://zacharywesterman.github.io)
+[Documentation is here.](https://zacharywesterman.github.io)
+
+[Look here if you want to contribute.](CONTRIBUTING.md)
