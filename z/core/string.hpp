@@ -2,6 +2,7 @@
 
 #include <type_traits>
 #include <complex>
+#include <cstring>
 
 #include "charFunctions.hpp"
 #include <z/encoding.hpp>
@@ -1053,7 +1054,11 @@ namespace z
 			 *
 			 * \return True if the strings exactly match. False otherwise.
 			 */
-			bool operator==(const string& other) const;
+			bool operator==(const string& other) const
+			{
+				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+				return std::memcmp(data, other.data, len << 2) == 0;
+			}
 
 			/**
 			 * \brief Inequality comparison.
@@ -1074,7 +1079,11 @@ namespace z
 			 *
 			 * \return True if this string comes after the given string alphabetically. False otherwise.
 			 */
-			bool operator>(const string& other) const;
+			bool operator>(const string& other) const
+			{
+				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+				return std::memcmp(data, other.data, len << 2) > 0;
+			}
 
 			/**
 			 * \brief Greater-than or equal comparison.
@@ -1095,7 +1104,11 @@ namespace z
 			 *
 			 * \return True if this string comes before the given string alphabetically. False otherwise.
 			 */
-			bool operator<(const string& other) const;
+			bool operator<(const string& other) const
+			{
+				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+				return std::memcmp(data, other.data, len << 2) < 0;
+			}
 
 			/**
 			 * \brief Less-than or equal comparison.
