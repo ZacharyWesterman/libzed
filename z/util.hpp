@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/util.h
+ * \file z/util.hpp
  * \namespace z::util
  * \brief Library containing utility classes.
  *

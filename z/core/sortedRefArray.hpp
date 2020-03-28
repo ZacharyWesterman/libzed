@@ -52,8 +52,19 @@ namespace z
 			}
 
 		public:
+			///Default constructor.
 			sortedRefArray() {}
 
+			/**
+			 * \brief List-initialized constructor.
+			 *
+			 * Constructs the array with an arbitrary
+			 * number of elements already contained.
+			 * \note All elements will be automatically sorted.
+			 *
+			 * \param arg1 initializing data.
+			 * \param args cont. initializing data.
+			 */
 			template <typename... Args>
 			sortedRefArray(const T& arg1, const Args&... args)
 			{

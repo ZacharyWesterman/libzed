@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * \file z/core/zstr.h
+ * \file z/core/zstr.hpp
  * \namespace z::core
  */
 

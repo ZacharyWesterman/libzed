@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/util/regex/rgx.h
+ * \file z/util/regex/rgx.hpp
  * \namespace z::util::rgx
  * \brief Namespace containing all regex rules for the sake of organization.
 **/

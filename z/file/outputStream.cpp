@@ -156,11 +156,6 @@ namespace z
 			return filestream.tellp();
 		}
 
-		bool outputStream::empty()
-		{
-			return filestream.eof();
-		}
-
 		bool outputStream::good()
 		{
 			return filestream.good() && filestream.is_open();

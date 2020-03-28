@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/core.h
+ * \file z/core.hpp
  * \namespace z::core
  * \brief Library containing core functions and classes.
  *

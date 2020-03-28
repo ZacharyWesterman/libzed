@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/file.h
+ * \file z/file.hpp
  * \namespace z::file
  * \brief Library of file management functions and classes.
 **/
