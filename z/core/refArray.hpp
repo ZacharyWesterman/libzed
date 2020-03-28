@@ -43,8 +43,18 @@ namespace z
 			}
 
 		public:
+			///Default constructor.
 			refArray() {}
 
+			/**
+			 * \brief List-initialized constructor.
+			 *
+			 * Constructs the array with an arbitrary
+			 * number of elements already contained.
+			 *
+			 * \param arg1 initializing data.
+			 * \param args cont. initializing data.
+			 */
 			template <typename... Args>
 			refArray(const T& arg1, const Args&... args)
 			{

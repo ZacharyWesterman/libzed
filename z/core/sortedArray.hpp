@@ -20,8 +20,19 @@ namespace z
 		class sortedArray : public array<T>
 		{
 		public:
+			///Default constructor.
 			sortedArray() {}
 
+			/**
+			 * \brief List-initialized constructor.
+			 *
+			 * Constructs the array with an arbitrary
+			 * number of elements already contained.
+			 * \note All elements will be automatically sorted.
+			 *
+			 * \param arg1 initializing data.
+			 * \param args cont. initializing data.
+			 */
 			template <typename... Args>
 			sortedArray(const T& arg1, const Args&... args)
 			{
@@ -111,10 +122,10 @@ namespace z
 		 * Locates the desired index using a binary search,
 		 * as the array is expected to be sorted.
 		 *
-		 * \param object the object to search for.
+		 * \param object The object to search for.
+		 * \param allowDuplicates Whether to allow multiple identical objects.
 		 *
-		 * \return The first index where the object can be
-		 * inserted.
+		 * \return The first index where the object can be inserted.
 		 */
 		template <typename T>
 		intmax_t sortedArray<T>::findInsert(const T& object, bool allowDuplicates) const
@@ -139,14 +150,16 @@ namespace z
 				}
 				else
 				{
-					return center;
+					return allowDuplicates ? center : -1;
 				}
 			}
 
 			if (this->lt(this->array_data.at(left), object))
 				return left+1;
-			else
+			else if (allowDuplicates && this->eq(this->array_data.at(left), object))
 				return left;
+			else
+				return -1;
 		}
 
 		/**

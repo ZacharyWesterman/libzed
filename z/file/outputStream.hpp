@@ -55,7 +55,6 @@ namespace z
 			void put(uint8_t ch);
 			void put(uint8_t* str, size_t count, encoding format = ascii);
 
-			bool empty();
 			bool good();
 			bool bad();
 			bool binary();

@@ -239,13 +239,22 @@ namespace z
 			 */
 			virtual void setFormat(encoding enc, bool force = false) = 0;
 
-			 /**
+			/**
 			 * \brief Flush all data from the stream buffer.
 			 *
 			 * Writes any buffered stream data and clears the buffer.
 			 */
 			virtual void flush() = 0;
 
+			/**
+			 * \brief Check if this stream is outputting to a TTY device.
+			 *
+			 * This can be useful when deciding whether to add special formatting
+			 * to a stream, for example one may want to add colors if we're writing
+			 * to stdout, but not if it's to a file as the output would just look garbled.
+			 *
+			 * \return True if this stream is a TTY, false otherwise.
+			 */
 			virtual bool istty() const { return false; }
 		};
 

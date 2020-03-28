@@ -31,11 +31,20 @@ namespace z
 			///The data in the array.
 			std::vector<T> array_data;
 
+			/**
+			 * \brief Helper function for single object initialization.
+			 * \param arg1 The object to initialize the array with.
+			 */
 			inline void init(const T& arg1)
 			{
 				add(arg1);
 			}
 
+			/**
+			 * \brief Helper function for brace-enclosed list initialization.
+			 * \param arg1 The first object to add to the array.
+			 * \param args Any following objects to add to the array.
+			 */
 			template <typename... Args>
 			inline void init(const T& arg1, const Args&... args)
 			{
@@ -44,16 +53,52 @@ namespace z
 				init(args...);
 			}
 
+			/**
+			 * \brief Check if two objects are equal.
+			 *
+			 * This member function allows object comparison to be
+			 * different for different array types (e.g. reference arrays
+			 * will need to sort by value after dereference).
+			 *
+			 * \param arg1 First object to compare.
+			 * \param arg2 Second object to compare.
+			 *
+			 * \return True if the objects are equal, false otherwise.
+			 */
 			virtual bool eq(const T& arg1, const T& arg2) const
 			{
 				return equals(arg1, arg2);
 			}
 
+			/**
+			 * \brief Check if one object is greater than another.
+			 *
+			 * This member function allows object comparison to be
+			 * different for different array types (e.g. reference arrays
+			 * will need to sort by value after dereference).
+			 *
+			 * \param arg1 First object to compare.
+			 * \param arg2 Second object to compare.
+			 *
+			 * \return True if arg1 is greater than arg2, false otherwise.
+			 */
 			virtual bool gt(const T& arg1, const T& arg2) const
 			{
 				return greater(arg1, arg2);
 			}
 
+			/**
+			 * \brief Check if one object is less than another.
+			 *
+			 * This member function allows object comparison to be
+			 * different for different array types (e.g. reference arrays
+			 * will need to sort by value after dereference).
+			 *
+			 * \param arg1 First object to compare.
+			 * \param arg2 Second object to compare.
+			 *
+			 * \return True if arg1 is less than arg2, false otherwise.
+			 */
 			virtual bool lt(const T& arg1, const T& arg2) const
 			{
 				return lesser(arg1, arg2);
@@ -64,7 +109,6 @@ namespace z
 			array() {}
 
 			array(const array&);
-			array(const T&);
 
 			template <typename... Args>
 			array(const T& arg1, const Args&... args);

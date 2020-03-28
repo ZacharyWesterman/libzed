@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/system.h
+ * \file z/system.hpp
  * \namespace z::system
  * \brief Library containing classes and functions relating to system info.
  *

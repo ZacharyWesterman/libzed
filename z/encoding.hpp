@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * \file z/encoding.h
+ * \file z/encoding.hpp
  * \namespace z
  */
 

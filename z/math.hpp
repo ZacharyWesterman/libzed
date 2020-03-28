@@ -1,6 +1,6 @@
 #pragma once
 /**
- * \file z/math.h
+ * \file z/math.hpp
  * \namespace z::math
  * \brief Library of math-related functions, constants, and datatypes.
 **/
