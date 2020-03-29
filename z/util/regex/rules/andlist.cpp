@@ -61,7 +61,7 @@ namespace z
 			void andlist::print(core::outputStream& stream, int level)
 			{
 				zpath s;
-				s.padLeft(" ",(level)<<1);
+				s.padLeftIn(" ",(level)<<1);
 				s += "()";
 				(s+meta()).writeln(stream);
 				for (auto& child : children)

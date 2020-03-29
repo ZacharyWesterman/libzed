@@ -109,6 +109,7 @@ namespace z
 				{
 					inOr = startOr = true;
 					output.add(rgxss(RGX_LBRACKET));
+					canGreedy = false;
 					continue;
 				}
 
@@ -161,6 +162,7 @@ namespace z
 						output.add(rgxss(RGX_LPAREN));
 					}
 					++paren;
+					canGreedy = false;
 					continue;
 				}
 
@@ -175,6 +177,7 @@ namespace z
 					}
 					inBrace = true;
 					output.add(rgxss(RGX_LBRACE));
+					canGreedy = false;
 					continue;
 				}
 
@@ -183,6 +186,7 @@ namespace z
 					if (!paren) return RGX_PARENTH_MISMATCH;
 					--paren;
 					output.add(rgxss(RGX_RPAREN));
+					canGreedy = false;
 					continue;
 				}
 
@@ -201,6 +205,7 @@ namespace z
 				if (ch == '?')
 				{
 					output.add(rgxss(canGreedy?RGX_GREEDY:RGX_QUESTION));
+					canGreedy = false;
 					continue;
 				}
 

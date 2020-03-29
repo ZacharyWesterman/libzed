@@ -739,6 +739,25 @@ namespace z
 			const string& replace(size_t index, int count, const string& other);
 
 			/**
+			 * \brief Copy this string, left-padded given character count.
+			 *
+			 * \param other The string to pad on the left of the string.
+			 * \param padSize the number of characters to pad up to.
+			 *
+			 * \return A copy of this string after padding.
+			 *
+			 * If the given string contains more than one character, then some of
+			 * that string's characters may be cut off in the resultant string. If
+			 * the pad size is equal or less than the current chracter count, then no
+			 * padding will be added.
+			 */
+			string padLeft(const string& other, size_t padSize) const
+			{
+				string newString = *this;
+				return newString.padLeftIn(other, padSize);
+			}
+
+			/**
 			 * \brief Left-pad this string up to a given character count.
 			 *
 			 * \param other The string to pad on the left of this string.
@@ -751,7 +770,26 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padLeft(const string& other, size_t padSize);
+			const string& padLeftIn(const string& other, size_t padSize);
+
+			/**
+			 * \brief Copy this string, right-padded given character count.
+			 *
+			 * \param other The string to pad on the right of the string.
+			 * \param padSize the number of characters to pad up to.
+			 *
+			 * \return A copy of this string after padding.
+			 *
+			 * If the given string contains more than one character, then some of
+			 * that string's characters may be cut off in the resultant string. If
+			 * the pad size is equal or less than the current chracter count, then no
+			 * padding will be added.
+			 */
+			string padRight(const string& other, size_t padSize) const
+			{
+				string newString = *this;
+				return newString.padRightIn(other, padSize);
+			}
 
 			/**
 			 * \brief Right-pad this string up to a given character count.
@@ -766,7 +804,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padRight(const string& other, size_t padSize);
+			const string& padRightIn(const string& other, size_t padSize);
 
 			/**
 			 * \brief Append text onto this string a specific number of times.

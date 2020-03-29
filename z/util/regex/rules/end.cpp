@@ -48,7 +48,7 @@ namespace z
 #			ifdef DEBUG
 			void end::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+"$"+meta()).writeln(stream);
+				(zpath().padLeftIn(" ",(level)<<1)+"$"+meta()).writeln(stream);
 			}
 #			endif
 		}

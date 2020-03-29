@@ -38,7 +38,7 @@ namespace z
 			void range::print(core::outputStream& stream, int level)
 			{
 				zpath s;
-				s.padLeft(" ",(level)<<1);
+				s.padLeftIn(" ",(level)<<1);
 				if ((begin<'!')||(begin>'~'))
 					s = s + "x" + (int)begin;
 				else

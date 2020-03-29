@@ -21,7 +21,7 @@ namespace z
 			void character::print(core::outputStream& stream, int level)
 			{
 				zpath s;
-				s.padLeft(" ",(level)<<1);
+				s.padLeftIn(" ",(level)<<1);
 				if ((value<'!')||(value>'~'))
 					s = s + "x" + (int)value;
 				else

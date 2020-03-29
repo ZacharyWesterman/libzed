@@ -22,7 +22,7 @@ namespace z
 #			ifdef DEBUG
 			void orlist::print(core::outputStream& stream, int level)
 			{
-				auto s = zpath().padLeft(" ",(level)<<1)+"[]";
+				auto s = zpath().padLeftIn(" ",(level)<<1)+"[]";
 				if (negate) s += " ~";
 				(s+meta()).writeln(stream);
 				for (auto& child : children)

@@ -1143,7 +1143,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::padLeft(const string<utf8>& other, size_t padSize)
+		const string<utf8>& string<utf8>::padLeftIn(const string<utf8>& other, size_t padSize)
 		{
 			if (padSize <= character_ct) return *this;
 
@@ -1164,7 +1164,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::padRight(const string<utf8>& other, size_t padSize)
+		const string<utf8>& string<utf8>::padRightIn(const string<utf8>& other, size_t padSize)
 		{
 			if (padSize <= character_ct) return *this;
 

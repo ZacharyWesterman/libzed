@@ -47,7 +47,7 @@ namespace z
 			void lookbehind::print(core::outputStream& stream, int level)
 			{
 				zpath s;
-				s.padLeft(" ",(level)<<1);
+				s.padLeftIn(" ",(level)<<1);
 				s += negate ? "?<!" : "?<=";
 				(s+meta()).writeln(stream);
 

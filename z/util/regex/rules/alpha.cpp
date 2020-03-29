@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void alpha::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+(negate?"\\A":"\\a")+meta()).writeln(stream);
+				(zpath().padLeftIn(" ",(level)<<1)+(negate?"\\A":"\\a")+meta()).writeln(stream);
 			}
 #			endif
 		}

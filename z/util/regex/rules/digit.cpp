@@ -14,7 +14,7 @@ namespace z
 #			ifdef DEBUG
 			void digit::print(core::outputStream& stream, int level)
 			{
-				(zpath().padLeft(" ",(level)<<1)+"\\d"+meta()).writeln(stream);
+				(zpath().padLeftIn(" ",(level)<<1)+"\\d"+meta()).writeln(stream);
 			}
 #			endif
 		}
