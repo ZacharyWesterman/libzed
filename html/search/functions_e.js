@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['padleft',['padLeft',['../classz_1_1core_1_1string.html#a5c751f00887e9aec65ca0fecdf2888ea',1,'z::core::string']]],
-  ['padright',['padRight',['../classz_1_1core_1_1string.html#a99afadac69e5c4b1ea90e0c80d73092e',1,'z::core::string']]],
+  ['padleft',['padLeft',['../classz_1_1core_1_1string.html#a8de3cfb626b85c71a8ee9ee21bd77f39',1,'z::core::string']]],
+  ['padleftin',['padLeftIn',['../classz_1_1core_1_1string.html#a79946eb279a7f75db9554288a4a9fa96',1,'z::core::string']]],
+  ['padright',['padRight',['../classz_1_1core_1_1string.html#ae5531f4fa7541277ea83dec98e44866a',1,'z::core::string']]],
+  ['padrightin',['padRightIn',['../classz_1_1core_1_1string.html#a0bb702cfaafa5cedf89919cbe56ad5f5',1,'z::core::string']]],
   ['parent',['parent',['../classz_1_1util_1_1rgx_1_1compound.html#afd2df021f6b6e197c428d7af3ab33033',1,'z::util::rgx::compound::parent()'],['../classz_1_1util_1_1rgx_1_1rule.html#ae925e278f9546d5b883b7d65271e5de7',1,'z::util::rgx::rule::parent()']]],
   ['path',['path',['../namespacez_1_1file.html#a0dfeb9e0cbc8b4daab0051602081ae22',1,'z::file']]],
   ['pause',['pause',['../namespacez_1_1system.html#a8325a70bf7adb50e42ba9f1faf1ddc64',1,'z::system']]],

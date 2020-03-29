@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classz_1_1util_1_1genericString.html#ad4accb580343ea90165cc456e24f2899":[2,0,0,4,9,8],
+"classz_1_1util_1_1genericString.html#ad9c3ab7b97df85a7da510d48e7c68704":[2,0,0,4,9,4],
 "classz_1_1util_1_1genericString.html#adac5f4fa561bf11dd45b8cb54c60f1dd":[2,0,0,4,9,6],
 "classz_1_1util_1_1genericString.html#ae773d410f24fcd20a32d2943666dae3b":[2,0,0,4,9,2],
 "classz_1_1util_1_1genericString.html#aeb03230645747d81c0ad3d5d620b0ece":[2,0,0,4,9,1],
@@ -171,8 +173,8 @@ var NAVTREEINDEX2 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1],
 "functions_func.html":[2,3,1,0],
+"functions_func.html":[2,3,1],
 "functions_func_0x7e.html":[2,3,1,20],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
@@ -219,8 +221,8 @@ var NAVTREEINDEX2 =
 "generic_2generic_8hpp_source.html":[3,0,0,4,1,1],
 "generic_8hpp_source.html":[3,0,0,4,4],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "info_8hpp_source.html":[3,0,0,1,4],
 "inputStream_8hpp_source.html":[3,0,0,1,5],
 "join_8hpp_source.html":[3,0,0,0,4],
@@ -239,15 +241,13 @@ var NAVTREEINDEX2 =
 "namespacemembers_type.html":[1,1,3],
 "namespacemembers_vars.html":[1,1,2],
 "namespaces.html":[1,0],
-"namespacez_1_1core.html":[1,0,0,0],
 "namespacez_1_1core.html":[2,0,0,0],
+"namespacez_1_1core.html":[1,0,0,0],
 "namespacez_1_1file.html":[2,0,0,1],
 "namespacez_1_1file.html":[1,0,0,1],
 "namespacez_1_1math.html":[1,0,0,2],
 "namespacez_1_1math.html":[2,0,0,2],
-"namespacez_1_1system.html":[2,0,0,3],
 "namespacez_1_1system.html":[1,0,0,3],
-"namespacez_1_1util.html":[1,0,0,4],
-"namespacez_1_1util.html":[2,0,0,4],
-"namespacez_1_1util_1_1rgx.html":[2,0,0,4,0]
+"namespacez_1_1system.html":[2,0,0,3],
+"namespacez_1_1util.html":[2,0,0,4]
 };

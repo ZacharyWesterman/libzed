@@ -1,6 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"namespacez_1_1util.html":[1,0,0,4],
 "namespacez_1_1util_1_1rgx.html":[1,0,0,4,0],
+"namespacez_1_1util_1_1rgx.html":[2,0,0,4,0],
 "newline_8hpp_source.html":[3,0,0,4,2,0,12],
 "orlist_8hpp_source.html":[3,0,0,4,2,0,13],
 "outputStream_8hpp_source.html":[3,0,0,1,9],
