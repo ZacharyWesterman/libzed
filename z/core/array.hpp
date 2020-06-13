@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <initializer_list>
 #include "stream.hpp"
 #include "sizable.hpp"
 #include "serializable.hpp"
@@ -113,6 +114,10 @@ namespace z
 			template <typename... Args>
 			array(const T& arg1, const Args&... args);
 
+			array(const std::initializer_list<T>& other) :
+				array_data(other)
+			{}
+
 			///Destructor
 			virtual ~array() {}
 
@@ -192,6 +197,7 @@ namespace z
 			}
 
 			array& operator=(const array& other);
+			array& operator=(const std::initializer_list<T>& other);
 
 			bool operator==(const array& other) const;
 			bool operator>(const array& other) const;
@@ -274,6 +280,27 @@ namespace z
 		array<T>& array<T>::operator=(const array<T>& other)
 		{
 			array_data = other.array_data;
+
+			return *this;
+		}
+
+		/**
+		 * \brief Array assignment operator.
+		 *
+		 * Clear the contents of this array and create
+		 * a copy of another array's contents into this one.
+		 *
+		 * \param initializer_list to copy from.
+		 *
+		 * \return This array after the operation (for
+		 * \b a=b=c type expressions).
+		 */
+		template <typename T>
+		array<T>& array<T>::operator=(const std::initializer_list<T>& other)
+		{
+			array_data.clear();
+			array_data.reserve(other.size());
+			for (auto& item : other) array_data.push_back(item);
 
 			return *this;
 		}
