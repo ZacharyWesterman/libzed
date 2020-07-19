@@ -45,17 +45,22 @@ ifdef DEBUG
 CCFLAGS += -g$(DEBUG) -O$(OLEVEL) -DDEBUG
 endif
 
+# if rm exists use that, otherwise try Windows' "del"
+ifeq (, $(shell rm --version))
+RM = del
+else
+RM = rm -f
+endif
+
 ifeq ($(OS),Windows_NT)
 CFLAGS = $(CCFLAGS) -shared
 LFLAGS += -fPIC
 RMOBJS = $(subst /,\,$(OBJS))
-RM = del
 SHARED_LIB = $(LIBNAME).dll
 else
 CFLAGS = $(CCFLAGS) -fPIC
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
-RM = rm -f
 SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 endif
 
@@ -88,9 +93,6 @@ examples:
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
-
-main.o: main.cpp
-	$(CC) $(CCFLAGS) -o $@ -c $^
 
 %.o: %.cpp %.hpp
 	$(CC) $(CFLAGS) -o $@ -c $<

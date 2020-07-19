@@ -3,6 +3,10 @@
 #include <iostream>
 #include <z/core/charFunctions.hpp>
 
+#ifdef _WIN32
+#undef stdin
+#endif
+
 namespace z
 {
 	namespace system
