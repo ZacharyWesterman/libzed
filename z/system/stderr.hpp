@@ -3,6 +3,10 @@
 #include <z/encoding.hpp>
 #include <z/core/stream.hpp>
 
+#ifdef _WIN32
+#undef stderr
+#endif
+
 namespace z
 {
 	namespace system
