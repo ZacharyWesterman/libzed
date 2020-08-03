@@ -75,7 +75,7 @@ namespace z
 			void* symbol_pointer = NULL;
 #			ifdef _WIN32
 			if (lib_ptr)
-				symbol_pointer = GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
+				symbol_pointer = (void*)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
 #			elif __linux__
 			if(lib_ptr)
 				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());
@@ -89,7 +89,7 @@ namespace z
 			func func_pointer = NULL;
 #			ifdef _WIN32
 			if (lib_ptr)
-				symbol_pointer = GetProcAddress((HMODULE)lib_ptr, (const char*)symbol_name.cstring());
+				symbol_pointer = (void*)GetProcAddress((HMODULE)lib_ptr, (const char*)symbol_name.cstring());
 #			elif __linux__
 			if(lib_ptr)
 				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());

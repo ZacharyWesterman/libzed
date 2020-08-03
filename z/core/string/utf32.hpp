@@ -1028,23 +1028,6 @@ namespace z
 
 			data = 0;
 
-			union float_cast
-			{
-				double fval;
-				unsigned long ival;
-
-				struct
-				{
-					unsigned long mantissa : DBL_MANT_DIG;
-					unsigned int exponent : DBL_EXP_DIG;
-					bool sign : 1;
-				} raw;
-			};
-			float_cast number;
-			number.fval = value;
-
-			bool negative = number.raw.sign;
-			number.raw.sign = 0;
 			bool force = true;
 
 			if ((base < 2) || (base > 36)) base = 10;
@@ -1054,93 +1037,52 @@ namespace z
 				force = false;
 			}
 
-			//integral and fractional parts of the number
-			unsigned long integral;
-			double fractional;
-			unsigned long exponent = 0;
+			bool negative = (value < 0.0);
+			if (negative) value = -value;
+
+			int exponent = 0;
 			bool negexponent = false;
 
-			if (number.ival) //don't bother with exponents if 0
+			//handle very small or very large numbers
+			if (value != 0.0)
 			{
-				double temp = number.fval;
-				unsigned long tempExp = exponent;
-				bool tempNegExp = negexponent;
-
-				if (DBL_MAX_EXP < number.raw.exponent)// pos exponent
+				double minVal = 1.0;
+				double maxVal = 1.0;
+				for (unsigned int i=0; i<(precision >> 1); i++)
 				{
-					while (temp >= base)
+					minVal /= base;
+					maxVal *= (base << 1);
+				}
+
+				if (value < minVal)
+				{
+					negexponent = true;
+					do
 					{
-						temp /= base;
-						tempExp++;
+						value *= base;
+						++exponent;
 					}
+					while (value < 1.0);
 				}
-				else if (DBL_MAX_EXP > number.raw.exponent)// neg exponent
+				else if (value > maxVal)
 				{
-					tempNegExp = true;
-					double frac = 1.0 / (double)base;
-
-					while (temp < frac)
+					do
 					{
-						temp *= base;
-						tempExp++;
+						value /= base;
+						++exponent;
 					}
-				}
-
-				if ((tempNegExp && (tempExp >= precision)) ||
-					(number.fval > (double)(INT_MAX)))
-				{
-					number.fval = temp;
-					exponent = tempExp;
-					negexponent = tempNegExp;
+					while (value >= base);
 				}
 			}
 
-			if (number.raw.exponent < (DBL_MAX_EXP-1))//x2^neg
-			{
-				integral = 0;
-			}
-			else if (number.raw.exponent > (DBL_MAX_EXP-1))//x2^(pos)
-			{
-				long expo = number.raw.exponent - (DBL_MAX_EXP-1);
-				integral = ((long)1 << expo) + (number.raw.mantissa >> ((long)(DBL_EXP_DIG-1) - expo));
-			}
-			else //x2^0
-			{
-				integral = 1;
-			}
-
-			fractional = number.fval - (double)integral;
-
-			//this section rounds to nearest fractional point (decimal pt. in base 10)
-			if (number.ival)
-			{
-				//prep for rounding
-				double tmp = fractional;
-				double roundval = tmp / (double)(base << 1);
-				double roundadd = roundval;
-				for (size_t i=0; i<precision; i++)
-				{
-					tmp *= base;
-					tmp -= (double)(long)tmp;
-					roundadd /= base;
-				}
-				//round
-				if (tmp >= roundval)
-				{
-					fractional += roundadd;
-
-					if (fractional >= 1)
-					{
-						integral++;
-						fractional--;
-					}
-				}
-			}
+			//split up parts of the number
+			double intTemp = 0.0;
+			double fractional = modf(value, &intTemp);
+			unsigned long integral = intTemp;
 
 			// number.raw.exponent - 1023;
 			size_t ibufsiz = integralBuf(integral, base, ibuf);
 			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
-			// size_t fbufsiz = fractionalBuf(fractional, 10, 6, 0, fbuf);
 			size_t ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
 			//initialize string data
 			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
@@ -1149,18 +1091,9 @@ namespace z
 			else
 				padSize = 0;
 
-			// bool
 
-			// character_ct = fbufsiz;
-
-			// character_ct = fbufsiz + (bool)fbufsiz;
 			data_len = (character_ct + 1) * this->charSize();
-			// data_len = 100;
-			// character_ct = 0;
 			data = new uint8_t[data_len];
-			// data = new uint8_t[10];
-			// data_len = 10;
-			// character_ct = 0;
 			if (negative) this->initChar('-', 0);
 			// size_t pos = 0;
 			size_t pos = negative;

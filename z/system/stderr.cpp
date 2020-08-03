@@ -4,8 +4,8 @@
 #include <z/core/charFunctions.hpp>
 
 #ifdef _WIN32
-#include <io.h>
-#define STDOUT_TTY _isatty(_fileno(::stderr))
+#define STDOUT_TTY false
+#undef stderr
 #else
 #include <unistd.h>
 #define STDOUT_TTY isatty(fileno(::stderr))

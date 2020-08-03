@@ -114,6 +114,11 @@ namespace z
 			template <typename... Args>
 			array(const T& arg1, const Args&... args);
 
+			/**
+			 * \brief Construct from a generic initializer list
+			 *
+			 * \param other The list to initialize this array with.
+			 */
 			array(const std::initializer_list<T>& other) :
 				array_data(other)
 			{}
@@ -285,12 +290,12 @@ namespace z
 		}
 
 		/**
-		 * \brief Array assignment operator.
+		 * \brief Initializer list assignment operator.
 		 *
-		 * Clear the contents of this array and create
-		 * a copy of another array's contents into this one.
+		 * Clear the contents of this array and copy the contents
+		 * of an initializer list into this array.
 		 *
-		 * \param initializer_list to copy from.
+		 * \param other The initializer list to copy from.
 		 *
 		 * \return This array after the operation (for
 		 * \b a=b=c type expressions).

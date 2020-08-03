@@ -80,13 +80,13 @@ namespace z
 				switch (input[position].symbol())
 				{
 					case 'i':
-						flags = negate ? (flags & !INSENSITIVE) : (flags | INSENSITIVE);
+						flags = negate ? (flags & ~INSENSITIVE) : (flags | INSENSITIVE);
 						break;
 					case 's':
-						flags = negate ? (flags & !static_cast<int>(NEWLINE)) : (flags | NEWLINE);
+						flags = negate ? (flags & ~NEWLINE) : (flags | NEWLINE);
 						break;
 					case 'n':
-						flags = negate ? (flags & !static_cast<int>(ENDLINE)) : (flags | ENDLINE);
+						flags = negate ? (flags & ~ENDLINE) : (flags | ENDLINE);
 						break;
 					default:
 						return err;

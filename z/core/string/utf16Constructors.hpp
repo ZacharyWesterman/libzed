@@ -33,7 +33,11 @@ namespace z
 			data = new uint8_t[4];
 			uint16_t* data16 = (uint16_t*)data;
 
+#			ifdef _WIN32
+			data16[0] = chr; //In Windows, wchar_t is 16 bits
+#			else
 			data16[0] = (chr > 0xFFFF) ? '?' : chr;
+#			endif
 			data16[1] = 0;
 
 			data_len = 4;
@@ -96,10 +100,11 @@ namespace z
 
 				for (size_t i=0; i<len; i++)
 				{
-					if (str[i] > 0xFFFF)
-						data16[i] = '?';
-					else
-						data16[i] = str[i];
+#					ifdef _WIN32
+					data16[i] = str[i]; //In Windows, wchar_t is 16 bits
+#					else
+					data16[i] = (str[i] > 0xFFFF) ? '?' : str[i];
+#					endif
 				}
 			}
 			else
