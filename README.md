@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
 
+This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will help decrease development time of other projects.
+
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
 It should compile on any flavor of these systems.
 
