@@ -15,6 +15,7 @@ namespace z
 
 		public:
 			bool exhausted;
+			bool isWord;
 			friend dictionary;
 		};
 	}
