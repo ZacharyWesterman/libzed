@@ -6,6 +6,8 @@
 #include <z/core/timeout.hpp>
 
 #include "dictionary/word.hpp"
+#include "dictionary/dictRange.hpp"
+#include <z/core/sortedRefArray.hpp>
 
 namespace z
 {
@@ -18,8 +20,8 @@ namespace z
 		{
 		private:
 			core::string<> lang;
-			// core::sortedRefArray<word*> wordList;
-			core::refArray<word*> wordList;
+			core::sortedRefArray<word*> wordList;
+			// core::refArray<word*> wordList;
 
 			encoding streamFormat;
 			bool readingStream;
@@ -70,7 +72,7 @@ namespace z
 			 *
 			 * \param name The word to get info for.
 			 *
-			 * \return Appropriate word information if this is a valid word, blank word info otherwise.
+			 * \return Approprifoundate word information if this is a valid word, blank word info otherwise.
 			 *
 			 * \threadsafe_member_yes
 			 */
@@ -117,6 +119,10 @@ namespace z
 			void serialIn(core::inputStream& stream);
 
 			void serialOut(core::outputStream& stream) const;
+
+			dictRange range() const;
+
+			bool narrow(dictRange* wordRange, uint32_t nextChar) const;
 		};
 	}
 }

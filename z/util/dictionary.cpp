@@ -1,4 +1,5 @@
 #include "dictionary.hpp"
+#include <z/core/charFunctions.hpp>
 
 namespace z
 {
@@ -163,6 +164,73 @@ namespace z
 			stream.flush();
 
 			stream.seek(stop);
+		}
+
+		dictRange dictionary::range() const
+		{
+			dictRange wordRange;
+
+			if (!wordList.length())
+			{
+				wordRange.exhausted = true;
+			}
+			else
+			{
+				wordRange.left = 0;
+				wordRange.right = wordList.length() - 1;
+				wordRange.charPos = 0;
+				wordRange.exhausted = false;
+			}
+
+			return wordRange;
+		}
+
+		bool dictionary::narrow(dictRange* wordRange, uint32_t nextChar) const
+		{
+			if (wordRange->exhausted) return false;
+
+			nextChar = z::core::toUpper(nextChar);
+
+			//get furthest left
+			int left = wordRange->left;
+			int right = wordRange->right;
+			while (left < right)
+			{
+				int center = (left + right) >> 1;
+				auto thisChar = z::core::toUpper(wordList[center]->get()[wordRange->charPos]);
+
+				if (thisChar < nextChar)
+					left = center + 1;
+				else
+					right = center - 1;
+			}
+			wordRange->left = left + 1;
+
+			//get furthest right
+			left = wordRange->left;
+			right = wordRange->right;
+			while (left < right)
+			{
+				int center = (left + right) >> 1;
+				auto thisChar = z::core::toUpper(wordList[center]->get()[wordRange->charPos]);
+
+				if (thisChar > nextChar)
+					right = center - 1;
+				else
+					left = center + 1;
+			}
+			wordRange->right = right - 1;
+
+			if (z::core::toUpper(wordList[wordRange->left]->get()[wordRange->charPos]) != nextChar)
+			{
+				wordRange->exhausted = true;
+			}
+			else
+			{
+				++(wordRange->charPos);
+			}
+
+			return !(wordRange->exhausted);
 		}
 	}
 }
