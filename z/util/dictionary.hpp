@@ -120,8 +120,24 @@ namespace z
 
 			void serialOut(core::outputStream& stream) const;
 
+			/**
+			 * \brief Create a new range of words encompassing the whole dictionary.
+			 *
+			 * This is meant to generate the initial object, then narrow() should be
+			 * called to narrow down the possible results.
+			 *
+			 * \return An empty dictRange object.
+			 */
 			dictRange range() const;
 
+			/**
+			 * \brief Narrow the results of a range given the next character.
+			 *
+			 * \param wordRange A reference to the range we're narrowing.
+			 * \param nextChar The next character all words in the range must contain.
+			 *
+			 * \return true if the range can be narrowed further, false otherwise.
+			 */
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const;
 		};
 	}

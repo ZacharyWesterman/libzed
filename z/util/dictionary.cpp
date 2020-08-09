@@ -1,8 +1,6 @@
 #include "dictionary.hpp"
 #include <z/core/charFunctions.hpp>
 
-#include <iostream>
-
 namespace z
 {
 	namespace util
@@ -183,7 +181,7 @@ namespace z
 
 		bool dictionary::narrow(dictRange* wordRange, uint32_t nextChar) const
 		{
-			if (wordRange->exhausted) return false;
+			if (wordRange->exhausted || !wordRange) return false;
 			wordRange->isWord = false;
 
 			nextChar = z::core::toUpper(nextChar);
@@ -241,8 +239,6 @@ namespace z
 			{
 				++(wordRange->charPos);
 				wordRange->isWord = ((size_t)wordRange->charPos == (wordList[wordRange->left]->get().length()));
-				// if (wordRange->isWord)
-				// 	std::cout << zpath(wordList[wordRange->left]->get()).upper().cstring() << " > " << zpath(wordList[wordRange->left]->get()).cstring() << " : " << zpath(wordList[wordRange->right]->get()).cstring() << std::endl;
 			}
 
 			return !(wordRange->exhausted);
