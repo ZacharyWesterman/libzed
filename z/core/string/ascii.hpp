@@ -508,7 +508,7 @@ namespace z
 		}
 
 		template <>
-		void string<ascii>::initFloat(double value, unsigned int base, unsigned int precision, unsigned int padSize)
+		void string<ascii>::initFloat(double value, unsigned int base, unsigned int precision, bool scientific, unsigned int padSize)
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
@@ -532,15 +532,16 @@ namespace z
 			bool negexponent = false;
 
 			//handle very small or very large numbers
-			if (value != 0.0)
+			if (value && scientific)
 			{
 				double minVal = 1.0;
 				double maxVal = 1.0;
-				for (unsigned int i=0; i<(precision >> 1); i++)
+				for (unsigned int i=0; i<precision; i++)
 				{
 					minVal /= base;
-					maxVal *= (base << 1);
+					maxVal *= base << 1;
 				}
+				minVal *= (double)base / 2.0;
 
 				if (value < minVal)
 				{

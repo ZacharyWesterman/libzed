@@ -51,7 +51,7 @@ namespace z
 			constexpr size_t charSize() const;
 
 			void initInt(long long, unsigned int, unsigned int);
-			void initFloat(double, unsigned int, unsigned int, unsigned int);
+			void initFloat(double, unsigned int, unsigned int, bool, unsigned int);
 			void initPointer(void*);
 			void initComplex(const std::complex<double>&, unsigned int, unsigned int);
 
@@ -154,6 +154,7 @@ namespace z
 			 * \param value A floating-point number.
 			 * \param base The number's base.
 			 * \param precision The number of characters after the decimal point.
+			 * \param scientific Whether to use scientific notation.
 			 * \param padSize Number of characters to pad up to.
 			 *
 			 * Converts a floating-point number to a string in the given base.
@@ -167,9 +168,9 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename FLT, typename = typename std::enable_if<std::is_floating_point<FLT>::value,FLT>::type>
-			string(FLT value, unsigned int base = 10, unsigned int precision = 0, unsigned int padSize = 0)
+			string(FLT value, unsigned int base = 10, unsigned int precision = 0, bool scientific = true, unsigned int padSize = 0)
 			{
-				this->initFloat((double)value, base, precision, padSize);
+				this->initFloat((double)value, base, precision, scientific, padSize);
 			}
 
 			/**
