@@ -138,7 +138,7 @@ namespace z
 			 *
 			 * \return The index where the inserted object now resides.
 			 */
-			virtual size_t add(const T& object)
+			virtual int add(const T& object)
 			{
 				array_data.push_back(object);
 
@@ -155,31 +155,31 @@ namespace z
 			 */
 			void add(const array& other)
 			{
-				for (size_t i=0; i<other.size(); i++)
+				for (int i=0; i<other.size(); i++)
 					add(other.array_data[i]);
 			}
 
-			array& insert(const T&, size_t);
+			array& insert(const T&, int);
 
 			void append(const T&);
 
-			array& remove(size_t);
-			array& remove(size_t, int);
+			array& remove(int);
+			array& remove(int, int);
 
-			array& replace(size_t, int, const T&);
-			array& replace(size_t, int, const array<T>&);
+			array& replace(int, int, const T&);
+			array& replace(int, int, const array<T>&);
 
 
-			array subset(size_t, int) const;
+			array subset(int, int) const;
 
 			size_t size() const;
 
-			size_t length() const;
+			int length() const;
 
-			T& at(size_t);
-			const T& at(size_t) const;
-			T& operator[](size_t);
-			const T& operator[](size_t) const;
+			T& at(int);
+			const T& at(int) const;
+			T& operator[](int);
+			const T& operator[](int) const;
 
 			/**
 			 * \brief Check if a given object is in the array.
@@ -192,9 +192,9 @@ namespace z
 			 * \return The first index that the object was found at.
 			 * \b -1 if it was not found.
 			 */
-			virtual intmax_t find(const T& object) const
+			virtual int find(const T& object) const
 			{
-				for (size_t i=0; i<array_data.size(); i++)
+				for (int i=0; i<array_data.size(); i++)
 					if (eq(array_data.at(i),object))
 						return i;
 
@@ -211,7 +211,7 @@ namespace z
 			inline bool operator<=(const array& other) const;
 
 
-			bool isValid(size_t position) const;
+			bool isValid(int position) const;
 
 			void serialIn(inputStream&);
 			void serialOut(outputStream&) const;
@@ -325,7 +325,7 @@ namespace z
 			if (array_data.size() != other.array_data.size())
 				return false;
 
-			for (size_t i=0; i<array_data.size(); i++)
+			for (int i=0; i<array_data.size(); i++)
 				if (!eq(array_data.at(i),other.array_data.at(i)))
 					return false;
 
@@ -349,7 +349,7 @@ namespace z
 
 			int gt_count = 0;
 
-			for (size_t i=0; i<array_data.size(); i++)
+			for (int i=0; i<array_data.size(); i++)
 			{
 				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
@@ -377,7 +377,7 @@ namespace z
 
 			int gt_count = 0;
 
-			for (size_t i=0; i<array_data.size(); i++)
+			for (int i=0; i<array_data.size(); i++)
 			{
 				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
@@ -437,11 +437,14 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		array<T>& array<T>::insert(const T& object, size_t index)
+		array<T>& array<T>::insert(const T& object, int index)
 		{
-			//if invalid index, return false
-			if (index > array_data.size())
-				return *this;
+			//if index is negative, insert from end of the array.
+			if (index < 0) index += array_data.size() + 1;
+
+			//keep within bounds of array.
+			if (index > array_data.size()) index = array_data.size();
+			if (index < 0) index = 0;
 
 			array_data.insert(array_data.begin() + index, object);
 
@@ -469,10 +472,10 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		array<T>& array<T>::remove(size_t index)
+		array<T>& array<T>::remove(int index)
 		{
-			if (index >= array_data.size())
-				return *this;
+			if (index < 0) index += array_data.size() + 1;
+			if ((index >= array_data.size()) || (index < 0)) return *this;
 
 			array_data.erase(array_data.begin() + index);
 
@@ -488,30 +491,28 @@ namespace z
 		 * \return A reference to this array after modification.
 		 */
 		template <typename T>
-		array<T>& array<T>::remove(size_t index, int count)
+		array<T>& array<T>::remove(int index, int count)
 		{
-			if (index >= array_data.size())
-				index = array_data.size()-1;
+			if (!count) return *this;
 
-			size_t start, end;
+			if (index < 0) index += array_data.size() + 1;
 
-			if (count < 0)
+			int start, end;
+
+			if (count > 0)
 			{
-				if ((size_t)-count >= index)
-					start = 0;
-				else
-					start = index + count;
-
+				start = index;
+				end = index + count;
+			}
+			else
+			{
+				start = index + count + 1;
 				end = index + 1;
 			}
-			else if (count)
-			{
-				end = index + count;
-				if (end > array_data.size()) end = array_data.size();
 
-				start = index;
-			}
-			else return *this;
+			if ((end < 0) || (start > array_data.size())) return *this;
+			if (start < 0) start = 0;
+			if (end > array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
@@ -528,10 +529,10 @@ namespace z
 		size_t array<T>::size() const
 		{
 			size_t bytes = 0;
-			for (size_t i=0; i<array_data.size(); i++)
+			for (auto& item : array_data)
 			{
 				size_t objBytes;
-				z::core::size(array_data[i], objBytes);
+				z::core::size(item, objBytes);
 				bytes += objBytes;
 			}
 			return bytes;
@@ -543,7 +544,7 @@ namespace z
 		 * \return The number of objects in the array.
 		 */
 		template <typename T>
-		size_t array<T>::length() const
+		int array<T>::length() const
 		{
 			return array_data.size();
 		}
@@ -555,10 +556,10 @@ namespace z
 		 *
 		 * \return The object at the given index.
 		 *
-		 * \see operator[](size_t)
+		 * \see operator[](int)
 		 */
 		template <typename T>
-		T& array<T>::at(size_t index)
+		T& array<T>::at(int index)
 		{
 			return array_data.at(index);
 		}
@@ -570,10 +571,10 @@ namespace z
 		 *
 		 * \return The object at the given index.
 		 *
-		 * \see operator[](size_t) const
+		 * \see operator[](int) const
 		 */
 		template <typename T>
-		const T& array<T>::at(size_t index) const
+		const T& array<T>::at(int index) const
 		{
 			return array_data.at(index);
 		}
@@ -581,17 +582,17 @@ namespace z
 		/**
 		 * \brief Function to get the object at the given index.
 		 *
-		 * Identical behavior to at(size_t), but allows indexing
+		 * Identical behavior to at(int), but allows indexing
 		 * with square brackets.
 		 *
 		 * \param index the index of the desired object.
 		 *
 		 * \return The object at the given index.
 		 *
-		 * \see at(size_t)
+		 * \see at(int)
 		 */
 		template <typename T>
-		T& array<T>::operator[](size_t index)
+		T& array<T>::operator[](int index)
 		{
 			return array_data.at(index);
 		}
@@ -599,17 +600,17 @@ namespace z
 		/**
 		 * \brief Const function to get the object at the given index.
 		 *
-		 * Identical behavior to at(size_t), but allows indexing
+		 * Identical behavior to at(int), but allows indexing
 		 * with square brackets.
 		 *
 		 * \param index the index of the desired object.
 		 *
 		 * \return The object at the given index.
 		 *
-		 * \see at(size_t) const
+		 * \see at(int) const
 		 */
 		template <typename T>
-		const T& array<T>::operator[](size_t index) const
+		const T& array<T>::operator[](int index) const
 		{
 			return array_data.at(index);
 		}
@@ -624,33 +625,31 @@ namespace z
 		 *
 		 * \return A reference to this array after modification.
 		 *
-		 * \see replace(size_t,int,const array&)
+		 * \see replace(int,int,const array&)
 		 */
 		template <typename T>
-		array<T>& array<T>::replace(size_t index, int count, const T& object)
+		array<T>& array<T>::replace(int index, int count, const T& object)
 		{
-			if (index >= array_data.size())
-				index = array_data.size()-1;
+			if (!count) return *this;
 
-			size_t start, end;
+			if (index < 0) index += array_data.size() + 1;
 
-			if (count < 0)
+			int start, end;
+
+			if (count > 0)
 			{
-				if ((size_t)-count >= index)
-					start = 0;
-				else
-					start = index + count;
-
+				start = index;
+				end = index + count;
+			}
+			else
+			{
+				start = index + count + 1;
 				end = index + 1;
 			}
-			else if (count)
-			{
-				end = index + count;
-				if (end > array_data.size()) end = array_data.size();
 
-				start = index;
-			}
-			else return *this;
+			if ((end < 0) || (start > array_data.size())) return *this;
+			if (start < 0) start = 0;
+			if (end > array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 			array_data.insert(array_data.begin() + start, object);
@@ -667,37 +666,35 @@ namespace z
 		 *
 		 * \return A reference to this array after modification.
 		 *
-		 * \see replace(size_t,int,const T&)
+		 * \see replace(int,int,const T&)
 		 */
 		template <typename T>
-		array<T>& array<T>::replace(size_t index, int count, const array<T>& other)
+		array<T>& array<T>::replace(int index, int count, const array<T>& other)
 		{
-			if (index >= array_data.size())
-				index = array_data.size()-1;
+			if (!count) return *this;
 
-			size_t start, end;
+			if (index < 0) index += array_data.size() + 1;
 
-			if (count < 0)
+			int start, end;
+
+			if (count > 0)
 			{
-				if ((size_t)-count >= index)
-					start = 0;
-				else
-					start = index + count;
-
+				start = index;
+				end = index + count;
+			}
+			else
+			{
+				start = index + count + 1;
 				end = index + 1;
 			}
-			else if (count)
-			{
-				end = index + count;
-				if (end > array_data.size()) end = array_data.size();
 
-				start = index;
-			}
-			else return *this;
+			if ((end < 0) || (start > array_data.size())) return *this;
+			if (start < 0) start = 0;
+			if (end > array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
-			for (size_t i=0; i<other.size(); i++)
+			for (int i=0; i<other.size(); i++)
 				array_data.insert(array_data.begin() + start + i, other[i]);
 
 			return *this;
@@ -718,38 +715,34 @@ namespace z
 		 * \return A subset of the main array.
 		 */
 		template <typename T>
-		array<T> array<T>::subset(size_t index, int count) const
+		array<T> array<T>::subset(int index, int count) const
 		{
 			array<T> output;
 
-			if (index >= array_data.size())
-				index = array_data.size()-1;
+			if (!count) return *this;
 
-			size_t start, end;
+			if (index < 0) index += array_data.size() + 1;
 
-			if (count < 0)
+			int start, end;
+
+			if (count > 0)
 			{
-				if ((size_t)-count >= index)
-					start = 0;
-				else
-					start = index + count;
-
-				end = index;
-
-				size_t offset = end+start;
-				for (size_t i=start; i<end; i++)
-					output.array_data.push_back(array_data[offset-i]);
-			}
-			else if (count)
-			{
-				end = index + count;
-				if (end > array_data.size()) end = array_data.size();
-
 				start = index;
-
-				for (size_t i=start; i<end; i++)
-					output.array_data.push_back(array_data[i]);
+				end = index + count;
 			}
+			else
+			{
+				start = index + count + 1;
+				end = index + 1;
+			}
+
+			if ((end < 0) || (start > array_data.size())) return *this;
+			if (start < 0) start = 0;
+			if (end > array_data.size()) end = array_data.size();
+
+			if (end-start > 0) output.array_data.reserve(end-start);
+			for (int i=start; i<end; i++)
+				output.array_data.push_back(array_data[i]);
 
 			return output;
 		}
@@ -764,18 +757,20 @@ namespace z
 		 * \b False otherwise.
 		 */
 		template <typename T>
-		bool array<T>::isValid(size_t index) const
+		bool array<T>::isValid(int index) const
 		{
-			return (index < array_data.size());
+			if (index < 0) index += array_data.size() + 1;
+			return (index < array_data.size()) && (index >= 0);
 		}
 
 		template <typename T>
 		void array<T>::serialIn(inputStream& stream)
 		{
-			size_t count = 0;
+			int count = 0;
 			z::core::serialIn(count, stream);
 
-			for (size_t i=0; i<count; i++)
+			if (count) array_data.reserve(count);
+			for (int i=0; i<count; i++)
 			{
 				T object{};
 				z::core::serialIn(object, stream);
@@ -786,10 +781,10 @@ namespace z
 		template <typename T>
 		void array<T>::serialOut(outputStream& stream) const
 		{
-			size_t count = array_data.size();
+			int count = array_data.size();
 			z::core::serialOut(count, stream);
 
-			for (size_t i=0; i<count; i++)
+			for (int i=0; i<count; i++)
 			{
 				z::core::serialOut(array_data[i], stream);
 			}

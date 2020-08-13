@@ -44,11 +44,11 @@ namespace z
 
 		private:
 			uint8_t* data;
-			size_t data_len;
-			size_t character_ct;
+			int data_len;
+			int character_ct;
 
-			void initChar(uint32_t, size_t);
-			constexpr size_t charSize() const;
+			void initChar(uint32_t, int);
+			constexpr int charSize() const;
 
 			void initInt(long long, unsigned int, unsigned int);
 			void initFloat(double, unsigned int, unsigned int, bool, unsigned int);
@@ -85,9 +85,6 @@ namespace z
 			 * This constructor exists to allow a "default" string character to
 			 * again be constructed into a string.
 			 * Converts the given character to the appropriate encoding for this string.
-			 *
-			 * \see at()
-			 * \see operator[]()
 			 */
 			string(const uint32_t& chr);
 
@@ -283,7 +280,7 @@ namespace z
 			 *
 			 * \param charCount The minimum number of characters this string should be able to contain before reallocating.
 			 */
-			void increase(size_t charCount);
+			void increase(int charCount);
 
 
 			/**
@@ -301,7 +298,7 @@ namespace z
 			 *
 			 * \see operator[]()
 			 */
-			uint32_t at(size_t index) const;
+			uint32_t at(int index) const;
 
 			/**
 			 * \brief Get the character at the given index.
@@ -318,7 +315,7 @@ namespace z
 			 *
 			 * \see at()
 			 */
-			uint32_t operator[](size_t index) const;
+			uint32_t operator[](int index) const;
 
 			/**
 			 * \brief Get the size of the string in memory
@@ -337,7 +334,7 @@ namespace z
 			 *
 			 * \see chars()
 			 */
-			size_t length() const;
+			int length() const;
 
 			/**
 			 * \brief Get the individual character count of the string.
@@ -345,11 +342,11 @@ namespace z
 			 * \return The number of characters in the string.
 			 *
 			 * For UTF-8 strings, multibyte sequences are counted
-			 * count as a single character.
+			 * as a single character.
 			 *
 			 * \see length()
 			 */
-			size_t chars() const;
+			int chars() const;
 
 			/**
 			 * \brief Get the single-byte cstring pointer.
@@ -483,7 +480,7 @@ namespace z
 			 * forward starting at the given index. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findAfter(const string& other, size_t index, int occurrence = 1) const;
+			int findAfter(const string& other, int index, int occurrence = 1) const;
 
 			/**
 			 * \brief Reverse-find a specific occurrence of a sub-string.
@@ -499,7 +496,7 @@ namespace z
 			 * backward starting at the given index. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findBefore(const string& other, size_t index, int occurrence = 1) const;
+			int findBefore(const string& other, int index, int occurrence = 1) const;
 
 			/**
 			 * \brief Check if a sub-string is found at the given index.
@@ -510,7 +507,7 @@ namespace z
 			 * \return True if the sub-string was found beginning at the given index.
 			 * False otherwise.
 			 */
-			bool foundAt(const string& other, size_t index) const;
+			bool foundAt(const string& other, int index) const;
 
 			/**
 			 * \brief Check if a sub-string ends at the given index.
@@ -521,7 +518,7 @@ namespace z
 			 * \return True if the sub-string was found ending at the given index.
 			 * False otherwise.
 			 */
-			bool foundEndAt(const string& other, size_t index) const;
+			bool foundEndAt(const string& other, int index) const;
 
 			/**
 			 * \brief Check if the string begins with a given sub-string.
@@ -637,7 +634,7 @@ namespace z
 			 * e.g. for `string str = "example"`, `str.substr(2,3)` will
 			 * give `"amp"`, and `str.substr(5,-3)` will give `"pma"`.
 			 */
-			string substr(size_t index, int count) const;
+			string substr(int index, int count) const;
 
 			/**
 			 * \brief Append another string to the end of this one.
@@ -679,7 +676,7 @@ namespace z
 			 * `A = "xyz"`, `A.insert(B,0)` would give `"abcxyz"`, `A.insert(B,1)` would
 			 * give `"xabcyz"`, etc.
 			 */
-			const string& insert(const string& other, size_t index);
+			const string& insert(const string& other, int index);
 
 			/**
 			 * \brief Remove occurrences of the given sub-string.
@@ -707,7 +704,7 @@ namespace z
 			 * If count is 0, no characters are removed. If count is negative, characters are
 			 * removed in reverse order.
 			 */
-			const string& remove(size_t index, int count);
+			const string& remove(int index, int count);
 
 			/**
 			 * \brief Replace occurrences of the given sub-string.
@@ -737,7 +734,7 @@ namespace z
 			 * If count is 0, no characters are replaced. Characters are replaced in forward-order
 			 * whether count is positive or negative.
 			 */
-			const string& replace(size_t index, int count, const string& other);
+			const string& replace(int index, int count, const string& other);
 
 			/**
 			 * \brief Copy this string, left-padded given character count.
@@ -752,7 +749,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			string padLeft(const string& other, size_t padSize) const
+			string padLeft(const string& other, int padSize) const
 			{
 				string newString = *this;
 				return newString.padLeftIn(other, padSize);
@@ -771,7 +768,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padLeftIn(const string& other, size_t padSize);
+			const string& padLeftIn(const string& other, int padSize);
 
 			/**
 			 * \brief Copy this string, right-padded given character count.
@@ -786,7 +783,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			string padRight(const string& other, size_t padSize) const
+			string padRight(const string& other, int padSize) const
 			{
 				string newString = *this;
 				return newString.padRightIn(other, padSize);
@@ -805,7 +802,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padRightIn(const string& other, size_t padSize);
+			const string& padRightIn(const string& other, int padSize);
 
 			/**
 			 * \brief Append text onto this string a specific number of times.
@@ -815,10 +812,10 @@ namespace z
 			 *
 			 * \return A reference to this string after appending.
 			 */
-			const string& repeat(const string& other, size_t count)
+			const string& repeat(const string& other, int count)
 			{
 				increase(character_ct + (other.character_ct * count));
-				for (size_t i=0; i<count; ++i) append(other);
+				for (int i=0; i<count; ++i) append(other);
 				return *this;
 			}
 
@@ -836,7 +833,7 @@ namespace z
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
-				size_t index = 0;
+				int index = 0;
 				if (other.length())
 				{
 					while (foundAt(other, index))
@@ -852,7 +849,7 @@ namespace z
 					}
 				}
 
-				return substr(index+other.character_ct, character_ct-index);
+				return substr(index, character_ct-index);
 			}
 
 			/**
@@ -869,14 +866,12 @@ namespace z
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
-				size_t index = character_ct-other.character_ct;
-				int count = 0;
+				int index = character_ct - 1;
 				if (other.length())
 				{
-					while (foundAt(other, index))
+					while (foundEndAt(other, index))
 					{
 						index -= other.character_ct;
-						count += other.character_ct;
 					}
 				}
 				else
@@ -884,11 +879,10 @@ namespace z
 					while (isWhiteSpace(at(index)))
 					{
 						--index;
-						++count;
 					}
 				}
 
-				return *this;
+				return substr(0, index);
 			}
 
 			/**
@@ -905,7 +899,7 @@ namespace z
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
-				size_t index = 0;
+				int index = 0;
 				if (other.length())
 				{
 					while (foundAt(other, index))
@@ -938,14 +932,12 @@ namespace z
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
-				size_t index = character_ct-other.character_ct;
-				int count = 0;
+				int index = character_ct - 1;
 				if (other.length())
 				{
-					while (foundAt(other, index))
+					while (foundEndAt(other, index))
 					{
 						index -= other.character_ct;
-						count += other.character_ct;
 					}
 				}
 				else
@@ -953,11 +945,10 @@ namespace z
 					while (isWhiteSpace(at(index)))
 					{
 						--index;
-						++count;
 					}
 				}
 
-				return remove(index+other.character_ct+1, character_ct);
+				return remove(index+1, character_ct);
 			}
 
 			/**

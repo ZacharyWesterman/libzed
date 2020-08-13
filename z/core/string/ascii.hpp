@@ -5,42 +5,20 @@ namespace z
 	namespace core
 	{
 		template <>
-		void string<ascii>::increase(size_t max_chars)
+		void string<ascii>::increase(int max_chars)
 		{
-			size_t goal = max_chars + 1; //account for null byte at the end
+			int goal = max_chars + 1; //account for null byte at the end
 			if (data_len >= goal) return;
 
 			uint8_t* old_data = data;
-			size_t old_data_len = data_len;
+			int old_data_len = data_len;
 
 			//~1.5x string growth
 			while (data_len < goal)
 				data_len += (data_len + 4) >> 1;
 			data = new uint8_t[data_len];
 
-			size_t remain = old_data_len;
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* old32 = (uint32_t*)old_data;
-
-			size_t i = 0;
-
-			//copy as much data as possible in 32-bit chunks
-			while (remain >= 4)
-			{
-				data32[i] = old32[i];
-
-				i++;
-				remain -= sizeof(uint32_t);
-			}
-
-			//copy remaining amount
-			while (remain)
-			{
-				size_t offset = old_data_len - remain;
-				data[offset] = old_data[offset];
-
-				remain--;
-			}
+			memcpy(data, old_data, old_data_len);
 
 			delete[] old_data;
 		}
@@ -54,31 +32,32 @@ namespace z
 		template <>
 		const uint16_t* string<ascii>::nstring() const
 		{
-			return 0;
+			return nullptr;
 		}
 
 		template <>
 		const uint32_t* string<ascii>::wstring() const
 		{
-			return 0;
+			return nullptr;
 		}
 
 		template <>
-		void string<ascii>::initChar(uint32_t chr, size_t index)
+		void string<ascii>::initChar(uint32_t chr, int index)
 		{
 			data[index] = chr;
 		}
 
 		template <>
-		size_t string<ascii>::charSize() const
+		int string<ascii>::charSize() const
 		{
 			return 1;
 		}
 
 		template <>
-		uint32_t string<ascii>::at(size_t index) const
+		uint32_t string<ascii>::at(int index) const
 		{
-			if (index < character_ct)
+			if (index < 0) index = character_ct - index;
+			if ((index < character_ct) && (index >= 0))
 				return data[index];
 			else
 				return 0;
@@ -90,17 +69,9 @@ namespace z
 		template <>
 		const string<ascii>& string<ascii>::operator+=(const string<ascii>& other)
 		{
-			size_t new_size = character_ct + other.character_ct + 1;
-			this->increase(new_size);
-
-			for (size_t i=0; i<other.character_ct; i++)
-			{
-				data[character_ct + i] = other.data[i];
-			}
-			data[new_size-1] = 0;
-
+			increase(character_ct + other.character_ct);
+			memcpy((data + character_ct), other.data, other.character_ct);
 			character_ct += other.character_ct;
-
 			return *this;
 		}
 
@@ -110,10 +81,10 @@ namespace z
 		{
 			if (!other.character_ct) return 0;
 
-			size_t occurrence = 0;
+			int occurrence = 0;
 
-			size_t other_i = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int other_i = 0;
+			for (int i=0; i<character_ct; i++)
 			{
 				if (data[i] == other.data[other_i])
 				{
@@ -136,12 +107,15 @@ namespace z
 		}
 
 		template <>
-		int string<ascii>::findAfter(const string<ascii>& other, size_t index, int occurrence) const
+		int string<ascii>::findAfter(const string<ascii>& other, int index, int occurrence) const
 		{
 			if (!other.character_ct || (occurrence < 1)) return -1;
 
-			size_t other_i = 0;
-			for (size_t i=index; i<character_ct; i++)
+			if (index < 0) index = character_ct - index;
+			if (index < 0) index = 0;
+
+			int other_i = 0;
+			for (int i=index; i<character_ct; i++)
 			{
 				//reset to first char of other if not still matching
 				if (data[i] != other.data[other_i])
@@ -164,15 +138,20 @@ namespace z
 		}
 
 		template <>
-		int string<ascii>::findBefore(const string<ascii>& other, size_t index, int occurrence) const
+		int string<ascii>::findBefore(const string<ascii>& other, int index, int occurrence) const
 		{
 			if (!other.character_ct || (occurrence < 1)) return -1;
 
 			if (index > (character_ct - other.character_ct))
 				index = character_ct - other.character_ct;
+			else if (index < 0)
+			{
+				index = character_ct - index;
+				if (index < 0) return -1;
+			}
 
-			size_t other_i = other.character_ct - 1;
-			for (size_t i=index; i<character_ct; i--)
+			int other_i = other.character_ct - 1;
+			for (int i=index; i<character_ct; i--)
 			{
 				if (data[i] == other.data[other_i])
 				{
@@ -203,61 +182,40 @@ namespace z
 		template <>
 		const string<ascii>& string<ascii>::operator=(const string<ascii>& other)
 		{
-			size_t new_len = (other.character_ct + 1) * this->charSize();
-			this->increase(new_len);
-			// data = new uint8_t[data_len];
-
+			increase(other.character_ct);
 			character_ct = other.character_ct;
-
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = data_len >> 2;
-
-			for (size_t i=0; i<len32; i++)
-				data32[i] = other32[i];
-
-			size_t len = len32 << 2;
-			for (size_t i=len; i<data_len; i++)
-				data[i] = other.data[i];
-
+			memcpy(data, other.data, other.character_ct + 1);
 			return *this;
 		}
 
 		template <>
-		string<ascii> string<ascii>::substr(size_t index, int count) const
+		string<ascii> string<ascii>::substr(int index, int count) const
 		{
 			string<ascii> result;
+			if (!count) return result;
 
-			if (count < 0)
+			if (index < 0) index = character_ct - index;
+
+			int begin, end;
+			if (count > 0)
 			{
-				if (index >= character_ct) index = character_ct - 1;
-
-				count = -count;
-				if ((size_t)count > (character_ct-index)) count = character_ct-index;
-				result.increase(count);
-
-				size_t beg = index - count + 1;
-				for (size_t i=beg; i<=index; i++)
-				{
-					result.data[index-i] = data[i];
-				}
-				result.data[count] = 0;
-				result.character_ct = count;
+				begin = index;
+				end = index + count;
 			}
-			else if (count)
+			else
 			{
-				if (index >= character_ct) return result;
-
-				if ((size_t)count > (character_ct-index)) count = character_ct-index;
-				result.increase(count);
-
-				size_t end = index + count;
-				for (size_t i=index; i<end; i++)
-					result.data[i-index] = data[i];
-
-				result.data[count] = 0;
-				result.character_ct = count;
+				begin = index + count + 1;
+				end = index + 1;
 			}
+
+			if ((end <= 0) || (begin >= character_ct)) return result;
+
+			if (begin < 0) begin = 0;
+			if (end >= character_ct) end = character_ct;
+
+			result.increase(end - begin);
+			memcpy(result.data, (data + begin), end - begin + 1);
+			result.character_ct = end - begin;
 
 			return result;
 		}
@@ -276,29 +234,23 @@ namespace z
 		}
 
 		template <>
-		const string<ascii>& string<ascii>::insert(const string<ascii>& other, size_t index)//insert before index
+		const string<ascii>& string<ascii>::insert(const string<ascii>& other, int index)//insert before index
 		{
 			if (!other.character_ct) return *this;
 
+			//Bounds check
 			if (index >= character_ct) index = character_ct;
-
-			size_t start = index + other.character_ct;
-			size_t end = character_ct + other.character_ct;
-			this->increase(end);
-
-			for (size_t i=end-1; i>=start; i--)
+			else if (index < 0)
 			{
-				data[i] = data[i - other.character_ct];
+				index = character_ct - index;
+				if (index < 0) return *this;
 			}
 
-			end = index + other.character_ct;
-			for (size_t i=index; i<end; i++)
-			{
-				data[i] = other.data[i-index];
-			}
-
-			character_ct += other.character_ct;
-			data[character_ct] = 0;
+			int begin = index + other.character_ct;
+			int end = character_ct + other.character_ct;
+			increase(end);
+			memmove((data + end), (data + begin), (end - begin + 1));
+			memcpy((data + begin), other.data, other.character_ct);
 
 			return *this;
 		}

@@ -84,7 +84,7 @@ namespace z
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(size_t index) = 0;
+			virtual void seek(int index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -92,7 +92,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual size_t tell() = 0;
+			virtual int tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -102,7 +102,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual size_t end() = 0;
+			virtual int end() = 0;
 
 			/**
 			 * \brief Get the expected format of the stream.
@@ -161,7 +161,7 @@ namespace z
 			 * \param count The number of characters.
 			 * \param format The scheme the characters are encoded in.
 			 */
-			virtual void put(uint8_t* str, size_t count, encoding format = ascii) = 0;
+			virtual void put(uint8_t* str, int count, encoding format = ascii) = 0;
 
 			/**
 			 * \brief Tell whether this is a valid stream object.
@@ -198,7 +198,7 @@ namespace z
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(size_t index) = 0;
+			virtual void seek(int index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -206,7 +206,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual size_t tell() = 0;
+			virtual int tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -216,7 +216,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual size_t end() = 0;
+			virtual int end() = 0;
 
 			/**
 			 * \brief Get the expected format of the stream.

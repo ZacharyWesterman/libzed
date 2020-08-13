@@ -20,10 +20,10 @@ namespace z
 			data.add(ch);
 		}
 
-		void binaryStream::put(uint8_t* str, size_t count, encoding format)
+		void binaryStream::put(uint8_t* str, int count, encoding format)
 		{
 			if (!str) return;
-			size_t datact;
+			int datact;
 
 			switch (format)
 			{
@@ -39,7 +39,7 @@ namespace z
 				datact = count;
 			}
 
-			for (size_t i=0; i<datact; i++)
+			for (int i=0; i<datact; i++)
 			{
 				data.add(str[i]);
 			}
@@ -57,7 +57,7 @@ namespace z
 		{
 			if (streamIndex >= data.length()) return 0;
 
-			size_t datact;
+			int datact;
 
 			uint8_t res8;
 			uint16_t res16;
@@ -87,7 +87,7 @@ namespace z
 				return 0;
 			}
 
-			for (size_t i=0; i<datact; i++)
+			for (int i=0; i<datact; i++)
 				str[i] = data[streamIndex++];
 
 			switch (format())
@@ -126,20 +126,22 @@ namespace z
 			return true;
 		}
 
-		void binaryStream::seek(size_t index)
+		void binaryStream::seek(int index)
 		{
 			if (index > data.length())
 				streamIndex = data.length();
+			else if (index < 0)
+				streamIndex = 0;
 			else
 				streamIndex = index;
 		}
 
-		size_t binaryStream::tell()
+		int binaryStream::tell()
 		{
 			return streamIndex;
 		}
 
-		size_t binaryStream::end()
+		int binaryStream::end()
 		{
 			return data.length();
 		}
@@ -151,13 +153,13 @@ namespace z
 
 			if (this->empty()) return streamFormat = ascii;
 
-			size_t read_max = (32 > data.length()) ? data.length() : 32;
+			int read_max = (32 > data.length()) ? data.length() : 32;
 
-			size_t contig_nulls = 0;
+			int contig_nulls = 0;
 			bool found_nulls = false;
 			bool can_utf8 = true;
 
-			for (size_t i=0; i<read_max; i++)
+			for (int i=0; i<read_max; i++)
 			{
 				//ascii and utf8 won't have null chars
 				if (found_nulls || !data[i])

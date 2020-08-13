@@ -12,10 +12,10 @@ namespace z
 				data[streamIndex++] = ch;
 		}
 
-		void memoryStream::put(uint8_t* str, size_t count, encoding format)
+		void memoryStream::put(uint8_t* str, int count, encoding format)
 		{
 			if (!(str && data)) return;
-			size_t datact;
+			int datact;
 
 			switch (format)
 			{
@@ -34,7 +34,7 @@ namespace z
 			if ((streamIndex + datact) > dataSize)
 				datact = dataSize - streamIndex;
 
-			for (size_t i=0; i<datact; i++)
+			for (int i=0; i<datact; i++)
 			{
 				data[streamIndex++] = str[i];
 			}
@@ -52,7 +52,7 @@ namespace z
 		{
 			if (streamIndex > dataSize) return 0;
 
-			size_t datact;
+			int datact;
 
 			uint8_t res8;
 			uint16_t res16;
@@ -82,7 +82,7 @@ namespace z
 				return 0;
 			}
 
-			for (size_t i=0; i<datact; i++)
+			for (int i=0; i<datact; i++)
 				str[i] = data[streamIndex++];
 
 			switch (format())
@@ -121,17 +121,18 @@ namespace z
 			return true;
 		}
 
-		void memoryStream::seek(size_t index)
+		void memoryStream::seek(int index)
 		{
 			streamIndex = (index > dataSize) ? dataSize : index;
+			if (streamIndex < 0) streamIndex = 0;
 		}
 
-		size_t memoryStream::tell()
+		int memoryStream::tell()
 		{
 			return streamIndex;
 		}
 
-		size_t memoryStream::end()
+		int memoryStream::end()
 		{
 			return dataSize;
 		}
@@ -143,13 +144,13 @@ namespace z
 
 			if (this->empty()) return streamFormat = ascii;
 
-			size_t read_max = (32 > dataSize) ? dataSize : 32;
+			int read_max = (32 > dataSize) ? dataSize : 32;
 
-			size_t contig_nulls = 0;
+			int contig_nulls = 0;
 			bool found_nulls = false;
 			bool can_utf8 = true;
 
-			for (size_t i=0; i<read_max; i++)
+			for (int i=0; i<read_max; i++)
 			{
 				//ascii and utf8 won't have null chars
 				if (found_nulls || !data[i])
