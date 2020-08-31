@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = libzed
-PROJECT_NUMBER         = 1.4
+PROJECT_NUMBER         = 1.5
 PROJECT_BRIEF          = "Code libraries for use in other projects"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       =

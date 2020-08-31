@@ -1,6 +1,6 @@
 LIBNAME = zed
 VERSION = 1
-VER_SUB = 4
+VER_SUB = 5
 
 SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/core/string/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/regex/rules/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
