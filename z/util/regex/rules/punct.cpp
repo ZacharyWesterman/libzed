@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			punct::punct(bool negate, size_t min, size_t max, bool greedy):
+			punct::punct(bool negate, int min, int max, bool greedy):
 				rule(min,max,greedy), negate(negate) {}
 
 			bool punct::match(uint32_t current) const

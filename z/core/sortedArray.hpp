@@ -39,10 +39,10 @@ namespace z
 				this->init(arg1, args...);
 			}
 
-			virtual size_t add(const T&) override;
+			virtual int add(const T&) override;
 
-			virtual intmax_t find(const T&) const override;
-			virtual intmax_t findInsert(const T&, bool allowDuplicates = true) const;
+			virtual int find(const T&) const override;
+			virtual int findInsert(const T&, bool allowDuplicates = true) const;
 
 			virtual void sort();
 		};
@@ -59,9 +59,9 @@ namespace z
 		 * \return The index where the inserted object now resides.
 		 */
 		template <typename T>
-		size_t sortedArray<T>::add(const T& object)
+		int sortedArray<T>::add(const T& object)
 		{
-			size_t index = findInsert(object);
+			int index = findInsert(object);
 
 			this->insert(object, index);
 
@@ -83,17 +83,17 @@ namespace z
 		 * \b -1 if it was not found.
 		 */
 		template <typename T>
-		intmax_t sortedArray<T>::find(const T& object) const
+		int sortedArray<T>::find(const T& object) const
 		{
 			if (this->array_data.size() == 0)
 				return -1;
 
-			intmax_t left = 0;
-			intmax_t right = this->array_data.size()-1;
+			int left = 0;
+			int right = this->array_data.size()-1;
 
 			while (left < right)
 			{
-				intmax_t center = (left + right) / 2;
+				int center = (left + right) / 2;
 
 				if (this->lt(this->array_data.at(center), object))
 				{
@@ -128,17 +128,17 @@ namespace z
 		 * \return The first index where the object can be inserted.
 		 */
 		template <typename T>
-		intmax_t sortedArray<T>::findInsert(const T& object, bool allowDuplicates) const
+		int sortedArray<T>::findInsert(const T& object, bool allowDuplicates) const
 		{
 			if (this->array_data.size() == 0)
 				return 0;
 
-			intmax_t left = 0;
-			intmax_t right = this->array_data.size()-1;
+			int left = 0;
+			int right = this->array_data.size()-1;
 
 			while (left < right)
 			{
-				intmax_t center = (left + right) / 2;
+				int center = (left + right) / 2;
 
 				if (this->lt(this->array_data.at(center), object))
 				{
@@ -179,7 +179,7 @@ namespace z
 				done = true;
 
 
-				for (size_t i=0; i<(size_t)this->array_data.size()-1; i++)
+				for (int i=0; i<(int)(this->array_data.size()-1); i++)
 				{
 					if (this->gt(this->array_data[i],this->array_data[i+1]))
 					{

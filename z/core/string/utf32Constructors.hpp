@@ -58,7 +58,7 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
@@ -67,7 +67,7 @@ namespace z
 
 				uint32_t* data32 = (uint32_t*)data;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 					data32[i] = str[i];
 			}
 			else
@@ -85,7 +85,7 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
@@ -94,7 +94,7 @@ namespace z
 
 				uint32_t* data32 = (uint32_t*)data;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 					data32[i] = str[i];
 			}
 			else
@@ -116,7 +116,7 @@ namespace z
 			data = new uint8_t[data_len];
 			uint32_t* data32 = (uint32_t*)data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data32[i] = other.data[i];
 		}
 
@@ -124,7 +124,7 @@ namespace z
 		string<utf32>::string(const string<utf8>& other)
 		{
 			character_ct = 0;
-			for (size_t i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
+			for (int i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
 				character_ct++;
 
 			data_len = (character_ct + 1) << 2;
@@ -133,8 +133,8 @@ namespace z
 			uint32_t* data32 = (uint32_t*)data;
 			data32[character_ct] = 0;
 
-			size_t pos = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int pos = 0;
+			for (int i=0; i<character_ct; i++)
 			{
 				uint32_t val = fromUTF8(&other.data[pos]);
 				pos += lenFromUTF8(&other.data[pos]);
@@ -154,7 +154,7 @@ namespace z
 			uint32_t* data32 = (uint32_t*)data;
 			uint16_t* data16 = (uint16_t*)other.data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data32[i] = data16[i];
 		}
 
@@ -169,7 +169,7 @@ namespace z
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data32[i] = other32[i];
 		}
 	}

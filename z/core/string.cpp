@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cstddef>
 #include <cfloat>
+#include <cstring>
 
 #include "charFunctions.hpp"
 #include "string.hpp"
@@ -32,11 +33,11 @@
 
 #define DBL_EXP_DIG ((sizeof(double) << 3) - DBL_MANT_DIG - 1)
 
-size_t integralBuf(unsigned long integral, unsigned int base, uint8_t* buf)
+int integralBuf(unsigned long integral, int base, uint8_t* buf)
 {
 	if (integral)
 	{
-		size_t length = 0;
+		int length = 0;
 
 		while (integral)
 		{
@@ -54,15 +55,15 @@ size_t integralBuf(unsigned long integral, unsigned int base, uint8_t* buf)
 	}
 }
 
-size_t fractionalBuf(double fractional, unsigned int base, unsigned int precision, bool force, uint8_t* buf)
+int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
 {
 	if (fractional)
 	{
 		fractional -= (double)(long)fractional;
 		// return 0;
-		size_t length = 0;
+		int length = 0;
 		double mult = base;
-		unsigned int i = 0;
+		int i = 0;
 
 		bool cont = true;
 		while ((i < precision) && cont)

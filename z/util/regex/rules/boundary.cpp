@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			boundary::boundary(bool negate, size_t min, size_t max, bool greedy):
+			boundary::boundary(bool negate, int min, int max, bool greedy):
 				rule(min,max,greedy), negate(negate) {}
 
 			bool boundary::match(core::inputStream& stream) const

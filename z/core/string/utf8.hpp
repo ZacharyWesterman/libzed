@@ -5,24 +5,24 @@ namespace z
 	namespace core
 	{
 		template <>
-		void string<utf8>::increase(size_t max_chars)
+		void string<utf8>::increase(int max_chars)
 		{
-			size_t goal = max_chars + 1; //account for null byte at the end
+			int goal = max_chars + 1; //account for null byte at the end
 			if (data_len >= goal) return;
 
 			uint8_t* old_data = data;
-			size_t old_data_len = data_len;
+			int old_data_len = data_len;
 
 			//~1.5x string growth
 			while (data_len < goal)
 				data_len += (data_len + 4) >> 1;
 			data = new uint8_t[data_len];
 
-			size_t remain = old_data_len;
+			int remain = old_data_len;
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* old32 = (uint32_t*)old_data;
 
-			size_t i = 0;
+			int i = 0;
 
 			//copy as much data as possible in 32-bit chunks
 			while (remain >= 4)
@@ -36,7 +36,7 @@ namespace z
 			//copy remaining amount
 			while (remain)
 			{
-				size_t offset = old_data_len - remain;
+				int offset = old_data_len - remain;
 				data[offset] = old_data[offset];
 
 				remain--;
@@ -64,22 +64,22 @@ namespace z
 		}
 
 		template <>
-		void string<utf8>::initChar(uint32_t chr, size_t index)
+		void string<utf8>::initChar(uint32_t chr, int index)
 		{
 			data[index] = chr;
 		}
 
 		template <>
-		size_t string<utf8>::charSize() const
+		int string<utf8>::charSize() const
 		{
 			return 1;
 		}
 
 		template <>
-		size_t string<utf8>::chars() const
+		int string<utf8>::chars() const
 		{
-			size_t i = 0;
-			size_t result = 0;
+			int i = 0;
+			int result = 0;
 
 			while (i < character_ct)
 			{
@@ -91,9 +91,10 @@ namespace z
 		}
 
 		template <>
-		uint32_t string<utf8>::at(size_t index) const
+		uint32_t string<utf8>::at(int index) const
 		{
-			if (index < character_ct)
+			if (index < 0) index += character_ct;
+			if ((index < character_ct) && (index >= 0))
 				return fromUTF8(&data[index]);
 			else
 				return 0;
@@ -103,10 +104,10 @@ namespace z
 		template <>
 		const string<utf8>& string<utf8>::operator+=(const string<utf8>& other)
 		{
-			size_t new_size = character_ct + other.character_ct + 1;
+			int new_size = character_ct + other.character_ct + 1;
 			this->increase(new_size);
 
-			for (size_t i=0; i<other.character_ct; i++)
+			for (int i=0; i<other.character_ct; i++)
 			{
 				data[character_ct + i] = other.data[i];
 			}
@@ -123,10 +124,10 @@ namespace z
 		{
 			if (!other.character_ct) return 0;
 
-			size_t occurrence = 0;
+			int occurrence = 0;
 
-			size_t other_i = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int other_i = 0;
+			for (int i=0; i<character_ct; i++)
 			{
 				if (data[i] == other.data[other_i])
 				{
@@ -149,12 +150,13 @@ namespace z
 		}
 
 		template <>
-		int string<utf8>::findAfter(const string<utf8>& other, size_t index, int occurrence) const
+		int string<utf8>::findAfter(const string<utf8>& other, int index, int occurrence) const
 		{
-			if (!other.character_ct || (occurrence < 1)) return -1;
+			if (index < 0) index += character_ct;
+			if (!other.character_ct || (occurrence < 1) || (index < 0)) return -1;
 
-			size_t other_i = 0;
-			for (size_t i=index; i<character_ct; i++)
+			int other_i = 0;
+			for (int i=index; i<character_ct; i++)
 			{
 				//reset to first char of other if not still matching
 				if (data[i] != other.data[other_i])
@@ -177,15 +179,16 @@ namespace z
 		}
 
 		template <>
-		int string<utf8>::findBefore(const string<utf8>& other, size_t index, int occurrence) const
+		int string<utf8>::findBefore(const string<utf8>& other, int index, int occurrence) const
 		{
-			if (!other.character_ct || (occurrence < 1)) return -1;
+			if (index < 0) index += character_ct;
+			if (!other.character_ct || (occurrence < 1) || (index < 0)) return -1;
 
 			if (index > (character_ct - other.character_ct))
 				index = character_ct - other.character_ct;
 
-			size_t other_i = other.character_ct - 1;
-			for (size_t i=index; i<character_ct; i--)
+			int other_i = other.character_ct - 1;
+			for (int i=index; i<character_ct; i--)
 			{
 				if (data[i] == other.data[other_i])
 				{
@@ -216,7 +219,7 @@ namespace z
 		template <>
 		const string<utf8>& string<utf8>::operator=(const string<utf8>& other)
 		{
-			size_t new_len = (other.character_ct + 1) * this->charSize();
+			int new_len = (other.character_ct + 1) * this->charSize();
 			this->increase(new_len);
 			// data = new uint8_t[data_len];
 
@@ -224,20 +227,20 @@ namespace z
 
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
-			size_t len32 = data_len >> 2;
+			int len32 = data_len >> 2;
 
-			for (size_t i=0; i<len32; i++)
+			for (int i=0; i<len32; i++)
 				data32[i] = other32[i];
 
-			size_t len = len32 << 2;
-			for (size_t i=len; i<data_len; i++)
+			int len = len32 << 2;
+			for (int i=len; i<data_len; i++)
 				data[i] = other.data[i];
 
 			return *this;
 		}
 
 		template <>
-		string<utf8> string<utf8>::substr(size_t index, int count) const
+		string<utf8> string<utf8>::substr(int index, int count) const
 		{
 			return string<utf8>(string<utf32>(*this).substr(index,count));
 		}
@@ -260,41 +263,32 @@ namespace z
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::insert(const string<utf8>& other, size_t index)//insert before index
+		const string<utf8>& string<utf8>::insert(const string<utf8>& other, int index)//insert before index
 		{
-			if (!other.character_ct) return *this;
+			if (index < 0) index += character_ct;
+			if (!other.character_ct || index < 0) return *this;
 
+			//Bounds check
 			if (index >= character_ct) index = character_ct;
 
-			size_t start = index + other.character_ct;
-			size_t end = character_ct + other.character_ct;
-			this->increase(end);
-
-			for (size_t i=end-1; i>=start; i--)
-			{
-				data[i] = data[i - other.character_ct];
-			}
-
-			end = index + other.character_ct;
-			for (size_t i=index; i<end; i++)
-			{
-				data[i] = other.data[i-index];
-			}
-
-			character_ct += other.character_ct;
-			data[character_ct] = 0;
+			int begin = index + other.character_ct;
+			int end = character_ct + other.character_ct;
+			increase(end);
+			memmove((data + end), (data + begin), (end - begin + 1));
+			memcpy((data + begin), other.data, other.character_ct);
 
 			return *this;
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::remove(size_t index, int count)
+		const string<utf8>& string<utf8>::remove(int index, int count)
 		{
 			if (count)
 			{
-				if (index >= character_ct) return *this;
+				if (index < 0) index += character_ct;
+				if (index >= character_ct || index < 0) return *this;
 
-				size_t start, end, offset;
+				int start, end, offset;
 
 				if (count < 0)
 				{
@@ -321,7 +315,7 @@ namespace z
 
 
 				end = character_ct - offset;
-				for (size_t i=start; i<end; i++)
+				for (int i=start; i<end; i++)
 				{
 					data[i] = data[i+offset];
 				}
@@ -334,15 +328,17 @@ namespace z
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::replace(size_t index, int count, const string<utf8>& other)
+		const string<utf8>& string<utf8>::replace(int index, int count, const string<utf8>& other)
 		{
 			if (count)
 			{
-				size_t start, end;
+				if (index < 0) index += character_ct;
+				if (index < 0) index = 0;
+				int start, end;
 
 				if (count < 0)
 				{
-					if ((index >= character_ct) && ((size_t)-count >= character_ct))
+					if ((index >= character_ct) && (-count >= character_ct))
 						return operator=(other);
 
 					if (index >= character_ct)
@@ -354,7 +350,7 @@ namespace z
 					{
 						end = index + 1;
 
-						if ((size_t)-count >= character_ct)
+						if (-count >= character_ct)
 							start = 0;
 						else
 							start = end + count;
@@ -365,41 +361,41 @@ namespace z
 					if (index >= character_ct)
 						return operator+=(other);
 
-					if (!index && ((size_t)count >= character_ct))
+					if (!index && (count >= character_ct))
 						return operator=(other);
 
 					start = index;
-					if ((size_t)count >= character_ct)
+					if (count >= character_ct)
 						end = character_ct;
 					else
 						end = start + count;
 				}
 
 
-				size_t offset = end - start;
-				size_t newCharCt = character_ct - offset + other.character_ct;
+				int offset = end - start;
+				int newCharCt = character_ct - offset + other.character_ct;
 				this->increase(newCharCt + 1);
 
 				if (newCharCt < character_ct)
 				{
 					//pull chars in
-					size_t toOffs = newCharCt - character_ct;
+					int toOffs = newCharCt - character_ct;
 
-					for (size_t i=end; i<character_ct; i++)
+					for (int i=end; i<character_ct; i++)
 						data[i+toOffs] = data[i];
 				}
 				else if (newCharCt > character_ct)
 				{
 					//pull chars out
-					size_t toPos = newCharCt + 1;
-					size_t fromPos = character_ct + 1;
+					int toPos = newCharCt + 1;
+					int fromPos = character_ct + 1;
 
-					for (size_t i=end; i<character_ct; i++)
+					for (int i=end; i<character_ct; i++)
 						data[toPos-i] = data[fromPos-i];
 				}
 				//else just directly replace chars
 
-				for (size_t i=0; i<other.character_ct; i++)
+				for (int i=0; i<other.character_ct; i++)
 					data[i+start] = other.data[i];
 
 				character_ct = newCharCt;
@@ -410,13 +406,13 @@ namespace z
 		}
 
 		template <>
-		uint32_t string<utf8>::operator[](size_t index) const
+		uint32_t string<utf8>::operator[](int index) const
 		{
 			return this->at(index);
 		}
 
 		template <>
-		void string<utf8>::initInt(long long value, unsigned int base, unsigned int padSize)
+		void string<utf8>::initInt(long long value, int base, int padSize)
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			if ((base < 2) || (base > 36)) base = 10;
@@ -428,7 +424,7 @@ namespace z
 				negative = true;
 			}
 
-			size_t ibufsiz = integralBuf(value, base, ibuf);
+			int ibufsiz = integralBuf(value, base, ibuf);
 
 			//initialize string data
 			character_ct = ibufsiz + negative;
@@ -442,12 +438,12 @@ namespace z
 
 			if (negative) this->initChar('-', 0);
 
-			size_t pos = negative;
+			int pos = negative;
 
-			for (size_t i=0; i<padSize; i++)
+			for (int i=0; i<padSize; i++)
 				this->initChar('0',pos++);
 
-			for (size_t i=0; i<ibufsiz; i++)
+			for (int i=0; i<ibufsiz; i++)
 				this->initChar(ibuf[ibufsiz-i-1], pos++);
 		}
 
@@ -464,8 +460,8 @@ namespace z
 			ptv ptr;
 			ptr.pval = pointer;
 
-			size_t pbufsiz = integralBuf(ptr.ival, 16, pbuf);
-			size_t padSize;
+			int pbufsiz = integralBuf(ptr.ival, 16, pbuf);
+			int padSize;
 
 			//initialize string data
 			if (Z_STR_POINTER_FORCE && (pbufsiz < Z_STR_POINTER_CHARS))
@@ -479,20 +475,20 @@ namespace z
 
 			// if (negative) this->initChar('-', 0);
 
-			size_t pos = 0;
+			int pos = 0;
 
 			this->initChar('0',pos++);
 			this->initChar('x',pos++);
 
-			for (size_t i=0; i<padSize; i++)
+			for (int i=0; i<padSize; i++)
 				this->initChar('0',pos++);
 
-			for (size_t i=0; i<pbufsiz; i++)
+			for (int i=0; i<pbufsiz; i++)
 				this->initChar(pbuf[pbufsiz-i-1], pos++);
 		}
 
 		template <>
-		void string<utf8>::initFloat(double value, unsigned int base, unsigned int precision, bool scientific, unsigned int padSize)
+		void string<utf8>::initFloat(double value, int base, int precision, bool scientific, int padSize)
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
@@ -520,7 +516,7 @@ namespace z
 			{
 				double minVal = 1.0;
 				double maxVal = 1.0;
-				for (unsigned int i=0; i<precision; i++)
+				for (int i=0; i<precision; i++)
 				{
 					minVal /= base;
 					maxVal *= base << 1;
@@ -554,9 +550,9 @@ namespace z
 			unsigned long integral = intTemp;
 
 			// number.raw.exponent - 1023;
-			size_t ibufsiz = integralBuf(integral, base, ibuf);
-			size_t fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
-			size_t ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
+			int ibufsiz = integralBuf(integral, base, ibuf);
+			int fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+			int ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
 			//initialize string data
 			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
 			if (character_ct < padSize)
@@ -568,20 +564,20 @@ namespace z
 			data_len = (character_ct + 1) * this->charSize();
 			data = new uint8_t[data_len];
 			if (negative) this->initChar('-', 0);
-			// size_t pos = 0;
-			size_t pos = negative;
-			//
-			for (size_t i=0; i<padSize; i++)
+
+			int pos = negative;
+
+			for (int i=0; i<padSize; i++)
 				this->initChar('0',pos++);
 
-			for (size_t i=0; i<ibufsiz; i++)
+			for (int i=0; i<ibufsiz; i++)
 				this->initChar(ibuf[ibufsiz-i-1], pos++);
 
 			if (fbufsiz)
 			{
 				this->initChar('.', pos++);
 
-				for (size_t i=0; i<fbufsiz; i++)
+				for (int i=0; i<fbufsiz; i++)
 					this->initChar(fbuf[i],pos++);
 			}
 
@@ -591,7 +587,7 @@ namespace z
 				if (negexponent)
 					this->initChar('-', pos++);
 
-				for (size_t i=0; i<ebufsiz; i++)
+				for (int i=0; i<ebufsiz; i++)
 					this->initChar(ebuf[ebufsiz-i-1],pos++);
 			}
 
@@ -599,7 +595,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf8>::initComplex(const std::complex<double>& value, unsigned int base, unsigned int precision)
+		void string<utf8>::initComplex(const std::complex<double>& value, int base, int precision)
 		{
 			data_len = 4;
 			data = new uint8_t[data_len];
@@ -632,7 +628,7 @@ namespace z
 		}
 
 		template <>
-		size_t string<utf8>::length() const
+		int string<utf8>::length() const
 		{
 			return character_ct;
 		}
@@ -645,9 +641,9 @@ namespace z
 			bool negative = (data[0] == '-');
 			long result = 0;
 
-			size_t start = (negative || (data[0] == '+'));
+			int start = (negative || (data[0] == '+'));
 
-			for (size_t i=start; i<character_ct; i++)
+			for (int i=start; i<character_ct; i++)
 			{
 				uint32_t chr = data[i];
 
@@ -673,7 +669,7 @@ namespace z
 			pastDecimal = pastExponent = negexponent = false;
 
 			bool negative = (data[0] == '-');
-			size_t start = (negative || (data[0] == '+'));
+			int start = (negative || (data[0] == '+'));
 
 			if (start >= character_ct) return 0;
 
@@ -681,7 +677,7 @@ namespace z
 			double frac = 1;
 			int exponent = 0;
 
-			for (size_t i=start; i<character_ct; i++)
+			for (int i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data[i], base))
 				{
@@ -754,7 +750,7 @@ namespace z
 			pastDecimal = pastExponent = imag = ir = negexponent = false;
 
 			bool negative = (data[0] == '-');
-			size_t start = (negative || (data[0] == '+'));
+			int start = (negative || (data[0] == '+'));
 
 			if (start >= character_ct) return 0;
 
@@ -766,7 +762,7 @@ namespace z
 
 			if (negative) result = -result;
 
-			for (size_t i=start; i<character_ct; i++)
+			for (int i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data[i], base))
 				{
@@ -898,11 +894,11 @@ namespace z
 			bool pastDecimal, pastExponent, imag, ir;
 			pastDecimal = pastExponent = imag = ir = false;
 
-			size_t start = ((data[0] == '-') || (data[0] == '+'));
+			int start = ((data[0] == '-') || (data[0] == '+'));
 
 			if (start >= character_ct) return zstr::string;
 
-			for (size_t i=start; i<character_ct; i++)
+			for (int i=start; i<character_ct; i++)
 			{
 				if (!isNumeric(data[i], 10))
 				{
@@ -964,18 +960,19 @@ namespace z
 
 		///analyzers
 		template <>
-		bool string<utf8>::foundAt(const string<utf8>& other, size_t index) const
+		bool string<utf8>::foundAt(const string<utf8>& other, int index) const
 		{
-			if ((character_ct - index) < other.character_ct) return false;
+			if (index < 0) index += character_ct;
+			if ((character_ct - index) < other.character_ct || index < 0) return false;
 
 			uint32_t* data32 = (uint32_t*)data;
 			uint32_t* other32 = (uint32_t*)other.data;
 
-			const size_t charSz = this->charSize();
+			const int charSz = this->charSize();
 
-			size_t i = 0;
-			size_t idx = index * charSz;
-			size_t end = (other.character_ct * charSz) >> 2;
+			int i = 0;
+			int idx = index * charSz;
+			int end = (other.character_ct * charSz) >> 2;
 			for (i=0; i<end; i++)
 			{
 				if (data32[i+index] != other32[i])
@@ -992,20 +989,21 @@ namespace z
 		}
 
 		template <>
-		bool string<utf8>::foundEndAt(const string<utf8>& other, size_t index) const
+		bool string<utf8>::foundEndAt(const string<utf8>& other, int index) const
 		{
+			if (index < 0) index += character_ct;
 			if (index < other.character_ct) return false;
 			if (index >= character_ct) return false;
 
-			const size_t charSz = this->charSize();
-			const size_t idx = (index-other.character_ct+1)*charSz;
-			const size_t last = other.character_ct * charSz;
+			const int charSz = this->charSize();
+			const int idx = (index-other.character_ct+1)*charSz;
+			const int last = other.character_ct * charSz;
 
 			uint32_t* data32 = (uint32_t*)&data[idx];
 			uint32_t* other32 = (uint32_t*)other.data;
 
-			size_t i = 0;
-			size_t end = last >> 2;
+			int i = 0;
+			int end = last >> 2;
 			while (i < end)
 			{
 				if (data32[i] != other32[i])
@@ -1059,7 +1057,7 @@ namespace z
 
 				if (pos >= 0)
 				{
-					this->replace((size_t)pos, (int)findStr.length(), replStr);
+					this->replace(pos, findStr.length(), replStr);
 				}
 			}
 			else if (!occurrence) //replace all occurrences
@@ -1068,7 +1066,7 @@ namespace z
 
 				while (pos >= 0)
 				{
-					this->replace((size_t)pos, (int)findStr.length(), replStr);
+					this->replace(pos, findStr.length(), replStr);
 					pos = this->findAfter(findStr, pos+replStr.length(), 1);
 				}
 			}
@@ -1077,13 +1075,13 @@ namespace z
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::padLeftIn(const string<utf8>& other, size_t padSize)
+		const string<utf8>& string<utf8>::padLeftIn(const string<utf8>& other, int padSize)
 		{
 			if (padSize <= character_ct) return *this;
 
 			string<utf8> padStr;
 
-			size_t padChars = padSize - character_ct;
+			int padChars = padSize - character_ct;
 
 			while (padChars >= other.character_ct)
 			{
@@ -1091,20 +1089,20 @@ namespace z
 				padChars -= other.character_ct;
 			}
 
-			if (padChars)
+			if (padChars > 0)
 				padStr += other.substr(0, padChars);
 
 			return this->insert(padStr, 0);
 		}
 
 		template <>
-		const string<utf8>& string<utf8>::padRightIn(const string<utf8>& other, size_t padSize)
+		const string<utf8>& string<utf8>::padRightIn(const string<utf8>& other, int padSize)
 		{
 			if (padSize <= character_ct) return *this;
 
 			string<utf8> padStr;
 
-			size_t padChars = padSize - character_ct;
+			int padChars = padSize - character_ct;
 
 			while (padChars >= other.character_ct)
 			{
@@ -1112,7 +1110,7 @@ namespace z
 				padChars -= other.character_ct;
 			}
 
-			if (padChars)
+			if (padChars > 0)
 				padStr += other.substr(0, padChars);
 
 			return operator+=(padStr);
@@ -1132,7 +1130,7 @@ namespace z
 
 			while (pos >= 0)
 			{
-				size_t opos = pos + other.length();
+				int opos = pos + other.length();
 				while (this->foundAt(other, opos))
 				{
 					this->remove(opos, other.length());
@@ -1147,7 +1145,7 @@ namespace z
 		string<utf8>& string<utf8>::toUpper()
 		{
 			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
-			size_t i=0;
+			int i=0;
 			while (i < character_ct)
 			{
 				auto ch = core::toUpper(fromUTF8(&data[i]));
@@ -1162,7 +1160,7 @@ namespace z
 		string<utf8>& string<utf8>::toLower()
 		{
 			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
-			size_t i=0;
+			int i=0;
 			while (i < character_ct)
 			{
 				auto ch = core::toLower(fromUTF8(&data[i]));
@@ -1178,7 +1176,7 @@ namespace z
 		{
 			bool doLower = false;
 			//note that all uppercase characters are the same number of bytes as their lowercase equivalent.
-			size_t i=0;
+			int i=0;
 			while (i < character_ct)
 			{
 				auto ch = fromUTF8(&data[i]);
@@ -1199,110 +1197,6 @@ namespace z
 			result += other;
 
 			return result;
-		}
-
-		template <>
-		bool string<utf8>::operator==(const string<utf8>& other) const
-		{
-			if (character_ct != other.character_ct)
-				return false;
-
-			size_t fast_sz = character_ct / sizeof(size_t);
-			size_t slow_bg = fast_sz * sizeof(size_t);
-
-			size_t* data_ptr = (size_t*)data;
-			size_t* other_ptr = (size_t*)other.data;
-
-			//compare max number of bytes at a time (usu. 8)
-			//Minor slowdown for small strings, faster for large strings.
-			for (size_t i=0; i<fast_sz; i++)
-			{
-				if (data_ptr[i] != other_ptr[i])
-					return false;
-			}
-
-			//check any remaining characters
-			for (size_t i=slow_bg; i<character_ct; i++)
-			{
-				if (data[i] != other.data[i])
-					return false;
-			}
-
-			return true;
-		}
-
-		template <>
-		bool string<utf8>::operator>(const string<utf8>& other) const
-		{
-			size_t max_char;
-			if (character_ct < other.character_ct)
-				max_char = character_ct;
-			else
-				max_char = other.character_ct;
-
-			size_t fast_sz = max_char / sizeof(size_t);
-			size_t slow_bg = fast_sz * sizeof(size_t);
-
-			size_t* data_ptr = (size_t*)data;
-			size_t* other_ptr = (size_t*)other.data;
-
-			//compare max number of bytes at a time (usu. 8)
-			//Minor slowdown for small strings, faster for large strings.
-			for (size_t i=0; i<fast_sz; i++)
-			{
-				if (data_ptr[i] > other_ptr[i])
-					return true;
-				else if (data_ptr[i] < other_ptr[i])
-					return false;
-			}
-
-			//check any remaining characters
-			for (size_t i=slow_bg; i<max_char; i++)
-			{
-				if (data[i] > other.data[i])
-					return true;
-				else if (data[i] < other.data[i])
-					return false;
-			}
-
-			return (character_ct > other.character_ct);
-		}
-
-		template <>
-		bool string<utf8>::operator<(const string<utf8>& other) const
-		{
-			size_t max_char;
-			if (character_ct < other.character_ct)
-				max_char = character_ct;
-			else
-				max_char = other.character_ct;
-
-			size_t fast_sz = max_char / sizeof(size_t);
-			size_t slow_bg = fast_sz * sizeof(size_t);
-
-			size_t* data_ptr = (size_t*)data;
-			size_t* other_ptr = (size_t*)other.data;
-
-			//compare max number of bytes at a time (usu. 8)
-			//Minor slowdown for small strings, faster for large strings.
-			for (size_t i=0; i<fast_sz; i++)
-			{
-				if (data_ptr[i] < other_ptr[i])
-					return true;
-				else if (data_ptr[i] > other_ptr[i])
-					return false;
-			}
-
-			//check any remaining characters
-			for (size_t i=slow_bg; i<max_char; i++)
-			{
-				if (data[i] < other.data[i])
-					return true;
-				else if (data[i] < other.data[i])
-					return false;
-			}
-
-			return (character_ct < other.character_ct);
 		}
 
 		template <>
@@ -1465,7 +1359,7 @@ namespace z
 			core::serialIn(character_ct, stream);
 			increase(character_ct);
 
-			size_t i = 0;
+			int i = 0;
 			while (!stream.empty() && (i < character_ct))
 			{
 				data[i++] = stream.get();
@@ -1480,7 +1374,7 @@ namespace z
 			if (stream.bad() || !stream.binary())
 				return;
 
-			size_t datact = character_ct;
+			int datact = character_ct;
 			core::serialOut(datact, stream);
 
 			stream.put(data, character_ct, utf8);

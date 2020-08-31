@@ -5,14 +5,14 @@ namespace z
 	{
 		namespace rgx
 		{
-			lookahead::lookahead(bool negate, size_t min, size_t max, bool greedy):
+			lookahead::lookahead(bool negate, int min, int max, bool greedy):
 				compound(min,max,greedy), negate(negate){}
 
 			bool lookahead::match(core::inputStream& stream) const
 			{
 				if (stream.empty()) return negate;
 				auto pos = stream.tell();
-				size_t i = 0;
+				int i = 0;
 				for (auto& child : children)
 				{
 					if (!matchMin(child, stream))
@@ -23,7 +23,7 @@ namespace z
 
 					if (child->greedy || (i >= children.length()))
 					{
-						for (size_t k=(child->min); k<(child->max); ++k)
+						for (int k=(child->min); k<(child->max); ++k)
 						{
 							auto lastPos = stream.tell();
 							if (!matchRule(child, stream))
@@ -44,7 +44,7 @@ namespace z
 							continue;
 						}
 
-						for (size_t k=(child->min); k<(child->max); ++k)
+						for (int k=(child->min); k<(child->max); ++k)
 						{
 							if (!matchRule(child, stream)) break;
 							lastPos = stream.tell();

@@ -34,6 +34,13 @@ namespace z
 			virtual uint8_t get() = 0;
 
 			/**
+			 * \brief Peek at the next character in the stream without consuming.
+			 *
+			 * \return The next character in the stream.
+			 */
+			virtual uint8_t peek() = 0;
+
+			/**
 			 * \brief Get the next chracter on the stream in the stream's determined encoding.
 			 *
 			 * Increments the stream index.
@@ -161,7 +168,7 @@ namespace z
 			 * \param count The number of characters.
 			 * \param format The scheme the characters are encoded in.
 			 */
-			virtual void put(uint8_t* str, size_t count, encoding format = ascii) = 0;
+			virtual void put(uint8_t* str, int count, encoding format = ascii) = 0;
 
 			/**
 			 * \brief Tell whether this is a valid stream object.

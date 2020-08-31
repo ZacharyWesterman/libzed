@@ -9,7 +9,7 @@ namespace z
 			bool andlist::match(core::inputStream& stream) const
 			{
 				auto pos = stream.tell();
-				size_t i = 0;
+				int i = 0;
 				for (auto& child : children)
 				{
 					if (!matchMin(child, stream))
@@ -20,7 +20,7 @@ namespace z
 
 					if (child->greedy || (i+1 >= children.length()))
 					{
-						for (size_t k=(child->min); k<(child->max); ++k)
+						for (int k=(child->min); k<(child->max); ++k)
 						{
 							auto lastPos = stream.tell();
 							if (!matchRule(child, stream))
@@ -34,7 +34,7 @@ namespace z
 					{
 						size_t lastPos;
 						auto sibling = children[i+1];
-						for (size_t k=(child->min); k<(child->max); ++k)
+						for (int k=(child->min); k<(child->max); ++k)
 						{
 							lastPos = stream.tell();
 							if (matchMin(sibling, stream))

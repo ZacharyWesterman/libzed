@@ -191,7 +191,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			virtual size_t length() const;
+			virtual int length() const;
 
 			/**
 			 * \brief Search the object for an item.
@@ -237,7 +237,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			virtual bool insert(generic* element, size_t index);
+			virtual bool insert(generic* element, int index);
 
 			/**
 			 * brief Remove elements from this object.
@@ -253,7 +253,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			virtual bool remove(size_t index, int count);
+			virtual bool remove(int index, int count);
 
 			/**
 			 * \brief Create an exact copy of this object.

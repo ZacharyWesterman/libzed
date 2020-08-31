@@ -14,28 +14,27 @@ namespace z
 			start = std::chrono::high_resolution_clock::now();
 		}
 
-		size_t timer::micros() const
+		unsigned int timer::micros() const
 		{
-			return (size_t)std::chrono::duration_cast<std::chrono::microseconds>
-					(std::chrono::high_resolution_clock::now() - start).count();
+			return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start).count();
 		}
 
-		size_t timer::millis() const
+		unsigned int timer::millis() const
 		{
 			return (micros() / 1000);
 		}
 
-		size_t timer::seconds() const
+		unsigned int timer::seconds() const
 		{
 			return (micros() / 1000000);
 		}
 
-		size_t timer::minutes() const
+		unsigned int timer::minutes() const
 		{
 			return (micros() / 60000000);
 		}
 
-		size_t timer::hours() const
+		unsigned int timer::hours() const
 		{
 			return (micros() / 3600000000);
 		}

@@ -26,7 +26,7 @@ namespace z
 
 			bool compound::matchMin(rule* rgxRule, core::inputStream& stream) const
 			{
-				for (size_t i=0; i<(rgxRule->min); ++i)
+				for (int i=0; i<(rgxRule->min); ++i)
 				{
 					if (!matchRule(rgxRule, stream)) return false;
 				}

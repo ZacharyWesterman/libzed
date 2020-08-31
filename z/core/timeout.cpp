@@ -4,12 +4,12 @@ namespace z
 {
 	namespace core
 	{
-		timeout::timeout(size_t timeout_micros, bool run) : timer(run)
+		timeout::timeout(unsigned int timeout_micros, bool run) : timer(run)
 		{
 			timeout_goal = timeout_micros;
 		}
 
-		void timeout::setTimeOut(size_t timeout_micros)
+		void timeout::setTimeOut(unsigned int timeout_micros)
 		{
 			timeout_goal = timeout_micros;
 		}

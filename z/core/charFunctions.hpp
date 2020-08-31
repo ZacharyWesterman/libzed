@@ -186,6 +186,6 @@ namespace z
 		 *
 		 * \return True if the sequence is valid UTF-8 format, false otherwise.
 		 */
-		bool isUTF8(uint8_t* c, size_t len);
+		bool isUTF8(uint8_t* c, int len);
 	}
 }

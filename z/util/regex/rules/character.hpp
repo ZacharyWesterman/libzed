@@ -21,7 +21,7 @@ namespace z
 				 * \param max The maximum number of times this rule can match.
 				 * \param greedy Whether this rule should consume input greedily.
 				 */
-				character(uint32_t value, bool insensitive=false, size_t min=1, size_t max=1, bool greedy=true);
+				character(uint32_t value, bool insensitive=false, int min=1, int max=1, bool greedy=true);
 
 				bool match(uint32_t current) const;
 

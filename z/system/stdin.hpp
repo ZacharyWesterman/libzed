@@ -26,6 +26,7 @@ namespace z
 		{
 		public:
 			uint8_t get() override;
+			uint8_t peek() override;
 			uint32_t getChar() override;
 
 			bool empty() override;

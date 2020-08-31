@@ -52,7 +52,7 @@ namespace z
 			if (_word.length() != other._word.length())
 				return false;
 
-			for (size_t i=0; i<_word.length(); i++)
+			for (int i=0; i<_word.length(); i++)
 			{
 				if (core::toUpper(_word[i]) != core::toUpper(other._word[i]))
 					return false;
@@ -63,13 +63,13 @@ namespace z
 
 		bool word::operator>(const word& other) const
 		{
-			size_t max_char;
+			int max_char;
 			if (_word.length() < other._word.length())
 				max_char = _word.length();
 			else
 				max_char = other._word.length();
 
-			for (size_t i=0; i<max_char; i++)
+			for (int i=0; i<max_char; i++)
 			{
 				auto char1 = core::toUpper(_word[i]);
 				auto char2 = core::toUpper(other._word[i]);
@@ -85,13 +85,13 @@ namespace z
 
 		bool word::operator<(const word& other) const
 		{
-			size_t max_char;
+			int max_char;
 			if (_word.length() < other._word.length())
 				max_char = _word.length();
 			else
 				max_char = other._word.length();
 
-			for (size_t i=0; i<max_char; i++)
+			for (int i=0; i<max_char; i++)
 			{
 				auto char1 = core::toUpper(_word[i]);
 				auto char2 = core::toUpper(other._word[i]);

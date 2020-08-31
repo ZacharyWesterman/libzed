@@ -10,20 +10,20 @@ endif
 ifeq (, $(shell rm --version))
 RM = rd /s /q
 MV = move
-CP = copy
+CP = copy "..\zed.dll"
 else
 RM = rm -rf
 MV = mv
-CP = cp
+CP = cp "../zed.dll"
 endif
 
 all: binary object $(DLL1) binary/regexConsole binary/fileStream $(DLL2)
 
 binary:
-	mkdir -p $@
+	mkdir $@
 
 object:
-	mkdir -p $@
+	mkdir $@
 
 object/%.o: source/%.cpp
 	g++ -I"../" -std=c++11 -fPIC -o $@ -c $^
@@ -32,10 +32,10 @@ binary/%: object/%.o
 	g++ $(LFLAGS) -o $@ $^
 
 binary/zed.dll: zed.dll
-	$(MV) $^ $@
+	$(MV) "$^" "$@"
 
 zed.dll: ../zed.dll
-	$(CP) $^ $@
+	$(CP) "$@"
 
 clean:
 	$(RM) binary object

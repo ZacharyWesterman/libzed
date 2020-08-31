@@ -17,6 +17,11 @@ namespace z
 			return std::cin.get();
 		}
 
+		uint8_t stdin::peek()
+		{
+			return std::cin.peek();
+		}
+
 		uint32_t stdin::getChar()
 		{
 			if (std::cin.eof()) return 0;

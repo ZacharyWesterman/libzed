@@ -85,7 +85,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			size_t wordCount() const;
+			int wordCount() const;
 
 			/**
 			 * \brief Set a word in the dictionary.

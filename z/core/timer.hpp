@@ -38,7 +38,7 @@ namespace z
 			 * \return The number of \b microseconds that have passed
 			 * since the timer was last reset.
 			 */
-			size_t micros() const;
+			unsigned int micros() const;
 
 			/**
 			 * \brief Get the elapsed time in \b milliseconds.
@@ -46,7 +46,7 @@ namespace z
 			 * \return The number of \b milliseconds that have passed
 			 * since the timer was last reset.
 			 */
-			size_t millis() const;
+			unsigned int millis() const;
 
 			/**
 			 * \brief Get the elapsed time in \b seconds.
@@ -54,7 +54,7 @@ namespace z
 			 * \return The number of \b seconds that have passed
 			 * since the timer was last reset.
 			 */
-			size_t seconds() const;
+			unsigned int seconds() const;
 
 			/**
 			 * \brief Get the elapsed time in \b minutes.
@@ -62,7 +62,7 @@ namespace z
 			 * \return The number of \b minutes that have passed
 			 * since the timer was last reset.
 			 */
-			size_t minutes() const;
+			unsigned int minutes() const;
 
 			/**
 			 * \brief Get the elapsed time in \b minutes.
@@ -70,7 +70,7 @@ namespace z
 			 * \return The number of \b minutes that have passed
 			 * since the timer was last reset.
 			 */
-			size_t hours() const;
+			unsigned int hours() const;
 		};
 	}
 }

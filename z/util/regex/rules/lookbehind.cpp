@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			lookbehind::lookbehind(bool negate, size_t min, size_t max, bool greedy):
+			lookbehind::lookbehind(bool negate, int min, int max, bool greedy):
 				compound(min,max,greedy), negate(negate), width(0){}
 
 			bool lookbehind::match(core::inputStream& stream) const

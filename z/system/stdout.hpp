@@ -25,7 +25,7 @@ namespace z
 		{
 		public:
 			void put(uint8_t ch) override;
-			void put(uint8_t* str, size_t count, encoding format = ascii) override;
+			void put(uint8_t* str, int count, encoding format = ascii) override;
 
 			bool good() override;
 			bool bad() override;

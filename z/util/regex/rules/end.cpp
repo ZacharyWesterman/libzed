@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			end::end(bool newline, size_t min, size_t max, bool greedy):
+			end::end(bool newline, int min, int max, bool greedy):
 				rule(min,max,greedy), newline(newline) {}
 
 			bool end::match(core::inputStream& stream) const

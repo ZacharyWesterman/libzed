@@ -54,14 +54,14 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
 				data = new uint8_t[++len];
 				data_len = len;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 					data[i] = str[i];
 			}
 			else
@@ -79,8 +79,8 @@ namespace z
 		{
 			if (str)
 			{
-				size_t i = 0;
-				size_t len = 0;
+				int i = 0;
+				int len = 0;
 
 				while (str[i])
 					len += lenToUTF8(str[i++]);
@@ -91,8 +91,8 @@ namespace z
 				data = new uint8_t[data_len];
 				data[character_ct] = 0;
 
-				size_t pos = 0;
-				for (size_t j=0; j<i; j++)
+				int pos = 0;
+				for (int j=0; j<i; j++)
 				{
 					pos += toUTF8(&data[pos], str[j]);
 				}
@@ -113,14 +113,14 @@ namespace z
 			data_len = 1;
 			character_ct = other.character_ct;
 
-			for (size_t i=0; i<other.data_len; i++)
+			for (int i=0; i<other.data_len; i++)
 				data_len += lenToUTF8(other.data[i]);
 
 			data = new uint8_t[data_len];
 			data[data_len-1] = 0;
 
-			size_t len = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int len = 0;
+			for (int i=0; i<character_ct; i++)
 				len += toUTF8(&data[len], other.data[i]);
 
 			character_ct = data_len - 1;
@@ -134,7 +134,7 @@ namespace z
 
 			data = new uint8_t[data_len];
 
-			for (size_t i=0; i<data_len; i++)
+			for (int i=0; i<data_len; i++)
 				data[i] = other.data[i];
 		}
 
@@ -146,14 +146,14 @@ namespace z
 
 			uint16_t* data16 = (uint16_t*)other.data;
 
-			for (size_t i=0; i<=other.character_ct; i++)
+			for (int i=0; i<=other.character_ct; i++)
 				data_len += lenToUTF8(data16[i]);
 
 			data = new uint8_t[data_len];
 			data[data_len-1] = 0;
 
-			size_t len = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int len = 0;
+			for (int i=0; i<character_ct; i++)
 				len += toUTF8(&data[len], data16[i]);
 
 			character_ct = len;
@@ -167,14 +167,14 @@ namespace z
 
 			uint32_t* data32 = (uint32_t*)other.data;
 
-			for (size_t i=0; i<other.character_ct; i++)
+			for (int i=0; i<other.character_ct; i++)
 				data_len += lenToUTF8(data32[i]);
 
 			data = new uint8_t[data_len];
 			data[data_len-1] = 0;
 
-			size_t len = 0;
-			for (size_t i=0; i<character_ct; i++)
+			int len = 0;
+			for (int i=0; i<character_ct; i++)
 				len += toUTF8(&data[len], data32[i]);
 
 			character_ct = len;

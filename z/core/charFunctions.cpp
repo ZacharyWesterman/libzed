@@ -453,7 +453,7 @@ namespace z
 			else return 0;
 		}
 
-		bool isUTF8(uint8_t* c, size_t len)
+		bool isUTF8(uint8_t* c, int len)
 		{
 			if (c && len)
 			{

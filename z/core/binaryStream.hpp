@@ -25,7 +25,7 @@ namespace z
 			~binaryStream();
 
 			void put(uint8_t ch);
- 			void put(uint8_t* str, size_t count, encoding format = ascii);
+ 			void put(uint8_t* str, int count, encoding format = ascii);
 
  			uint8_t get();
  			uint32_t getChar();
@@ -36,9 +36,9 @@ namespace z
 			bool binary();
 			bool seekable();
 
- 			void seek(size_t index);
- 			size_t tell();
- 			size_t end();
+ 			void seek(size_t index) override;
+ 			size_t tell() override;
+ 			size_t end() override;
 
 			encoding format();
 			void setFormat(encoding enc, bool force = false);

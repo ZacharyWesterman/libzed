@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			alnum::alnum(bool negate, size_t min, size_t max, bool greedy):
+			alnum::alnum(bool negate, int min, int max, bool greedy):
 				rule(min,max,greedy), negate(negate) {}
 
 			bool alnum::match(uint32_t current) const

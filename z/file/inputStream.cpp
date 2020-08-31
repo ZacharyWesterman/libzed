@@ -45,6 +45,11 @@ namespace z
 			return ch;
 		}
 
+		uint8_t inputStream::peek()
+		{
+			return filestream.peek();
+		}
+
 		uint32_t inputStream::getChar()
 		{
 			if (empty()) return 0;
