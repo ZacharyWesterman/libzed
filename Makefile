@@ -104,7 +104,7 @@ z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
 
 clean: clear
-	$(RM) $(RMOBJS) main.o
+	$(RM) $(RMOBJS)
 
 clear:
 	$(RM) driver *.so *.a *.dll *.exe
