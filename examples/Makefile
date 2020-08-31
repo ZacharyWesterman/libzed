@@ -20,10 +20,10 @@ endif
 all: binary object $(DLL1) binary/regexConsole binary/fileStream $(DLL2)
 
 binary:
-	mkdir -p $@
+	mkdir $@
 
 object:
-	mkdir -p $@
+	mkdir $@
 
 object/%.o: source/%.cpp
 	g++ -I"../" -std=c++11 -fPIC -o $@ -c $^
