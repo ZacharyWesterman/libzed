@@ -50,10 +50,10 @@ namespace z
 			void initChar(uint32_t, int);
 			constexpr int charSize() const;
 
-			void initInt(long long, unsigned int, unsigned int);
-			void initFloat(double, unsigned int, unsigned int, bool, unsigned int);
+			void initInt(long long, int, int);
+			void initFloat(double, int, int, bool, int);
 			void initPointer(void*);
-			void initComplex(const std::complex<double>&, unsigned int, unsigned int);
+			void initComplex(const std::complex<double>&, int, int);
 
 		public:
 			///Default string constructor
@@ -122,7 +122,7 @@ namespace z
 			 * no character padding is applied.
 			 */
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			string(INT value, unsigned int base = 10, unsigned int padSize = 0)
+			string(INT value, int base = 10, int padSize = 0)
 			{
 				this->initInt((long long)value, base, padSize);
 			}
@@ -165,7 +165,7 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename FLT, typename = typename std::enable_if<std::is_floating_point<FLT>::value,FLT>::type>
-			string(FLT value, unsigned int base = 10, unsigned int precision = 0, bool scientific = true, unsigned int padSize = 0)
+			string(FLT value, int base = 10, int precision = 0, bool scientific = true, int padSize = 0)
 			{
 				this->initFloat((double)value, base, precision, scientific, padSize);
 			}
@@ -186,7 +186,7 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
-			string(const std::complex<T>& value, unsigned int base = 10, unsigned int precision = 0)
+			string(const std::complex<T>& value, int base = 10, int precision = 0)
 			{
 				this->initComplex((std::complex<double>)value, base, precision);
 			}

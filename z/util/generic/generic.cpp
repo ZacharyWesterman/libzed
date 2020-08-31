@@ -16,7 +16,7 @@ namespace z
 			return core::array<generic*>();
 		}
 
-		size_t generic::length() const
+		int generic::length() const
 		{
 			return 0;
 		}
@@ -33,14 +33,14 @@ namespace z
 			return false;
 		}
 
-		bool generic::insert(generic* element, size_t index)
+		bool generic::insert(generic* element, int index)
 		{
 			(void)element;
 			(void)index;
 			return false;
 		}
 
-		bool generic::remove(size_t index, int count)
+		bool generic::remove(int index, int count)
 		{
 			(void)index;
 			(void)count;

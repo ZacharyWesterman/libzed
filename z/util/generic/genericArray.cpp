@@ -6,7 +6,7 @@ namespace z
 	{
 		genericArray::genericArray(const core::array<generic*>& init)
 		{
-			for (size_t i=0; i<init.length(); i++)
+			for (int i=0; i<init.length(); i++)
 				data.add(init.at(i));
 		}
 
@@ -14,7 +14,7 @@ namespace z
 
 		genericArray::~genericArray()
 		{
-			for (size_t i=0; i<data.length(); i++)
+			for (int i=0; i<data.length(); i++)
 				delete data.at(i);
 		}
 
@@ -46,7 +46,7 @@ namespace z
 		core::array<generic*> genericArray::array() const
 		{
 			core::array<generic*> list;
-			for (size_t i=0; i<data.length(); i++)
+			for (int i=0; i<data.length(); i++)
 				list.add(data.at(i));
 
 			return list;
@@ -72,7 +72,7 @@ namespace z
 			return "ARRAY";
 		}
 
-		size_t genericArray::length() const
+		int genericArray::length() const
 		{
 			return data.length();
 		}
@@ -93,7 +93,7 @@ namespace z
 			return false;
 		}
 
-		bool genericArray::insert(generic* element, size_t index)
+		bool genericArray::insert(generic* element, int index)
 		{
 			if (element)
 			{
@@ -104,9 +104,9 @@ namespace z
 			return false;
 		}
 
-		bool genericArray::remove(size_t index, int count)
+		bool genericArray::remove(int index, int count)
 		{
-			size_t start, stop;
+			int start, stop;
 
 			if (!(data.length() && count)) return true;
 
@@ -128,7 +128,7 @@ namespace z
 			if (!data.isValid(stop)) stop = data.length() - 1;
 			if (!data.isValid(start)) start = 0;
 
-			for (size_t i=start; i<=stop; i++) delete data.at(i);
+			for (int i=start; i<=stop; i++) delete data.at(i);
 			data.remove(index, count);
 			return true;
 		}
@@ -136,7 +136,7 @@ namespace z
 		generic* genericArray::duplicate() const
 		{
 			core::array<generic*> list;
-			for (size_t i=0; i<data.length(); i++)
+			for (int i=0; i<data.length(); i++)
 			{
 				generic* element = data.at(i);
 				if (element) list.add(element->duplicate());
@@ -148,7 +148,7 @@ namespace z
 		size_t genericArray::size() const
 		{
 			size_t total = sizeof(*this);
-			for (size_t i=0; i<data.length(); ++i)
+			for (int i=0; i<data.length(); ++i)
 			{
 				if (data[i]) total += data[i]->size();
 			}

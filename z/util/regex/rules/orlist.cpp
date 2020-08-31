@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			orlist::orlist(bool negate, size_t min, size_t max, bool greedy):
+			orlist::orlist(bool negate, int min, int max, bool greedy):
 				compound(min,max,greedy), negate(negate){}
 
 			bool orlist::match(core::inputStream& stream) const

@@ -50,21 +50,22 @@ namespace z
 			///Close the current file stream.
 			void close();
 
-			uint8_t get();
-			uint32_t getChar();
+			uint8_t get() override;
+			uint8_t peek() override;
+			uint32_t getChar() override;
 
-			bool empty();
-			bool good();
-			bool bad();
-			bool binary();
-			bool seekable();
+			bool empty() override;
+			bool good() override;
+			bool bad() override;
+			bool binary() override;
+			bool seekable() override;
 
-			void seek(size_t index);
-			size_t tell();
-			size_t end();
+			void seek(size_t index) override;
+			size_t tell() override;
+			size_t end() override;
 
-			encoding format();
-			void setFormat(encoding enc, bool force = false);
+			encoding format() override;
+			void setFormat(encoding enc, bool force = false) override;
 
 			/**
 			 * \brief Get the endianness of this stream.

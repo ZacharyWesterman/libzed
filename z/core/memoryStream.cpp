@@ -48,6 +48,14 @@ namespace z
 				return 0;
 		}
 
+		uint8_t memoryStream::peek()
+		{
+			if (streamIndex + 1 < dataSize)
+				return data[streamIndex + 1];
+			else
+				return 0;
+		}
+
 		uint32_t memoryStream::getChar()
 		{
 			if (streamIndex > dataSize) return 0;
@@ -121,18 +129,17 @@ namespace z
 			return true;
 		}
 
-		void memoryStream::seek(int index)
+		void memoryStream::seek(size_t index)
 		{
 			streamIndex = (index > dataSize) ? dataSize : index;
-			if (streamIndex < 0) streamIndex = 0;
 		}
 
-		int memoryStream::tell()
+		size_t memoryStream::tell()
 		{
 			return streamIndex;
 		}
 
-		int memoryStream::end()
+		size_t memoryStream::end()
 		{
 			return dataSize;
 		}

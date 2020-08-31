@@ -65,7 +65,7 @@ namespace z
 			}
 		}
 
-		static rgxerr getFlags(const core::array<rgxss>& input, size_t& position, int& flags, bool negate)
+		static rgxerr getFlags(const core::array<rgxss>& input, int& position, int& flags, bool negate)
 		{
 			rgxerr err = negate ? RGX_BAD_NEG_FLAG : RGX_BAD_POS_FLAG;
 
@@ -98,7 +98,7 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		static rgxerr setCount(rgx::compound** nodeOut, size_t min, size_t max)
+		static rgxerr setCount(rgx::compound** nodeOut, int min, int max)
 		{
 			auto len = (*nodeOut)->children.length();
 			if (!len) return RGX_BAD_COUNT_LOC;
@@ -117,7 +117,7 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& err, size_t& position, int inType, int flags)
+		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& err, int& position, int inType, int flags)
 		{
 			auto nodeOut = makeParent(inType, flags);
 

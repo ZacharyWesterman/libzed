@@ -47,7 +47,7 @@ namespace z
 
 		uint8_t binaryStream::get()
 		{
-			if (streamIndex < data.length())
+			if (streamIndex < (size_t)data.length())
 				return data[streamIndex++];
 			else
 				return 0;
@@ -55,7 +55,7 @@ namespace z
 
 		uint32_t binaryStream::getChar()
 		{
-			if (streamIndex >= data.length()) return 0;
+			if (streamIndex >= (size_t)data.length()) return 0;
 
 			int datact;
 
@@ -81,7 +81,7 @@ namespace z
 				str = (uint8_t*)&res8;
 			}
 
-			if (streamIndex+datact > data.length())
+			if (streamIndex+datact > (size_t)data.length())
 			{
 				streamIndex = data.length();
 				return 0;
@@ -103,7 +103,7 @@ namespace z
 
 		bool binaryStream::empty()
 		{
-			return (streamIndex >= data.length());
+			return (streamIndex >= (size_t)data.length());
 		}
 
 		bool binaryStream::good()
@@ -126,22 +126,20 @@ namespace z
 			return true;
 		}
 
-		void binaryStream::seek(int index)
+		void binaryStream::seek(size_t index)
 		{
-			if (index > data.length())
+			if (index > (size_t)data.length())
 				streamIndex = data.length();
-			else if (index < 0)
-				streamIndex = 0;
 			else
 				streamIndex = index;
 		}
 
-		int binaryStream::tell()
+		size_t binaryStream::tell()
 		{
 			return streamIndex;
 		}
 
-		int binaryStream::end()
+		size_t binaryStream::end()
 		{
 			return data.length();
 		}

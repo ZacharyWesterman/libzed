@@ -15,7 +15,7 @@ namespace z
 		class timeout : public timer
 		{
 		private:
-			size_t timeout_goal;
+			unsigned int timeout_goal;
 
 		public:
 			/**
@@ -28,7 +28,7 @@ namespace z
 			 * \param run an optional parameter to decide
 			 * whether the timer should start now.
 			 */
-			timeout(size_t timeout_micros = -1, bool run = true);
+			timeout(unsigned int timeout_micros = -1, bool run = true);
 
 			/**
 			 * \brief Set the time out goal.
@@ -37,7 +37,7 @@ namespace z
 			 * after which the timer will time out. If this is set
 			 * to a negative value, then it will never time out.
 			 */
-			void setTimeOut(size_t timeout_micros);
+			void setTimeOut(unsigned int timeout_micros);
 
 			/**
 			 * \brief Check whether the timer has timed out.

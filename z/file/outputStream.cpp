@@ -71,7 +71,7 @@ namespace z
 			filestream.put(ch);
 		}
 
-		void outputStream::put(uint8_t* str, size_t count, encoding format)
+		void outputStream::put(uint8_t* str, int count, encoding format)
 		{
 			//write the BOM if we're at the beginning of the stream.
 			if (!tell())
@@ -123,7 +123,7 @@ namespace z
 					char buf[4];
 					size_t index;
 
-					for (size_t i=0; i<count; i++)
+					for (int i=0; i<count; i++)
 					{
 						if (format == utf32)
 						{

@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			range::range(uint32_t begin, uint32_t end, bool insensitive, size_t min, size_t max, bool greedy):
+			range::range(uint32_t begin, uint32_t end, bool insensitive, int min, int max, bool greedy):
 				rule(min,max,greedy), insensitive(insensitive)
 			{
 				if (begin > end)

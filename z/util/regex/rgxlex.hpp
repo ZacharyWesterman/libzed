@@ -21,6 +21,6 @@ namespace z
 		 * \param flags Regex flags for the current level. These are defined in z/util/regex/rgxflag.hpp
 		 * \return A pointer to an initialized root rule. If not null, deallocation must be handled by the caller.
 		 */
-		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& parseError, size_t& position, int inType=0, int flags=0);
+		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& parseError, int& position, int inType=0, int flags=0);
 	}
 }

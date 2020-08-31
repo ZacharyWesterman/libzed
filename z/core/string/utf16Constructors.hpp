@@ -62,7 +62,7 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
@@ -71,7 +71,7 @@ namespace z
 
 				uint16_t* data16 = (uint16_t*)data;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 					data16[i] = str[i];
 			}
 			else
@@ -89,7 +89,7 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
@@ -98,7 +98,7 @@ namespace z
 
 				uint16_t* data16 = (uint16_t*)data;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 				{
 #					ifdef _WIN32
 					data16[i] = str[i]; //In Windows, wchar_t is 16 bits
@@ -126,7 +126,7 @@ namespace z
 			data = new uint8_t[data_len];
 			uint16_t* data16 = (uint16_t*)data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data16[i] = other.data[i];
 		}
 
@@ -134,7 +134,7 @@ namespace z
 		string<utf16>::string(const string<utf8>& other)
 		{
 			character_ct = 0;
-			for (size_t i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
+			for (int i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
 				character_ct++;
 
 			data_len = (character_ct + 1) << 1;
@@ -143,8 +143,8 @@ namespace z
 			uint16_t* data16 = (uint16_t*)data;
 			data16[character_ct] = 0;
 
-			size_t pos = 0;
-			for (size_t i=0; i<=character_ct; i++)
+			int pos = 0;
+			for (int i=0; i<=character_ct; i++)
 			{
 				uint32_t val = fromUTF8(&other.data[pos]);
 				pos += lenFromUTF8(&other.data[pos]);
@@ -164,7 +164,7 @@ namespace z
 			uint16_t* data16 = (uint16_t*)data;
 			uint16_t* other16 = (uint16_t*)other.data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data16[i] = other16[i];
 		}
 
@@ -179,7 +179,7 @@ namespace z
 			uint16_t* data16 = (uint16_t*)data;
 			uint32_t* data32 = (uint32_t*)other.data;
 
-			for (size_t i=0; i<=character_ct; i++)
+			for (int i=0; i<=character_ct; i++)
 				data16[i] = (data32[i] > 0xFFFF) ? '?' : data32[i];
 		}
 	}

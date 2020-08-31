@@ -43,7 +43,7 @@ namespace z
 				 * \param max The maximum number of times this rule can match.
 				 * \param greedy Whether this rule should consume input greedily.
 				 */
-				compound(size_t min=1, size_t max=1, bool greedy=true): rule(min,max,greedy){}
+				compound(int min=1, int max=1, bool greedy=true): rule(min,max,greedy){}
 
 				bool base() const {return false;};
 				bool parent() const {return true;};

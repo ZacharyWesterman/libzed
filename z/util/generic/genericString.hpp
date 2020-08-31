@@ -44,12 +44,12 @@ namespace z
 			bool isArithmetic() const;
 			bool isNull() const;
 
-			size_t length() const;
+			int length() const;
 
 			int find(generic* element) const;
 			bool add(generic* element);
-			bool insert(generic* element, size_t index);
-			bool remove(size_t index, int count);
+			bool insert(generic* element, int index);
+			bool remove(int index, int count);
 
 			datatype type() const;
 			zstring typeString() const;

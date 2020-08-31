@@ -52,17 +52,17 @@ namespace z
 			///Close the current file stream.
 			void close();
 
-			void put(uint8_t ch);
-			void put(uint8_t* str, size_t count, encoding format = ascii);
+			void put(uint8_t ch) override;
+			void put(uint8_t* str, int count, encoding format = ascii) override;
 
-			bool good();
-			bool bad();
-			bool binary();
-			bool seekable();
+			bool good() override;
+			bool bad() override;
+			bool binary() override;
+			bool seekable() override;
 
-			void seek(size_t);
-			size_t tell();
-			size_t end();
+			void seek(size_t) override;
+			size_t tell() override;
+			size_t end() override;
 
 			/**
 			 * \brief Get the expected format of the stream.
@@ -75,9 +75,9 @@ namespace z
 			 *
 			 * \return 0 (ascii), as the format of file output streams should be determined beforehand.
 			 */
-			encoding format();
+			encoding format() override;
 
-			void setFormat(encoding enc, bool force = false);
+			void setFormat(encoding enc, bool force = false) override;
 
 			void flush();
 

@@ -16,7 +16,7 @@ namespace z
 		{
 		private:
 			array<uint8_t> data;
-			int streamIndex;
+			size_t streamIndex;
 			encoding streamFormat;
 			bool initialized;
 
@@ -36,9 +36,9 @@ namespace z
 			bool binary();
 			bool seekable();
 
- 			void seek(int index);
- 			int tell();
- 			int end();
+ 			void seek(size_t index) override;
+ 			size_t tell() override;
+ 			size_t end() override;
 
 			encoding format();
 			void setFormat(encoding enc, bool force = false);

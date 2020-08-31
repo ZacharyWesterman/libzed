@@ -35,7 +35,7 @@ int main()
 		//Temporary stream to directly access a string's content.
 		//This can break stuff if used incorrectly, but using
 		//it here is much faster than writing to a binary stream.
-		z::core::memoryStream temp(text.wstring(), text.length());
+		z::core::memoryStream temp(text.cstring(), text.length());
 		temp.setFormat(z::utf32);
 
 		//Show what substring the regex matched, if anything.

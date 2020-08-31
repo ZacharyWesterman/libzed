@@ -23,7 +23,7 @@ namespace z
 
 			if (!parseError)
 			{
-				size_t position = 0;
+				int position = 0;
 				root.reset(rgxlex(symbols, parseError, position));
 				if (parseError && root) root.reset();
 			}

@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			alpha::alpha(bool negate, size_t min, size_t max, bool greedy):
+			alpha::alpha(bool negate, int min, int max, bool greedy):
 				rule(min,max,greedy), negate(negate) {}
 
 			bool alpha::match(uint32_t current) const

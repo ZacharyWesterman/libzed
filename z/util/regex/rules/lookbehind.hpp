@@ -22,7 +22,7 @@ namespace z
 				 * \param max The maximum number of times this rule can match.
 				 * \param greedy Whether this rule should consume input greedily.
 				 */
-				lookbehind(bool negate=false, size_t min=1, size_t max=1, bool greedy=true);
+				lookbehind(bool negate=false, int min=1, int max=1, bool greedy=true);
 				bool match(core::inputStream& stream) const;
 
 				///If true, negates the result of lookbehind matching.

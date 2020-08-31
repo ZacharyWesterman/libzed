@@ -20,7 +20,7 @@ namespace z
 			std::cout << ch;
 		}
 
-		void stdout::put(uint8_t* str, size_t count, encoding format)
+		void stdout::put(uint8_t* str, int count, encoding format)
 		{
 			if (!str) return;
 			uint8_t c[4];
@@ -28,27 +28,31 @@ namespace z
 			switch (format)
 			{
 			case utf16:
-				for (size_t i=0; i<count; i++)
+				for (int i=0; i<count; i++)
 				{
-					size_t len = core::toUTF8(c, ((uint16_t*)str)[i]);
+					int len = core::toUTF8(c, ((uint16_t*)str)[i]);
 
-					for (size_t j=0; j<len; j++)
+					for (int j=0; j<len; j++)
 						std::cout << c[j];
 				}
 				break;
 
 			case utf32:
-				for (size_t i=0; i<count; i++)
+				for (int i=0; i<(count << 2); i++)
 				{
-					size_t len = core::toUTF8(c, ((uint32_t*)str)[i]);
+					// int len = core::toUTF8(c, ((uint32_t*)str)[i]);
+					// std::cout << ":= " << (int)((uint32_t*)str)[i] << std::endl;
+					std::cout << (char)str[i] << ' ';
+					if (i % 4 == 3) std::cout << std::endl;
 
-					for (size_t j=0; j<len; j++)
-						std::cout << c[j];
+					// for (int j=0; j<len; j++)
+						// std::cout << c[j];
 				}
+				std::cout << std::endl;
 				break;
 
 			default:
-				for (size_t i=0; i<count; i++)
+				for (int i=0; i<count; i++)
 				{
 					std::cout << str[i];
 				}

@@ -52,14 +52,14 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
 				data = new uint8_t[++len];
 				data_len = len;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 					data[i] = str[i];
 			}
 			else
@@ -77,14 +77,14 @@ namespace z
 		{
 			if (str)
 			{
-				size_t len = 0;
+				int len = 0;
 				while (str[len]) len++;
 
 				character_ct = len;
 				data = new uint8_t[++len];
 				data_len = len;
 
-				for (size_t i=0; i<len; i++)
+				for (int i=0; i<len; i++)
 				{
 					if (str[i] > 0xFF)
 						data[i] = '?';
@@ -110,7 +110,7 @@ namespace z
 
 			data = new uint8_t[data_len];
 
-			for (size_t i=0; i<data_len; i++)
+			for (int i=0; i<data_len; i++)
 				data[i] = other.data[i];
 		}
 
@@ -123,8 +123,8 @@ namespace z
 			data = new uint8_t[data_len];
 			data[character_ct] = 0;
 
-			size_t pos = 0;
-			for (size_t i=0; i<data_len; i++)
+			int pos = 0;
+			for (int i=0; i<data_len; i++)
 			{
 				uint32_t val = fromUTF8(&other.data[pos]);
 				pos += lenFromUTF8(&other.data[pos]);
@@ -144,7 +144,7 @@ namespace z
 
 			uint16_t* data16 = (uint16_t*)other.data;
 
-			for (size_t i=0; i<data_len; i++)
+			for (int i=0; i<data_len; i++)
 			{
 				data[i] = (data16[i] > 0xFF) ? '?' : data16[i];
 			}
@@ -161,7 +161,7 @@ namespace z
 
 			uint32_t* data32 = (uint32_t*)other.data;
 
-			for (size_t i=0; i<= character_ct; i++)
+			for (int i=0; i<= character_ct; i++)
 				data[i] = (data32[i] > 0xFF) ? '?' : (uint8_t)data32[i];
 		}
 	}

@@ -179,7 +179,7 @@ namespace z
 				done = true;
 
 
-				for (int i=0; i<(this->array_data.size()-1); i++)
+				for (int i=0; i<(int)(this->array_data.size()-1); i++)
 				{
 					if (this->gt(this->array_data[i],this->array_data[i+1]))
 					{

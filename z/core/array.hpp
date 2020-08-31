@@ -194,7 +194,7 @@ namespace z
 			 */
 			virtual int find(const T& object) const
 			{
-				for (int i=0; i<array_data.size(); i++)
+				for (int i=0; i<(int)array_data.size(); i++)
 					if (eq(array_data.at(i),object))
 						return i;
 
@@ -325,7 +325,7 @@ namespace z
 			if (array_data.size() != other.array_data.size())
 				return false;
 
-			for (int i=0; i<array_data.size(); i++)
+			for (int i=0; i<(int)array_data.size(); i++)
 				if (!eq(array_data.at(i),other.array_data.at(i)))
 					return false;
 
@@ -349,7 +349,7 @@ namespace z
 
 			int gt_count = 0;
 
-			for (int i=0; i<array_data.size(); i++)
+			for (int i=0; i<(int)array_data.size(); i++)
 			{
 				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
@@ -377,7 +377,7 @@ namespace z
 
 			int gt_count = 0;
 
-			for (int i=0; i<array_data.size(); i++)
+			for (int i=0; i<(int)array_data.size(); i++)
 			{
 				if (gt(array_data.at(i),other.array_data.at(i)))
 					gt_count++;
@@ -443,7 +443,7 @@ namespace z
 			if (index < 0) index += array_data.size() + 1;
 
 			//keep within bounds of array.
-			if (index > array_data.size()) index = array_data.size();
+			if (index > (int)array_data.size()) index = array_data.size();
 			if (index < 0) index = 0;
 
 			array_data.insert(array_data.begin() + index, object);
@@ -510,9 +510,9 @@ namespace z
 				end = index + 1;
 			}
 
-			if ((end < 0) || (start > array_data.size())) return *this;
+			if ((end <= 0) || (start >= (int)array_data.size())) return *this;
 			if (start < 0) start = 0;
-			if (end > array_data.size()) end = array_data.size();
+			if (end > (int)array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
@@ -647,9 +647,9 @@ namespace z
 				end = index + 1;
 			}
 
-			if ((end < 0) || (start > array_data.size())) return *this;
+			if ((end <= 0) || (start >= (int)array_data.size())) return *this;
 			if (start < 0) start = 0;
-			if (end > array_data.size()) end = array_data.size();
+			if (end > (int)array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 			array_data.insert(array_data.begin() + start, object);
@@ -688,9 +688,9 @@ namespace z
 				end = index + 1;
 			}
 
-			if ((end < 0) || (start > array_data.size())) return *this;
+			if ((end <= 0) || (start >= (int)array_data.size())) return *this;
 			if (start < 0) start = 0;
-			if (end > array_data.size()) end = array_data.size();
+			if (end > (int)array_data.size()) end = array_data.size();
 
 			array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
@@ -736,9 +736,9 @@ namespace z
 				end = index + 1;
 			}
 
-			if ((end < 0) || (start > array_data.size())) return *this;
+			if ((end <= 0) || (start >= (int)array_data.size())) return *this;
 			if (start < 0) start = 0;
-			if (end > array_data.size()) end = array_data.size();
+			if (end > (int)array_data.size()) end = array_data.size();
 
 			if (end-start > 0) output.array_data.reserve(end-start);
 			for (int i=start; i<end; i++)
@@ -759,8 +759,8 @@ namespace z
 		template <typename T>
 		bool array<T>::isValid(int index) const
 		{
-			if (index < 0) index += array_data.size() + 1;
-			return (index < array_data.size()) && (index >= 0);
+			if (index < 0) index += array_data.size();
+			return (index < (int)array_data.size()) && (index >= 0);
 		}
 
 		template <typename T>

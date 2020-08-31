@@ -27,7 +27,7 @@ namespace z
 				 * \param max The maximum number of times this rule can match.
 				 * \param greedy Whether this rule should consume input greedily.
 				 */
-				rule(size_t min=1, size_t max=1, bool greedy=true): min(min), max(max), greedy(greedy){}
+				rule(int min=1, int max=1, bool greedy=true): min(min), max(max), greedy(greedy){}
 
 				///Default destructor.
 				virtual ~rule(){}
@@ -73,10 +73,10 @@ namespace z
 				virtual bool isOr() const {return false;}
 
 				///The minimum number of times this rule should match.
-				size_t min;
+				int min;
 
 				///The maximum number of times this rule can match.
-				size_t max;
+				int max;
 
 				/**
 				 * \brief Whether this rule should consume input greedily.

@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			anything::anything(bool newline, size_t min, size_t max, bool greedy):
+			anything::anything(bool newline, int min, int max, bool greedy):
 				rule(min,max,greedy), newline(newline) {}
 
 			bool anything::match(core::inputStream& stream) const

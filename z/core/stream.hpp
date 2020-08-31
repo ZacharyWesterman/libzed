@@ -34,6 +34,13 @@ namespace z
 			virtual uint8_t get() = 0;
 
 			/**
+			 * \brief Peek at the next character in the stream without consuming.
+			 *
+			 * \return The next character in the stream.
+			 */
+			virtual uint8_t peek() = 0;
+
+			/**
 			 * \brief Get the next chracter on the stream in the stream's determined encoding.
 			 *
 			 * Increments the stream index.
@@ -84,7 +91,7 @@ namespace z
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(int index) = 0;
+			virtual void seek(size_t index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -92,7 +99,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual int tell() = 0;
+			virtual size_t tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -102,7 +109,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual int end() = 0;
+			virtual size_t end() = 0;
 
 			/**
 			 * \brief Get the expected format of the stream.
@@ -198,7 +205,7 @@ namespace z
 			 *
 			 * \param index the position to seek.
 			 */
-			virtual void seek(int index) = 0;
+			virtual void seek(size_t index) = 0;
 
 			/**
 			 * \brief Give the current position in the stream.
@@ -206,7 +213,7 @@ namespace z
 			 * \return The current position in the stream, starting
 			 * at the beginning.
 			 */
-			virtual int tell() = 0;
+			virtual size_t tell() = 0;
 
 			/**
 			 * \brief Get the end of the stream.
@@ -216,7 +223,7 @@ namespace z
 			 *
 			 * \return The end position of the character stream.
 			 */
-			virtual int end() = 0;
+			virtual size_t end() = 0;
 
 			/**
 			 * \brief Get the expected format of the stream.

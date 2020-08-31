@@ -72,7 +72,7 @@ namespace z
 			return "STRING";
 		}
 
-		size_t genericString::length() const
+		int genericString::length() const
 		{
 			return data.length();
 		}
@@ -100,7 +100,7 @@ namespace z
 			return false;
 		}
 
-		bool genericString::insert(generic* element, size_t index)
+		bool genericString::insert(generic* element, int index)
 		{
 			if (element)
 			{
@@ -111,7 +111,7 @@ namespace z
 			return false;
 		}
 
-		bool genericString::remove(size_t index, int count)
+		bool genericString::remove(int index, int count)
 		{
 			data.remove(index, count);
 			return true;

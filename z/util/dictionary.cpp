@@ -17,7 +17,7 @@ namespace z
 
 		void dictionary::clear()
 		{
-			for (size_t i=0; i<wordList.length(); i++)
+			for (int i=0; i<wordList.length(); i++)
 			{
 				delete wordList[i];
 			}
@@ -72,7 +72,7 @@ namespace z
 				return word();
 		}
 
-		size_t dictionary::wordCount() const
+		int dictionary::wordCount() const
 		{
 			return wordList.length();
 		}
@@ -108,7 +108,7 @@ namespace z
 		{
 			size_t total = wordList.size();
 
-			for (size_t i=0; i<wordList.length(); i++)
+			for (int i=0; i<wordList.length(); i++)
 				total += wordList[i]->size();
 
 			return total;
@@ -150,7 +150,7 @@ namespace z
 			size_t length = wordList.length();
 			core::serialOut(length, stream);
 
-			for (size_t i=0; i<wordList.length(); i++)
+			for (int i=0; i<wordList.length(); i++)
 			{
 				wordList[i]->serialOut(stream);
 			}
@@ -238,7 +238,7 @@ namespace z
 			else
 			{
 				++(wordRange->charPos);
-				wordRange->isWord = ((size_t)wordRange->charPos == (wordList[wordRange->left]->get().length()));
+				wordRange->isWord = (wordRange->charPos == (wordList[wordRange->left]->get().length()));
 			}
 
 			return !(wordRange->exhausted);
