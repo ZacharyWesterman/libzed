@@ -47,17 +47,17 @@ namespace z
 			int data_len;
 			int character_ct;
 
-			void initChar(uint32_t, int);
-			constexpr int charSize() const;
+			void initChar(uint32_t, int) noexcept;
+			constexpr int charSize() const noexcept;
 
-			void initInt(long long, int, int);
-			void initFloat(double, int, int, bool, int);
-			void initPointer(void*);
-			void initComplex(const std::complex<double>&, int, int);
+			void initInt(long long, int, int) noexcept;
+			void initFloat(double, int, int, bool, int) noexcept;
+			void initPointer(void*) noexcept;
+			void initComplex(const std::complex<double>&, int, int) noexcept;
 
 		public:
 			///Default string constructor
-			string();
+			string() noexcept;
 
 			/**
 			 * \brief Construct string from a single-byte character.
@@ -66,7 +66,7 @@ namespace z
 			 *
 			 * Character is assumed to be compatible with this string's encoding.
 			 */
-			string(char chr);
+			string(char chr) noexcept;
 
 			/**
 			 * \brief Construct string from a wide character.
@@ -75,7 +75,7 @@ namespace z
 			 *
 			 * Converts the given character to the appropriate encoding for this string.
 			 */
-			string(wchar_t chr);
+			string(wchar_t chr) noexcept;
 
 			/**
 			 * \brief Construct string from uint32_t.
@@ -86,7 +86,7 @@ namespace z
 			 * again be constructed into a string.
 			 * Converts the given character to the appropriate encoding for this string.
 			 */
-			string(const uint32_t& chr);
+			string(const uint32_t& chr) noexcept;
 
 			/**
 			 * \brief Construct from a cstring of single-byte characters.
@@ -95,7 +95,7 @@ namespace z
 			 *
 			 * All characters are assumed to be compatible with this string's encoding.
 			 */
-			string(const char* str);
+			string(const char* str) noexcept;
 
 			/**
 			 * \brief Construct from a cstring of wide characters.
@@ -105,7 +105,7 @@ namespace z
 			 * Converts the characters in the given cstring to the appropriate encoding
 			 * for this string.
 			 */
-			string(const wchar_t* str);
+			string(const wchar_t* str) noexcept;
 
 			/**
 			 * \brief Construct from an integer.
@@ -122,7 +122,7 @@ namespace z
 			 * no character padding is applied.
 			 */
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			string(INT value, int base = 10, int padSize = 0)
+			string(INT value, int base = 10, int padSize = 0) noexcept
 			{
 				this->initInt((long long)value, base, padSize);
 			}
@@ -140,7 +140,7 @@ namespace z
 			template <typename PTR, typename = typename std::enable_if<
 				std::is_pointer<PTR>::value && !std::is_same<PTR,char*>::value && !std::is_same<PTR,wchar_t*>::value
 				,PTR>::type>
-			string(PTR pointer)
+			string(PTR pointer) noexcept
 			{
 				this->initPointer((void*)pointer);
 			}
@@ -165,7 +165,7 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename FLT, typename = typename std::enable_if<std::is_floating_point<FLT>::value,FLT>::type>
-			string(FLT value, int base = 10, int precision = 0, bool scientific = true, int padSize = 0)
+			string(FLT value, int base = 10, int precision = 0, bool scientific = true, int padSize = 0) noexcept
 			{
 				this->initFloat((double)value, base, precision, scientific, padSize);
 			}
@@ -186,7 +186,7 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
-			string(const std::complex<T>& value, int base = 10, int precision = 0)
+			string(const std::complex<T>& value, int base = 10, int precision = 0) noexcept
 			{
 				this->initComplex((std::complex<double>)value, base, precision);
 			}
@@ -199,7 +199,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			string(const string<ascii>& other);
+			string(const string<ascii>& other) noexcept;
 
 			/**
 			 * \brief Construct from a UTF-8 string.
@@ -209,7 +209,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			string(const string<utf8>& other);
+			string(const string<utf8>& other) noexcept;
 
 			/**
 			 * \brief Construct from a UTF16 string.
@@ -219,7 +219,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			string(const string<utf16>& other);
+			string(const string<utf16>& other) noexcept;
 
 			/**
 			 * \brief Construct from a UTF32 string.
@@ -229,7 +229,7 @@ namespace z
 			 * Copies over characters from the given string, converting them
 			 * to the appropriate encoding scheme for this string.
 			 */
-			string(const string<utf32>& other);
+			string(const string<utf32>& other) noexcept;
 
 			/**
 			 * \brief Move constructor.
@@ -238,7 +238,7 @@ namespace z
 			 *
 			 * \param other The string to move.
 			 */
-			string(string&& other)
+			string(string&& other) noexcept
 			{
 				data = other.data;
 				data_len = other.data_len;
@@ -254,7 +254,7 @@ namespace z
 			 *
 			 * \param other The string to move.
 			 */
-			string& operator=(string&& other)
+			string& operator=(string&& other) noexcept
 			{
 				delete[] data;
 				data = other.data;
@@ -266,7 +266,7 @@ namespace z
 			}
 
 			///Destructor
-			~string()
+			~string() noexcept
 			{
 				if (data) delete[] data;
 			}
@@ -280,7 +280,7 @@ namespace z
 			 *
 			 * \param charCount The minimum number of characters this string should be able to contain before reallocating.
 			 */
-			void increase(int charCount);
+			void increase(int charCount) noexcept;
 
 
 			/**
@@ -298,7 +298,7 @@ namespace z
 			 *
 			 * \see operator[]()
 			 */
-			uint32_t at(int index) const;
+			uint32_t at(int index) const noexcept;
 
 			/**
 			 * \brief Get the character at the given index.
@@ -315,14 +315,14 @@ namespace z
 			 *
 			 * \see at()
 			 */
-			uint32_t operator[](int index) const;
+			uint32_t operator[](int index) const noexcept;
 
 			/**
 			 * \brief Get the size of the string in memory
 			 *
 			 * \return The number of bytes in memory this string currently consumes.
 			 */
-			size_t size() const;
+			size_t size() const noexcept;
 
 			/**
 			 * \brief Get the character count of the string.
@@ -334,7 +334,7 @@ namespace z
 			 *
 			 * \see chars()
 			 */
-			int length() const;
+			int length() const noexcept;
 
 			/**
 			 * \brief Get the individual character count of the string.
@@ -346,7 +346,7 @@ namespace z
 			 *
 			 * \see length()
 			 */
-			int chars() const;
+			int chars() const noexcept;
 
 			/**
 			 * \brief Get the single-byte cstring pointer.
@@ -354,7 +354,7 @@ namespace z
 			 * \return A pointer to the string data, if this string is in a
 			 * single-byte format. `NULL` otherwise.
 			 */
-			const uint8_t* cstring() const;
+			const uint8_t* cstring() const noexcept;
 
 			/**
 			 * \brief Get the two-byte cstring pointer.
@@ -362,7 +362,7 @@ namespace z
 			 * \return A pointer to the string data, if this string is in a
 			 * two-byte format. `NULL` otherwise.
 			 */
-			const uint16_t* nstring() const;
+			const uint16_t* nstring() const noexcept;
 
 			/**
 			 * \brief Get the four-byte cstring pointer.
@@ -370,7 +370,7 @@ namespace z
 			 * \return A pointer to the string data, if this string is in a
 			 * four-byte format. `NULL` otherwise.
 			 */
-			const uint32_t* wstring() const;
+			const uint32_t* wstring() const noexcept;
 
 			/**
 			 * \brief Get the encoding of this string.
@@ -379,7 +379,7 @@ namespace z
 			 *
 			 * \see encoding.h
 			 */
-			constexpr encoding format() const
+			constexpr encoding format() const noexcept
 			{
 				return E;
 			}
@@ -394,7 +394,7 @@ namespace z
 			 *
 			 * \see isInteger()
 			 */
-			long integer(int base = 10) const;
+			long integer(int base = 10) const noexcept;
 
 			/**
 			 * \brief Convert this string to a floating-point value.
@@ -406,7 +406,7 @@ namespace z
 			 *
 			 * \see isFloating()
 			 */
-			double floating(int base = 10) const;
+			double floating(int base = 10) const noexcept;
 
 			/**
 			 * \brief Convert this string to a complex value.
@@ -418,7 +418,7 @@ namespace z
 			 *
 			 * \see isComplex()
 			 */
-			std::complex<double> complex(int base = 10) const;
+			std::complex<double> complex(int base = 10) const noexcept;
 
 			/**
 			 * \brief Count the occurrences of a sub-string.
@@ -428,7 +428,7 @@ namespace z
 			 * \return The number of times the given sub-string appears in
 			 * the full string.
 			 */
-			int count(const string& other) const;
+			int count(const string& other) const noexcept;
 
 			/**
 			 * \brief Find a specific occurrence of a sub-string.
@@ -443,7 +443,7 @@ namespace z
 			 * the \b beginning of the string. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int find(const string& other, int occurrence = 1) const
+			int find(const string& other, int occurrence = 1) const noexcept
 			{
 				return this->findAfter(other,0,occurrence);
 			}
@@ -461,7 +461,7 @@ namespace z
 			 * the \b end of the string. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findLast(const string& other, int occurrence = 1) const
+			int findLast(const string& other, int occurrence = 1) const noexcept
 			{
 				return this->findBefore(other, this->character_ct, occurrence);
 			}
@@ -480,7 +480,7 @@ namespace z
 			 * forward starting at the given index. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findAfter(const string& other, int index, int occurrence = 1) const;
+			int findAfter(const string& other, int index, int occurrence = 1) const noexcept;
 
 			/**
 			 * \brief Reverse-find a specific occurrence of a sub-string.
@@ -496,7 +496,7 @@ namespace z
 			 * backward starting at the given index. Note that the occurrence starts at 1.
 			 * If the occurrence is less than 1, then -1 is returned.
 			 */
-			int findBefore(const string& other, int index, int occurrence = 1) const;
+			int findBefore(const string& other, int index, int occurrence = 1) const noexcept;
 
 			/**
 			 * \brief Check if a sub-string is found at the given index.
@@ -507,7 +507,7 @@ namespace z
 			 * \return True if the sub-string was found beginning at the given index.
 			 * False otherwise.
 			 */
-			bool foundAt(const string& other, int index) const;
+			bool foundAt(const string& other, int index) const noexcept;
 
 			/**
 			 * \brief Check if a sub-string ends at the given index.
@@ -518,7 +518,7 @@ namespace z
 			 * \return True if the sub-string was found ending at the given index.
 			 * False otherwise.
 			 */
-			bool foundEndAt(const string& other, int index) const;
+			bool foundEndAt(const string& other, int index) const noexcept;
 
 			/**
 			 * \brief Check if the string begins with a given sub-string.
@@ -528,7 +528,7 @@ namespace z
 			 * \return True if this string begins with the given sub-string.
 			 * False otherwise.
 			 */
-			bool beginsWith(const string& other) const
+			bool beginsWith(const string& other) const noexcept
 			{
 				return this->foundAt(other, 0);
 			}
@@ -541,7 +541,7 @@ namespace z
 			 * \return True if this string ends with the given sub-string.
 			 * False otherwise.
 			 */
-			bool endsWith(const string& other) const
+			bool endsWith(const string& other) const noexcept
 			{
 				return this->foundEndAt(other, character_ct-1);
 			}
@@ -559,7 +559,7 @@ namespace z
 			 *
 			 * \see integer()
 			 */
-			bool isInteger(int base = 10) const
+			bool isInteger(int base = 10) const noexcept
 			{
 				return type(base) & (zstr::integer);
 			}
@@ -580,7 +580,7 @@ namespace z
 			 *
 			 * \see floating()
 			 */
-			bool isFloating(int base = 10, uint32_t decimal = '.') const
+			bool isFloating(int base = 10, uint32_t decimal = '.') const noexcept
 			{
 				return type(base,decimal) & (zstr::integer | zstr::floating);
 			}
@@ -601,7 +601,7 @@ namespace z
 			 * \see isFloating()
 			 * \see complex()
 			 */
-			bool isComplex(int base = 10, uint32_t decimal = '.') const
+			bool isComplex(int base = 10, uint32_t decimal = '.') const noexcept
 			{
 				return type(base,decimal) & (zstr::integer | zstr::floating | zstr::complex);
 			}
@@ -619,7 +619,7 @@ namespace z
 			 * \see isComplex()
 			 * \see isString()
 			 */
-			int type(int base = 10, uint32_t decimal = '.') const;
+			int type(int base = 10, uint32_t decimal = '.') const noexcept;
 
 			/**
 			 * \brief Get a sub-string from this string.
@@ -634,7 +634,7 @@ namespace z
 			 * e.g. for `string str = "example"`, `str.substr(2,3)` will
 			 * give `"amp"`, and `str.substr(5,-3)` will give `"pma"`.
 			 */
-			string substr(int index, int count) const;
+			string substr(int index, int count) const noexcept;
 
 			/**
 			 * \brief Append another string to the end of this one.
@@ -645,7 +645,7 @@ namespace z
 			 *
 			 * \see operator+=()
 			 */
-			const string& append(const string& other)
+			const string& append(const string& other) noexcept
 			{
 				return operator+=(other);
 			}
@@ -662,7 +662,7 @@ namespace z
 			 *
 			 * \see operator+=()
 			 */
-			const string& append(uint32_t chr);
+			const string& append(uint32_t chr) noexcept;
 
 			/**
 			 * \brief Insert another string into this one.
@@ -676,7 +676,7 @@ namespace z
 			 * `A = "xyz"`, `A.insert(B,0)` would give `"abcxyz"`, `A.insert(B,1)` would
 			 * give `"xabcyz"`, etc.
 			 */
-			const string& insert(const string& other, int index);
+			const string& insert(const string& other, int index) noexcept;
 
 			/**
 			 * \brief Remove occurrences of the given sub-string.
@@ -691,7 +691,7 @@ namespace z
 			 * specified occurrence of the sub-string is removed from the main string,
 			 * starting from the beginning.
 			 */
-			const string& remove(const string& other, int occurrence = 0);
+			const string& remove(const string& other, int occurrence = 0) noexcept;
 
 			/**
 			 * \brief Remove a subset of the string.
@@ -704,7 +704,7 @@ namespace z
 			 * If count is 0, no characters are removed. If count is negative, characters are
 			 * removed in reverse order.
 			 */
-			const string& remove(int index, int count);
+			const string& remove(int index, int count) noexcept;
 
 			/**
 			 * \brief Replace occurrences of the given sub-string.
@@ -720,7 +720,7 @@ namespace z
 			 * specified occurrence of the sub-string is replaced, starting from the
 			 * beginning of this string.
 			 */
-			const string& replace(const string& findStr, const string& replStr, int occurrence = 0);
+			const string& replace(const string& findStr, const string& replStr, int occurrence = 0) noexcept;
 
 			/**
 			 * \brief Replace a subset of the string.
@@ -734,7 +734,7 @@ namespace z
 			 * If count is 0, no characters are replaced. Characters are replaced in forward-order
 			 * whether count is positive or negative.
 			 */
-			const string& replace(int index, int count, const string& other);
+			const string& replace(int index, int count, const string& other) noexcept;
 
 			/**
 			 * \brief Copy this string, left-padded given character count.
@@ -749,7 +749,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			string padLeft(const string& other, int padSize) const
+			string padLeft(const string& other, int padSize) const noexcept
 			{
 				string newString = *this;
 				return newString.padLeftIn(other, padSize);
@@ -768,7 +768,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padLeftIn(const string& other, int padSize);
+			const string& padLeftIn(const string& other, int padSize) noexcept;
 
 			/**
 			 * \brief Copy this string, right-padded given character count.
@@ -783,7 +783,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			string padRight(const string& other, int padSize) const
+			string padRight(const string& other, int padSize) const noexcept
 			{
 				string newString = *this;
 				return newString.padRightIn(other, padSize);
@@ -802,7 +802,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padRightIn(const string& other, int padSize);
+			const string& padRightIn(const string& other, int padSize) noexcept;
 
 			/**
 			 * \brief Append text onto this string a specific number of times.
@@ -812,7 +812,7 @@ namespace z
 			 *
 			 * \return A reference to this string after appending.
 			 */
-			const string& repeat(const string& other, int count)
+			const string& repeat(const string& other, int count) noexcept
 			{
 				increase(character_ct + (other.character_ct * count));
 				for (int i=0; i<count; ++i) append(other);
@@ -829,7 +829,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			string trimLeft(const string& other = "") const
+			string trimLeft(const string& other = "") const noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -862,7 +862,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			string trimRight(const string& other = "") const
+			string trimRight(const string& other = "") const noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -895,7 +895,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			const string& trimLeftIn(const string& other = "")
+			const string& trimLeftIn(const string& other = "") noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -928,7 +928,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			const string& trimRightIn(const string& other = "")
+			const string& trimRightIn(const string& other = "") noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -961,7 +961,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			string trim(const string& other = "") const
+			string trim(const string& other = "") const noexcept
 			{
 				auto result = trimLeft(other);
 				return result.trimRightIn(other);
@@ -977,7 +977,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			const string& trimIn(const string& other = "")
+			const string& trimIn(const string& other = "") noexcept
 			{
 				trimLeftIn(other);
 				return trimRightIn(other);
@@ -986,7 +986,7 @@ namespace z
 			/**
 			 * \brief Reset to a null string.
 			 */
-			void clear();
+			void clear() noexcept;
 
 			/**
 			 * \brief Remove all sequential duplicates from this string.
@@ -998,49 +998,49 @@ namespace z
 			 * Removes all contiguous repetitions of the given sub-string, leaving
 			 * one instance of the sub-string where the group was.
 			 */
-			const string& cutDuplicates(const string& other);
+			const string& cutDuplicates(const string& other) noexcept;
 
 			/**
 			 * \brief Get an uppercase version of this string.
 			 *
 			 * \return A duplicate of this string, converted to uppercase.
 			 */
-			string upper() const { return string(*this).toUpper(); }
+			string upper() const noexcept { return string(*this).toUpper(); }
 
 			/**
 			 * \brief Get a lowercase version of this string.
 			 *
 			 * \return A duplicate of this string, converted to lowercase.
 			 */
-			string lower() const { return string(*this).toLower(); }
+			string lower() const noexcept { return string(*this).toLower(); }
 
 			/**
 			 * \brief Get a camelcase version of this string.
 			 *
 			 * \return A duplicate of this string, converted to camelcase.
 			 */
-			string camel() const { return string(*this).toCamel(); }
+			string camel() const noexcept { return string(*this).toCamel(); }
 
 			/**
 			 * \brief Convert all characters in the string to uppercase.
 			 *
 			 * \return A reference to this string after converting to uppercase.
 			 */
-			string& toUpper();
+			string& toUpper() noexcept;
 
 			/**
 			 * \brief Convert all characters in the string to lowercase.
 			 *
 			 * \return A reference to this string after converting to lowercase.
 			 */
-			string& toLower();
+			string& toLower() noexcept;
 
 			/**
 			 * \brief Convert all characters in the string to camelcase.
 			 *
 			 * \return A reference to this string after converting to camelcase.
 			 */
-			string& toCamel();
+			string& toCamel() noexcept;
 
 			/**
 			 * \brief Concatenate two strings.
@@ -1052,7 +1052,7 @@ namespace z
 			 * Appends the given string to the end of this string's characters and
 			 * returns the result. This string is not modified.
 			 */
-			string operator+(const string& other) const;
+			string operator+(const string& other) const noexcept;
 
 			/**
 			 * \brief Append another string to the end of this one.
@@ -1063,7 +1063,7 @@ namespace z
 			 *
 			 * \see append()
 			 */
-			const string& operator+=(const string& other);
+			const string& operator+=(const string& other) noexcept;
 
 			/**
 			 * \brief Assign the contents of this string.
@@ -1075,7 +1075,7 @@ namespace z
 			 * Copies all characters from the given string over to this string,
 			 * replacing current data.
 			 */
-			const string& operator=(const string& other);
+			const string& operator=(const string& other) noexcept;
 
 			/**
 			 * \brief Equality comparison.
@@ -1084,7 +1084,7 @@ namespace z
 			 *
 			 * \return True if the strings exactly match. False otherwise.
 			 */
-			bool operator==(const string& other) const
+			bool operator==(const string& other) const noexcept
 			{
 				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
 				return std::memcmp(data, other.data, len << 2) == 0;
@@ -1097,7 +1097,7 @@ namespace z
 			 *
 			 * \return True if the strings do not exactly match. False otherwise.
 			 */
-			bool operator!=(const string& other) const
+			bool operator!=(const string& other) const noexcept
 			{
 				return !operator==(other);
 			}
@@ -1109,7 +1109,7 @@ namespace z
 			 *
 			 * \return True if this string comes after the given string alphabetically. False otherwise.
 			 */
-			bool operator>(const string& other) const
+			bool operator>(const string& other) const noexcept
 			{
 				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
 				return std::memcmp(data, other.data, len << 2) > 0;
@@ -1122,7 +1122,7 @@ namespace z
 			 *
 			 * \return True if this string does not come before the given string alphabetically. False otherwise.
 			 */
-			bool operator>=(const string& other) const
+			bool operator>=(const string& other) const noexcept
 			{
 				return !operator<(other);
 			}
@@ -1134,7 +1134,7 @@ namespace z
 			 *
 			 * \return True if this string comes before the given string alphabetically. False otherwise.
 			 */
-			bool operator<(const string& other) const
+			bool operator<(const string& other) const noexcept
 			{
 				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
 				return std::memcmp(data, other.data, len << 2) < 0;
@@ -1147,7 +1147,7 @@ namespace z
 			 *
 			 * \return True if this string does not come after the given string alphabetically. False otherwise.
 			 */
-			bool operator<=(const string& other) const
+			bool operator<=(const string& other) const noexcept
 			{
 				return !operator>(other);
 			}
@@ -1168,7 +1168,7 @@ namespace z
 			 *
 			 * \return A reference to this string after reading.
 			 */
-			string& read(inputStream& stream, uint32_t delim = 0);
+			string& read(inputStream& stream, uint32_t delim = 0) noexcept;
 
 			/**
 			 * \brief Read string data from a stream until a newline is encountered.
@@ -1181,7 +1181,7 @@ namespace z
 			 *
 			 * \return A reference to this string after reading the line.
 			 */
-			string& readln(inputStream& stream);
+			string& readln(inputStream& stream) noexcept;
 
 			/**
 			 * \brief Write string data to a stream.
@@ -1189,14 +1189,14 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void write(outputStream& stream, encoding enc) const;
+			void write(outputStream& stream, encoding enc) const noexcept;
 
 			/**
 			 * \brief Write string data to a stream in that stream's encoding.
 			 *
 			 * \param stream The stream to write to.
 			 */
-			void write(outputStream& stream) const
+			void write(outputStream& stream) const noexcept
 			{
 				stream.setFormat(E);
 				encoding enc = stream.format();
@@ -1212,7 +1212,7 @@ namespace z
 			 * \param stream The stream to write to.
 			 * \param enc The encoding of characters on the stream.
 			 */
-			void writeln(outputStream& stream, encoding enc) const;
+			void writeln(outputStream& stream, encoding enc) const noexcept;
 
 			/**
 			 * \brief Write string data to a stream in its format, appending a newline.
@@ -1221,7 +1221,7 @@ namespace z
 			 *
 			 * \param stream The stream to write to.
 			 */
-			void writeln(outputStream& stream) const
+			void writeln(outputStream& stream) const noexcept
 			{
 				stream.setFormat(E);
 				encoding enc = stream.format();
@@ -1237,7 +1237,7 @@ namespace z
 			 *
 			 * \return An iterator on the first character in the string.
 			 */
-			stringIterator<E> begin() const {return stringIterator<E>(data,0);}
+			stringIterator<E> begin() const noexcept {return stringIterator<E>(data,0);}
 
 			/**
 			 * \brief Get an iterator for the end of the string.
@@ -1247,7 +1247,7 @@ namespace z
 			 *
 			 * \return An iterator after the last character in the string.
 			 */
-			stringIterator<E> end() const {return stringIterator<E>(data,character_ct);}
+			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
 		};
 	}
 }

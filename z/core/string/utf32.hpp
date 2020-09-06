@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		void string<utf32>::increase(int max_chars)
+		void string<utf32>::increase(int max_chars) noexcept
 		{
 			int goal = (max_chars << 2) + 4; //account for null byte at the end
 			if (data_len >= goal) return;
@@ -46,7 +46,7 @@ namespace z
 		}
 
 		template <>
-		uint32_t string<utf32>::at(int index) const
+		uint32_t string<utf32>::at(int index) const noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 
@@ -58,38 +58,38 @@ namespace z
 		}
 
 		template <>
-		const uint8_t* string<utf32>::cstring() const
+		const uint8_t* string<utf32>::cstring() const noexcept
 		{
 			return 0;
 		}
 
 		template <>
-		const uint16_t* string<utf32>::nstring() const
+		const uint16_t* string<utf32>::nstring() const noexcept
 		{
 			return 0;
 		}
 
 		template <>
-		const uint32_t* string<utf32>::wstring() const
+		const uint32_t* string<utf32>::wstring() const noexcept
 		{
 			return (uint32_t*)data;
 		}
 
 		template <>
-		void string<utf32>::initChar(uint32_t chr, int index)
+		void string<utf32>::initChar(uint32_t chr, int index) noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 			data32[index] = chr;
 		}
 
 		template <>
-		int string<utf32>::charSize() const
+		int string<utf32>::charSize() const noexcept
 		{
 			return 4;
 		}
 
 		template <>
-		long string<utf32>::integer(int base) const
+		long string<utf32>::integer(int base) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -116,7 +116,7 @@ namespace z
 		}
 
 		template <>
-		double string<utf32>::floating(int base) const
+		double string<utf32>::floating(int base) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -199,7 +199,7 @@ namespace z
 		}
 
 		template <>
-		std::complex<double> string<utf32>::complex(int base) const
+		std::complex<double> string<utf32>::complex(int base) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -349,7 +349,7 @@ namespace z
 
 		///operators
 		template <>
-		const string<utf32>& string<utf32>::operator+=(const string<utf32>& other)
+		const string<utf32>& string<utf32>::operator+=(const string<utf32>& other) noexcept
 		{
 			int new_size = character_ct + other.character_ct + 1;
 			this->increase(new_size << 2);
@@ -370,7 +370,7 @@ namespace z
 
 		///analyzers
 		template <>
-		int string<utf32>::count(const string<utf32>& other) const
+		int string<utf32>::count(const string<utf32>& other) const noexcept
 		{
 			if (!other.character_ct) return 0;
 
@@ -403,7 +403,7 @@ namespace z
 		}
 
 		template <>
-		int string<utf32>::findAfter(const string<utf32>& other, int index, int occurrence) const
+		int string<utf32>::findAfter(const string<utf32>& other, int index, int occurrence) const noexcept
 		{
 			if (index < 0) index += character_ct;
 			if (!other.character_ct || (occurrence < 1) || (index < 0)) return -1;
@@ -435,7 +435,7 @@ namespace z
 		}
 
 		template <>
-		int string<utf32>::findBefore(const string<utf32>& other, int index, int occurrence) const
+		int string<utf32>::findBefore(const string<utf32>& other, int index, int occurrence) const noexcept
 		{
 			if (index < 0) index += character_ct;
 			if (!other.character_ct || (occurrence < 1) || (index < 0)) return -1;
@@ -475,7 +475,7 @@ namespace z
 		}
 
 		template <>
-		int string<utf32>::type(int base, uint32_t decimal) const
+		int string<utf32>::type(int base, uint32_t decimal) const noexcept
 		{
 			if ((base < 2) || (base > 36) || !character_ct) return zstr::string;
 
@@ -550,7 +550,7 @@ namespace z
 
 		///mutators
 		template <>
-		const string<utf32>& string<utf32>::operator=(const string<utf32>& other)
+		const string<utf32>& string<utf32>::operator=(const string<utf32>& other) noexcept
 		{
 			int new_len = (other.character_ct + 1) << 2;
 			this->increase(new_len);
@@ -568,7 +568,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32> string<utf32>::substr(int index, int count) const
+		string<utf32> string<utf32>::substr(int index, int count) const noexcept
 		{
 			string<utf32> result;
 			uint32_t* data32 = (uint32_t*)data;
@@ -617,7 +617,7 @@ namespace z
 		}
 
 		template<>
-		const string<utf32>& string<utf32>::append(uint32_t chr)
+		const string<utf32>& string<utf32>::append(uint32_t chr) noexcept
 		{
 			if (chr)
 			{
@@ -631,7 +631,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::insert(const string<utf32>& other, int index)//insert before index
+		const string<utf32>& string<utf32>::insert(const string<utf32>& other, int index) noexcept //insert before index
 		{
 			if (index < 0) index += character_ct;
 			if (!other.character_ct || index < 0) return *this;
@@ -663,7 +663,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::remove(int index, int count)
+		const string<utf32>& string<utf32>::remove(int index, int count) noexcept
 		{
 			if (count)
 			{
@@ -713,7 +713,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::replace(int index, int count, const string<utf32>& other)
+		const string<utf32>& string<utf32>::replace(int index, int count, const string<utf32>& other) noexcept
 		{
 			if (count)
 			{
@@ -794,7 +794,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>& string<utf32>::toUpper()
+		string<utf32>& string<utf32>::toUpper() noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 
@@ -805,7 +805,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>& string<utf32>::toLower()
+		string<utf32>& string<utf32>::toLower() noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 
@@ -816,7 +816,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>& string<utf32>::toCamel()
+		string<utf32>& string<utf32>::toCamel() noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 
@@ -833,7 +833,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>& string<utf32>::read(inputStream& stream, uint32_t delim)
+		string<utf32>& string<utf32>::read(inputStream& stream, uint32_t delim) noexcept
 		{
 			character_ct = 0;
 			uint32_t* data32 = (uint32_t*)data;
@@ -879,7 +879,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>& string<utf32>::readln(inputStream& stream)
+		string<utf32>& string<utf32>::readln(inputStream& stream) noexcept
 		{
 			character_ct = 0;
 
@@ -951,13 +951,13 @@ namespace z
 		}
 
 		template <>
-		uint32_t string<utf32>::operator[](int index) const
+		uint32_t string<utf32>::operator[](int index) const noexcept
 		{
 			return this->at(index);
 		}
 
 		template <>
-		void string<utf32>::initInt(long long value, int base, int padSize)
+		void string<utf32>::initInt(long long value, int base, int padSize) noexcept
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			if ((base < 2) || (base > 36)) base = 10;
@@ -993,7 +993,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::initPointer(void* pointer)
+		void string<utf32>::initPointer(void* pointer) noexcept
 		{
 			uint8_t pbuf[Z_STR_INT_BUFSIZE];
 
@@ -1033,7 +1033,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::initFloat(double value, int base, int precision, bool scientific, int padSize)
+		void string<utf32>::initFloat(double value, int base, int precision, bool scientific, int padSize) noexcept
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
 			uint8_t fbuf[Z_STR_FLOAT_BUFSIZE];
@@ -1140,7 +1140,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::initComplex(const std::complex<double>& value, int base, int precision)
+		void string<utf32>::initComplex(const std::complex<double>& value, int base, int precision) noexcept
 		{
 			data_len = 4;
 			data = new uint8_t[data_len];
@@ -1167,25 +1167,25 @@ namespace z
 		}
 
 		template <>
-		size_t string<utf32>::size() const
+		size_t string<utf32>::size() const noexcept
 		{
 			return sizeof(*this) + (data_len * sizeof(uint8_t));
 		}
 
 		template <>
-		int string<utf32>::length() const
+		int string<utf32>::length() const noexcept
 		{
 			return character_ct;
 		}
 
 		template <>
-		int string<utf32>::chars() const
+		int string<utf32>::chars() const noexcept
 		{
 			return character_ct;
 		}
 
 		template <>
-		bool string<utf32>::foundAt(const string<utf32>& other, int index) const
+		bool string<utf32>::foundAt(const string<utf32>& other, int index) const noexcept
 		{
 			if (index < 0) index += character_ct;
 			if ((character_ct - index) < other.character_ct || index < 0) return false;
@@ -1214,7 +1214,7 @@ namespace z
 		}
 
 		template <>
-		bool string<utf32>::foundEndAt(const string<utf32>& other, int index) const
+		bool string<utf32>::foundEndAt(const string<utf32>& other, int index) const noexcept
 		{
 			if (index < 0) index += character_ct;
 			if (index < other.character_ct) return false;
@@ -1248,7 +1248,7 @@ namespace z
 
 		///mutators
 		template <>
-		const string<utf32>& string<utf32>::remove(const string& other, int occurrence)
+		const string<utf32>& string<utf32>::remove(const string& other, int occurrence) noexcept
 		{
 			if (occurrence > 0) //remove one occurrence
 			{
@@ -1274,7 +1274,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::replace(const string<utf32>& findStr, const string<utf32>& replStr, int occurrence)
+		const string<utf32>& string<utf32>::replace(const string<utf32>& findStr, const string<utf32>& replStr, int occurrence) noexcept
 		{
 			if (occurrence > 0) //replace one occurrence
 			{
@@ -1300,7 +1300,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::padLeftIn(const string<utf32>& other, int padSize)
+		const string<utf32>& string<utf32>::padLeftIn(const string<utf32>& other, int padSize) noexcept
 		{
 			if (padSize <= character_ct) return *this;
 
@@ -1321,7 +1321,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::padRightIn(const string<utf32>& other, int padSize)
+		const string<utf32>& string<utf32>::padRightIn(const string<utf32>& other, int padSize) noexcept
 		{
 			if (padSize <= character_ct) return *this;
 
@@ -1342,7 +1342,7 @@ namespace z
 		}
 
 		template<>
-		void string<utf32>::clear()
+		void string<utf32>::clear() noexcept
 		{
 			uint32_t* data32 = (uint32_t*)data;
 			data32[0] = 0;
@@ -1350,7 +1350,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf32>& string<utf32>::cutDuplicates(const string<utf32>& other)
+		const string<utf32>& string<utf32>::cutDuplicates(const string<utf32>& other) noexcept
 		{
 			int pos = this->find(other, 1);
 
@@ -1369,7 +1369,7 @@ namespace z
 
 		///operators
 		template <>
-		string<utf32> string<utf32>::operator+(const string<utf32>& other) const
+		string<utf32> string<utf32>::operator+(const string<utf32>& other) const noexcept
 		{
 			string<utf32> result (*this);
 			result += other;
@@ -1378,7 +1378,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::write(outputStream& stream, encoding enc) const
+		void string<utf32>::write(outputStream& stream, encoding enc) const noexcept
 		{
 			if (stream.bad()) return;
 
@@ -1407,7 +1407,7 @@ namespace z
 		}
 
 		template <>
-		void string<utf32>::writeln(outputStream& stream, encoding enc) const
+		void string<utf32>::writeln(outputStream& stream, encoding enc) const noexcept
 		{
 			if (stream.bad()) return;
 			string<utf32> newl = "\n";
