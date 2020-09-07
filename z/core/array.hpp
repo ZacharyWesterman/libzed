@@ -172,7 +172,7 @@ namespace z
 
 			array subset(int, int) const;
 
-			size_t size() const;
+			size_t size() const noexcept;
 
 			int length() const;
 
@@ -526,7 +526,7 @@ namespace z
 		 * \return The (approximate) number of bytes the array consumes.
 		 */
 		template <typename T>
-		size_t array<T>::size() const
+		size_t array<T>::size() const noexcept
 		{
 			size_t bytes = 0;
 			for (auto& item : array_data)

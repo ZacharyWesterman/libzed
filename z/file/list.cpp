@@ -12,7 +12,7 @@ namespace z
 {
 	namespace file
 	{
-		core::array< zpath > listFiles(const zpath& dir, const zpath& file_type)
+		core::array< zpath > listFiles(const zpath& dir, const zpath& file_type) noexcept
 		{
 			core::array< zpath > output;
 
@@ -89,7 +89,7 @@ namespace z
 		}
 
 
-		core::array< zpath > listDirs(const zpath& dir, bool showAll)
+		core::array< zpath > listDirs(const zpath& dir, bool showAll) noexcept
 		{
 			core::array< zpath > output;
 

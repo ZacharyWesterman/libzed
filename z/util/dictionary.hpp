@@ -114,7 +114,7 @@ namespace z
 			 */
 			void setLanguage(const core::string<>& newLang);
 
-			size_t size() const;
+			size_t size() const noexcept;
 
 			void serialIn(core::inputStream& stream);
 

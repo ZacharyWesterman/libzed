@@ -104,7 +104,7 @@ namespace z
 			lang = newLang;
 		}
 
-		size_t dictionary::size() const
+		size_t dictionary::size() const noexcept
 		{
 			size_t total = wordList.size();
 

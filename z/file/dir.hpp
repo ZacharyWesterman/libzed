@@ -11,6 +11,6 @@ namespace z
 		 * \return A string containing the current directory the executable is running from.
 		 * \threadsafe_function_yes
 		 */
-		zpath dir();
+		zpath dir() noexcept;
 	}
 }

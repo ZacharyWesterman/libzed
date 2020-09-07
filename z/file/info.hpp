@@ -37,7 +37,7 @@ namespace z
 			 * \param path a string of the path to
 			 * the file object.
 			 */
-			info(const zpath& path);
+			info(const zpath& path) noexcept;
 
 			/**
 			 * \brief Get whether the file object exists
@@ -47,7 +47,7 @@ namespace z
 			 * or cannot be accessed for some reason.
 			 * \b True otherwise.
 			 */
-			inline bool exists();
+			inline bool exists() noexcept;
 
 			/**
 			 * \brief Get the time that the file was last accessed.
@@ -55,7 +55,7 @@ namespace z
 			 * \return When the file was last accessed, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastAccessed();
+			time_t lastAccessed() noexcept;
 
 			/**
 			 * \brief Get the time that the file was last modified.
@@ -63,7 +63,7 @@ namespace z
 			 * \return When the file was last modified, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastModified();
+			time_t lastModified() noexcept;
 
 			/**
 			 * \brief Get the time that the file's status was last changed.
@@ -71,7 +71,7 @@ namespace z
 			 * \return When the file status was last changed, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastStatusChange();
+			time_t lastStatusChange() noexcept;
 
 			/**
 			 * \brief Get the size of the file.
@@ -79,7 +79,7 @@ namespace z
 			 * \return The size of the file (in Bytes), if it exists.
 			 * \b 0 otherwise.
 			 */
-			size_t byteCount();
+			size_t byteCount() noexcept;
 
 			/**
 			 * \brief Get the number of the device where the file is stored.
@@ -87,7 +87,7 @@ namespace z
 			 * \return The device number of the file, if it exists.
 			 * \b 0 otherwise.
 			 */
-			unsigned int deviceNumber();
+			unsigned int deviceNumber() noexcept;
 		};
 	}
 }

@@ -119,7 +119,7 @@ namespace z
 			 */
 			bool operator<(const word& other) const;
 
-			size_t size() const;
+			size_t size() const noexcept;
 
 			void serialIn(core::inputStream& stream);
 

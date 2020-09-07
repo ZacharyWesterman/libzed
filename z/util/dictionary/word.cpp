@@ -105,7 +105,7 @@ namespace z
 			return (_word.length() < other._word.length());
 		}
 
-		size_t word::size() const
+		size_t word::size() const noexcept
 		{
 			return _word.size() + sizeof(part_of_speech);
 		}

@@ -122,7 +122,7 @@ namespace z
 			return new genericString(data);
 		}
 
-		size_t genericString::size() const
+		size_t genericString::size() const noexcept
 		{
 			return (sizeof(*this) - sizeof(zstring)) + data.size();
 		}

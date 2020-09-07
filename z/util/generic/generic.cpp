@@ -114,7 +114,7 @@ namespace z
 			return false;
 		}
 
-		size_t generic::size() const
+		size_t generic::size() const noexcept
 		{
 			return sizeof(*this);
 		}

@@ -27,12 +27,12 @@ namespace z
 			/**
 			 * \brief Default empty constructor.
 			 */
-			library();
+			library() noexcept;
 
 			/**
 			 * \brief Destructor frees any loaded library.
 			 */
-			~library();
+			~library() noexcept;
 
 			/**
 			 * \brief Load a dynamic library with the given file name.
@@ -42,7 +42,7 @@ namespace z
 			 * \return \b True if the library loaded successfully.
 			 * \b False otherwise.
 			 */
-			bool load(const zpath& fileName);
+			bool load(const zpath& fileName) noexcept;
 
 			/**
 			 * \brief Unload the dynamic library.
@@ -50,7 +50,7 @@ namespace z
 			 * \return \b False if unable to unload previously
 			 * loaded library. \b True otherwise.
 			 */
-			bool unload();
+			bool unload() noexcept;
 
 			/**
 			 * \brief Get whether the library has been loaded.
@@ -60,7 +60,7 @@ namespace z
 			 *
 			 * \see bad()
 			 */
-			bool good();
+			bool good() noexcept;
 
 			/**
 			 * \brief Get whether the library has not been loaded.
@@ -70,7 +70,7 @@ namespace z
 			 *
 			 * \see good()
 			 */
-			bool bad();
+			bool bad() noexcept;
 
 			/**
 			 * \brief Get a pointer to the symbol with the given name.
@@ -81,7 +81,7 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			void* symbol(const zpath& symbolName);
+			void* symbol(const zpath& symbolName) noexcept;
 
 			/**
 			 * \brief Get a pointer to the function with the given name.
@@ -96,7 +96,7 @@ namespace z
 			 * a pointer to the symbol. Otherwise, if the symbol was not
 			 * found or the library hasn't been loaded, returns \b NULL.
 			 */
-			func function(const zpath& symbolName);
+			func function(const zpath& symbolName) noexcept;
 		};
 	}
 }

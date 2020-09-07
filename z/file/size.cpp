@@ -10,7 +10,7 @@ namespace z
 {
 	namespace file
 	{
-		size_t size(const zpath& path)
+		size_t size(const zpath& path) noexcept
 		{
 #			if __cplusplus == 201703L
 			//If C++17, we can get file size faster than using fstream's seek() method.
