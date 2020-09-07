@@ -4,7 +4,7 @@ namespace z
 {
 	namespace math
 	{
-		long remainder(long x, long y)
+		long remainder(long x, long y) noexcept
 		{
 			if (y == 0)
 				return 0;
@@ -23,7 +23,7 @@ namespace z
 			return x;
 		}
 
-		std::complex<long> remainder(const std::complex<long>& x, const std::complex<long>& y)
+		std::complex<long> remainder(const std::complex<long>& x, const std::complex<long>& y) noexcept
 		{
 			if ((y.real() == 0) && (y.imag() == 0))
 				return std::complex<long>();

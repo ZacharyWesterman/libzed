@@ -18,6 +18,6 @@ namespace z
 		 *
 		 * \threadsafe_function_yes
 		 */
-		void pause(double ms);
+		void pause(double ms) noexcept;
 	}
 }

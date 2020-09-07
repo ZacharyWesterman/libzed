@@ -12,7 +12,7 @@ namespace z
 {
 	namespace system
 	{
-		void pause(double ms)
+		void pause(double ms) noexcept
 		{
 			#ifdef _WIN32
 			Sleep(ms);

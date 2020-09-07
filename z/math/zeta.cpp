@@ -4,7 +4,7 @@ namespace z
 {
 	namespace math
 	{
-		double zeta(const int s)
+		double zeta(const int s) noexcept
 		{
 			double result = 1.0;
 

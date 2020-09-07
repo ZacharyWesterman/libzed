@@ -4,7 +4,7 @@ namespace z
 {
 	namespace math
 	{
-		long long factorial(long long n)
+		long long factorial(long long n) noexcept
 		{
 			if (n < 0)
 				return 0;
@@ -28,7 +28,7 @@ namespace z
 			return result;
 		}
 
-		long long factorial(long long n, bool& did_overflow)
+		long long factorial(long long n, bool& did_overflow) noexcept
 		{
 			if (n < 0)
 			{
