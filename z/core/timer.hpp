@@ -25,12 +25,12 @@ namespace z
 			 * \param run an optional parameter to decide
 			 * whether the timer should start now.
 			 */
-			timer (bool run = true);
+			timer (bool run = true) noexcept;
 
 			/**
 			 * \brief Reset the timer.
 			 */
-			void reset();
+			void reset() noexcept;
 
 			/**
 			 * \brief Get the elapsed time in \b microseconds.
@@ -38,7 +38,7 @@ namespace z
 			 * \return The number of \b microseconds that have passed
 			 * since the timer was last reset.
 			 */
-			unsigned int micros() const;
+			unsigned int micros() const noexcept;
 
 			/**
 			 * \brief Get the elapsed time in \b milliseconds.
@@ -46,7 +46,7 @@ namespace z
 			 * \return The number of \b milliseconds that have passed
 			 * since the timer was last reset.
 			 */
-			unsigned int millis() const;
+			unsigned int millis() const noexcept;
 
 			/**
 			 * \brief Get the elapsed time in \b seconds.
@@ -54,7 +54,7 @@ namespace z
 			 * \return The number of \b seconds that have passed
 			 * since the timer was last reset.
 			 */
-			unsigned int seconds() const;
+			unsigned int seconds() const noexcept;
 
 			/**
 			 * \brief Get the elapsed time in \b minutes.
@@ -62,7 +62,7 @@ namespace z
 			 * \return The number of \b minutes that have passed
 			 * since the timer was last reset.
 			 */
-			unsigned int minutes() const;
+			unsigned int minutes() const noexcept;
 
 			/**
 			 * \brief Get the elapsed time in \b minutes.
@@ -70,7 +70,7 @@ namespace z
 			 * \return The number of \b minutes that have passed
 			 * since the timer was last reset.
 			 */
-			unsigned int hours() const;
+			unsigned int hours() const noexcept;
 		};
 	}
 }

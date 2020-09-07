@@ -33,7 +33,7 @@
 
 #define DBL_EXP_DIG ((sizeof(double) << 3) - DBL_MANT_DIG - 1)
 
-int integralBuf(unsigned long integral, int base, uint8_t* buf)
+int integralBuf(unsigned long integral, int base, uint8_t* buf) noexcept
 {
 	if (integral)
 	{
@@ -55,7 +55,7 @@ int integralBuf(unsigned long integral, int base, uint8_t* buf)
 	}
 }
 
-int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf)
+int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf) noexcept
 {
 	if (fractional)
 	{

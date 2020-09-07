@@ -18,7 +18,7 @@ namespace z
 		 *
 		 * \return True if the character is uppercase. False otherwise.
 		 */
-		bool isUpperAlpha(uint32_t ch);
+		bool isUpperAlpha(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Check if the given character is a lowercase
@@ -31,7 +31,7 @@ namespace z
 		 *
 		 * \return True if the character is lowercase. False otherwise.
 		 */
-		bool isLowerAlpha(uint32_t ch);
+		bool isLowerAlpha(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Check if the given character is an uppercase character.
@@ -40,7 +40,7 @@ namespace z
 		 *
 		 * \return True if the character is uppercase. False otherwise.
 		 */
-		bool isUpper(uint32_t ch);
+		bool isUpper(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Check if the given character is a lowercase character.
@@ -49,7 +49,7 @@ namespace z
 		 *
 		 * \return True if the character is lowercase. False otherwise.
 		 */
-		bool isLower(uint32_t ch);
+		bool isLower(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Convert the given character to uppercase.
@@ -61,7 +61,7 @@ namespace z
 		 *
 		 * \return The character, converted to uppercase if applicable.
 		 */
-		uint32_t toUpper(uint32_t ch, bool camel = false);
+		uint32_t toUpper(uint32_t ch, bool camel = false) noexcept;
 
 		/**
 		 * \brief Convert the given character to lowercase.
@@ -72,7 +72,7 @@ namespace z
 		 *
 		 * \return The character, converted to lowercase if applicable.
 		 */
-		uint32_t toLower(uint32_t ch, bool alternate = false);
+		uint32_t toLower(uint32_t ch, bool alternate = false) noexcept;
 
 		/**
 		 * \brief Check if the given character is an
@@ -83,7 +83,7 @@ namespace z
 		 * \return \b True if the character is an alphabetic character.
 		 * \b False otherwise.
 		 */
-		bool isAlpha(uint32_t ch);
+		bool isAlpha(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Convert the given character to its
@@ -97,7 +97,7 @@ namespace z
 		 * \return The numeral value of the character.
 		 * If it is not a numeric character, returns -1.
 		 */
-		int numeralValue(uint32_t ch);
+		int numeralValue(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Convert the given value to its
@@ -110,7 +110,7 @@ namespace z
 		 * \return The character numeral for the value.
 		 * If it is not a numeral value, returns '0'.
 		 */
-		uint32_t numeral(int value);
+		uint32_t numeral(int value) noexcept;
 
 		/**
 		 * \brief Check if the given character is numeric under the given base.
@@ -120,7 +120,7 @@ namespace z
 		 *
 		 * \return True if the character is numeric under the given base. False otherwise.
 		 */
-		bool isNumeric(uint32_t ch, int base = 10);
+		bool isNumeric(uint32_t ch, int base = 10) noexcept;
 
 		/**
 		 * \brief Check if the given character is alphanumeric.
@@ -129,7 +129,7 @@ namespace z
 		 *
 		 * \return True if the character is alphanumeric. False otherwise.
 		 */
-		bool isAlphaNumeric(uint32_t ch);
+		bool isAlphaNumeric(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Check if the given character is white space.
@@ -138,7 +138,7 @@ namespace z
 		 *
 		 * \return True if the character is a white space character. False otherwise.
 		 */
-		bool isWhiteSpace(uint32_t ch);
+		bool isWhiteSpace(uint32_t ch) noexcept;
 
 		/**
 		 * \brief Convert a character to UTF-8 encoding.
@@ -148,7 +148,7 @@ namespace z
 		 *
 		 * \return The number of characters in the UTF-8 sequence.
 		 */
-		int toUTF8(uint8_t* c, uint32_t chr);
+		int toUTF8(uint8_t* c, uint32_t chr) noexcept;
 
 		/**
 		 * \brief Get the length of the UTF-8 encoding for a character.
@@ -157,7 +157,7 @@ namespace z
 		 *
 		 * \return The number of characters in the UTF-8 sequence.
 		 */
-		int lenToUTF8(uint32_t chr);
+		int lenToUTF8(uint32_t chr) noexcept;
 
 
 		/**
@@ -167,7 +167,7 @@ namespace z
 		 *
 		 * \return The character encoded as UTF32. '?' if input is not valid UTF-8.
 		 */
-		uint32_t fromUTF8(uint8_t* c);
+		uint32_t fromUTF8(uint8_t* c) noexcept;
 
 		/**
 		 * \brief Get the character length of a UTF-8 sequence.
@@ -176,7 +176,7 @@ namespace z
 		 *
 		 * \return The number of characters in the UTF-8 sequence. Assumed to be valid UTF-8.
 		 */
-		int lenFromUTF8(uint8_t* c);
+		int lenFromUTF8(uint8_t* c) noexcept;
 
 		/**
 		 * \brief Get whether the characters are in valid UTF-8 format.
@@ -186,6 +186,6 @@ namespace z
 		 *
 		 * \return True if the sequence is valid UTF-8 format, false otherwise.
 		 */
-		bool isUTF8(uint8_t* c, int len);
+		bool isUTF8(uint8_t* c, int len) noexcept;
 	}
 }

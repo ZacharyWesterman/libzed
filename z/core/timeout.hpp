@@ -28,7 +28,7 @@ namespace z
 			 * \param run an optional parameter to decide
 			 * whether the timer should start now.
 			 */
-			timeout(unsigned int timeout_micros = -1, bool run = true);
+			timeout(unsigned int timeout_micros = -1, bool run = true) noexcept;
 
 			/**
 			 * \brief Set the time out goal.
@@ -37,7 +37,7 @@ namespace z
 			 * after which the timer will time out. If this is set
 			 * to a negative value, then it will never time out.
 			 */
-			void setTimeOut(unsigned int timeout_micros);
+			void setTimeOut(unsigned int timeout_micros) noexcept;
 
 			/**
 			 * \brief Check whether the timer has timed out.
@@ -45,7 +45,7 @@ namespace z
 			 * \return \b True if the timer has passed the specified
 			 * time limit. \b False otherwise.
 			 */
-			bool timedOut() const;
+			bool timedOut() const noexcept;
 		};
 	}
 }

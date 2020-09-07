@@ -19,7 +19,7 @@ namespace z
 		 * \threadsafe_function_yes
 		 */
 		template <encoding E>
-		array< string<E> > split(const string<E>& input, const string<E>& delim)
+		array< string<E> > split(const string<E>& input, const string<E>& delim) noexcept
 		{
 			array< string<E> > list;
 
