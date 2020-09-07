@@ -9,7 +9,7 @@ namespace z
 {
 	namespace util
 	{
-		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output)
+		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output) noexcept
 		{
 			bool inOr = false;
 			bool startOr = false;

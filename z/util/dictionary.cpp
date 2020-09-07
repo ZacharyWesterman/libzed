@@ -5,17 +5,17 @@ namespace z
 {
 	namespace util
 	{
-		dictionary::dictionary()
+		dictionary::dictionary() noexcept
 		{
 			readingStream = false;
 		}
 
-		dictionary::~dictionary()
+		dictionary::~dictionary() noexcept
 		{
 			clear();
 		}
 
-		void dictionary::clear()
+		void dictionary::clear() noexcept
 		{
 			for (int i=0; i<wordList.length(); i++)
 			{
@@ -24,7 +24,7 @@ namespace z
 			wordList.clear();
 		}
 
-		int dictionary::read(core::inputStream& stream, const core::timeout& time)
+		int dictionary::read(core::inputStream& stream, const core::timeout& time) noexcept
 		{
 			if (stream.bad()) return -1;
 			if (stream.empty()) return 1;
@@ -49,7 +49,7 @@ namespace z
 			return stream.empty();
 		}
 
-		bool dictionary::isWord(const core::string<>& name) const
+		bool dictionary::isWord(const core::string<>& name) const noexcept
 		{
 			if (!wordList.length()) return false;
 
@@ -60,7 +60,7 @@ namespace z
 			return result >= 0;
 		}
 
-		word dictionary::getWord(const core::string<>& name) const
+		word dictionary::getWord(const core::string<>& name) const noexcept
 		{
 			word* check = new word(name);
 			auto index = wordList.find(check);
@@ -72,12 +72,12 @@ namespace z
 				return word();
 		}
 
-		int dictionary::wordCount() const
+		int dictionary::wordCount() const noexcept
 		{
 			return wordList.length();
 		}
 
-		void dictionary::setWord(const word& newWord)
+		void dictionary::setWord(const word& newWord) noexcept
 		{
 			word* item = new word(newWord);
 
@@ -94,12 +94,12 @@ namespace z
 			}
 		}
 
-		const core::string<>& dictionary::language() const
+		const core::string<>& dictionary::language() const noexcept
 		{
 			return lang;
 		}
 
-		void dictionary::setLanguage(const core::string<>& newLang)
+		void dictionary::setLanguage(const core::string<>& newLang) noexcept
 		{
 			lang = newLang;
 		}
@@ -166,7 +166,7 @@ namespace z
 			stream.seek(stop);
 		}
 
-		dictRange dictionary::range() const
+		dictRange dictionary::range() const noexcept
 		{
 			dictRange wordRange;
 
@@ -179,7 +179,7 @@ namespace z
 			return wordRange;
 		}
 
-		bool dictionary::narrow(dictRange* wordRange, uint32_t nextChar) const
+		bool dictionary::narrow(dictRange* wordRange, uint32_t nextChar) const noexcept
 		{
 			if (wordRange->exhausted || !wordRange) return false;
 			wordRange->isWord = false;

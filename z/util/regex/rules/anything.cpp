@@ -5,10 +5,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			anything::anything(bool newline, int min, int max, bool greedy):
+			anything::anything(bool newline, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), newline(newline) {}
 
-			bool anything::match(core::inputStream& stream) const
+			bool anything::match(core::inputStream& stream) const noexcept
 			{
 				if (stream.empty()) return false;
 
@@ -43,13 +43,13 @@ namespace z
 				return false;
 			}
 
-			bool anything::base() const
+			bool anything::base() const noexcept
 			{
 				return false;
 			}
 
 #			ifdef DEBUG
-			void anything::print(core::outputStream& stream, int level)
+			void anything::print(core::outputStream& stream, int level) noexcept
 			{
 				(zpath().padLeftIn(" ",(level)<<1)+"."+meta()).writeln(stream);
 			}

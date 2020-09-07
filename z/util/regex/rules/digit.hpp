@@ -13,10 +13,10 @@ namespace z
 			class digit : public rule
 			{
 			public:
-				bool match(uint32_t current) const;
+				bool match(uint32_t current) const noexcept;
 
 #			ifdef DEBUG
-				void print(core::outputStream& stream, int level=0);
+				void print(core::outputStream& stream, int level=0) noexcept;
 #			endif
 			};
 		}

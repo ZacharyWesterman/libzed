@@ -5,10 +5,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			orlist::orlist(bool negate, int min, int max, bool greedy):
+			orlist::orlist(bool negate, int min, int max, bool greedy) noexcept :
 				compound(min,max,greedy), negate(negate){}
 
-			bool orlist::match(core::inputStream& stream) const
+			bool orlist::match(core::inputStream& stream) const noexcept
 			{
 				auto pos = stream.tell();
 				for (auto& child : children)
@@ -20,7 +20,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void orlist::print(core::outputStream& stream, int level)
+			void orlist::print(core::outputStream& stream, int level) noexcept
 			{
 				auto s = zpath().padLeftIn(" ",(level)<<1)+"[]";
 				if (negate) s += " ~";

@@ -6,10 +6,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			boundary::boundary(bool negate, int min, int max, bool greedy):
+			boundary::boundary(bool negate, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), negate(negate) {}
 
-			bool boundary::match(core::inputStream& stream) const
+			bool boundary::match(core::inputStream& stream) const noexcept
 			{
 				auto pos = stream.tell();
 				bool bbeg, bend;
@@ -52,13 +52,13 @@ namespace z
 				return negate ^ (bbeg ^ bend);
 			}
 
-			bool boundary::base() const
+			bool boundary::base() const noexcept
 			{
 				return false;
 			}
 
 #			ifdef DEBUG
-			void boundary::print(core::outputStream& stream, int level)
+			void boundary::print(core::outputStream& stream, int level) noexcept
 			{
 				(zpath().padLeftIn(" ",(level)<<1)+"\\b"+meta()).writeln(stream);
 			}

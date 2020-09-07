@@ -6,10 +6,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			character::character(uint32_t value, bool insensitive, int min, int max, bool greedy):
+			character::character(uint32_t value, bool insensitive, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), value(value), insensitive(insensitive) {}
 
-			bool character::match(uint32_t current) const
+			bool character::match(uint32_t current) const noexcept
 			{
 				if (insensitive)
 					return core::toUpper(current) == core::toUpper(value);
@@ -18,7 +18,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void character::print(core::outputStream& stream, int level)
+			void character::print(core::outputStream& stream, int level) noexcept
 			{
 				zpath s;
 				s.padLeftIn(" ",(level)<<1);

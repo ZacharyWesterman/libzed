@@ -6,10 +6,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			punct::punct(bool negate, int min, int max, bool greedy):
+			punct::punct(bool negate, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), negate(negate) {}
 
-			bool punct::match(uint32_t current) const
+			bool punct::match(uint32_t current) const noexcept
 			{
 				const char chars[] = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
@@ -24,7 +24,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void punct::print(core::outputStream& stream, int level)
+			void punct::print(core::outputStream& stream, int level) noexcept
 			{
 				(zpath().padLeftIn(" ",(level)<<1)+(negate?"\\P":"\\p")+meta()).writeln(stream);
 			}

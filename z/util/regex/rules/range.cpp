@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			range::range(uint32_t begin, uint32_t end, bool insensitive, int min, int max, bool greedy):
+			range::range(uint32_t begin, uint32_t end, bool insensitive, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), insensitive(insensitive)
 			{
 				if (begin > end)
@@ -27,7 +27,7 @@ namespace z
 				}
 			}
 
-			bool range::match(uint32_t current) const
+			bool range::match(uint32_t current) const noexcept
 			{
 				if (insensitive) current = core::toUpper(current);
 
@@ -35,7 +35,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void range::print(core::outputStream& stream, int level)
+			void range::print(core::outputStream& stream, int level) noexcept
 			{
 				zpath s;
 				s.padLeftIn(" ",(level)<<1);

@@ -23,28 +23,28 @@ namespace z
 			 * \param regexID The ID of this symbol.
 			 * \param regexSymbol An additional character associated with this symbol.
 			 */
-			rgxss(const uint8_t regexID, const uint32_t regexSymbol);
+			rgxss(const uint8_t regexID, const uint32_t regexSymbol) noexcept;
 
 			/**
 			 * \brief Constructor from ID.
 			 *
 			 * \param regexID The ID of this symbol.
 			 */
-			rgxss(const uint8_t regexID = 0);
+			rgxss(const uint8_t regexID = 0) noexcept;
 
 			/**
 			 * \brief Get this symbol's character.
 			 * \return The character associated with this symbol.
 			 * \threadsafe_member_yes
 			 */
-			uint32_t symbol() const;
+			uint32_t symbol() const noexcept;
 
 			/**
 			 * \brief Get this symbol's ID.
 			 * \return The ID of this symbol.
 			 * \threadsafe_member_yes
 			 */
-			uint8_t id() const;
+			uint8_t id() const noexcept;
 
 			/**
 			 * \brief Equality operator.
@@ -55,7 +55,7 @@ namespace z
 			 * \return True if the symbols are equivalent, false otherwise.
 			 * \threadsafe_member_yes
 			 */
-			bool operator==(const rgxss& other) const;
+			bool operator==(const rgxss& other) const noexcept;
 
 			/**
 			 * \brief Assignment operator.
@@ -64,7 +64,7 @@ namespace z
 			 * \return A reference to this symbol after assignment.
 			 * \threadsafe_member_no
 			 */
-			const rgxss& operator=(const rgxss& other);
+			const rgxss& operator=(const rgxss& other) noexcept;
 		};
 	}
 }

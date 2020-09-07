@@ -22,7 +22,7 @@ namespace z
 
 		public:
 			///Default constructor.
-			word();
+			word() noexcept;
 
 			/**
 			 * \brief Full constructor.
@@ -30,14 +30,14 @@ namespace z
 			 * \param name The word.
 			 * \param speechPart The part of speech that this word is.
 			 */
-			word(const core::string<>& name, part speechPart = unknown);
+			word(const core::string<>& name, part speechPart = unknown) noexcept;
 
 			/**
 			 * \brief Copy constructor.
 			 *
 			 * \param other The word to duplicate.
 			 */
-			word(const word& other);
+			word(const word& other) noexcept;
 
 			/**
 			 * \brief Assignment operator.
@@ -48,7 +48,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			const word& operator=(const word& other);
+			const word& operator=(const word& other) noexcept;
 
 			/**
 			 * \brief Get the text pertaining to this word.
@@ -57,7 +57,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			const core::string<>& get() const;
+			const core::string<>& get() const noexcept;
 
 			/**
 			 * \brief Set this word's text.
@@ -66,7 +66,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			void set(const core::string<>& name);
+			void set(const core::string<>& name) noexcept;
 
 			/**
 			 * \brief Get the part of speech this word is.
@@ -75,7 +75,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			part getPart() const;
+			part getPart() const noexcept;
 
 			/**
 			 * \brief Set this word's part of speech.
@@ -84,7 +84,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			void setPart(part speechPart);
+			void setPart(part speechPart) noexcept;
 
 			/**
 			 * \brief Equality operator (case is ignored).
@@ -95,7 +95,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool operator==(const word& other) const;
+			bool operator==(const word& other) const noexcept;
 
 			/**
 			 * \brief Greater-than operator (case is ignored).
@@ -106,7 +106,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool operator>(const word& other) const;
+			bool operator>(const word& other) const noexcept;
 
 			/**
 			 * \brief Less-than operator (case is ignored).
@@ -117,7 +117,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool operator<(const word& other) const;
+			bool operator<(const word& other) const noexcept;
 
 			size_t size() const noexcept;
 

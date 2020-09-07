@@ -20,6 +20,6 @@ namespace z
 		 *
 		 * \threadsafe_function_ref
 		 */
-		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output);
+		rgxerr rgxscan(const zstring& pattern, core::array<rgxss>& output) noexcept;
 	}
 }
