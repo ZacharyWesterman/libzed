@@ -14,12 +14,12 @@ namespace z
 {
 	namespace file
 	{
-		library::library()
+		library::library() noexcept
 		{
 			lib_ptr = 0;
 		}
 
-		library::~library()
+		library::~library() noexcept
 		{
 #			ifdef _WIN32
 			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
@@ -28,7 +28,7 @@ namespace z
 #			endif
 		}
 
-		bool library::load(const zpath& file_name)
+		bool library::load(const zpath& file_name) noexcept
 		{
 #			ifdef _WIN32
 			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
@@ -43,7 +43,7 @@ namespace z
 #			endif
 		}
 
-		bool library::unload()
+		bool library::unload() noexcept
 		{
 #			ifdef _WIN32
 			if (lib_ptr)
@@ -60,17 +60,17 @@ namespace z
 #			endif
 		}
 
-		bool library::good()
+		bool library::good() noexcept
 		{
 			return (bool)lib_ptr;
 		}
 
-		bool library::bad()
+		bool library::bad() noexcept
 		{
 			return !lib_ptr;
 		}
 
-		void* library::symbol(const zpath& symbol_name)
+		void* library::symbol(const zpath& symbol_name) noexcept
 		{
 			void* symbol_pointer = NULL;
 #			ifdef _WIN32
@@ -83,7 +83,7 @@ namespace z
 			return symbol_pointer;
 		}
 
-		func library::function(const zpath& symbol_name)
+		func library::function(const zpath& symbol_name) noexcept
 		{
 			void* symbol_pointer = NULL;
 			func func_pointer = NULL;

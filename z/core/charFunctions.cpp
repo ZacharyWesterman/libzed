@@ -122,27 +122,27 @@ namespace z
 {
 	namespace core
 	{
-		bool isUpperAlpha(uint32_t ch)
+		bool isUpperAlpha(uint32_t ch) noexcept
 		{
 			return ((ch >= 'A') && (ch <= 'Z'));
 		}
 
-		bool isLowerAlpha(uint32_t ch)
+		bool isLowerAlpha(uint32_t ch) noexcept
 		{
 			return ((ch >= 'a') &&  (ch <= 'z'));
 		}
 
-		bool isUpper(uint32_t ch)
+		bool isUpper(uint32_t ch) noexcept
 		{
 			return (toLower(ch) != ch);
 		}
 
-		bool isLower(uint32_t ch)
+		bool isLower(uint32_t ch) noexcept
 		{
 			return (toUpper(ch) != ch);
 		}
 
-		uint32_t toUpper(uint32_t ch, bool camel)
+		uint32_t toUpper(uint32_t ch, bool camel) noexcept
 		{
 			uint32_t beg;
 
@@ -212,7 +212,7 @@ namespace z
 			return ch;
 		}
 
-		uint32_t toLower(uint32_t ch, bool alternate)
+		uint32_t toLower(uint32_t ch, bool alternate) noexcept
 		{
 			uint32_t beg;
 
@@ -279,13 +279,13 @@ namespace z
 			return ch;
 		}
 
-		bool isAlpha(uint32_t ch)
+		bool isAlpha(uint32_t ch) noexcept
 		{
 			return (isLowerAlpha(ch) || //is uppercase
 					isUpperAlpha(ch));  //or lowercase
 		}
 
-		int numeralValue(uint32_t ch)
+		int numeralValue(uint32_t ch) noexcept
 		{
 			if ((ch >= '0') &&  //from 0
 				(ch <= '9'))	//to 9
@@ -298,7 +298,7 @@ namespace z
 				return -1;
 		}
 
-		uint32_t numeral(int value)
+		uint32_t numeral(int value) noexcept
 		{
 			if ((value > 36) || (value < 1))
 				return '0';
@@ -309,19 +309,19 @@ namespace z
 				return (value - 10) + 'A';
 		}
 
-		bool isNumeric(uint32_t ch, int base)
+		bool isNumeric(uint32_t ch, int base) noexcept
 		{
 			int value = numeralValue(ch);
 			return ((value < base) && (value > -1));
 		}
 
-		bool isAlphaNumeric(uint32_t ch)
+		bool isAlphaNumeric(uint32_t ch) noexcept
 		{
 			return (isAlpha(ch) ||  //is a letter
 					isNumeric(ch)); //or a number
 		}
 
-		bool isWhiteSpace(uint32_t ch)
+		bool isWhiteSpace(uint32_t ch) noexcept
 		{
 			if ((ch == 9)  || //tab
 				(ch == 10) || //newline
@@ -335,7 +335,7 @@ namespace z
 				return false;
 		}
 
-		int toUTF8(uint8_t* c, uint32_t chr)
+		int toUTF8(uint8_t* c, uint32_t chr) noexcept
 		{
 			if (chr < 0x80)
 			{
@@ -365,7 +365,7 @@ namespace z
 			}
 		}
 
-		int lenToUTF8(uint32_t chr)
+		int lenToUTF8(uint32_t chr) noexcept
 		{
 			if (chr < 0x80)
 				return 1;
@@ -377,7 +377,7 @@ namespace z
 				return 4;
 		}
 
-		uint32_t fromUTF8(uint8_t* c)
+		uint32_t fromUTF8(uint8_t* c) noexcept
 		{
 			if (c)
 			{
@@ -433,7 +433,7 @@ namespace z
 			return 0;
 		}
 
-		int lenFromUTF8(uint8_t* c)
+		int lenFromUTF8(uint8_t* c) noexcept
 		{
 			if (c)
 			{
@@ -453,7 +453,7 @@ namespace z
 			else return 0;
 		}
 
-		bool isUTF8(uint8_t* c, int len)
+		bool isUTF8(uint8_t* c, int len) noexcept
 		{
 			if (c && len)
 			{

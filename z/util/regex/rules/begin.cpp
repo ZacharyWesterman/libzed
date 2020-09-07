@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			bool begin::match(core::inputStream& stream) const
+			bool begin::match(core::inputStream& stream) const noexcept
 			{
 				auto pos = stream.tell();
 				if (!pos) return true;
@@ -33,13 +33,13 @@ namespace z
 				return false;
 			}
 
-			bool begin::base() const
+			bool begin::base() const noexcept
 			{
 				return false;
 			}
 
 #			ifdef DEBUG
-			void begin::print(core::outputStream& stream, int level)
+			void begin::print(core::outputStream& stream, int level) noexcept
 			{
 				(zpath().padLeftIn(" ",(level)<<1)+"^"+meta()).writeln(stream);
 			}

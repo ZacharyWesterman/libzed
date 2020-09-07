@@ -12,6 +12,6 @@ namespace z
 		 * \return true on success, false on failure.
 		 * \threadsafe_function_yes
 		 */
-		bool chdir(const zpath& path);
+		bool chdir(const zpath& path) noexcept;
 	}
 }

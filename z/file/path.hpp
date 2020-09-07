@@ -13,6 +13,6 @@ namespace z
 		 * \return A string containing the full path to that file object.
 		 * \threadsafe_function_yes
 		 */
-		zpath path(const zpath& filePath);
+		zpath path(const zpath& filePath) noexcept;
 	}
 }

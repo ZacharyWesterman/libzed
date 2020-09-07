@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		string<utf16>::string()
+		string<utf16>::string() noexcept
 		{
 			data = new uint8_t[2];
 			*((uint16_t*)data) = 0;
@@ -15,7 +15,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(char chr)
+		string<utf16>::string(char chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint16_t* data16 = (uint16_t*)data;
@@ -28,7 +28,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(wchar_t chr)
+		string<utf16>::string(wchar_t chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint16_t* data16 = (uint16_t*)data;
@@ -45,7 +45,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const uint32_t& chr)
+		string<utf16>::string(const uint32_t& chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint16_t* data16 = (uint16_t*)data;
@@ -58,7 +58,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const char* str)
+		string<utf16>::string(const char* str) noexcept
 		{
 			if (str)
 			{
@@ -85,7 +85,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const wchar_t* str)
+		string<utf16>::string(const wchar_t* str) noexcept
 		{
 			if (str)
 			{
@@ -118,7 +118,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const string<ascii>& other)
+		string<utf16>::string(const string<ascii>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 1;
 			character_ct = other.character_ct;
@@ -131,7 +131,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const string<utf8>& other)
+		string<utf16>::string(const string<utf8>& other) noexcept
 		{
 			character_ct = 0;
 			for (int i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
@@ -154,7 +154,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const string<utf16>& other)
+		string<utf16>::string(const string<utf16>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 1;
 			character_ct = other.character_ct;
@@ -169,7 +169,7 @@ namespace z
 		}
 
 		template <>
-		string<utf16>::string(const string<utf32>& other)
+		string<utf16>::string(const string<utf32>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 1;
 			character_ct = other.character_ct;

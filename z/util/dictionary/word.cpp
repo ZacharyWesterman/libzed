@@ -5,21 +5,21 @@ namespace z
 {
 	namespace util
 	{
-		word::word() : part_of_speech(unknown) {}
+		word::word() noexcept : part_of_speech(unknown) {}
 
-		word::word(const core::string<>& name, part speechPart)
+		word::word(const core::string<>& name, part speechPart) noexcept
 		{
 			_word = name;
 			part_of_speech = speechPart;
 		}
 
-		word::word(const word& other)
+		word::word(const word& other) noexcept
 		{
 			_word = other._word;
 			part_of_speech = other.part_of_speech;
 		}
 
-		const word& word::operator=(const word& other)
+		const word& word::operator=(const word& other) noexcept
 		{
 			_word = other._word;
 			part_of_speech = other.part_of_speech;
@@ -27,27 +27,27 @@ namespace z
 			return *this;
 		}
 
-		const core::string<>& word::get() const
+		const core::string<>& word::get() const noexcept
 		{
 			return _word;
 		}
 
-		void word::set(const core::string<>& name)
+		void word::set(const core::string<>& name) noexcept
 		{
 			_word = name;
 		}
 
-		part word::getPart() const
+		part word::getPart() const noexcept
 		{
 			return part_of_speech;
 		}
 
-		void word::setPart(part speechPart)
+		void word::setPart(part speechPart) noexcept
 		{
 			part_of_speech = speechPart;
 		}
 
-		bool word::operator==(const word& other) const
+		bool word::operator==(const word& other) const noexcept
 		{
 			if (_word.length() != other._word.length())
 				return false;
@@ -61,7 +61,7 @@ namespace z
 			return true;
 		}
 
-		bool word::operator>(const word& other) const
+		bool word::operator>(const word& other) const noexcept
 		{
 			int max_char;
 			if (_word.length() < other._word.length())
@@ -83,7 +83,7 @@ namespace z
 			return (_word.length() > other._word.length());
 		}
 
-		bool word::operator<(const word& other) const
+		bool word::operator<(const word& other) const noexcept
 		{
 			int max_char;
 			if (_word.length() < other._word.length())
@@ -105,7 +105,7 @@ namespace z
 			return (_word.length() < other._word.length());
 		}
 
-		size_t word::size() const
+		size_t word::size() const noexcept
 		{
 			return _word.size() + sizeof(part_of_speech);
 		}

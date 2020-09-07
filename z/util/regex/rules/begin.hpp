@@ -15,11 +15,11 @@ namespace z
 			class begin : public rule
 			{
 			public:
-				bool match(core::inputStream& stream) const;
-				bool base() const;
+				bool match(core::inputStream& stream) const noexcept;
+				bool base() const noexcept;
 
 #			ifdef DEBUG
-				void print(core::outputStream& stream, int level=0);
+				void print(core::outputStream& stream, int level=0) noexcept;
 #			endif
 			};
 		}

@@ -26,19 +26,19 @@ namespace z
 			encoding streamFormat;
 			bool readingStream;
 
-			word* readWordFromStream(core::inputStream& stream);
+			word* readWordFromStream(core::inputStream& stream) noexcept;
 
 		public:
 			///Constructor
-			dictionary();
+			dictionary() noexcept;
 
 			///Destructor
-			~dictionary();
+			~dictionary() noexcept;
 
 			/**
 			 * \brief Empty the word list.
 			 */
-			void clear();
+			void clear() noexcept;
 
 			/**
 			 * \brief Read this dictionary's word list as text from a stream.
@@ -54,7 +54,7 @@ namespace z
 			 *
 			 * \threadsafe_member_ref
 			 */
-			int read(core::inputStream& stream, const core::timeout& time = -1);
+			int read(core::inputStream& stream, const core::timeout& time = -1) noexcept;
 
 			/**
 			 * \brief Check if the given string is a valid word in the dictionary (case is ignored).
@@ -65,7 +65,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool isWord(const core::string<>& name) const;
+			bool isWord(const core::string<>& name) const noexcept;
 
 			/**
 			 * \brief Get the word information for the given dictionary word.
@@ -76,7 +76,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			word getWord(const core::string<>& name) const;
+			word getWord(const core::string<>& name) const noexcept;
 
 			/**
 			 * \brief Get the word count of this dictionary.
@@ -85,7 +85,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			int wordCount() const;
+			int wordCount() const noexcept;
 
 			/**
 			 * \brief Set a word in the dictionary.
@@ -96,7 +96,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			void setWord(const word& newWord);
+			void setWord(const word& newWord) noexcept;
 
 			/**
 			 * \brief Get the language of this dictionary.
@@ -105,16 +105,16 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			const core::string<>& language() const;
+			const core::string<>& language() const noexcept;
 
 			/**
 			 * \brief Set the language of this dictionary.
 			 *
 			 * \param newLang The string to set as the language name.
 			 */
-			void setLanguage(const core::string<>& newLang);
+			void setLanguage(const core::string<>& newLang) noexcept;
 
-			size_t size() const;
+			size_t size() const noexcept;
 
 			void serialIn(core::inputStream& stream);
 
@@ -128,7 +128,7 @@ namespace z
 			 *
 			 * \return An empty dictRange object.
 			 */
-			dictRange range() const;
+			dictRange range() const noexcept;
 
 			/**
 			 * \brief Narrow the results of a range given the next character.
@@ -138,7 +138,7 @@ namespace z
 			 *
 			 * \return true if the range can be narrowed further, false otherwise.
 			 */
-			bool narrow(dictRange* wordRange, uint32_t nextChar) const;
+			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
 		};
 	}
 }

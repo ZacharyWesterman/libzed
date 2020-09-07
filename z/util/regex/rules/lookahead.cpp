@@ -5,10 +5,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			lookahead::lookahead(bool negate, int min, int max, bool greedy):
+			lookahead::lookahead(bool negate, int min, int max, bool greedy) noexcept :
 				compound(min,max,greedy), negate(negate){}
 
-			bool lookahead::match(core::inputStream& stream) const
+			bool lookahead::match(core::inputStream& stream) const noexcept
 			{
 				if (stream.empty()) return negate;
 				auto pos = stream.tell();
@@ -64,7 +64,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void lookahead::print(core::outputStream& stream, int level)
+			void lookahead::print(core::outputStream& stream, int level) noexcept
 			{
 				if (negate)
 					(zpath().padLeftIn(" ",(level)<<1)+"?!"+meta()).writeln(stream);

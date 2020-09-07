@@ -15,6 +15,6 @@ namespace z
 		 *
 		 * \threadsafe_function_yes
 		 */
-		double zeta(const int s);
+		double zeta(const int s) noexcept;
 	}
 }

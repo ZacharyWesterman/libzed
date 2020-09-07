@@ -16,14 +16,14 @@ namespace z
 		{
 		public:
 			///Virtual destructor
-			virtual ~sizable() {}
+			virtual ~sizable() noexcept {}
 
 			/**
 			 * \brief Get the size of the object in memory
 			 *
 			 * \return The number of bytes in memory this object currently consumes.
 			 */
-			virtual size_t size() const = 0;
+			virtual size_t size() const noexcept = 0;
 		};
 
 		/**
@@ -35,7 +35,7 @@ namespace z
 		 */
 		template <typename T>
 		inline typename std::enable_if<std::is_base_of<z::core::sizable, T>::value>::type
-		size(const T& object, size_t& bytes)
+		size(const T& object, size_t& bytes) noexcept
 		{
 			bytes = object.size();
 		}
@@ -47,7 +47,7 @@ namespace z
 		 */
 		template <typename T>
 		inline typename std::enable_if<!std::is_base_of<z::core::sizable, T>::value>::type
-		size(const T& object, size_t& bytes)
+		size(const T& object, size_t& bytes) noexcept
 		{
 			bytes = sizeof(object);
 		}

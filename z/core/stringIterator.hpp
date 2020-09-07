@@ -29,14 +29,14 @@ namespace z
 			 * \param ptr Pointer to the string data.
 			 * \param offset The current index in the string data.
 			 */
-			stringIterator(uint8_t* ptr, size_t offset);
+			stringIterator(uint8_t* ptr, size_t offset) noexcept;
 
 			/**
 			 * \brief Increment the current character we're pointing to.
 			 *
 			 * \return A new iterator instance, incremented from the current position.
 			 */
-			stringIterator operator++();
+			stringIterator operator++() noexcept;
 
 			/**
 			 * \brief Equality operator
@@ -45,14 +45,14 @@ namespace z
 			 *
 			 * \return True if this and other are pointing to the same character in the same string, false otherwise.
 			 */
-			bool operator!=(const stringIterator& other) const {return data != other.data;}
+			bool operator!=(const stringIterator& other) const noexcept {return data != other.data;}
 
 			/**
 			 * \brief Dereference operator.
 			 *
 			 * \return The current character this iterator is pointing to, converted to UTF 32.
 			 */
-			const uint32_t& operator*() const {return chr;}
+			const uint32_t& operator*() const noexcept {return chr;}
 		};
 	}
 }

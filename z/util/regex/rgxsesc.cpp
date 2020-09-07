@@ -4,7 +4,7 @@ namespace z
 {
 	namespace util
 	{
-		rgxss rgxsesc(uint32_t ch)
+		rgxss rgxsesc(uint32_t ch) noexcept
 		{
 			switch (ch)
 			{

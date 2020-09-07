@@ -32,14 +32,14 @@ namespace z
 			/**
 			 * \brief Empty constructor.
 			 */
-			regex();
+			regex() noexcept;
 
 			/**
 			 * \brief Constructor from string pattern
 			 *
 			 * \param pattern The regex pattern to match against.
 			 */
-			regex(const zstring& pattern);
+			regex(const zstring& pattern) noexcept;
 
 			/**
 			 * \brief Set the matching pattern
@@ -48,7 +48,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			void set(const zstring& pattern);
+			void set(const zstring& pattern) noexcept;
 
 			/**
 			 * \brief Attempt to match the pattern from a stream.
@@ -61,7 +61,7 @@ namespace z
 			 *
 			 * \threadsafe_member_no
 			 */
-			bool match(core::inputStream& stream);
+			bool match(core::inputStream& stream) noexcept;
 
 			/**
 			 * \brief Get whether the regex pattern is valid.
@@ -70,7 +70,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool good() const;
+			bool good() const noexcept;
 
 			/**
 			 * \brief Get whether the regex pattern is invalid.
@@ -79,7 +79,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool bad() const;
+			bool bad() const noexcept;
 
 			/**
 			 * \brief Get the regex pattern error, if any.
@@ -88,7 +88,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			rgxerr error() const;
+			rgxerr error() const noexcept;
 
 			/**
 			 * \brief Get the last string that the regex pattern matched.
@@ -97,7 +97,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			const zstring& matched() const;
+			const zstring& matched() const noexcept;
 
 			/**
 			 * \brief Get a string indicating the regex pattern error.
@@ -106,7 +106,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			zstring errorString() const;
+			zstring errorString() const noexcept;
 		};
 	}
 }

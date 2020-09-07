@@ -18,7 +18,7 @@ namespace z
 		 * \threadsafe_function_yes
 		 */
 		template <typename T, encoding E>
-		string<E> join(const array<T>& list, const string<E>& delim)
+		string<E> join(const array<T>& list, const string<E>& delim) noexcept
 		{
 			string<E> result;
 
@@ -42,7 +42,7 @@ namespace z
 		 * \threadsafe_function_yes
 		 */
 		template <typename T>
-		zstring join(const array<T>& list, const zstring& delim)
+		zstring join(const array<T>& list, const zstring& delim) noexcept
 		{
 			zstring result;
 
@@ -66,7 +66,7 @@ namespace z
 		 * \threadsafe_function_yes
 		 */
 		template <typename T, encoding E>
-		string<E> joinDeref(const array<T>& list, const string<E>& delim)
+		string<E> joinDeref(const array<T>& list, const string<E>& delim) noexcept
 		{
 			static_assert(std::is_pointer<T>::value, "Array template must be of pointer type.");
 

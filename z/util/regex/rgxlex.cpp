@@ -17,7 +17,7 @@ namespace z
 		};
 
 		//get char width of compound node, or -1 if it is not a constant width.
-		static int getLBwidth(const rgx::compound* node)
+		static int getLBwidth(const rgx::compound* node) noexcept
 		{
 			bool setw = false;
 			int width = 0;
@@ -50,7 +50,7 @@ namespace z
 			return width;
 		}
 
-		static rgx::compound* makeParent(int inType, int flags)
+		static rgx::compound* makeParent(int inType, int flags) noexcept
 		{
 			switch (inType)
 			{
@@ -65,7 +65,7 @@ namespace z
 			}
 		}
 
-		static rgxerr getFlags(const core::array<rgxss>& input, int& position, int& flags, bool negate)
+		static rgxerr getFlags(const core::array<rgxss>& input, int& position, int& flags, bool negate) noexcept
 		{
 			rgxerr err = negate ? RGX_BAD_NEG_FLAG : RGX_BAD_POS_FLAG;
 
@@ -98,7 +98,7 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		static rgxerr setCount(rgx::compound** nodeOut, int min, int max)
+		static rgxerr setCount(rgx::compound** nodeOut, int min, int max) noexcept
 		{
 			auto len = (*nodeOut)->children.length();
 			if (!len) return RGX_BAD_COUNT_LOC;
@@ -108,7 +108,7 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		static rgxerr setGreed(rgx::compound** nodeOut, bool greedy)
+		static rgxerr setGreed(rgx::compound** nodeOut, bool greedy) noexcept
 		{
 			auto len = (*nodeOut)->children.length();
 			if (!len) return RGX_BAD_GREED_LOC;
@@ -117,7 +117,7 @@ namespace z
 			return RGX_NO_ERROR;
 		}
 
-		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& err, int& position, int inType, int flags)
+		rgx::compound* rgxlex(const core::array<rgxss>& input, rgxerr& err, int& position, int inType, int flags) noexcept
 		{
 			auto nodeOut = makeParent(inType, flags);
 

@@ -4,17 +4,17 @@ namespace z
 {
 	namespace file
 	{
-		info::info(const zpath& path)
+		info::info(const zpath& path) noexcept
 		{
 			does_exist = _stat((char*)path.cstring(), &fileStat);
 		}
 
-		inline bool info::exists()
+		inline bool info::exists() noexcept
 		{
 			return does_exist;
 		}
 
-		time_t info::lastAccessed()
+		time_t info::lastAccessed() noexcept
 		{
 			if (does_exist)
 				return fileStat.st_atime;
@@ -22,7 +22,7 @@ namespace z
 				return 0;
 		}
 
-		time_t info::lastModified()
+		time_t info::lastModified() noexcept
 		{
 			if (does_exist)
 				return fileStat.st_mtime;
@@ -30,7 +30,7 @@ namespace z
 				return 0;
 		}
 
-		time_t info::lastStatusChange()
+		time_t info::lastStatusChange() noexcept
 		{
 			if (does_exist)
 				return fileStat.st_ctime;
@@ -38,7 +38,7 @@ namespace z
 				return 0;
 		}
 
-		size_t info::byteCount()
+		size_t info::byteCount() noexcept
 		{
 			if (does_exist)
 				return fileStat.st_size;
@@ -46,7 +46,7 @@ namespace z
 				return 0;
 		}
 
-		unsigned int info::deviceNumber()
+		unsigned int info::deviceNumber() noexcept
 		{
 			if (does_exist)
 				return fileStat.st_dev;

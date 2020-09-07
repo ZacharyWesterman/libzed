@@ -145,7 +145,7 @@ namespace z
 			return new genericArray(list);
 		}
 
-		size_t genericArray::size() const
+		size_t genericArray::size() const noexcept
 		{
 			size_t total = sizeof(*this);
 			for (int i=0; i<data.length(); ++i)

@@ -5,12 +5,12 @@ namespace z
 	{
 		namespace rgx
 		{
-			compound::~compound()
+			compound::~compound() noexcept
 			{
 				for (auto& child : children) delete child;
 			}
 
-			bool compound::matchRule(rule* rgxRule, core::inputStream& stream) const
+			bool compound::matchRule(rule* rgxRule, core::inputStream& stream) const noexcept
 			{
 				if (rgxRule->base())
 				{
@@ -24,7 +24,7 @@ namespace z
 				}
 			}
 
-			bool compound::matchMin(rule* rgxRule, core::inputStream& stream) const
+			bool compound::matchMin(rule* rgxRule, core::inputStream& stream) const noexcept
 			{
 				for (int i=0; i<(rgxRule->min); ++i)
 				{

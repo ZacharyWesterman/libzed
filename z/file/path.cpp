@@ -14,7 +14,7 @@ namespace z
 {
 	namespace file
 	{
-		zpath path(const zpath& filePath)
+		zpath path(const zpath& filePath) noexcept
 		{
 #			ifdef _WIN32
 			TCHAR fullPath[MAX_PATH];

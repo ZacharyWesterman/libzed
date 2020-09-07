@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		string<utf8>::string()
+		string<utf8>::string() noexcept
 		{
 			data = new uint8_t[1];
 			data[0] = 0;
@@ -15,7 +15,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(char chr)
+		string<utf8>::string(char chr) noexcept
 		{
 			data = new uint8_t[2];
 			data[0] = chr;
@@ -26,7 +26,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(wchar_t chr)
+		string<utf8>::string(wchar_t chr) noexcept
 		{
 			data = new uint8_t[5];
 			data_len = 5;
@@ -38,7 +38,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const uint32_t& chr)
+		string<utf8>::string(const uint32_t& chr) noexcept
 		{
 			data = new uint8_t[5];
 			data_len = 5;
@@ -50,7 +50,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const char* str)
+		string<utf8>::string(const char* str) noexcept
 		{
 			if (str)
 			{
@@ -75,7 +75,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const wchar_t* str)
+		string<utf8>::string(const wchar_t* str) noexcept
 		{
 			if (str)
 			{
@@ -108,7 +108,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const string<ascii>& other)
+		string<utf8>::string(const string<ascii>& other) noexcept
 		{
 			data_len = 1;
 			character_ct = other.character_ct;
@@ -127,7 +127,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const string<utf8>& other)
+		string<utf8>::string(const string<utf8>& other) noexcept
 		{
 			data_len = other.data_len;
 			character_ct = other.character_ct;
@@ -139,7 +139,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const string<utf16>& other)
+		string<utf8>::string(const string<utf16>& other) noexcept
 		{
 			data_len = 1;
 			character_ct = other.character_ct;
@@ -160,7 +160,7 @@ namespace z
 		}
 
 		template <>
-		string<utf8>::string(const string<utf32>& other)
+		string<utf8>::string(const string<utf32>& other) noexcept
 		{
 			data_len = 1;
 			character_ct = other.character_ct;

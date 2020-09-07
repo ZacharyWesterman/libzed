@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		string<ascii>::string()
+		string<ascii>::string() noexcept
 		{
 			data = new uint8_t[1];
 			data[0] = 0;
@@ -15,7 +15,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(char chr)
+		string<ascii>::string(char chr) noexcept
 		{
 			data = new uint8_t[2];
 			data[0] = chr;
@@ -26,7 +26,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(wchar_t chr)
+		string<ascii>::string(wchar_t chr) noexcept
 		{
 			data = new uint8_t[2];
 			data[0] = (chr > 0xFF) ? '?' : chr;
@@ -37,7 +37,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const uint32_t& chr)
+		string<ascii>::string(const uint32_t& chr) noexcept
 		{
 			data = new uint8_t[2];
 			data[0] = (chr > 0xFF) ? '?' : chr;
@@ -48,7 +48,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const char* str)
+		string<ascii>::string(const char* str) noexcept
 		{
 			if (str)
 			{
@@ -73,7 +73,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const wchar_t* str)
+		string<ascii>::string(const wchar_t* str) noexcept
 		{
 			if (str)
 			{
@@ -103,7 +103,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const string<ascii>& other)
+		string<ascii>::string(const string<ascii>& other) noexcept
 		{
 			data_len = other.character_ct + 1;
 			character_ct = other.character_ct;
@@ -115,7 +115,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const string<utf8>& other)
+		string<ascii>::string(const string<utf8>& other) noexcept
 		{
 			data_len = other.character_ct + 1;
 			character_ct = other.character_ct;
@@ -134,7 +134,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const string<utf16>& other)
+		string<ascii>::string(const string<utf16>& other) noexcept
 		{
 			data_len = other.character_ct + 1;
 			character_ct = other.character_ct;
@@ -151,7 +151,7 @@ namespace z
 		}
 
 		template <>
-		string<ascii>::string(const string<utf32>& other)
+		string<ascii>::string(const string<utf32>& other) noexcept
 		{
 			data_len = other.character_ct + 1;
 			character_ct = other.character_ct;

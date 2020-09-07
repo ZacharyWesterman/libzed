@@ -5,10 +5,10 @@ namespace z
 	{
 		namespace rgx
 		{
-			lookbehind::lookbehind(bool negate, int min, int max, bool greedy):
+			lookbehind::lookbehind(bool negate, int min, int max, bool greedy) noexcept :
 				compound(min,max,greedy), negate(negate), width(0){}
 
-			bool lookbehind::match(core::inputStream& stream) const
+			bool lookbehind::match(core::inputStream& stream) const noexcept
 			{
 				size_t pos = stream.tell();
 
@@ -44,7 +44,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void lookbehind::print(core::outputStream& stream, int level)
+			void lookbehind::print(core::outputStream& stream, int level) noexcept
 			{
 				zpath s;
 				s.padLeftIn(" ",(level)<<1);

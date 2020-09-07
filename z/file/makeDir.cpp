@@ -12,7 +12,7 @@ namespace z
 {
 	namespace file
 	{
-		bool makeDir(const zpath& dir)
+		bool makeDir(const zpath& dir) noexcept
 		{
 #			ifdef __linux__
 			return (mkdir((char*)dir.cstring(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) < 0);

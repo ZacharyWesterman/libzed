@@ -4,7 +4,7 @@ namespace z
 {
 	namespace file
 	{
-		zpath shorten(const zpath& dir)
+		zpath shorten(const zpath& dir) noexcept
 		{
 			zpath output = dir;
 			output.replace("\\", "/");

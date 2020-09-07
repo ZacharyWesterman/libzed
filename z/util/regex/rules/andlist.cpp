@@ -6,7 +6,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			bool andlist::match(core::inputStream& stream) const
+			bool andlist::match(core::inputStream& stream) const noexcept
 			{
 				auto pos = stream.tell();
 				int i = 0;
@@ -58,7 +58,7 @@ namespace z
 			}
 
 #			ifdef DEBUG
-			void andlist::print(core::outputStream& stream, int level)
+			void andlist::print(core::outputStream& stream, int level) noexcept
 			{
 				zpath s;
 				s.padLeftIn(" ",(level)<<1);

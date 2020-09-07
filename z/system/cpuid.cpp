@@ -8,7 +8,7 @@ namespace z
 {
 	namespace system
 	{
-		void cpuid::det_vendor()
+		void cpuid::det_vendor() noexcept
 		{
 #			ifdef __arm__
 			_vendor = "ARM";
@@ -40,7 +40,7 @@ namespace z
 #			endif
 		}
 
-		void cpuid::det_cpu()
+		void cpuid::det_cpu() noexcept
 		{
 #			ifdef __arm__
 			_cpus = 1;
@@ -72,7 +72,7 @@ namespace z
 #			endif
 		}
 
-		cpuid::cpuid()
+		cpuid::cpuid() noexcept
 		{
 			det_vendor(); //'good' will be determined after vendorID
 
@@ -82,17 +82,17 @@ namespace z
 			}
 		}
 
-		const core::string<ascii>& cpuid::vendor()
+		const core::string<ascii>& cpuid::vendor() noexcept
 		{
 			return _vendor;
 		}
 
-		int cpuid::cpus()
+		int cpuid::cpus() noexcept
 		{
 			return _cpus;
 		}
 
-		int cpuid::cores()
+		int cpuid::cores() noexcept
 		{
 			return _cores;
 		}

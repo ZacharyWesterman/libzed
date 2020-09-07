@@ -6,7 +6,7 @@ namespace z
 {
 	namespace math
 	{
-		double fibonacci(double n)
+		double fibonacci(double n) noexcept
 		{
 			double PHI_n  = pow(phi, n);
 			double Nphi_n = pow(-phi + 1, n);

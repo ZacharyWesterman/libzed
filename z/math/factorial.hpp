@@ -15,7 +15,7 @@ namespace z
 		 *
 		 * \threadsafe_function_yes
 		 */
-		long long factorial(long long n);
+		long long factorial(long long n) noexcept;
 
 		/**
 		 * \brief Calculate the factorial of the integer \b n, but let
@@ -29,6 +29,6 @@ namespace z
 		 *
 		 * \threadsafe_function_ref
 		 */
-		long long factorial(long long n, bool& did_overflow);
+		long long factorial(long long n, bool& did_overflow) noexcept;
 	}
 }

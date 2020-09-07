@@ -10,6 +10,6 @@ namespace z
 		 * \param path The file name.
 		 * \return The length of the file in bytes, or 0 if the file does not exist.
 		 */
-		size_t size(const zpath& path);
+		size_t size(const zpath& path) noexcept;
 	}
 }

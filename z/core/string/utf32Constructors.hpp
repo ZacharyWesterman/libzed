@@ -5,7 +5,7 @@ namespace z
 	namespace core
 	{
 		template <>
-		string<utf32>::string()
+		string<utf32>::string() noexcept
 		{
 			data = new uint8_t[4];
 			*((uint32_t*)data) = 0;
@@ -15,7 +15,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(char chr)
+		string<utf32>::string(char chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint32_t* data32 = (uint32_t*)data;
@@ -28,7 +28,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(wchar_t chr)
+		string<utf32>::string(wchar_t chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint32_t* data32 = (uint32_t*)data;
@@ -41,7 +41,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const uint32_t& chr)
+		string<utf32>::string(const uint32_t& chr) noexcept
 		{
 			data = new uint8_t[4];
 			uint32_t* data32 = (uint32_t*)data;
@@ -54,7 +54,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const char* str)
+		string<utf32>::string(const char* str) noexcept
 		{
 			if (str)
 			{
@@ -81,7 +81,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const wchar_t* str)
+		string<utf32>::string(const wchar_t* str) noexcept
 		{
 			if (str)
 			{
@@ -108,7 +108,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const string<ascii>& other)
+		string<utf32>::string(const string<ascii>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 2;
 			character_ct = other.character_ct;
@@ -121,7 +121,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const string<utf8>& other)
+		string<utf32>::string(const string<utf8>& other) noexcept
 		{
 			character_ct = 0;
 			for (int i=0; i<other.character_ct; i+=lenFromUTF8(&other.data[i]))
@@ -144,7 +144,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const string<utf16>& other)
+		string<utf32>::string(const string<utf16>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 2;
 			character_ct = other.character_ct;
@@ -159,7 +159,7 @@ namespace z
 		}
 
 		template <>
-		string<utf32>::string(const string<utf32>& other)
+		string<utf32>::string(const string<utf32>& other) noexcept
 		{
 			data_len = (other.character_ct + 1) << 2;
 			character_ct = other.character_ct;

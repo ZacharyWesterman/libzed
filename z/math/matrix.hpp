@@ -21,7 +21,7 @@ namespace z
 			 * \brief Calculate the determinant of NxN matrix
 			 * \return The determinant.
 			 */
-			double det()
+			double det() noexcept
 			{
 				//the determinant of an NxN matrix requires
 				//the determinant of an (N-1)x(N-1) matrix.
@@ -63,7 +63,7 @@ namespace z
 		 * \return The determinant.
 		 */
 		template<>
-		double matrix<2>::det()
+		double matrix<2>::det() noexcept
 		{
 			return (value[0][0]*value[1][1]-value[1][0]*value[0][1]);
 		}

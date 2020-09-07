@@ -279,7 +279,7 @@ namespace z
 			 */
 			virtual bool operator==(const generic& other) const;
 
-			virtual size_t size() const;
+			virtual size_t size() const noexcept;
 		};
 	}
 }

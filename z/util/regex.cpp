@@ -7,14 +7,14 @@ namespace z
 {
 	namespace util
 	{
-		regex::regex() : parseError(RGX_NO_ERROR) {}
+		regex::regex() noexcept : parseError(RGX_NO_ERROR) {}
 
-		regex::regex(const zstring& pattern)
+		regex::regex(const zstring& pattern) noexcept
 		{
 			set(pattern);
 		}
 
-		void regex::set(const zstring& pattern)
+		void regex::set(const zstring& pattern) noexcept
 		{
 			root.reset();
 
@@ -29,7 +29,7 @@ namespace z
 			}
 		}
 
-		bool regex::match(core::inputStream& stream)
+		bool regex::match(core::inputStream& stream) noexcept
 		{
 			if (!root) return false;
 
@@ -62,22 +62,22 @@ namespace z
 			return result;
 		}
 
-		bool regex::good() const
+		bool regex::good() const noexcept
 		{
 			return (bool)root;
 		}
 
-		bool regex::bad() const
+		bool regex::bad() const noexcept
 		{
 			return !root;
 		}
 
-		rgxerr regex::error() const
+		rgxerr regex::error() const noexcept
 		{
 			return parseError;
 		}
 
-		zstring regex::errorString() const
+		zstring regex::errorString() const noexcept
 		{
 			const char* msgs[] =
 			{
@@ -107,7 +107,7 @@ namespace z
 			return msgs[parseError];
 		}
 
-		const zstring& regex::matched() const
+		const zstring& regex::matched() const noexcept
 		{
 			return matchedString;
 		}

@@ -21,14 +21,14 @@ namespace z
 			uint32_t _cpuFeatures;
 			bool _allow_smt;
 
-			void det_vendor();
-			void det_cpu();
+			void det_vendor() noexcept;
+			void det_cpu() noexcept;
 
 		public:
 			/**
 			 * \brief Constructor
 			 */
-			cpuid();
+			cpuid() noexcept;
 
 			/**
 			 * \brief Get the CPU vendor.
@@ -37,7 +37,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			const core::string<ascii>& vendor();
+			const core::string<ascii>& vendor() noexcept;
 
 			/**
 			 * \brief Get the number of CPUs.
@@ -46,7 +46,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			int cpus();
+			int cpus() noexcept;
 
 			/**
 			 * \brief Get the number of cores.
@@ -55,7 +55,7 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			int cores();
+			int cores() noexcept;
 		};
 	}
 }

@@ -5,7 +5,7 @@ namespace z
 {
 	namespace file
 	{
-		bool exists(const zpath& pathname)
+		bool exists(const zpath& pathname) noexcept
 		{
 			struct stat info;
 

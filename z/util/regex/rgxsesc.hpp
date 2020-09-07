@@ -22,6 +22,6 @@ namespace z
 		 *
 		 * \threadsafe_function_yes
 		 */
-		rgxss rgxsesc(uint32_t ch);
+		rgxss rgxsesc(uint32_t ch) noexcept;
 	}
 }

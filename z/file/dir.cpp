@@ -7,14 +7,14 @@
 #include <unistd.h>
 #define _getcwd getcwd
 #else
-#warning file::path is incompatible with target OS!
+#warning file::dir is incompatible with target OS!
 #endif
 
 namespace z
 {
 	namespace file
 	{
-		zpath dir()
+		zpath dir() noexcept
 		{
 #			if defined(_WIN32) || defined(__linux__)
 			char buf[FILENAME_MAX];

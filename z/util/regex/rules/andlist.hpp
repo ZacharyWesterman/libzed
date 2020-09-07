@@ -13,10 +13,10 @@ namespace z
 			class andlist : public compound
 			{
 			public:
-				bool match(core::inputStream& stream) const;
+				bool match(core::inputStream& stream) const noexcept;
 
 #			ifdef DEBUG
-				void print(core::outputStream& stream, int level=0);
+				void print(core::outputStream& stream, int level=0) noexcept;
 #			endif
 			};
 		}

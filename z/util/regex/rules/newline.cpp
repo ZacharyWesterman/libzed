@@ -5,7 +5,7 @@ namespace z
 	{
 		namespace rgx
 		{
-			bool newline::match(core::inputStream& stream) const
+			bool newline::match(core::inputStream& stream) const noexcept
 			{
 				if (stream.empty()) return false;
 				auto pos = stream.tell();
@@ -33,13 +33,13 @@ namespace z
 				return false;
 			}
 
-			bool newline::base() const
+			bool newline::base() const noexcept
 			{
 				return false;
 			}
 
 #			ifdef DEBUG
-			void newline::print(core::outputStream& stream, int level)
+			void newline::print(core::outputStream& stream, int level) noexcept
 			{
 				(zpath().padLeftIn(" ",(level)<<1)+"\\n"+meta()).writeln(stream);
 			}
