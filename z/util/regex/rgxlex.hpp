@@ -1,6 +1,6 @@
 #pragma once
 
-#include <z/core/array.hpp>
+#include "../../core/array.hpp"
 #include "rules/compound.hpp"
 
 #include "rgxss.hpp"

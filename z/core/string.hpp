@@ -5,7 +5,7 @@
 #include <cstring>
 
 #include "charFunctions.hpp"
-#include <z/encoding.hpp>
+#include "../encoding.hpp"
 #include "zstr.hpp"
 
 #include "serializable.hpp"

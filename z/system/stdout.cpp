@@ -1,7 +1,7 @@
 #include "stdout.hpp"
 
 #include <iostream>
-#include <z/core/charFunctions.hpp>
+#include "../core/charFunctions.hpp"
 
 #ifdef _WIN32
 #define STDOUT_TTY false

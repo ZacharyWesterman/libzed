@@ -12,7 +12,7 @@ Since this library doesn't really mess with hardware though, it should behave fi
 
 To compile, run make. Something like `make -j32` will work.<br>
 On Windows, you're done. Just copy the DLL into the directory where you want it.<br>
-On Linux, type `sudo make install` to install the library and `sudo make uninstall` to remove it.<br>
+On Linux, type `sudo make install` to install the library and headers, and `sudo make uninstall` to remove it.<br>
 If you want to test out some code, `make examples` will run the makefile in the examples/ subdirectory.<br>
 Last, `make clean` removes all generated binaries and object files.
 

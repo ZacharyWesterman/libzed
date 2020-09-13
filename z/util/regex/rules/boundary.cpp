@@ -1,5 +1,5 @@
 #include "boundary.hpp"
-#include <z/core/charFunctions.hpp>
+#include "../../../core/charFunctions.hpp"
 namespace z
 {
 	namespace util

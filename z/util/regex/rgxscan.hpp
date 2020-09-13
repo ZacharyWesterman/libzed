@@ -1,7 +1,7 @@
 #pragma once
 
-#include <z/core/string.hpp>
-#include <z/core/array.hpp>
+#include "../../core/string.hpp"
+#include "../../core/array.hpp"
 
 #include "rgxss.hpp"
 #include "rgxerr.hpp"

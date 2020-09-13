@@ -1,5 +1,5 @@
 #include "inputStream.hpp"
-#include <z/core/charFunctions.hpp>
+#include "../core/charFunctions.hpp"
 
 #define MAX_BYTE_READ 32
 

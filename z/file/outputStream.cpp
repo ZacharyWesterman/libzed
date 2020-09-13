@@ -1,5 +1,5 @@
 #include "outputStream.hpp"
-#include <z/core/charFunctions.hpp>
+#include "../core/charFunctions.hpp"
 
 #include "inputStream.hpp"
 

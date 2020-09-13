@@ -8,7 +8,7 @@
 #include "generic/genericString.hpp"
 #include "generic/genericArray.hpp"
 
-#include <z/core/serializable.hpp>
+#include "../core/serializable.hpp"
 
 namespace z
 {

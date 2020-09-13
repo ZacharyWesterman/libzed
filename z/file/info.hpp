@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sys/stat.h>
-#include <z/core/string.hpp>
+#include "../core/string.hpp"
 
 #ifdef _WIN32
 #elif __linux__

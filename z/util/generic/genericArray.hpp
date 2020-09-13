@@ -1,7 +1,7 @@
 #pragma once
 
 #include "generic.hpp"
-#include <z/core/refArray.hpp>
+#include "../../core/refArray.hpp"
 
 namespace z
 {

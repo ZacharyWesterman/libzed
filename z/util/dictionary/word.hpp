@@ -1,9 +1,9 @@
 #pragma once
 
-#include <z/core/string.hpp>
+#include "../../core/string.hpp"
 
-#include <z/core/sizable.hpp>
-#include <z/core/serializable.hpp>
+#include "../../core/sizable.hpp"
+#include "../../core/serializable.hpp"
 
 #include "part.hpp"
 

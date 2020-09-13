@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <cstddef>
-#include <z/encoding.hpp>
+#include "../encoding.hpp"
 
 namespace z
 {

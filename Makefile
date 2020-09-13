@@ -2,6 +2,9 @@ LIBNAME = zed
 VERSION = 1
 VER_SUB = 5
 
+LIBDIR = /usr/lib
+ICLDIR = /usr/include
+
 SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/core/string/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/regex/rules/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
@@ -19,8 +22,7 @@ CCTARGET =
 endif
 endif
 
-INCLUDE = -I"../libzed"
-CCFLAGS = $(INCLUDE) -std=c++11 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+CCFLAGS = -std=c++11 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
 LFLAGS = -shared
 
 STATIC_LIB = $(LIBNAME).a
@@ -70,8 +72,6 @@ DLFLAGS_NIX = -l $(LIBNAME)
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
-LIBDIR = /usr/lib
-
 CC = g++
 LN = g++
 
@@ -83,10 +83,12 @@ install: $(SHARED_LIB)
 	ln -s $(LIBDIR)/$(SHARED_LIB) $(LIBDIR)/$(SONAME1)
 	ln -s $(LIBDIR)/$(SHARED_LIB) $(LIBDIR)/$(SONAME2)
 	ldconfig
+	find z -name '*.hpp' -exec cp --parents '{}' $(ICLDIR) ';'
 
 uninstall:
 	rm -f $(LIBDIR)/lib$(LIBNAME)*
 	ldconfig
+	rm -rf $(ICLDIR)/z
 
 examples:
 	$(MAKE) -C examples/

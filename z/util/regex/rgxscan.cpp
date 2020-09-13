@@ -3,7 +3,7 @@
 #include "rgxid.hpp"
 #include "rgxsesc.hpp"
 
-#include <z/core/charFunctions.hpp>
+#include "../../core/charFunctions.hpp"
 
 namespace z
 {

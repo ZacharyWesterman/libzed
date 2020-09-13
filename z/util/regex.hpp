@@ -1,7 +1,7 @@
 #pragma once
 
-#include <z/core/string.hpp>
-#include <z/core/stream.hpp>
+#include "../core/string.hpp"
+#include "../core/stream.hpp"
 
 #include "regex/rgxerr.hpp"
 #include "regex/rules/compound.hpp"

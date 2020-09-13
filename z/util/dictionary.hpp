@@ -1,13 +1,13 @@
 #pragma once
 
-#include <z/core/string.hpp>
-#include <z/core/refArray.hpp>
-#include <z/core/sortedRefArray.hpp>
-#include <z/core/timeout.hpp>
+#include "../core/string.hpp"
+#include "../core/refArray.hpp"
+#include "../core/sortedRefArray.hpp"
+#include "../core/timeout.hpp"
 
 #include "dictionary/word.hpp"
 #include "dictionary/dictRange.hpp"
-#include <z/core/sortedRefArray.hpp>
+#include "../core/sortedRefArray.hpp"
 
 namespace z
 {

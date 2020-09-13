@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <cstdint>
 
-#include <z/core/string.hpp>
-#include <z/core/stream.hpp>
+#include "../core/string.hpp"
+#include "../core/stream.hpp"
 
 namespace z
 {
