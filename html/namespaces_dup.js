@@ -1,4 +1,4 @@
-var namespaces =
+var namespaces_dup =
 [
     [ "z", null, [
       [ "core", "namespacez_1_1core.html", null ],

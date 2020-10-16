@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['join',['join',['../namespacez_1_1core.html#a6ce33c352674a162643239246f5d5e22',1,'z::core::join(const array&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim)'],['../namespacez_1_1core.html#a1cbb6ce03273d9019b99adf2df300b4b',1,'z::core::join(const array&lt; T &gt; &amp;list, const zstring &amp;delim)']]],
-  ['joinderef',['joinDeref',['../namespacez_1_1core.html#a4bdcb629f52819f66a5cae9706042164',1,'z::core']]]
+  ['join',['join',['../namespacez_1_1core.html#ace60947335188ead8d95fa6895f65680',1,'z::core::join(const array&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim) noexcept'],['../namespacez_1_1core.html#a66073ee780aaa6d56a6c859a4cf6e1da',1,'z::core::join(const array&lt; T &gt; &amp;list, const zstring &amp;delim) noexcept']]],
+  ['joinderef',['joinDeref',['../namespacez_1_1core.html#a7031399ba53a357c6252f49295537e7a',1,'z::core']]]
 ];

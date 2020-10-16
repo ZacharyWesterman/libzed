@@ -1,14 +1,14 @@
 var classz_1_1util_1_1genericInt =
 [
     [ "genericInt", "classz_1_1util_1_1genericInt.html#a42fec5991a8a5c05b72ff62db2c49f53", null ],
-    [ "boolean", "classz_1_1util_1_1genericInt.html#a94c6066d8bf3803c34bc1746f71f7e51", null ],
-    [ "complex", "classz_1_1util_1_1genericInt.html#ae5c41d11e13c3ca6225d4eb7455962b4", null ],
-    [ "duplicate", "classz_1_1util_1_1genericInt.html#a03e077022a03b0a8b12f7c9f05e2bfe0", null ],
-    [ "floating", "classz_1_1util_1_1genericInt.html#a1708e2b45c085bad8167ba24d0fe9731", null ],
-    [ "integer", "classz_1_1util_1_1genericInt.html#a8803517c7932b57cb3ebf0cab92f1217", null ],
-    [ "isArithmetic", "classz_1_1util_1_1genericInt.html#a90b5cd2ca2e87318d47a29e7ec82dcf3", null ],
-    [ "isInteger", "classz_1_1util_1_1genericInt.html#ae5a24a368841a7ca4bbfc236e51ace4e", null ],
-    [ "string", "classz_1_1util_1_1genericInt.html#a3d31fe37c90016dee5064a3490a1ec8f", null ],
-    [ "type", "classz_1_1util_1_1genericInt.html#aaeca343775ce68353c7e29507f848a0d", null ],
-    [ "typeString", "classz_1_1util_1_1genericInt.html#a0163f60021ef1eb723e786f45d2f69ed", null ]
+    [ "boolean", "classz_1_1util_1_1genericInt.html#afa3c19a8aefa8e509111595e4b764a3b", null ],
+    [ "complex", "classz_1_1util_1_1genericInt.html#aa661d425959b5a7d9dea43eea6453641", null ],
+    [ "duplicate", "classz_1_1util_1_1genericInt.html#aab896ff670e6ad3fec7ae6464c068ade", null ],
+    [ "floating", "classz_1_1util_1_1genericInt.html#a6501ed2518aacb09da7679abb6ef7927", null ],
+    [ "integer", "classz_1_1util_1_1genericInt.html#a159242937e8ddb482d46b290df7cc006", null ],
+    [ "isArithmetic", "classz_1_1util_1_1genericInt.html#a7f9bc16d566ae54c50063da333420ba8", null ],
+    [ "isInteger", "classz_1_1util_1_1genericInt.html#a594064d2442c7374bc282f7b33fb12f6", null ],
+    [ "string", "classz_1_1util_1_1genericInt.html#a01c9209d1b0709bebd259a129a6d6f55", null ],
+    [ "type", "classz_1_1util_1_1genericInt.html#acfe900d769ad87b074c73316b25e4744", null ],
+    [ "typeString", "classz_1_1util_1_1genericInt.html#ad98ef57d32c10c8e1d8d26f37ac1ccf0", null ]
 ];

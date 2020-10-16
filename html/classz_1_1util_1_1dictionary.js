@@ -1,16 +1,18 @@
 var classz_1_1util_1_1dictionary =
 [
-    [ "dictionary", "classz_1_1util_1_1dictionary.html#ad2ee536c9d01efb24543155a1b8f5823", null ],
-    [ "~dictionary", "classz_1_1util_1_1dictionary.html#ae322739d35760fea6fafeeabcb1e78b1", null ],
-    [ "clear", "classz_1_1util_1_1dictionary.html#a5800151d8087e3a6abd6f750140bb660", null ],
-    [ "getWord", "classz_1_1util_1_1dictionary.html#a47c863ab57704b3813351a6e4509eab8", null ],
-    [ "isWord", "classz_1_1util_1_1dictionary.html#afc960c1cda45f15fde9ec4862c62b994", null ],
-    [ "language", "classz_1_1util_1_1dictionary.html#ab47ba723858f8d09f935acc4cffa7117", null ],
-    [ "read", "classz_1_1util_1_1dictionary.html#a7449fc154e1b0caf1f6d56559a2fe7eb", null ],
+    [ "dictionary", "classz_1_1util_1_1dictionary.html#a438fc30713cf32e666522f572e741dc4", null ],
+    [ "~dictionary", "classz_1_1util_1_1dictionary.html#a82c4b3c88bb90eb35e408075a188af67", null ],
+    [ "clear", "classz_1_1util_1_1dictionary.html#a54f763909cb5492132cff2c3532f1740", null ],
+    [ "getWord", "classz_1_1util_1_1dictionary.html#ac998d5159723e72e8afe878dfaa85b30", null ],
+    [ "isWord", "classz_1_1util_1_1dictionary.html#ab2fbf770fb2f116bf3b1ea243f65a6a3", null ],
+    [ "language", "classz_1_1util_1_1dictionary.html#ad689c43a1b2595836d3c84ac1d4eeba4", null ],
+    [ "narrow", "classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27", null ],
+    [ "range", "classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309", null ],
+    [ "read", "classz_1_1util_1_1dictionary.html#a4ec2f4a932e22820b7152e12d8affa48", null ],
     [ "serialIn", "classz_1_1util_1_1dictionary.html#ac606de9223e10b89e1c3697b06ac9246", null ],
-    [ "serialOut", "classz_1_1util_1_1dictionary.html#a802dee0f88176598daa152ebc4935e37", null ],
-    [ "setLanguage", "classz_1_1util_1_1dictionary.html#a16955953ea89b1a7472e1628238186fa", null ],
-    [ "setWord", "classz_1_1util_1_1dictionary.html#a51bdb3dd579422819a9245adedaf02be", null ],
-    [ "size", "classz_1_1util_1_1dictionary.html#a2b835d74bb3a9a428c5378245191d267", null ],
-    [ "wordCount", "classz_1_1util_1_1dictionary.html#afc8e47e52e32943b1e315d68653501ea", null ]
+    [ "serialOut", "classz_1_1util_1_1dictionary.html#ab47c037373f0435f961e766cd1d11392", null ],
+    [ "setLanguage", "classz_1_1util_1_1dictionary.html#a749872bd5f6904c422a085b313f45b0c", null ],
+    [ "setWord", "classz_1_1util_1_1dictionary.html#a8bfe9b8d22dd75fc3af0ea3ccbed4fad", null ],
+    [ "size", "classz_1_1util_1_1dictionary.html#a2b78626d1790ca65023fd6c206bbe837", null ],
+    [ "wordCount", "classz_1_1util_1_1dictionary.html#ab3e50cf5727687761157a5ff42e36f3a", null ]
 ];

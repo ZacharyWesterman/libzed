@@ -1,10 +1,10 @@
 var classz_1_1core_1_1timer =
 [
-    [ "timer", "classz_1_1core_1_1timer.html#aa1aeb37b1945a7cb247780069e8f04fd", null ],
-    [ "hours", "classz_1_1core_1_1timer.html#ac3a853f5668d254ce8e4cd95f27dbbdb", null ],
-    [ "micros", "classz_1_1core_1_1timer.html#a76fa4d8534b790daf37ac86d1fe69ebd", null ],
-    [ "millis", "classz_1_1core_1_1timer.html#ab5222e0884b4d1204cf536c2ecbd3eeb", null ],
-    [ "minutes", "classz_1_1core_1_1timer.html#a5af7159b37a75e1163a4cb94e32a62d6", null ],
-    [ "reset", "classz_1_1core_1_1timer.html#adce1b5488fb16b1987956c344e274466", null ],
-    [ "seconds", "classz_1_1core_1_1timer.html#acafe7563cc7e37dbcc43489c48104137", null ]
+    [ "timer", "classz_1_1core_1_1timer.html#a3b79b36b923095c72f3a280782bec023", null ],
+    [ "hours", "classz_1_1core_1_1timer.html#a0380bc41093cca7c73a4cd7880459234", null ],
+    [ "micros", "classz_1_1core_1_1timer.html#a84347725b9618f43a09fde67fe5b0394", null ],
+    [ "millis", "classz_1_1core_1_1timer.html#a0c96e7a9724f334a084769545989909e", null ],
+    [ "minutes", "classz_1_1core_1_1timer.html#ae48d92c1a111fa6b2a8d1deeaa464952", null ],
+    [ "reset", "classz_1_1core_1_1timer.html#a15a826257262f63761100a5f6ffbfcc0", null ],
+    [ "seconds", "classz_1_1core_1_1timer.html#a4cbf8b35187ea70966badd3affefa0a6", null ]
 ];

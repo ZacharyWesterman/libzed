@@ -8,6 +8,7 @@ var classz_1_1system_1_1stdin =
     [ "get", "classz_1_1system_1_1stdin.html#a74f74238e7b24a14fa37c2a17e6fcf5b", null ],
     [ "getChar", "classz_1_1system_1_1stdin.html#ad61f1346a71bb493ce4c79ed9e600258", null ],
     [ "good", "classz_1_1system_1_1stdin.html#a9652ebd9461cbb4a24f123a2f21447d8", null ],
+    [ "peek", "classz_1_1system_1_1stdin.html#ab0c7cbc422616374c275610630a80736", null ],
     [ "seek", "classz_1_1system_1_1stdin.html#a231fa777f79db5e93b2aa30b61eb4c90", null ],
     [ "seekable", "classz_1_1system_1_1stdin.html#ad4a3fecb1696bb037be0d693a11c8c83", null ],
     [ "setFormat", "classz_1_1system_1_1stdin.html#a10cfa5f0db0cc934339b0ccad36a2065", null ],

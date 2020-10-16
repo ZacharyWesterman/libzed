@@ -2,6 +2,7 @@ var namespacez_1_1util =
 [
     [ "rgx", "namespacez_1_1util_1_1rgx.html", "namespacez_1_1util_1_1rgx" ],
     [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
+    [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
     [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
     [ "genericArray", "classz_1_1util_1_1genericArray.html", "classz_1_1util_1_1genericArray" ],
     [ "genericComplex", "classz_1_1util_1_1genericComplex.html", "classz_1_1util_1_1genericComplex" ],

@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
+    [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::file::info", "classz_1_1file_1_1info.html", null ],
@@ -52,11 +53,13 @@ var hierarchy =
     [ "z::core::serializable", "classz_1_1core_1_1serializable.html", [
       [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::generic * >", "classz_1_1core_1_1array.html", [
-        [ "z::core::refArray< z::util::generic * >", "classz_1_1core_1_1refArray.html", null ]
+        [ "z::core::refArray< z::util::generic *>", "classz_1_1core_1_1refArray.html", null ]
       ] ],
-      [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
+      [ "z::core::array< z::util::rgx::rule *>", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", [
-        [ "z::core::refArray< z::util::word * >", "classz_1_1core_1_1refArray.html", null ]
+        [ "z::core::sortedArray< z::util::word * >", "classz_1_1core_1_1sortedArray.html", [
+          [ "z::core::sortedRefArray< z::util::word *>", "classz_1_1core_1_1sortedRefArray.html", null ]
+        ] ]
       ] ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
@@ -72,7 +75,7 @@ var hierarchy =
     [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
       [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::generic * >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
+      [ "z::core::array< z::util::rgx::rule *>", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::array< T >", "classz_1_1core_1_1array.html", null ],

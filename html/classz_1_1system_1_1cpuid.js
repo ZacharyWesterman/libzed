@@ -1,7 +1,7 @@
 var classz_1_1system_1_1cpuid =
 [
-    [ "cpuid", "classz_1_1system_1_1cpuid.html#a24d3427d3611c711e2f9a8faf95bbefe", null ],
-    [ "cores", "classz_1_1system_1_1cpuid.html#a5aeee5e97bf3b39839270b99c2e7ab00", null ],
-    [ "cpus", "classz_1_1system_1_1cpuid.html#a9d1f84819c60afd65a56294d7a6f6eb1", null ],
-    [ "vendor", "classz_1_1system_1_1cpuid.html#a974fd67e4bc86dfad20970164c1a82b5", null ]
+    [ "cpuid", "classz_1_1system_1_1cpuid.html#a929571c48c601438cc359b1f0d74c4c6", null ],
+    [ "cores", "classz_1_1system_1_1cpuid.html#ac2424cdee386ee4cfa967787e7fdd050", null ],
+    [ "cpus", "classz_1_1system_1_1cpuid.html#ab2f2152a83304b71920693990b1445d3", null ],
+    [ "vendor", "classz_1_1system_1_1cpuid.html#a5b533cd500d6dd184ee2e3bd2d317202", null ]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['value',['value',['../classz_1_1math_1_1matrix.html#af2ab2dd5faca9f718b03764db5ba6f6d',1,'z::math::matrix::value()'],['../classz_1_1util_1_1rgx_1_1character.html#aa5ce41014d6f101fe491745daafccddb',1,'z::util::rgx::character::value()']]]
+  ['phi',['phi',['../namespacez_1_1math.html#a16d02c5f2d1bde240f47a45c676a3e12',1,'z::math']]],
+  ['pi',['pi',['../namespacez_1_1math.html#ab8fdf94bd8614236e8a0c5d307354e07',1,'z::math']]]
 ];
