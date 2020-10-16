@@ -33,15 +33,14 @@ ___
 - make
 
 ###Compiling
-Just run make in the project directory. I do
+Just run make in the project directory. I do the following:
 ~~~
-$ make -j32
+$ make -j$(nproc)
 ~~~
+so that it will compile on as many cores as possible.
 
-so that make will compile on as many cores as possible.
-
-You should get no errors and exactly one warning (from library.cpp).
-Open an issue on [GitHub][repo] if any other warnings pop up while compiling.
+You should get no errors or warnings.
+You can open an issue on [GitHub][repo] if either of those pop up while compiling.
 
 ###Installing
 In Linux, run the following as superuser:
