@@ -18,10 +18,10 @@ namespace z
 		{
 #			ifdef _WIN32
 			TCHAR fullPath[MAX_PATH];
-			GetFullPathName(_T((const char*)filePath.cstring()), MAX_PATH, fullPath, NULL);
+			(void)GetFullPathName(_T((const char*)filePath.cstring()), MAX_PATH, fullPath, NULL);
 #			elif __linux__
 			char fullPath[PATH_MAX];
-			realpath((const char*)filePath.cstring(), fullPath);
+			(void)realpath((const char*)filePath.cstring(), fullPath);
 #			else
 			auto fullPath = filePath;
 #			endif

@@ -18,7 +18,7 @@ namespace z
 		{
 #			if defined(_WIN32) || defined(__linux__)
 			char buf[FILENAME_MAX];
-			_getcwd(buf, FILENAME_MAX);
+			(void)_getcwd(buf, FILENAME_MAX);
 			return buf;
 #			else
 			return ".";
