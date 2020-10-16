@@ -72,19 +72,17 @@ int main()
 	return 0;
 }
 ~~~
-Also let's assume you have libzed's .h files saved in the `/home/me/libzed` directory.
-This directory will be different in Windows, but the commands will be the same.
 
 To compile and link to the installed library:
 ~~~
-$ g++ -I"/home/me/libzed" -std=c++11 -o example.o -c example.cpp
+$ g++ -std=c++11 -o example.o -c example.cpp
 $ g++ -lzed -o example example.o
 ~~~
 
-To compile and link to the DLL/SO saved in the application's working directory:
+If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows):
 ~~~
-$ g++ -I"/home/me/libzed" -std=c++11 -o example.o -c example.cpp
-$ g++ -lzed -L. -o example example.o
+$ g++ -I"/path/to/libzed/headers" -std=c++11 -o example.o -c example.cpp
+$ g++ -lzed -L"/path/to/lib" -o example example.o
 ~~~
 
 ___
