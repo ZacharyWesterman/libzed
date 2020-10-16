@@ -354,7 +354,7 @@ namespace z
 			 * \return A pointer to the string data, if this string is in a
 			 * single-byte format. `NULL` otherwise.
 			 */
-			const uint8_t* cstring() const noexcept;
+			const char* cstring() const noexcept;
 
 			/**
 			 * \brief Get the two-byte cstring pointer.
@@ -1041,6 +1041,38 @@ namespace z
 			 * \return A reference to this string after converting to camelcase.
 			 */
 			string& toCamel() noexcept;
+
+			/**
+			 * \brief Filter out all characters not in the given range.
+			 *
+			 * example: this->filter('A', 'Z') will remove all characters not in the
+			 * range A -> Z, inclusive.
+			 *
+			 * \param first The first character in the range.
+			 * \param last The last character in the range.
+			 *
+			 * \return A duplicate of this string with all non-matching characters removed.
+			 */
+			string filter(uint32_t first, uint32_t last) const noexcept
+			{
+				if (first > last)
+				{
+					auto temp = first;
+					first = last;
+					last = temp;
+				}
+
+				string result;
+				for (uint32_t chr : *this)
+				{
+					if ((chr >= first) && (chr <= last))
+					{
+						result.append(chr);
+					}
+				}
+
+				return result;
+			}
 
 			/**
 			 * \brief Concatenate two strings.

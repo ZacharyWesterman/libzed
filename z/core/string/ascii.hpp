@@ -24,9 +24,9 @@ namespace z
 		}
 
 		template <>
-		const uint8_t* string<ascii>::cstring() const noexcept
+		const char* string<ascii>::cstring() const noexcept
 		{
-			return data;
+			return (char*)data;
 		}
 
 		template <>
@@ -410,6 +410,8 @@ namespace z
 
 			for (int i=0; i<ibufsiz; i++)
 				this->initChar(ibuf[ibufsiz-i-1], pos++);
+
+			initChar(0, character_ct);
 		}
 
 		template <>
