@@ -388,37 +388,62 @@ namespace z
 			 * \brief Convert this string to an integer.
 			 *
 			 * \param base The base this string is being interpreted as.
+			 * \param decimal The character used to denote the radix (decimal place).
 			 *
 			 * \return A signed integer representation of this string, if it
 			 * is a valid integer. 0 otherwise.
 			 *
+			 * \note If a radix character is encountered before any invalid characters,
+			 * any text following the radix is ignored.
+			 *
 			 * \see isInteger()
 			 */
-			long integer(int base = 10) const noexcept;
+			long integer(int base = 10, uint32_t decimal = '.') const noexcept;
+
+			/**
+			 * \brief Convert this string to an integer.
+			 * \see integer()
+			 */
+			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
+			operator INT() const noexcept {return integer();}
 
 			/**
 			 * \brief Convert this string to a floating-point value.
 			 *
 			 * \param base The base this string is being interpreted as.
+			 * \param decimal The character used to denote the radix (decimal place).
 			 *
 			 * \return The floating-point representation of this string, if it
 			 * is a valid float. 0 otherwise.
 			 *
 			 * \see isFloating()
 			 */
-			double floating(int base = 10) const noexcept;
+			double floating(int base = 10, uint32_t decimal = '.') const noexcept;
+
+			/**
+			 * \brief Convert this string to a floating-point value.
+			 * \see floating()
+			 */
+			operator double() const noexcept {return floating();}
+
+			/**
+			 * \brief Convert this string to a floating-point value.
+			 * \see floating()
+			 */
+			operator float() const noexcept {return floating();}
 
 			/**
 			 * \brief Convert this string to a complex value.
 			 *
 			 * \param base The base this string is being interpreted as.
+			 * \param decimal The character used to denote the radix (decimal place).
 			 *
 			 * \return The floating-point complex representation of this string,
 			 * if it is a valid complex float. 0 otherwise.
 			 *
 			 * \see isComplex()
 			 */
-			std::complex<double> complex(int base = 10) const noexcept;
+			std::complex<double> complex(int base = 10, uint32_t decimal = '.') const noexcept;
 
 			/**
 			 * \brief Count the occurrences of a sub-string.

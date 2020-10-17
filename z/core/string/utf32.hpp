@@ -89,7 +89,7 @@ namespace z
 		}
 
 		template <>
-		long string<utf32>::integer(int base) const noexcept
+		long string<utf32>::integer(int base, uint32_t decimal) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -109,6 +109,7 @@ namespace z
 					result *= base;
 					result += numeralValue(chr);
 				}
+				else if (chr == decimal) break;
 				else return 0;
 			}
 
@@ -116,7 +117,7 @@ namespace z
 		}
 
 		template <>
-		double string<utf32>::floating(int base) const noexcept
+		double string<utf32>::floating(int base, uint32_t decimal) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -140,7 +141,7 @@ namespace z
 			{
 				if (!isNumeric(data32[i], base))
 				{
-					if (data32[i] == '.')
+					if (data32[i] == decimal)
 					{
 						if (pastDecimal || pastExponent)
 							return 0;
@@ -199,7 +200,7 @@ namespace z
 		}
 
 		template <>
-		std::complex<double> string<utf32>::complex(int base) const noexcept
+		std::complex<double> string<utf32>::complex(int base, uint32_t decimal) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
@@ -227,7 +228,7 @@ namespace z
 			{
 				if (!isNumeric(data32[i], base))
 				{
-					if (data32[i] == '.')
+					if (data32[i] == decimal)
 					{
 						if (pastDecimal || pastExponent)
 							return 0;
