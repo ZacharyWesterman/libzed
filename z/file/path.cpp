@@ -21,7 +21,8 @@ namespace z
 			(void)GetFullPathName(_T((const char*)filePath.cstring()), MAX_PATH, fullPath, NULL);
 #			elif __linux__
 			char fullPath[PATH_MAX];
-			(void)realpath((const char*)filePath.cstring(), fullPath);
+			char* ignored __attribute__((unused));
+			ignored = realpath((const char*)filePath.cstring(), fullPath);
 #			else
 			auto fullPath = filePath;
 #			endif
