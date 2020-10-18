@@ -3,8 +3,10 @@ ifeq ($(OS),Windows_NT)
 LFLAGS = -L. -lzed
 DLL1 = zed.dll
 DLL2 = binary/zed.dll
+LIBEXT = dll
 else
 LFLAGS = -lzed
+LIBEXT = so
 endif
 
 ifeq (, $(shell rm --version))
@@ -17,7 +19,7 @@ MV = mv
 CP = cp "../zed.dll"
 endif
 
-all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.so binary/loadLib $(DLL2)
+all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2)
 
 binary:
 	mkdir $@
@@ -28,7 +30,7 @@ object:
 object/%.o: source/%.cpp
 	g++ -I"../" -std=c++11 -fPIC -o $@ -c $^
 
-binary/dynamicLib.so: source/dynamicLib.cpp
+binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
 	g++ -I"../" -std=c++11 -shared -fPIC -o $@ $^
 
 binary/%: object/%.o
