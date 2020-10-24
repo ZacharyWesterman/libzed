@@ -4,6 +4,8 @@
 
 #include "rgx.hpp" //all regex rules
 
+#include <limits.h> //for INT_MAX
+
 namespace z
 {
 	namespace util
@@ -247,10 +249,10 @@ namespace z
 						child = new rgx::digit;
 						break;
 					case RGX_PLUS:
-						err = setCount(&nodeOut,1,-1);
+						err = setCount(&nodeOut,1,INT_MAX);
 						break;
 					case RGX_ASTERISK:
-						err = setCount(&nodeOut,0,-1);
+						err = setCount(&nodeOut,0,INT_MAX);
 						break;
 					case RGX_LBRACE:
 						id = input[++position].id();
@@ -263,7 +265,7 @@ namespace z
 						{
 							id = input[++position].id();
 							if (id == RGX_RBRACE)
-								err = setCount(&nodeOut,chr,-1);
+								err = setCount(&nodeOut,chr,INT_MAX);
 							else if ((id == RGX_COUNT) && (input[position+1].id() == RGX_RBRACE))
 								err = setCount(&nodeOut,chr,input[position++].symbol());
 							else

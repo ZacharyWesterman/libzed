@@ -50,6 +50,10 @@ namespace z
 
 				///The list of child rules.
 				core::array<rule*> children;
+
+#			ifdef DEBUG
+				virtual void print(core::outputStream& stream, int level=0) noexcept = 0;
+#			endif
 			};
 		}
 	}

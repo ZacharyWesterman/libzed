@@ -40,12 +40,12 @@ namespace z
 				zpath s;
 				s.padLeftIn(" ",(level)<<1);
 				if ((begin<'!')||(begin>'~'))
-					s = s + "x" + (int)begin;
+					s = s + "x" + (zstring)(int)begin;
 				else
 					s += begin;
 				s += '-';
 				if ((end<'!')||(end>'~'))
-					s = s + "x" + (int)end;
+					s = s + "x" + (zstring)(int)end;
 				else
 					s += end;
 				if (insensitive) s += " i";
