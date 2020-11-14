@@ -66,7 +66,7 @@ namespace z
 			 *
 			 * Character is assumed to be compatible with this string's encoding.
 			 */
-			string(char chr) noexcept;
+			explicit string(char chr) noexcept;
 
 			/**
 			 * \brief Construct string from a wide character.
@@ -75,7 +75,7 @@ namespace z
 			 *
 			 * Converts the given character to the appropriate encoding for this string.
 			 */
-			string(wchar_t chr) noexcept;
+			explicit string(wchar_t chr) noexcept;
 
 			/**
 			 * \brief Construct string from uint32_t.
@@ -121,7 +121,9 @@ namespace z
 			 * else is assumed to be base 10. If the pad size is less than 1,
 			 * no character padding is applied.
 			 */
-			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
+			template <typename INT, typename = typename std::enable_if<
+				std::is_integral<INT>::value && !std::is_same<INT,char>::value && !std::is_same<INT,wchar_t>::value
+				,INT>::type>
 			string(INT value, int base = 10, int padSize = 0) noexcept
 			{
 				this->initInt((long long)value, base, padSize);
@@ -405,7 +407,7 @@ namespace z
 			 * \see integer()
 			 */
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			operator INT() const noexcept {return integer();}
+			explicit operator INT() const noexcept {return integer();}
 
 			/**
 			 * \brief Convert this string to a floating-point value.
@@ -424,13 +426,13 @@ namespace z
 			 * \brief Convert this string to a floating-point value.
 			 * \see floating()
 			 */
-			operator double() const noexcept {return floating();}
+			explicit operator double() const noexcept {return floating();}
 
 			/**
 			 * \brief Convert this string to a floating-point value.
 			 * \see floating()
 			 */
-			operator float() const noexcept {return floating();}
+			explicit operator float() const noexcept {return floating();}
 
 			/**
 			 * \brief Convert this string to a complex value.
