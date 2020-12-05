@@ -16,7 +16,7 @@ namespace z
 		/**
 		 * \brief A class for performing searches on a dictionary of words.
 		 */
-		class dictionary : public core::sizable, public core::serializable
+		class dictionary : public core::sizable
 		{
 		private:
 			core::string<> lang;
@@ -116,10 +116,6 @@ namespace z
 
 			size_t size() const noexcept;
 
-			void serialIn(core::inputStream& stream);
-
-			void serialOut(core::outputStream& stream) const;
-
 			/**
 			 * \brief Create a new range of words encompassing the whole dictionary.
 			 *
@@ -139,6 +135,35 @@ namespace z
 			 * \return true if the range can be narrowed further, false otherwise.
 			 */
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
+
+#		if __has_include(<cereal/cereal.hpp>)
+			//binary specialization
+			template <typename archive>
+			void save(archive& ar) const
+			{
+				ar((size_t)wordList.length());
+				for (int i=0; i<(int)wordList.length(); i++)
+				{
+					ar(wordList[i]->get());
+				}
+			}
+
+			template <class archive>
+			void load(archive& ar)
+			{
+				clear();
+				size_t sz;
+				ar(sz);
+				wordList.increase(sz);
+
+				zstring data;
+				for (int i=0; i<sz; i++)
+				{
+					ar(data);
+					wordList.append(new word(data));
+				}
+			}
+#		endif
 		};
 	}
 }

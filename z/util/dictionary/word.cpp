@@ -109,17 +109,5 @@ namespace z
 		{
 			return _word.size() + sizeof(part_of_speech);
 		}
-
-		void word::serialIn(core::inputStream& stream)
-		{
-			_word.serialIn(stream);
-			part_of_speech = (part)stream.get();
-		}
-
-		void word::serialOut(core::outputStream& stream) const
-		{
-			_word.serialOut(stream);
-			stream.put((uint8_t)part_of_speech);
-		}
 	}
 }

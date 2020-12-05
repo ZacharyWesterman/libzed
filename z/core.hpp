@@ -25,7 +25,6 @@
 
 ///Miscellaneous
 #include "core/charFunctions.hpp"
-#include "core/serializable.hpp"
 #include "core/sizable.hpp"
 #include "core/split.hpp"
 #include "core/join.hpp"

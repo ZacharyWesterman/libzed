@@ -4,11 +4,12 @@
 #include <complex>
 #include <cstring>
 
+#include "stream.hpp"
+
 #include "charFunctions.hpp"
 #include "../encoding.hpp"
 #include "zstr.hpp"
 
-#include "serializable.hpp"
 #include "sizable.hpp"
 
 #include "stringIterator.hpp"
@@ -35,7 +36,7 @@ namespace z
 		 * \see zstr.h
 		 */
 		template <encoding E = utf32>
-		class string : public serializable, public sizable
+		class string : public sizable
 		{
 			friend string<ascii>;
 			friend string<utf8>;
@@ -1211,9 +1212,6 @@ namespace z
 				return !operator>(other);
 			}
 
-			void serialIn(inputStream&);
-			void serialOut(outputStream&) const;
-
 			/**
 			 * \brief Read string data from a stream until the given delimiter is encountered.
 			 *
@@ -1307,6 +1305,20 @@ namespace z
 			 * \return An iterator after the last character in the string.
 			 */
 			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
+
+#		if __has_include(<cereal/cereal.hpp>)
+			template <class archive>
+			std::string save_minimal(archive& ar) const
+			{
+				return string<utf8>(*this).cstring();
+			}
+
+			template <class archive>
+			void load_minimal(archive const&, std::string const& value)
+			{
+				operator=(value.c_str());
+			}
+#		endif
 		};
 	}
 }
