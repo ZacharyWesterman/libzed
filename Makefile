@@ -22,7 +22,7 @@ CCTARGET =
 endif
 endif
 
-CCFLAGS = -std=c++14 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+CCFLAGS = -std=c++11 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
 LFLAGS = -shared
 
 STATIC_LIB = $(LIBNAME).a
