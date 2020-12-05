@@ -3,7 +3,6 @@
 #include "../../core/string.hpp"
 
 #include "../../core/sizable.hpp"
-#include "../../core/serializable.hpp"
 
 #include "part.hpp"
 
@@ -14,7 +13,7 @@ namespace z
 		/**
 		 * \brief Container holding information about a word.
 		 */
-		class word : public core::sizable, public core::serializable
+		class word : public core::sizable
 		{
 		private:
 			core::string<> _word;
@@ -120,10 +119,6 @@ namespace z
 			bool operator<(const word& other) const noexcept;
 
 			size_t size() const noexcept;
-
-			void serialIn(core::inputStream& stream);
-
-			void serialOut(core::outputStream& stream) const;
 		};
 	}
 }

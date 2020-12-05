@@ -16,7 +16,7 @@ namespace z
 		/**
 		 * \brief A class for performing searches on a dictionary of words.
 		 */
-		class dictionary : public core::sizable, public core::serializable
+		class dictionary : public core::sizable
 		{
 		private:
 			core::string<> lang;
@@ -115,10 +115,6 @@ namespace z
 			void setLanguage(const core::string<>& newLang) noexcept;
 
 			size_t size() const noexcept;
-
-			void serialIn(core::inputStream& stream);
-
-			void serialOut(core::outputStream& stream) const;
 
 			/**
 			 * \brief Create a new range of words encompassing the whole dictionary.

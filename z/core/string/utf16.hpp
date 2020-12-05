@@ -1425,43 +1425,5 @@ namespace z
 			newl.write(stream, enc);
 		}
 
-		template <>
-		void string<utf16>::serialIn(inputStream& stream)
-		{
-			uint16_t* data16 = (uint16_t*)data;
-
-			if (stream.bad() || !stream.binary())
-			{
-				character_ct = 0;
-				data16[0] = 0;
-				return;
-			}
-
-			core::serialIn(character_ct, stream);
-			increase(character_ct);
-
-			for (int i=0; i<character_ct; ++i)
-			{
-				core::serialIn(data16[i], stream);
-			}
-
-			data16[character_ct] = 0;
-		}
-
-		template <>
-		void string<utf16>::serialOut(outputStream& stream) const
-		{
-			if (stream.bad() || !stream.binary())
-				return;
-
-			core::serialOut(character_ct, stream);
-
-			uint16_t* data16 = (uint16_t*)data;
-			for (int i=0; i<character_ct; ++i)
-			{
-				core::serialOut(data16[i], stream);
-			}
-		}
-
 	} //end of core namespace
 } //end of z namespace

@@ -114,58 +114,6 @@ namespace z
 			return total;
 		}
 
-		void dictionary::serialIn(core::inputStream& stream)
-		{
-			if (stream.bad()) return;
-			clear();
-
-			// the dict file was corrupted / did not finish writing.
-			if (stream.get()) return;
-
-			lang.serialIn(stream);
-
-			size_t length = 0;
-			core::serialIn(length, stream);
-
-			word temp;
-			for (size_t i=0; i<length; i++)
-			{
-				if (stream.empty()) return;
-				temp.serialIn(stream);
-				wordList.append(new word(temp));
-			}
-		}
-
-		void dictionary::serialOut(core::outputStream& stream) const
-		{
-			if (stream.bad()) return;
-
-			auto start = stream.tell();
-
-			stream.put(0xFF); //indicate we're not done writing
-			stream.flush();
-
-			lang.serialOut(stream);
-
-			size_t length = wordList.length();
-			core::serialOut(length, stream);
-
-			for (int i=0; i<wordList.length(); i++)
-			{
-				wordList[i]->serialOut(stream);
-			}
-
-			auto stop = stream.tell();
-
-			stream.seek(start);
-
-			stream.flush();
-			stream.put(0); //we finished writing the dictionary.
-			stream.flush();
-
-			stream.seek(stop);
-		}
-
 		dictRange dictionary::range() const noexcept
 		{
 			dictRange wordRange;

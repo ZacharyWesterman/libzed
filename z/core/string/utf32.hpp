@@ -1419,43 +1419,5 @@ namespace z
 			newl.write(stream, enc);
 		}
 
-		template <>
-		void string<utf32>::serialIn(inputStream& stream)
-		{
-			uint32_t* data32 = (uint32_t*)data;
-
-			if (stream.bad() || !stream.binary())
-			{
-				character_ct = 0;
-				data32[0] = 0;
-				return;
-			}
-
-			core::serialIn(character_ct, stream);
-			increase(character_ct);
-
-			for (int i=0; i<character_ct; ++i)
-			{
-				core::serialIn(data32[i], stream);
-			}
-
-			data32[character_ct] = 0;
-		}
-
-		template <>
-		void string<utf32>::serialOut(outputStream& stream) const
-		{
-			if (stream.bad() || !stream.binary())
-				return;
-
-			core::serialOut(character_ct, stream);
-
-			uint32_t* data32 = (uint32_t*)data;
-			for (int i=0; i<character_ct; ++i)
-			{
-				core::serialOut(data32[i], stream);
-			}
-		}
-
 	} //end of core namespace
 } //end of z namespace

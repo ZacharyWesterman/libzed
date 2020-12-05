@@ -4,7 +4,6 @@
 #include <initializer_list>
 #include "stream.hpp"
 #include "sizable.hpp"
-#include "serializable.hpp"
 #include "typeChecks.hpp"
 #include "compare.hpp"
 
@@ -26,7 +25,7 @@ namespace z
 		 * \see sortedRefArray
 		 */
 		template <typename T>
-		class array : public sizable, public serializable
+		class array : public sizable
 		{
 		protected:
 			///The data in the array.
@@ -213,9 +212,6 @@ namespace z
 
 			bool isValid(int position) const;
 
-			void serialIn(inputStream&);
-			void serialOut(outputStream&) const;
-
 			/**
 			 * \brief Get pointer to the beginning of the array.
 			 *
@@ -241,6 +237,87 @@ namespace z
 			{
 				return begin() + array_data.size();
 			}
+
+#		if __has_include(<cereal/cereal.hpp>)
+			//JSON specialization
+			typename std::enable_if<types::isDefined<cereal::JSONOutputArchive>::value>::type
+			save(cereal::JSONOutputArchive& ar) const
+			{
+				ar.makeArray();
+				for (int i=0; i<(int)array_data.size(); i++)
+				{
+					ar(array_data[i]);
+				}
+			}
+
+			//XML specialization
+			typename std::enable_if<types::isDefined<cereal::XMLOutputArchive>::value>::type
+			save(cereal::XMLOutputArchive& ar) const
+			{
+				for (int i=0; i<(int)array_data.size(); i++)
+				{
+					ar(cereal::make_nvp(std::to_string(i),array_data[i]));
+				}
+			}
+
+			//binary specialization
+			template <typename archive>
+			save(archive& ar) const
+			{
+				ar((size_t)array_data.size());
+				for (int i=0; i<(int)array_data.size(); i++)
+				{
+					ar(array_data[i]);
+				}
+			}
+
+			typename std::enable_if<types::isDefined<cereal::JSONInputArchive>::value>::type
+			load(cereal::JSONInputArchive& ar)
+			{
+				size_t sz;
+				ar.loadSize(sz);
+				array_data.reserve(sz);
+
+				T data;
+				for (int i=0; i<sz; i++)
+				{
+					ar(data);
+					array_data.push_back(data);
+				}
+			}
+
+			typename std::enable_if<types::isDefined<cereal::XMLInputArchive>::value>::type
+			load(cereal::XMLInputArchive& ar)
+			{
+				size_t sz;
+				ar.loadSize(sz);
+				array_data.reserve(sz);
+
+				T data;
+				for (int i=0; i<sz; i++)
+				{
+					ar(data);
+					array_data.push_back(data);
+				}
+			}
+
+			template <class archive>
+			void load(archive& ar)
+			{
+				clear();
+				size_t sz;
+				ar(sz);
+				array_data.reserve(sz);
+
+				T data;
+				for (int i=0; i<sz; i++)
+				{
+					ar(data);
+					array_data.push_back(data);
+				}
+			}
+
+#		endif
 		};
 
 
@@ -762,33 +839,5 @@ namespace z
 			if (index < 0) index += array_data.size();
 			return (index < (int)array_data.size()) && (index >= 0);
 		}
-
-		template <typename T>
-		void array<T>::serialIn(inputStream& stream)
-		{
-			int count = 0;
-			z::core::serialIn(count, stream);
-
-			if (count) array_data.reserve(count);
-			for (int i=0; i<count; i++)
-			{
-				T object{};
-				z::core::serialIn(object, stream);
-				array_data.push_back(std::move(object));
-			}
-		}
-
-		template <typename T>
-		void array<T>::serialOut(outputStream& stream) const
-		{
-			int count = array_data.size();
-			z::core::serialOut(count, stream);
-
-			for (int i=0; i<count; i++)
-			{
-				z::core::serialOut(array_data[i], stream);
-			}
-		}
-
 	}
 }
