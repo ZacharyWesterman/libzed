@@ -7,6 +7,11 @@
 #include "typeChecks.hpp"
 #include "compare.hpp"
 
+#if __has_include(<cereal/cereal.hpp>)
+#include <cereal/archives/json.hpp>
+#include <cereal/archives/xml.hpp>
+#endif
+
 namespace z
 {
 	namespace core
@@ -127,6 +132,11 @@ namespace z
 
 			inline void clear();
 
+			void increase(int newSize) noexcept
+			{
+				array_data.reserve(newSize);
+			}
+
 			/**
 			 * \brief Add an object to the array.
 			 *
@@ -240,8 +250,7 @@ namespace z
 
 #		if __has_include(<cereal/cereal.hpp>)
 			//JSON specialization
-			typename std::enable_if<types::isDefined<cereal::JSONOutputArchive>::value>::type
-			save(cereal::JSONOutputArchive& ar) const
+			void save(cereal::JSONOutputArchive& ar) const
 			{
 				ar.makeArray();
 				for (int i=0; i<(int)array_data.size(); i++)
@@ -251,8 +260,7 @@ namespace z
 			}
 
 			//XML specialization
-			typename std::enable_if<types::isDefined<cereal::XMLOutputArchive>::value>::type
-			save(cereal::XMLOutputArchive& ar) const
+			void save(cereal::XMLOutputArchive& ar) const
 			{
 				for (int i=0; i<(int)array_data.size(); i++)
 				{
@@ -262,7 +270,7 @@ namespace z
 
 			//binary specialization
 			template <typename archive>
-			save(archive& ar) const
+			void save(archive& ar) const
 			{
 				ar((size_t)array_data.size());
 				for (int i=0; i<(int)array_data.size(); i++)
@@ -271,8 +279,7 @@ namespace z
 				}
 			}
 
-			typename std::enable_if<types::isDefined<cereal::JSONInputArchive>::value>::type
-			load(cereal::JSONInputArchive& ar)
+			void load(cereal::JSONInputArchive& ar)
 			{
 				size_t sz;
 				ar.loadSize(sz);
@@ -286,8 +293,7 @@ namespace z
 				}
 			}
 
-			typename std::enable_if<types::isDefined<cereal::XMLInputArchive>::value>::type
-			load(cereal::XMLInputArchive& ar)
+			void load(cereal::XMLInputArchive& ar)
 			{
 				size_t sz;
 				ar.loadSize(sz);

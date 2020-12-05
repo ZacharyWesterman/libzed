@@ -1306,7 +1306,7 @@ namespace z
 			 */
 			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
 
-// #		if __has_include(<cereal/cereal.hpp>)
+#		if __has_include(<cereal/cereal.hpp>)
 			template <class archive>
 			std::string save_minimal(archive& ar) const
 			{
@@ -1318,7 +1318,7 @@ namespace z
 			{
 				operator=(value.c_str());
 			}
-// #		endif
+#		endif
 		};
 	}
 }

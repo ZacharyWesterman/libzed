@@ -5,8 +5,8 @@ This library contains useful classes and functions for quick and simple data man
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
 It should compile on any flavor of these systems.
 
-The only requirements are **make** and a **g++** version that supports *at least* C++11.<br>
-Technically you could use another C++ compiler, but I use **g++**.<br>
+The only requirements are **make** and a C++ compiler that supports *at least* C++14.
+If **g++ --version** is 5 or above, chances are you're good.<br>
 This also does compile on the Raspberry Pi, but I haven't checked it for bugs.<br>
 Since this library doesn't really mess with hardware though, it should behave fine on a 32-bit system as it does 64-bit.
 
@@ -15,6 +15,11 @@ On Windows, you're done. Just copy the DLL into the directory where you want it.
 On Linux, type `sudo make install` to install the library and headers, and `sudo make uninstall` to remove it.<br>
 If you want to test out some code, `make examples` will run the makefile in the examples/ subdirectory.<br>
 Last, `make clean` removes all generated binaries and object files.
+
+I would also like to note that certain classes in this library can be serialized if the
+[cereal](https://github.com/USCiLab/cereal) headers are available!
+Just make sure they're in the include path and you should be all set.
+This is optional, and not necessary to use this library.
 
 [Documentation is here.](https://zacharywesterman.github.io)
 
