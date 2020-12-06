@@ -86,7 +86,7 @@ SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
 CC = g++
-LN = g++
+LN = $(CC)
 
 default: $(SHARED_LIB)
 

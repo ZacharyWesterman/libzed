@@ -96,10 +96,11 @@ namespace z
 #			endif
 			if (symbol_pointer)
 			{
-				if (sizeof(void*) == 8) //64 bit pointers
-					func_pointer = reinterpret_cast<func>(reinterpret_cast<long long>(symbol_pointer));
-				else
-					func_pointer = reinterpret_cast<func>(reinterpret_cast<long>(symbol_pointer));
+#			if __x86_64__ || __ppc64__ || _WIN64
+				func_pointer = reinterpret_cast<func>(reinterpret_cast<int64_t>(symbol_pointer));
+#			else
+				func_pointer = reinterpret_cast<func>(reinterpret_cast<int32_t>(symbol_pointer));
+#			endif
 			}
 			return func_pointer;
 		}
