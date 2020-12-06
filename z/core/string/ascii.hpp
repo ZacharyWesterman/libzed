@@ -176,9 +176,12 @@ namespace z
 		template <>
 		const string<ascii>& string<ascii>::operator=(const string<ascii>& other) noexcept
 		{
-			increase(other.character_ct);
-			character_ct = other.character_ct;
-			memcpy(data, other.data, other.character_ct + 1);
+			if (&other != this)
+			{
+				increase(other.character_ct);
+				character_ct = other.character_ct;
+				memcpy(data, other.data, other.character_ct + 1);
+			}
 			return *this;
 		}
 

@@ -219,22 +219,25 @@ namespace z
 		template <>
 		const string<utf8>& string<utf8>::operator=(const string<utf8>& other) noexcept
 		{
-			int new_len = (other.character_ct + 1) * this->charSize();
-			this->increase(new_len);
-			// data = new uint8_t[data_len];
+			if (&other != this)
+			{
+				int new_len = (other.character_ct + 1) * this->charSize();
+				this->increase(new_len);
+				// data = new uint8_t[data_len];
 
-			character_ct = other.character_ct;
+				character_ct = other.character_ct;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
-			int len32 = data_len >> 2;
+				uint32_t* data32 = (uint32_t*)data;
+				uint32_t* other32 = (uint32_t*)other.data;
+				int len32 = data_len >> 2;
 
-			for (int i=0; i<len32; i++)
-				data32[i] = other32[i];
+				for (int i=0; i<len32; i++)
+					data32[i] = other32[i];
 
-			int len = len32 << 2;
-			for (int i=len; i<data_len; i++)
-				data[i] = other.data[i];
+				int len = len32 << 2;
+				for (int i=len; i<data_len; i++)
+					data[i] = other.data[i];
+			}
 
 			return *this;
 		}

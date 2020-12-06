@@ -22,6 +22,8 @@ namespace z
 		class regex
 		{
 		private:
+			zstring text; //the pattern for this regex.
+
 			std::shared_ptr<rgx::compound> root;
 			rgxerr parseError;
 
@@ -107,6 +109,35 @@ namespace z
 			 * \threadsafe_member_yes
 			 */
 			zstring errorString() const noexcept;
+
+			/**
+			 * \brief Get the current pattern this regex is matching against.
+			 *
+			 * \return The current regex pattern.
+			 *
+			 * \threadsafe_member_yes
+			 */
+			const zstring& pattern() const noexcept;
+
+#		if __has_include(<cereal/cereal.hpp>)
+			template <class archive>
+			void save(archive& ar) const
+			{
+				ar(CEREAL_NVP(text));
+				if (parseError)
+				{
+					auto error = errorString();
+					ar(CEREAL_NVP(error));
+				}
+			}
+
+			template <class archive>
+			void load(archive const& ar)
+			{
+				ar(CEREAL_NVP(text));
+				set(text);
+			}
+#		endif
 		};
 	}
 }

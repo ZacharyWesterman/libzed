@@ -259,11 +259,14 @@ namespace z
 			 */
 			string& operator=(string&& other) noexcept
 			{
-				delete[] data;
-				data = other.data;
-				data_len = other.data_len;
-				character_ct = other.character_ct;
-				other.data = NULL;
+				if (&other != this)
+				{
+					delete[] data;
+					data = other.data;
+					data_len = other.data_len;
+					character_ct = other.character_ct;
+					other.data = NULL;
+				}
 
 				return *this;
 			}

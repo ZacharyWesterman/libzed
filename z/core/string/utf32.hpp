@@ -553,17 +553,20 @@ namespace z
 		template <>
 		const string<utf32>& string<utf32>::operator=(const string<utf32>& other) noexcept
 		{
-			int new_len = (other.character_ct + 1) << 2;
-			this->increase(new_len);
-			// data = new uint8_t[data_len];
+			if (&other != this)
+			{
+				int new_len = (other.character_ct + 1) << 2;
+				this->increase(new_len);
+				// data = new uint8_t[data_len];
 
-			character_ct = other.character_ct;
+				character_ct = other.character_ct;
 
-			uint32_t* data32 = (uint32_t*)data;
-			uint32_t* other32 = (uint32_t*)other.data;
+				uint32_t* data32 = (uint32_t*)data;
+				uint32_t* other32 = (uint32_t*)other.data;
 
-			for (int i=0; i<character_ct; i++)
-				data32[i] = other32[i];
+				for (int i=0; i<character_ct; i++)
+					data32[i] = other32[i];
+			}
 
 			return *this;
 		}

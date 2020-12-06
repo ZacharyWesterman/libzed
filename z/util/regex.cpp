@@ -18,6 +18,8 @@ namespace z
 		{
 			root.reset();
 
+			text = pattern;
+
 			core::array<rgxss> symbols;
 			parseError = rgxscan(pattern, symbols);
 
@@ -110,6 +112,11 @@ namespace z
 		const zstring& regex::matched() const noexcept
 		{
 			return matchedString;
+		}
+
+		const zstring& regex::pattern() const noexcept
+		{
+			return text;
 		}
 	}
 }
