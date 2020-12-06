@@ -32,7 +32,7 @@ endif
 STD = c++11
 
 CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
-LFLAGS = -shared
+LFLAGS = -shared $(CCTARGET)
 
 STATIC_LIB = $(LIBNAME).a
 DLL = $(LIBNAME).dll
