@@ -14,6 +14,11 @@ namespace z
 			start = std::chrono::high_resolution_clock::now();
 		}
 
+		void timer::reset(std::chrono::high_resolution_clock::time_point time) noexcept
+		{
+			start = time;
+		}
+
 		unsigned int timer::micros() const noexcept
 		{
 			return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start).count();

@@ -46,6 +46,28 @@ namespace z
 			 * time limit. \b False otherwise.
 			 */
 			bool timedOut() const noexcept;
+
+#		if __has_include(<cereal/cereal.hpp>)
+			template <class Archive>
+			void save(Archive& ar) const
+			{
+				time_t elapsed = micros();
+				int goal = timeout_goal;
+				ar(CEREAL_NVP(elapsed));
+				ar(CEREAL_NVP(goal));
+			}
+
+			template <class Archive>
+			void load(Archive& ar)
+			{
+				time_t elapsed;
+				int goal;
+				ar(CEREAL_NVP(elapsed));
+				ar(CEREAL_NVP(goal));
+				reset(std::chrono::high_resolution_clock::now() - std::chrono::microseconds(elapsed));
+				timeout_goal = goal;
+			}
+#		endif
 		};
 	}
 }

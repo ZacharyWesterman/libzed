@@ -33,6 +33,11 @@ namespace z
 			void reset() noexcept;
 
 			/**
+			 * \brief reset the timer to a specific point in time.
+			 */
+			void reset(std::chrono::high_resolution_clock::time_point time) noexcept;
+
+			/**
 			 * \brief Get the elapsed time in \b microseconds.
 			 *
 			 * \return The number of \b microseconds that have passed
@@ -71,6 +76,23 @@ namespace z
 			 * since the timer was last reset.
 			 */
 			unsigned int hours() const noexcept;
+
+#		if __has_include(<cereal/cereal.hpp>)
+			template <class Archive>
+			void save(Archive& ar) const
+			{
+				time_t elapsed = micros();
+				ar(CEREAL_NVP(elapsed));
+			}
+
+			template <class Archive>
+			void load(Archive& ar)
+			{
+				time_t elapsed;
+				ar(CEREAL_NVP(elapsed));
+				reset(std::chrono::high_resolution_clock::now() - std::chrono::microseconds(elapsed));
+			}
+#		endif
 		};
 	}
 }
