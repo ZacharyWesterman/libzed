@@ -3,6 +3,9 @@
 This library contains useful classes and functions for quick and simple data manipulation.
 The idea is that this will help decrease development time of other projects.
 
+In particular, the idea behind rolling a custom string class was to have better built-in
+support for string manipulation, as well as full support for different string formats.
+
 Currently only Linux and Windows builds are supported, as those are the only machines I own.<br/>
 I did also get it to compile on a Raspberry Pi,
 but I am not sure of any bugs that exist.
@@ -29,8 +32,10 @@ ___
 ##Using This Library
 
 ###Dependencies
-- g++
+- g++ supporting at least C++11
 - make
+Note that you *can* use a program to compile/link other than g++.
+Just specify `CC` and `LN` respectively when you run make.
 
 ###Compiling
 Just run make in the project directory. I do the following:
@@ -83,6 +88,9 @@ If the DLL/SO and header files are saved in a specific directory that's not in P
 $ g++ -I"/path/to/libzed/headers" -std=c++11 -o example.o -c example.cpp
 $ g++ -lzed -L"/path/to/lib" -o example example.o
 ~~~
+
+###Examples
+Example programs are stored with the source code under the `examples/` directory.
 
 ___
 Download or fork: [GitHub repo][repo].

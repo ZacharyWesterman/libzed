@@ -132,6 +132,14 @@ namespace z
 
 			inline void clear();
 
+			/**
+			 * \brief Increase the space allocated for this array.
+			 *
+			 * If this array currently has fewer than newSize elements allocated,
+			 * enough space is reallocated to hold at least that many characters.
+			 *
+			 * \param newSize The minimum number of elements this array should be able to contain.
+			 */
 			void increase(int newSize) noexcept
 			{
 				array_data.reserve(newSize);
