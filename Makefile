@@ -5,37 +5,50 @@ VER_SUB = 5
 LIBDIR = /usr/lib
 ICLDIR = /usr/include
 
-SRCS = $(wildcard z/*.cpp) $(wildcard z/core/*.cpp) $(wildcard z/core/string/*.cpp) $(wildcard z/file/*.cpp) $(wildcard z/math/*.cpp) $(wildcard z/system/*.cpp) $(wildcard z/util/*.cpp) $(wildcard z/util/regex/*.cpp) $(wildcard z/util/regex/rules/*.cpp) $(wildcard z/util/generic/*.cpp) $(wildcard z/util/dictionary/*.cpp)
+D0 = $(sort $(dir $(wildcard z/*/)))
+D1 = $(sort $(dir $(wildcard $(D0)*/)))
+DIRS = $(sort $(dir $(wildcard $(D1)*/)))
+SRCS = $(wildcard $(addsuffix *.cpp, $(DIRS)))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
 
 ARCH = $(shell g++ -dumpmachine)
 
+BITS =
 ifeq ($(findstring x86_64,$(ARCH)),x86_64)
-CCTARGET = -m64
+BITS = 64
 else
 ifeq ($(findstring i686,$(ARCH)),i686)
-CCTARGET = -m32
-else
-CCTARGET =
+BITS = 32
 endif
+endif
+ifeq ($(BITS),)
+CCTARGET =
+else
+CCTARGET = -m$(BITS)
 endif
 
-CCFLAGS = -std=c++11 -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+STD = c++11
+
+CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
 LFLAGS = -shared
 
 STATIC_LIB = $(LIBNAME).a
 DLL = $(LIBNAME).dll
+
+OLEVEL = $(OPT)
 
 # opt defaults to -O3
 ifndef OPT
 OLEVEL = 3
 endif
 
-#if opt flag is true
 ifneq (,$(findstring $(OPT),S size Size SIZE))
 OLEVEL = s
+endif
+ifneq (,$(findstring $(OPT),F f Fast FAST))
+OLEVEL = fast
 endif
 
 # if debug flag is not set
@@ -105,12 +118,16 @@ z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.
 z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
 
-clean: clear
+clean: cleanbin cleanobjs
+
+cleanobjs:
 	$(RM) $(RMOBJS)
 
-clear:
-	$(RM) driver *.so *.a *.dll *.exe
+cleanbin:
+	$(RM) driver
+	$(RM) lib$(LIBNAME)-*.so
+	$(RM) $(LIBNAME).dll
 
 rebuild: clean default
 
-.PHONY: rebuild clean clear default install uninstall examples
+.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples

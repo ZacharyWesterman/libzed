@@ -32,10 +32,19 @@ ___
 ##Using This Library
 
 ###Dependencies
-- g++ supporting at least C++11
+- g++ (or other compliant compiler) supporting at least C++11
 - make
-Note that you *can* use a program to compile/link other than g++.
-Just specify `CC` and `LN` respectively when you run make.
+
+###Build options
+By default, make should pick the best options for your machine. If that's not the case,
+or you want/need different options for any other reason, here are some example flags you can tweak:
+- `CC=c++` to compile with `c++` instead of `g++`.
+- `LN=gcc` to link with `gcc` instead of `g++`.
+- `BITS=64` to target 64-bit architecture instead of that of the host machine. Available options are 64, 32, or null.
+- `STD=c++17` to use the C++17 standard instead of C++11. This is the same as any `-std=...` flag on most c++ compilers.
+- `OPT=X` to set the optimization level. X should be a non-negative integer, (`s` or `size`), or (`f` or `fast`).
+- `LIBDIR=/lib/install/dir` to set where the library should install under instead of `/usr/lib`.
+- `ICLDIR=/include/install/dir` to set where the headers should be copied to instead of `/usr/include`.
 
 ###Compiling
 Just run make in the project directory. I do the following:
@@ -43,6 +52,7 @@ Just run make in the project directory. I do the following:
 $ make -j$(nproc)
 ~~~
 so that it will compile on as many cores as possible.
+On Windows you may have to run `mingw32-make` instead.
 
 You should get no errors or warnings.
 You can open an issue on [GitHub][repo] if either of those pop up while compiling.
@@ -91,7 +101,6 @@ $ g++ -lzed -L"/path/to/lib" -o example example.o
 
 ###Examples
 Example programs are stored with the source code under the `examples/` directory.
-
 ___
 Download or fork: [GitHub repo][repo].
 
