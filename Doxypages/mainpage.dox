@@ -7,9 +7,7 @@ In particular, the idea behind rolling a custom string class was to have better 
 support for string manipulation, as well as full support for different string formats.
 
 Currently only Linux and Windows builds are supported, as those are the only machines I own.<br/>
-I did also get it to compile on a Raspberry Pi,
-but I am not sure of any bugs that exist.
-Should behave the same as on any other Linux system though.
+This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done.
 ___
 
 - z::core
@@ -31,9 +29,21 @@ ___
 
 ##Using This Library
 
-###Dependencies
+###Required dependencies
 - g++ (or other compliant compiler) supporting at least C++11
 - make
+
+###Optional dependency
+This library has optional support for serialization via [cereal](https://github.com/USCiLab/cereal).
+The following classes should be able to be saved and loaded with cereal:
+- z::core::string
+- z::core::array
+- z::core::timer
+- z::core::timeout
+- z::util::dictionary
+- z::util::regex
+
+If cereal is not installed however, this library should compile just fine. Again, totally optional.
 
 ###Build options
 By default, make should pick the best options for your machine. If that's not the case,
@@ -58,16 +68,13 @@ You should get no errors or warnings.
 You can open an issue on [GitHub][repo] if either of those pop up while compiling.
 
 ###Installing
-In Linux, run the following as superuser:
-~~~
-$ make install
-~~~
+In Linux, either run `make install` as superuser or `sudo make install`.
 
-In Windows, you can save the DLL into whatever directory you want.
-Just make sure the PATH system variable contains that folder.
+In Windows you can save the DLL into whatever directory you want,
+just make sure the PATH system variable contains that folder.
 
 Alternatively, you can copy the DLL/SO into the working directory of your project
-and tell g++ to load it from there.
+and tell the linker to load it from there.
 
 ###Linking to this library
 Suppose you have some simple project called `example.cpp`.
