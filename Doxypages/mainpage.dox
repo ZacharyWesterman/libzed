@@ -6,7 +6,8 @@ The idea is that this will help decrease development time of other projects.
 In particular, the idea behind rolling a custom string class was to have better built-in
 support for string manipulation, as well as full support for different string formats.
 
-Currently only Linux and Windows builds are supported, as those are the only machines I own.<br/>
+Currently only Linux and Windows builds are supported, as those are the only machines I own.
+Both 64 and 32-bit builds should be fully supported.
 This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done.
 ___
 
