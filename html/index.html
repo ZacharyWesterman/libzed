@@ -102,8 +102,8 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will help decrease development time of other projects.</p>
-<p>Currently only Linux and Windows builds are supported, as those are the only machines I own.<br />
- I did also get it to compile on a Raspberry Pi, but I am not sure of any bugs that exist. Should behave the same as on any other Linux system though. </p><hr/>
+<p>In particular, the idea behind rolling a custom string class was to have better built-in support for string manipulation, as well as full support for different string formats.</p>
+<p>Currently only Linux and Windows builds are supported, as those are the only machines I own. Both 64 and 32-bit builds should be fully supported. This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done. </p><hr/>
 <ul>
 <li><a class="el" href="namespacez_1_1core.html" title="Library containing core functions and classes. ">z::core</a> Contains core functionality such as strings, arrays, and timers.</li>
 <li><a class="el" href="namespacez_1_1file.html" title="Library of file management functions and classes. ">z::file</a> Has several classes for easy file system management.</li>
@@ -113,19 +113,41 @@ $(document).ready(function(){initNavTree('index.html','');});
 </ul>
 <hr/>
 <h2>Using This Library</h2>
-<h3>Dependencies</h3>
+<h3>Required dependencies</h3>
 <ul>
-<li>g++</li>
+<li>g++ (or other compliant compiler) supporting at least C++11</li>
 <li>make</li>
 </ul>
+<h3>Optional dependency</h3>
+<p>This library has optional support for serialization via <a href="https://github.com/USCiLab/cereal">cereal</a>. The following classes should be able to be saved and loaded with cereal:</p><ul>
+<li><a class="el" href="classz_1_1core_1_1string.html" title="A template class for character strings. ">z::core::string</a></li>
+<li><a class="el" href="classz_1_1core_1_1array.html" title="A wrapper for std::vector. ">z::core::array</a></li>
+<li><a class="el" href="classz_1_1core_1_1timer.html" title="A class for easily managing timers. ">z::core::timer</a></li>
+<li><a class="el" href="classz_1_1core_1_1timeout.html" title="A class for easily managing timing. ">z::core::timeout</a></li>
+<li><a class="el" href="classz_1_1util_1_1dictionary.html" title="A class for performing searches on a dictionary of words. ">z::util::dictionary</a></li>
+<li><a class="el" href="classz_1_1util_1_1regex.html" title="A class for parsing and matching regular expressions. ">z::util::regex</a></li>
+</ul>
+<p>If cereal is not installed however, this library should compile just fine. Again, totally optional.</p>
+<h3>Build options</h3>
+<p>By default, make should pick the best options for your machine. If that's not the case, or you want/need different options for any other reason, here are some example flags you can tweak:</p><ul>
+<li><code>CC=c++</code> to compile with <code>c++</code> instead of <code>g++</code>.</li>
+<li><code>LN=gcc</code> to link with <code>gcc</code> instead of <code>g++</code>.</li>
+<li><code>BITS=64</code> to target 64-bit architecture instead of that of the host machine. Available options are 64, 32, or null.</li>
+<li><code>STD=c++17</code> to use the C++17 standard instead of C++11. This is the same as any <code>-std=...</code> flag on most c++ compilers.</li>
+<li><code>OPT=X</code> to set the optimization level. X should be a non-negative integer, (<code>s</code> or <code>size</code>), or (<code>f</code> or <code>fast</code>).</li>
+<li><code>LIBDIR=/lib/install/dir</code> to set where the library should install under instead of <code>/usr/lib</code>.</li>
+<li><code>ICLDIR=/include/install/dir</code> to set where the headers should be copied to instead of <code>/usr/include</code>.</li>
+</ul>
 <h3>Compiling</h3>
-<p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div></div><!-- fragment --><p> so that it will compile on as many cores as possible.</p>
+<p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div></div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead.</p>
 <p>You should get no errors or warnings. You can open an issue on <a href="https://github.com/ZacharyWesterman/libzed">GitHub</a> if either of those pop up while compiling.</p>
 <h3>Installing</h3>
-<p>In Linux, run the following as superuser: </p><div class="fragment"><div class="line">$ make install</div></div><!-- fragment --><p>In Windows, you can save the DLL into whatever directory you want. Just make sure the PATH system variable contains that folder.</p>
-<p>Alternatively, you can copy the DLL/SO into the working directory of your project and tell g++ to load it from there.</p>
+<p>In Linux, either run <code>make install</code> as superuser or <code>sudo make install</code>.</p>
+<p>In Windows you can save the DLL into whatever directory you want, just make sure the PATH system variable contains that folder.</p>
+<p>Alternatively, you can copy the DLL/SO into the working directory of your project and tell the linker to load it from there.</p>
 <h3>Linking to this library</h3>
-<p>Suppose you have some simple project called <code>example.cpp</code>. Let's have this file contain the following: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="system_8hpp.html">z/system.hpp</a>&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main()</div><div class="line">{</div><div class="line">    <a class="code" href="classz_1_1system_1_1console.html">z::system::console</a> console;</div><div class="line">    <a class="code" href="classz_1_1core_1_1string.html">zstring</a> <span class="keywordtype">string</span> = <span class="stringliteral">&quot;Hello world!&quot;</span>;</div><div class="line"></div><div class="line">    <span class="keywordtype">string</span>.<a class="code" href="classz_1_1core_1_1string.html#aabfd03638c0920e1823da50ee80ed1f8">writeln</a>(console);</div><div class="line"></div><div class="line">    <span class="keywordflow">return</span> 0;</div><div class="line">}</div></div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++11 -o example.o -c example.cpp</div><div class="line">$ g++ -lzed -o example example.o</div></div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++11 -o example.o -c example.cpp</div><div class="line">$ g++ -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -o example example.o</div></div><!-- fragment --><hr/>
+<p>Suppose you have some simple project called <code>example.cpp</code>. Let's have this file contain the following: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="system_8hpp.html">z/system.hpp</a>&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main()</div><div class="line">{</div><div class="line">    <a class="code" href="classz_1_1system_1_1console.html">z::system::console</a> console;</div><div class="line">    <a class="code" href="classz_1_1core_1_1string.html">zstring</a> <span class="keywordtype">string</span> = <span class="stringliteral">&quot;Hello world!&quot;</span>;</div><div class="line"></div><div class="line">    <span class="keywordtype">string</span>.<a class="code" href="classz_1_1core_1_1string.html#aabfd03638c0920e1823da50ee80ed1f8">writeln</a>(console);</div><div class="line"></div><div class="line">    <span class="keywordflow">return</span> 0;</div><div class="line">}</div></div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++11 -o example.o -c example.cpp</div><div class="line">$ g++ -lzed -o example example.o</div></div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++11 -o example.o -c example.cpp</div><div class="line">$ g++ -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -o example example.o</div></div><!-- fragment --><h3>Examples</h3>
+<p>Example programs are stored with the source code under the <code>examples/</code> directory. </p><hr/>
 <p> Download or fork: <a href="https://github.com/ZacharyWesterman/libzed">GitHub repo</a>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

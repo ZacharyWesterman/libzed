@@ -115,8 +115,7 @@ Inheritance diagram for z::core::string&lt; E &gt;:</div>
  <div class="center">
   <img src="classz_1_1core_1_1string.png" usemap="#z::core::string_3C_20E_20_3E_map" alt=""/>
   <map id="z::core::string_3C_20E_20_3E_map" name="z::core::string_3C_20E_20_3E_map">
-<area href="classz_1_1core_1_1serializable.html" title="An interface for reading and writing object binary data to streams. " alt="z::core::serializable" shape="rect" coords="0,0,120,24"/>
-<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size. " alt="z::core::sizable" shape="rect" coords="130,0,250,24"/>
+<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size. " alt="z::core::sizable" shape="rect" coords="0,0,119,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -141,7 +140,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee9e76587629cc1cc42435c1646ef424"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aee9e76587629cc1cc42435c1646ef424">string</a> (const wchar_t *str) noexcept</td></tr>
 <tr class="memdesc:aee9e76587629cc1cc42435c1646ef424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a cstring of wide characters.  <a href="#aee9e76587629cc1cc42435c1646ef424">More...</a><br /></td></tr>
 <tr class="separator:aee9e76587629cc1cc42435c1646ef424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24cd477dde33d3272f9780cec18297ef"><td class="memTemplParams" colspan="2">template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integral&lt;INT&gt;::value,INT&gt;::type&gt; </td></tr>
+<tr class="memitem:a24cd477dde33d3272f9780cec18297ef"><td class="memTemplParams" colspan="2">template&lt;typename INT , typename  = typename std::enable_if&lt;				std::is_integral&lt;INT&gt;::value &amp;&amp; !std::is_same&lt;INT,char&gt;::value &amp;&amp; !std::is_same&lt;INT,wchar_t&gt;::value				,INT&gt;::type&gt; </td></tr>
 <tr class="memitem:a24cd477dde33d3272f9780cec18297ef"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a24cd477dde33d3272f9780cec18297ef">string</a> (INT value, int base=10, int padSize=0) noexcept</td></tr>
 <tr class="memdesc:a24cd477dde33d3272f9780cec18297ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from an integer.  <a href="#a24cd477dde33d3272f9780cec18297ef">More...</a><br /></td></tr>
 <tr class="separator:a24cd477dde33d3272f9780cec18297ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,15 +208,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af080f57c9f262b48e15e7d85d500e3f8"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8">format</a> () const noexcept</td></tr>
 <tr class="memdesc:af080f57c9f262b48e15e7d85d500e3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the encoding of this string.  <a href="#af080f57c9f262b48e15e7d85d500e3f8">More...</a><br /></td></tr>
 <tr class="separator:af080f57c9f262b48e15e7d85d500e3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7d768e5971d336a8ffbb1c709d59dda"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#af7d768e5971d336a8ffbb1c709d59dda">integer</a> (int base=10) const noexcept</td></tr>
-<tr class="memdesc:af7d768e5971d336a8ffbb1c709d59dda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to an integer.  <a href="#af7d768e5971d336a8ffbb1c709d59dda">More...</a><br /></td></tr>
-<tr class="separator:af7d768e5971d336a8ffbb1c709d59dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10c262ad0e704215e0f1e71a6fa41360"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a10c262ad0e704215e0f1e71a6fa41360">floating</a> (int base=10) const noexcept</td></tr>
-<tr class="memdesc:a10c262ad0e704215e0f1e71a6fa41360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a floating-point value.  <a href="#a10c262ad0e704215e0f1e71a6fa41360">More...</a><br /></td></tr>
-<tr class="separator:a10c262ad0e704215e0f1e71a6fa41360"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a251f810386184dd142990fb14c4c5177"><td class="memItemLeft" align="right" valign="top">std::complex&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a251f810386184dd142990fb14c4c5177">complex</a> (int base=10) const noexcept</td></tr>
-<tr class="memdesc:a251f810386184dd142990fb14c4c5177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a complex value.  <a href="#a251f810386184dd142990fb14c4c5177">More...</a><br /></td></tr>
-<tr class="separator:a251f810386184dd142990fb14c4c5177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ea919808135fd2ac1e19231e6eb94a"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a">integer</a> (int base=10, uint32_t decimal='.') const noexcept</td></tr>
+<tr class="memdesc:a41ea919808135fd2ac1e19231e6eb94a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to an integer.  <a href="#a41ea919808135fd2ac1e19231e6eb94a">More...</a><br /></td></tr>
+<tr class="separator:a41ea919808135fd2ac1e19231e6eb94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe8b8c3e5d8cf56e10ea6ef2f19f8acc"><td class="memTemplParams" colspan="2">template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integral&lt;INT&gt;::value,INT&gt;::type&gt; </td></tr>
+<tr class="memitem:afe8b8c3e5d8cf56e10ea6ef2f19f8acc"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#afe8b8c3e5d8cf56e10ea6ef2f19f8acc">operator INT</a> () const noexcept</td></tr>
+<tr class="memdesc:afe8b8c3e5d8cf56e10ea6ef2f19f8acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to an integer.  <a href="#afe8b8c3e5d8cf56e10ea6ef2f19f8acc">More...</a><br /></td></tr>
+<tr class="separator:afe8b8c3e5d8cf56e10ea6ef2f19f8acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d27dfd8e5df8288d8859c087fe67cc1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1">floating</a> (int base=10, uint32_t decimal='.') const noexcept</td></tr>
+<tr class="memdesc:a3d27dfd8e5df8288d8859c087fe67cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a floating-point value.  <a href="#a3d27dfd8e5df8288d8859c087fe67cc1">More...</a><br /></td></tr>
+<tr class="separator:a3d27dfd8e5df8288d8859c087fe67cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe2be987f0a6972683f1b84b2fc0754"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#acfe2be987f0a6972683f1b84b2fc0754">operator double</a> () const noexcept</td></tr>
+<tr class="memdesc:acfe2be987f0a6972683f1b84b2fc0754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a floating-point value.  <a href="#acfe2be987f0a6972683f1b84b2fc0754">More...</a><br /></td></tr>
+<tr class="separator:acfe2be987f0a6972683f1b84b2fc0754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d8e2bc02221468f5526f5739b0ec9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a04d8e2bc02221468f5526f5739b0ec9d">operator float</a> () const noexcept</td></tr>
+<tr class="memdesc:a04d8e2bc02221468f5526f5739b0ec9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a floating-point value.  <a href="#a04d8e2bc02221468f5526f5739b0ec9d">More...</a><br /></td></tr>
+<tr class="separator:a04d8e2bc02221468f5526f5739b0ec9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7ee171c8c23c2de9b8e691c557b9da"><td class="memItemLeft" align="right" valign="top">std::complex&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aec7ee171c8c23c2de9b8e691c557b9da">complex</a> (int base=10, uint32_t decimal='.') const noexcept</td></tr>
+<tr class="memdesc:aec7ee171c8c23c2de9b8e691c557b9da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this string to a complex value.  <a href="#aec7ee171c8c23c2de9b8e691c557b9da">More...</a><br /></td></tr>
+<tr class="separator:aec7ee171c8c23c2de9b8e691c557b9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b0f9f2dc434e125a09f9d0b41b4d06"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06">count</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other) const noexcept</td></tr>
 <tr class="memdesc:a12b0f9f2dc434e125a09f9d0b41b4d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the occurrences of a sub-string.  <a href="#a12b0f9f2dc434e125a09f9d0b41b4d06">More...</a><br /></td></tr>
 <tr class="separator:a12b0f9f2dc434e125a09f9d0b41b4d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,12 +378,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ac882ad90bd12339c690e2978a06e1ed4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ac882ad90bd12339c690e2978a06e1ed4">operator&lt;=</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other) const noexcept</td></tr>
 <tr class="memdesc:ac882ad90bd12339c690e2978a06e1ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less-than or equal comparison.  <a href="#ac882ad90bd12339c690e2978a06e1ed4">More...</a><br /></td></tr>
 <tr class="separator:ac882ad90bd12339c690e2978a06e1ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0515d4ce68ea76fd5d480c4e9ab9a252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a0515d4ce68ea76fd5d480c4e9ab9a252">serialIn</a> (<a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;)</td></tr>
-<tr class="memdesc:a0515d4ce68ea76fd5d480c4e9ab9a252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the object's binary data from a stream.  <a href="#a0515d4ce68ea76fd5d480c4e9ab9a252">More...</a><br /></td></tr>
-<tr class="separator:a0515d4ce68ea76fd5d480c4e9ab9a252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73f044dce1ff5e0a54d2bc2cc76f326"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ad73f044dce1ff5e0a54d2bc2cc76f326">serialOut</a> (<a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;) const</td></tr>
-<tr class="memdesc:ad73f044dce1ff5e0a54d2bc2cc76f326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the object's binary data to a stream.  <a href="#ad73f044dce1ff5e0a54d2bc2cc76f326">More...</a><br /></td></tr>
-<tr class="separator:ad73f044dce1ff5e0a54d2bc2cc76f326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c810e7dee8c31bc799293ed5f120b13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a7c810e7dee8c31bc799293ed5f120b13">read</a> (<a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>, uint32_t delim=0) noexcept</td></tr>
 <tr class="memdesc:a7c810e7dee8c31bc799293ed5f120b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read string data from a stream until the given delimiter is encountered.  <a href="#a7c810e7dee8c31bc799293ed5f120b13">More...</a><br /></td></tr>
 <tr class="separator:a7c810e7dee8c31bc799293ed5f120b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -399,11 +402,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a4e2fc8826986292efa45ecba1bfa3014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1stringIterator.html">stringIterator</a>&lt; E &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a4e2fc8826986292efa45ecba1bfa3014">end</a> () const noexcept</td></tr>
 <tr class="memdesc:a4e2fc8826986292efa45ecba1bfa3014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the end of the string.  <a href="#a4e2fc8826986292efa45ecba1bfa3014">More...</a><br /></td></tr>
 <tr class="separator:a4e2fc8826986292efa45ecba1bfa3014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classz_1_1core_1_1serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1serializable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1serializable.html">z::core::serializable</a></td></tr>
-<tr class="memitem:a531923d38bc223a5255223efd22ede98 inherit pub_methods_classz_1_1core_1_1serializable"><td class="memItemLeft" align="right" valign="top"><a id="a531923d38bc223a5255223efd22ede98"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1serializable.html#a531923d38bc223a5255223efd22ede98">~serializable</a> ()</td></tr>
-<tr class="memdesc:a531923d38bc223a5255223efd22ede98 inherit pub_methods_classz_1_1core_1_1serializable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
-<tr class="separator:a531923d38bc223a5255223efd22ede98 inherit pub_methods_classz_1_1core_1_1serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1sizable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1sizable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1sizable.html">z::core::sizable</a></td></tr>
 <tr class="memitem:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable"><td class="memItemLeft" align="right" valign="top"><a id="a193dcadd32340117e6cf8372d294d252"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sizable.html#a193dcadd32340117e6cf8372d294d252">~sizable</a> () noexcept</td></tr>
@@ -444,7 +442,7 @@ template&lt;encoding E = utf32&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -481,7 +479,7 @@ template&lt;encoding E = utf32&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -616,7 +614,7 @@ template&lt;encoding E = utf32&gt; </div>
 <div class="memtemplate">
 template&lt;encoding E = utf32&gt; </div>
 <div class="memtemplate">
-template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integral&lt;INT&gt;::value,INT&gt;::type&gt; </div>
+template&lt;typename INT , typename  = typename std::enable_if&lt;				std::is_integral&lt;INT&gt;::value &amp;&amp; !std::is_same&lt;INT,char&gt;::value &amp;&amp; !std::is_same&lt;INT,wchar_t&gt;::value				,INT&gt;::type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1264,8 +1262,8 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a id="a251f810386184dd142990fb14c4c5177"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a251f810386184dd142990fb14c4c5177">&#9670;&nbsp;</a></span>complex()</h2>
+<a id="aec7ee171c8c23c2de9b8e691c557b9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7ee171c8c23c2de9b8e691c557b9da">&#9670;&nbsp;</a></span>complex()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1279,8 +1277,18 @@ template&lt;encoding E = utf32&gt; </div>
           <td class="memname">std::complex&lt;double&gt; <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::complex </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -1293,7 +1301,8 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Convert this string to a complex value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">base</td><td>The base this string is being interpreted as.</td></tr>
+    <tr><td class="paramname">base</td><td>The base this string is being interpreted as. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character used to denote the radix (decimal place).</td></tr>
   </table>
   </dd>
 </dl>
@@ -1734,8 +1743,8 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a id="a10c262ad0e704215e0f1e71a6fa41360"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10c262ad0e704215e0f1e71a6fa41360">&#9670;&nbsp;</a></span>floating()</h2>
+<a id="a3d27dfd8e5df8288d8859c087fe67cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d27dfd8e5df8288d8859c087fe67cc1">&#9670;&nbsp;</a></span>floating()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1749,8 +1758,18 @@ template&lt;encoding E = utf32&gt; </div>
           <td class="memname">double <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::floating </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -1763,7 +1782,8 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Convert this string to a floating-point value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">base</td><td>The base this string is being interpreted as.</td></tr>
+    <tr><td class="paramname">base</td><td>The base this string is being interpreted as. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character used to denote the radix (decimal place).</td></tr>
   </table>
   </dd>
 </dl>
@@ -1985,8 +2005,8 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a id="af7d768e5971d336a8ffbb1c709d59dda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7d768e5971d336a8ffbb1c709d59dda">&#9670;&nbsp;</a></span>integer()</h2>
+<a id="a41ea919808135fd2ac1e19231e6eb94a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41ea919808135fd2ac1e19231e6eb94a">&#9670;&nbsp;</a></span>integer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2000,8 +2020,18 @@ template&lt;encoding E = utf32&gt; </div>
           <td class="memname">long <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::integer </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>base</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>decimal</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -2014,11 +2044,13 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Convert this string to an integer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">base</td><td>The base this string is being interpreted as.</td></tr>
+    <tr><td class="paramname">base</td><td>The base this string is being interpreted as. </td></tr>
+    <tr><td class="paramname">decimal</td><td>The character used to denote the radix (decimal place).</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A signed integer representation of this string, if it is a valid integer. 0 otherwise.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If a radix character is encountered before any invalid characters, any text following the radix is ignored.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a010ccdee32ca8973fee25eaeab2e64dc" title="Check if this string can convert to an integer. ">isInteger()</a> </dd></dl>
 
 </div>
@@ -2071,7 +2103,7 @@ template&lt;encoding E = utf32&gt; </div>
 <p>Valid strings must follow the form <code>X+Yi</code> or <code>Xi+Y</code>, where <code>X</code> and <code>Y</code> are floating-point values. <code>X</code> may optionally have a <code>+</code> or <code>-</code> preceding it, and <code>Y</code> may be preceded by a <code>-</code> instead of a <code>+</code>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#afe1cd83fd6ca82ac6f2a9e92562804a0" title="Check if this string can convert to a floating-point value. ">isFloating()</a> </dd>
 <dd>
-<a class="el" href="classz_1_1core_1_1string.html#a251f810386184dd142990fb14c4c5177" title="Convert this string to a complex value. ">complex()</a> </dd></dl>
+<a class="el" href="classz_1_1core_1_1string.html#aec7ee171c8c23c2de9b8e691c557b9da" title="Convert this string to a complex value. ">complex()</a> </dd></dl>
 
 </div>
 </div>
@@ -2121,7 +2153,7 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the string contains only characters representing a float. False otherwise.</dd></dl>
 <p>Valid strings may optionally begin with a <code>+</code> or <code>-</code>, and contain only one period (decimal point). The number may also have an exponent in the same base, in the form <code>XXeY</code>, where the exponent <code>Y</code> may optionally begin with a <code>+</code> or <code>-</code>. Unlike the main number, this exponent must be an integer.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a10c262ad0e704215e0f1e71a6fa41360" title="Convert this string to a floating-point value. ">floating()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1" title="Convert this string to a floating-point value. ">floating()</a> </dd></dl>
 
 </div>
 </div>
@@ -2160,7 +2192,7 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the string contains only characters representing a signed integer. False otherwise.</dd></dl>
 <p>Valid strings may contain only numeric characters in the given base, and may optionally begin with a <code>+</code> or <code>-</code>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#af7d768e5971d336a8ffbb1c709d59dda" title="Convert this string to an integer. ">integer()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a" title="Convert this string to an integer. ">integer()</a> </dd></dl>
 
 </div>
 </div>
@@ -2253,6 +2285,98 @@ template&lt;encoding E = utf32&gt; </div>
 
 <p>Get the two-byte cstring pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the string data, if this string is in a two-byte format. <code>NULL</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="acfe2be987f0a6972683f1b84b2fc0754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe2be987f0a6972683f1b84b2fc0754">&#9670;&nbsp;</a></span>operator double()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::operator double </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert this string to a floating-point value. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1" title="Convert this string to a floating-point value. ">floating()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a04d8e2bc02221468f5526f5739b0ec9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d8e2bc02221468f5526f5739b0ec9d">&#9670;&nbsp;</a></span>operator float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::operator float </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert this string to a floating-point value. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1" title="Convert this string to a floating-point value. ">floating()</a> </dd></dl>
+
+</div>
+</div>
+<a id="afe8b8c3e5d8cf56e10ea6ef2f19f8acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8b8c3e5d8cf56e10ea6ef2f19f8acc">&#9670;&nbsp;</a></span>operator INT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<div class="memtemplate">
+template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integral&lt;INT&gt;::value,INT&gt;::type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::operator INT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert this string to an integer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a" title="Convert this string to an integer. ">integer()</a> </dd></dl>
 
 </div>
 </div>
@@ -3206,82 +3330,6 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after the characters are replaced.</dd></dl>
 <p>If count is 0, no characters are replaced. Characters are replaced in forward-order whether count is positive or negative. </p>
-
-</div>
-</div>
-<a id="a0515d4ce68ea76fd5d480c4e9ab9a252"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0515d4ce68ea76fd5d480c4e9ab9a252">&#9670;&nbsp;</a></span>serialIn()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;encoding E = utf32&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::serialIn </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1inputStream.html">inputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Read the object's binary data from a stream. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1serializable.html#a66821a8de1a3f4f336cc335cb3ab0b5a">z::core::serializable</a>.</p>
-
-</div>
-</div>
-<a id="ad73f044dce1ff5e0a54d2bc2cc76f326"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad73f044dce1ff5e0a54d2bc2cc76f326">&#9670;&nbsp;</a></span>serialOut()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;encoding E = utf32&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::serialOut </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Write the object's binary data to a stream. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>The stream to write to. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1serializable.html#a1b8dd7caf9959c59d8ea07702e1a491b">z::core::serializable</a>.</p>
 
 </div>
 </div>

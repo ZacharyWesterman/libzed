@@ -6,5 +6,6 @@ var classz_1_1core_1_1timer =
     [ "millis", "classz_1_1core_1_1timer.html#a0c96e7a9724f334a084769545989909e", null ],
     [ "minutes", "classz_1_1core_1_1timer.html#ae48d92c1a111fa6b2a8d1deeaa464952", null ],
     [ "reset", "classz_1_1core_1_1timer.html#a15a826257262f63761100a5f6ffbfcc0", null ],
+    [ "reset", "classz_1_1core_1_1timer.html#a4019d12ff6bbf3a5ecb624c9201f63a3", null ],
     [ "seconds", "classz_1_1core_1_1timer.html#a4cbf8b35187ea70966badd3affefa0a6", null ]
 ];

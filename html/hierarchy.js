@@ -50,7 +50,7 @@ var hierarchy =
       [ "z::util::rgx::space", "classz_1_1util_1_1rgx_1_1space.html", null ],
       [ "z::util::rgx::word", "classz_1_1util_1_1rgx_1_1word.html", null ]
     ] ],
-    [ "z::core::serializable", "classz_1_1core_1_1serializable.html", [
+    [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
       [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::generic * >", "classz_1_1core_1_1array.html", [
         [ "z::core::refArray< z::util::generic *>", "classz_1_1core_1_1refArray.html", null ]
@@ -68,17 +68,6 @@ var hierarchy =
           [ "z::core::sortedRefArray< T >", "classz_1_1core_1_1sortedRefArray.html", null ]
         ] ]
       ] ],
-      [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
-      [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ],
-      [ "z::util::word", "classz_1_1util_1_1word.html", null ]
-    ] ],
-    [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
-      [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::generic * >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::rgx::rule *>", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
-      [ "z::core::array< T >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
       [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ],
       [ "z::util::generic", "classz_1_1util_1_1generic.html", [

@@ -12,7 +12,6 @@ var namespacez_1_1core =
     [ "memoryStream", "classz_1_1core_1_1memoryStream.html", "classz_1_1core_1_1memoryStream" ],
     [ "outputStream", "classz_1_1core_1_1outputStream.html", "classz_1_1core_1_1outputStream" ],
     [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
-    [ "serializable", "classz_1_1core_1_1serializable.html", "classz_1_1core_1_1serializable" ],
     [ "sizable", "classz_1_1core_1_1sizable.html", "classz_1_1core_1_1sizable" ],
     [ "sortedArray", "classz_1_1core_1_1sortedArray.html", "classz_1_1core_1_1sortedArray" ],
     [ "sortedRefArray", "classz_1_1core_1_1sortedRefArray.html", "classz_1_1core_1_1sortedRefArray" ],

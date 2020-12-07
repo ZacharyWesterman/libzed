@@ -116,10 +116,10 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a827be3ba3b870086de54c8c9032f09e2">regex</a> () noexcept</td></tr>
 <tr class="memdesc:a827be3ba3b870086de54c8c9032f09e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor. <br /></td></tr>
 <tr class="separator:a827be3ba3b870086de54c8c9032f09e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3d0182ee216d9ca4592f0714c02db4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#af3d0182ee216d9ca4592f0714c02db4c">regex</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;pattern) noexcept</td></tr>
+<tr class="memitem:af3d0182ee216d9ca4592f0714c02db4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#af3d0182ee216d9ca4592f0714c02db4c">regex</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;<a class="el" href="classz_1_1util_1_1regex.html#a706a910d7696279d63df3e3e6682fde5">pattern</a>) noexcept</td></tr>
 <tr class="memdesc:af3d0182ee216d9ca4592f0714c02db4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from string pattern.  <a href="#af3d0182ee216d9ca4592f0714c02db4c">More...</a><br /></td></tr>
 <tr class="separator:af3d0182ee216d9ca4592f0714c02db4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29b2155d10a0eca38194fc5e6ddb15b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a29b2155d10a0eca38194fc5e6ddb15b3">set</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;pattern) noexcept</td></tr>
+<tr class="memitem:a29b2155d10a0eca38194fc5e6ddb15b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a29b2155d10a0eca38194fc5e6ddb15b3">set</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;<a class="el" href="classz_1_1util_1_1regex.html#a706a910d7696279d63df3e3e6682fde5">pattern</a>) noexcept</td></tr>
 <tr class="memdesc:a29b2155d10a0eca38194fc5e6ddb15b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the matching pattern.  <a href="#a29b2155d10a0eca38194fc5e6ddb15b3">More...</a><br /></td></tr>
 <tr class="separator:a29b2155d10a0eca38194fc5e6ddb15b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56145947ffac4a02d65724dde581ba0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a56145947ffac4a02d65724dde581ba0e">match</a> (<a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;stream) noexcept</td></tr>
@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b5840781916bf6afecfb2c0659113ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zstring</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a0b5840781916bf6afecfb2c0659113ab">errorString</a> () const noexcept</td></tr>
 <tr class="memdesc:a0b5840781916bf6afecfb2c0659113ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a string indicating the regex pattern error.  <a href="#a0b5840781916bf6afecfb2c0659113ab">More...</a><br /></td></tr>
 <tr class="separator:a0b5840781916bf6afecfb2c0659113ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a706a910d7696279d63df3e3e6682fde5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html#a706a910d7696279d63df3e3e6682fde5">pattern</a> () const noexcept</td></tr>
+<tr class="memdesc:a706a910d7696279d63df3e3e6682fde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current pattern this regex is matching against.  <a href="#a706a910d7696279d63df3e3e6682fde5">More...</a><br /></td></tr>
+<tr class="separator:a706a910d7696279d63df3e3e6682fde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for parsing and matching regular expressions. </p>
@@ -358,6 +361,35 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the last string that the regex pattern matched. </p>
 <dl class="section return"><dt>Returns</dt><dd>The last string of characters that this regex matched.</dd></dl>
+<dl class="section user"><dt>Re-Entry:This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a706a910d7696279d63df3e3e6682fde5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a706a910d7696279d63df3e3e6682fde5">&#9670;&nbsp;</a></span>pattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a>&amp; z::util::regex::pattern </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current pattern this regex is matching against. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current regex pattern.</dd></dl>
 <dl class="section user"><dt>Re-Entry:This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
 
 </div>

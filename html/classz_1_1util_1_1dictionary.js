@@ -9,8 +9,6 @@ var classz_1_1util_1_1dictionary =
     [ "narrow", "classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27", null ],
     [ "range", "classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309", null ],
     [ "read", "classz_1_1util_1_1dictionary.html#a4ec2f4a932e22820b7152e12d8affa48", null ],
-    [ "serialIn", "classz_1_1util_1_1dictionary.html#ac606de9223e10b89e1c3697b06ac9246", null ],
-    [ "serialOut", "classz_1_1util_1_1dictionary.html#ab47c037373f0435f961e766cd1d11392", null ],
     [ "setLanguage", "classz_1_1util_1_1dictionary.html#a749872bd5f6904c422a085b313f45b0c", null ],
     [ "setWord", "classz_1_1util_1_1dictionary.html#a8bfe9b8d22dd75fc3af0ea3ccbed4fad", null ],
     [ "size", "classz_1_1util_1_1dictionary.html#a2b78626d1790ca65023fd6c206bbe837", null ],

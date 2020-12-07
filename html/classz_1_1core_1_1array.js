@@ -16,6 +16,7 @@ var classz_1_1core_1_1array =
     [ "eq", "classz_1_1core_1_1array.html#a05eecf0dc1fb018480e2f5d5b9ae3faa", null ],
     [ "find", "classz_1_1core_1_1array.html#a40863d5a8c5134a849e13f84a11889e6", null ],
     [ "gt", "classz_1_1core_1_1array.html#abd8f5b09464f513dd7fd41b261560e6f", null ],
+    [ "increase", "classz_1_1core_1_1array.html#a04b6d23e5d9586b798df18aac714aa4d", null ],
     [ "init", "classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3", null ],
     [ "init", "classz_1_1core_1_1array.html#a6d729c7bb182377cdb90e537cd4e1187", null ],
     [ "insert", "classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d", null ],
@@ -35,8 +36,6 @@ var classz_1_1core_1_1array =
     [ "remove", "classz_1_1core_1_1array.html#ae9929b10e5e0473551da4e120d3a3735", null ],
     [ "replace", "classz_1_1core_1_1array.html#a982422836c73290b3443ad1f9d97b183", null ],
     [ "replace", "classz_1_1core_1_1array.html#ab4d71b52d3203e1c5c09e52a1de5b364", null ],
-    [ "serialIn", "classz_1_1core_1_1array.html#a089e21eae404bcc79706a5630dddb440", null ],
-    [ "serialOut", "classz_1_1core_1_1array.html#a478e5020ed72baa07c86ec71cbbd58e9", null ],
     [ "size", "classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274", null ],
     [ "subset", "classz_1_1core_1_1array.html#a22e26780665bf8cd73cb058a99967aa8", null ],
     [ "array_data", "classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357", null ]

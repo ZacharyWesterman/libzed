@@ -7,6 +7,7 @@ var searchData=
   ['parent',['parent',['../classz_1_1util_1_1rgx_1_1compound.html#ab9d303701ee5d7976aa41edf66e55366',1,'z::util::rgx::compound::parent()'],['../classz_1_1util_1_1rgx_1_1rule.html#a3297e8b3d3f81e99a813a3d2d8501b81',1,'z::util::rgx::rule::parent()']]],
   ['part',['part',['../namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0',1,'z::util']]],
   ['path',['path',['../namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8',1,'z::file']]],
+  ['pattern',['pattern',['../classz_1_1util_1_1regex.html#a706a910d7696279d63df3e3e6682fde5',1,'z::util::regex']]],
   ['pause',['pause',['../namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00',1,'z::system']]],
   ['peek',['peek',['../classz_1_1core_1_1memoryStream.html#aee4bf15294034ef221103de8580ae422',1,'z::core::memoryStream::peek()'],['../classz_1_1core_1_1inputStream.html#a22e579c0428f53910291fa36870961b1',1,'z::core::inputStream::peek()'],['../classz_1_1file_1_1inputStream.html#ad1013ae2509fd82f772ddf4a8f85bcbd',1,'z::file::inputStream::peek()'],['../classz_1_1system_1_1stdin.html#ab0c7cbc422616374c275610630a80736',1,'z::system::stdin::peek()']]],
   ['phi',['phi',['../namespacez_1_1math.html#a16d02c5f2d1bde240f47a45c676a3e12',1,'z::math']]],

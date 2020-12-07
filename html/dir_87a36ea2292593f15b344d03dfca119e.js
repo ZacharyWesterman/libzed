@@ -7,7 +7,6 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "join.hpp", "join_8hpp_source.html", null ],
     [ "memoryStream.hpp", "memoryStream_8hpp_source.html", null ],
     [ "refArray.hpp", "refArray_8hpp_source.html", null ],
-    [ "serializable.hpp", "serializable_8hpp_source.html", null ],
     [ "sizable.hpp", "sizable_8hpp_source.html", null ],
     [ "sortedArray.hpp", "sortedArray_8hpp_source.html", null ],
     [ "sortedRefArray.hpp", "sortedRefArray_8hpp_source.html", null ],

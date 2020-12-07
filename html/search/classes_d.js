@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['serializable',['serializable',['../classz_1_1core_1_1serializable.html',1,'z::core']]],
   ['sizable',['sizable',['../classz_1_1core_1_1sizable.html',1,'z::core']]],
   ['sortedarray',['sortedArray',['../classz_1_1core_1_1sortedArray.html',1,'z::core']]],
   ['sortedarray_3c_20z_3a_3autil_3a_3aword_20_2a_20_3e',['sortedArray&lt; z::util::word * &gt;',['../classz_1_1core_1_1sortedArray.html',1,'z::core']]],

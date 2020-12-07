@@ -1,6 +1,9 @@
 var searchData=
 [
   ['open',['open',['../classz_1_1file_1_1inputStream.html#a85e93b329038527a0e71a51c51442477',1,'z::file::inputStream::open()'],['../classz_1_1file_1_1outputStream.html#a52545174c798fd7014db7688702cded2',1,'z::file::outputStream::open()']]],
+  ['operator_20double',['operator double',['../classz_1_1core_1_1string.html#acfe2be987f0a6972683f1b84b2fc0754',1,'z::core::string']]],
+  ['operator_20float',['operator float',['../classz_1_1core_1_1string.html#a04d8e2bc02221468f5526f5739b0ec9d',1,'z::core::string']]],
+  ['operator_20int',['operator INT',['../classz_1_1core_1_1string.html#afe8b8c3e5d8cf56e10ea6ef2f19f8acc',1,'z::core::string']]],
   ['operator_21_3d',['operator!=',['../classz_1_1core_1_1string.html#a19e986e795ba9985a3faff3d56cf300e',1,'z::core::string::operator!=()'],['../classz_1_1core_1_1stringIterator.html#a8f9c9a3e4853b17037614186809e0384',1,'z::core::stringIterator::operator!=()']]],
   ['operator_2a',['operator*',['../classz_1_1core_1_1stringIterator.html#aab3093f10f44992b0223daaa87d42763',1,'z::core::stringIterator']]],
   ['operator_2b',['operator+',['../classz_1_1core_1_1string.html#a27ea52347a2d0a44dad9e0cccda1449f',1,'z::core::string']]],
