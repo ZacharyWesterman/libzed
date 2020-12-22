@@ -1311,5 +1311,44 @@ namespace z
 			newl.write(stream, enc);
 		}
 
+		template<>
+		bool string<ascii>::operator==(const string<ascii>& other) const noexcept
+		{
+			if (character_ct != other.character_ct) return false;
+			if (this == &other) return true;
+
+			for (int i=0; i<character_ct; ++i)
+			{
+				if (data[i] != other.data[i]) return false;
+			}
+			return true;
+		}
+
+		template<>
+		bool string<ascii>::operator>(const string<ascii>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data[i] <= other.data[i]) return false;
+			}
+			return true;
+		}
+
+		template<>
+		bool string<ascii>::operator<(const string<ascii>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data[i] >= other.data[i]) return false;
+			}
+			return true;
+		}
+
 	} //end of core namespace
 } //end of z namespace

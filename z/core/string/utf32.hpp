@@ -1422,5 +1422,53 @@ namespace z
 			newl.write(stream, enc);
 		}
 
+		template<>
+		bool string<utf32>::operator==(const string<utf32>& other) const noexcept
+		{
+			if (character_ct != other.character_ct) return false;
+			if (this == &other) return true;
+
+			auto data32 = (uint32_t*)data;
+			auto other32 = (uint32_t*)other.data;
+
+			for (int i=0; i<character_ct; ++i)
+			{
+				if (data32[i] != other32[i]) return false;
+			}
+			return true;
+		}
+
+		template<>
+		bool string<utf32>::operator>(const string<utf32>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			auto data32 = (uint32_t*)data;
+			auto other32 = (uint32_t*)other.data;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data32[i] <= other32[i]) return false;
+			}
+			return true;
+		}
+
+		template<>
+		bool string<utf32>::operator<(const string<utf32>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			auto data32 = (uint32_t*)data;
+			auto other32 = (uint32_t*)other.data;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data32[i] >= other32[i]) return false;
+			}
+			return true;
+		}
+
 	} //end of core namespace
 } //end of z namespace

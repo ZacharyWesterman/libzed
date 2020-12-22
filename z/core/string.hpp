@@ -1147,11 +1147,7 @@ namespace z
 			 *
 			 * \return True if the strings exactly match. False otherwise.
 			 */
-			bool operator==(const string& other) const noexcept
-			{
-				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
-				return std::memcmp(data, other.data, len << 2) == 0;
-			}
+			bool operator==(const string& other) const noexcept;
 
 			/**
 			 * \brief Inequality comparison.
@@ -1172,11 +1168,7 @@ namespace z
 			 *
 			 * \return True if this string comes after the given string alphabetically. False otherwise.
 			 */
-			bool operator>(const string& other) const noexcept
-			{
-				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
-				return std::memcmp(data, other.data, len << 2) > 0;
-			}
+			bool operator>(const string& other) const noexcept;
 
 			/**
 			 * \brief Greater-than or equal comparison.
@@ -1197,11 +1189,7 @@ namespace z
 			 *
 			 * \return True if this string comes before the given string alphabetically. False otherwise.
 			 */
-			bool operator<(const string& other) const noexcept
-			{
-				auto len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
-				return std::memcmp(data, other.data, len << 2) < 0;
-			}
+			bool operator<(const string& other) const noexcept;
 
 			/**
 			 * \brief Less-than or equal comparison.
@@ -1322,6 +1310,11 @@ namespace z
 				operator=(value.c_str());
 			}
 #		endif
+
+			friend std::ostream& operator<<(std::ostream& ostr, const z::core::string<E>& str)
+			{
+				return ostr << str.cstring();
+			}
 		};
 	}
 }
