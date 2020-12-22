@@ -191,7 +191,7 @@ namespace z
 			string<ascii> result;
 			if (!count) return result;
 
-			if (index < 0) index = character_ct - index;
+			if (index < 0) index += character_ct;
 
 			int begin, end;
 			if (count > 0)

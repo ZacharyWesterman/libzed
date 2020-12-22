@@ -1315,6 +1315,14 @@ namespace z
 			{
 				return ostr << str.cstring();
 			}
+
+			friend std::istream& operator>>(std::istream& istr, z::core::string<E>& str)
+			{
+				std::string s;
+				istr >> s;
+				str = s.c_str(); //not efficient to cast strings back & forth, but it works for now.
+				return istr;
+			}
 		};
 	}
 }
