@@ -1313,7 +1313,7 @@ namespace z
 
 			friend std::ostream& operator<<(std::ostream& ostr, const z::core::string<E>& str)
 			{
-				return ostr << str.cstring();
+				return ostr << string<utf8>(str).cstring();
 			}
 
 			friend std::istream& operator>>(std::istream& istr, z::core::string<E>& str)
