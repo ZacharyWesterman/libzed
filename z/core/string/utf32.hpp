@@ -1449,9 +1449,9 @@ namespace z
 
 			for (int i=0; i<len; ++i)
 			{
-				if (data32[i] <= other32[i]) return false;
+				if (data32[i] != other32[i]) return data32[i] > other32[i];
 			}
-			return true;
+			return character_ct > other.character_ct;
 		}
 
 		template<>
@@ -1465,9 +1465,9 @@ namespace z
 
 			for (int i=0; i<len; ++i)
 			{
-				if (data32[i] >= other32[i]) return false;
+				if (data32[i] != other32[i]) return data32[i] < other32[i];
 			}
-			return true;
+			return character_ct < other.character_ct;
 		}
 
 	} //end of core namespace
