@@ -65,10 +65,16 @@ $ make -j$(nproc)
 so that it will compile on as many cores as possible.
 On Windows you may have to run `mingw32-make` instead.
 
+The above will compile as a dynamic library (.so on Linux, .dll on Windows).
+To compile to a static library:
+~~~
+$ make -j$(nproc) static
+~~~
+
 You should get no errors or warnings.
 You can open an issue on [GitHub][repo] if either of those pop up while compiling.
 
-###Installing
+###Installing the dynamic library
 In Linux, either run `make install` as superuser or `sudo make install`.
 
 In Windows you can save the DLL into whatever directory you want,
@@ -81,16 +87,12 @@ and tell the linker to load it from there.
 Suppose you have some simple project called `example.cpp`.
 Let's have this file contain the following:
 ~~~{.cpp}
-#include <z/core.hpp>
-#include <z/system.hpp>
+#include <z/core/string.hpp>
 
 int main()
 {
-	z::system::console console;
 	zstring string = "Hello world!";
-
-	string.writeln(console);
-
+	std::cout << string << std::endl;
 	return 0;
 }
 ~~~
@@ -98,14 +100,27 @@ int main()
 To compile and link to the installed library:
 ~~~
 $ g++ -std=c++11 -o example.o -c example.cpp
-$ g++ -lzed -o example example.o
+$ g++ -lzed -o example.out example.o
 ~~~
 
 If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows):
 ~~~
 $ g++ -I"/path/to/libzed/headers" -std=c++11 -o example.o -c example.cpp
-$ g++ -lzed -L"/path/to/lib" -o example example.o
+$ g++ -o example.out example.o -lzed -L"/path/to/lib"
 ~~~
+
+If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size.
+The compile step for this is the same, just alter the linker step:
+~~~
+$ g++ -o example.out example.o -lzed -L"/path/to/lib" -Wl,--gc-sections
+~~~
+Note the effectiveness of this depends on the architecture and the specific compiler used.
+
+Afterwards, if binary size is still an issue, stripping out symbols may help a bit.
+~~~
+$ strip example.out --strip-all
+~~~
+
 
 ###Examples
 Example programs are stored with the source code under the `examples/` directory.
