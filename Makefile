@@ -69,7 +69,7 @@ else
 RM = rm -f
 endif
 
-ifeq ($(OS),Windows_NT)\
+ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
 else
