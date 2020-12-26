@@ -34,7 +34,15 @@ endif
 
 STD = c++11
 
-CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET) -fPIC
+#Generate for specified std and arch,
+#Show all warnings,
+#Let compiler know we're making a library,
+#And separate the data & function sections so that unused symbols can be stripped.
+CCFLAGS = -std=$(STD) $(CCTARGET) \
+	-W -Wall -Wextra -pedantic -fexceptions \
+	-fPIC \
+	-fdata-sections -ffunction-sections
+
 LFLAGS = -shared $(CCTARGET)
 
 STATIC_LIB = $(LIBNAME).a
@@ -84,6 +92,8 @@ SONAME2 = lib$(LIBNAME).so
 default: $(SHARED_LIB)
 
 static: $(STATIC_LIB)
+dynamic: $(SHARED_LIB)
+shared: $(SHARED_LIB)
 
 install: $(SHARED_LIB)
 	cp $(SHARED_LIB) $(LIBDIR)/$(SHARED_LIB)
@@ -109,13 +119,13 @@ $(STATIC_LIB): $(OBJS)
 	ranlib lib$(LIBNAME).a
 
 %.o: %.cpp %.hpp
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
-	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
+	$(CC) $(CCFLAGS) -DZ_DYNLIB -o $@ -c $<
 
 clean: cleanbin cleanobjs
 
@@ -127,4 +137,4 @@ cleanbin:
 
 rebuild: clean default
 
-.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples static
+.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples static dynamic shared
