@@ -38,7 +38,6 @@ CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
 LFLAGS = -shared $(CCTARGET)
 
 STATIC_LIB = $(LIBNAME).a
-DLL = $(LIBNAME).dll
 
 OLEVEL = $(OPT)
 
@@ -71,8 +70,8 @@ RM = rm -f
 endif
 
 ifeq ($(OS),Windows_NT)
-CFLAGS = $(CCFLAGS) -shared
-LFLAGS += -fPIC
+CFLAGS = $(CCFLAGS) -fPIC
+# LFLAGS += -fPIC
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
 else
@@ -89,6 +88,8 @@ SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
 default: $(SHARED_LIB)
+
+static: $(STATIC_LIB)
 
 install: $(SHARED_LIB)
 	cp $(SHARED_LIB) $(LIBDIR)/$(SHARED_LIB)
@@ -109,6 +110,8 @@ examples:
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
+$(STATIC_LIB):
+
 %.o: %.cpp %.hpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
@@ -124,10 +127,8 @@ cleanobjs:
 	$(RM) $(RMOBJS)
 
 cleanbin:
-	$(RM) driver
-	$(RM) lib$(LIBNAME)-*.so
-	$(RM) $(LIBNAME).dll
+	$(RM) driver *.so *.dll
 
 rebuild: clean default
 
-.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples
+.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples static
