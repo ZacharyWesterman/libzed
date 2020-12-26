@@ -133,7 +133,7 @@ cleanobjs:
 	$(RM) $(RMOBJS)
 
 cleanbin:
-	$(RM) driver *.so *.dll
+	$(RM) driver *.so *.dll *.a
 
 rebuild: clean default
 
