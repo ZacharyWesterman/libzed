@@ -34,7 +34,7 @@ endif
 
 STD = c++11
 
-CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET) -fPIC
 LFLAGS = -shared $(CCTARGET)
 
 STATIC_LIB = $(LIBNAME).a
@@ -69,20 +69,14 @@ else
 RM = rm -f
 endif
 
-ifeq ($(OS),Windows_NT)
-CFLAGS = $(CCFLAGS) -fPIC
-# LFLAGS += -fPIC
+ifeq ($(OS),Windows_NT)\
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
 else
-CFLAGS = $(CCFLAGS) -fPIC
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 endif
-
-DLFLAGS_WIN = -L. -l$(LIBNAME)
-DLFLAGS_NIX = -l $(LIBNAME)
 
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
@@ -110,7 +104,9 @@ examples:
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
-$(STATIC_LIB):
+$(STATIC_LIB): $(OBJS)
+	ar ru lib$(LIBNAME).a $(OBJS)
+	ranlib lib$(LIBNAME).a
 
 %.o: %.cpp %.hpp
 	$(CC) $(CFLAGS) -o $@ -c $<
