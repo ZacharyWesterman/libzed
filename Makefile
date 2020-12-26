@@ -45,7 +45,7 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 
 LFLAGS = -shared $(CCTARGET)
 
-STATIC_LIB = $(LIBNAME).a
+STATIC_LIB = lib$(LIBNAME).a
 
 OLEVEL = $(OPT)
 
@@ -115,8 +115,8 @@ $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
 $(STATIC_LIB): $(OBJS)
-	ar rcs lib$(LIBNAME).a $(OBJS)
-	ranlib lib$(LIBNAME).a
+	ar rcs $@ $^
+	ranlib $@
 
 %.o: %.cpp %.hpp
 	$(CC) $(CCFLAGS) -o $@ -c $<
