@@ -115,7 +115,7 @@ $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
 $(STATIC_LIB): $(OBJS)
-	ar ru lib$(LIBNAME).a $(OBJS)
+	ar rcs lib$(LIBNAME).a $(OBJS)
 	ranlib lib$(LIBNAME).a
 
 %.o: %.cpp %.hpp
