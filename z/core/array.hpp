@@ -289,7 +289,7 @@ namespace z
 
 			void load(cereal::JSONInputArchive& ar)
 			{
-				size_t sz;
+				size_type sz;
 				ar.loadSize(sz);
 				array_data.reserve(sz);
 
@@ -303,7 +303,7 @@ namespace z
 
 			void load(cereal::XMLInputArchive& ar)
 			{
-				size_t sz;
+				size_type sz;
 				ar.loadSize(sz);
 				array_data.reserve(sz);
 
@@ -319,7 +319,7 @@ namespace z
 			void load(archive& ar)
 			{
 				clear();
-				size_t sz;
+				size_type sz;
 				ar(sz);
 				array_data.reserve(sz);
 
