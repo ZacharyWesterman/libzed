@@ -97,3 +97,8 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 #include "string/utf16.hpp"
 #include "string/utf32.hpp"
 #include "string/utf8.hpp"
+
+std::ostream& operator<<(std::ostream& stream, const z::core::string<z::utf8>& object)
+{
+	return stream << object.cstring();
+}

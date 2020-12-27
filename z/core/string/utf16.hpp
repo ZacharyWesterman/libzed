@@ -1428,5 +1428,53 @@ namespace z
 			newl.write(stream, enc);
 		}
 
+		template<>
+		bool string<utf16>::operator==(const string<utf16>& other) const noexcept
+		{
+			if (character_ct != other.character_ct) return false;
+			if (this == &other) return true;
+
+			auto data16 = (uint16_t*)data;
+			auto other16 = (uint16_t*)other.data;
+
+			for (int i=0; i<character_ct; ++i)
+			{
+				if (data16[i] != other16[i]) return false;
+			}
+			return true;
+		}
+
+		template<>
+		bool string<utf16>::operator>(const string<utf16>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			auto data16 = (uint16_t*)data;
+			auto other16 = (uint16_t*)other.data;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data16[i] != other16[i]) return data16[i] > other16[i];
+			}
+			return character_ct > other.character_ct;
+		}
+
+		template<>
+		bool string<utf16>::operator<(const string<utf16>& other) const noexcept
+		{
+			int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
+			if (this == &other) return false;
+
+			auto data16 = (uint16_t*)data;
+			auto other16 = (uint16_t*)other.data;
+
+			for (int i=0; i<len; ++i)
+			{
+				if (data16[i] != other16[i]) return data16[i] < other16[i];
+			}
+			return character_ct < other.character_ct;
+		}
+
 	} //end of core namespace
 } //end of z namespace

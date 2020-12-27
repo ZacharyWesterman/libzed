@@ -13,7 +13,10 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
 
-ARCH = $(shell g++ -dumpmachine)
+CC = g++
+LN = $(CC)
+
+ARCH = $(shell $(CC) -dumpmachine)
 
 BITS =
 ifeq ($(findstring x86_64,$(ARCH)),x86_64)
@@ -84,9 +87,6 @@ DLFLAGS_NIX = -l $(LIBNAME)
 
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
-
-CC = g++
-LN = $(CC)
 
 default: $(SHARED_LIB)
 
