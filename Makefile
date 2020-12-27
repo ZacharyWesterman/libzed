@@ -35,7 +35,7 @@ endif
 STD = c++11
 
 #Generate for specified std and arch,
-#Show all warnings,
+#Show all warnings & handle exceptions,
 #Let compiler know we're making a library,
 #And separate the data & function sections so that unused symbols can be stripped.
 CCFLAGS = -std=$(STD) $(CCTARGET) \
@@ -54,11 +54,11 @@ ifndef OPT
 OLEVEL = 3
 endif
 
-ifneq (,$(findstring $(OPT),S size Size SIZE))
-OLEVEL = s
-endif
 ifneq (,$(findstring $(OPT),F f Fast FAST))
 OLEVEL = fast
+endif
+ifneq (,$(findstring $(OPT),S s size Size SIZE))
+OLEVEL = s
 endif
 
 # if debug flag is not set
