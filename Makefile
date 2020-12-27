@@ -34,11 +34,18 @@ endif
 
 STD = c++11
 
-CCFLAGS = -std=$(STD) -W -Wall -Wextra -pedantic -fexceptions $(CCTARGET)
+#Generate for specified std and arch,
+#Show all warnings & handle exceptions,
+#Let compiler know we're making a library,
+#And separate the data & function sections so that unused symbols can be stripped.
+CCFLAGS = -std=$(STD) $(CCTARGET) \
+	-W -Wall -Wextra -pedantic -fexceptions \
+	-fPIC \
+	-fdata-sections -ffunction-sections
+
 LFLAGS = -shared $(CCTARGET)
 
-STATIC_LIB = $(LIBNAME).a
-DLL = $(LIBNAME).dll
+STATIC_LIB = lib$(LIBNAME).a
 
 OLEVEL = $(OPT)
 
@@ -47,11 +54,11 @@ ifndef OPT
 OLEVEL = 3
 endif
 
-ifneq (,$(findstring $(OPT),S size Size SIZE))
-OLEVEL = s
-endif
 ifneq (,$(findstring $(OPT),F f Fast FAST))
 OLEVEL = fast
+endif
+ifneq (,$(findstring $(OPT),S s size Size SIZE))
+OLEVEL = s
 endif
 
 # if debug flag is not set
@@ -71,24 +78,22 @@ RM = rm -f
 endif
 
 ifeq ($(OS),Windows_NT)
-CFLAGS = $(CCFLAGS) -shared
-LFLAGS += -fPIC
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
 else
-CFLAGS = $(CCFLAGS) -fPIC
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
 endif
 
-DLFLAGS_WIN = -L. -l$(LIBNAME)
-DLFLAGS_NIX = -l $(LIBNAME)
-
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
 default: $(SHARED_LIB)
+
+static: $(STATIC_LIB)
+dynamic: $(SHARED_LIB)
+shared: $(SHARED_LIB)
 
 install: $(SHARED_LIB)
 	cp $(SHARED_LIB) $(LIBDIR)/$(SHARED_LIB)
@@ -109,14 +114,18 @@ examples:
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
+$(STATIC_LIB): $(OBJS)
+	ar rcs $@ $^
+	ranlib $@
+
 %.o: %.cpp %.hpp
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
-	$(CC) $(CFLAGS) -DZ_DYNLIB -o $@ -c $<
+	$(CC) $(CCFLAGS) -DZ_DYNLIB -o $@ -c $<
 
 clean: cleanbin cleanobjs
 
@@ -124,10 +133,8 @@ cleanobjs:
 	$(RM) $(RMOBJS)
 
 cleanbin:
-	$(RM) driver
-	$(RM) lib$(LIBNAME)-*.so
-	$(RM) $(LIBNAME).dll
+	$(RM) driver *.so *.dll *.a
 
 rebuild: clean default
 
-.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples
+.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples static dynamic shared

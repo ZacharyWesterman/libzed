@@ -3,6 +3,7 @@ driver
 *.so
 *.exe
 *.dll
+*.a
 html/
 doxygen.log
 examples/binary

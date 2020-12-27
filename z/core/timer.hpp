@@ -2,6 +2,10 @@
 
 #include <chrono>
 
+#if __has_include(<cereal/cereal.hpp>)
+#include <cereal/cereal.hpp>
+#endif
+
 namespace z
 {
 	namespace core
