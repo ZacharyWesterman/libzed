@@ -90,5 +90,7 @@ var classz_1_1core_1_1string =
     [ "write", "classz_1_1core_1_1string.html#a1d51094994baa05a0083222e4d588693", null ],
     [ "writeln", "classz_1_1core_1_1string.html#aabfd03638c0920e1823da50ee80ed1f8", null ],
     [ "writeln", "classz_1_1core_1_1string.html#a17986d29aa6a5ca77b6a8c9799ea8f36", null ],
-    [ "wstring", "classz_1_1core_1_1string.html#a0ca71321f6cc1fca3825fee6c05a9db7", null ]
+    [ "wstring", "classz_1_1core_1_1string.html#a0ca71321f6cc1fca3825fee6c05a9db7", null ],
+    [ "operator<<", "classz_1_1core_1_1string.html#a1a394438ebafa86857838eeccb1b4718", null ],
+    [ "operator>>", "classz_1_1core_1_1string.html#a4787e5270acbff46efe5e88f1e63aaa1", null ]
 ];
