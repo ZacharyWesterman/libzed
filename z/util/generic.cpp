@@ -234,5 +234,86 @@ namespace z
 
 			return true;
 		}
+
+		generic& generic::operator+=(const generic& other)
+		{
+			if (!(numeric() && other.numeric())) throw genericNonNumber();
+
+			generic alt = other;
+			promote(&alt);
+
+			const int ix = value.index();
+			if (ix == generic::COMPLEX)
+				value = std::get<generic::COMPLEX>(value) + std::get<generic::COMPLEX>(alt.value);
+			else if (ix == generic::FLOAT)
+				value = std::get<generic::FLOAT>(value) + std::get<generic::FLOAT>(alt.value);
+			else
+				value = std::get<generic::INT>(value) + std::get<generic::INT>(alt.value);
+
+			return *this;
+		}
+
+		generic& generic::operator-=(const generic& other)
+		{
+			if (!(numeric() && other.numeric())) throw genericNonNumber();
+
+			generic alt = other;
+			promote(&alt);
+
+			const int ix = value.index();
+			if (ix == generic::COMPLEX)
+				value = std::get<generic::COMPLEX>(value) - std::get<generic::COMPLEX>(alt.value);
+			else if (ix == generic::FLOAT)
+				value = std::get<generic::FLOAT>(value) - std::get<generic::FLOAT>(alt.value);
+			else
+				value = std::get<generic::INT>(value) - std::get<generic::INT>(alt.value);
+
+			return *this;
+		}
+
+		generic& generic::operator*=(const generic& other)
+		{
+			if (!(numeric() && other.numeric())) throw genericNonNumber();
+
+			generic alt = other;
+			promote(&alt);
+
+			const int ix = value.index();
+			if (ix == generic::COMPLEX)
+				value = std::get<generic::COMPLEX>(value) * std::get<generic::COMPLEX>(alt.value);
+			else if (ix == generic::FLOAT)
+				value = std::get<generic::FLOAT>(value) * std::get<generic::FLOAT>(alt.value);
+			else
+				value = std::get<generic::INT>(value) * std::get<generic::INT>(alt.value);
+
+			return *this;
+		}
+
+		generic& generic::operator/=(const generic& other)
+		{
+			if (!(numeric() && other.numeric())) throw genericNonNumber();
+
+			generic alt = other;
+			promote(&alt);
+
+			const int ix = value.index();
+			if (ix == generic::COMPLEX)
+				value = std::get<generic::COMPLEX>(value) / std::get<generic::COMPLEX>(alt.value);
+			else if (ix == generic::FLOAT)
+				value = std::get<generic::FLOAT>(value) / std::get<generic::FLOAT>(alt.value);
+			else
+				value = std::get<generic::INT>(value) / std::get<generic::INT>(alt.value);
+
+			return *this;
+		}
+
+		generic& generic::operator%=(const generic& other)
+		{
+			if (!(numeric() && other.numeric())) throw genericNonNumber();
+
+			value = integer() % other.integer();
+
+			return *this;
+		}
 	}
 }

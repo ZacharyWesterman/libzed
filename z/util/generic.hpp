@@ -3,11 +3,20 @@
 #include "../core/string.hpp"
 #include "../core/array.hpp"
 #include <variant>
+#include <exception>
 
 namespace z
 {
 	namespace util
 	{
+		struct genericNonNumber : public std::exception
+		{
+			const char* what() const throw()
+			{
+				return "Attempted numeric operation on non-number";
+			}
+		};
+
 		class generic
 		{
 		public:
@@ -86,6 +95,20 @@ namespace z
 			 * \return true if upcast was successful or resultant types are the same, false otherwise.
 			 */
 			bool promote(generic* other) noexcept; //promote two numeric values to the same type
+
+
+			//mathematical operators. THESE CAN THROW.
+			//Note these are not fast! But should not use generic types if speed is a concern.
+			generic& operator+=(const generic& other);
+			generic operator+(const generic& other) const { auto tmp = *this; return tmp+=other; }
+			generic& operator-=(const generic& other);
+			generic operator-(const generic& other) const { auto tmp = *this; return tmp-=other; }
+			generic& operator*=(const generic& other);
+			generic operator*(const generic& other) const { auto tmp = *this; return tmp*=other; }
+			generic& operator/=(const generic& other);
+			generic operator/(const generic& other) const { auto tmp = *this; return tmp/=other; }
+			generic& operator%=(const generic& other);
+			generic operator%(const generic& other) const { auto tmp = *this; return tmp%=other; }
 
 		};
 
