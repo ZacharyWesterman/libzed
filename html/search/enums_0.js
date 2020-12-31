@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datatype',['datatype',['../namespacez_1_1util.html#ad8ad184dd64ac345920c48cc00ad12d3',1,'z::util']]]
+  ['encoding_632',['encoding',['../encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17',1,'z']]]
 ];

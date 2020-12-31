@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['rgxerr',['rgxerr',['../namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710',1,'z::util']]],
-  ['rgxflag',['rgxflag',['../namespacez_1_1util.html#a3509b3c93adf7807600ed1f6043f7969',1,'z::util']]],
-  ['rgxid',['rgxid',['../namespacez_1_1util.html#a10ab9dfc3e7882616b247bb6c56f8cc1',1,'z::util']]]
+  ['zstr_637',['zstr',['../zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc',1,'z::core::zstr']]]
 ];

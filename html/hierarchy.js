@@ -3,6 +3,10 @@ var hierarchy =
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
+    [ "std::exception", null, [
+      [ "z::util::nonNumber", "structz_1_1util_1_1nonNumber.html", null ]
+    ] ],
+    [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::file::info", "classz_1_1file_1_1info.html", null ],
     [ "z::core::inputStream", "classz_1_1core_1_1inputStream.html", [
@@ -51,14 +55,11 @@ var hierarchy =
       [ "z::util::rgx::word", "classz_1_1util_1_1rgx_1_1word.html", null ]
     ] ],
     [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
+      [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::generic * >", "classz_1_1core_1_1array.html", [
-        [ "z::core::refArray< z::util::generic *>", "classz_1_1core_1_1refArray.html", null ]
-      ] ],
-      [ "z::core::array< z::util::rgx::rule *>", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", [
         [ "z::core::sortedArray< z::util::word * >", "classz_1_1core_1_1sortedArray.html", [
-          [ "z::core::sortedRefArray< z::util::word *>", "classz_1_1core_1_1sortedRefArray.html", null ]
+          [ "z::core::sortedRefArray< z::util::word * >", "classz_1_1core_1_1sortedRefArray.html", null ]
         ] ]
       ] ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
@@ -70,15 +71,6 @@ var hierarchy =
       ] ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
       [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ],
-      [ "z::util::generic", "classz_1_1util_1_1generic.html", [
-        [ "z::util::genericArray", "classz_1_1util_1_1genericArray.html", null ],
-        [ "z::util::genericComplex", "classz_1_1util_1_1genericComplex.html", null ],
-        [ "z::util::genericFloat", "classz_1_1util_1_1genericFloat.html", null ],
-        [ "z::util::genericInt", "classz_1_1util_1_1genericInt.html", null ],
-        [ "z::util::genericNull", "classz_1_1util_1_1genericNull.html", null ],
-        [ "z::util::genericPointer", "classz_1_1util_1_1genericPointer.html", null ],
-        [ "z::util::genericString", "classz_1_1util_1_1genericString.html", null ]
-      ] ],
       [ "z::util::word", "classz_1_1util_1_1word.html", null ]
     ] ],
     [ "z::core::stringIterator< E >", "classz_1_1core_1_1stringIterator.html", null ],
