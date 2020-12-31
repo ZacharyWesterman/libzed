@@ -179,6 +179,8 @@ namespace z
 			 * \param value A floating-point complex number.
 			 * \param base The number's base.
 			 * \param precision The number of characters after the decimal point.
+			 * \param scientific Whether to use scientific notation.
+			 * \param padSize Number of characters to pad up to.
 			 *
 			 * Converts a floating-point complex number to a string in the given base.
 			 * This string will look like `X+Yi`, `X-Yi`, `-X+Yi`, or `-X-Yi`.
@@ -1298,24 +1300,48 @@ namespace z
 			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
 
 #		if __has_include(<cereal/cereal.hpp>)
+
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 * \return The string to output to serial archive.
+			 */
 			template <class archive>
 			std::string save_minimal(archive& ar) const
 			{
 				return string<utf8>(*this).cstring();
 			}
 
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 * \param value The string to input from serial archive.
+			 */
 			template <class archive>
-			void load_minimal(archive const&, std::string const& value)
+			void load_minimal(archive const& ar, std::string const& value)
 			{
+				(void)ar
 				operator=(value.c_str());
 			}
 #		endif
 
+			/**
+			 * \brief Stream output operator.
+			 * \param ostr The output stream.
+			 * \param str The string to write to the stream.
+			 * \return A reference to the stream after output.
+			 */
 			friend std::ostream& operator<<(std::ostream& ostr, const z::core::string<E>& str)
 			{
 				return ostr << string<utf8>(str).cstring();
 			}
 
+			/**
+			 * \brief Stream input operator.
+			 * \param istr The input stream.
+			 * \param str The string to read from the stream.
+			 * \return A reference to the stream after input.
+			 */
 			friend std::istream& operator>>(std::istream& istr, z::core::string<E>& str)
 			{
 				std::string s;

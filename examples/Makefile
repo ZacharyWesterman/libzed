@@ -19,7 +19,7 @@ MV = mv
 CP = cp "../zed.dll"
 endif
 
-STD = c++11
+STD = c++17
 
 all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2) binary/generic
 

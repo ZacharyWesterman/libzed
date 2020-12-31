@@ -48,6 +48,10 @@ namespace z
 			bool timedOut() const noexcept;
 
 #		if __has_include(<cereal/cereal.hpp>)
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 */
 			template <class Archive>
 			void save(Archive& ar) const
 			{
@@ -57,6 +61,10 @@ namespace z
 				ar(CEREAL_NVP(goal));
 			}
 
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 */
 			template <class Archive>
 			void load(Archive& ar)
 			{
