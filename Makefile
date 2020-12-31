@@ -45,10 +45,6 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 LFLAGS = -shared $(CCTARGET)
 
 STD = c++17
-# link to std::filesystem if c++17
-ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
-LFLAGS += -lstdc++fs
-endif
 
 STATIC_LIB = lib$(LIBNAME).a
 
@@ -86,6 +82,10 @@ ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
 else
+# link to std::filesystem if c++17 and linux
+ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
+LFLAGS += -lstdc++fs
+endif
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so

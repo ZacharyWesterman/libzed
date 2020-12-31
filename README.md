@@ -5,7 +5,7 @@ This library contains useful classes and functions for quick and simple data man
 Currently supports compiling on Linux and Windows only, as those are the only systems I have. ¯\\\_(ツ)\_/¯<br>
 It should compile on any 64 or 32-bit flavor of these systems (including Raspberry Pi!).
 
-The only requirements are **make** and a C++ compiler that supports *at least* C++11.
+The only requirements are **make** and a C++ compiler that supports *at least* C++11 (C++17 or newer preferred).
 If **g++ --version** is 5 or above, chances are you're good.<br>
 
 Full build instructions along with make options are detailed on the main page of the [Documentation][docs].
