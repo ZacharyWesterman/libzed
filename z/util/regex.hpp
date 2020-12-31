@@ -120,6 +120,10 @@ namespace z
 			const zstring& pattern() const noexcept;
 
 #		if __has_include(<cereal/cereal.hpp>)
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 */
 			template <class archive>
 			void save(archive& ar) const
 			{
@@ -131,6 +135,10 @@ namespace z
 				}
 			}
 
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 */
 			template <class archive>
 			void load(archive const& ar)
 			{

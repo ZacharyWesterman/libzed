@@ -82,6 +82,10 @@ namespace z
 			unsigned int hours() const noexcept;
 
 #		if __has_include(<cereal/cereal.hpp>)
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 */
 			template <class Archive>
 			void save(Archive& ar) const
 			{
@@ -89,6 +93,10 @@ namespace z
 				ar(CEREAL_NVP(elapsed));
 			}
 
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 */
 			template <class Archive>
 			void load(Archive& ar)
 			{

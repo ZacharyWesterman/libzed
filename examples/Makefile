@@ -19,7 +19,9 @@ MV = mv
 CP = cp "../zed.dll"
 endif
 
-all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2)
+STD = c++17
+
+all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2) binary/generic
 
 binary:
 	mkdir $@
@@ -28,10 +30,10 @@ object:
 	mkdir $@
 
 object/%.o: source/%.cpp
-	g++ -I"../" -std=c++11 -fPIC -o $@ -c $^
+	g++ -I"../" -std=$(STD) -fPIC -o $@ -c $^
 
 binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
-	g++ -I"../" -std=c++11 -shared -fPIC -o $@ $^
+	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
 
 binary/%: object/%.o
 	g++ $(LFLAGS) -o $@ $^

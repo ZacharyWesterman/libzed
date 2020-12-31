@@ -137,7 +137,10 @@ namespace z
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
 
 #		if __has_include(<cereal/cereal.hpp>)
-			//binary specialization
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 */
 			template <typename archive>
 			void save(archive& ar) const
 			{
@@ -148,6 +151,10 @@ namespace z
 				}
 			}
 
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 */
 			template <class archive>
 			void load(archive& ar)
 			{

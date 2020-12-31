@@ -257,7 +257,10 @@ namespace z
 			}
 
 #		if __has_include(<cereal/cereal.hpp>)
-			//JSON specialization
+			/**
+			 * \brief JSON specialization of serialization output.
+			 * \param ar The output archive.
+			 */
 			void save(cereal::JSONOutputArchive& ar) const
 			{
 				ar.makeArray();
@@ -267,7 +270,10 @@ namespace z
 				}
 			}
 
-			//XML specialization
+			/**
+			 * \brief XML specialization of serialization output.
+			 * \param ar The output archive.
+			 */
 			void save(cereal::XMLOutputArchive& ar) const
 			{
 				for (int i=0; i<(int)array_data.size(); i++)
@@ -276,7 +282,10 @@ namespace z
 				}
 			}
 
-			//binary specialization
+			/**
+			 * \brief Binary specialization of serialization output.
+			 * \param ar The output archive.
+			 */
 			template <typename archive>
 			void save(archive& ar) const
 			{
@@ -287,6 +296,10 @@ namespace z
 				}
 			}
 
+			/**
+			 * \brief JSON specialization of serialization input.
+			 * \param ar The input archive.
+			 */
 			void load(cereal::JSONInputArchive& ar)
 			{
 				CEREAL_SIZE_TYPE sz;
@@ -301,6 +314,10 @@ namespace z
 				}
 			}
 
+			/**
+			 * \brief XML specialization of serialization input.
+			 * \param ar The input archive.
+			 */
 			void load(cereal::XMLInputArchive& ar)
 			{
 				CEREAL_SIZE_TYPE sz;
@@ -315,6 +332,10 @@ namespace z
 				}
 			}
 
+			/**
+			 * \brief Binary specialization of serialization input.
+			 * \param ar The input archive.
+			 */
 			template <class archive>
 			void load(archive& ar)
 			{
