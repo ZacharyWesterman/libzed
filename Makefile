@@ -74,8 +74,10 @@ endif
 # if rm exists use that, otherwise try Windows' "del"
 ifeq (, $(shell rm --version))
 RM = del
+RMDIR = rd /s /q
 else
 RM = rm -f
+RMDIR = rm -rf
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -95,6 +97,8 @@ SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
 default: $(SHARED_LIB)
+
+all: static dynamic examples
 
 static: $(STATIC_LIB)
 dynamic: $(SHARED_LIB)
@@ -132,7 +136,8 @@ z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.
 z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CCFLAGS) -DZ_DYNLIB -o $@ -c $<
 
-clean: cleanbin cleanobjs
+clean: cleanbin cleanobjs cleandox
+	$(MAKE) clean -C examples/
 
 cleanobjs:
 	$(RM) $(RMOBJS)
@@ -140,6 +145,10 @@ cleanobjs:
 cleanbin:
 	$(RM) driver *.so *.dll *.a
 
+cleandox:
+	$(RMDIR) html
+	$(RM) doxygen.log
+
 rebuild: clean default
 
-.PHONY: rebuild clean cleanobjs cleanbin default install uninstall examples static dynamic shared
+.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all
