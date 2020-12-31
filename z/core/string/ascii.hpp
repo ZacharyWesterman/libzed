@@ -746,7 +746,10 @@ namespace z
 				}
 			}
 
-			return 0;
+			if (imagEnd)
+				return std::complex<double>(0,substr(0,character_ct-1).floating(base,decimal));
+			else
+				return floating(base,decimal);
 		}
 
 		///analyzers
