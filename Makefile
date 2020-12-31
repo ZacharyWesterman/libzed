@@ -44,9 +44,9 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 
 LFLAGS = -shared $(CCTARGET)
 
-STD = c++11
+STD = c++17
 # link to std::filesystem if c++17
-ifneq (,$(findstring $(STD),c++17 gnu++17))
+ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
 LFLAGS += -lstdc++fs
 endif
 
