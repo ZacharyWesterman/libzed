@@ -1,5 +1,10 @@
 #include "generic.hpp"
 
+//Only compile if std::variant is available
+#if __cplusplus >= 201703L
+
+#include "genericExceptions.hpp"
+
 #include "../core/join.hpp"
 
 namespace z
@@ -96,7 +101,7 @@ namespace z
 
 		bool generic::numeric() const noexcept
 		{
-			return value.index() < generic::STRING;
+			return (value.index() < generic::STRING) && (value.index() > generic::VOID);
 		}
 
 		bool generic::is(std::size_t type) const noexcept
@@ -237,7 +242,7 @@ namespace z
 
 		generic& generic::operator+=(const generic& other)
 		{
-			if (!(numeric() && other.numeric())) throw genericNonNumber();
+			if (!(numeric() && other.numeric())) throw nonNumber();
 
 			generic alt = other;
 			promote(&alt);
@@ -255,7 +260,7 @@ namespace z
 
 		generic& generic::operator-=(const generic& other)
 		{
-			if (!(numeric() && other.numeric())) throw genericNonNumber();
+			if (!(numeric() && other.numeric())) throw nonNumber();
 
 			generic alt = other;
 			promote(&alt);
@@ -273,7 +278,7 @@ namespace z
 
 		generic& generic::operator*=(const generic& other)
 		{
-			if (!(numeric() && other.numeric())) throw genericNonNumber();
+			if (!(numeric() && other.numeric())) throw nonNumber();
 
 			generic alt = other;
 			promote(&alt);
@@ -291,7 +296,7 @@ namespace z
 
 		generic& generic::operator/=(const generic& other)
 		{
-			if (!(numeric() && other.numeric())) throw genericNonNumber();
+			if (!(numeric() && other.numeric())) throw nonNumber();
 
 			generic alt = other;
 			promote(&alt);
@@ -309,11 +314,28 @@ namespace z
 
 		generic& generic::operator%=(const generic& other)
 		{
-			if (!(numeric() && other.numeric())) throw genericNonNumber();
+			if (!(numeric() && other.numeric())) throw nonNumber();
 
 			value = integer() % other.integer();
 
 			return *this;
 		}
+
+		generic generic::operator-() const
+		{
+			if (!numeric()) throw nonNumber();
+
+			const int ix = value.index();
+			if (ix == generic::COMPLEX)
+				return -std::get<generic::COMPLEX>(value);
+			else if (ix == generic::FLOAT)
+				return -std::get<generic::FLOAT>(value);
+			else
+				return -std::get<generic::INT>(value);
+
+			return *this;
+		}
 	}
 }
+
+#endif //End if std::variant is available

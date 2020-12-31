@@ -1,6 +1,6 @@
 #include "size.hpp"
 
-#if __cplusplus == 201703L
+#if __cplusplus >= 201703L
 #include <filesystem>
 #else
 #include <fstream>
@@ -12,7 +12,7 @@ namespace z
 	{
 		size_t size(const zpath& path) noexcept
 		{
-#			if __cplusplus == 201703L
+#			if __cplusplus >= 201703L
 			//If C++17, we can get file size faster than using fstream's seek() method.
 			std::error_code err{};
 			const auto len = std::filesystem::file_size((const char*)path.cstring());

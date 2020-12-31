@@ -1,39 +1,37 @@
 #pragma once
 
+#if __cplusplus < 201703L
+#pragma message ("\nNo std::variant available so z::util::generic is disabled.\nCompile with STD=c++17 to enable this feature.")
+#else //Otherwise std::variant is available
+
 #include "../core/string.hpp"
 #include "../core/array.hpp"
 #include <variant>
-#include <exception>
 
 namespace z
 {
 	namespace util
 	{
-		struct genericNonNumber : public std::exception
-		{
-			const char* what() const throw()
-			{
-				return "Attempted numeric operation on non-number";
-			}
-		};
-
 		class generic
 		{
 		public:
 			typedef z::core::array<generic> list;
 
 		private:
-			std::variant<long,double,std::complex<double>,zstring,list> value;
+			std::variant<bool,long,double,std::complex<double>,zstring,list> value;
 
 		public:
 			enum //allowed data types
 			{
+				VOID,
 				INT,
 				FLOAT,
 				COMPLEX,
 				STRING,
 				ARRAY
 			};
+
+			generic() noexcept {}
 
 			//initializers
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
@@ -49,7 +47,7 @@ namespace z
 
 			//assignment operators
 			template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value,INT>::type>
-			generic& operator=(int initVal) noexcept { value = long(initVal); return *this; }
+			generic& operator=(INT initVal) noexcept { value = long(initVal); return *this; }
 
 			generic& operator=(float initVal) noexcept { value = double(initVal); return *this; }
 			generic& operator=(double initVal) noexcept { value = initVal; return *this; }
@@ -109,8 +107,10 @@ namespace z
 			generic operator/(const generic& other) const { auto tmp = *this; return tmp/=other; }
 			generic& operator%=(const generic& other);
 			generic operator%(const generic& other) const { auto tmp = *this; return tmp%=other; }
-
+			generic operator-() const;
 		};
 
 	}
 }
+
+#endif //End if std::variant is available
