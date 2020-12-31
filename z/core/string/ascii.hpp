@@ -185,38 +185,6 @@ namespace z
 			return *this;
 		}
 
-		template <>
-		string<ascii> string<ascii>::substr(int index, int count) const noexcept
-		{
-			string<ascii> result;
-			if (!count) return result;
-
-			if (index < 0) index += character_ct;
-
-			int begin, end;
-			if (count > 0)
-			{
-				begin = index;
-				end = index + count;
-			}
-			else
-			{
-				begin = index + count + 1;
-				end = index + 1;
-			}
-
-			if ((end <= 0) || (begin >= character_ct)) return result;
-
-			if (begin < 0) begin = 0;
-			if (end >= character_ct) end = character_ct;
-
-			result.increase(end - begin);
-			memcpy(result.data, (data + begin), end - begin + 1);
-			result.character_ct = end - begin;
-
-			return result;
-		}
-
 		template<>
 		const string<ascii>& string<ascii>::append(uint32_t chr) noexcept
 		{
@@ -519,9 +487,10 @@ namespace z
 			double fractional = modf(value, &intTemp);
 			unsigned long integral = intTemp;
 
-			// number.raw.exponent - 1023;
+			bool overflow = false;
 			int ibufsiz = integralBuf(integral, base, ibuf);
-			int fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf);
+			int fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf, &overflow);
+			if (overflow) trimFloatBuf(base, force, fbuf, &fbufsiz, ibuf, &ibufsiz);
 			int ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
 			//initialize string data
 			character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
@@ -565,7 +534,7 @@ namespace z
 		}
 
 		template <>
-		void string<ascii>::initComplex(const std::complex<double>& value, int base, int precision) noexcept
+		void string<ascii>::initComplex(const std::complex<double>& value, int base, int precision, bool scientific, int padSize) noexcept
 		{
 			data_len = 4;
 			data = new uint8_t[data_len];
@@ -574,19 +543,19 @@ namespace z
 
 			if (value.real() && value.imag())
 			{
-				operator=(string<utf32>(value.real(), base, precision, 0));
+				operator=(string<ascii>(value.real(), base, precision, scientific, padSize));
 				if (value.imag() > 0) operator+=("+");
-				operator+=(string<utf32>(value.imag(), base, precision, 0));
+				operator+=(string<ascii>(value.imag(), base, precision, scientific, padSize));
 				operator+=("i");
 			}
 			else if (value.imag())
 			{
-				operator=(string<utf32>(value.imag(), base, precision, 0));
+				operator=(string<ascii>(value.imag(), base, precision, scientific, padSize));
 				operator+=("i");
 			}
 			else
 			{
-				operator=(string<utf32>(value.real(), base, precision, 0));
+				operator=(string<ascii>(value.real(), base, precision, scientific, padSize));
 			}
 
 		}
@@ -607,6 +576,38 @@ namespace z
 		int string<ascii>::chars() const noexcept
 		{
 			return character_ct;
+		}
+
+		template <>
+		string<ascii> string<ascii>::substr(int index, int count) const noexcept
+		{
+			string<ascii> result;
+			if (!count) return result;
+
+			if (index < 0) index += character_ct;
+
+			int begin, end;
+			if (count > 0)
+			{
+				begin = index;
+				end = index + count;
+			}
+			else
+			{
+				begin = index + count + 1;
+				end = index + 1;
+			}
+
+			if ((end <= 0) || (begin >= character_ct)) return result;
+
+			if (begin < 0) begin = 0;
+			if (end >= character_ct) end = character_ct;
+
+			result.increase(end - begin);
+			memcpy(result.data, (data + begin), end - begin + 1);
+			result.character_ct = end - begin;
+
+			return result;
 		}
 
 		template <>
@@ -720,147 +721,32 @@ namespace z
 		std::complex<double> string<ascii>::complex(int base, uint32_t decimal) const noexcept
 		{
 			if ((base < 2) || (base > 36)) return 0;
-
 			if (!character_ct) return 0;
 
-			bool pastDecimal, pastExponent, imag, ir, negexponent;
-			pastDecimal = pastExponent = imag = ir = negexponent = false;
-
-			bool negative = (data[0] == '-');
-			int start = (negative || (data[0] == '+'));
-
-			if (start >= character_ct) return 0;
-
-			double imagResult = 0;
-			double realResult = 0;
-			double result = 0;
-			double frac = 1;
-			int exponent = 0;
-
-			if (negative) result = -result;
-
-			for (int i=start; i<character_ct; i++)
+			int start = ((data[0] == '-') || (data[0] == '+'));
+			bool imag = false;
+			bool imagEnd = core::toLower(data[character_ct-1]) == 'i';
+			for (int i=start; i<character_ct; ++i)
 			{
-				if (!isNumeric(data[i], base))
+				if (core::toLower(data[i]) == 'i') imag = true;
+				if (((data[i] == '-') || (data[i] == '+')) && (base < 14) && i && (core::toLower(data[i-1]) != 'e'))
 				{
-					if (data[i] == decimal)
+					if (!(imag ^ imagEnd)) return 0;
+					auto sub1 = substr(0,i-imag);
+					auto sub2 = substr(i,character_ct-i-imagEnd);
+
+					if (imag)
 					{
-						if (pastDecimal || pastExponent)
-							return 0;
-						else
-						{
-							if ((i >= character_ct-1) || (core::toLower(data[i+1]) == 'i'))
-								return 0;
-							pastDecimal = true;
-						}
-					}
-					else if (core::toLower(data[i]) == 'e')
-					{
-						if (pastExponent)
-							return 0;
-						else
-						{
-							pastExponent = true;
-
-							negexponent = (data[i+1] == '-');
-							if (negexponent || (data[i+1] == '+'))
-								i++;
-						}
-					}
-					else if (core::toLower(data[i]) == 'i')
-					{
-						if (imag)
-							return 0;
-						else
-						{
-							imag = true;
-
-							if (!i || !isNumeric(data[i-1], base)) result = 1;
-
-							if (pastExponent)
-							{
-								for (int i=0; i<exponent; i++)
-								{
-									if (negexponent)
-										result /= base;
-									else
-										result *= base;
-								}
-							}
-
-							pastExponent = pastDecimal = negexponent = false;
-
-							imagResult = (negative ? -result : result);
-							result = 0;
-						}
-					}
-					else if ((data[i] == '-') || (data[i] == '+'))
-					{
-						if (ir || (i >= character_ct-1))
-							return 0;
-						else
-						{
-							ir = true;
-
-							if (!imag)
-							{
-								if (pastExponent)
-								{
-									for (int i=0; i<exponent; i++)
-									{
-										if (negexponent)
-											result /= base;
-										else
-											result *= base;
-									}
-								}
-
-								realResult = (negative ? -result : result);
-								result = 0;
-							}
-
-							pastDecimal = pastExponent = negexponent = false;
-
-							negative = (data[i] == '-');
-						}
-					}
-					else return 0;
-				}
-				else
-				{
-					if (pastExponent)
-					{
-						exponent *= base;
-						exponent += numeralValue(data[i]);
-					}
-					else if (pastDecimal)
-					{
-						frac /= base;
-						result += (double)numeralValue(data[i])*frac;
+						return std::complex<double>(sub2.floating(base, decimal),sub1.floating(base, decimal));
 					}
 					else
 					{
-						result *= base;
-						result += numeralValue(data[i]);
+						return std::complex<double>(sub1.floating(base, decimal),sub2.floating(base, decimal));
 					}
 				}
 			}
 
-			if (pastExponent)
-			{
-				for (int i=0; i<exponent; i++)
-				{
-					if (negexponent)
-						result /= base;
-					else
-						result *= base;
-				}
-			}
-
-			if (result)
-				realResult = (negative ? -result : result);
-
-			return std::complex<double>(realResult, imagResult);
+			return 0;
 		}
 
 		///analyzers

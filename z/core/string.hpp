@@ -54,7 +54,7 @@ namespace z
 			void initInt(long long, int, int) noexcept;
 			void initFloat(double, int, int, bool, int) noexcept;
 			void initPointer(void*) noexcept;
-			void initComplex(const std::complex<double>&, int, int) noexcept;
+			void initComplex(const std::complex<double>&, int, int, bool, int) noexcept;
 
 		public:
 			///Default string constructor
@@ -189,9 +189,9 @@ namespace z
 			 * (default is 6).
 			 */
 			template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value,T>::type>
-			string(const std::complex<T>& value, int base = 10, int precision = 0) noexcept
+			string(const std::complex<T>& value, int base = 10, int precision = 0, bool scientific = true, int padSize = 0) noexcept
 			{
-				this->initComplex((std::complex<double>)value, base, precision);
+				this->initComplex((std::complex<double>)value, base, precision, scientific, padSize);
 			}
 
 			/**

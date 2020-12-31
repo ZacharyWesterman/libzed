@@ -32,7 +32,6 @@ else
 CCTARGET = -m$(BITS)
 endif
 
-STD = c++11
 
 #Generate for specified std and arch,
 #Show all warnings & handle exceptions,
@@ -44,6 +43,12 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 	-fdata-sections -ffunction-sections
 
 LFLAGS = -shared $(CCTARGET)
+
+STD = c++11
+# link to std::filesystem if c++17
+ifneq (,$(findstring $(STD),c++17 gnu++17))
+LFLAGS += -lstdc++fs
+endif
 
 STATIC_LIB = lib$(LIBNAME).a
 
@@ -63,7 +68,7 @@ endif
 
 # if debug flag is not set
 ifndef DEBUG
-CCFLAGS += -O$(OLEVEL) -g0
+CCFLAGS += -O$(OLEVEL)
 LFLAGS += -s
 endif
 ifdef DEBUG

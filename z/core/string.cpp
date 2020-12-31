@@ -55,7 +55,7 @@ int integralBuf(unsigned long integral, int base, uint8_t* buf) noexcept
 	}
 }
 
-int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf) noexcept
+int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t* buf, bool* overflow) noexcept
 {
 	if (fractional)
 	{
@@ -80,12 +80,57 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			if (!fractional && !force) cont = false;
 		}
 
+		if ((fractional * mult) >= (base / 2)) *overflow = true;
+
 		return length;
 	}
 	else
 	{
 		return 0;
 	}
+}
+
+void trimFloatBuf(int base, bool force, uint8_t* fbuf, int* fbufsiz, uint8_t* ibuf, int* ibufsiz) noexcept
+{
+	bool overflow = true;
+	for (int i=(*fbufsiz-1); i>=0; --i)
+	{
+		int val = z::core::numeralValue(fbuf[i]) + 1;
+
+		if (val >= base)
+		{
+			fbuf[i] = '0';
+			if (!force) --(*fbufsiz);
+		}
+		else
+		{
+			fbuf[i] = z::core::numeral(val);
+		}
+
+		overflow = val > (base / 2);
+		if (!overflow) break;
+	}
+
+	if (!overflow) return;
+
+	//if fractional rounding spilled over into integer part
+	for (int i=0; i<*ibufsiz; ++i)
+	{
+		int val = z::core::numeralValue(ibuf[i]) + 1;
+		if (val >= base)
+		{
+			ibuf[i] = '0';
+		}
+		else
+		{
+			ibuf[i] = z::core::numeral(val);
+			return;
+		}
+	}
+
+	//if we need to add another digit to integer part
+	//rare but it happens
+	ibuf[(*ibufsiz)++] = '1';
 }
 
 #include "string/asciiConstructors.hpp"
