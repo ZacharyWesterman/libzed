@@ -180,6 +180,12 @@ namespace z
 			int type() const noexcept;
 
 			/**
+			 * \brief Get a character string representing the current type.
+			 * \return A string representing the type.
+			 */
+			const char* typeString() const noexcept;
+
+			/**
 			 * \brief Get the lowest type this value can be cast to without losing precision.
 			 * \param castStrings whether to attempt to downcast strings to numeric types.
 			 * \return The lowest possible type this can be cast to without losing precision.

@@ -114,6 +114,19 @@ namespace z
 			return value.index();
 		}
 
+		const char* generic::typeString() const noexcept
+		{
+			const char* typeOpts[] = {
+				"void",
+				"int",
+				"float",
+				"complex",
+				"string",
+				"array"
+			};
+			return typeOpts[value.index()];
+		}
+
 		int generic::reducesTo(bool castStrings) const noexcept
 		{
 			const int ix = value.index();
