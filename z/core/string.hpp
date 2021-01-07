@@ -1320,7 +1320,7 @@ namespace z
 			template <class archive>
 			void load_minimal(archive const& ar, std::string const& value)
 			{
-				(void)ar
+				(void)ar;
 				operator=(value.c_str());
 			}
 #		endif
