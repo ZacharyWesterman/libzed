@@ -94,7 +94,17 @@ namespace z
 			return std::get<generic::STRING>(value);
 		}
 
-		z::core::array<generic>& generic::array()
+		const zstring& generic::string() const
+		{
+			return std::get<generic::STRING>(value);
+		}
+
+		generic::list& generic::array()
+		{
+			return std::get<generic::ARRAY>(value);
+		}
+
+		const generic::list& generic::array() const
 		{
 			return std::get<generic::ARRAY>(value);
 		}

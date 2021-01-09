@@ -86,6 +86,8 @@ namespace z
 			 */
 			generic(const list& initVal) noexcept : value(initVal) {}
 
+			generic(const std::initializer_list<generic>& initVal) noexcept : value(list(initVal)) {}
+
 			/**
 			 * \brief Explicit conversion to integer types.
 			 * \return The contained value, cast to an integer.
@@ -148,6 +150,8 @@ namespace z
 			 */
 			zstring& string();
 
+			const zstring& string() const;
+
 			/**
 			 * \brief Get a reference to this array.
 			 *
@@ -159,6 +163,8 @@ namespace z
 			 * \return A reference to the current array value.
 			 */
 			list& array();
+
+			const list& array() const;
 
 			/**
 			 * \brief Whether this value is a numeric type.
@@ -294,6 +300,104 @@ namespace z
 			 * \return A reference to this after negation.
 			 */
 			generic operator-() const;
+
+#		if __has_include(<cereal/cereal.hpp>)
+			/**
+			 * \brief Serialization output.
+			 * \param ar The output archive.
+			 */
+			template <typename archive>
+			void save(archive& ar) const
+			{
+				struct cplx {
+					double real;
+					double imag;
+
+					void serialize(archive& ar)
+					{
+						ar(CEREAL_NVP(real), CEREAL_NVP(imag));
+					}
+				};
+
+				const short int type = this->value.index();
+				ar(CEREAL_NVP(type));
+
+				if (type == ARRAY)
+				{
+					ar(cereal::make_nvp("value", array()));
+				}
+				else if (type == STRING)
+				{
+					ar(cereal::make_nvp("value", string()));
+				}
+				else if (type == COMPLEX)
+				{
+					auto cval = complex();
+					cplx val = {cval.real(), cval.imag()};
+					ar(cereal::make_nvp("value", val));
+				}
+				else if (type == FLOAT)
+				{
+					ar(cereal::make_nvp("value", floating()));
+				}
+				else if (type == INT)
+				{
+					ar(cereal::make_nvp("value", integer()));
+				}
+			}
+
+			/**
+			 * \brief Serialization input.
+			 * \param ar The input archive.
+			 */
+			template <class archive>
+			void load(archive& ar)
+			{
+				struct cplx {
+					double real;
+					double imag;
+
+					void serialize(archive& ar)
+					{
+						ar(CEREAL_NVP(real), CEREAL_NVP(imag));
+					}
+				};
+
+				const short int type = VOID;
+				ar(CEREAL_NVP(type));
+
+				if (type == ARRAY)
+				{
+					list val;
+					ar(cereal::make_nvp("value", val));
+					value = val;
+				}
+				else if (type == STRING)
+				{
+					zstring val;
+					ar(cereal::make_nvp("value", val));
+					value = val;
+				}
+				else if (type == COMPLEX)
+				{
+					cplx val;
+					ar(cereal::make_nvp("value",val));
+					value = std::complex<double>(val.real,val.imag);
+				}
+				else if (type == FLOAT)
+				{
+					double val;
+					ar(cereal::make_nvp("value", val));
+					value = val;
+				}
+				else if (type == INT)
+				{
+					long val;
+					ar(cereal::make_nvp("value", val));
+					value = val;
+				}
+			}
+#		endif
 		};
 
 	}
