@@ -363,7 +363,7 @@ namespace z
 					}
 				};
 
-				const short int type = VOID;
+				short int type = VOID;
 				ar(CEREAL_NVP(type));
 
 				if (type == ARRAY)
