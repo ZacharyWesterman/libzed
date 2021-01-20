@@ -30,7 +30,7 @@ object:
 	mkdir $@
 
 object/%.o: source/%.cpp
-	g++ -I"../" -std=$(STD) -fPIC -o $@ -c $^
+	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $^
 
 binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
 	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
