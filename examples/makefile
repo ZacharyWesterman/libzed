@@ -21,7 +21,12 @@ endif
 
 STD = c++17
 
-all: binary object $(DLL1) binary/regexConsole binary/fileStream binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2) binary/generic
+all: binary object $(DLL1)\
+	binary/regexConsole\
+	binary/fileStream\
+	binary/generic\
+	binary/numberwang\
+	binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2)
 
 binary:
 	mkdir $@

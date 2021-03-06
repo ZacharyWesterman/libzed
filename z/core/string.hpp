@@ -16,6 +16,9 @@
 
 namespace z
 {
+	//default complex value is double
+	typedef std::complex<double> cplx;
+
 	namespace core
 	{
 
