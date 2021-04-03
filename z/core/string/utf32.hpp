@@ -562,8 +562,6 @@ namespace z
 			if (count)
 			{
 				if (index < 0) index += character_ct;
-				return *this;
-
 				if (index >= character_ct) return *this;
 
 				int start, end, offset;
