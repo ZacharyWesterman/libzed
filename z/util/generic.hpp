@@ -86,6 +86,13 @@ namespace z
 			 */
 			generic(const list& initVal) noexcept : value(initVal) {}
 
+			/**
+			 * \brief Construct as array type from initializer list.
+			 *
+			 * This allows generic objects to be constructed with less syntax fluff.
+			 *
+			 * \param initVal The value to initialize with.
+			 */
 			generic(const std::initializer_list<generic>& initVal) noexcept : value(list(initVal)) {}
 
 			/**
@@ -150,6 +157,16 @@ namespace z
 			 */
 			zstring& string();
 
+			/**
+			 * \brief Get a const reference to this string.
+			 *
+			 * This method is faster than toString() and allows access to string contents.
+			 *
+			 * \throws std::exception if the current type is not a string.
+			 * Use toString() if you do not know for sure what type this is.
+			 *
+			 * \return A reference to the current string value.
+			 */
 			const zstring& string() const;
 
 			/**
@@ -164,11 +181,21 @@ namespace z
 			 */
 			list& array();
 
+			/**
+			 * \brief Get a const reference to this array.
+			 *
+			 * This method allows fast access to (but not manipulation of) array contents.
+			 *
+			 * \throws std::exception if the current type is not an array.
+			 * It's a good idea to check before calling this method.
+			 *
+			 * \return A reference to the current array value.
+			 */
 			const list& array() const;
 
 			/**
 			 * \brief Whether this value is a numeric type.
-			 * \return true if for integer, floating point and complex types, false otherwise.
+			 * \return true for integer, floating point and complex types, false otherwise.
 			 */
 			bool numeric() const noexcept;
 
