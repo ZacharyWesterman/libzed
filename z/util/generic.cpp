@@ -387,10 +387,26 @@ namespace z
 
 			const int ix = value.index();
 			const int oix = other.value.index();
+
+			//don't duplicate arrays (may be large)
 			if ((ix == generic::ARRAY) || (oix == generic::ARRAY))
 			{
 				if (ix != oix) return false;
 				return std::get<generic::ARRAY>(value) == std::get<generic::ARRAY>(other.value);
+			}
+
+			//don't duplicate strings (may be large)
+			if ((ix == generic::STRING) && (oix == generic::STRING))
+			{
+				return std::get<generic::STRING>(value) == std::get<generic::STRING>(other.value);
+			}
+			else if (ix == generic::STRING)
+			{
+				return std::get<generic::STRING>(value) == other.toString();
+			}
+			else if (oix == generic::STRING)
+			{
+				return toString() == std::get<generic::STRING>(other.value);
 			}
 
 			generic a(*this), b(other);
