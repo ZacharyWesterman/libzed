@@ -385,6 +385,11 @@ namespace z
 		{
 			if (this == &other) return true;
 
+			const int ix = value.index();
+			const int oix = other.value.index();
+			if ((ix == generic::ARRAY) && (oix == generic::ARRAY))
+				return std::get<generic::ARRAY>(value) == std::get<generic::ARRAY>(other.value);
+
 			generic a(*this), b(other);
 			a.promote(&b);
 			return a.operator==(b);
