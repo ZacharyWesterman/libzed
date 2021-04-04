@@ -1,11 +1,9 @@
 #pragma once
 
 #include "../core/string.hpp"
-#include "../core/refArray.hpp"
 #include "../core/sortedRefArray.hpp"
 #include "../core/timeout.hpp"
 
-#include "dictionary/word.hpp"
 #include "dictionary/dictRange.hpp"
 #include "../core/sortedRefArray.hpp"
 
@@ -19,18 +17,19 @@ namespace z
 		class dictionary : public core::sizable
 		{
 		private:
-			core::string<> lang;
-			core::sortedRefArray<word*> wordList;
-			// core::refArray<word*> wordList;
+			zstring lang;
+			core::sortedRefArray<const zstring*> wordList;
 
-			encoding streamFormat;
 			bool readingStream;
 
-			word* readWordFromStream(core::inputStream& stream) noexcept;
+			zstring* readWordFromStream(core::inputStream& stream) noexcept;
 
 		public:
-			///Constructor
-			dictionary() noexcept;
+			/**
+			 * \brief Constructor
+			 * \param A name to help identify the language (optional).
+			 */
+			dictionary(const zstring& langName = "") noexcept : lang(langName), readingStream(false) {};
 
 			///Destructor
 			~dictionary() noexcept;
@@ -43,40 +42,46 @@ namespace z
 			/**
 			 * \brief Read this dictionary's word list as text from a stream.
 			 *
-			 * Note that for long dictionaries (i.e. English), it may take
+			 * Note that for long dictionaries, it may take
 			 * several seconds for this operation to complete!
+			 * Hence the timeout method.
 			 *
 			 * \param stream The stream to read from.
-			 * \param time Optional param to force return after time out
+			 * \param time Optional param to force return after time out.
+			 * \param assumePresorted If false, the word list is sorted while it is read.
+			 * If true, no sorting is done.
+			 *
+			 * \note Operating on an un-sorted dictionary may have undefined behavior!
+			 * Only set assumePresorted to true if you know for sure your data is sorted already!
 			 *
 			 * \return A positive integer if finished reading successfully, 0 if not finished reading,
 			 * a negative integer if read failed.
 			 *
-			 * \threadsafe_member_ref
+			 * \threadsafe_member_no
 			 */
-			int read(core::inputStream& stream, const core::timeout& time = -1) noexcept;
+			int read(core::inputStream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
 
 			/**
 			 * \brief Check if the given string is a valid word in the dictionary (case is ignored).
 			 *
-			 * \param name The word to search for.
+			 * \param word The word to search for.
 			 *
 			 * \return True if it is a valid word, false otherwise.
 			 *
 			 * \threadsafe_member_yes
 			 */
-			bool isWord(const core::string<>& name) const noexcept;
+			bool isWord(const zstring& word) const noexcept;
 
 			/**
-			 * \brief Get the word information for the given dictionary word.
+			 * \brief Locate a word in the dictionary.
 			 *
-			 * \param name The word to get info for.
+			 * \param word The word to find.
 			 *
-			 * \return Approprifoundate word information if this is a valid word, blank word info otherwise.
+			 * \return The index of the word if it exists in the dictionary, -1 otherwise.
 			 *
 			 * \threadsafe_member_yes
 			 */
-			word getWord(const core::string<>& name) const noexcept;
+			int find(const zstring& word) const noexcept;
 
 			/**
 			 * \brief Get the word count of this dictionary.
@@ -85,34 +90,34 @@ namespace z
 			 *
 			 * \threadsafe_member_yes
 			 */
-			int wordCount() const noexcept;
+			int length() const noexcept;
 
 			/**
-			 * \brief Set a word in the dictionary.
+			 * \brief Add a word to the dictionary.
 			 *
-			 * If the word already exists, updates its info. Otherwise, creates a new word.
+			 * If the word already exists, does nothing. Otherwise, creates a new word.
 			 *
-			 * \param newWord The word to add or update.
+			 * \param word The word to add or update.
 			 *
 			 * \threadsafe_member_no
 			 */
-			void setWord(const word& newWord) noexcept;
+			void addWord(const zstring& word) noexcept;
 
 			/**
 			 * \brief Get the language of this dictionary.
 			 *
-			 * \return A reference to he language name.
+			 * \return A reference to the language name.
 			 *
 			 * \threadsafe_member_yes
 			 */
-			const core::string<>& language() const noexcept;
+			const zstring& language() const noexcept;
 
 			/**
 			 * \brief Set the language of this dictionary.
 			 *
 			 * \param newLang The string to set as the language name.
 			 */
-			void setLanguage(const core::string<>& newLang) noexcept;
+			void setLanguage(const zstring& newLang) noexcept;
 
 			size_t size() const noexcept;
 
@@ -147,7 +152,7 @@ namespace z
 				ar((size_t)wordList.length());
 				for (int i=0; i<(int)wordList.length(); i++)
 				{
-					ar(wordList[i]->get());
+					ar(*(wordList[i]));
 				}
 			}
 
@@ -163,11 +168,11 @@ namespace z
 				ar(sz);
 				wordList.increase(sz);
 
-				zstring data;
 				for (int i=0; i<sz; i++)
 				{
-					ar(data);
-					wordList.append(new word(data));
+					zstring* data = new zstring;
+					ar(*data);
+					wordList.append(data);
 				}
 			}
 #		endif

@@ -5,11 +5,6 @@ namespace z
 {
 	namespace util
 	{
-		dictionary::dictionary() noexcept
-		{
-			readingStream = false;
-		}
-
 		dictionary::~dictionary() noexcept
 		{
 			clear();
@@ -24,7 +19,7 @@ namespace z
 			wordList.clear();
 		}
 
-		int dictionary::read(core::inputStream& stream, const core::timeout& time) noexcept
+		int dictionary::read(core::inputStream& stream, const core::timeout& time, bool assumePresorted) noexcept
 		{
 			if (stream.bad()) return -1;
 			if (stream.empty()) return 1;
@@ -32,74 +27,55 @@ namespace z
 			if (!readingStream)
 			{
 				clear();
-				streamFormat = stream.format();
 				readingStream = true;
 			}
 
-			core::string<> name;
-
-			name.read(stream);
 			while (!(stream.empty() || time.timedOut()))
 			{
-				wordList.add(new word(name));
-
-				name.read(stream);
+				zstring* word = new zstring;
+				word->read(stream);
+				if (word->length())
+				{
+					if (assumePresorted)
+						wordList.append(word);
+					else
+						wordList.add(word);
+				}
+				else
+					delete word;
 			}
 
 			return stream.empty();
 		}
 
-		bool dictionary::isWord(const core::string<>& name) const noexcept
+		bool dictionary::isWord(const zstring& word) const noexcept
 		{
-			if (!wordList.length()) return false;
-
-			word* check = new word(name);
-			auto result = wordList.find(check);
-
-			delete check;
-			return result >= 0;
+			auto index = wordList.find(&word);
+			return index >= 0;
 		}
 
-		word dictionary::getWord(const core::string<>& name) const noexcept
+		int dictionary::find(const zstring& word) const noexcept
 		{
-			word* check = new word(name);
-			auto index = wordList.find(check);
-			delete check;
-
-			if (index >= 0)
-				return word(*(wordList[index]));
-			else
-				return word();
+			return wordList.find(&word);
 		}
 
-		int dictionary::wordCount() const noexcept
+		int dictionary::length() const noexcept
 		{
 			return wordList.length();
 		}
 
-		void dictionary::setWord(const word& newWord) noexcept
+		void dictionary::addWord(const zstring& word) noexcept
 		{
-			word* item = new word(newWord);
-
-			auto index = wordList.find(item);
-
-			if (index >= 0)
-			{
-				delete wordList[index];
-				wordList[index] = item;
-			}
-			else
-			{
-				wordList.add(item);
-			}
+			auto index = wordList.find(&word);
+			if (index < 0) wordList.add(new zstring(word));
 		}
 
-		const core::string<>& dictionary::language() const noexcept
+		const zstring& dictionary::language() const noexcept
 		{
 			return lang;
 		}
 
-		void dictionary::setLanguage(const core::string<>& newLang) noexcept
+		void dictionary::setLanguage(const zstring& newLang) noexcept
 		{
 			lang = newLang;
 		}
@@ -140,20 +116,20 @@ namespace z
 			while (left < right)
 			{
 				int center = (left + right) >> 1;
-				auto thisChar = z::core::toUpper(wordList[center]->get()[wordRange->charPos]);
+				auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
 
 				if (thisChar < nextChar)
 					left = center + 1;
 				else
 					right = center - 1;
 			}
-			if (z::core::toUpper(wordList[left]->get()[wordRange->charPos]) < nextChar) ++left;
+			if (z::core::toUpper(wordList[left]->at(wordRange->charPos)) < nextChar) ++left;
 
 			//If we've skipped past the last successful match, we're done.
 			if (wordRange->charPos)
 			{
-				auto oldLast = z::core::toUpper(wordList[wordRange->left]->get()[wordRange->charPos - 1]);
-				auto newLast = z::core::toUpper(wordList[left]->get()[wordRange->charPos - 1]);
+				auto oldLast = z::core::toUpper(wordList[wordRange->left]->at(wordRange->charPos - 1));
+				auto newLast = z::core::toUpper(wordList[left]->at(wordRange->charPos - 1));
 
 				if (oldLast != newLast)
 				{
@@ -169,24 +145,24 @@ namespace z
 			while (left < right)
 			{
 				int center = (left + right) >> 1;
-				auto thisChar = z::core::toUpper(wordList[center]->get()[wordRange->charPos]);
+				auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
 
 				if (thisChar > nextChar)
 					right = center - 1;
 				else
 					left = center + 1;
 			}
-			if (z::core::toUpper(wordList[right]->get()[wordRange->charPos]) < nextChar) --right;
+			if (z::core::toUpper(wordList[right]->at(wordRange->charPos)) < nextChar) --right;
 			wordRange->right = right;
 
-			if (z::core::toUpper(wordList[wordRange->left]->get()[wordRange->charPos]) != nextChar)
+			if (z::core::toUpper(wordList[wordRange->left]->at(wordRange->charPos)) != nextChar)
 			{
 				wordRange->exhausted = true;
 			}
 			else
 			{
 				++(wordRange->charPos);
-				wordRange->isWord = (wordRange->charPos == (wordList[wordRange->left]->get().length()));
+				wordRange->isWord = (wordRange->charPos == (wordList[wordRange->left]->length()));
 			}
 
 			return !(wordRange->exhausted);

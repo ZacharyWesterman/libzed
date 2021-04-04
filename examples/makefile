@@ -21,12 +21,11 @@ endif
 
 STD = c++17
 
-all: binary object $(DLL1)\
-	binary/regexConsole\
-	binary/fileStream\
-	binary/generic\
-	binary/numberwang\
-	binary/dynamicLib.$(LIBEXT) binary/loadLib $(DLL2)
+SRCS := $(wildcard source/*.cpp)
+SRCS := $(filter-out source/dynamicLib.cpp,$(SRCS))
+BINS = $(patsubst source/%.cpp,binary/%,$(SRCS))
+
+all: binary object $(DLL1) binary/dynamicLib.$(LIBEXT) $(BINS) $(DLL2)
 
 binary:
 	mkdir $@
@@ -43,10 +42,10 @@ binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
 binary/%: object/%.o
 	g++ $(LFLAGS) -o $@ $^
 
-binary/zed.dll: zed.dll
+$(DLL2): $(DLL1)
 	$(MV) "$^" "$@"
 
-zed.dll: ../zed.dll
+$(DLL1): ../$(DLL1)
 	$(CP) "$@"
 
 clean:
