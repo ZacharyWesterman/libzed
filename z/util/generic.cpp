@@ -387,8 +387,11 @@ namespace z
 
 			const int ix = value.index();
 			const int oix = other.value.index();
-			if ((ix == generic::ARRAY) && (oix == generic::ARRAY))
+			if ((ix == generic::ARRAY) || (oix == generic::ARRAY))
+			{
+				if (ix != oix) return false;
 				return std::get<generic::ARRAY>(value) == std::get<generic::ARRAY>(other.value);
+			}
 
 			generic a(*this), b(other);
 			a.promote(&b);
