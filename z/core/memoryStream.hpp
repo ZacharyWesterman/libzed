@@ -54,21 +54,21 @@ namespace z
 			}
 
 			void put(uint8_t ch) override;
- 			void put(uint8_t* str, int count, encoding format = ascii) override;
+			void put(uint8_t* str, int count, encoding format = ascii) override;
 
- 			uint8_t get() override;
+			uint8_t get() override;
 			uint8_t peek() override;
- 			uint32_t getChar() override;
+			uint32_t getChar() override;
 
- 			bool empty() override;
+			bool empty() override;
 			bool good() override;
 			bool bad() override;
 			bool binary() override;
 			bool seekable() override;
 
- 			void seek(size_t index) override;
- 			size_t tell() override;
- 			size_t end() override;
+			void seek(size_t index) override;
+			size_t tell() override;
+			size_t end() override;
 
 			encoding format() override;
 			void setFormat(encoding enc, bool force = false) override;
