@@ -358,6 +358,38 @@ namespace z
 
 			return *this;
 		}
+
+		bool generic::operator==(const generic& other) const
+		{
+			if (this == &other) return true;
+
+			const int ix = value.index();
+			const int oix = other.value.index();
+			if (ix != oix) return false;
+
+			if (ix == generic::ARRAY)
+				return std::get<generic::ARRAY>(value) == std::get<generic::ARRAY>(other.value);
+			else if (ix == generic::STRING)
+				return std::get<generic::STRING>(value) == std::get<generic::STRING>(other.value);
+			else if (ix == generic::COMPLEX)
+				return std::get<generic::COMPLEX>(value) == std::get<generic::COMPLEX>(other.value);
+			else if (ix == generic::FLOAT)
+				return std::get<generic::FLOAT>(value) == std::get<generic::FLOAT>(other.value);
+			else if (ix == generic::INT)
+				return std::get<generic::INT>(value) == std::get<generic::INT>(other.value);
+			else
+				return true; //Null types are always equivalent.
+		}
+
+		bool generic::equivalent(const generic& other) const
+		{
+			if (this == &other) return true;
+
+			generic a(*this), b(other);
+			a.promote(&b);
+			return a.operator==(b);
+		}
+
 	}
 }
 

@@ -2,7 +2,7 @@
 /**
  * \file z/system.hpp
  * \namespace z::system
- * \brief Library containing classes and functions relating to system info.
+ * \brief This section contains classes and functions relating to system info.
  *
 **/
 

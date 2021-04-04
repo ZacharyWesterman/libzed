@@ -328,6 +328,38 @@ namespace z
 			 */
 			generic operator-() const;
 
+			/**
+			 * \brief Check strict equality.
+			 * \param other The object to compare against.
+			 * \return True if both objects have the same type and identical data.
+			 * \see equals(), equivalent()
+			 * \note When comparing generics of array types, <B>all</B> sub-elements may be
+			 * compared!
+			 */
+			bool operator==(const generic& other) const;
+
+			/**
+			 * \brief Check strict equality.
+			 * \param other The object to compare against.
+			 * \return True if both objects have the same type and identical data.
+			 * \see operator==(), equivalent()
+			 * \note When comparing generics of array types, <B>all</B> sub-elements may be
+			 * compared!
+			 */
+			bool equals(const generic& other) const { return operator==(other); }
+
+			/**
+			 * \brief Check loose equality.
+			 * \param other The object to compare against.
+			 * \return True if objects have comparable types and data that can be
+			 * cast to the same value without losing information.
+			 *
+			 * \see operator==(), equals()
+			 * \note When comparing generics of array types, <B>all</B> sub-elements may be
+			 * compared!
+			 */
+			bool equivalent(const generic& other) const;
+
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief Serialization output.

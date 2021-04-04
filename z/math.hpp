@@ -2,7 +2,7 @@
 /**
  * \file z/math.hpp
  * \namespace z::math
- * \brief Library of math-related functions, constants, and datatypes.
+ * \brief This section contains math-related functions, constants, and datatypes.
 **/
 
 ///Constants

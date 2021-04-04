@@ -2,7 +2,7 @@
 /**
  * \file z/file.hpp
  * \namespace z::file
- * \brief Library of file management functions and classes.
+ * \brief This section contains file management functions and classes.
 **/
 
 ///Directory operations

@@ -2,9 +2,9 @@
 /**
  * \file z/util.hpp
  * \namespace z::util
- * \brief Library containing utility classes.
+ * \brief Section containing utility classes.
  *
- * This library adds extra classes and functionality
+ * This section adds extra classes and functionality
  * for more complicated data manipulation.
 **/
 

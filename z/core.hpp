@@ -2,10 +2,10 @@
 /**
  * \file z/core.hpp
  * \namespace z::core
- * \brief Library containing core functions and classes.
+ * \brief Section containing core functions and classes.
  *
- * This library adds core functionality and is
- * required as it is often referenced by other libraries.
+ * This section adds core functionality and is
+ * required as it is often referenced by other parts of the library.
  * It can be used by itself, however, as it does not
  * require any libraries besides STL.
 **/
