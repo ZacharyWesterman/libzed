@@ -5,7 +5,7 @@ var searchData=
   ['info_447',['info',['../classz_1_1file_1_1info.html#aeb4d545c42083739c34e834a4b7016dd',1,'z::file::info']]],
   ['init_448',['init',['../classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3',1,'z::core::array::init(const T &amp;arg1)'],['../classz_1_1core_1_1array.html#a6d729c7bb182377cdb90e537cd4e1187',1,'z::core::array::init(const T &amp;arg1, const Args &amp;... args)']]],
   ['inputstream_449',['inputStream',['../classz_1_1file_1_1inputStream.html#ab9001ef637450d5f6b4c083d6368eab2',1,'z::file::inputStream::inputStream()'],['../classz_1_1file_1_1inputStream.html#acbcee58130acb9536d4808631886d1d8',1,'z::file::inputStream::inputStream(const zpath &amp;fileName)']]],
-  ['insert_450',['insert',['../classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#a3c4ef5959cc1b504698d6139d23878ea',1,'z::core::string::insert()']]],
+  ['insert_450',['insert',['../classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#a3314be548e8d54690b8c6de47b7e7bcb',1,'z::core::string::insert()']]],
   ['integer_451',['integer',['../classz_1_1util_1_1generic.html#adc841964eb03fbb344356931acdbd5d6',1,'z::util::generic::integer()'],['../classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a',1,'z::core::string::integer()']]],
   ['is_452',['is',['../classz_1_1util_1_1generic.html#a9571a5652422f3d0c572924f35d7713c',1,'z::util::generic']]],
   ['isalpha_453',['isAlpha',['../namespacez_1_1core.html#adc4a1f3409405255f808fa875bfa619f',1,'z::core']]],
