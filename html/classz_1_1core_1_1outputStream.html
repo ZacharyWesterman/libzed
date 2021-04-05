@@ -111,13 +111,14 @@ Inheritance diagram for z::core::outputStream:</div>
  <div class="center">
   <img src="classz_1_1core_1_1outputStream.png" usemap="#z::core::outputStream_map" alt=""/>
   <map id="z::core::outputStream_map" name="z::core::outputStream_map">
-<area href="classz_1_1core_1_1stream.html" title="An interface for character streams." alt="z::core::stream" shape="rect" coords="74,56,213,80"/>
-<area href="classz_1_1file_1_1outputStream.html" title="A class for file output streams." alt="z::file::outputStream" shape="rect" coords="223,56,362,80"/>
-<area href="classz_1_1system_1_1stderr.html" title="Class for sending output to stdout." alt="z::system::stderr" shape="rect" coords="372,56,511,80"/>
-<area href="classz_1_1system_1_1stdout.html" title="Class for sending output to stdout." alt="z::system::stdout" shape="rect" coords="521,56,660,80"/>
+<area href="classz_1_1core_1_1stream.html" title="An interface for character streams." alt="z::core::stream" shape="rect" coords="149,56,288,80"/>
+<area href="classz_1_1file_1_1outputStream.html" title="A class for file output streams." alt="z::file::outputStream" shape="rect" coords="298,56,437,80"/>
+<area href="classz_1_1system_1_1stderr.html" title="Class for sending output to stdout." alt="z::system::stderr" shape="rect" coords="447,56,586,80"/>
+<area href="classz_1_1system_1_1stdout.html" title="Class for sending output to stdout." alt="z::system::stdout" shape="rect" coords="596,56,735,80"/>
 <area href="classz_1_1core_1_1binaryStream.html" title="A class for binary data streams." alt="z::core::binaryStream" shape="rect" coords="0,112,139,136"/>
 <area href="classz_1_1core_1_1memoryStream.html" title="A class for streaming directly to and from memory." alt="z::core::memoryStream" shape="rect" coords="149,112,288,136"/>
-<area href="classz_1_1system_1_1console.html" title="Class for interacting with the console." alt="z::system::console" shape="rect" coords="521,112,660,136"/>
+<area href="classz_1_1core_1_1stringStream.html" title="A class for streaming directly to and from a z::core::string&lt;z::utf32&gt;." alt="z::core::stringStream" shape="rect" coords="298,112,437,136"/>
+<area href="classz_1_1system_1_1console.html" title="Class for interacting with the console." alt="z::system::console" shape="rect" coords="596,112,735,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -197,7 +198,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Tell whether this is an invalid stream object. </p>
 <dl class="section return"><dt>Returns</dt><dd>False if we can properly read to and write from the stream. True otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ace543c76c64f35a10f1e575e86583ab3">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a9d866140d48f9d4b388b14a12e74b698">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a936792bf541151987e64190af84c3dea">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a5e1b8e54a08952a4fd014905ea19aa99">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a000c6166e7f7dace16806eeca0dbd2ba">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ace543c76c64f35a10f1e575e86583ab3">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a9d866140d48f9d4b388b14a12e74b698">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a936792bf541151987e64190af84c3dea">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a0748f9be7df5169b7b9a8794be68e482">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a5e1b8e54a08952a4fd014905ea19aa99">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a000c6166e7f7dace16806eeca0dbd2ba">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -227,7 +228,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Tell whether this stream supports any binary format. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if this is a binary stream. False otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8bcbd4cd823d4c1eb090bb7497fd1a9d">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a300b00abb1435cddeaf1e41d4a21470a">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a81a7fea78664b1d1dc8d0d3d09a3e8fa">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ac3a9a484f2f2d8f9ce0ea00992932daa">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#aa64191abc14968d727aba00c8b57a5cd">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8bcbd4cd823d4c1eb090bb7497fd1a9d">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a300b00abb1435cddeaf1e41d4a21470a">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a81a7fea78664b1d1dc8d0d3d09a3e8fa">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#ac900524c77e53a415796bed06b5b75af">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ac3a9a484f2f2d8f9ce0ea00992932daa">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#aa64191abc14968d727aba00c8b57a5cd">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -258,7 +259,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Gives the position after the last character in the stream.</p>
 <dl class="section return"><dt>Returns</dt><dd>The end position of the character stream. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8b84ddcbdf101b269caee1f02bf208b2">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#ac5035f1e4d527d81fd5850349d43f36a">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#aa3b32b1b53f7d4d37b6ad8337a230a5d">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ac108f7277c4b72ca553e220e3eba76a2">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a711f2f944d2369bbd55496e9be94ac5f">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8b84ddcbdf101b269caee1f02bf208b2">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#ac5035f1e4d527d81fd5850349d43f36a">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#aa3b32b1b53f7d4d37b6ad8337a230a5d">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a20c0a100c8f65ec10ad1c7108578acd1">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ac108f7277c4b72ca553e220e3eba76a2">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a711f2f944d2369bbd55496e9be94ac5f">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -288,7 +289,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Flush all data from the stream buffer. </p>
 <p>Writes any buffered stream data and clears the buffer. </p>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ae258d78dd580e11ecb8d23b37ae0bc4c">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a5f3962f2a0d6fa74a9d177524f51a5db">z::system::stderr</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a5e8454542ae3ce713d64e7a74631208d">z::core::memoryStream</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#adb42c31c6f3b5d280838c7d9fb045029">z::file::outputStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ae258d78dd580e11ecb8d23b37ae0bc4c">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a5f3962f2a0d6fa74a9d177524f51a5db">z::system::stderr</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a34638ad50a8d4e1a34e018b786f835fe">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a5e8454542ae3ce713d64e7a74631208d">z::core::memoryStream</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#adb42c31c6f3b5d280838c7d9fb045029">z::file::outputStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -319,7 +320,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Analyzes a portion of the stream in an attempt to determine how Characters on it are formatted. Note that this only gives an assumption of the most likely encoding so it may not be correct in some cases. Additionally results will be inaccurate if the stream contains raw binary data.</p>
 <dl class="section return"><dt>Returns</dt><dd>The determined encoding format of the stream. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8951df5bdca045fd845cbe0f9885b156">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#ad26ca05bcbf71ee18e0db6204b4afa95">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a33118a1127c8a7f14df67274e373d25f">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a8951df5bdca045fd845cbe0f9885b156">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a53f14cec10d217e2e6cc91f8fdacaa7d">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#ad26ca05bcbf71ee18e0db6204b4afa95">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#adf13cc9dcfebf08aed0ee311ea55ef88">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a33118a1127c8a7f14df67274e373d25f">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -349,7 +350,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Tell whether this is a valid stream object. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if we can properly read to and write from the stream. False otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a4bd39a288f71c5ca118ab784b1879c67">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a05140eb8d9b67b57ef92f30c73af91e2">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a18dc93371166e95aeedb762fac36d139">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a1fb22689efa87b3c90d2d8d6f93547f9">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a4bd39a288f71c5ca118ab784b1879c67">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a05140eb8d9b67b57ef92f30c73af91e2">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a18dc93371166e95aeedb762fac36d139">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#acb72f3a762b627a4207580780a638c0e">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a1fb22689efa87b3c90d2d8d6f93547f9">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -435,7 +436,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a68bdfb6f9f52cc47c0065b2d85402375">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a66bccee8e1a83e67188b0881db52ad70">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a096b2408dfe781004ae47dccb265a552">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a7f2756af9401312cb3b02127b14750bb">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a90d1cb5131c39245303da7fd94077d28">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a68bdfb6f9f52cc47c0065b2d85402375">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a66bccee8e1a83e67188b0881db52ad70">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a096b2408dfe781004ae47dccb265a552">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a9344a325ac26c6192180f8372f37bc32">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a7f2756af9401312cb3b02127b14750bb">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a90d1cb5131c39245303da7fd94077d28">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -472,7 +473,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a6938f4a0668d65faaaf3aada2bb5fd41">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a790fe8bed79a3c90db078645ac2058b1">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a8e7ab2d9216710a912808c1faa5d00e3">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a7c1aaaa2e832b49c59f2fd35773b5060">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a605b704946d12046597a46a15db0f592">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a6938f4a0668d65faaaf3aada2bb5fd41">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a790fe8bed79a3c90db078645ac2058b1">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a8e7ab2d9216710a912808c1faa5d00e3">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a974c0ec67ffdf46bc0f30c9c21c6d9a5">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a7c1aaaa2e832b49c59f2fd35773b5060">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a605b704946d12046597a46a15db0f592">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -509,7 +510,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a77b82d82792e3a8c98398554afe203b4">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1stdout.html#a7d1446083e161053714ea27ab6c25ad8">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a3b1a0a7a78ca86c93c381652ffe96703">z::system::stderr</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#abc7daf79c9736be320f2e96794a8fd6b">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a86e598c669ba57ed25ff8f70fa3b3f6f">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1file_1_1outputStream.html#a77b82d82792e3a8c98398554afe203b4">z::file::outputStream</a>, <a class="el" href="classz_1_1system_1_1stdout.html#a7d1446083e161053714ea27ab6c25ad8">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a3b1a0a7a78ca86c93c381652ffe96703">z::system::stderr</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a6011f4e4cb5dd9642ce62d6794997d0a">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#abc7daf79c9736be320f2e96794a8fd6b">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a86e598c669ba57ed25ff8f70fa3b3f6f">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -539,7 +540,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Tell whether this stream allows seeking to an index. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if seeking is possible for this stream. False otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a81ee6a06fda9efb6dd2da41e0648399b">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#afe320e32ceb3f0f39bf97df125bdc9b3">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a44571837b1a149fe8863446cebebc348">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a97745d4ddfb13d07db88f396e9200394">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a81ee6a06fda9efb6dd2da41e0648399b">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#afe320e32ceb3f0f39bf97df125bdc9b3">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#a44571837b1a149fe8863446cebebc348">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#afe6dc5ffecac49f617e21638c917fef5">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a97745d4ddfb13d07db88f396e9200394">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -586,7 +587,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a4529ebbc542ab9b876657b40b8c97afd">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a0bd818cfd253a499cb1d3c7795089c2e">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#afee1809312b01d891fb547e6c11775c0">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a30f9c68080288d28c007861d4275effd">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a5fd47ae859f083da8b3258de0075040b">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#a4529ebbc542ab9b876657b40b8c97afd">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a0bd818cfd253a499cb1d3c7795089c2e">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#afee1809312b01d891fb547e6c11775c0">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a933c41844faff35ead31a2fb6827704f">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#a30f9c68080288d28c007861d4275effd">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#a5fd47ae859f083da8b3258de0075040b">z::core::binaryStream</a>.</p>
 
 </div>
 </div>
@@ -616,7 +617,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Give the current position in the stream. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current position in the stream, starting at the beginning. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ad999237c10dfe378b0f5cf3958db3b3f">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a3125b513dfecb93fbaeee4686fc93c1d">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#acac2ca550bd006d0a37118f75a77585b">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ad248eed65fd20a92ff1ab7916bd2b59b">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#af104816f68d4e6d1e52d9572689af5a7">z::core::binaryStream</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1system_1_1stdout.html#ad999237c10dfe378b0f5cf3958db3b3f">z::system::stdout</a>, <a class="el" href="classz_1_1system_1_1stderr.html#a3125b513dfecb93fbaeee4686fc93c1d">z::system::stderr</a>, <a class="el" href="classz_1_1file_1_1outputStream.html#acac2ca550bd006d0a37118f75a77585b">z::file::outputStream</a>, <a class="el" href="classz_1_1core_1_1stringStream.html#a89fe0a1960bca237a908a2e26f004e99">z::core::stringStream</a>, <a class="el" href="classz_1_1core_1_1memoryStream.html#ad248eed65fd20a92ff1ab7916bd2b59b">z::core::memoryStream</a>, and <a class="el" href="classz_1_1core_1_1binaryStream.html#af104816f68d4e6d1e52d9572689af5a7">z::core::binaryStream</a>.</p>
 
 </div>
 </div>

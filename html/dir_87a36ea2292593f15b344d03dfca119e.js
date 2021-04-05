@@ -14,6 +14,7 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "stream.hpp", "stream_8hpp_source.html", null ],
     [ "string.hpp", "string_8hpp_source.html", null ],
     [ "stringIterator.hpp", "stringIterator_8hpp_source.html", null ],
+    [ "stringStream.hpp", "stringStream_8hpp_source.html", null ],
     [ "timeout.hpp", "timeout_8hpp_source.html", null ],
     [ "timer.hpp", "timer_8hpp_source.html", null ],
     [ "typeChecks.hpp", "typeChecks_8hpp_source.html", null ],

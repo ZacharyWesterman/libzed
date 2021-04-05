@@ -15,6 +15,7 @@ var namespaces_dup =
       [ "math", "namespacez_1_1math.html", "namespacez_1_1math" ],
       [ "system", "namespacez_1_1system.html", "namespacez_1_1system" ],
       [ "util", "namespacez_1_1util.html", "namespacez_1_1util" ],
+      [ "cplx", "string_8hpp.html#a7f3d9d080d7bb264e2aab2988f46bf57", null ],
       [ "encoding", "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17", [
         [ "ascii", "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b", null ],
         [ "utf8", "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a99654d1a9c4f36c89708898a496db529", null ],

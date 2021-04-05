@@ -20,6 +20,7 @@ var annotated_dup =
         [ "stream", "classz_1_1core_1_1stream.html", null ],
         [ "string", "classz_1_1core_1_1string.html", "classz_1_1core_1_1string" ],
         [ "stringIterator", "classz_1_1core_1_1stringIterator.html", "classz_1_1core_1_1stringIterator" ],
+        [ "stringStream", "classz_1_1core_1_1stringStream.html", "classz_1_1core_1_1stringStream" ],
         [ "timeout", "classz_1_1core_1_1timeout.html", "classz_1_1core_1_1timeout" ],
         [ "timer", "classz_1_1core_1_1timer.html", "classz_1_1core_1_1timer" ]
       ] ],
@@ -62,7 +63,6 @@ var annotated_dup =
           [ "word", "classz_1_1util_1_1rgx_1_1word.html", "classz_1_1util_1_1rgx_1_1word" ]
         ] ],
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
-        [ "word", "classz_1_1util_1_1word.html", "classz_1_1util_1_1word" ],
         [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
         [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
         [ "nonNumber", "structz_1_1util_1_1nonNumber.html", "structz_1_1util_1_1nonNumber" ],

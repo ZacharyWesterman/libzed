@@ -18,5 +18,5 @@ var dir_de9668d7b8c26dfcd8b9adff6bfa61d4 =
     [ "range.hpp", "range_8hpp_source.html", null ],
     [ "rule.hpp", "rule_8hpp_source.html", null ],
     [ "space.hpp", "space_8hpp_source.html", null ],
-    [ "word.hpp", "regex_2rules_2word_8hpp_source.html", null ]
+    [ "word.hpp", "word_8hpp_source.html", null ]
 ];

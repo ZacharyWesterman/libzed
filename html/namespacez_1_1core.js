@@ -31,6 +31,7 @@ var namespacez_1_1core =
     [ "stream", "classz_1_1core_1_1stream.html", null ],
     [ "string", "classz_1_1core_1_1string.html", "classz_1_1core_1_1string" ],
     [ "stringIterator", "classz_1_1core_1_1stringIterator.html", "classz_1_1core_1_1stringIterator" ],
+    [ "stringStream", "classz_1_1core_1_1stringStream.html", "classz_1_1core_1_1stringStream" ],
     [ "timeout", "classz_1_1core_1_1timeout.html", "classz_1_1core_1_1timeout" ],
     [ "timer", "classz_1_1core_1_1timer.html", "classz_1_1core_1_1timer" ],
     [ "fromUTF8", "namespacez_1_1core.html#a2fd5b12deff70252359c9969ba92c35e", null ],

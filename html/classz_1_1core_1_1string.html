@@ -281,6 +281,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a90fc5550b5e4b2fef1e8c80c48134744"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a90fc5550b5e4b2fef1e8c80c48134744">remove</a> (int index, int <a class="el" href="classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06">count</a>) noexcept</td></tr>
 <tr class="memdesc:a90fc5550b5e4b2fef1e8c80c48134744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a subset of the string.  <a href="classz_1_1core_1_1string.html#a90fc5550b5e4b2fef1e8c80c48134744">More...</a><br /></td></tr>
 <tr class="separator:a90fc5550b5e4b2fef1e8c80c48134744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79115a233e715c328a27e051264f9248"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a79115a233e715c328a27e051264f9248">truncate</a> (int index) noexcept</td></tr>
+<tr class="memdesc:a79115a233e715c328a27e051264f9248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all characters from a given index to the end of the string.  <a href="classz_1_1core_1_1string.html#a79115a233e715c328a27e051264f9248">More...</a><br /></td></tr>
+<tr class="separator:a79115a233e715c328a27e051264f9248"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ebf896bf9f4435ad7473822ef6ce124"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a3ebf896bf9f4435ad7473822ef6ce124">replace</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;findStr, const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;replStr, int occurrence=0) noexcept</td></tr>
 <tr class="memdesc:a3ebf896bf9f4435ad7473822ef6ce124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace occurrences of the given sub-string.  <a href="classz_1_1core_1_1string.html#a3ebf896bf9f4435ad7473822ef6ce124">More...</a><br /></td></tr>
 <tr class="separator:a3ebf896bf9f4435ad7473822ef6ce124"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3846,6 +3849,44 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after removing right-padding.</dd></dl>
 <p>Removes all occurrences of the given pad string from the right side of this string. </p>
+
+</div>
+</div>
+<a id="a79115a233e715c328a27e051264f9248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79115a233e715c328a27e051264f9248">&#9670;&nbsp;</a></span>truncate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">string</a>&amp; <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::truncate </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove all characters from a given index to the end of the string. </p>
+<p>This function is faster than <a class="el" href="classz_1_1core_1_1string.html#aa0abab4c0ff1440189bfe7473de24f95" title="Remove occurrences of the given sub-string.">remove()</a> at truncating string contents, because no actual data copying takes place. The character at the given index is simply set to the null char \0.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the first character to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this string after the characters are truncated. </dd></dl>
 
 </div>
 </div>

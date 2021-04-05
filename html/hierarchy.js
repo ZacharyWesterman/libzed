@@ -12,7 +12,8 @@ var hierarchy =
     [ "z::core::inputStream", "classz_1_1core_1_1inputStream.html", [
       [ "z::core::stream", "classz_1_1core_1_1stream.html", [
         [ "z::core::binaryStream", "classz_1_1core_1_1binaryStream.html", null ],
-        [ "z::core::memoryStream", "classz_1_1core_1_1memoryStream.html", null ]
+        [ "z::core::memoryStream", "classz_1_1core_1_1memoryStream.html", null ],
+        [ "z::core::stringStream", "classz_1_1core_1_1stringStream.html", null ]
       ] ],
       [ "z::file::inputStream", "classz_1_1file_1_1inputStream.html", null ],
       [ "z::system::stdin", "classz_1_1system_1_1stdin.html", [
@@ -56,12 +57,12 @@ var hierarchy =
     ] ],
     [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
       [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
-      [ "z::core::array< z::util::word * >", "classz_1_1core_1_1array.html", [
-        [ "z::core::sortedArray< z::util::word * >", "classz_1_1core_1_1sortedArray.html", [
-          [ "z::core::sortedRefArray< z::util::word * >", "classz_1_1core_1_1sortedRefArray.html", null ]
+      [ "z::core::array< const z::core::string * >", "classz_1_1core_1_1array.html", [
+        [ "z::core::sortedArray< const z::core::string * >", "classz_1_1core_1_1sortedArray.html", [
+          [ "z::core::sortedRefArray< const z::core::string * >", "classz_1_1core_1_1sortedRefArray.html", null ]
         ] ]
       ] ],
+      [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
         [ "z::core::refArray< T >", "classz_1_1core_1_1refArray.html", null ],
@@ -70,8 +71,7 @@ var hierarchy =
         ] ]
       ] ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
-      [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ],
-      [ "z::util::word", "classz_1_1util_1_1word.html", null ]
+      [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ]
     ] ],
     [ "z::core::stringIterator< E >", "classz_1_1core_1_1stringIterator.html", null ],
     [ "z::core::timer", "classz_1_1core_1_1timer.html", [

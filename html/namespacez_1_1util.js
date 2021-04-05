@@ -2,24 +2,11 @@ var namespacez_1_1util =
 [
     [ "rgx", "namespacez_1_1util_1_1rgx.html", "namespacez_1_1util_1_1rgx" ],
     [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
-    [ "word", "classz_1_1util_1_1word.html", "classz_1_1util_1_1word" ],
     [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
     [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
     [ "nonNumber", "structz_1_1util_1_1nonNumber.html", "structz_1_1util_1_1nonNumber" ],
     [ "rgxss", "classz_1_1util_1_1rgxss.html", "classz_1_1util_1_1rgxss" ],
     [ "regex", "classz_1_1util_1_1regex.html", "classz_1_1util_1_1regex" ],
-    [ "part", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0", [
-      [ "unknown", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0af980e3d480370d179f2460e3efd3ee5a", null ],
-      [ "noun", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0aed617d9387991360bd7a3f51394b6f83", null ],
-      [ "verb", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0a00f1455529234947479a27c77240914f", null ],
-      [ "adjective", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0a6cf4b367e100b54a9aa27cd02d6264ff", null ],
-      [ "adverb", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0ab61984d9c88fe2d0a0806ecac70d65eb", null ],
-      [ "pronoun", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0af81a68aa603642c49b658766efac9b5b", null ],
-      [ "preposition", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0a9b3d92558a7a25b87b29ac83fe01ae4d", null ],
-      [ "conjunction", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0a67ba6ccf6287ef4cad83a75eb927a4db", null ],
-      [ "determiner", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0aa4ad2ac5d6b20f3f63a41e58b904216b", null ],
-      [ "interjection", "namespacez_1_1util.html#a53fecdd969294d7cc330dcd2258e1ef0a45df7d9d0fa40d9df42465b1e1794dc4", null ]
-    ] ],
     [ "rgxerr", "namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710", [
       [ "RGX_NO_ERROR", "namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710a83d6cdb7cbaa9687167dcc0d01d6cce2", null ],
       [ "RGX_ERROR", "namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710acdfd005770e5d63cf026d11df5cf0395", null ],

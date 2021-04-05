@@ -86,6 +86,7 @@ var classz_1_1core_1_1string =
     [ "trimLeftIn", "classz_1_1core_1_1string.html#a0a5f030451a9c4be04c285526025a79b", null ],
     [ "trimRight", "classz_1_1core_1_1string.html#a9f8da0a78e38d9b7abb145721f78ad29", null ],
     [ "trimRightIn", "classz_1_1core_1_1string.html#afe72b76a3f2f7475a81d8b90bb33b5a7", null ],
+    [ "truncate", "classz_1_1core_1_1string.html#a79115a233e715c328a27e051264f9248", null ],
     [ "type", "classz_1_1core_1_1string.html#a8644b4f7292302682dd4aae86a0c2b4d", null ],
     [ "upper", "classz_1_1core_1_1string.html#abe0d76eb1977c8ece5bd35f41faa9178", null ],
     [ "write", "classz_1_1core_1_1string.html#a1d51094994baa05a0083222e4d588693", null ],
