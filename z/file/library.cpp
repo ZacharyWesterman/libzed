@@ -28,15 +28,18 @@ namespace z
 #			endif
 		}
 
-		bool library::load(const zpath& file_name) noexcept
+		bool library::load(const zpath& fileName, bool autoExtension) noexcept
 		{
+			auto fname = fileName;
 #			ifdef _WIN32
+			if (autoExtension) fname.append(".dll");
 			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
-			lib_ptr = (void*)LoadLibrary((char*)file_name.cstring());
+			lib_ptr = (void*)LoadLibrary((char*)fname.cstring());
 			return (bool)lib_ptr;
 #			elif __linux__
+			if (autoExtension) fname.append(".so");
 			if (lib_ptr) dlclose(lib_ptr);
-			lib_ptr = dlopen((char*)file_name.cstring(), RTLD_NOW);
+			lib_ptr = dlopen((char*)fname.cstring(), RTLD_NOW);
 			return (bool)lib_ptr;
 #			else
 			return false;

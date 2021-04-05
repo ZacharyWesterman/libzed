@@ -2,11 +2,16 @@
 
 #include <iostream>
 #include <z/file/library.hpp>
+#include <z/file/dirname.hpp>
+#include <z/file/executable.hpp>
 
 int main()
 {
 	z::file::library lib;
-	if (!lib.load("./dynamicLib.so"))
+
+	//assume library is in same dir as executable, not necessarily the working dir.
+	auto libName = z::file::dirname(z::file::executable()) + "/dynamicLib";
+	if (!lib.load(libName))
 	{
 		std::cout << "Unable to load lib!" << std::endl;
 		return -1;
