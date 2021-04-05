@@ -38,11 +38,13 @@ namespace z
 			 * \brief Load a dynamic library with the given file name.
 			 *
 			 * \param fileName the path of the library to load.
+			 * \param autoExtension If true, automatically append the extension (".so" or ".dll" onto the file name).
+			 * Useful for loading libraries in a platform-independent way.
 			 *
 			 * \return \b True if the library loaded successfully.
 			 * \b False otherwise.
 			 */
-			bool load(const zpath& fileName) noexcept;
+			bool load(const zpath& fileName, bool autoExtension = true) noexcept;
 
 			/**
 			 * \brief Unload the dynamic library.

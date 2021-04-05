@@ -743,6 +743,19 @@ namespace z
 			const string& remove(int index, int count) noexcept;
 
 			/**
+			 * \brief Remove all characters from a given index to the end of the string.
+			 *
+			 * This function is faster than remove() at truncating string contents,
+			 * because no actual data copying takes place. The character at the given
+			 * index is simply set to the null char \\0.
+			 *
+			 * \param index The index of the first character to remove.
+			 *
+			 * \return A reference to this string after the characters are truncated.
+			 */
+			string& truncate(int index) noexcept;
+
+			/**
 			 * \brief Replace occurrences of the given sub-string.
 			 *
 			 * \param findStr The sub-string to replace.

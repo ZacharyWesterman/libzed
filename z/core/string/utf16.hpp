@@ -1176,6 +1176,19 @@ namespace z
 			return *this;
 		}
 
+		template<>
+		string<utf16>& string<utf16>::truncate(int index) noexcept
+		{
+			if (index >= character_ct) return *this;
+			if (index < -character_ct) index = 0;
+			else if (index < 0) index += character_ct;
+
+			uint16_t* data16 = (uint16_t*)data;
+			data16[index] = 0;
+			character_ct = index;
+			return *this;
+		}
+
 		template <>
 		const string<utf16>& string<utf16>::replace(const string<utf16>& findStr, const string<utf16>& replStr, int occurrence) noexcept
 		{

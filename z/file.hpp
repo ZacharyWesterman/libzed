@@ -14,6 +14,9 @@
 #include "file/dir.hpp"
 #include "file/chdir.hpp"
 #include "file/size.hpp"
+#include "file/dirname.hpp"
+#include "file/basename.hpp"
+#include "file/executable.hpp"
 
 ///Manage file contents
 #include "file/copy.hpp"
