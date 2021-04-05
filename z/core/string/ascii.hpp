@@ -914,6 +914,18 @@ namespace z
 			return *this;
 		}
 
+		template<>
+		string<ascii>& string<ascii>::truncate(int index) noexcept
+		{
+			if (index >= character_ct) return *this;
+			if (index < -character_ct) index = 0;
+			else if (index < 0) index += character_ct;
+
+			data[index] = 0;
+			character_ct = index;
+			return *this;
+		}
+
 		template <>
 		const string<ascii>& string<ascii>::replace(const string<ascii>& findStr, const string<ascii>& replStr, int occurrence) noexcept
 		{
