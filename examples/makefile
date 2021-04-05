@@ -25,7 +25,7 @@ SRCS := $(wildcard source/*.cpp)
 SRCS := $(filter-out source/dynamicLib.cpp,$(SRCS))
 BINS = $(patsubst source/%.cpp,binary/%,$(SRCS))
 
-all: binary object $(DLL1) binary/dynamicLib.$(LIBEXT) $(BINS) $(DLL2)
+all: binary object $(DLL1) $(BINS) $(DLL2)
 
 binary:
 	mkdir $@
@@ -35,6 +35,9 @@ object:
 
 object/%.o: source/%.cpp
 	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $^
+
+object/loadLib.o: source/loadLib.cpp binary/dynamicLib.$(LIBEXT)
+	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $<
 
 binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
 	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
