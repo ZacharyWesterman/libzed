@@ -90,7 +90,7 @@ namespace z
 
 		///operators
 		template <>
-		const string<utf16>& string<utf16>::operator+=(const string<utf16>& other) noexcept
+		 string<utf16>& string<utf16>::operator+=(const string<utf16>& other) noexcept
 		{
 			int new_size = character_ct + other.character_ct + 1;
 			this->increase(new_size);
@@ -293,7 +293,7 @@ namespace z
 
 		///mutators
 		template <>
-		const string<utf16>& string<utf16>::operator=(const string<utf16>& other) noexcept
+		 string<utf16>& string<utf16>::operator=(const string<utf16>& other) noexcept
 		{
 			if (&other != this)
 			{
@@ -319,7 +319,7 @@ namespace z
 		}
 
 		template<>
-		const string<utf16>& string<utf16>::append(uint32_t chr) noexcept
+		 string<utf16>& string<utf16>::append(uint32_t chr) noexcept
 		{
 			if (chr)
 			{
@@ -333,7 +333,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::insert(const string<utf16>& other, int index) noexcept //insert before index
+		 string<utf16>& string<utf16>::insert(const string<utf16>& other, int index) noexcept //insert before index
 		{
 			if (index < 0) index += character_ct;
 			if (!other.character_ct || index < 0) return *this;
@@ -365,7 +365,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::remove(int index, int count) noexcept
+		 string<utf16>& string<utf16>::remove(int index, int count) noexcept
 		{
 			if (count)
 			{
@@ -413,7 +413,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::replace(int index, int count, const string<utf16>& other) noexcept
+		 string<utf16>& string<utf16>::replace(int index, int count, const string<utf16>& other) noexcept
 		{
 			if (count)
 			{
@@ -1151,7 +1151,7 @@ namespace z
 
 		///mutators
 		template <>
-		const string<utf16>& string<utf16>::remove(const string& other, int occurrence) noexcept
+		 string<utf16>& string<utf16>::remove(const string& other, int occurrence) noexcept
 		{
 			if (occurrence > 0) //remove one occurrence
 			{
@@ -1190,7 +1190,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::replace(const string<utf16>& findStr, const string<utf16>& replStr, int occurrence) noexcept
+		 string<utf16>& string<utf16>::replace(const string<utf16>& findStr, const string<utf16>& replStr, int occurrence) noexcept
 		{
 			if (occurrence > 0) //replace one occurrence
 			{
@@ -1216,7 +1216,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::padLeftIn(const string<utf16>& other, int padSize) noexcept
+		 string<utf16>& string<utf16>::padLeftIn(const string<utf16>& other, int padSize) noexcept
 		{
 			if (padSize <= character_ct) return *this;
 
@@ -1237,7 +1237,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::padRightIn(const string<utf16>& other, int padSize) noexcept
+		 string<utf16>& string<utf16>::padRightIn(const string<utf16>& other, int padSize) noexcept
 		{
 			if (padSize <= character_ct) return *this;
 
@@ -1266,7 +1266,7 @@ namespace z
 		}
 
 		template <>
-		const string<utf16>& string<utf16>::cutDuplicates(const string<utf16>& other) noexcept
+		 string<utf16>& string<utf16>::cutDuplicates(const string<utf16>& other) noexcept
 		{
 			int pos = this->find(other, 1);
 

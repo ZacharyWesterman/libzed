@@ -681,7 +681,7 @@ namespace z
 			 *
 			 * \see operator+=()
 			 */
-			const string& append(const string& other) noexcept
+			string& append(const string& other) noexcept
 			{
 				return operator+=(other);
 			}
@@ -698,7 +698,7 @@ namespace z
 			 *
 			 * \see operator+=()
 			 */
-			const string& append(uint32_t chr) noexcept;
+			string& append(uint32_t chr) noexcept;
 
 			/**
 			 * \brief Insert another string into this one.
@@ -712,7 +712,7 @@ namespace z
 			 * `A = "xyz"`, `A.insert(B,0)` would give `"abcxyz"`, `A.insert(B,1)` would
 			 * give `"xabcyz"`, etc.
 			 */
-			const string& insert(const string& other, int index) noexcept;
+			string& insert(const string& other, int index) noexcept;
 
 			/**
 			 * \brief Remove occurrences of the given sub-string.
@@ -727,7 +727,7 @@ namespace z
 			 * specified occurrence of the sub-string is removed from the main string,
 			 * starting from the beginning.
 			 */
-			const string& remove(const string& other, int occurrence = 0) noexcept;
+			string& remove(const string& other, int occurrence = 0) noexcept;
 
 			/**
 			 * \brief Remove a subset of the string.
@@ -740,7 +740,7 @@ namespace z
 			 * If count is 0, no characters are removed. If count is negative, characters are
 			 * removed in reverse order.
 			 */
-			const string& remove(int index, int count) noexcept;
+			string& remove(int index, int count) noexcept;
 
 			/**
 			 * \brief Remove all characters from a given index to the end of the string.
@@ -769,7 +769,7 @@ namespace z
 			 * specified occurrence of the sub-string is replaced, starting from the
 			 * beginning of this string.
 			 */
-			const string& replace(const string& findStr, const string& replStr, int occurrence = 0) noexcept;
+			string& replace(const string& findStr, const string& replStr, int occurrence = 0) noexcept;
 
 			/**
 			 * \brief Replace a subset of the string.
@@ -783,7 +783,7 @@ namespace z
 			 * If count is 0, no characters are replaced. Characters are replaced in forward-order
 			 * whether count is positive or negative.
 			 */
-			const string& replace(int index, int count, const string& other) noexcept;
+			string& replace(int index, int count, const string& other) noexcept;
 
 			/**
 			 * \brief Copy this string, left-padded given character count.
@@ -817,7 +817,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padLeftIn(const string& other, int padSize) noexcept;
+			string& padLeftIn(const string& other, int padSize) noexcept;
 
 			/**
 			 * \brief Copy this string, right-padded given character count.
@@ -851,7 +851,7 @@ namespace z
 			 * the pad size is equal or less than the current chracter count, then no
 			 * padding will be added.
 			 */
-			const string& padRightIn(const string& other, int padSize) noexcept;
+			string& padRightIn(const string& other, int padSize) noexcept;
 
 			/**
 			 * \brief Append text onto this string a specific number of times.
@@ -861,7 +861,7 @@ namespace z
 			 *
 			 * \return A reference to this string after appending.
 			 */
-			const string& repeat(const string& other, int count) noexcept
+			string& repeat(const string& other, int count) noexcept
 			{
 				increase(character_ct + (other.character_ct * count));
 				for (int i=0; i<count; ++i) append(other);
@@ -944,7 +944,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * side of this string.
 			 */
-			const string& trimLeftIn(const string& other = "") noexcept
+			string& trimLeftIn(const string& other = "") noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -977,7 +977,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the right
 			 * side of this string.
 			 */
-			const string& trimRightIn(const string& other = "") noexcept
+			string& trimRightIn(const string& other = "") noexcept
 			{
 				if ((character_ct < other.character_ct) || !character_ct) return *this;
 
@@ -1026,7 +1026,7 @@ namespace z
 			 * Removes all occurrences of the given pad string from the left
 			 * and right sides of this string.
 			 */
-			const string& trimIn(const string& other = "") noexcept
+			string& trimIn(const string& other = "") noexcept
 			{
 				trimLeftIn(other);
 				return trimRightIn(other);
@@ -1047,7 +1047,7 @@ namespace z
 			 * Removes all contiguous repetitions of the given sub-string, leaving
 			 * one instance of the sub-string where the group was.
 			 */
-			const string& cutDuplicates(const string& other) noexcept;
+			string& cutDuplicates(const string& other) noexcept;
 
 			/**
 			 * \brief Get an uppercase version of this string.
@@ -1144,7 +1144,7 @@ namespace z
 			 *
 			 * \see append()
 			 */
-			const string& operator+=(const string& other) noexcept;
+			string& operator+=(const string& other) noexcept;
 
 			/**
 			 * \brief Assign the contents of this string.
@@ -1156,7 +1156,7 @@ namespace z
 			 * Copies all characters from the given string over to this string,
 			 * replacing current data.
 			 */
-			const string& operator=(const string& other) noexcept;
+			string& operator=(const string& other) noexcept;
 
 			/**
 			 * \brief Equality comparison.
