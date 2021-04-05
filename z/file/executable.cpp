@@ -1,7 +1,7 @@
 #include "executable.hpp"
 
 #if defined(_WIN32)
-#include <libloaderapi.h>
+#include <windows.h>
 #elif defined(__linux__)
 #include <unistd.h>
 #define _getcwd getcwd
