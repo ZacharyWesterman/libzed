@@ -1,6 +1,6 @@
 # System info
 os: linux
-dist: trusty
+dist: xenial
 
 # Blacklist
 branches:
