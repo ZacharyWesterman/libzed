@@ -5,6 +5,8 @@
 
 int main()
 {
+//Don't throw error if no generic exists. Just make a dummy executable.
+#	ifdef Z_GENERIC_EXISTS
 	z::util::generic val1 = {
 		"hello",
 		5.4,
@@ -15,4 +17,5 @@ int main()
 
 	std::cout << val1.typeString() << " : " << val1.toString(true) << std::endl;
 	std::cout << val2.typeString() << " : " << val2.toString(true) << std::endl;
+#	endif
 }

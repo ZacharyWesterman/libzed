@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
+[![Build Status](https://travis-ci.com/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
 
 This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will help decrease development time of other projects.
 
