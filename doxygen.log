@@ -1,3 +1,0 @@
-/mnt/dm-4/repos/libzed/z/util/dictionary.hpp:29: warning: argument 'A' of command @param is not found in the argument list of z::util::dictionary::dictionary(const zstring &langName="")
-/mnt/dm-4/repos/libzed/z/util/dictionary.hpp:32: warning: The following parameter of z::util::dictionary::dictionary(const zstring &langName="") is not documented:
-  parameter 'langName'
