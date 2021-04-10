@@ -151,4 +151,7 @@ cleandox:
 
 rebuild: clean default
 
-.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all
+lint:
+	clang-tidy $(SRCS) >lint.log
+
+.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint

@@ -5,6 +5,6 @@ driver
 *.dll
 *.a
 html/
-doxygen.log
+*.log
 examples/binary
 examples/object
