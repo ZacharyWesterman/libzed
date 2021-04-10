@@ -3,6 +3,9 @@ echo 'Setting up the script...'
 # Exit with nonzero exit code if anything fails
 set -e
 
+echo 'Available CPP version:'
+g++ -x c++ -std=c++17 -dM -E - </dev/null | grep __cplusplus
+
 # Create a clean working directory for this script.
 mkdir code_docs
 cd code_docs
