@@ -27,7 +27,7 @@ namespace z
 		public:
 			/**
 			 * \brief Constructor
-			 * \param A name to help identify the language (optional).
+			 * \param langName A name to help identify the language (optional).
 			 */
 			dictionary(const zstring& langName = "") noexcept : lang(langName), readingStream(false) {};
 
