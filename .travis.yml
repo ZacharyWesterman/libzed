@@ -26,9 +26,7 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - make dynamic
-  - make install
-  - make examples
+  - make dynamic static
 
 language:
   - cpp
