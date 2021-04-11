@@ -7,7 +7,7 @@ var classz_1_1file_1_1outputStream =
     [ "close", "classz_1_1file_1_1outputStream.html#a9c3fa9f4b743fb5dcda7d6944653333a", null ],
     [ "end", "classz_1_1file_1_1outputStream.html#aa3b32b1b53f7d4d37b6ad8337a230a5d", null ],
     [ "endianness", "classz_1_1file_1_1outputStream.html#a9b4747a9e49f83563ad4363ee9b3974f", null ],
-    [ "flush", "classz_1_1file_1_1outputStream.html#adb42c31c6f3b5d280838c7d9fb045029", null ],
+    [ "flush", "classz_1_1file_1_1outputStream.html#a23bddb147233ad05586aeb133e0051c7", null ],
     [ "format", "classz_1_1file_1_1outputStream.html#ad26ca05bcbf71ee18e0db6204b4afa95", null ],
     [ "good", "classz_1_1file_1_1outputStream.html#a18dc93371166e95aeedb762fac36d139", null ],
     [ "open", "classz_1_1file_1_1outputStream.html#a52545174c798fd7014db7688702cded2", null ],

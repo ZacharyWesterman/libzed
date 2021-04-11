@@ -119,33 +119,33 @@ Inheritance diagram for z::core::binaryStream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a605b704946d12046597a46a15db0f592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a605b704946d12046597a46a15db0f592">put</a> (uint8_t ch)</td></tr>
-<tr class="memdesc:a605b704946d12046597a46a15db0f592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="classz_1_1core_1_1binaryStream.html#a605b704946d12046597a46a15db0f592">More...</a><br /></td></tr>
-<tr class="separator:a605b704946d12046597a46a15db0f592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90d1cb5131c39245303da7fd94077d28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a90d1cb5131c39245303da7fd94077d28">put</a> (uint8_t *str, int count, <a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> <a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">format</a>=ascii)</td></tr>
-<tr class="memdesc:a90d1cb5131c39245303da7fd94077d28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="classz_1_1core_1_1binaryStream.html#a90d1cb5131c39245303da7fd94077d28">More...</a><br /></td></tr>
-<tr class="separator:a90d1cb5131c39245303da7fd94077d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2589b32ef8a1a9732b845310f3978d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#ad2589b32ef8a1a9732b845310f3978d4">get</a> ()</td></tr>
-<tr class="memdesc:ad2589b32ef8a1a9732b845310f3978d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="classz_1_1core_1_1binaryStream.html#ad2589b32ef8a1a9732b845310f3978d4">More...</a><br /></td></tr>
-<tr class="separator:ad2589b32ef8a1a9732b845310f3978d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae03d61bc52789fd01f54fa4a6e69b2c0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#ae03d61bc52789fd01f54fa4a6e69b2c0">getChar</a> ()</td></tr>
-<tr class="memdesc:ae03d61bc52789fd01f54fa4a6e69b2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the stream's determined encoding.  <a href="classz_1_1core_1_1binaryStream.html#ae03d61bc52789fd01f54fa4a6e69b2c0">More...</a><br /></td></tr>
-<tr class="separator:ae03d61bc52789fd01f54fa4a6e69b2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8ae668a561d847d6f378578be72bf81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aa8ae668a561d847d6f378578be72bf81">empty</a> ()</td></tr>
-<tr class="memdesc:aa8ae668a561d847d6f378578be72bf81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether we have consumed the last character in the stream.  <a href="classz_1_1core_1_1binaryStream.html#aa8ae668a561d847d6f378578be72bf81">More...</a><br /></td></tr>
-<tr class="separator:aa8ae668a561d847d6f378578be72bf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4689fa69dcad903f04fcf3598b54c67c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c">good</a> ()</td></tr>
-<tr class="memdesc:a4689fa69dcad903f04fcf3598b54c67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is a valid stream object.  <a href="classz_1_1core_1_1binaryStream.html#a4689fa69dcad903f04fcf3598b54c67c">More...</a><br /></td></tr>
-<tr class="separator:a4689fa69dcad903f04fcf3598b54c67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000c6166e7f7dace16806eeca0dbd2ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a000c6166e7f7dace16806eeca0dbd2ba">bad</a> ()</td></tr>
-<tr class="memdesc:a000c6166e7f7dace16806eeca0dbd2ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is an invalid stream object.  <a href="classz_1_1core_1_1binaryStream.html#a000c6166e7f7dace16806eeca0dbd2ba">More...</a><br /></td></tr>
-<tr class="separator:a000c6166e7f7dace16806eeca0dbd2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64191abc14968d727aba00c8b57a5cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aa64191abc14968d727aba00c8b57a5cd">binary</a> ()</td></tr>
-<tr class="memdesc:aa64191abc14968d727aba00c8b57a5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream supports any binary format.  <a href="classz_1_1core_1_1binaryStream.html#aa64191abc14968d727aba00c8b57a5cd">More...</a><br /></td></tr>
-<tr class="separator:aa64191abc14968d727aba00c8b57a5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80f81ff9e2683fd7dc21e5450faa4060"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">seekable</a> ()</td></tr>
-<tr class="memdesc:a80f81ff9e2683fd7dc21e5450faa4060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream allows seeking to an index.  <a href="classz_1_1core_1_1binaryStream.html#a80f81ff9e2683fd7dc21e5450faa4060">More...</a><br /></td></tr>
-<tr class="separator:a80f81ff9e2683fd7dc21e5450faa4060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e436185c1fafba79a38a02f57aaf61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a04e436185c1fafba79a38a02f57aaf61">put</a> (uint8_t ch) override</td></tr>
+<tr class="memdesc:a04e436185c1fafba79a38a02f57aaf61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a byte to the stream.  <a href="classz_1_1core_1_1binaryStream.html#a04e436185c1fafba79a38a02f57aaf61">More...</a><br /></td></tr>
+<tr class="separator:a04e436185c1fafba79a38a02f57aaf61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb348e2aedced26533a3b9bfd5527c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a9fb348e2aedced26533a3b9bfd5527c7">put</a> (uint8_t *str, int count, <a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> <a class="el" href="classz_1_1core_1_1binaryStream.html#a30505594bb3c5a0de4c220fa4524aafd">format</a>=ascii) override</td></tr>
+<tr class="memdesc:a9fb348e2aedced26533a3b9bfd5527c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a number of characters in the given format to the stream.  <a href="classz_1_1core_1_1binaryStream.html#a9fb348e2aedced26533a3b9bfd5527c7">More...</a><br /></td></tr>
+<tr class="separator:a9fb348e2aedced26533a3b9bfd5527c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a092b66e5fd9673c70bec9eaee2e8e12d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a092b66e5fd9673c70bec9eaee2e8e12d">get</a> () override</td></tr>
+<tr class="memdesc:a092b66e5fd9673c70bec9eaee2e8e12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next byte on the stream.  <a href="classz_1_1core_1_1binaryStream.html#a092b66e5fd9673c70bec9eaee2e8e12d">More...</a><br /></td></tr>
+<tr class="separator:a092b66e5fd9673c70bec9eaee2e8e12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf7a636c824e584d5695078b6270d43c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#acf7a636c824e584d5695078b6270d43c">getChar</a> () override</td></tr>
+<tr class="memdesc:acf7a636c824e584d5695078b6270d43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next chracter on the stream in the stream's determined encoding.  <a href="classz_1_1core_1_1binaryStream.html#acf7a636c824e584d5695078b6270d43c">More...</a><br /></td></tr>
+<tr class="separator:acf7a636c824e584d5695078b6270d43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a22e9535e2dc71a7f02b9c82bfb17"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a771a22e9535e2dc71a7f02b9c82bfb17">empty</a> () override</td></tr>
+<tr class="memdesc:a771a22e9535e2dc71a7f02b9c82bfb17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether we have consumed the last character in the stream.  <a href="classz_1_1core_1_1binaryStream.html#a771a22e9535e2dc71a7f02b9c82bfb17">More...</a><br /></td></tr>
+<tr class="separator:a771a22e9535e2dc71a7f02b9c82bfb17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03749917458af464109d8581069f4c89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a03749917458af464109d8581069f4c89">good</a> () override</td></tr>
+<tr class="memdesc:a03749917458af464109d8581069f4c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is a valid stream object.  <a href="classz_1_1core_1_1binaryStream.html#a03749917458af464109d8581069f4c89">More...</a><br /></td></tr>
+<tr class="separator:a03749917458af464109d8581069f4c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f52d5d761e5c446d6e9b0bb3b441dff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a9f52d5d761e5c446d6e9b0bb3b441dff">bad</a> () override</td></tr>
+<tr class="memdesc:a9f52d5d761e5c446d6e9b0bb3b441dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this is an invalid stream object.  <a href="classz_1_1core_1_1binaryStream.html#a9f52d5d761e5c446d6e9b0bb3b441dff">More...</a><br /></td></tr>
+<tr class="separator:a9f52d5d761e5c446d6e9b0bb3b441dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4772dd4d86691c77ede496628ad64ae2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a4772dd4d86691c77ede496628ad64ae2">binary</a> () override</td></tr>
+<tr class="memdesc:a4772dd4d86691c77ede496628ad64ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream supports any binary format.  <a href="classz_1_1core_1_1binaryStream.html#a4772dd4d86691c77ede496628ad64ae2">More...</a><br /></td></tr>
+<tr class="separator:a4772dd4d86691c77ede496628ad64ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a350c17736e4fc8cd6b15b87b4626789a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a350c17736e4fc8cd6b15b87b4626789a">seekable</a> () override</td></tr>
+<tr class="memdesc:a350c17736e4fc8cd6b15b87b4626789a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether this stream allows seeking to an index.  <a href="classz_1_1core_1_1binaryStream.html#a350c17736e4fc8cd6b15b87b4626789a">More...</a><br /></td></tr>
+<tr class="separator:a350c17736e4fc8cd6b15b87b4626789a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86e598c669ba57ed25ff8f70fa3b3f6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a86e598c669ba57ed25ff8f70fa3b3f6f">seek</a> (size_t index) override</td></tr>
 <tr class="memdesc:a86e598c669ba57ed25ff8f70fa3b3f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek a position in the stream.  <a href="classz_1_1core_1_1binaryStream.html#a86e598c669ba57ed25ff8f70fa3b3f6f">More...</a><br /></td></tr>
 <tr class="separator:a86e598c669ba57ed25ff8f70fa3b3f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,15 +155,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a711f2f944d2369bbd55496e9be94ac5f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a711f2f944d2369bbd55496e9be94ac5f">end</a> () override</td></tr>
 <tr class="memdesc:a711f2f944d2369bbd55496e9be94ac5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of the stream.  <a href="classz_1_1core_1_1binaryStream.html#a711f2f944d2369bbd55496e9be94ac5f">More...</a><br /></td></tr>
 <tr class="separator:a711f2f944d2369bbd55496e9be94ac5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c5a3b3748093122148a8bf59b32f5e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">format</a> ()</td></tr>
-<tr class="memdesc:a6c5a3b3748093122148a8bf59b32f5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="classz_1_1core_1_1binaryStream.html#a6c5a3b3748093122148a8bf59b32f5e9">More...</a><br /></td></tr>
-<tr class="separator:a6c5a3b3748093122148a8bf59b32f5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fd47ae859f083da8b3258de0075040b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a5fd47ae859f083da8b3258de0075040b">setFormat</a> (<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> enc, bool force=false)</td></tr>
-<tr class="memdesc:a5fd47ae859f083da8b3258de0075040b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default character encoding of this stream.  <a href="classz_1_1core_1_1binaryStream.html#a5fd47ae859f083da8b3258de0075040b">More...</a><br /></td></tr>
-<tr class="separator:a5fd47ae859f083da8b3258de0075040b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e4906434ef1324ae488f73198c1697"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">flush</a> ()</td></tr>
-<tr class="memdesc:ac9e4906434ef1324ae488f73198c1697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="classz_1_1core_1_1binaryStream.html#ac9e4906434ef1324ae488f73198c1697">More...</a><br /></td></tr>
-<tr class="separator:ac9e4906434ef1324ae488f73198c1697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30505594bb3c5a0de4c220fa4524aafd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a30505594bb3c5a0de4c220fa4524aafd">format</a> () override</td></tr>
+<tr class="memdesc:a30505594bb3c5a0de4c220fa4524aafd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected format of the stream.  <a href="classz_1_1core_1_1binaryStream.html#a30505594bb3c5a0de4c220fa4524aafd">More...</a><br /></td></tr>
+<tr class="separator:a30505594bb3c5a0de4c220fa4524aafd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572914e017015de72f9030e6cabb54f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#a572914e017015de72f9030e6cabb54f2">setFormat</a> (<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> enc, bool force=false) override</td></tr>
+<tr class="memdesc:a572914e017015de72f9030e6cabb54f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default character encoding of this stream.  <a href="classz_1_1core_1_1binaryStream.html#a572914e017015de72f9030e6cabb54f2">More...</a><br /></td></tr>
+<tr class="separator:a572914e017015de72f9030e6cabb54f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa72e044f9020e1a70b50ae9f50af65b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1binaryStream.html#aa72e044f9020e1a70b50ae9f50af65b2">flush</a> () override</td></tr>
+<tr class="memdesc:aa72e044f9020e1a70b50ae9f50af65b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush all data from the stream buffer.  <a href="classz_1_1core_1_1binaryStream.html#aa72e044f9020e1a70b50ae9f50af65b2">More...</a><br /></td></tr>
+<tr class="separator:aa72e044f9020e1a70b50ae9f50af65b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1inputStream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1inputStream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1inputStream.html">z::core::inputStream</a></td></tr>
 <tr class="memitem:a4c03397b86f9e351509c9a167cd9735f inherit pub_methods_classz_1_1core_1_1inputStream"><td class="memItemLeft" align="right" valign="top"><a id="a4c03397b86f9e351509c9a167cd9735f"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1inputStream.html#a4c03397b86f9e351509c9a167cd9735f">~inputStream</a> ()</td></tr>
@@ -185,8 +185,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <div class="textblock"><p>A class for binary data streams. </p>
 <p>This class provides an implementation of <a class="el" href="classz_1_1core_1_1stream.html" title="An interface for character streams.">core::stream</a> for binary data in memory. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a000c6166e7f7dace16806eeca0dbd2ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a000c6166e7f7dace16806eeca0dbd2ba">&#9670;&nbsp;</a></span>bad()</h2>
+<a id="a9f52d5d761e5c446d6e9b0bb3b441dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f52d5d761e5c446d6e9b0bb3b441dff">&#9670;&nbsp;</a></span>bad()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,7 +203,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -215,8 +215,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="aa64191abc14968d727aba00c8b57a5cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa64191abc14968d727aba00c8b57a5cd">&#9670;&nbsp;</a></span>binary()</h2>
+<a id="a4772dd4d86691c77ede496628ad64ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4772dd4d86691c77ede496628ad64ae2">&#9670;&nbsp;</a></span>binary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +233,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -245,8 +245,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="aa8ae668a561d847d6f378578be72bf81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8ae668a561d847d6f378578be72bf81">&#9670;&nbsp;</a></span>empty()</h2>
+<a id="a771a22e9535e2dc71a7f02b9c82bfb17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771a22e9535e2dc71a7f02b9c82bfb17">&#9670;&nbsp;</a></span>empty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +263,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -306,8 +306,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="ac9e4906434ef1324ae488f73198c1697"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9e4906434ef1324ae488f73198c1697">&#9670;&nbsp;</a></span>flush()</h2>
+<a id="aa72e044f9020e1a70b50ae9f50af65b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa72e044f9020e1a70b50ae9f50af65b2">&#9670;&nbsp;</a></span>flush()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +324,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -336,8 +336,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a6c5a3b3748093122148a8bf59b32f5e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c5a3b3748093122148a8bf59b32f5e9">&#9670;&nbsp;</a></span>format()</h2>
+<a id="a30505594bb3c5a0de4c220fa4524aafd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30505594bb3c5a0de4c220fa4524aafd">&#9670;&nbsp;</a></span>format()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -354,7 +354,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -367,8 +367,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="ad2589b32ef8a1a9732b845310f3978d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2589b32ef8a1a9732b845310f3978d4">&#9670;&nbsp;</a></span>get()</h2>
+<a id="a092b66e5fd9673c70bec9eaee2e8e12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a092b66e5fd9673c70bec9eaee2e8e12d">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,7 +385,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -398,8 +398,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="ae03d61bc52789fd01f54fa4a6e69b2c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae03d61bc52789fd01f54fa4a6e69b2c0">&#9670;&nbsp;</a></span>getChar()</h2>
+<a id="acf7a636c824e584d5695078b6270d43c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf7a636c824e584d5695078b6270d43c">&#9670;&nbsp;</a></span>getChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -416,7 +416,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -429,8 +429,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a4689fa69dcad903f04fcf3598b54c67c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4689fa69dcad903f04fcf3598b54c67c">&#9670;&nbsp;</a></span>good()</h2>
+<a id="a03749917458af464109d8581069f4c89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03749917458af464109d8581069f4c89">&#9670;&nbsp;</a></span>good()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -447,7 +447,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -459,8 +459,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a90d1cb5131c39245303da7fd94077d28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90d1cb5131c39245303da7fd94077d28">&#9670;&nbsp;</a></span>put() <span class="overload">[1/2]</span></h2>
+<a id="a9fb348e2aedced26533a3b9bfd5527c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb348e2aedced26533a3b9bfd5527c7">&#9670;&nbsp;</a></span>put() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -494,7 +494,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -514,8 +514,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a605b704946d12046597a46a15db0f592"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a605b704946d12046597a46a15db0f592">&#9670;&nbsp;</a></span>put() <span class="overload">[2/2]</span></h2>
+<a id="a04e436185c1fafba79a38a02f57aaf61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04e436185c1fafba79a38a02f57aaf61">&#9670;&nbsp;</a></span>put() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -533,7 +533,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -588,8 +588,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a80f81ff9e2683fd7dc21e5450faa4060"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80f81ff9e2683fd7dc21e5450faa4060">&#9670;&nbsp;</a></span>seekable()</h2>
+<a id="a350c17736e4fc8cd6b15b87b4626789a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a350c17736e4fc8cd6b15b87b4626789a">&#9670;&nbsp;</a></span>seekable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -606,7 +606,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -618,8 +618,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a5fd47ae859f083da8b3258de0075040b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fd47ae859f083da8b3258de0075040b">&#9670;&nbsp;</a></span>setFormat()</h2>
+<a id="a572914e017015de72f9030e6cabb54f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572914e017015de72f9030e6cabb54f2">&#9670;&nbsp;</a></span>setFormat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -647,7 +647,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
