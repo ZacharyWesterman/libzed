@@ -149,8 +149,8 @@ namespace z
 			template <typename archive>
 			void save(archive& ar) const
 			{
-				ar((size_t)wordList.length());
-				for (int i=0; i<(int)wordList.length(); i++)
+				ar((CEREAL_SIZE_TYPE)wordList.length());
+				for (int i=0; i<wordList.length(); i++)
 				{
 					ar(*(wordList[i]));
 				}
@@ -164,11 +164,11 @@ namespace z
 			void load(archive& ar)
 			{
 				clear();
-				size_t sz;
+				CEREAL_SIZE_TYPE sz;
 				ar(sz);
 				wordList.increase(sz);
 
-				for (int i=0; i<sz; i++)
+				for (CEREAL_SIZE_TYPE i=0; i<sz; i++)
 				{
 					zstring* data = new zstring;
 					ar(*data);

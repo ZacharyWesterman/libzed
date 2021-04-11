@@ -126,7 +126,7 @@ namespace z
 
 		const char* generic::typeString() const noexcept
 		{
-			const char* typeOpts[] = {
+			const char* typeOpts[6] = {
 				"void",
 				"int",
 				"float",
@@ -134,7 +134,10 @@ namespace z
 				"string",
 				"array"
 			};
-			return typeOpts[value.index()];
+
+			//shouldn't ever be out of range, just a sanity check.
+			const unsigned int ix = value.index();
+			return (ix < 6) ? typeOpts[ix] : "ERROR";
 		}
 
 		int generic::reducesTo(bool castStrings) const noexcept

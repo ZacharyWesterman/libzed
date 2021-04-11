@@ -79,7 +79,7 @@ namespace z
 
 			void setFormat(encoding enc, bool force = false) override;
 
-			void flush();
+			void flush() override;
 
 			/**
 			 * \brief Get the endianness of this stream.

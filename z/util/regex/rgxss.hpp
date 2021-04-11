@@ -56,15 +56,6 @@ namespace z
 			 * \threadsafe_member_yes
 			 */
 			bool operator==(const rgxss& other) const noexcept;
-
-			/**
-			 * \brief Assignment operator.
-			 *
-			 * \param other Symbol to assign as.
-			 * \return A reference to this symbol after assignment.
-			 * \threadsafe_member_no
-			 */
-			const rgxss& operator=(const rgxss& other) noexcept;
 		};
 	}
 }

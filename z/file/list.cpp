@@ -80,9 +80,9 @@ namespace z
 						}
 					}
 				}
-			}
 
-			closedir(dpdf);
+				closedir(dpdf);
+			}
 			#endif
 
 			return output;
@@ -143,9 +143,9 @@ namespace z
 							output.add(filename);
 					}
 				}
-			}
 
-			closedir(dpdf);
+				closedir(dpdf);
+			}
 			#endif
 
 			return output;

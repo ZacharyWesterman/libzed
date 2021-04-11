@@ -59,9 +59,9 @@ namespace z
 
 			int datact;
 
-			uint8_t res8;
-			uint16_t res16;
-			uint32_t res32;
+			uint8_t res8 = 0;
+			uint16_t res16 = 0;
+			uint32_t res32 = 0;
 			uint8_t* str;
 
 			switch (format())

@@ -156,7 +156,7 @@ namespace z
 				{
 					endianness_ = __ORDER_LITTLE_ENDIAN__;
 				}
-				else if (buf[b_i] == BOM[4-b_i])
+				else if (buf[b_i] == BOM[3-b_i])
 				{
 					endianness_ = __ORDER_BIG_ENDIAN__;
 				}

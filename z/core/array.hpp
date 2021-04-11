@@ -325,7 +325,7 @@ namespace z
 				array_data.reserve(sz);
 
 				T data;
-				for (int i=0; i<sz; i++)
+				for (CEREAL_SIZE_TYPE i=0; i<sz; i++)
 				{
 					ar(data);
 					array_data.push_back(data);
@@ -345,7 +345,7 @@ namespace z
 				array_data.reserve(sz);
 
 				T data;
-				for (int i=0; i<sz; i++)
+				for (CEREAL_SIZE_TYPE i=0; i<sz; i++)
 				{
 					ar(data);
 					array_data.push_back(data);

@@ -24,26 +24,26 @@ namespace z
 			binaryStream();
 			~binaryStream();
 
-			void put(uint8_t ch);
- 			void put(uint8_t* str, int count, encoding format = ascii);
+			void put(uint8_t ch) override;
+ 			void put(uint8_t* str, int count, encoding format = ascii) override;
 
- 			uint8_t get();
- 			uint32_t getChar();
+ 			uint8_t get() override;
+ 			uint32_t getChar() override;
 
- 			bool empty();
-			bool good();
-			bool bad();
-			bool binary();
-			bool seekable();
+ 			bool empty() override;
+			bool good() override;
+			bool bad() override;
+			bool binary() override;
+			bool seekable() override;
 
  			void seek(size_t index) override;
  			size_t tell() override;
  			size_t end() override;
 
-			encoding format();
-			void setFormat(encoding enc, bool force = false);
+			encoding format() override;
+			void setFormat(encoding enc, bool force = false) override;
 
-			void flush();
+			void flush() override;
 		};
 	}
 }

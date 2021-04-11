@@ -1325,6 +1325,7 @@ namespace z
 			template <class archive>
 			std::string save_minimal(archive& ar) const
 			{
+				(void)ar;
 				return string<utf8>(*this).cstring();
 			}
 

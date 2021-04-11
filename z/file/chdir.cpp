@@ -5,7 +5,7 @@
 #include <direct.h>
 #elif __linux__
 #include <unistd.h>
-#define _chdir chdir
+#define _chdir ::chdir
 #else
 #warning file::chdir is incompatible with target OS!
 #endif

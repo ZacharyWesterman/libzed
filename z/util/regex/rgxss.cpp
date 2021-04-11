@@ -11,13 +11,5 @@ namespace z
 		uint8_t rgxss::id() const noexcept {return rgxID;}
 
 		bool rgxss::operator==(const rgxss& other) const noexcept {return (rgxID == other.rgxID);}
-		// bool operator>(const rgxss& other) {return (rgxID > other.rgxID);}
-		// bool operator<(const rgxss& other) {return (rgxID < other.rgxID);}
-		const rgxss& rgxss::operator=(const rgxss& other) noexcept
-		{
-			rgxID=other.rgxID;
-			rgxSym=other.rgxSym;
-			return *this;
-		}
 	}
 }
