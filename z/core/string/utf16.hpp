@@ -83,7 +83,7 @@ namespace z
 		}
 
 		template <>
-		constexpr int string<utf16>::charSize() const noexcept
+		int string<utf16>::charSize() const noexcept
 		{
 			return 2;
 		}

@@ -52,7 +52,7 @@ namespace z
 			int character_ct;
 
 			void initChar(uint32_t, int) noexcept;
-			constexpr int charSize() const noexcept;
+			int charSize() const noexcept;
 
 			void initInt(long long, int, int) noexcept;
 			void initFloat(double, int, int, bool, int) noexcept;
