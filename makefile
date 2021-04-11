@@ -147,7 +147,7 @@ cleanbin:
 
 cleandox:
 	$(RMDIR) html
-	$(RM) doxygen.log
+	$(RM) *.log
 
 rebuild: clean default
 
