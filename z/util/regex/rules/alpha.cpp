@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void alpha::print(core::outputStream& stream, int level) noexcept
 			{
-				(zstring().repeat(" ",level*2)+(negate?"\\A":"\\a")+meta()).writeln(stream);
+				(zstring(" ").repeat(level*2)+(negate?"\\A":"\\a")+meta()).writeln(stream);
 			}
 #			endif
 		}

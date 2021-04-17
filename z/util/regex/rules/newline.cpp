@@ -41,7 +41,7 @@ namespace z
 #			ifdef DEBUG
 			void newline::print(core::outputStream& stream, int level) noexcept
 			{
-				(zstring().repeat(" ",level*2)+"\\n"+meta()).writeln(stream);
+				(zstring(" ").repeat(level*2)+"\\n"+meta()).writeln(stream);
 			}
 #			endif
 		}

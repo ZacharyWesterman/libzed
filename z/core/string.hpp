@@ -858,18 +858,18 @@ namespace z
 			string& padRightIn(const string& other, int padSize) noexcept;
 
 			/**
-			 * \brief Append text onto this string a specific number of times.
+			 * \brief Repeat this string a specific number of times.
 			 *
-			 * \param other The string to append on the end of this string.
-			 * \param count the number of times to repeat the input string.
+			 * \param count the number of times to repeat this string.
 			 *
-			 * \return A reference to this string after appending.
+			 * \return Resultant string.
 			 */
-			string& repeat(const string& other, int count) noexcept
+			string repeat(int count) const noexcept
 			{
-				increase(character_ct + (other.character_ct * count));
-				for (int i=0; i<count; ++i) append(other);
-				return *this;
+				string value;
+				value.increase(character_ct * count);
+				for (int i=0; i<count; ++i) value.append(*this);
+				return value;
 			}
 
 			/**

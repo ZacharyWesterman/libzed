@@ -67,9 +67,9 @@ namespace z
 			void lookahead::print(core::outputStream& stream, int level) noexcept
 			{
 				if (negate)
-					(zstring().repeat(" ",level*2)+"?!"+meta()).writeln(stream);
+					(zstring(" ").repeat(level*2)+"?!"+meta()).writeln(stream);
 				else
-					(zstring().repeat(" ",level*2)+"?="+meta()).writeln(stream);
+					(zstring(" ").repeat(level*2)+"?="+meta()).writeln(stream);
 
 				for (auto& child : children)
 				{

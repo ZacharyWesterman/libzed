@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void word::print(core::outputStream& stream, int level) noexcept
 			{
-				(zstring().repeat(" ",level*2)+(negate?"\\W":"\\w")+meta()).writeln(stream);
+				(zstring(" ").repeat(level*2)+(negate?"\\W":"\\w")+meta()).writeln(stream);
 			}
 #			endif
 		}

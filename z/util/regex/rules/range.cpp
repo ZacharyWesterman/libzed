@@ -37,8 +37,7 @@ namespace z
 #			ifdef DEBUG
 			void range::print(core::outputStream& stream, int level) noexcept
 			{
-				zstring s;
-				s.repeat(" ",level*2);
+				auto s = zstring(" ").repeat(level*2);
 				if ((begin<'!')||(begin>'~'))
 					s = s + "x" + (zstring)(int)begin;
 				else

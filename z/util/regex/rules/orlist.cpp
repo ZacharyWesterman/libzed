@@ -22,7 +22,7 @@ namespace z
 #			ifdef DEBUG
 			void orlist::print(core::outputStream& stream, int level) noexcept
 			{
-				auto s = zstring().repeat(" ",level*2)+"[]";
+				auto s = zstring(" ").repeat(level*2)+"[]";
 				if (negate) s += " ~";
 				(s+meta()).writeln(stream);
 				for (auto& child : children)
