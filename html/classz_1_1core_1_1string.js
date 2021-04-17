@@ -71,7 +71,7 @@ var classz_1_1core_1_1string =
     [ "readln", "classz_1_1core_1_1string.html#a197fec1700902dd7461f652fabceb7f0", null ],
     [ "remove", "classz_1_1core_1_1string.html#a4859c295acebf35c40a892af33ef4a65", null ],
     [ "remove", "classz_1_1core_1_1string.html#ac1f96aebbcd4cd47a3f407967900064c", null ],
-    [ "repeat", "classz_1_1core_1_1string.html#a066d4e1eaca2f0b457b8bec4cdf7e88d", null ],
+    [ "repeat", "classz_1_1core_1_1string.html#aac3d553c79a0a897becf916d6d2c5469", null ],
     [ "replace", "classz_1_1core_1_1string.html#a5d961c716fd579f8c166a9fc662752c1", null ],
     [ "replace", "classz_1_1core_1_1string.html#a0112c15e36a180f3719f21db0cd0b9d6", null ],
     [ "save_minimal", "classz_1_1core_1_1string.html#a8e0aafd2096bf8a78a6dd2bc834e1303", null ],

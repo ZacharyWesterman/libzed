@@ -302,9 +302,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3150636a59c7307ecea99d10a6b1f034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a3150636a59c7307ecea99d10a6b1f034">padRightIn</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, int padSize) noexcept</td></tr>
 <tr class="memdesc:a3150636a59c7307ecea99d10a6b1f034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right-pad this string up to a given character count.  <a href="classz_1_1core_1_1string.html#a3150636a59c7307ecea99d10a6b1f034">More...</a><br /></td></tr>
 <tr class="separator:a3150636a59c7307ecea99d10a6b1f034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a066d4e1eaca2f0b457b8bec4cdf7e88d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a066d4e1eaca2f0b457b8bec4cdf7e88d">repeat</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other, int <a class="el" href="classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06">count</a>) noexcept</td></tr>
-<tr class="memdesc:a066d4e1eaca2f0b457b8bec4cdf7e88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append text onto this string a specific number of times.  <a href="classz_1_1core_1_1string.html#a066d4e1eaca2f0b457b8bec4cdf7e88d">More...</a><br /></td></tr>
-<tr class="separator:a066d4e1eaca2f0b457b8bec4cdf7e88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac3d553c79a0a897becf916d6d2c5469"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aac3d553c79a0a897becf916d6d2c5469">repeat</a> (int <a class="el" href="classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06">count</a>) const noexcept</td></tr>
+<tr class="memdesc:aac3d553c79a0a897becf916d6d2c5469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeat this string a specific number of times.  <a href="classz_1_1core_1_1string.html#aac3d553c79a0a897becf916d6d2c5469">More...</a><br /></td></tr>
+<tr class="separator:aac3d553c79a0a897becf916d6d2c5469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c1c45a217805b32f69041c5812fcee3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a3c1c45a217805b32f69041c5812fcee3">trimLeft</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other=&quot;&quot;) const noexcept</td></tr>
 <tr class="memdesc:a3c1c45a217805b32f69041c5812fcee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies this string and removes padding from the left side of the result.  <a href="classz_1_1core_1_1string.html#a3c1c45a217805b32f69041c5812fcee3">More...</a><br /></td></tr>
 <tr class="separator:a3c1c45a217805b32f69041c5812fcee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -431,9 +431,14 @@ class z::core::string&lt; E &gt;</h3>
 
 <p>A template class for character strings. </p>
 <p>This class focuses on how characters are encoded rather than character size. Possible encoding schemes are ASCII, UTF-8, UTF16, and UTF32.<br  />
- When characters are input or output, they are converted to or from their encoding scheme to a single UTF32 character. Thus, the "default" character type is <code>uint32_t</code>. <br  />
-<br  />
- Allocated memory is increased as needed with approximate 1.5x growth, and is not decreased on subsequent data changes, except in the case where data is copied over to a different string.</p>
+ When characters are input or output, they are converted to or from their encoding scheme to a single UTF32 character. Thus, the "default" character type is <code>uint32_t</code>.</p>
+<p>Note this class is compatible with standard library streams, but also has <a class="el" href="classz_1_1core_1_1string.html#a7c810e7dee8c31bc799293ed5f120b13" title="Read string data from a stream until the given delimiter is encountered.">read()</a>, <a class="el" href="classz_1_1core_1_1string.html#a197fec1700902dd7461f652fabceb7f0" title="Read string data from a stream until a newline is encountered.">readln()</a>, <a class="el" href="classz_1_1core_1_1string.html#acf6bcc21f5c030820f9a582d93cee747" title="Write string data to a stream.">write()</a>, <a class="el" href="classz_1_1core_1_1string.html#aabfd03638c0920e1823da50ee80ed1f8" title="Write string data to a stream, appending a newline.">writeln()</a> methods for interacting with <a class="el" href="classz_1_1core_1_1stream.html" title="An interface for character streams.">core::stream</a> objects (Useful if a specific encoding is strictly required).</p>
+<p>To keep string types short, you may append _u32, _u16, _u8, or _asc after any literals. For example, here are a few different ways to construct a UTF32 encoded string: </p><div class="fragment"><div class="line"><span class="keyword">auto</span> str1 = <span class="stringliteral">&quot;hello world&quot;</span>_u32;</div>
+<div class="line"><span class="keyword">auto</span> str2 = L<span class="stringliteral">&quot;hello too!&quot;</span>_u32;</div>
+<div class="line"><span class="keyword">auto</span> str3 = <span class="charliteral">&#39;X&#39;</span>_u32;</div>
+<div class="line"><span class="keyword">auto</span> str4 = 1234_u32;</div>
+</div><!-- fragment --><p> The above will all be of type z::core::string&lt;z::utf32&gt;</p>
+<dl class="section note"><dt>Note</dt><dd>Allocated memory is increased as needed with approximate 1.5x growth, and is not decreased on subsequent data changes, except in the case where data is copied over to a different string.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd>encoding.h </dd>
 <dd>
 zstr.h </dd></dl>
@@ -3253,8 +3258,8 @@ template&lt;encoding E = utf32&gt; </div>
 
 </div>
 </div>
-<a id="a066d4e1eaca2f0b457b8bec4cdf7e88d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a066d4e1eaca2f0b457b8bec4cdf7e88d">&#9670;&nbsp;</a></span>repeat()</h2>
+<a id="aac3d553c79a0a897becf916d6d2c5469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac3d553c79a0a897becf916d6d2c5469">&#9670;&nbsp;</a></span>repeat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3265,21 +3270,11 @@ template&lt;encoding E = utf32&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">string</a>&amp; <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::repeat </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">string</a> <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::repeat </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"><em>count</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -3289,15 +3284,14 @@ template&lt;encoding E = utf32&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Append text onto this string a specific number of times. </p>
+<p>Repeat this string a specific number of times. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The string to append on the end of this string. </td></tr>
-    <tr><td class="paramname">count</td><td>the number of times to repeat the input string.</td></tr>
+    <tr><td class="paramname">count</td><td>the number of times to repeat this string.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to this string after appending. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Resultant string. </dd></dl>
 
 </div>
 </div>
