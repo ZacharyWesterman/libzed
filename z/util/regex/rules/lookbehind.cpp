@@ -46,8 +46,8 @@ namespace z
 #			ifdef DEBUG
 			void lookbehind::print(core::outputStream& stream, int level) noexcept
 			{
-				zpath s;
-				s.padLeftIn(" ",(level)<<1);
+				zstring s;
+				s.repeat(" ",level*2);
 				s += negate ? "?<!" : "?<=";
 				(s+meta()).writeln(stream);
 

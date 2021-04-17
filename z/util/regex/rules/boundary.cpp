@@ -60,7 +60,7 @@ namespace z
 #			ifdef DEBUG
 			void boundary::print(core::outputStream& stream, int level) noexcept
 			{
-				(zpath().padLeftIn(" ",(level)<<1)+"\\b"+meta()).writeln(stream);
+				(zstring().repeat(" ",level*2)+"\\b"+meta()).writeln(stream);
 			}
 #			endif
 		}

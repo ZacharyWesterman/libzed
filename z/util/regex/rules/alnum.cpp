@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void alnum::print(core::outputStream& stream, int level) noexcept
 			{
-				(zpath().padLeftIn(" ",(level)<<1)+(negate?"\\L":"\\l")+meta()).writeln(stream);
+				(zstring().repeat(" ",level*2)+(negate?"\\L":"\\l")+meta()).writeln(stream);
 			}
 #			endif
 		}

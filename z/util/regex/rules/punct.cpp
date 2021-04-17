@@ -26,7 +26,7 @@ namespace z
 #			ifdef DEBUG
 			void punct::print(core::outputStream& stream, int level) noexcept
 			{
-				(zpath().padLeftIn(" ",(level)<<1)+(negate?"\\P":"\\p")+meta()).writeln(stream);
+				(zstring().repeat(" ",level*2)+(negate?"\\P":"\\p")+meta()).writeln(stream);
 			}
 #			endif
 		}

@@ -98,9 +98,9 @@ namespace z
 				 * \brief Debug function to print extra metadata about a regex rule.
 				 * \return A string showing the rule's count range and whether it is greedy.
 				 */
-				zpath meta() noexcept
+				zstring meta() noexcept
 				{
-					zpath s = ' ';
+					zstring s = ' ';
 					if ((min != 1) || (max != 1))
 					{
 						s += '{';

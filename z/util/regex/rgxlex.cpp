@@ -6,6 +6,8 @@
 
 #include <limits.h> //for INT_MAX
 
+#include "../../core/charFunctions.hpp" //for upper/lower
+
 namespace z
 {
 	namespace util
@@ -140,7 +142,17 @@ namespace z
 						if (input.isValid(position+1) && (input[position+1].id() == RGX_DASH))
 						{
 							position+=2;
-							child = new rgx::range(chr, input[position].symbol(), flags & INSENSITIVE);
+							//let [a-Z] behave as if it was [a-zA-Z]
+							if (!(flags & INSENSITIVE) && (core::isUpper(chr) != core::isUpper(input[position].symbol())))
+							{
+								child = new rgx::range(core::toLower(chr), core::toLower(input[position].symbol()), flags & INSENSITIVE);
+								nodeOut->children.add(child);
+								child = new rgx::range(core::toUpper(chr), core::toUpper(input[position].symbol()), flags & INSENSITIVE);
+							}
+							else
+							{
+								child = new rgx::range(chr, input[position].symbol(), flags & INSENSITIVE);
+							}
 						}
 						else
 						{

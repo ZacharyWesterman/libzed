@@ -17,7 +17,7 @@ namespace z
 #			ifdef DEBUG
 			void space::print(core::outputStream& stream, int level) noexcept
 			{
-				(zpath().padLeftIn(" ",(level)<<1)+"\\s"+meta()).writeln(stream);
+				(zstring().repeat(" ",level*2)+"\\s"+meta()).writeln(stream);
 			}
 #			endif
 		}

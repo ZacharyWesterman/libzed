@@ -60,8 +60,8 @@ namespace z
 #			ifdef DEBUG
 			void andlist::print(core::outputStream& stream, int level) noexcept
 			{
-				zpath s;
-				s.padLeftIn(" ",(level)<<1);
+				zstring s;
+				s.repeat(" ",level*2);
 				s += "()";
 				(s+meta()).writeln(stream);
 				for (auto& child : children)

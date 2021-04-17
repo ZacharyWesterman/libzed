@@ -9,6 +9,12 @@ namespace z
 			range::range(uint32_t begin, uint32_t end, bool insensitive, int min, int max, bool greedy) noexcept :
 				rule(min,max,greedy), insensitive(insensitive)
 			{
+				if (insensitive)
+				{
+					begin = core::toUpper(begin);
+					end = core::toUpper(end);
+				}
+
 				if (begin > end)
 				{
 					this->end = begin;
@@ -18,12 +24,6 @@ namespace z
 				{
 					this->end = end;
 					this->begin = begin;
-				}
-
-				if (insensitive)
-				{
-					this->begin = core::toUpper(this->begin);
-					this->end = core::toUpper(this->end);
 				}
 			}
 
@@ -37,8 +37,8 @@ namespace z
 #			ifdef DEBUG
 			void range::print(core::outputStream& stream, int level) noexcept
 			{
-				zpath s;
-				s.padLeftIn(" ",(level)<<1);
+				zstring s;
+				s.repeat(" ",level*2);
 				if ((begin<'!')||(begin>'~'))
 					s = s + "x" + (zstring)(int)begin;
 				else

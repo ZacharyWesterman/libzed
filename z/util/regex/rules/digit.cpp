@@ -14,7 +14,7 @@ namespace z
 #			ifdef DEBUG
 			void digit::print(core::outputStream& stream, int level) noexcept
 			{
-				(zpath().padLeftIn(" ",(level)<<1)+"\\d"+meta()).writeln(stream);
+				(zstring().repeat(" ",level*2)+"\\d"+meta()).writeln(stream);
 			}
 #			endif
 		}
