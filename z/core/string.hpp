@@ -35,6 +35,10 @@ namespace z
 		 * is not decreased on subsequent data changes, except in the case where
 		 * data is copied over to a different string.
 		 *
+		 * \note This class is compatible with standard library streams, but also has
+		 * read(), readln(), write(), writeln() methods for interacting with core::stream
+		 * objects (Useful if a specific encoding is strictly required).
+		 *
 		 * \see encoding.h
 		 * \see zstr.h
 		 */
