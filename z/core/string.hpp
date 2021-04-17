@@ -1406,3 +1406,28 @@ namespace cereal
 
 typedef z::core::string<> zstring;
 typedef z::core::string<z::utf8> zpath;
+
+//Custom literals for simple string construction
+z::core::string<z::utf32> operator "" _u32(char value) { return z::core::string<z::utf32>(value); };
+z::core::string<z::utf32> operator "" _u32(wchar_t value) { return z::core::string<z::utf32>(value); };
+z::core::string<z::utf32> operator "" _u32(const char* value) { return z::core::string<z::utf32>(value); };
+z::core::string<z::utf32> operator "" _u32(const char* value, size_t) { return z::core::string<z::utf32>(value); };
+z::core::string<z::utf32> operator "" _u32(const wchar_t* value, size_t) { return z::core::string<z::utf32>(value); };
+
+z::core::string<z::utf16> operator "" _u16(char value) { return z::core::string<z::utf16>(value); };
+z::core::string<z::utf16> operator "" _u16(wchar_t value) { return z::core::string<z::utf16>(value); };
+z::core::string<z::utf16> operator "" _u16(const char* value) { return z::core::string<z::utf16>(value); };
+z::core::string<z::utf16> operator "" _u16(const char* value, size_t) { return z::core::string<z::utf16>(value); };
+z::core::string<z::utf16> operator "" _u16(const wchar_t* value, size_t) { return z::core::string<z::utf16>(value); };
+
+z::core::string<z::utf8> operator "" _u8(char value) { return z::core::string<z::utf8>(value); };
+z::core::string<z::utf8> operator "" _u8(wchar_t value) { return z::core::string<z::utf8>(value); };
+z::core::string<z::utf8> operator "" _u8(const char* value) { return z::core::string<z::utf8>(value); };
+z::core::string<z::utf8> operator "" _u8(const char* value, size_t) { return z::core::string<z::utf8>(value); };
+z::core::string<z::utf8> operator "" _u8(const wchar_t* value, size_t) { return z::core::string<z::utf8>(value); };
+
+z::core::string<z::ascii> operator "" _asc(char value) { return z::core::string<z::ascii>(value); };
+z::core::string<z::ascii> operator "" _asc(wchar_t value) { return z::core::string<z::ascii>(value); };
+z::core::string<z::ascii> operator "" _asc(const char* value) { return z::core::string<z::ascii>(value); };
+z::core::string<z::ascii> operator "" _asc(const char* value, size_t) { return z::core::string<z::ascii>(value); };
+z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t) { return z::core::string<z::ascii>(value); };
