@@ -30,14 +30,24 @@ namespace z
 		 * When characters are input or output, they are converted to or from their
 		 * encoding scheme to a single UTF32 character. Thus, the "default" character
 		 * type is `uint32_t`.
-		 * <br/><br/>
-		 * Allocated memory is increased as needed with approximate 1.5x growth, and
-		 * is not decreased on subsequent data changes, except in the case where
-		 * data is copied over to a different string.
 		 *
-		 * \note This class is compatible with standard library streams, but also has
+		 * Note this class is compatible with standard library streams, but also has
 		 * read(), readln(), write(), writeln() methods for interacting with core::stream
 		 * objects (Useful if a specific encoding is strictly required).
+		 *
+		 * To keep string types short, you may append _u32, _u16, _u8, or _asc after any literals.
+		 * For example, here are a few different ways to construct a UTF32 encoded string:
+		 * ```
+		 * auto str1 = "hello world"_u32;
+		 * auto str2 = L"hello too!"_u32;
+		 * auto str3 = 'X'_u32;
+		 * auto str4 = 1234_u32;
+		 * ```
+		 * The above will all be of type z::core::string<z::utf32>
+		 *
+		 * \note Allocated memory is increased as needed with approximate 1.5x growth, and
+		 * is not decreased on subsequent data changes, except in the case where
+		 * data is copied over to a different string.
 		 *
 		 * \see encoding.h
 		 * \see zstr.h
@@ -1408,26 +1418,26 @@ typedef z::core::string<> zstring;
 typedef z::core::string<z::utf8> zpath;
 
 //Custom literals for simple string construction
-z::core::string<z::utf32> operator "" _u32(char value) { return z::core::string<z::utf32>(value); };
-z::core::string<z::utf32> operator "" _u32(wchar_t value) { return z::core::string<z::utf32>(value); };
-z::core::string<z::utf32> operator "" _u32(const char* value) { return z::core::string<z::utf32>(value); };
-z::core::string<z::utf32> operator "" _u32(const char* value, size_t) { return z::core::string<z::utf32>(value); };
-z::core::string<z::utf32> operator "" _u32(const wchar_t* value, size_t) { return z::core::string<z::utf32>(value); };
+z::core::string<z::utf32> operator "" _u32(char value);
+z::core::string<z::utf32> operator "" _u32(wchar_t value);
+z::core::string<z::utf32> operator "" _u32(const char* value);
+z::core::string<z::utf32> operator "" _u32(const char* value, size_t);
+z::core::string<z::utf32> operator "" _u32(const wchar_t* value, size_t);
 
-z::core::string<z::utf16> operator "" _u16(char value) { return z::core::string<z::utf16>(value); };
-z::core::string<z::utf16> operator "" _u16(wchar_t value) { return z::core::string<z::utf16>(value); };
-z::core::string<z::utf16> operator "" _u16(const char* value) { return z::core::string<z::utf16>(value); };
-z::core::string<z::utf16> operator "" _u16(const char* value, size_t) { return z::core::string<z::utf16>(value); };
-z::core::string<z::utf16> operator "" _u16(const wchar_t* value, size_t) { return z::core::string<z::utf16>(value); };
+z::core::string<z::utf16> operator "" _u16(char value);
+z::core::string<z::utf16> operator "" _u16(wchar_t value);
+z::core::string<z::utf16> operator "" _u16(const char* value);
+z::core::string<z::utf16> operator "" _u16(const char* value, size_t);
+z::core::string<z::utf16> operator "" _u16(const wchar_t* value, size_t);
 
-z::core::string<z::utf8> operator "" _u8(char value) { return z::core::string<z::utf8>(value); };
-z::core::string<z::utf8> operator "" _u8(wchar_t value) { return z::core::string<z::utf8>(value); };
-z::core::string<z::utf8> operator "" _u8(const char* value) { return z::core::string<z::utf8>(value); };
-z::core::string<z::utf8> operator "" _u8(const char* value, size_t) { return z::core::string<z::utf8>(value); };
-z::core::string<z::utf8> operator "" _u8(const wchar_t* value, size_t) { return z::core::string<z::utf8>(value); };
+z::core::string<z::utf8> operator "" _u8(char value);
+z::core::string<z::utf8> operator "" _u8(wchar_t value);
+z::core::string<z::utf8> operator "" _u8(const char* value);
+z::core::string<z::utf8> operator "" _u8(const char* value, size_t);
+z::core::string<z::utf8> operator "" _u8(const wchar_t* value, size_t);
 
-z::core::string<z::ascii> operator "" _asc(char value) { return z::core::string<z::ascii>(value); };
-z::core::string<z::ascii> operator "" _asc(wchar_t value) { return z::core::string<z::ascii>(value); };
-z::core::string<z::ascii> operator "" _asc(const char* value) { return z::core::string<z::ascii>(value); };
-z::core::string<z::ascii> operator "" _asc(const char* value, size_t) { return z::core::string<z::ascii>(value); };
-z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t) { return z::core::string<z::ascii>(value); };
+z::core::string<z::ascii> operator "" _asc(char value);
+z::core::string<z::ascii> operator "" _asc(wchar_t value);
+z::core::string<z::ascii> operator "" _asc(const char* value);
+z::core::string<z::ascii> operator "" _asc(const char* value, size_t);
+z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t);
