@@ -23,9 +23,11 @@ zstring itostr(long val, bool andInt = false)
 	};
 
 	const char* powers[] = {
+#		if __x86_64__
 		"quintillion",
 		"quadrillion",
 		"trillion",
+#		endif
 		"billion",
 		"million",
 		"thousand",
@@ -33,9 +35,11 @@ zstring itostr(long val, bool andInt = false)
 	};
 
 	const long powvals[] = {
+#		if __x86_64__
 		1000000000000000000,
 		1000000000000000,
 		1000000000000,
+#		endif
 		1000000000,
 		1000000,
 		1000,
