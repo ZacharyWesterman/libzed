@@ -14,11 +14,12 @@
 
 #include "stringIterator.hpp"
 
+#if __has_include(<cereal/cereal.hpp>)
+#include <cereal/types/string.hpp>
+#endif
+
 namespace z
 {
-	//default complex value is double
-	typedef std::complex<double> cplx;
-
 	namespace core
 	{
 
@@ -1383,36 +1384,6 @@ namespace z
 		};
 	}
 }
-
-/*! \cond PRIVATE */
-//workaround for apparently missing binary IO for std::string
-//Doxygen should ignore this block.
-#if __has_include(<cereal/cereal.hpp>)
-#include <cereal/archives/binary.hpp>
-namespace cereal
-{
-	template <typename archive, typename std::enable_if<std::is_same<archive, ::cereal::BinaryOutputArchive>::value>::type* = nullptr>
-	void save(archive& ar, const std::string& str)
-	{
-		auto data = (const void*)(str.c_str());
-		std::streamsize size = str.size();
-		ar(size);
-		ar.saveBinary(data, size);
-	}
-
-	template <typename archive, typename std::enable_if<std::is_same<archive, ::cereal::BinaryInputArchive>::value>::type* = nullptr>
-	void load(archive& ar, std::string& str)
-	{
-		std::streamsize size = 0;
-		ar(size);
-		char* data = new char[size+1];
-		ar.loadBinary((void*)data, size);
-		data[size] = '\0';
-		str = data;
-	}
-}
-#endif
-/* \endcond */
 
 typedef z::core::string<> zstring;
 typedef z::core::string<z::utf8> zpath;

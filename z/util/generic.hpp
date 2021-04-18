@@ -9,8 +9,15 @@
 #include "../core/array.hpp"
 #include <variant>
 
+#if __has_include(<cereal/cereal.hpp>)
+#include <cereal/types/complex.hpp>
+#endif
+
 namespace z
 {
+	//Default complex type is double.
+	typedef std::complex<double> cplx;
+
 	namespace util
 	{
 		/**
@@ -369,16 +376,6 @@ namespace z
 			template <typename archive>
 			void save(archive& ar) const
 			{
-				struct cplx {
-					double real;
-					double imag;
-
-					void serialize(archive& ar)
-					{
-						ar(CEREAL_NVP(real), CEREAL_NVP(imag));
-					}
-				};
-
 				const short int type = this->value.index();
 				ar(CEREAL_NVP(type));
 
@@ -392,8 +389,7 @@ namespace z
 				}
 				else if (type == COMPLEX)
 				{
-					auto cval = complex();
-					cplx val = {cval.real(), cval.imag()};
+					auto val = complex();
 					ar(cereal::make_nvp("value", val));
 				}
 				else if (type == FLOAT)
@@ -413,16 +409,6 @@ namespace z
 			template <class archive>
 			void load(archive& ar)
 			{
-				struct cplx {
-					double real;
-					double imag;
-
-					void serialize(archive& ar)
-					{
-						ar(CEREAL_NVP(real), CEREAL_NVP(imag));
-					}
-				};
-
 				short int type = VOID;
 				ar(CEREAL_NVP(type));
 
@@ -440,9 +426,9 @@ namespace z
 				}
 				else if (type == COMPLEX)
 				{
-					cplx val;
+					std::complex<double> val;
 					ar(cereal::make_nvp("value",val));
-					value = std::complex<double>(val.real,val.imag);
+					value = val;
 				}
 				else if (type == FLOAT)
 				{
