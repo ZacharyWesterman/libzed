@@ -51,7 +51,11 @@ namespace z
 
 		bool info::symlink() const noexcept
 		{
+#			ifdef _WIN32
+			return false;
+#			else
 			return does_exist ? S_ISLNK(fileStat.st_mode) : false;
+#			endif
 		}
 
 		bool info::regular() const noexcept
