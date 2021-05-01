@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.org/ZacharyWesterman/libzed)
+[![Build Status](https://travis-ci.com/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.com/ZacharyWesterman/libzed)
 
 This library contains useful classes and functions for quick and simple data manipulation. The idea is to take the grunt work out of C++ in a fast, platform-independent way.
 
