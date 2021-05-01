@@ -9,49 +9,54 @@ namespace z
 			does_exist = _stat((char*)path.cstring(), &fileStat);
 		}
 
-		inline bool info::exists() noexcept
+		bool info::exists() const noexcept
 		{
 			return does_exist;
 		}
 
-		time_t info::lastAccessed() noexcept
+		time_t info::accessed() const noexcept
 		{
-			if (does_exist)
-				return fileStat.st_atime;
-			else
-				return 0;
+			return does_exist ? fileStat.st_atime : 0;
 		}
 
-		time_t info::lastModified() noexcept
+		time_t info::modified() const noexcept
 		{
-			if (does_exist)
-				return fileStat.st_mtime;
-			else
-				return 0;
+			return does_exist ? fileStat.st_mtime : 0;
 		}
 
-		time_t info::lastStatusChange() noexcept
+		time_t info::changed() const noexcept
 		{
-			if (does_exist)
-				return fileStat.st_ctime;
-			else
-				return 0;
+			return does_exist ? fileStat.st_ctime : 0;
 		}
 
-		size_t info::byteCount() noexcept
+		size_t info::size() const noexcept
 		{
-			if (does_exist)
-				return fileStat.st_size;
-			else
-				return 0;
+			return does_exist ? fileStat.st_size : 0;
 		}
 
-		unsigned int info::deviceNumber() noexcept
+		int info::device() const noexcept
 		{
-			if (does_exist)
-				return fileStat.st_dev;
-			else
-				return 0;
+			return does_exist ? fileStat.st_dev : 0;
+		}
+
+		mode_t info::mode() const noexcept
+		{
+			return does_exist ? fileStat.st_mode : 0;
+		}
+
+		bool info::directory() const noexcept
+		{
+			return does_exist ? S_ISDIR(fileStat.st_mode) : false;
+		}
+
+		bool info::symlink() const noexcept
+		{
+			return does_exist ? S_ISLNK(fileStat.st_mode) : false;
+		}
+
+		bool info::regular() const noexcept
+		{
+			return does_exist ? S_ISREG(fileStat.st_mode) : false;
 		}
 	}
 }

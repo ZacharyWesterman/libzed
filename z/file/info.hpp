@@ -2,6 +2,7 @@
 
 #include <sys/stat.h>
 #include "../core/string.hpp"
+#include "../core/sizable.hpp"
 
 #ifdef _WIN32
 #elif __linux__
@@ -24,7 +25,7 @@ namespace z
 		 * retrieval of the most common file information
 		 * (e.g. file size, modification date, etc).
 		 */
-		class info
+		class info : core::sizable
 		{
 		private:
 			struct _stat fileStat;
@@ -47,7 +48,7 @@ namespace z
 			 * or cannot be accessed for some reason.
 			 * \b True otherwise.
 			 */
-			inline bool exists() noexcept;
+			bool exists() const noexcept;
 
 			/**
 			 * \brief Get the time that the file was last accessed.
@@ -55,7 +56,7 @@ namespace z
 			 * \return When the file was last accessed, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastAccessed() noexcept;
+			time_t accessed() const noexcept;
 
 			/**
 			 * \brief Get the time that the file was last modified.
@@ -63,7 +64,7 @@ namespace z
 			 * \return When the file was last modified, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastModified() noexcept;
+			time_t modified() const noexcept;
 
 			/**
 			 * \brief Get the time that the file's status was last changed.
@@ -71,7 +72,7 @@ namespace z
 			 * \return When the file status was last changed, if it exists.
 			 * \b 0 otherwise.
 			 */
-			time_t lastStatusChange() noexcept;
+			time_t changed() const noexcept;
 
 			/**
 			 * \brief Get the size of the file.
@@ -79,7 +80,7 @@ namespace z
 			 * \return The size of the file (in Bytes), if it exists.
 			 * \b 0 otherwise.
 			 */
-			size_t byteCount() noexcept;
+			size_t size() const noexcept override;
 
 			/**
 			 * \brief Get the number of the device where the file is stored.
@@ -87,7 +88,31 @@ namespace z
 			 * \return The device number of the file, if it exists.
 			 * \b 0 otherwise.
 			 */
-			unsigned int deviceNumber() noexcept;
+			int device() const noexcept;
+
+			/**
+			 * \brief Get the mode (permissions) of the file.
+			 * \return The file permissions.
+			 */
+			mode_t mode() const noexcept;
+
+			/**
+			 * \brief Check if this file is a directory.
+			 * \return True if this is a directory, false otherwise.
+			 */
+			bool directory() const noexcept;
+
+			/**
+			 * \brief Check if this file is a symbolic link.
+			 * \return True if this is a symlink, false otherwise.
+			 */
+			bool symlink() const noexcept;
+
+			/**
+			 * \brief Check if this file is a regular file.
+			 * \return True if this is a file, false otherwise.
+			 */
+			bool regular() const noexcept;
 		};
 	}
 }
