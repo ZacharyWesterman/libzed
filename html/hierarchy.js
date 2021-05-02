@@ -8,7 +8,6 @@ var hierarchy =
     ] ],
     [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
-    [ "z::file::info", "classz_1_1file_1_1info.html", null ],
     [ "z::core::inputStream", "classz_1_1core_1_1inputStream.html", [
       [ "z::core::stream", "classz_1_1core_1_1stream.html", [
         [ "z::core::binaryStream", "classz_1_1core_1_1binaryStream.html", null ],
@@ -71,6 +70,7 @@ var hierarchy =
         ] ]
       ] ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
+      [ "z::file::info", "classz_1_1file_1_1info.html", null ],
       [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ]
     ] ],
     [ "z::core::stringIterator< E >", "classz_1_1core_1_1stringIterator.html", null ],
