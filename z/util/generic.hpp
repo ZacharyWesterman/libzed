@@ -9,8 +9,10 @@
 #include "../core/array.hpp"
 #include <variant>
 
+#ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 #include <cereal/types/complex.hpp>
+#endif
 #endif
 
 namespace z
@@ -368,6 +370,7 @@ namespace z
 			 */
 			bool equivalent(const generic& other) const;
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief Serialization output.
@@ -443,6 +446,7 @@ namespace z
 					value = val;
 				}
 			}
+#		endif
 #		endif
 		};
 

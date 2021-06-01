@@ -47,6 +47,7 @@ namespace z
 			 */
 			bool timedOut() const noexcept;
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief Serialization output.
@@ -75,6 +76,7 @@ namespace z
 				reset(std::chrono::high_resolution_clock::now() - std::chrono::microseconds(elapsed));
 				timeout_goal = goal;
 			}
+#		endif
 #		endif
 		};
 	}

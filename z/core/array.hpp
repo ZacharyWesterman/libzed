@@ -7,9 +7,11 @@
 #include "typeChecks.hpp"
 #include "compare.hpp"
 
+#ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 #include <cereal/archives/json.hpp>
 #include <cereal/archives/xml.hpp>
+#endif
 #endif
 
 namespace z
@@ -256,6 +258,7 @@ namespace z
 				return begin() + array_data.size();
 			}
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief JSON specialization of serialization output.
@@ -352,6 +355,7 @@ namespace z
 				}
 			}
 
+#		endif
 #		endif
 		};
 

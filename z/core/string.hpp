@@ -14,8 +14,10 @@
 
 #include "stringIterator.hpp"
 
+#ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 #include <cereal/types/string.hpp>
+#endif
 #endif
 
 namespace z
@@ -1330,6 +1332,7 @@ namespace z
 			 */
 			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 
 			/**
@@ -1355,6 +1358,7 @@ namespace z
 				(void)ar;
 				operator=(value.c_str());
 			}
+#		endif
 #		endif
 
 			/**

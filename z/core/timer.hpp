@@ -2,8 +2,10 @@
 
 #include <chrono>
 
+#ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 #include <cereal/cereal.hpp>
+#endif
 #endif
 
 namespace z
@@ -81,6 +83,7 @@ namespace z
 			 */
 			unsigned int hours() const noexcept;
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief Serialization output.
@@ -104,6 +107,7 @@ namespace z
 				ar(CEREAL_NVP(elapsed));
 				reset(std::chrono::high_resolution_clock::now() - std::chrono::microseconds(elapsed));
 			}
+#		endif
 #		endif
 		};
 	}

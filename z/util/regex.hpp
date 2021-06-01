@@ -119,6 +119,7 @@ namespace z
 			 */
 			const zstring& pattern() const noexcept;
 
+#		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
 			/**
 			 * \brief Serialization output.
@@ -145,6 +146,7 @@ namespace z
 				ar(CEREAL_NVP(text));
 				set(text);
 			}
+#		endif
 #		endif
 		};
 	}
