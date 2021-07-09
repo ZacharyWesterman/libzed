@@ -787,13 +787,11 @@ namespace z
 		template <typename T>
 		array<T>& array<T>::replace(int index, int count, const array<T>& other)
 		{
-			if (!count) return *this;
-
-			if (index < 0) index += array_data.size() + 1;
+			if (index < 0) index += array_data.size();
 
 			int start, end;
 
-			if (count > 0)
+			if (count >= 0)
 			{
 				start = index;
 				end = index + count;
@@ -808,10 +806,8 @@ namespace z
 			if (start < 0) start = 0;
 			if (end > (int)array_data.size()) end = array_data.size();
 
-			array_data.erase(array_data.begin() + start, array_data.begin() + end);
-
-			for (int i=0; i<other.size(); i++)
-				array_data.insert(array_data.begin() + start + i, other[i]);
+			if (count) array_data.erase(array_data.begin() + start, array_data.begin() + end);
+			array_data.insert(array_data.begin() + start, other.array_data.begin(), other.array_data.end());
 
 			return *this;
 		}
