@@ -22,7 +22,6 @@ namespace z
 			/**
 			 * \brief Generic constructor.
 			 */
-			template<typename T>
 			stringStream() : streamIndex(0) {}
 
 			void put(uint8_t ch) override;

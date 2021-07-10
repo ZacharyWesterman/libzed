@@ -34,3 +34,4 @@
 #include "core/stream.hpp"
 #include "core/binaryStream.hpp"
 #include "core/memoryStream.hpp"
+#include "core/stringStream.hpp"
