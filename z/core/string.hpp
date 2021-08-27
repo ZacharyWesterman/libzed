@@ -3,6 +3,8 @@
 #include <type_traits>
 #include <complex>
 #include <cstring>
+#include <utility>
+#include <initializer_list>
 
 #include "stream.hpp"
 
@@ -1116,27 +1118,95 @@ namespace z
 			 *
 			 * \param first The first character in the range.
 			 * \param last The last character in the range.
+			 * \param invert Invert the selection, that is, remove all characters that <B>ARE</B> in the given range.
 			 *
 			 * \return A duplicate of this string with all non-matching characters removed.
 			 */
-			string filter(uint32_t first, uint32_t last) const noexcept
+			string filter(uint32_t first, uint32_t last, bool invert = false) const noexcept
 			{
-				if (first > last)
-				{
-					auto temp = first;
-					first = last;
-					last = temp;
-				}
+				return filter({first, last}, invert);
+			}
 
+			/**
+			 * \brief Filter out all characters not in the given range.
+			 *
+			 * example: this->filter({'A', 'Z'}) will remove all characters not in the
+			 * range A -> Z, inclusive.
+			 *
+			 * \param range A std::pair denoting the character range.
+			 * \param invert Invert the selection, that is, remove all characters that <B>ARE</B> in the given range.
+			 *
+			 * \return A duplicate of this string with all non-matching characters removed.
+			 */
+			string filter(const std::pair<uint32_t, uint32_t>& range, bool invert = false) const noexcept
+			{
+				return filter({range}, invert);
+			}
+
+			/**
+			 * \brief Filter out all characters not in the given range.
+			 *
+			 * example: this->filter({{'A', 'Z'}, {'a', 'z'}, {'0', '9'}}) will remove all characters that are not
+			 * alphanumeric.
+			 *
+			 * \param list A list of std::pair objects denoting all valid character ranges.
+			 * \param invert Invert the selection, that is, remove all characters that <B>ARE</B> in the given range.
+			 *
+			 * \return A duplicate of this string with all non-matching characters removed.
+			 */
+			string filter(const std::initializer_list<const std::pair<uint32_t, uint32_t>>& list, bool invert = false) const noexcept
+			{
 				string result;
 				for (uint32_t chr : *this)
 				{
-					if ((chr >= first) && (chr <= last))
+					bool matched = false;
+					for (auto& range : list)
+					{
+						if ((chr >= range.first) && (chr <= range.second))
+						{
+							matched = true;
+							break;
+						}
+					}
+
+					if (matched != invert)
 					{
 						result.append(chr);
 					}
 				}
+				return result;
+			}
 
+			/**
+			 * \brief Filter out all characters not in the given string.
+			 *
+			 * example: this->filter("aeiouyAEIOUY") will remove all non-vowel characters.
+			 *
+			 * \param list A string indicating the list of valid characters.
+			 * \param invert Invert the selection, that is, remove all characters that <B>ARE</B> in the given range.
+			 *
+			 * \return A duplicate of this string with all non-matching characters removed.
+			 */
+			string filter(const string& list, bool invert = false) const noexcept
+			{
+				string result;
+				for (uint32_t chr : *this)
+				{
+					bool matched = false;
+					for (uint32_t other : list)
+					{
+						if (chr == other)
+						{
+							matched = true;
+							break;
+						}
+					}
+
+					if (matched != invert)
+					{
+						result.append(chr);
+					}
+				}
 				return result;
 			}
 
