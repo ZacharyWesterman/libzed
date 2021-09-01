@@ -63,6 +63,12 @@ It should compile on any 64 or 32-bit flavor of these systems (including the Ras
 The only requirements are Make and a C++ compiler that supports *at least* C++11 (C++17 or newer preferred).
 If `g++ --version` is 5 or above, chances are you're good.
 
+To build and install, just run
+```
+make
+sudo make install
+```
+
 Full build instructions along with make options are detailed on the main page of the [Documentation][docs].
 
 Also of note is that certain classes in this library can be serialized if the
