@@ -1211,6 +1211,118 @@ namespace z
 			}
 
 			/**
+			 * \brief Check if this string contains any characters in the given range.
+			 *
+			 * example: this->contains('A', 'Z') will return true if this string contains a character in the
+			 * range A -> Z, inclusive.
+			 *
+			 * \param range A std::pair denoting the character range.
+			 * \param exclusive Return false if this string contains any characters NOT in the given string.
+			 *
+			 * \return Whether this string contained a character in the given range, or if the `exclusive` flag is set,
+			 * whether it contains ONLY characters in the given range.
+			 */
+			bool contains(uint32_t first, uint32_t last, bool exclusive = false) const noexcept
+			{
+				return contains({first, last}, exclusive);
+			}
+
+			/**
+			 * \brief Check if this string contains any characters in the given range.
+			 *
+			 * example: this->contains({'A', 'Z'}) will return true if this string contains a character in the
+			 * range A -> Z, inclusive.
+			 *
+			 * \param range A std::pair denoting the character range.
+			 * \param exclusive Return false if this string contains any characters NOT in the given string.
+			 *
+			 * \return Whether this string contained a character in the given range, or if the `exclusive` flag is set,
+			 * whether it contains ONLY characters in the given range.
+			 */
+			bool contains(const std::pair<uint32_t, uint32_t>& range, bool exclusive = false) const noexcept
+			{
+				return contains({range}, exclusive);
+			}
+
+			/**
+			 * \brief Check if this string contains any characters in the given ranges.
+			 *
+			 * example: this->contains({{'A', 'Z'}, {'a', 'z'}, {'0', '9'}}) will return true if this string
+			 * contains an alphanumeric character.
+			 *
+			 * \param list A list of std::pair objects denoting all valid character ranges.
+			 * \param exclusive Return false if this string contains any characters NOT in any of the given ranges.
+			 *
+			 * \return Whether this string contained a character in any of the given ranges, or if the `exclusive` flag is set,
+			 * whether it contains ONLY characters in the given ranges.
+			 */
+			bool contains(const std::initializer_list<const std::pair<uint32_t, uint32_t>>& list, bool exclusive = false) const noexcept
+			{
+				string result;
+				for (uint32_t chr : *this)
+				{
+					bool matched = false;
+					for (auto& range : list)
+					{
+						if ((chr >= range.first) && (chr <= range.second))
+						{
+							matched = true;
+							break;
+						}
+					}
+
+					//if (matched && !exclusive) or (!matched && exclusive)
+					//then we know the result, exit right away.
+					if (matched ^ exclusive)
+					{
+						return matched;
+					}
+				}
+
+				//will ony get here if (!matched && !exclusive) or (matched && exclusive)
+				//therefore, matched := exclusive
+				return exclusive;
+			}
+
+			/**
+			 * \brief Check if this string contains any of the characters in the given string.
+			 *
+			 * example: this->contains("aeiouyAEIOUY") will return true if this contains a vowel.
+			 *
+			 * \param list A string indicating the list of valid characters.
+			 * \param exclusive Return false if this string contains any characters NOT in the given string.
+			 *
+			 * \return Whether this string contained any of the characters in the given string, or if the `exclusive` flag is set,
+			 * whether it contains ONLY characters in the given string.
+			 */
+			bool contains(const string& list, bool exclusive = false) const noexcept
+			{
+				for (uint32_t chr : *this)
+				{
+					bool matched = false;
+					for (uint32_t other : list)
+					{
+						if (chr == other)
+						{
+							matched = true;
+							break;
+						}
+					}
+
+					//if (matched && !exclusive) or (!matched && exclusive)
+					//then we know the result, exit right away.
+					if (matched ^ exclusive)
+					{
+						return matched;
+					}
+				}
+
+				//will ony get here if (!matched && !exclusive) or (matched && exclusive)
+				//therefore, matched := exclusive
+				return exclusive;
+			}
+
+			/**
 			 * \brief Concatenate two strings.
 			 *
 			 * \param other The string to append.
