@@ -1,0 +1,4 @@
+/mnt/dm-4/repos/libzed/z/core/string.hpp:1216: warning: argument 'range' of command @param is not found in the argument list of z::core::string< E >::contains(uint32_t first, uint32_t last, bool exclusive=false) const
+/mnt/dm-4/repos/libzed/z/core/string.hpp:1225: warning: The following parameters of z::core::string::contains(uint32_t first, uint32_t last, bool exclusive=false) const are not documented:
+  parameter 'first'
+  parameter 'last'

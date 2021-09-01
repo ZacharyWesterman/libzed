@@ -360,6 +360,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a06d1fdfec88d9dda0dc1766d6bba7c7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a06d1fdfec88d9dda0dc1766d6bba7c7b">filter</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;list, bool invert=false) const noexcept</td></tr>
 <tr class="memdesc:a06d1fdfec88d9dda0dc1766d6bba7c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter out all characters not in the given string.  <a href="classz_1_1core_1_1string.html#a06d1fdfec88d9dda0dc1766d6bba7c7b">More...</a><br /></td></tr>
 <tr class="separator:a06d1fdfec88d9dda0dc1766d6bba7c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681fe4167410b67fc551ba110ab05caf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a681fe4167410b67fc551ba110ab05caf">contains</a> (uint32_t first, uint32_t last, bool exclusive=false) const noexcept</td></tr>
+<tr class="memdesc:a681fe4167410b67fc551ba110ab05caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string contains any characters in the given range.  <a href="classz_1_1core_1_1string.html#a681fe4167410b67fc551ba110ab05caf">More...</a><br /></td></tr>
+<tr class="separator:a681fe4167410b67fc551ba110ab05caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47eb35c738fc945653b681f9ad833289"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a47eb35c738fc945653b681f9ad833289">contains</a> (const std::pair&lt; uint32_t, uint32_t &gt; &amp;range, bool exclusive=false) const noexcept</td></tr>
+<tr class="memdesc:a47eb35c738fc945653b681f9ad833289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string contains any characters in the given range.  <a href="classz_1_1core_1_1string.html#a47eb35c738fc945653b681f9ad833289">More...</a><br /></td></tr>
+<tr class="separator:a47eb35c738fc945653b681f9ad833289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b6fca4c36928c63442bd66738afde6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ad5b6fca4c36928c63442bd66738afde6">contains</a> (const std::initializer_list&lt; const std::pair&lt; uint32_t, uint32_t &gt;&gt; &amp;list, bool exclusive=false) const noexcept</td></tr>
+<tr class="memdesc:ad5b6fca4c36928c63442bd66738afde6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string contains any characters in the given ranges.  <a href="classz_1_1core_1_1string.html#ad5b6fca4c36928c63442bd66738afde6">More...</a><br /></td></tr>
+<tr class="separator:ad5b6fca4c36928c63442bd66738afde6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9fad872ff436d306447bdb8fbda5650"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#af9fad872ff436d306447bdb8fbda5650">contains</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;list, bool exclusive=false) const noexcept</td></tr>
+<tr class="memdesc:af9fad872ff436d306447bdb8fbda5650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this string contains any of the characters in the given string.  <a href="classz_1_1core_1_1string.html#af9fad872ff436d306447bdb8fbda5650">More...</a><br /></td></tr>
+<tr class="separator:af9fad872ff436d306447bdb8fbda5650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27ea52347a2d0a44dad9e0cccda1449f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a27ea52347a2d0a44dad9e0cccda1449f">operator+</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;other) const noexcept</td></tr>
 <tr class="memdesc:a27ea52347a2d0a44dad9e0cccda1449f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate two strings.  <a href="classz_1_1core_1_1string.html#a27ea52347a2d0a44dad9e0cccda1449f">More...</a><br /></td></tr>
 <tr class="separator:a27ea52347a2d0a44dad9e0cccda1449f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1353,6 +1365,208 @@ template&lt;encoding E = utf32&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The floating-point complex representation of this string, if it is a valid complex float. 0 otherwise.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a70f2edc11684860b5741f614d0ddf384" title="Check if this string can convert to a complex value.">isComplex()</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad5b6fca4c36928c63442bd66738afde6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b6fca4c36928c63442bd66738afde6">&#9670;&nbsp;</a></span>contains() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::contains </td>
+          <td>(</td>
+          <td class="paramtype">const std::initializer_list&lt; const std::pair&lt; uint32_t, uint32_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exclusive</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if this string contains any characters in the given ranges. </p>
+<p>example: this-&gt;contains({{'A', 'Z'}, {'a', 'z'}, {'0', '9'}}) will return true if this string contains an alphanumeric character.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>A list of std::pair objects denoting all valid character ranges. </td></tr>
+    <tr><td class="paramname">exclusive</td><td>Return false if this string contains any characters NOT in any of the given ranges.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether this string contained a character in any of the given ranges, or if the <code>exclusive</code> flag is set, whether it contains ONLY characters in the given ranges. </dd></dl>
+
+</div>
+</div>
+<a id="a47eb35c738fc945653b681f9ad833289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47eb35c738fc945653b681f9ad833289">&#9670;&nbsp;</a></span>contains() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::contains </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; uint32_t, uint32_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exclusive</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if this string contains any characters in the given range. </p>
+<p>example: this-&gt;contains({'A', 'Z'}) will return true if this string contains a character in the range A -&gt; Z, inclusive.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">range</td><td>A std::pair denoting the character range. </td></tr>
+    <tr><td class="paramname">exclusive</td><td>Return false if this string contains any characters NOT in the given string.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether this string contained a character in the given range, or if the <code>exclusive</code> flag is set, whether it contains ONLY characters in the given range. </dd></dl>
+
+</div>
+</div>
+<a id="af9fad872ff436d306447bdb8fbda5650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9fad872ff436d306447bdb8fbda5650">&#9670;&nbsp;</a></span>contains() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::contains </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exclusive</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if this string contains any of the characters in the given string. </p>
+<p>example: this-&gt;contains("aeiouyAEIOUY") will return true if this contains a vowel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>A string indicating the list of valid characters. </td></tr>
+    <tr><td class="paramname">exclusive</td><td>Return false if this string contains any characters NOT in the given string.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether this string contained any of the characters in the given string, or if the <code>exclusive</code> flag is set, whether it contains ONLY characters in the given string. </dd></dl>
+
+</div>
+</div>
+<a id="a681fe4167410b67fc551ba110ab05caf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a681fe4167410b67fc551ba110ab05caf">&#9670;&nbsp;</a></span>contains() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf32&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::contains </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>last</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>exclusive</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if this string contains any characters in the given range. </p>
+<p>example: this-&gt;contains('A', 'Z') will return true if this string contains a character in the range A -&gt; Z, inclusive.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">range</td><td>A std::pair denoting the character range. </td></tr>
+    <tr><td class="paramname">exclusive</td><td>Return false if this string contains any characters NOT in the given string.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether this string contained a character in the given range, or if the <code>exclusive</code> flag is set, whether it contains ONLY characters in the given range. </dd></dl>
 
 </div>
 </div>
