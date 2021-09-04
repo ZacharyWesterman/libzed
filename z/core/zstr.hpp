@@ -12,8 +12,8 @@ namespace z
 		namespace zstr
 		{
 			/**
-			 * \brief Data types that a string can convert to or from.
-			 */
+			* \brief Data types that a string can convert to or from.
+			*/
 			enum zstr
 			{
 				string   = 0,

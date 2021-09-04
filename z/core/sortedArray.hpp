@@ -9,13 +9,13 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \brief An extension of the core::array class
-		 * which attempts to keep all data sorted.
-		 *
-		 * \see array
-		 * \see refArray
-		 * \see sortedRefArray
-		 */
+		* \brief An extension of the core::array class
+		* which attempts to keep all data sorted.
+		*
+		* \see array
+		* \see refArray
+		* \see sortedRefArray
+		*/
 		template <typename T>
 		class sortedArray : public array<T>
 		{
@@ -24,15 +24,15 @@ namespace z
 			sortedArray() {}
 
 			/**
-			 * \brief List-initialized constructor.
-			 *
-			 * Constructs the array with an arbitrary
-			 * number of elements already contained.
-			 * \note All elements will be automatically sorted.
-			 *
-			 * \param arg1 initializing data.
-			 * \param args cont. initializing data.
-			 */
+			* \brief List-initialized constructor.
+			*
+			* Constructs the array with an arbitrary
+			* number of elements already contained.
+			* \note All elements will be automatically sorted.
+			*
+			* \param arg1 initializing data.
+			* \param args cont. initializing data.
+			*/
 			template <typename... Args>
 			sortedArray(const T& arg1, const Args&... args)
 			{
@@ -48,16 +48,16 @@ namespace z
 		};
 
 		/**
-		 * \brief Add an object to the array.
-		 *
-		 * Finds an appropriate location and inserts the
-		 * object into the array, such that the array
-		 * remains sorted.
-		 *
-		 * \param object the data to add to the array.
-		 *
-		 * \return The index where the inserted object now resides.
-		 */
+		* \brief Add an object to the array.
+		*
+		* Finds an appropriate location and inserts the
+		* object into the array, such that the array
+		* remains sorted.
+		*
+		* \param object the data to add to the array.
+		*
+		* \return The index where the inserted object now resides.
+		*/
 		template <typename T>
 		int sortedArray<T>::add(const T& object)
 		{
@@ -69,19 +69,19 @@ namespace z
 		}
 
 		/**
-		 * \brief Check if a given object is in the array.
-		 *
-		 * Locates the desired index using a binary search,
-		 * as the array is expected to be sorted.
-		 *
-		 * /note The objects this array contains must be trivially
-		 * comparable, or have operator>() and operator<() defined.
-		 *
-		 * \param object the object to search for.
-		 *
-		 * \return The first index that the object was found at.
-		 * \b -1 if it was not found.
-		 */
+		* \brief Check if a given object is in the array.
+		*
+		* Locates the desired index using a binary search,
+		* as the array is expected to be sorted.
+		*
+		* /note The objects this array contains must be trivially
+		* comparable, or have operator>() and operator<() defined.
+		*
+		* \param object the object to search for.
+		*
+		* \return The first index that the object was found at.
+		* \b -1 if it was not found.
+		*/
 		template <typename T>
 		int sortedArray<T>::find(const T& object) const
 		{
@@ -116,17 +116,17 @@ namespace z
 		}
 
 		/**
-		 * \brief Find an index where the given object
-		 * can be inserted while keeping the array sorted.
-		 *
-		 * Locates the desired index using a binary search,
-		 * as the array is expected to be sorted.
-		 *
-		 * \param object The object to search for.
-		 * \param allowDuplicates Whether to allow multiple identical objects.
-		 *
-		 * \return The first index where the object can be inserted.
-		 */
+		* \brief Find an index where the given object
+		* can be inserted while keeping the array sorted.
+		*
+		* Locates the desired index using a binary search,
+		* as the array is expected to be sorted.
+		*
+		* \param object The object to search for.
+		* \param allowDuplicates Whether to allow multiple identical objects.
+		*
+		* \return The first index where the object can be inserted.
+		*/
 		template <typename T>
 		int sortedArray<T>::findInsert(const T& object, bool allowDuplicates) const
 		{
@@ -163,12 +163,12 @@ namespace z
 		}
 
 		/**
-		 * \brief Sorts the array.
-		 *
-		 * This function currently uses bubble-sort. As
-		 * such, it is <B>very slow</B> for large arrays!
-		 * I intend to implement a faster version later.
-		 */
+		* \brief Sorts the array.
+		*
+		* This function currently uses bubble-sort. As
+		* such, it is <B>very slow</B> for large arrays!
+		* I intend to implement a faster version later.
+		*/
 		template <typename T>
 		void sortedArray<T>::sort()
 		{

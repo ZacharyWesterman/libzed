@@ -8,10 +8,10 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \brief A class for streaming directly to and from a z::core::string<z::utf32>.
-		 *
-		 * This class provides an implementation of core::stream for data in a string.
-		 */
+		* \brief A class for streaming directly to and from a z::core::string<z::utf32>.
+		*
+		* This class provides an implementation of core::stream for data in a string.
+		*/
 		class stringStream : public stream
 		{
 		private:
@@ -20,8 +20,8 @@ namespace z
 
 		public:
 			/**
-			 * \brief Generic constructor.
-			 */
+			* \brief Generic constructor.
+			*/
 			stringStream() : streamIndex(0) {}
 
 			void put(uint8_t ch) override;

@@ -9,21 +9,21 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \brief An extension of the core::sortedArray class,
-		 * specialized for pointers.
-		 *
-		 * Unlike with the sortedArray, elements are
-		 * assumed to be pointers and are sorted
-		 * with this in mind.
-		 *
-		 * \note Rather than deal with the diamond problem or use
-		 * a C++ version > C++11, this class inherits from sortedArray
-		 * and reimplements refArray.
-		 *
-		 * \see array
-		 * \see refArray
-		 * \see sortedArray
-		 */
+		* \brief An extension of the core::sortedArray class,
+		* specialized for pointers.
+		*
+		* Unlike with the sortedArray, elements are
+		* assumed to be pointers and are sorted
+		* with this in mind.
+		*
+		* \note Rather than deal with the diamond problem or use
+		* a C++ version > C++11, this class inherits from sortedArray
+		* and reimplements refArray.
+		*
+		* \see array
+		* \see refArray
+		* \see sortedArray
+		*/
 		template <typename T>
 		class sortedRefArray : public sortedArray<T>
 		{
@@ -56,15 +56,15 @@ namespace z
 			sortedRefArray() {}
 
 			/**
-			 * \brief List-initialized constructor.
-			 *
-			 * Constructs the array with an arbitrary
-			 * number of elements already contained.
-			 * \note All elements will be automatically sorted.
-			 *
-			 * \param arg1 initializing data.
-			 * \param args cont. initializing data.
-			 */
+			* \brief List-initialized constructor.
+			*
+			* Constructs the array with an arbitrary
+			* number of elements already contained.
+			* \note All elements will be automatically sorted.
+			*
+			* \param arg1 initializing data.
+			* \param args cont. initializing data.
+			*/
 			template <typename... Args>
 			sortedRefArray(const T& arg1, const Args&... args)
 			{

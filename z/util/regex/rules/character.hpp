@@ -8,19 +8,19 @@ namespace z
 		namespace rgx
 		{
 			/**
-			 * \brief Regex rule for matching a specific character.
-			 */
+			* \brief Regex rule for matching a specific character.
+			*/
 			class character : public rule
 			{
 			public:
 				/**
-				 * \brief Full constructor with character value.
-				 * \param value The character to match.
-				 * \param insensitive Whether character matching should be case-insensitive.
-				 * \param min The minimum number of times this rule must match.
-				 * \param max The maximum number of times this rule can match.
-				 * \param greedy Whether this rule should consume input greedily.
-				 */
+				* \brief Full constructor with character value.
+				* \param value The character to match.
+				* \param insensitive Whether character matching should be case-insensitive.
+				* \param min The minimum number of times this rule must match.
+				* \param max The maximum number of times this rule can match.
+				* \param greedy Whether this rule should consume input greedily.
+				*/
 				character(uint32_t value, bool insensitive=false, int min=1, int max=1, bool greedy=true) noexcept;
 
 				bool match(uint32_t current) const noexcept;

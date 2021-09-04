@@ -5,8 +5,8 @@ namespace z
 	namespace util
 	{
 		/**
-		 * \brief Supported regex pattern flags.
-		 */
+		* \brief Supported regex pattern flags.
+		*/
 		enum rgxflag
 		{
 			INSENSITIVE=1,

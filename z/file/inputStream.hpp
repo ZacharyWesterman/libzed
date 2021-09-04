@@ -12,10 +12,10 @@ namespace z
 	namespace file
 	{
 		/**
-		 * \brief A class for file input streams.
-		 *
-		 * This class provides an implementation of core::inputStream for files.
-		 */
+		* \brief A class for file input streams.
+		*
+		* This class provides an implementation of core::inputStream for files.
+		*/
 		class inputStream : public core::inputStream
 		{
 		private:
@@ -27,24 +27,24 @@ namespace z
 
 		public:
 			/**
-			 * \brief Empty constructor.
-			 */
+			* \brief Empty constructor.
+			*/
 			inputStream();
 
 			/**
-			 * \brief Constructor
-			 *
-			 * As this is a file stream, it must be constructed with a file name.
-			 *
-			 * \param fileName a string containing the name of the file to read from.
-			 */
+			* \brief Constructor
+			*
+			* As this is a file stream, it must be constructed with a file name.
+			*
+			* \param fileName a string containing the name of the file to read from.
+			*/
 			inputStream(const zpath& fileName);
 
 			/**
-			 * \brief Reopen a stream to the given file.
-			 *
-			 * \param fileName a string containing the name of the file to read from.
-			 */
+			* \brief Reopen a stream to the given file.
+			*
+			* \param fileName a string containing the name of the file to read from.
+			*/
 			void open(const zpath& fileName);
 
 			///Close the current file stream.
@@ -68,10 +68,10 @@ namespace z
 			void setFormat(encoding enc, bool force = false) override;
 
 			/**
-			 * \brief Get the endianness of this stream.
-			 *
-			 * return The determined endianness of the stream, either __ORDER_LITTLE_ENDIAN__ or __ORDER_BIG_ENDIAN__
-			 */
+			* \brief Get the endianness of this stream.
+			*
+			* return The determined endianness of the stream, either __ORDER_LITTLE_ENDIAN__ or __ORDER_BIG_ENDIAN__
+			*/
 			size_t endianness();
 		};
 	}

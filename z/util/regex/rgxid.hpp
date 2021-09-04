@@ -5,8 +5,8 @@ namespace z
 	namespace util
 	{
 		/**
-		 * \brief Symbol IDs for regex pattern nodes
-		 */
+		* \brief Symbol IDs for regex pattern nodes
+		*/
 		enum rgxid
 		{
 			RGX_SYMBOL,

@@ -7,10 +7,10 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \brief A class for streaming directly to and from memory.
-		 *
-		 * This class provides an implementation of core::stream for raw data in memory.
-		 */
+		* \brief A class for streaming directly to and from memory.
+		*
+		* This class provides an implementation of core::stream for raw data in memory.
+		*/
 		class memoryStream : public stream
 		{
 		private:
@@ -22,13 +22,13 @@ namespace z
 
 		public:
 			/**
-			 * \brief Generic constructor.
-			 *
-			 * Optionally specify the section of memory that this stream may access.
-			 *
-			 * \param streamData The first data element this stream may access.
-			 * \param count The total number of elements this stream may access.
-			 */
+			* \brief Generic constructor.
+			*
+			* Optionally specify the section of memory that this stream may access.
+			*
+			* \param streamData The first data element this stream may access.
+			* \param count The total number of elements this stream may access.
+			*/
 			template<typename T>
 			memoryStream(T* streamData = 0, int count = 1)
 			{
@@ -41,11 +41,11 @@ namespace z
 			}
 
 			/**
-			 * \brief Set the section of memory that this stream may access.
-			 *
-			 * \param streamData The first data element this stream may access.
-			 * \param count The total number of elements this stream may access.
-			 */
+			* \brief Set the section of memory that this stream may access.
+			*
+			* \param streamData The first data element this stream may access.
+			* \param count The total number of elements this stream may access.
+			*/
 			template<typename T>
 			void set(T* streamData, int count = 1)
 			{

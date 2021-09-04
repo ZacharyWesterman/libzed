@@ -8,15 +8,15 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \brief Concatenate elements in an array into a string, separated by a delimiter.
-		 *
-		 * \param list An array whose elements can implicitly convert to strings.
-		 * \param delim The delimiter to go between items.
-		 *
-		 * \return A string containing all elements in order, separated by the delimiter.
-		 *
-		 * \threadsafe_function_yes
-		 */
+		* \brief Concatenate elements in an array into a string, separated by a delimiter.
+		*
+		* \param list An array whose elements can implicitly convert to strings.
+		* \param delim The delimiter to go between items.
+		*
+		* \return A string containing all elements in order, separated by the delimiter.
+		*
+		* \threadsafe_function_yes
+		*/
 		template <typename T, encoding E>
 		string<E> join(const array<T>& list, const string<E>& delim) noexcept
 		{
@@ -32,15 +32,15 @@ namespace z
 		}
 
 		/**
-		 * \brief Concatenate elements in an array into a string, separated by a delimiter.
-		 *
-		 * \param list An array whose elements can implicitly convert to strings.
-		 * \param delim The delimiter to go between items.
-		 *
-		 * \return A string containing all elements in order, separated by the delimiter.
-		 *
-		 * \threadsafe_function_yes
-		 */
+		* \brief Concatenate elements in an array into a string, separated by a delimiter.
+		*
+		* \param list An array whose elements can implicitly convert to strings.
+		* \param delim The delimiter to go between items.
+		*
+		* \return A string containing all elements in order, separated by the delimiter.
+		*
+		* \threadsafe_function_yes
+		*/
 		template <typename T>
 		zstring join(const array<T>& list, const zstring& delim) noexcept
 		{
@@ -56,15 +56,15 @@ namespace z
 		}
 
 		/**
-		 * \brief Dereference elements in an array and concatenate them into a string, separated by a delimiter.
-		 *
-		 * \param list An array of pointers whose objects can implicitly convert to strings.
-		 * \param delim The delimiter to go between items.
-		 *
-		 * \return A string containing all elements in order, separated by the delimiter.
-		 *
-		 * \threadsafe_function_yes
-		 */
+		* \brief Dereference elements in an array and concatenate them into a string, separated by a delimiter.
+		*
+		* \param list An array of pointers whose objects can implicitly convert to strings.
+		* \param delim The delimiter to go between items.
+		*
+		* \return A string containing all elements in order, separated by the delimiter.
+		*
+		* \threadsafe_function_yes
+		*/
 		template <typename T, encoding E>
 		string<E> joinDeref(const array<T>& list, const string<E>& delim) noexcept
 		{

@@ -5,12 +5,12 @@ namespace z
 	namespace math
 	{
 		/**
-		 * \brief A class for managing square matrices
-		 *
-		 * Template class for square matrices
-		 * of size at least 2x2.
-		 * Includes methods for calculating determinants.
-		 */
+		* \brief A class for managing square matrices
+		*
+		* Template class for square matrices
+		* of size at least 2x2.
+		* Includes methods for calculating determinants.
+		*/
 		template <unsigned int N>
 		class matrix
 		{
@@ -18,9 +18,9 @@ namespace z
 			double value[N][N]; ///< Array of all elements in the matrix.
 
 			/**
-			 * \brief Calculate the determinant of NxN matrix
-			 * \return The determinant.
-			 */
+			* \brief Calculate the determinant of NxN matrix
+			* \return The determinant.
+			*/
 			double det() noexcept
 			{
 				//the determinant of an NxN matrix requires
@@ -59,9 +59,9 @@ namespace z
 		};
 
 		/**
-		 * \brief Calculate the determinant of a 2x2 matrix
-		 * \return The determinant.
-		 */
+		* \brief Calculate the determinant of a 2x2 matrix
+		* \return The determinant.
+		*/
 		template<>
 		double matrix<2>::det() noexcept
 		{

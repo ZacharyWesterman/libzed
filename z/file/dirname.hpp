@@ -7,10 +7,10 @@ namespace z
 	namespace file
 	{
 		/**
-		 * \brief Get the directory part of a file name.
-		 * \return A string containing the directory above a given path.
-		 * \threadsafe_function_yes
-		 */
+		* \brief Get the directory part of a file name.
+		* \return A string containing the directory above a given path.
+		* \threadsafe_function_yes
+		*/
 		template <encoding E>
 		core::string<E> dirname(const core::string<E>& path) noexcept
 		{

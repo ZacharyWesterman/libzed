@@ -8,10 +8,10 @@ namespace z
 		namespace rgx
 		{
 			/**
-			 * \brief Regex rule for matching the beginning of a line.
-			 *
-			 * Note this also matches the beginning of the stream.
-			 */
+			* \brief Regex rule for matching the beginning of a line.
+			*
+			* Note this also matches the beginning of the stream.
+			*/
 			class begin : public rule
 			{
 			public:

@@ -8,8 +8,8 @@
 namespace z
 {
 	/**
-	 * \brief Supported string encoding schemes.
-	 */
+	* \brief Supported string encoding schemes.
+	*/
 	enum encoding
 	{
 		ascii,
