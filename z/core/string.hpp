@@ -1216,7 +1216,8 @@ namespace z
 			 * example: this->contains('A', 'Z') will return true if this string contains a character in the
 			 * range A -> Z, inclusive.
 			 *
-			 * \param range A std::pair denoting the character range.
+			 * \param first The first character in the range.
+			 * \param last The last character in the range.
 			 * \param exclusive Return false if this string contains any characters NOT in the given string.
 			 *
 			 * \return Whether this string contained a character in the given range, or if the `exclusive` flag is set,
