@@ -98,7 +98,7 @@ SONAME2 = lib$(LIBNAME).so
 
 default: $(SHARED_LIB)
 
-all: static dynamic examples
+all: dynamic examples lint tests
 
 static: $(STATIC_LIB)
 dynamic: $(SHARED_LIB)
@@ -120,8 +120,9 @@ uninstall:
 examples:
 	$(MAKE) -C examples/
 
-tests:
+tests: static
 	$(MAKE) -C tests/
+	./tests/bin/run_tests
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
@@ -141,6 +142,7 @@ z/file/library.o: z/file/library.cpp z/file/library.hpp
 
 clean: cleanbin cleanobjs cleandox
 	$(MAKE) clean -C examples/
+	$(MAKE) clean -C tests/
 
 cleanobjs:
 	$(RM) $(RMOBJS)
@@ -154,7 +156,9 @@ cleandox:
 
 rebuild: clean default
 
-lint:
+lint: lint.log
+
+lint.log:
 	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
 
 .PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint tests

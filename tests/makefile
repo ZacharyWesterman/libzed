@@ -2,12 +2,12 @@
 CC = g++
 LN = g++
 CFLAGS = --std=c++11
-LFLAGS = -lzed
+LFLAGS = -L. -lzed
 
 SRCS = $(wildcard $(addsuffix *.cpp, src/))
 OBJS = $(patsubst src/%.cpp,obj/%.o,$(SRCS))
 
-bin/run_tests: $(OBJS)
+bin/run_tests: $(OBJS) ../libzed.a
 	$(LN) -o $@ $^ $(LFLAGS)
 
 obj/%.o: src/%.cpp
