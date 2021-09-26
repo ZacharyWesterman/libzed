@@ -96,9 +96,9 @@ endif
 SONAME1 = lib$(LIBNAME).so.$(VERSION)
 SONAME2 = lib$(LIBNAME).so
 
-default: $(SHARED_LIB)
+default: dynamic
 
-all: dynamic examples lint tests
+all: dynamic static examples lint tests
 
 static: $(STATIC_LIB)
 dynamic: $(SHARED_LIB)
