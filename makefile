@@ -120,6 +120,9 @@ uninstall:
 examples:
 	$(MAKE) -C examples/
 
+tests:
+	$(MAKE) -C tests/
+
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
@@ -154,4 +157,4 @@ rebuild: clean default
 lint:
 	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
 
-.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint
+.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint tests
