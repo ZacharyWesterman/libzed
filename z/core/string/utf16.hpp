@@ -941,14 +941,16 @@ namespace z
 		{
 			if ((base < 2) || (base > 36)) return 0;
 
-			bool negative = (data[0] == '-');
+			uint16_t* data16 = (uint16_t*)data;
+
+			bool negative = (data16[0] == '-');
 			long result = 0;
 
-			int start = (negative || (data[0] == '+'));
+			int start = (negative || (data16[0] == '+'));
 
 			for (int i=start; i<character_ct; i++)
 			{
-				uint32_t chr = data[i];
+				uint32_t chr = data16[i];
 
 				if (isNumeric(chr))
 				{
@@ -972,8 +974,10 @@ namespace z
 			bool pastDecimal, pastExponent, negexponent;
 			pastDecimal = pastExponent = negexponent = false;
 
-			bool negative = (data[0] == '-');
-			int start = (negative || (data[0] == '+'));
+			uint16_t* data16 = (uint16_t*)data;
+
+			bool negative = (data16[0] == '-');
+			int start = (negative || (data16[0] == '+'));
 
 			if (start >= character_ct) return 0;
 
@@ -983,9 +987,9 @@ namespace z
 
 			for (int i=start; i<character_ct; i++)
 			{
-				if (!isNumeric(data[i], base))
+				if (!isNumeric(data16[i], base))
 				{
-					if (data[i] == decimal)
+					if (data16[i] == decimal)
 					{
 						if (pastDecimal || pastExponent)
 							return 0;
@@ -995,15 +999,15 @@ namespace z
 							pastDecimal = true;
 						}
 					}
-					else if (core::toLower(data[i]) == 'e')
+					else if (core::toLower(data16[i]) == 'e')
 					{
 						if (pastExponent)
 							return 0;
 						else
 						{
 							pastExponent = true;
-							negexponent = (data[i+1] == '-');
-							if (negexponent || (data[i+1] == '+'))
+							negexponent = (data16[i+1] == '-');
+							if (negexponent || (data16[i+1] == '+'))
 								i++;
 						}
 					}
@@ -1014,17 +1018,17 @@ namespace z
 					if (pastExponent)
 					{
 						exponent *= base;
-						exponent += numeralValue(data[i]);
+						exponent += numeralValue(data16[i]);
 					}
 					else if (pastDecimal)
 					{
 						frac /= base;
-						result += (double)numeralValue(data[i])*frac;
+						result += (double)numeralValue(data16[i])*frac;
 					}
 					else
 					{
 						result *= base;
-						result += numeralValue(data[i]);
+						result += numeralValue(data16[i]);
 					}
 				}
 			}
