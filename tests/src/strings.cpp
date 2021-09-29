@@ -9,42 +9,22 @@ SECTION("UTF32"){z::core::string<z::utf32> string; a;}
 
 TEST_CASE("Constructing strings from various constants", "[z::core::string]")
 {
-	#define STRTEST1()\
-	string = L"Test value";\
-	REQUIRE(string == "Test value");\
-	string = 12345;\
-	REQUIRE(string == "12345");\
-	string = -123.45;\
-	REQUIRE(string == "-123.45");\
-	string = std::complex<double>(10, 2.5);\
-	REQUIRE(string == "10+2.5i");\
+	STRTEST(
+		string = L"Test value";
+		REQUIRE(string == "Test value");
+		string = 12345;
+		REQUIRE(string == "12345");
+		string = -123.45;
+		REQUIRE(string == "-123.45");
+		string = std::complex<double>(10, 2.5);
+		REQUIRE(string == "10+2.5i");
+	);
 
 	SECTION("ASCII")
 	{
 		z::core::string<z::ascii> string;
-		STRTEST1();
 		string = L"Āā";
 		REQUIRE(string == "??");
-	}
-
-	SECTION("UTF-8")
-	{
-		z::core::string<z::utf8> string;
-		STRTEST1();
-		string = L"Āā";
-		REQUIRE(string == u8"Āā");
-	}
-
-	SECTION("UTF16")
-	{
-		z::core::string<z::utf16> string;
-		STRTEST1();
-	}
-
-	SECTION("UTF32")
-	{
-		z::core::string<z::utf32> string;
-		STRTEST1();
 	}
 }
 
@@ -68,5 +48,31 @@ TEST_CASE("Converting strings to various numeric types", "[z::core::string]")
 		REQUIRE(string.type() == z::core::zstr::complex);
 		string = "beans";
 		REQUIRE(string.type() == z::core::zstr::string);
+	);
+}
+
+TEST_CASE("Sub-strings", "[z::core::string]")
+{
+	STRTEST(
+		string = "This is an example string.";
+		REQUIRE(string.substr(11, 7) == "example");
+		REQUIRE(string.substr(17, -7) == "elpmaxe");
+		REQUIRE(string.substr(-7, 7) == "string.");
+		REQUIRE(string.substr(-7, 1000) == "string.");
+		REQUIRE(string.substr(-1000, 4) == "This");
+	);
+}
+
+TEST_CASE("String iterators", "[z::core::string]")
+{
+	const char text[] = "Example string";
+	STRTEST(
+		string = text;
+		int i = 0;
+		for (char chr : string)
+		{
+			REQUIRE(chr == text[i]);
+			++i;
+		}
 	);
 }
