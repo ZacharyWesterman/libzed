@@ -2,10 +2,10 @@
 #include "../../z/core.hpp"
 
 #define STRTEST(a)\
-SECTION("ASCII"){z::core::string<z::ascii> string; a;}\
-SECTION("UTF-8"){z::core::string<z::utf8> string; a;}\
-SECTION("UTF16"){z::core::string<z::utf16> string; a;}\
-SECTION("UTF32"){z::core::string<z::utf32> string; a;}
+SECTION("ASCII"){const auto enc = z::ascii; z::core::string<enc> string; a;}\
+SECTION("UTF-8"){const auto enc = z::utf8; z::core::string<enc> string; a;}\
+SECTION("UTF16"){const auto enc = z::utf16; z::core::string<enc> string; a;}\
+SECTION("UTF32"){const auto enc = z::utf32; z::core::string<enc> string; a;}
 
 TEST_CASE("Constructing strings from various constants", "[z::core::string]")
 {
@@ -18,6 +18,12 @@ TEST_CASE("Constructing strings from various constants", "[z::core::string]")
 		REQUIRE(string == "-123.45");
 		string = std::complex<double>(10, 2.5);
 		REQUIRE(string == "10+2.5i");
+		string = L'A';
+		REQUIRE(string == 'A');
+		string = z::core::string<enc>(255, 16, 4);
+		REQUIRE(string == "00FF");
+		string = z::core::string<enc>(100000000.0, 10, 6);
+		REQUIRE(string == "1e8");
 	);
 
 	SECTION("ASCII")
