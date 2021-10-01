@@ -42,7 +42,7 @@ binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp $(STATICLIB)
 	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
 
 binary/%: object/%.o $(STATICLIB)
-	g++ $(LFLAGS) -o $@ $^
+	g++ -o $@ $^ $(LFLAGS)
 
 clean:
 	$(RM) binary object
