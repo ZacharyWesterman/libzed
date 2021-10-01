@@ -3,6 +3,7 @@ ifeq ($(OS),Windows_NT)
 LIBEXT = dll
 else
 LIBEXT = so
+LFLAGS = -ldl
 endif
 
 
@@ -16,7 +17,6 @@ MV = mv
 CP = cp "../zed.dll"
 endif
 
-LFLAGS = -ldl
 STATICLIB = ../libzed.a
 STD = c++17
 
