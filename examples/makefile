@@ -1,13 +1,10 @@
 
 ifeq ($(OS),Windows_NT)
-LFLAGS = -L. -lzed
-DLL1 = zed.dll
-DLL2 = binary/zed.dll
 LIBEXT = dll
 else
-LFLAGS = -lzed
 LIBEXT = so
 endif
+
 
 ifeq (, $(shell rm --version))
 RM = rd /s /q
@@ -19,13 +16,15 @@ MV = mv
 CP = cp "../zed.dll"
 endif
 
+LFLAGS = -ldl
+STATICLIB = ../libzed.a
 STD = c++17
 
 SRCS := $(wildcard source/*.cpp)
 SRCS := $(filter-out source/dynamicLib.cpp,$(SRCS))
 BINS = $(patsubst source/%.cpp,binary/%,$(SRCS))
 
-all: binary object $(DLL1) $(BINS) $(DLL2)
+all: binary object $(BINS)
 
 binary:
 	mkdir $@
@@ -39,17 +38,11 @@ object/%.o: source/%.cpp
 object/loadLib.o: source/loadLib.cpp binary/dynamicLib.$(LIBEXT)
 	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $<
 
-binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp
+binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp $(STATICLIB)
 	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
 
-binary/%: object/%.o
+binary/%: object/%.o $(STATICLIB)
 	g++ $(LFLAGS) -o $@ $^
-
-$(DLL2): $(DLL1)
-	$(MV) "$^" "$@"
-
-$(DLL1): ../$(DLL1)
-	$(CP) "$@"
 
 clean:
 	$(RM) binary object

@@ -117,7 +117,7 @@ uninstall:
 	ldconfig
 	rm -rf $(ICLDIR)/z
 
-examples:
+examples: static
 	$(MAKE) -C examples/
 
 $(SHARED_LIB): $(OBJS)
