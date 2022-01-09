@@ -593,30 +593,41 @@ namespace z
 		string<ascii> string<ascii>::substr(int index, int count) const noexcept
 		{
 			string<ascii> result;
-			if (!count) return result;
 
 			if (index < 0) index += character_ct;
 
-			int begin, end;
-			if (count > 0)
+			if (count < 0)
 			{
-				begin = index;
-				end = index + count;
+				if (index >= character_ct) index = character_ct - 1;
+				if (index < 0) return result;
+
+				count = -count;
+				if (count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
+
+				int beg = index - count + 1;
+				for (int i=beg; i<=index; i++)
+				{
+					result.data[index-i] = data[i];
+				}
+				result.data[count] = 0;
+				result.character_ct = count;
 			}
-			else
+			else if (count)
 			{
-				begin = index + count + 1;
-				end = index + 1;
+				if (index >= character_ct) return result;
+				if (index < 0) index = 0;
+
+				if (count > (character_ct-index)) count = character_ct-index;
+				result.increase(count);
+
+				int end = index + count;
+				for (int i=index; i<end; i++)
+					result.data[i-index] = data[i];
+
+				result.data[count] = 0;
+				result.character_ct = count;
 			}
-
-			if ((end <= 0) || (begin >= character_ct)) return result;
-
-			if (begin < 0) begin = 0;
-			if (end >= character_ct) end = character_ct;
-
-			result.increase(end - begin);
-			memcpy(result.data, (data + begin), end - begin + 1);
-			result.character_ct = end - begin;
 
 			return result;
 		}

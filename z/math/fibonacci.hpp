@@ -37,6 +37,6 @@ namespace z
 		*
 		* \threadsafe_function_yes
 		*/
-		double fibonacci(double n) noexcept;
+		long long fibonacci(int n) noexcept;
 	}
 }
