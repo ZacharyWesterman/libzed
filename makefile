@@ -161,4 +161,9 @@ lint: lint.log
 lint.log:
 	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
 
-.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint tests
+docs:
+	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+	doxygen
+	rm doxygen-awesome.css
+
+.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint tests docs

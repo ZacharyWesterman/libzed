@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf doxygen.log html/ ../.libzed_docs
-doxygen
+make docs
 git clone -b gh-pages git@github.com:ZacharyWesterman/libzed.git ../.libzed_docs
 rm -rf ../.libzed_docs/html
 mv html doxygen.log ../.libzed_docs/
