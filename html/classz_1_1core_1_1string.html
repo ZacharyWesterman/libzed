@@ -22,6 +22,7 @@
 /* @license-end */
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -1561,7 +1562,8 @@ template&lt;encoding E = utf32&gt; </div>
 <p>example: this-&gt;contains('A', 'Z') will return true if this string contains a character in the range A -&gt; Z, inclusive.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">range</td><td>A std::pair denoting the character range. </td></tr>
+    <tr><td class="paramname">first</td><td>The first character in the range. </td></tr>
+    <tr><td class="paramname">last</td><td>The last character in the range. </td></tr>
     <tr><td class="paramname">exclusive</td><td>Return false if this string contains any characters NOT in the given string.</td></tr>
   </table>
   </dd>
