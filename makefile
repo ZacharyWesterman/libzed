@@ -1,6 +1,6 @@
 LIBNAME = zed
 VERSION = 1
-VER_SUB = 5
+VER_SUB = 6
 
 LIBDIR = /usr/lib
 ICLDIR = /usr/include
