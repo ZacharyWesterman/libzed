@@ -1324,6 +1324,103 @@ namespace z
 			}
 
 			/**
+			* \brief Generate an English representation of a given number.
+			*
+			* \param value The number to represent in English.
+			* \param andInt temp
+			* \return A string of English words representing the number's value.
+			*/
+			static string words(long value) noexcept
+			{
+				const char* tens[] = {
+					"", "",
+					"twen", "thir",
+					"four", "fif",
+					"six", "seven",
+					"eigh", "nine"
+				};
+
+				const char* ones[] = {
+					"", "one",
+					"two", "three",
+					"four", "five",
+					"six", "seven",
+					"eight", "nine",
+					"ten", "eleven",
+					"twelve"
+				};
+
+				const char* powers[] = {
+#				if __x86_64__
+					"quintillion",
+					"quadrillion",
+					"trillion",
+#				endif
+					"billion",
+					"million",
+					"thousand",
+					"hundred"
+				};
+
+				const long powvals[] = {
+#				if __x86_64__
+					1000000000000000000,
+					1000000000000000,
+					1000000000000,
+#				endif
+					1000000000,
+					1000000,
+					1000,
+					100
+				};
+
+				string result;
+				if (value < 0)
+				{
+					result = "negative ";
+					value = -value;
+				}
+				else if (value == 0)
+				{
+					result = "zero";
+				}
+
+				bool andInt = false;
+				while (value > 0)
+				{
+					if (value < 13)
+					{
+						result += string(andInt ? " and " : "") + ones[value];
+						value = 0;
+					}
+					else if (value < 20)
+					{
+						result += string(andInt ? " and " : "") + tens[value%10] + "teen";
+						value = 0;
+					}
+					else if (value < 100)
+					{
+						result += string(andInt ? " and " : "") + tens[value/10] + "ty" + ((value%10) ? (string("-") + ones[value%10]) : "");
+						value = 0;
+					}
+					else
+					{
+						for (int i=0; i<7; ++i)
+						{
+							if (value >= powvals[i])
+							{
+								result += string(andInt ? " " : "") + words(value/powvals[i]) + " " + powers[i];
+								value = value%powvals[i];
+								andInt = true;
+							}
+						}
+					}
+				}
+
+				return result;
+			}
+
+			/**
 			* \brief Concatenate two strings.
 			*
 			* \param other The string to append.
