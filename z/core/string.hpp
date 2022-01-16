@@ -1421,6 +1421,33 @@ namespace z
 			}
 
 			/**
+			* \brief Get the ordinal suffix of a given integer.
+			*
+			* This gives the suffix only. E.g. ordinal(1) -> "st", ordinal(3) -> "rd", ordinal(57) -> "th", etc.
+			*
+			* \param value The value get the ordinal suffix of.
+			* \return A 2-character string representing the ordinal suffix of the given number.
+			*/
+			static string ordinal(long value) noexcept
+			{
+				value %= 100;
+				if (((value % 10) == 3) && (value != 13))
+				{
+					return "rd";
+				}
+				else if (((value % 10) == 2) && (value != 12))
+				{
+					return "nd";
+				}
+				else if (((value % 10) == 1) && (value != 11))
+				{
+					return "st";
+				}
+
+				return "th";
+			}
+
+			/**
 			* \brief Concatenate two strings.
 			*
 			* \param other The string to append.
