@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"namespacez_1_1file.html":[1,0,1,1],
 "namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f":[1,0,1,1,8],
 "namespacez_1_1file.html#a2fb605ae85a47cc8e0e09c5545828209":[1,0,1,1,7],
 "namespacez_1_1file.html#a38c0299c5a1a3bcf51119aedaabaf16f":[1,0,1,1,4],
@@ -174,7 +175,7 @@ var NAVTREEINDEX3 =
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[1,0,1,0,1,0,2],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,18,0,2],
 "zstr_8hpp_source.html":[3,0,0,0,18],
-"":[1,0,1,0,1],
 "":[1,0,1],
-"":[1,0,1,0,0]
+"":[1,0,1,0,0],
+"":[1,0,1,0,1]
 };

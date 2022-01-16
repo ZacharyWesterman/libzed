@@ -44,6 +44,7 @@ var classz_1_1core_1_1string =
     [ "findLast", "classz_1_1core_1_1string.html#a515118a25d1706ee8e91754c30d55218", null ],
     [ "floating", "classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1", null ],
     [ "format", "classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8", null ],
+    [ "found", "classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672", null ],
     [ "foundAt", "classz_1_1core_1_1string.html#ad88d54285e20d23be6bb69edfef9ebbc", null ],
     [ "foundEndAt", "classz_1_1core_1_1string.html#a2e23641e0457fa6c3b371e6b5d5e30dc", null ],
     [ "increase", "classz_1_1core_1_1string.html#ac428c7c81a4b4b76cfa8b68eafa00076", null ],
