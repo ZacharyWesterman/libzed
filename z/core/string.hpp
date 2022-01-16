@@ -504,6 +504,23 @@ namespace z
 			}
 
 			/**
+			* \brief Check if a specific occurrence of a sub-string exists.
+			*
+			* \param other The sub-string to search for.
+			* \param occurrence The occurrence of the sub-string to find.
+			*
+			* \return True if the given occurrence of the sub-string was found, false otherwise.
+			*
+			* Attempts to find given occurrence of the sub-string starting at
+			* the \b beginning of the string. Note that the occurrence starts at 1.
+			* If the occurrence is less than 1, then false is returned.
+			*/
+			int found(const string& other, int occurrence = 1) const noexcept
+			{
+				return this->findAfter(other,0,occurrence) >= 0;
+			}
+
+			/**
 			* \brief Reverse-find a specific occurrence of a sub-string.
 			*
 			* \param other The sub-string to search for.
