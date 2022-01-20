@@ -1344,10 +1344,10 @@ namespace z
 			* \brief Generate an English representation of a given number.
 			*
 			* \param value The number to represent in English.
-			* \param andInt temp
+			* \param ordinal If true, output with ordinal suffix.
 			* \return A string of English words representing the number's value.
 			*/
-			static string words(long value) noexcept
+			static string words(long value, bool ordinal=false) noexcept
 			{
 				const char* tens[] = {
 					"", "",
@@ -1367,12 +1367,22 @@ namespace z
 					"twelve"
 				};
 
+				const char* ord[] = {
+					"", "fir",
+					"seco", "thi",
+					"for", "fif",
+					"six", "seven",
+					"eigh", "nin",
+					"ten", "eleven",
+					"twelf"
+				};
+
 				const char* powers[] = {
-#				if __x86_64__
+					#if __x86_64__
 					"quintillion",
 					"quadrillion",
 					"trillion",
-#				endif
+					#endif
 					"billion",
 					"million",
 					"thousand",
@@ -1380,11 +1390,11 @@ namespace z
 				};
 
 				const long powvals[] = {
-#				if __x86_64__
+					#if __x86_64__
 					1000000000000000000,
 					1000000000000000,
 					1000000000000,
-#				endif
+					#endif
 					1000000000,
 					1000000,
 					1000,
@@ -1392,6 +1402,7 @@ namespace z
 				};
 
 				string result;
+				auto orig_value = value;
 				if (value < 0)
 				{
 					result = "negative ";
@@ -1407,7 +1418,8 @@ namespace z
 				{
 					if (value < 13)
 					{
-						result += string(andInt ? " and " : "") + ones[value];
+						auto one = ordinal ? ord[value] : ones[value];
+						result += string(andInt ? " and " : "") + one;
 						value = 0;
 					}
 					else if (value < 20)
@@ -1417,7 +1429,15 @@ namespace z
 					}
 					else if (value < 100)
 					{
-						result += string(andInt ? " and " : "") + tens[value/10] + "ty" + ((value%10) ? (string("-") + ones[value%10]) : "");
+						result += string(andInt ? " and " : "") + tens[value/10];
+						if (value % 10)
+						{
+							result += string("ty-") + (ordinal ? ord[value%10] : ones[value%10]);
+						}
+						else
+						{
+							result += ordinal ? "tie" : "ty";
+						}
 						value = 0;
 					}
 					else
@@ -1426,7 +1446,7 @@ namespace z
 						{
 							if (value >= powvals[i])
 							{
-								result += string(andInt ? " " : "") + words(value/powvals[i]) + " " + powers[i];
+								result += string(andInt ? ", " : "") + words(value/powvals[i]) + " " + powers[i];
 								value = value%powvals[i];
 								andInt = true;
 							}
@@ -1434,6 +1454,7 @@ namespace z
 					}
 				}
 
+				if (ordinal) result += string::ordinal(orig_value);
 				return result;
 			}
 
