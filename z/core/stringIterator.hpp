@@ -15,12 +15,12 @@ namespace z
 		* That represent a single "character", this iterator allows for looping over each
 		* character in strings of different encoding identically.
 		*/
-		template <encoding E>
 		class stringIterator
 		{
 		private:
 			uint8_t* data;
 			uint32_t chr;
+			void (* increment)(stringIterator*);
 
 		public:
 			/**
@@ -29,7 +29,7 @@ namespace z
 			* \param ptr Pointer to the string data.
 			* \param offset The current index in the string data.
 			*/
-			stringIterator(uint8_t* ptr, size_t offset) noexcept;
+			stringIterator(uint8_t* ptr, size_t offset, encoding format) noexcept;
 
 			/**
 			* \brief Increment the current character we're pointing to.
@@ -52,7 +52,7 @@ namespace z
 			*
 			* \return The current character this iterator is pointing to, converted to UTF 32.
 			*/
-			const uint32_t& operator*() const noexcept {return chr;}
+			uint32_t operator*() const noexcept;
 		};
 	}
 }

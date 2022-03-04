@@ -5,69 +5,55 @@ namespace z
 {
 	namespace core
 	{
-		template<>
-		stringIterator<utf32>::stringIterator(uint8_t* ptr, size_t offset) noexcept
+		stringIterator::stringIterator(uint8_t* ptr, size_t offset, encoding format) noexcept
 		{
-			data = ptr + (offset << 2);
-			auto tmp = (uint32_t*)data;
-			chr = *tmp;
+			switch(format)
+			{
+				case ascii:
+					data = ptr + offset;
+					chr = data[0];
+					increment = [](stringIterator* iter){
+						iter->data += 1;
+						iter->chr = iter->data[0];
+					};
+					break;
+				case utf8:
+					data = ptr + offset;
+					chr = fromUTF8(data);
+					increment = [](stringIterator* iter){
+						iter->data += lenFromUTF8(iter->data);
+						iter->chr = fromUTF8(iter->data);
+					};
+					break;
+				case utf16:
+					data = ptr + (offset << 1);
+					chr = ((uint16_t*)data)[0];
+					increment = [](stringIterator* iter){
+						iter->data += 2;
+						auto tmp = (uint16_t*)iter->data;
+						iter->chr = tmp[0];
+					};
+					break;
+				case utf32:
+					data = ptr + (offset << 2);
+					chr = ((uint32_t*)data)[0];
+					increment = [](stringIterator* iter){
+						iter->data += 4;
+						auto tmp = (uint32_t*)iter->data;
+						iter->chr = tmp[0];
+					};
+					break;
+			}
 		}
 
-		template<>
-		stringIterator<utf16>::stringIterator(uint8_t* ptr, size_t offset) noexcept
-		{
-			data = ptr + (offset << 1);
-			auto tmp = (uint16_t*)data;
-			chr = *tmp;
+		uint32_t stringIterator::operator*() const noexcept {
+			return chr;
 		}
 
-		template<>
-		stringIterator<utf8>::stringIterator(uint8_t* ptr, size_t offset) noexcept
+		stringIterator stringIterator::operator++() noexcept
 		{
-			data = ptr + offset;
-			chr = fromUTF8(data);
-		}
-
-		template<>
-		stringIterator<ascii>::stringIterator(uint8_t* ptr, size_t offset) noexcept
-		{
-			data = ptr + offset;
-			chr = *data;
-		}
-
-		template<>
-		stringIterator<utf32> stringIterator<utf32>::operator++() noexcept
-		{
-			data += 4;
-			auto tmp = (uint32_t*)data;
-			chr = *tmp;
+			increment(this);
 			return *this;
 		}
-
-		template<>
-		stringIterator<utf16> stringIterator<utf16>::operator++() noexcept
-		{
-			data += 2;
-			auto tmp = (uint16_t*)data;
-			chr = *tmp;
-			return *this;
-		}
-
-		template<>
-		stringIterator<utf8> stringIterator<utf8>::operator++() noexcept
-		{
-			data += lenFromUTF8(data);
-			chr = fromUTF8(data);
-			return *this;
-		}
-
-		template<>
-		stringIterator<ascii> stringIterator<ascii>::operator++() noexcept
-		{
-			++data;
-			chr = *data;
-			return *this;
-		}
-
 	}
 }
