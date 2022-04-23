@@ -38,7 +38,8 @@ endif
 #Let compiler know we're making a library,
 #And separate the data & function sections so that unused symbols can be stripped.
 CCFLAGS = -std=$(STD) $(CCTARGET) \
-	-W -Wall -Wextra -Wno-psabi -Werror -pedantic -fexceptions \
+	-W -Wall -Wextra -Wno-psabi -Werror -Wno-nonnull \
+	-pedantic -fexceptions \
 	-fPIC \
 	-fdata-sections -ffunction-sections
 
