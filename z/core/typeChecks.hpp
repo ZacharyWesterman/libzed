@@ -1,4 +1,6 @@
 #pragma once
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnonnull"
 
 #include <type_traits>
 
@@ -40,3 +42,5 @@ namespace z
 		}
 	}
 }
+
+#pragma GCC diagnostic pop
