@@ -7,7 +7,7 @@ ICLDIR = /usr/include
 
 D0 = $(sort $(dir $(wildcard z/*/)))
 D1 = $(sort $(dir $(wildcard $(D0)*/)))
-DIRS = $(sort $(dir $(wildcard $(D1)*/)))
+DIRS = $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
 SRCS = $(wildcard $(addsuffix *.cpp, $(DIRS)))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
