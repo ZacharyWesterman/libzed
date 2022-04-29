@@ -174,7 +174,7 @@ namespace z
 			*/
 			void add(const array& other)
 			{
-				for (int i=0; i<other.size(); i++)
+				for (int i=0; i<other.length(); i++)
 					add(other.array_data[i]);
 			}
 

@@ -1,10 +1,14 @@
 #include "dictionary.hpp"
 #include "../core/charFunctions.hpp"
 
+#include <iostream>
+
 namespace z
 {
 	namespace util
 	{
+		dictionary::dictionary(const zstring& langName) noexcept : lang(langName), readingStream(false) {}
+
 		dictionary::~dictionary() noexcept
 		{
 			clear();
@@ -57,6 +61,56 @@ namespace z
 		int dictionary::find(const zstring& word) const noexcept
 		{
 			return wordList.find(&word);
+		}
+
+		z::core::array<wordlist> dictionary::decompose(const zstring& phrase) const noexcept
+		{
+			return recurs_decomp(phrase, 0, range(), {});
+		}
+
+		z::core::array<wordlist> dictionary::recurs_decomp(const zstring& phrase, int index, dictRange filter, const wordlist& parent_words) const noexcept
+		{
+			z::core::array<wordlist> result;
+			wordlist valid_words = parent_words;
+
+			for (int i=index; i<phrase.length(); ++i)
+			{
+				std::cout << zstring(" ").repeat(i) << (char)phrase[i] << std::endl;
+				if (narrow(&filter, phrase[i]))
+				{
+					if (filter.isWord)
+					{
+						std::cout << word(filter) << std::endl;
+						if (i < phrase.length())
+						{
+							auto res = recurs_decomp(phrase, i+1, filter, valid_words);
+							if (res.length())
+							{
+								result.add(res);
+							}
+						}
+						valid_words.add(word(filter));
+						filter = range();
+					}
+				}
+				else
+				{
+					valid_words.clear();
+					break;
+				}
+			}
+
+			if (valid_words.length())
+			{
+				result.add(valid_words);
+			}
+
+			return result;
+		}
+
+		zstring dictionary::word(const dictRange& wordRange) const noexcept
+		{
+			return *(wordList[wordRange.left]);
 		}
 
 		int dictionary::length() const noexcept
@@ -162,7 +216,7 @@ namespace z
 			else
 			{
 				++(wordRange->charPos);
-				wordRange->isWord = (wordRange->charPos == (wordList[wordRange->left]->length()));
+				wordRange->isWord = (wordRange->charPos == wordList[wordRange->left]->length());
 			}
 
 			return !(wordRange->exhausted);

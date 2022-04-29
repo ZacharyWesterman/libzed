@@ -11,6 +11,8 @@ namespace z
 {
 	namespace util
 	{
+		typedef z::core::array<zstring> wordlist;
+
 		/**
 		* \brief A class for performing searches on a dictionary of words.
 		*/
@@ -24,12 +26,14 @@ namespace z
 
 			zstring* readWordFromStream(core::inputStream& stream) noexcept;
 
+			z::core::array<wordlist> recurs_decomp(const zstring& phrase, int index, dictRange filter, const wordlist& parent_words) const noexcept;
+
 		public:
 			/**
 			* \brief Constructor
 			* \param langName A name to help identify the language (optional).
 			*/
-			dictionary(const zstring& langName = "") noexcept : lang(langName), readingStream(false) {};
+			dictionary(const zstring& langName = "") noexcept;
 
 			///Destructor
 			~dictionary() noexcept;
@@ -82,6 +86,10 @@ namespace z
 			* \threadsafe_member_yes
 			*/
 			int find(const zstring& word) const noexcept;
+
+			z::core::array<wordlist> decompose(const zstring& phrase) const noexcept;
+
+			zstring word(const dictRange& wordRange) const noexcept;
 
 			/**
 			* \brief Get the word count of this dictionary.

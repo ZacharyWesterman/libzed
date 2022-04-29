@@ -5,16 +5,39 @@
 int main()
 {
 	z::util::dictionary dict;
-	z::file::inputStream file ("/usr/share/dict/words");
+	z::file::inputStream file ("words_alpha.txt");
+	dict.read(file, -1, true);
+	std::cout << "Loaded" << std::endl;
 
-	z::core::timeout time (1000000); //1 second timeout
+	auto x = dict.range();
 
-	std::cout << "Loading..." << std::flush;
-	while (!dict.read(file, time))
+	for (auto i : zstring("fancy"))
 	{
-		std::cout << '.' << std::flush;
-		time.reset();
+		auto res = dict.narrow(&x, i);
+		std::cout << res << ' ' << x.isWord << ' ' << dict.word(x) << std::endl;
 	}
 
-	std::cout << " Loaded " << dict.length() << " words." << std::endl;
+	return 0;
+
+	auto list = dict.decompose("fancypedestrian");
+	for (auto& words : list)
+	{
+		// bool skip = false;
+		// for (auto& word : words)
+		// {
+		// 	if (word.length() < 2)
+		// 	{
+		// 		skip = true;
+		// 		break;
+		// 	}
+		// }
+		// if (skip) continue;
+
+		std::cout << words.length() << " -> ";
+		for (auto& word : words)
+		{
+			std::cout << word << ", ";
+		}
+		std::cout << std::endl;
+	}
 }
