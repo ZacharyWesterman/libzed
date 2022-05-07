@@ -1341,6 +1341,45 @@ namespace z
 			}
 
 			/**
+			* \brief Convert this string from one set of characters to another.
+			*
+			* Example `zstring("message").cipher("aegms","12345")` will output `4255132`
+			*
+			* \param keys The characters to find and convert.
+			* \param values The characters to convert to.
+			*
+			* \return A string with all the specified characters replaced
+			*/
+			string cipher(const string& keys, const string& values) const noexcept
+			{
+				string result;
+				result.increase(length());
+
+				const int totlen = (keys.length() <= values.length()) ? keys.length() : values.length();
+
+				for (auto chr : *this)
+				{
+					bool found = false;
+					for (int i=0; i<totlen; ++i)
+					{
+						if (chr == keys[i])
+						{
+							found = true;
+							result.append(values[i]);
+							break;
+						}
+					}
+
+					if (!found)
+					{
+						result.append(chr);
+					}
+				}
+
+				return result;
+			}
+
+			/**
 			* \brief Generate an English representation of a given number.
 			*
 			* \param value The number to represent in English.
