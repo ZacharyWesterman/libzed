@@ -157,9 +157,7 @@ cleandox:
 
 rebuild: clean default
 
-lint: lint.log
-
-lint.log:
+lint:
 	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
 
 docs:
