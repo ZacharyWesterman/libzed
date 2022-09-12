@@ -99,11 +99,7 @@ namespace z
 #			endif
 			if (symbol_pointer)
 			{
-#			if __x86_64__ || __ppc64__ || _WIN64
-				func_pointer = reinterpret_cast<func>(reinterpret_cast<int64_t>(symbol_pointer));
-#			else
-				func_pointer = reinterpret_cast<func>(reinterpret_cast<int32_t>(symbol_pointer));
-#			endif
+				func_pointer = reinterpret_cast<func>(symbol_pointer);
 			}
 			return func_pointer;
 		}
