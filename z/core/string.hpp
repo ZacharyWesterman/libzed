@@ -1089,6 +1089,8 @@ namespace z
 			* \brief Get an uppercase version of this string.
 			*
 			* \return A duplicate of this string, converted to uppercase.
+			*
+			* \see toUpper()
 			*/
 			string upper() const noexcept { return string(*this).toUpper(); }
 
@@ -1096,6 +1098,8 @@ namespace z
 			* \brief Get a lowercase version of this string.
 			*
 			* \return A duplicate of this string, converted to lowercase.
+			*
+			* \see toLower()
 			*/
 			string lower() const noexcept { return string(*this).toLower(); }
 
@@ -1103,6 +1107,8 @@ namespace z
 			* \brief Get a camelcase version of this string.
 			*
 			* \return A duplicate of this string, converted to camelcase.
+			*
+			* \see toCamel()
 			*/
 			string camel() const noexcept { return string(*this).toCamel(); }
 
@@ -1110,6 +1116,8 @@ namespace z
 			* \brief Convert all characters in the string to uppercase.
 			*
 			* \return A reference to this string after converting to uppercase.
+			*
+			* \see upper()
 			*/
 			string& toUpper() noexcept;
 
@@ -1117,6 +1125,8 @@ namespace z
 			* \brief Convert all characters in the string to lowercase.
 			*
 			* \return A reference to this string after converting to lowercase.
+			*
+			* \see lower()
 			*/
 			string& toLower() noexcept;
 
@@ -1124,6 +1134,8 @@ namespace z
 			* \brief Convert all characters in the string to camelcase.
 			*
 			* \return A reference to this string after converting to camelcase.
+			*
+			* \see camel()
 			*/
 			string& toCamel() noexcept;
 
