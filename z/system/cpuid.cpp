@@ -1,6 +1,6 @@
 #include "cpuid.hpp"
 
-#ifndef __arm__
+#if !defined(__arm__) && !defined(__aarch64__)
 #include <cpuid.h>
 #endif
 
@@ -10,7 +10,7 @@ namespace z
 	{
 		void cpuid::det_vendor() noexcept
 		{
-#			ifdef __arm__
+#			if defined(__arm__) || defined(__aarch64__)
 			_vendor = "ARM";
 #			else
 			uint32_t eax(0), ebx(0), ecx(0), edx(0);
@@ -42,7 +42,7 @@ namespace z
 
 		void cpuid::det_cpu() noexcept
 		{
-#			ifdef __arm__
+#			if defined(__arm__) || defined(__aarch64__)
 			_cpus = 1;
 			_cores = 1;
 #			else
