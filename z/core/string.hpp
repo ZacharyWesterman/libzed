@@ -463,6 +463,12 @@ namespace z
 			explicit operator float() const noexcept {return floating();}
 
 			/**
+			* \brief Check if this string contains at least one character.
+			* \return True if `length() > 0`, false otherwise.
+			*/
+			constexpr explicit operator bool() const noexcept {return length() > 0;}
+
+			/**
 			* \brief Convert this string to a complex value.
 			*
 			* \param base The base this string is being interpreted as.
