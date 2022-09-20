@@ -6,5 +6,5 @@ driver
 *.a
 html/
 *.log
-examples/binary
-examples/object
+examples/bin
+examples/obj

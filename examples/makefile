@@ -20,31 +20,31 @@ endif
 STATICLIB = ../libzed.a
 STD = c++17
 
-SRCS := $(wildcard source/*.cpp)
-SRCS := $(filter-out source/dynamicLib.cpp,$(SRCS))
-BINS = $(patsubst source/%.cpp,binary/%,$(SRCS))
+SRCS := $(wildcard src/*.cpp)
+SRCS := $(filter-out src/dynamicLib.cpp,$(SRCS))
+BINS = $(patsubst src/%.cpp,bin/%,$(SRCS))
 
-all: binary object $(BINS)
+all: bin obj $(BINS)
 
-binary:
+bin:
 	mkdir $@
 
-object:
+obj:
 	mkdir $@
 
-object/%.o: source/%.cpp
+obj/%.o: src/%.cpp
 	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $^
 
-object/loadLib.o: source/loadLib.cpp binary/dynamicLib.$(LIBEXT)
+obj/loadLib.o: src/loadLib.cpp bin/dynamicLib.$(LIBEXT)
 	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $<
 
-binary/dynamicLib.$(LIBEXT): source/dynamicLib.cpp $(STATICLIB)
+bin/dynamicLib.$(LIBEXT): src/dynamicLib.cpp $(STATICLIB)
 	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
 
-binary/%: object/%.o $(STATICLIB)
+bin/%: obj/%.o $(STATICLIB)
 	g++ -o $@ $^ $(LFLAGS)
 
 clean:
-	$(RM) binary object
+	$(RM) bin obj
 
 .PHONY: all clean
