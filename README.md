@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ZacharyWesterman/libzed.svg?branch=master)](https://travis-ci.com/ZacharyWesterman/libzed)
+![build status](https://github.com/ZacharyWesterman/libzed/actions/workflows/c-cpp.yml/badge.svg)
 
 This library contains useful classes and functions for quick and simple data manipulation. The idea is to take the grunt work out of C++ in a fast, platform-independent way.
 
