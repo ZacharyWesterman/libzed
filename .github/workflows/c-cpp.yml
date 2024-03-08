@@ -20,7 +20,6 @@ jobs:
       run: make
     - name: Build Documentation
       uses: mattnotmitt/doxygen-action@1.9.8
-      run: doxygen
     - name: Deploy Documentation
       uses: peaceiris/actions-gh-pages@v3.9.3
       with:
