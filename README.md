@@ -65,7 +65,7 @@ If `g++ --version` is 5 or above, chances are you're good.
 
 To build and install, just run
 ```
-make
+make -j$(nproc)
 sudo make install
 ```
 
