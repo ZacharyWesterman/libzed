@@ -10,6 +10,7 @@ var annotated_dup =
         ] ],
         [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],
         [ "binaryStream", "classz_1_1core_1_1binaryStream.html", "classz_1_1core_1_1binaryStream" ],
+        [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
         [ "inputStream", "classz_1_1core_1_1inputStream.html", "classz_1_1core_1_1inputStream" ],
         [ "memoryStream", "classz_1_1core_1_1memoryStream.html", "classz_1_1core_1_1memoryStream" ],
         [ "outputStream", "classz_1_1core_1_1outputStream.html", "classz_1_1core_1_1outputStream" ],

@@ -67,6 +67,7 @@ var hierarchy =
           [ "z::core::sortedRefArray< T >", "classz_1_1core_1_1sortedRefArray.html", null ]
         ] ]
       ] ],
+      [ "z::core::circularBuffer< TYPE, LEN >", "classz_1_1core_1_1circularBuffer.html", null ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
       [ "z::file::info", "classz_1_1file_1_1info.html", null ],
       [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ]
