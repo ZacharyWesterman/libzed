@@ -163,9 +163,9 @@ Linking to this library</h3>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:62</div></div>
-</div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++11 -o example.o -c example.cpp</div>
+</div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
 <div class="line">$ g++ -lzed -o example.out example.o</div>
-</div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++11 -o example.o -c example.cpp</div>
+</div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
 <div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span></div>
 </div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -Wl,--gc-sections</div>
 </div><!-- fragment --><p> Note the effectiveness of this depends on the architecture and the specific compiler used.</p>
