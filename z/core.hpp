@@ -18,6 +18,7 @@
 #include "core/sortedArray.hpp"
 #include "core/refArray.hpp"
 #include "core/sortedRefArray.hpp"
+#include "core/circularBuffer.hpp"
 
 ///Timers
 #include "core/timer.hpp"
