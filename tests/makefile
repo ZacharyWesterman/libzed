@@ -1,19 +1,19 @@
 
 CC = g++
 LN = g++
-CFLAGS = --std=c++11
-LFLAGS =
+CFLAGS = --std=c++17 -fprofile-arcs -ftest-coverage
+LFLAGS = -fprofile-arcs -ftest-coverage
 
 SRCS = $(wildcard $(addsuffix *.cpp, src/))
-OBJS = $(patsubst src/%.cpp,obj/%.o,$(SRCS))
+OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 bin/run_tests: $(OBJS) ../libzed.a
 	$(LN) -o $@ $^ $(LFLAGS)
 
-obj/%.o: src/%.cpp
+%.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -f bin/* obj/*
+	rm -f bin/* src/*.o src/*.gcda src/*.gcno *.gcov
 
 .PHONY: all clean

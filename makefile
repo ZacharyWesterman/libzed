@@ -141,7 +141,7 @@ z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.
 z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CCFLAGS) -DZ_DYNLIB -o $@ -c $<
 
-clean: cleanbin cleanobjs cleandox
+clean: cleanbin cleanobjs cleandox cleancov
 	$(MAKE) clean -C examples/
 	$(MAKE) clean -C tests/
 
@@ -150,6 +150,9 @@ cleanobjs:
 
 cleanbin:
 	$(RM) driver *.so *.dll *.a
+
+cleancov:
+	$(RM) $(patsubst %.cpp,%.gcno,$(SRCS))
 
 cleandox:
 	$(RMDIR) html
@@ -165,4 +168,4 @@ docs:
 	doxygen
 	rm doxygen-awesome.css
 
-.PHONY: rebuild clean cleanobjs cleanbin cleandox default install uninstall examples static dynamic shared all lint tests docs
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs

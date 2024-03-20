@@ -1,6 +1,6 @@
 #include "catch.hpp"
 
-#include "../../z/math.hpp"
+#include "../../z/math/fibonacci.hpp"
 
 TEST_CASE("Computing Fibonacci numbers", "[z::math::fibonacci]")
 {

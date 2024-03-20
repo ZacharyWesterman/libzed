@@ -8,3 +8,6 @@ html/
 *.log
 examples/bin
 examples/obj
+*.gcno
+*.gcda
+*.gcov
