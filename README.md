@@ -69,7 +69,7 @@ make -j$(nproc)
 sudo make install
 ```
 
-Full build instructions along with make options are detailed on the main page of the [Documentation][docs].
+Full build and linking instructions along with make options are detailed on the main page of the [Documentation][docs].
 
 Also of note is that certain classes in this library can be serialized if the
 [cereal](https://github.com/USCiLab/cereal) headers are available!

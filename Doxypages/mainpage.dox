@@ -100,13 +100,13 @@ int main()
 
 To compile and link to the installed library:
 ~~~
-$ g++ -std=c++11 -o example.o -c example.cpp
+$ g++ -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp
 $ g++ -lzed -o example.out example.o
 ~~~
 
 If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows):
 ~~~
-$ g++ -I"/path/to/libzed/headers" -std=c++11 -o example.o -c example.cpp
+$ g++ -I"/path/to/libzed/headers" -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp
 $ g++ -o example.out example.o -lzed -L"/path/to/lib"
 ~~~
 
