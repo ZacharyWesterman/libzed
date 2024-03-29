@@ -8,43 +8,66 @@ namespace z
 	namespace core
 	{
 		/**
+		 * \brief A custom iterator for circular buffers.
+		 *
+		 * This iterator allows C++'s range based for loop syntax.
+		 */
+		template<typename TYPE, unsigned int LEN>
+		class circularIterator {
+			const TYPE* ptr;
+			int offset;
+
+		public:
+			/**
+			 * \brief Constructor
+			 * \param buffer The raw buffer data.
+			 * \param index The current index in the buffer.
+			*/
+			circularIterator(const TYPE* buffer, int index) noexcept : ptr(buffer), offset(index) {}
+
+			/**
+			 * \brief Move to the next spot in the buffer.
+			 * \return A new iterator at the next index.
+			*/
+			circularIterator operator++() noexcept
+			{
+				++offset;
+				return *this;
+			}
+
+			/**
+			 * \brief Inequality operator.
+			 * \param other The other iterator to compare against.
+			 * \return True if these iterators are not pointing at the same item, false otherwise.
+			*/
+			bool operator!=(const circularIterator& other) const noexcept
+			{
+				return offset != other.offset;
+			}
+
+			/**
+			 * \brief Dereference operator.
+			 * \return The data at the current index.
+			*/
+			const TYPE& operator*() const noexcept
+			{
+				return ptr[offset % LEN];
+			}
+		};
+
+		/**
 		 * \brief A circular buffer of fixed size.
 		 * Appending can be done indefinitely,
 		 * as the index will just loop back around to the beginning.
 		 */
 		template<typename TYPE, unsigned int LEN>
-		class circularBuffer : public sizable, public arrayLike<const TYPE&>
+		class circularBuffer : public sizable, public arrayLike<const TYPE&, circularIterator<TYPE, LEN>>
 		{
 			TYPE data[LEN];  //The data to store
 			int counter = 0; //The current index. This will always be between 0 and LEN.
 			int total = 0;   //The total number of items in the buffer. This will never exceed LEN.
 
 			static_assert(LEN > 0, "Buffer must have more than zero elements.");
-
-			//A custom iterator for this class, to allow C++'s range based for loop syntax
-			class iterator {
-				const TYPE* ptr;
-				int offset;
-
-			public:
-				iterator(const TYPE* buffer, int index) noexcept : ptr(buffer), offset(index) {}
-
-				iterator operator++() noexcept
-				{
-					++offset;
-					return *this;
-				}
-
-				bool operator!=(const iterator& other) const noexcept
-				{
-					return offset != other.offset;
-				}
-
-				const TYPE& operator*() const noexcept
-				{
-					return ptr[offset % LEN];
-				}
-			};
 
 		public:
 			///Default constructor.
@@ -170,14 +193,14 @@ namespace z
 				counter = (counter + 1) % LEN;
 			}
 
-			iterator begin() const noexcept override
+			circularIterator<TYPE, LEN> begin() const noexcept override
 			{
-				return iterator(data, counter + LEN + LEN - total);
+				return circularIterator<TYPE, LEN>(data, counter + LEN + LEN - total);
 			}
 
-			iterator end() const noexcept override
+			circularIterator<TYPE, LEN> end() const noexcept override
 			{
-				return iterator(data, counter + LEN + LEN);
+				return circularIterator<TYPE, LEN>(data, counter + LEN + LEN);
 			}
 
 			/**
