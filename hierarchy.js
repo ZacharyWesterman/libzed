@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "z::core::circularIterator< TYPE, LEN >", "classz_1_1core_1_1circularIterator.html", null ],
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
@@ -19,7 +20,7 @@ var hierarchy =
           ] ]
         ] ]
       ] ],
-      [ "z::core::arrayLike< const TYPE & >", "classz_1_1core_1_1arrayLike.html", [
+      [ "z::core::arrayLike< const TYPE &, circularIterator< TYPE, LEN > >", "classz_1_1core_1_1arrayLike.html", [
         [ "z::core::circularBuffer< TYPE, LEN >", "classz_1_1core_1_1circularBuffer.html", null ]
       ] ],
       [ "z::core::arrayLike< uint32_t, stringIterator< utf32 > >", "classz_1_1core_1_1arrayLike.html", null ],
@@ -55,7 +56,7 @@ var hierarchy =
     ] ],
     [ "z::core::iterable< ITER >", "classz_1_1core_1_1iterable.html", [
       [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", null ],
-      [ "z::core::arrayLike< const TYPE & >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const TYPE &, circularIterator< TYPE, LEN > >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< uint32_t, stringIterator< utf32 > >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< const uint8_t &, uint8_t * >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< uint32_t, stringIterator< E > >", "classz_1_1core_1_1arrayLike.html", null ],
@@ -63,6 +64,7 @@ var hierarchy =
       [ "z::core::arrayLike< const z::util::rgx::rule *&, z::util::rgx::rule ** >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< T, ITER >", "classz_1_1core_1_1arrayLike.html", null ]
     ] ],
+    [ "z::core::iterable< circularIterator< TYPE, LEN > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< const z::core::string ** >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< stringIterator< E > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< stringIterator< utf32 > >", "classz_1_1core_1_1iterable.html", null ],

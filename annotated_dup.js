@@ -12,6 +12,7 @@ var annotated_dup =
         [ "arrayLike", "classz_1_1core_1_1arrayLike.html", "classz_1_1core_1_1arrayLike" ],
         [ "binaryStream", "classz_1_1core_1_1binaryStream.html", "classz_1_1core_1_1binaryStream" ],
         [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
+        [ "circularIterator", "classz_1_1core_1_1circularIterator.html", "classz_1_1core_1_1circularIterator" ],
         [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
         [ "inputStream", "classz_1_1core_1_1inputStream.html", "classz_1_1core_1_1inputStream" ],
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],

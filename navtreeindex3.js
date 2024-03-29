@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"pages.html":[],
+"path_8hpp_source.html":[3,0,0,1,13],
+"pause_8hpp_source.html":[3,0,0,3,2],
+"punct_8hpp_source.html":[3,0,0,4,1,0,14],
+"range_8hpp_source.html":[3,0,0,4,1,0,15],
 "refArray_8hpp_source.html":[3,0,0,0,10],
 "regex_8hpp_source.html":[3,0,0,4,5],
 "remainder_8hpp_source.html":[3,0,0,2,6],
