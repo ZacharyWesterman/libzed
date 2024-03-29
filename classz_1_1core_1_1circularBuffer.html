@@ -99,7 +99,6 @@ $(document).ready(function(){initNavTree('classz_1_1core_1_1circularBuffer.html'
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classz_1_1core_1_1circularBuffer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">z::core::circularBuffer&lt; TYPE, LEN &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -115,7 +114,10 @@ Inheritance diagram for z::core::circularBuffer&lt; TYPE, LEN &gt;:</div>
  <div class="center">
   <img src="classz_1_1core_1_1circularBuffer.png" usemap="#z::core::circularBuffer_3C_20TYPE_2C_20LEN_20_3E_map" alt=""/>
   <map id="z::core::circularBuffer_3C_20TYPE_2C_20LEN_20_3E_map" name="z::core::circularBuffer_3C_20TYPE_2C_20LEN_20_3E_map">
-<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,0,224,24"/>
+<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,56,224,80"/>
+<area href="classz_1_1core_1_1arrayLike.html" alt="z::core::arrayLike&lt; const TYPE &amp; &gt;" shape="rect" coords="234,56,458,80"/>
+<area href="classz_1_1core_1_1indexable.html" alt="z::core::indexable&lt; T &gt;" shape="rect" coords="117,0,341,24"/>
+<area href="classz_1_1core_1_1iterable.html" title="A base interface for all objects that can be iterated over." alt="z::core::iterable&lt; ITER &gt;" shape="rect" coords="351,0,575,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -132,15 +134,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa85cd49896c2c74994b8a03952d77b0a" id="r_aa85cd49896c2c74994b8a03952d77b0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#aa85cd49896c2c74994b8a03952d77b0a">circularBuffer</a> (TYPE default_value) noexcept</td></tr>
 <tr class="memdesc:aa85cd49896c2c74994b8a03952d77b0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize all elements with a single value.  <br /></td></tr>
 <tr class="separator:aa85cd49896c2c74994b8a03952d77b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21161b5c78af3dd013af6ea0f677fc99" id="r_a21161b5c78af3dd013af6ea0f677fc99"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a21161b5c78af3dd013af6ea0f677fc99">size</a> () const noexcept</td></tr>
-<tr class="memdesc:a21161b5c78af3dd013af6ea0f677fc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the object in memory.  <br /></td></tr>
-<tr class="separator:a21161b5c78af3dd013af6ea0f677fc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55bd72837c9ad5dc5778dfd30ce0d82a" id="r_a55bd72837c9ad5dc5778dfd30ce0d82a"><td class="memItemLeft" align="right" valign="top">const TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a55bd72837c9ad5dc5778dfd30ce0d82a">operator[]</a> (const int <a class="el" href="classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937">index</a>) const noexcept</td></tr>
-<tr class="memdesc:a55bd72837c9ad5dc5778dfd30ce0d82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element from the buffer.  <br /></td></tr>
-<tr class="separator:a55bd72837c9ad5dc5778dfd30ce0d82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5eb348632bd311eaee1794d34d2af742" id="r_a5eb348632bd311eaee1794d34d2af742"><td class="memItemLeft" align="right" valign="top">TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a5eb348632bd311eaee1794d34d2af742">operator[]</a> (const int <a class="el" href="classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937">index</a>) noexcept</td></tr>
-<tr class="memdesc:a5eb348632bd311eaee1794d34d2af742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a modifiable element from the buffer.  <br /></td></tr>
-<tr class="separator:a5eb348632bd311eaee1794d34d2af742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c361fd3b14c8ef0ab3ebdfc6406a0f" id="r_a92c361fd3b14c8ef0ab3ebdfc6406a0f"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a92c361fd3b14c8ef0ab3ebdfc6406a0f">size</a> () const noexcept override</td></tr>
+<tr class="memdesc:a92c361fd3b14c8ef0ab3ebdfc6406a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the object in memory.  <br /></td></tr>
+<tr class="separator:a92c361fd3b14c8ef0ab3ebdfc6406a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed3f2aac2b359eaeb8d8021d5abb1ab7" id="r_aed3f2aac2b359eaeb8d8021d5abb1ab7"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#aed3f2aac2b359eaeb8d8021d5abb1ab7">length</a> () const noexcept override</td></tr>
+<tr class="memdesc:aed3f2aac2b359eaeb8d8021d5abb1ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the array.  <br /></td></tr>
+<tr class="separator:aed3f2aac2b359eaeb8d8021d5abb1ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e164d5ba6f0d3bffd3879640e0698a0" id="r_a2e164d5ba6f0d3bffd3879640e0698a0"><td class="memItemLeft" align="right" valign="top">const TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a2e164d5ba6f0d3bffd3879640e0698a0">at</a> (const int <a class="el" href="classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937">index</a>) const noexcept override</td></tr>
+<tr class="memdesc:a2e164d5ba6f0d3bffd3879640e0698a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element from the buffer.  <br /></td></tr>
+<tr class="separator:a2e164d5ba6f0d3bffd3879640e0698a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7240e7713ee7ba048df536c1ac91120" id="r_af7240e7713ee7ba048df536c1ac91120"><td class="memItemLeft" align="right" valign="top">TYPE &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#af7240e7713ee7ba048df536c1ac91120">at</a> (const int <a class="el" href="classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937">index</a>) noexcept</td></tr>
+<tr class="memdesc:af7240e7713ee7ba048df536c1ac91120"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a modifiable element from the buffer.  <br /></td></tr>
+<tr class="separator:af7240e7713ee7ba048df536c1ac91120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96b1fd44cd4ad4913deb1e5002665f19" id="r_a96b1fd44cd4ad4913deb1e5002665f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a96b1fd44cd4ad4913deb1e5002665f19">append</a> (const TYPE value) noexcept</td></tr>
 <tr class="memdesc:a96b1fd44cd4ad4913deb1e5002665f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a value to the buffer, and increment the current index.  <br /></td></tr>
 <tr class="separator:a96b1fd44cd4ad4913deb1e5002665f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,14 +166,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>prev</b> () noexcept<
 void&#160;</td><td class="memItemRight" valign="bottom"><b>next</b> () noexcept</td></tr>
 <tr class="memdesc:a6e3b0f3012be36958481280c8238f895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move current "top" to the next spot in the buffer. <br /></td></tr>
 <tr class="separator:a6e3b0f3012be36958481280c8238f895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addb1e607ee5215ebb59fbb1f44550b97" id="r_addb1e607ee5215ebb59fbb1f44550b97"><td class="memItemLeft" align="right" valign="top"><a id="addb1e607ee5215ebb59fbb1f44550b97" name="addb1e607ee5215ebb59fbb1f44550b97"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const noexcept</td></tr>
-<tr class="memdesc:addb1e607ee5215ebb59fbb1f44550b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method for C++ range based for loops. <br /></td></tr>
-<tr class="separator:addb1e607ee5215ebb59fbb1f44550b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada5cecdac92d28b9ebe31fa7dd9560a1" id="r_ada5cecdac92d28b9ebe31fa7dd9560a1"><td class="memItemLeft" align="right" valign="top"><a id="ada5cecdac92d28b9ebe31fa7dd9560a1" name="ada5cecdac92d28b9ebe31fa7dd9560a1"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const noexcept</td></tr>
-<tr class="memdesc:ada5cecdac92d28b9ebe31fa7dd9560a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method for C++ range based for loops. <br /></td></tr>
-<tr class="separator:ada5cecdac92d28b9ebe31fa7dd9560a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03375ba6aea58773d412b6a4e3c8e9ed" id="r_a03375ba6aea58773d412b6a4e3c8e9ed"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a03375ba6aea58773d412b6a4e3c8e9ed">begin</a> () const noexcept override</td></tr>
+<tr class="memdesc:a03375ba6aea58773d412b6a4e3c8e9ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the first element in this object.  <br /></td></tr>
+<tr class="separator:a03375ba6aea58773d412b6a4e3c8e9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c46238e02b5f51001e9444e85cabd5" id="r_a22c46238e02b5f51001e9444e85cabd5"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a22c46238e02b5f51001e9444e85cabd5">end</a> () const noexcept override</td></tr>
+<tr class="memdesc:a22c46238e02b5f51001e9444e85cabd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator after the last element of this object.  <br /></td></tr>
+<tr class="separator:a22c46238e02b5f51001e9444e85cabd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff63ff3aada37d733ec8970d78a2ae2" id="r_a2ff63ff3aada37d733ec8970d78a2ae2"><td class="memTemplParams" colspan="2">template&lt;typename... ARGS&gt; </td></tr>
 <tr class="memitem:a2ff63ff3aada37d733ec8970d78a2ae2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a2ff63ff3aada37d733ec8970d78a2ae2">populate</a> (const TYPE &amp;first, const ARGS &amp;... args) noexcept</td></tr>
 <tr class="memdesc:a2ff63ff3aada37d733ec8970d78a2ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append an arbitrary number of elements to the buffer.  <br /></td></tr>
@@ -187,13 +190,14 @@ iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const 
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~sizable</b> () noexcept</td></tr>
 <tr class="memdesc:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a1972aac25eeb0169a7a3a06ec164fc43" id="r_a1972aac25eeb0169a7a3a06ec164fc43"><td class="memItemLeft" align="right" valign="top"><a id="a1972aac25eeb0169a7a3a06ec164fc43" name="a1972aac25eeb0169a7a3a06ec164fc43"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>length</b> = LEN</td></tr>
-<tr class="memdesc:a1972aac25eeb0169a7a3a06ec164fc43"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of this buffer. This is included for convenience. <br /></td></tr>
-<tr class="separator:a1972aac25eeb0169a7a3a06ec164fc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classz_1_1core_1_1indexable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1indexable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1indexable.html">z::core::indexable&lt; T &gt;</a></td></tr>
+<tr class="memitem:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable" id="r_ae2bd8051308a22a2957924bf47bbf56c"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~indexable</b> () noexcept</td></tr>
+<tr class="memdesc:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable" id="r_a2e791ea6904cbd35b79e4ad87cff4a3a"><td class="memItemLeft" align="right" valign="top">virtual T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a">operator[]</a> (int index) const</td></tr>
+<tr class="memdesc:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename TYPE, unsigned int LEN&gt;<br />
@@ -311,6 +315,116 @@ template&lt;typename TYPE , unsigned int LEN&gt; </div>
 
 </div>
 </div>
+<a id="a2e164d5ba6f0d3bffd3879640e0698a0" name="a2e164d5ba6f0d3bffd3879640e0698a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e164d5ba6f0d3bffd3879640e0698a0">&#9670;&#160;</a></span>at() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE , unsigned int LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const TYPE &amp; <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get an element from the buffer. </p>
+<p>This method is used when we're not modifying the resultant value. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the value we want. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value at that index. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1indexable.html#a64c0a7369dd895c00f79538ec85eb859">z::core::indexable&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="af7240e7713ee7ba048df536c1ac91120" name="af7240e7713ee7ba048df536c1ac91120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7240e7713ee7ba048df536c1ac91120">&#9670;&#160;</a></span>at() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE , unsigned int LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TYPE &amp; <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a modifiable element from the buffer. </p>
+<p>This method is used when we ARE modifying the resultant value. The compiler knows the difference and will use this function only when needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the value we want. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value at that index. </dd></dl>
+
+</div>
+</div>
+<a id="a03375ba6aea58773d412b6a4e3c8e9ed" name="a03375ba6aea58773d412b6a4e3c8e9ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03375ba6aea58773d412b6a4e3c8e9ed">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE , unsigned int LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get an iterator for the first element in this object. </p>
+<p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
+<dl class="section return"><dt>Returns</dt><dd>An iterator on the first element. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3">z::core::iterable&lt; ITER &gt;</a>.</p>
+
+</div>
+</div>
 <a id="a4f04b3515846ba90368caa471fd523d7" name="a4f04b3515846ba90368caa471fd523d7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f04b3515846ba90368caa471fd523d7">&#9670;&#160;</a></span>count()</h2>
 
@@ -372,6 +486,39 @@ template&lt;typename TYPE , unsigned int LEN&gt; </div>
 
 </div>
 </div>
+<a id="a22c46238e02b5f51001e9444e85cabd5" name="a22c46238e02b5f51001e9444e85cabd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c46238e02b5f51001e9444e85cabd5">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE , unsigned int LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get an iterator after the last element of this object. </p>
+<p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
+<dl class="section return"><dt>Returns</dt><dd>An iterator after the last element. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#aab9329d902ed1c89c1bd484b7535da2a">z::core::iterable&lt; ITER &gt;</a>.</p>
+
+</div>
+</div>
 <a id="a424095edd234c7f59405d9b1b39d3937" name="a424095edd234c7f59405d9b1b39d3937"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a424095edd234c7f59405d9b1b39d3937">&#9670;&#160;</a></span>index()</h2>
 
@@ -399,6 +546,38 @@ template&lt;typename TYPE , unsigned int LEN&gt; </div>
 
 <p>Get the index of the current top of the buffer. </p>
 <p>This index will always be a value from 0 to the length of the buffer. </p><dl class="section return"><dt>Returns</dt><dd>The current index. </dd></dl>
+
+</div>
+</div>
+<a id="aed3f2aac2b359eaeb8d8021d5abb1ab7" name="aed3f2aac2b359eaeb8d8021d5abb1ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed3f2aac2b359eaeb8d8021d5abb1ab7">&#9670;&#160;</a></span>length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE , unsigned int LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::length </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the length of the array. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of objects in the array. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5">z::core::arrayLike&lt; const TYPE &amp; &gt;</a>.</p>
 
 </div>
 </div>
@@ -461,81 +640,6 @@ template&lt;typename TYPE , unsigned int LEN&gt; </div>
 <p>Get the minimum value contained in this buffer. </p>
 <dl class="section note"><dt>Note</dt><dd>This method is only available for arithmetic types. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The minimum value in the buffer. </dd></dl>
-
-</div>
-</div>
-<a id="a55bd72837c9ad5dc5778dfd30ce0d82a" name="a55bd72837c9ad5dc5778dfd30ce0d82a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55bd72837c9ad5dc5778dfd30ce0d82a">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TYPE , unsigned int LEN&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const TYPE &amp; <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get an element from the buffer. </p>
-<p>This method is used when we're not modifying the resultant value. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the value we want. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value at that index. </dd></dl>
-
-</div>
-</div>
-<a id="a5eb348632bd311eaee1794d34d2af742" name="a5eb348632bd311eaee1794d34d2af742"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5eb348632bd311eaee1794d34d2af742">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TYPE , unsigned int LEN&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">TYPE &amp; <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; TYPE, LEN &gt;::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a modifiable element from the buffer. </p>
-<p>This method is used when we ARE modifying the resultant value. The compiler knows the difference and will use this function only when needed.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the value we want. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value at that index. </dd></dl>
 
 </div>
 </div>
@@ -625,8 +729,8 @@ template&lt;typename... ARGS&gt; </div>
 
 </div>
 </div>
-<a id="a21161b5c78af3dd013af6ea0f677fc99" name="a21161b5c78af3dd013af6ea0f677fc99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21161b5c78af3dd013af6ea0f677fc99">&#9670;&#160;</a></span>size()</h2>
+<a id="a92c361fd3b14c8ef0ab3ebdfc6406a0f" name="a92c361fd3b14c8ef0ab3ebdfc6406a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92c361fd3b14c8ef0ab3ebdfc6406a0f">&#9670;&#160;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -645,7 +749,7 @@ template&lt;typename TYPE , unsigned int LEN&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

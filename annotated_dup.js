@@ -9,9 +9,12 @@ var annotated_dup =
           [ "no", "classz_1_1core_1_1types_1_1no.html", null ]
         ] ],
         [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],
+        [ "arrayLike", "classz_1_1core_1_1arrayLike.html", "classz_1_1core_1_1arrayLike" ],
         [ "binaryStream", "classz_1_1core_1_1binaryStream.html", "classz_1_1core_1_1binaryStream" ],
         [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
+        [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
         [ "inputStream", "classz_1_1core_1_1inputStream.html", "classz_1_1core_1_1inputStream" ],
+        [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "memoryStream", "classz_1_1core_1_1memoryStream.html", "classz_1_1core_1_1memoryStream" ],
         [ "outputStream", "classz_1_1core_1_1outputStream.html", "classz_1_1core_1_1outputStream" ],
         [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],

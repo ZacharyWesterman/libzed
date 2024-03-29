@@ -2,7 +2,7 @@ var searchData=
 [
   ['language_0',['language',['../classz_1_1util_1_1dictionary.html#a82dbf1c17d75763c8c452f990871afd8',1,'z::util::dictionary']]],
   ['lenfromutf8_1',['lenFromUTF8',['../namespacez_1_1core.html#ade9b103cf3cd4b562c3799027f5fd51f',1,'z::core']]],
-  ['length_2',['length',['../classz_1_1core_1_1array.html#a9a7beb03e33b1128d05e4d96d5958f7a',1,'z::core::array::length()'],['../classz_1_1core_1_1string.html#a09c25e8c1e48ddb23e1d67327811f645',1,'z::core::string::length()'],['../classz_1_1util_1_1dictionary.html#a4516028adb6262a9a45935ce7ecf0df3',1,'z::util::dictionary::length()']]],
+  ['length_2',['length',['../classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2',1,'z::core::array::length()'],['../classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5',1,'z::core::arrayLike::length()'],['../classz_1_1core_1_1circularBuffer.html#aed3f2aac2b359eaeb8d8021d5abb1ab7',1,'z::core::circularBuffer::length()'],['../classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9',1,'z::core::string::length()'],['../classz_1_1util_1_1dictionary.html#a4516028adb6262a9a45935ce7ecf0df3',1,'z::util::dictionary::length()']]],
   ['lentoutf8_3',['lenToUTF8',['../namespacez_1_1core.html#ae6b3eefa6cb5f87bd29869300854f948',1,'z::core']]],
   ['library_4',['library',['../classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7',1,'z::file::library']]],
   ['listdirs_5',['listDirs',['../namespacez_1_1file.html#ac025898fc243026d8638bd2cb81fcfde',1,'z::file']]],

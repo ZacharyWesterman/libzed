@@ -115,7 +115,10 @@ Inheritance diagram for z::core::string&lt; E &gt;:</div>
  <div class="center">
   <img src="classz_1_1core_1_1string.png" usemap="#z::core::string_3C_20E_20_3E_map" alt=""/>
   <map id="z::core::string_3C_20E_20_3E_map" name="z::core::string_3C_20E_20_3E_map">
-<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,0,119,24"/>
+<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,56,310,80"/>
+<area href="classz_1_1core_1_1arrayLike.html" title="An interface for all objects that can be both iterated over and directly indexed." alt="z::core::arrayLike&lt; T, ITER &gt;" shape="rect" coords="320,56,630,80"/>
+<area href="classz_1_1core_1_1indexable.html" alt="z::core::indexable&lt; T &gt;" shape="rect" coords="160,0,470,24"/>
+<area href="classz_1_1core_1_1iterable.html" title="A base interface for all objects that can be iterated over." alt="z::core::iterable&lt; ITER &gt;" shape="rect" coords="480,0,790,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -181,18 +184,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac428c7c81a4b4b76cfa8b68eafa00076" id="r_ac428c7c81a4b4b76cfa8b68eafa00076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#ac428c7c81a4b4b76cfa8b68eafa00076">increase</a> (<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">charCount</a>) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
 <tr class="memdesc:ac428c7c81a4b4b76cfa8b68eafa00076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the space allocated for this string.  <br /></td></tr>
 <tr class="separator:ac428c7c81a4b4b76cfa8b68eafa00076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a037e988d7f9349740b59d0d74ff22aeb" id="r_a037e988d7f9349740b59d0d74ff22aeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a037e988d7f9349740b59d0d74ff22aeb">at</a> (<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a> index) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
-<tr class="memdesc:a037e988d7f9349740b59d0d74ff22aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character at the given index.  <br /></td></tr>
-<tr class="separator:a037e988d7f9349740b59d0d74ff22aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee85973dffb32fc45cfb1080f0e7ecd6" id="r_aee85973dffb32fc45cfb1080f0e7ecd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aee85973dffb32fc45cfb1080f0e7ecd6">operator[]</a> (<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a> index) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
-<tr class="memdesc:aee85973dffb32fc45cfb1080f0e7ecd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character at the given index.  <br /></td></tr>
-<tr class="separator:aee85973dffb32fc45cfb1080f0e7ecd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6dcadcd303920268c85374e69d6787" id="r_a4c6dcadcd303920268c85374e69d6787"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a4c6dcadcd303920268c85374e69d6787">at</a> (<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a> index) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">override</a></td></tr>
+<tr class="memdesc:a4c6dcadcd303920268c85374e69d6787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character at the given index.  <br /></td></tr>
+<tr class="separator:a4c6dcadcd303920268c85374e69d6787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a961659a5ec0b38a0c48ff2ed6f0c2f56" id="r_a961659a5ec0b38a0c48ff2ed6f0c2f56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a961659a5ec0b38a0c48ff2ed6f0c2f56">size</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
 <tr class="memdesc:a961659a5ec0b38a0c48ff2ed6f0c2f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the string in memory.  <br /></td></tr>
 <tr class="separator:a961659a5ec0b38a0c48ff2ed6f0c2f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c25e8c1e48ddb23e1d67327811f645" id="r_a09c25e8c1e48ddb23e1d67327811f645"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a09c25e8c1e48ddb23e1d67327811f645">length</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
-<tr class="memdesc:a09c25e8c1e48ddb23e1d67327811f645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character count of the string.  <br /></td></tr>
-<tr class="separator:a09c25e8c1e48ddb23e1d67327811f645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee096fbead55283d629f20b8cf648a9" id="r_a2ee096fbead55283d629f20b8cf648a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9">length</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">override</a></td></tr>
+<tr class="memdesc:a2ee096fbead55283d629f20b8cf648a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character count of the string.  <br /></td></tr>
+<tr class="separator:a2ee096fbead55283d629f20b8cf648a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb98c8ecf3aa9a78a59d88cf2a94c7bc" id="r_adb98c8ecf3aa9a78a59d88cf2a94c7bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#adb98c8ecf3aa9a78a59d88cf2a94c7bc">chars</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
 <tr class="memdesc:adb98c8ecf3aa9a78a59d88cf2a94c7bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the individual character count of the string.  <br /></td></tr>
 <tr class="separator:adb98c8ecf3aa9a78a59d88cf2a94c7bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -429,12 +429,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a17986d29aa6a5ca77b6a8c9799ea8f36" id="r_a17986d29aa6a5ca77b6a8c9799ea8f36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a17986d29aa6a5ca77b6a8c9799ea8f36">writeln</a> (<a class="el" href="classz_1_1core_1_1outputStream.html">outputStream</a> &amp;<a class="el" href="classz_1_1core_1_1stream.html">stream</a>) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
 <tr class="memdesc:a17986d29aa6a5ca77b6a8c9799ea8f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write string data to a stream in its format, appending a newline.  <br /></td></tr>
 <tr class="separator:a17986d29aa6a5ca77b6a8c9799ea8f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2da872ea80acf61889853c55d7cbfac5" id="r_a2da872ea80acf61889853c55d7cbfac5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1stringIterator.html">stringIterator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">E</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a2da872ea80acf61889853c55d7cbfac5">begin</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
-<tr class="memdesc:a2da872ea80acf61889853c55d7cbfac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the beginning of the string.  <br /></td></tr>
-<tr class="separator:a2da872ea80acf61889853c55d7cbfac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a338d2717b85a892e40b33b913fb8c844" id="r_a338d2717b85a892e40b33b913fb8c844"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1stringIterator.html">stringIterator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">E</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a338d2717b85a892e40b33b913fb8c844">end</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a></td></tr>
-<tr class="memdesc:a338d2717b85a892e40b33b913fb8c844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the end of the string.  <br /></td></tr>
-<tr class="separator:a338d2717b85a892e40b33b913fb8c844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e7221c8193852126febe812132eaa86" id="r_a9e7221c8193852126febe812132eaa86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1stringIterator.html">stringIterator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">E</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a9e7221c8193852126febe812132eaa86">begin</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">override</a></td></tr>
+<tr class="memdesc:a9e7221c8193852126febe812132eaa86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the beginning of the string.  <br /></td></tr>
+<tr class="separator:a9e7221c8193852126febe812132eaa86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4aebe7cc1f04c303fa6c402212f675" id="r_a4f4aebe7cc1f04c303fa6c402212f675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1stringIterator.html">stringIterator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">E</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a4f4aebe7cc1f04c303fa6c402212f675">end</a> () <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">noexcept</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">override</a></td></tr>
+<tr class="memdesc:a4f4aebe7cc1f04c303fa6c402212f675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the end of the string.  <br /></td></tr>
+<tr class="separator:a4f4aebe7cc1f04c303fa6c402212f675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e0aafd2096bf8a78a6dd2bc834e1303" id="r_a8e0aafd2096bf8a78a6dd2bc834e1303"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">class</a> <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">archive</a> &gt; </td></tr>
 <tr class="memitem:a8e0aafd2096bf8a78a6dd2bc834e1303"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a8e0aafd2096bf8a78a6dd2bc834e1303">save_minimal</a> (<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">archive</a> &amp;<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">ar</a>) <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">const</a></td></tr>
 <tr class="memdesc:a8e0aafd2096bf8a78a6dd2bc834e1303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization output.  <br /></td></tr>
@@ -448,6 +448,14 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~sizable</b> () noexcept</td></tr>
 <tr class="memdesc:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classz_1_1core_1_1indexable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1indexable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1indexable.html">z::core::indexable&lt; T &gt;</a></td></tr>
+<tr class="memitem:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable" id="r_ae2bd8051308a22a2957924bf47bbf56c"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~indexable</b> () noexcept</td></tr>
+<tr class="memdesc:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable" id="r_a2e791ea6904cbd35b79e4ad87cff4a3a"><td class="memItemLeft" align="right" valign="top">virtual T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a">operator[]</a> (int index) const</td></tr>
+<tr class="memdesc:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -1170,8 +1178,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 
 </div>
 </div>
-<a id="a037e988d7f9349740b59d0d74ff22aeb" name="a037e988d7f9349740b59d0d74ff22aeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a037e988d7f9349740b59d0d74ff22aeb">&#9670;&#160;</a></span>at()</h2>
+<a id="a4c6dcadcd303920268c85374e69d6787" name="a4c6dcadcd303920268c85374e69d6787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6dcadcd303920268c85374e69d6787">&#9670;&#160;</a></span>at()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1191,7 +1199,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1205,12 +1213,14 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The character at the given index, in UTF32 format.</dd></dl>
 <p>If the index is greater than the character count, the null character is returned. For UTF-8 strings, if the chracter at the given index is part of a multibyte sequence, that sequence is converted to UTF32 and returned.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#aee85973dffb32fc45cfb1080f0e7ecd6" title="Get the character at the given index.">operator[]()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a" title="Function to get the object at the given index.">operator[]()</a> </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1indexable.html#a64c0a7369dd895c00f79538ec85eb859">z::core::indexable&lt; T &gt;</a>.</p>
 
 </div>
 </div>
-<a id="a2da872ea80acf61889853c55d7cbfac5" name="a2da872ea80acf61889853c55d7cbfac5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2da872ea80acf61889853c55d7cbfac5">&#9670;&#160;</a></span>begin()</h2>
+<a id="a9e7221c8193852126febe812132eaa86" name="a9e7221c8193852126febe812132eaa86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7221c8193852126febe812132eaa86">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1229,7 +1239,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1237,6 +1247,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <p>Get an iterator for the beginning of the string. </p>
 <p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator on the first character in the string. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3">z::core::iterable&lt; ITER &gt;</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1348,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <p>Get the individual character count of the string. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of characters in the string.</dd></dl>
 <p>For UTF-8 strings, multibyte sequences are counted as a single character.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a09c25e8c1e48ddb23e1d67327811f645" title="Get the character count of the string.">length()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9" title="Get the character count of the string.">length()</a> </dd></dl>
 
 </div>
 </div>
@@ -1746,8 +1758,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 
 </div>
 </div>
-<a id="a338d2717b85a892e40b33b913fb8c844" name="a338d2717b85a892e40b33b913fb8c844"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a338d2717b85a892e40b33b913fb8c844">&#9670;&#160;</a></span>end()</h2>
+<a id="a4f4aebe7cc1f04c303fa6c402212f675" name="a4f4aebe7cc1f04c303fa6c402212f675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4aebe7cc1f04c303fa6c402212f675">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1766,7 +1778,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1774,6 +1786,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <p>Get an iterator for the end of the string. </p>
 <p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator after the last character in the string. </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#aab9329d902ed1c89c1bd484b7535da2a">z::core::iterable&lt; ITER &gt;</a>.</p>
 
 </div>
 </div>
@@ -2729,8 +2743,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 
 </div>
 </div>
-<a id="a09c25e8c1e48ddb23e1d67327811f645" name="a09c25e8c1e48ddb23e1d67327811f645"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09c25e8c1e48ddb23e1d67327811f645">&#9670;&#160;</a></span>length()</h2>
+<a id="a2ee096fbead55283d629f20b8cf648a9" name="a2ee096fbead55283d629f20b8cf648a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ee096fbead55283d629f20b8cf648a9">&#9670;&#160;</a></span>length()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2749,7 +2763,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2758,6 +2772,8 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <dl class="section return"><dt>Returns</dt><dd>The number of characters in the string.</dd></dl>
 <p>For UTF-8 strings, multibyte sequences are counted as multiple characters.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#adb98c8ecf3aa9a78a59d88cf2a94c7bc" title="Get the individual character count of the string.">chars()</a> </dd></dl>
+
+<p>Implements <a class="el" href="classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5">z::core::arrayLike&lt; T, ITER &gt;</a>.</p>
 
 </div>
 </div>
@@ -2897,7 +2913,7 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 </div><div class="memdoc">
 
 <p>Check if this string contains at least one character. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if <code><a class="el" href="classz_1_1core_1_1string.html#a09c25e8c1e48ddb23e1d67327811f645" title="Get the character count of the string.">length()</a> &gt; 0</code>, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if <code><a class="el" href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9" title="Get the character count of the string.">length()</a> &gt; 0</code>, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -3363,45 +3379,6 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if this string does not come before the given string alphabetically. False otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="aee85973dffb32fc45cfb1080f0e7ecd6" name="aee85973dffb32fc45cfb1080f0e7ecd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee85973dffb32fc45cfb1080f0e7ecd6">&#9670;&#160;</a></span>operator[]()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E = utf32&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">uint32_t</a> <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; <a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">E</a> &gt;<a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">::operator</a>[] </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c">int</a>&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the character at the given index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the character to get.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The character at the given index, in UTF32 format.</dd></dl>
-<p>If the index is greater than the character count, the null character is returned. For UTF-8 strings, if the chracter at the given index is part of a multibyte sequence, that sequence is converted to UTF32 and returned.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1string.html#a037e988d7f9349740b59d0d74ff22aeb" title="Get the character at the given index.">at()</a> </dd></dl>
 
 </div>
 </div>

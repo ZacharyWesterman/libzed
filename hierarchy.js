@@ -8,6 +8,40 @@ var hierarchy =
     ] ],
     [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
+    [ "z::core::indexable< T >", "classz_1_1core_1_1indexable.html", [
+      [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", [
+        [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
+          [ "z::core::sortedArray< const z::core::string * >", "classz_1_1core_1_1sortedArray.html", null ],
+          [ "z::core::refArray< T >", "classz_1_1core_1_1refArray.html", null ],
+          [ "z::core::sortedArray< T >", "classz_1_1core_1_1sortedArray.html", [
+            [ "z::core::sortedRefArray< const z::core::string * >", "classz_1_1core_1_1sortedRefArray.html", null ],
+            [ "z::core::sortedRefArray< T >", "classz_1_1core_1_1sortedRefArray.html", null ]
+          ] ]
+        ] ]
+      ] ],
+      [ "z::core::arrayLike< const TYPE & >", "classz_1_1core_1_1arrayLike.html", [
+        [ "z::core::circularBuffer< TYPE, LEN >", "classz_1_1core_1_1circularBuffer.html", null ]
+      ] ],
+      [ "z::core::arrayLike< uint32_t, stringIterator< utf32 > >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const uint8_t &, uint8_t * >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< uint32_t, stringIterator< E > >", "classz_1_1core_1_1arrayLike.html", [
+        [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ]
+      ] ],
+      [ "z::core::arrayLike< const const z::core::string *&, const z::core::string ** >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const z::util::rgx::rule *&, z::util::rgx::rule ** >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< T, ITER >", "classz_1_1core_1_1arrayLike.html", [
+        [ "z::core::array< uint8_t >", "classz_1_1core_1_1array.html", null ],
+        [ "z::core::array< const z::core::string * >", "classz_1_1core_1_1array.html", null ],
+        [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
+        [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ]
+      ] ]
+    ] ],
+    [ "z::core::indexable< const const z::core::string *& >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< const T & >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< const TYPE & >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< const uint8_t & >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< const z::util::rgx::rule *& >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< uint32_t >", "classz_1_1core_1_1indexable.html", null ],
     [ "z::core::inputStream", "classz_1_1core_1_1inputStream.html", [
       [ "z::core::stream", "classz_1_1core_1_1stream.html", [
         [ "z::core::binaryStream", "classz_1_1core_1_1binaryStream.html", null ],
@@ -19,6 +53,22 @@ var hierarchy =
         [ "z::system::console", "classz_1_1system_1_1console.html", null ]
       ] ]
     ] ],
+    [ "z::core::iterable< ITER >", "classz_1_1core_1_1iterable.html", [
+      [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const TYPE & >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< uint32_t, stringIterator< utf32 > >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const uint8_t &, uint8_t * >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< uint32_t, stringIterator< E > >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const const z::core::string *&, const z::core::string ** >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const z::util::rgx::rule *&, z::util::rgx::rule ** >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< T, ITER >", "classz_1_1core_1_1arrayLike.html", null ]
+    ] ],
+    [ "z::core::iterable< const z::core::string ** >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< stringIterator< E > >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< stringIterator< utf32 > >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< T * >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< uint8_t * >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< z::util::rgx::rule ** >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::types::lesserExists< T, Arg >", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
     [ "z::file::library", "classz_1_1file_1_1library.html", null ],
     [ "z::math::matrix< N >", "classz_1_1math_1_1matrix.html", null ],
@@ -59,14 +109,7 @@ var hierarchy =
       [ "z::core::array< const z::core::string * >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::array< z::util::rgx::rule * >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
-      [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
-        [ "z::core::sortedArray< const z::core::string * >", "classz_1_1core_1_1sortedArray.html", null ],
-        [ "z::core::refArray< T >", "classz_1_1core_1_1refArray.html", null ],
-        [ "z::core::sortedArray< T >", "classz_1_1core_1_1sortedArray.html", [
-          [ "z::core::sortedRefArray< const z::core::string * >", "classz_1_1core_1_1sortedRefArray.html", null ],
-          [ "z::core::sortedRefArray< T >", "classz_1_1core_1_1sortedRefArray.html", null ]
-        ] ]
-      ] ],
+      [ "z::core::array< T >", "classz_1_1core_1_1array.html", null ],
       [ "z::core::circularBuffer< TYPE, LEN >", "classz_1_1core_1_1circularBuffer.html", null ],
       [ "z::core::string< E >", "classz_1_1core_1_1string.html", null ],
       [ "z::file::info", "classz_1_1file_1_1info.html", null ],
