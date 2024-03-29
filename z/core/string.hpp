@@ -13,6 +13,7 @@
 #include "zstr.hpp"
 
 #include "sizable.hpp"
+#include "arrayLike.hpp"
 
 #include "stringIterator.hpp"
 
@@ -58,7 +59,7 @@ namespace z
 		* \see zstr.h
 		*/
 		template <encoding E = utf32>
-		class string : public sizable
+		class string : public sizable, public arrayLike<uint32_t, stringIterator<E>>
 		{
 			friend string<ascii>;
 			friend string<utf8>;
@@ -328,24 +329,7 @@ namespace z
 			*
 			* \see operator[]()
 			*/
-			uint32_t at(int index) const noexcept;
-
-			/**
-			* \brief Get the character at the given index.
-			*
-			* \param index The index of the character to get.
-			*
-			* \return The character at the given index, in UTF32 format.
-			*
-			* If the index is greater than the character count, the
-			* null character is returned.
-			* For UTF-8 strings, if the chracter at the given index is
-			* part of a multibyte sequence, that sequence is converted to
-			* UTF32 and returned.
-			*
-			* \see at()
-			*/
-			uint32_t operator[](int index) const noexcept;
+			uint32_t at(int index) const noexcept override;
 
 			/**
 			* \brief Get the size of the string in memory
@@ -364,7 +348,7 @@ namespace z
 			*
 			* \see chars()
 			*/
-			int length() const noexcept;
+			int length() const noexcept override;
 
 			/**
 			* \brief Get the individual character count of the string.
@@ -1722,7 +1706,7 @@ namespace z
 			*
 			* \return An iterator on the first character in the string.
 			*/
-			stringIterator<E> begin() const noexcept {return stringIterator<E>(data,0);}
+			stringIterator<E> begin() const noexcept override {return stringIterator<E>(data,0);}
 
 			/**
 			* \brief Get an iterator for the end of the string.
@@ -1732,7 +1716,7 @@ namespace z
 			*
 			* \return An iterator after the last character in the string.
 			*/
-			stringIterator<E> end() const noexcept {return stringIterator<E>(data,character_ct);}
+			stringIterator<E> end() const noexcept override {return stringIterator<E>(data,character_ct);}
 
 #		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)

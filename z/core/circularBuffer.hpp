@@ -1,6 +1,7 @@
 #pragma once
 
 #include <type_traits>
+#include "arrayLike.hpp"
 
 namespace z
 {
@@ -12,7 +13,7 @@ namespace z
 		 * as the index will just loop back around to the beginning.
 		 */
 		template<typename TYPE, unsigned int LEN>
-		class circularBuffer : public sizable
+		class circularBuffer : public sizable, public arrayLike<const TYPE&>
 		{
 			TYPE data[LEN];  //The data to store
 			int counter = 0; //The current index. This will always be between 0 and LEN.
@@ -46,9 +47,6 @@ namespace z
 			};
 
 		public:
-			///The maximum length of this buffer. This is included for convenience.
-			const int length = LEN;
-
 			///Default constructor.
 			circularBuffer() noexcept {}
 
@@ -78,9 +76,14 @@ namespace z
 				}
 			}
 
-			constexpr size_t size() const noexcept
+			constexpr size_t size() const noexcept override
 			{
 				return sizeof(TYPE) * LEN;
+			}
+
+			constexpr int length() const noexcept override
+			{
+				return LEN;
 			}
 
 			/**
@@ -90,7 +93,7 @@ namespace z
 			 * \param index The index of the value we want.
 			 * \return The value at that index.
 			 */
-			const TYPE& operator[](const int index) const noexcept
+			const TYPE& at(const int index) const noexcept override
 			{
 				return data[index % LEN];
 			}
@@ -107,7 +110,7 @@ namespace z
 			 * \param index The index of the value we want.
 			 * \return The value at that index.
 			 */
-			TYPE& operator[](const int index) noexcept
+			TYPE& at(const int index) noexcept
 			{
 				return data[index % LEN];
 			}
@@ -167,14 +170,12 @@ namespace z
 				counter = (counter + 1) % LEN;
 			}
 
-			///Helper method for C++ range based for loops
-			iterator begin() const noexcept
+			iterator begin() const noexcept override
 			{
 				return iterator(data, counter + LEN + LEN - total);
 			}
 
-			///Helper method for C++ range based for loops
-			iterator end() const noexcept
+			iterator end() const noexcept override
 			{
 				return iterator(data, counter + LEN + LEN);
 			}

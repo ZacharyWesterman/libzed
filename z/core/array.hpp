@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include "stream.hpp"
 #include "sizable.hpp"
+#include "arrayLike.hpp"
 #include "typeChecks.hpp"
 #include "compare.hpp"
 
@@ -32,7 +33,7 @@ namespace z
 		* \see sortedRefArray
 		*/
 		template <typename T>
-		class array : public sizable
+		class array : public sizable, public arrayLike<const T&, T*>
 		{
 		protected:
 			///The data in the array.
@@ -193,12 +194,10 @@ namespace z
 
 			size_t size() const noexcept;
 
-			int length() const;
+			int length() const noexcept override;
 
 			T& at(int);
-			const T& at(int) const;
-			T& operator[](int);
-			const T& operator[](int) const;
+			const T& at(int) const override;
 
 			/**
 			* \brief Check if a given object is in the array.
@@ -240,7 +239,7 @@ namespace z
 			*
 			* \return A pointer to the first element in the array. 0 if no elements.
 			*/
-			T* begin() const
+			T* begin() const noexcept override
 			{
 				return array_data.empty() ? NULL : (T*)&array_data.front();
 			}
@@ -253,7 +252,7 @@ namespace z
 			*
 			* \return A pointer to right after the last element in the array. 0 if no elements.
 			*/
-			T* end() const
+			T* end() const noexcept override
 			{
 				return begin() + array_data.size();
 			}
@@ -660,39 +659,9 @@ namespace z
 		* \return The number of objects in the array.
 		*/
 		template <typename T>
-		int array<T>::length() const
+		int array<T>::length() const noexcept
 		{
 			return array_data.size();
-		}
-
-		/**
-		* \brief Function to get the object at the given index.
-		*
-		* \param index the index of the desired object.
-		*
-		* \return The object at the given index.
-		*
-		* \see operator[](int)
-		*/
-		template <typename T>
-		T& array<T>::at(int index)
-		{
-			return array_data.at(index);
-		}
-
-		/**
-		* \brief Const function to get the object at the given index.
-		*
-		* \param index the index of the desired object.
-		*
-		* \return The object at the given index.
-		*
-		* \see operator[](int) const
-		*/
-		template <typename T>
-		const T& array<T>::at(int index) const
-		{
-			return array_data.at(index);
 		}
 
 		/**
@@ -708,7 +677,7 @@ namespace z
 		* \see at(int)
 		*/
 		template <typename T>
-		T& array<T>::operator[](int index)
+		T& array<T>::at(int index)
 		{
 			return array_data.at(index);
 		}
@@ -726,7 +695,7 @@ namespace z
 		* \see at(int) const
 		*/
 		template <typename T>
-		const T& array<T>::operator[](int index) const
+		const T& array<T>::at(int index) const
 		{
 			return array_data.at(index);
 		}

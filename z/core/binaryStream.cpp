@@ -172,7 +172,7 @@ namespace z
 					contig_nulls = 0;
 					if (can_utf8)
 					{
-						if (!core::isUTF8(&data[i], data.length()-i))
+						if (!core::isUTF8((uint8_t*)&data[i], data.length()-i))
 							can_utf8 = false;
 					}
 				}

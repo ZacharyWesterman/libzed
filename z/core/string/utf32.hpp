@@ -843,12 +843,6 @@ namespace z
 		}
 
 		template <>
-		uint32_t string<utf32>::operator[](int index) const noexcept
-		{
-			return this->at(index);
-		}
-
-		template <>
 		void string<utf32>::initInt(long long value, int base, int padSize) noexcept
 		{
 			uint8_t ibuf[Z_STR_INT_BUFSIZE];
