@@ -5,8 +5,8 @@ namespace z
 	namespace core
 	{
 		/**
-		 * \interface iterable
-		 * \brief A base interface for all objects that can be iterated over.
+		 * \interface indexable
+		 * \brief A base interface for all objects whose elements can be directly indexed.
 		*/
 		template<typename T>
 		class indexable
