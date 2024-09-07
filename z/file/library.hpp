@@ -112,7 +112,7 @@ namespace z
 			* found or the library hasn't been loaded, returns \b NULL.
 			*/
 			template<typename RETURNTYPE, typename... PARAMTYPES>
-			RETURNTYPE (* function(const zpath& symbolName))(PARAMTYPES...) noexcept
+			RETURNTYPE (* function(const zpath& symbolName) noexcept)(PARAMTYPES...)
 			{
 				return reinterpret_cast<RETURNTYPE (*)(PARAMTYPES...)>(getRawSymbol(symbolName));
 			}
