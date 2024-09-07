@@ -139,7 +139,7 @@ z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.
 	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
-	$(CC) $(CCFLAGS) -DZ_DYNLIB -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 clean: cleanbin cleanobjs cleandox cleancov
 	$(MAKE) clean -C examples/

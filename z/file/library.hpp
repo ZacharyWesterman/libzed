@@ -12,8 +12,7 @@ namespace z
 		* This class is meant to allow an easy and
 		* platform-independent way to dynamically load libraries
 		* at run time. Note that if this is compiled for Linux,
-		* it is required that \b Z_DYNLIB is defined as well as
-		* including the linker flag <B>-ldl</B>.
+		* the linker flag <B>-ldl</B> must be included.
 		*/
 		class library
 		{
