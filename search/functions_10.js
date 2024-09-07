@@ -21,6 +21,6 @@ var searchData=
   ['stringstream_18',['stringStream',['../classz_1_1core_1_1stringStream.html#a8b10909e134c14207036ea9371251b25',1,'z::core::stringStream']]],
   ['subset_19',['subset',['../classz_1_1core_1_1array.html#a22e26780665bf8cd73cb058a99967aa8',1,'z::core::array']]],
   ['substr_20',['substr',['../classz_1_1core_1_1string.html#aaa571037a910a6408277e5d823a15fa8',1,'z::core::string']]],
-  ['symbol_21',['symbol',['../classz_1_1file_1_1library.html#a720e8ab0a4fd5cec1caab3bc7f96c5ba',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#af4a77730bec730632a6b0a6e9eb1b2a4',1,'z::util::rgxss::symbol()']]],
+  ['symbol_21',['symbol',['../classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a',1,'z::file::library::symbol()'],['../classz_1_1util_1_1rgxss.html#af4a77730bec730632a6b0a6e9eb1b2a4',1,'z::util::rgxss::symbol()']]],
   ['symlink_22',['symlink',['../classz_1_1file_1_1info.html#a8cabb87449d2a65cf36412b5fff19c4f',1,'z::file::info']]]
 ];

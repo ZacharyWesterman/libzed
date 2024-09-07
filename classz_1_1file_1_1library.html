@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('classz_1_1file_1_1library.html',''); i
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classz_1_1file_1_1library-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">z::file::library Class Reference</div></div>
 </div><!--header-->
@@ -130,12 +131,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aabe0eecebc67dc5d6842bc7492b40795" id="r_aabe0eecebc67dc5d6842bc7492b40795"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">bad</a> () noexcept</td></tr>
 <tr class="memdesc:aabe0eecebc67dc5d6842bc7492b40795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether the library has not been loaded.  <br /></td></tr>
 <tr class="separator:aabe0eecebc67dc5d6842bc7492b40795"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720e8ab0a4fd5cec1caab3bc7f96c5ba" id="r_a720e8ab0a4fd5cec1caab3bc7f96c5ba"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#a720e8ab0a4fd5cec1caab3bc7f96c5ba">symbol</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName) noexcept</td></tr>
-<tr class="memdesc:a720e8ab0a4fd5cec1caab3bc7f96c5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the symbol with the given name.  <br /></td></tr>
-<tr class="separator:a720e8ab0a4fd5cec1caab3bc7f96c5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f7b2f63b7237d1119fa1d88f55d587c" id="r_a9f7b2f63b7237d1119fa1d88f55d587c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacez_1_1file.html#a38c0299c5a1a3bcf51119aedaabaf16f">func</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#a9f7b2f63b7237d1119fa1d88f55d587c">function</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName) noexcept</td></tr>
-<tr class="memdesc:a9f7b2f63b7237d1119fa1d88f55d587c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the function with the given name.  <br /></td></tr>
-<tr class="separator:a9f7b2f63b7237d1119fa1d88f55d587c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90549a70e68643d15bd9ff4b40bae8a" id="r_ad90549a70e68643d15bd9ff4b40bae8a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad90549a70e68643d15bd9ff4b40bae8a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">symbol</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName) noexcept</td></tr>
+<tr class="memdesc:ad90549a70e68643d15bd9ff4b40bae8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the symbol with the given name.  <br /></td></tr>
+<tr class="separator:ad90549a70e68643d15bd9ff4b40bae8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a37577dff48614db3391dca055d99e3e4" id="r_a37577dff48614db3391dca055d99e3e4"><td class="memTemplParams" colspan="2">template&lt;typename RETURNTYPE , typename... PARAMTYPES&gt; </td></tr>
+<tr class="memitem:a37577dff48614db3391dca055d99e3e4"><td class="memTemplItemLeft" align="right" valign="top">RETURNTYPE(*)(PARAMTYPES...)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#a37577dff48614db3391dca055d99e3e4">function</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName)</td></tr>
+<tr class="memdesc:a37577dff48614db3391dca055d99e3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the function with the given name.  <br /></td></tr>
+<tr class="separator:a37577dff48614db3391dca055d99e3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for loading dynamic libraries. </p>
@@ -167,42 +173,6 @@ Public Member Functions</h2></td></tr>
 <p>Get whether the library has not been loaded. </p>
 <dl class="section return"><dt>Returns</dt><dd><b>False</b> if the library has been loaded. <b>True</b> otherwise.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972" title="Get whether the library has been loaded.">good()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a9f7b2f63b7237d1119fa1d88f55d587c" name="a9f7b2f63b7237d1119fa1d88f55d587c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f7b2f63b7237d1119fa1d88f55d587c">&#9670;&#160;</a></span>function()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacez_1_1file.html#a38c0299c5a1a3bcf51119aedaabaf16f">func</a> z::file::library::function </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;&#160;</td>
-          <td class="paramname"><em>symbolName</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a pointer to the function with the given name. </p>
-<p>This is similar to <a class="el" href="classz_1_1file_1_1library.html#a720e8ab0a4fd5cec1caab3bc7f96c5ba" title="Get a pointer to the symbol with the given name.">symbol()</a>, except the symbol is assumed to be a function. Note it is up to the program to cast to the correct function type.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">symbolName</td><td>the name of the symbol to retrieve.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>If a symbol with the given name was found, returns a pointer to the symbol. Otherwise, if the symbol was not found or the library hasn't been loaded, returns <b>NULL</b>. </dd></dl>
 
 </div>
 </div>
@@ -281,17 +251,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a720e8ab0a4fd5cec1caab3bc7f96c5ba" name="a720e8ab0a4fd5cec1caab3bc7f96c5ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a720e8ab0a4fd5cec1caab3bc7f96c5ba">&#9670;&#160;</a></span>symbol()</h2>
+<a id="ad90549a70e68643d15bd9ff4b40bae8a" name="ad90549a70e68643d15bd9ff4b40bae8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad90549a70e68643d15bd9ff4b40bae8a">&#9670;&#160;</a></span>symbol()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * z::file::library::symbol </td>
+          <td class="memname">T * z::file::library::symbol </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>symbolName</em></td><td>)</td>
@@ -300,12 +272,13 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Get a pointer to the symbol with the given name. </p>
+<dl class="section warning"><dt>Warning</dt><dd>It is up to the caller to indicate the correct data type at compile time. Not doing so can cause crashes.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">symbolName</td><td>the name of the symbol to retrieve.</td></tr>
@@ -341,6 +314,43 @@ Public Member Functions</h2></td></tr>
 
 <p>Unload the dynamic library. </p>
 <dl class="section return"><dt>Returns</dt><dd><b>False</b> if unable to unload previously loaded library. <b>True</b> otherwise. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a37577dff48614db3391dca055d99e3e4" name="a37577dff48614db3391dca055d99e3e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37577dff48614db3391dca055d99e3e4">&#9670;&#160;</a></span>function</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename RETURNTYPE , typename... PARAMTYPES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RETURNTYPE(*)(PARAMTYPES...) z::file::library::function(const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a pointer to the function with the given name. </p>
+<p>This is similar to <a class="el" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a" title="Get a pointer to the symbol with the given name.">symbol()</a>, except the symbol is assumed to be a function.</p>
+<dl class="section warning"><dt>Warning</dt><dd>It is up to the caller to indicate the correct function signature at compile time. Not doing so can cause crashes.</dd></dl>
+<p>Example usage: To get a function of the form <code>bool func(int, float)</code>, call <code>this_lib.function&lt;bool, int, float&gt;("symbol_name")</code>. To get a function of the form <code>void func()</code>, call <code>this_lib.function&lt;void&gt;("symbol_name")</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbolName</td><td>the name of the symbol to retrieve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If a symbol with the given name was found, returns a pointer to the symbol. Otherwise, if the symbol was not found or the library hasn't been loaded, returns <b>NULL</b>. </dd></dl>
 
 </div>
 </div>

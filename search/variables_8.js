@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['max_0',['max',['../classz_1_1util_1_1rgx_1_1rule.html#a83d876a949307d2b8c67f001048a440b',1,'z::util::rgx::rule']]],
-  ['min_1',['min',['../classz_1_1util_1_1rgx_1_1rule.html#ad1e24d8fcab6da776baed9786f43adb9',1,'z::util::rgx::rule']]]
+  ['left_0',['left',['../classz_1_1util_1_1dictRange.html#aa041b0e7a31a9b176c385b563b6a49df',1,'z::util::dictRange']]]
 ];

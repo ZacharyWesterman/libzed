@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../classz_1_1util_1_1rgx_1_1lookbehind.html#a8685a02b1f3fb27f390d02ef7a95c559',1,'z::util::rgx::lookbehind']]]
+  ['value_0',['value',['../classz_1_1math_1_1matrix.html#af2ab2dd5faca9f718b03764db5ba6f6d',1,'z::math::matrix::value'],['../classz_1_1util_1_1rgx_1_1character.html#aa5ce41014d6f101fe491745daafccddb',1,'z::util::rgx::character::value']]]
 ];
