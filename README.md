@@ -81,7 +81,7 @@ This is optional, and not necessary to use this library.
 [Look here if you want to contribute.](CONTRIBUTING.md)
 
 [docs]: https://zacharywesterman.github.io
-[strings]: https://zacharywesterman.github.io/libzed/html/classz_1_1core_1_1string.html
-[generics]: https://zacharywesterman.github.io/libzed/html/classz_1_1util_1_1generic.html
-[file]: https://zacharywesterman.github.io/libzed/html/namespacez_1_1file.html
-[libraries]: https://zacharywesterman.github.io/libzed/html/classz_1_1file_1_1library.html
+[strings]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1string.html
+[generics]: https://zacharywesterman.github.io/libzed/classz_1_1util_1_1generic.html
+[file]: https://zacharywesterman.github.io/libzed/namespacez_1_1file.html
+[libraries]: https://zacharywesterman.github.io/libzed/classz_1_1file_1_1library.html
