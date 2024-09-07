@@ -21,11 +21,7 @@ namespace z
 
 		library::~library() noexcept
 		{
-#			ifdef _WIN32
-			if (lib_ptr) FreeLibrary((HMODULE)lib_ptr);
-#			elif __linux__
-			if (lib_ptr) dlclose(lib_ptr);
-#			endif
+			unload();
 		}
 
 		bool library::load(const zpath& fileName, bool autoExtension) noexcept
@@ -73,23 +69,9 @@ namespace z
 			return !lib_ptr;
 		}
 
-		void* library::symbol(const zpath& symbol_name) noexcept
+		void* library::getRawSymbol(const zpath& symbol_name) noexcept
 		{
 			void* symbol_pointer = NULL;
-#			ifdef _WIN32
-			if (lib_ptr)
-				symbol_pointer = (void*)GetProcAddress((HMODULE)lib_ptr, (char*)symbol_name.cstring());
-#			elif __linux__
-			if(lib_ptr)
-				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());
-#			endif
-			return symbol_pointer;
-		}
-
-		func library::function(const zpath& symbol_name) noexcept
-		{
-			void* symbol_pointer = NULL;
-			func func_pointer = NULL;
 #			ifdef _WIN32
 			if (lib_ptr)
 				symbol_pointer = (void*)GetProcAddress((HMODULE)lib_ptr, (const char*)symbol_name.cstring());
@@ -97,12 +79,8 @@ namespace z
 			if(lib_ptr)
 				symbol_pointer = dlsym(lib_ptr, (const char*)symbol_name.cstring());
 #			endif
-			if (symbol_pointer)
-			{
-				func_pointer = reinterpret_cast<func>(symbol_pointer);
-			}
-			return func_pointer;
-		}
 
+			return symbol_pointer;
+		}
 	}
 }

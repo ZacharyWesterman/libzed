@@ -17,9 +17,8 @@ int main()
 		return -1;
 	}
 
-	//Note by default, this function signature is assumed to be "void test() {...}".
-	//If a function has a different signature you will have to cast it.
-	auto func = lib.function("test");
+	//Load a symbol, assuming it to be a function that returns void and has no parameters.
+	auto func = lib.function<void>("test");
 	if (!func)
 	{
 		std::cout << "Unable to load symbol \"test\"." << std::endl;

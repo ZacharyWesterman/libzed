@@ -6,9 +6,6 @@ namespace z
 {
 	namespace file
 	{
-		///Typedef for library functions
-		typedef void (* func)();
-
 		/**
 		* \brief A class for loading dynamic libraries.
 		*
@@ -77,20 +74,36 @@ namespace z
 			/**
 			* \brief Get a pointer to the symbol with the given name.
 			*
+			* \warning It is up to the caller to indicate the correct
+			* data type at compile time. Not doing so can cause crashes.
+			*
 			* \param symbolName the name of the symbol to retrieve.
 			*
 			* \return If a symbol with the given name was found, returns
 			* a pointer to the symbol. Otherwise, if the symbol was not
 			* found or the library hasn't been loaded, returns \b NULL.
 			*/
-			void* symbol(const zpath& symbolName) noexcept;
+			template<typename T>
+			T* symbol(const zpath& symbolName) noexcept
+			{
+				return reinterpret_cast<T*>(getRawSymbol(symbolName));
+			}
 
 			/**
 			* \brief Get a pointer to the function with the given name.
 			*
 			* This is similar to symbol(), except the symbol is assumed
-			* to be a function. Note it is up to the program to cast to
-			* the correct function type.
+			* to be a function.
+			*
+			* \warning It is up to the caller to indicate the correct
+			* function signature at compile time. Not doing so can cause
+			* crashes.
+			*
+			* Example usage:
+			* To get a function of the form `bool func(int, float)`, call
+			* `this_lib.function<bool, int, float>("symbol_name")`. To
+			* get a function of the form `void func()`, call
+			* `this_lib.function<void>("symbol_name")`.
 			*
 			* \param symbolName the name of the symbol to retrieve.
 			*
@@ -98,7 +111,14 @@ namespace z
 			* a pointer to the symbol. Otherwise, if the symbol was not
 			* found or the library hasn't been loaded, returns \b NULL.
 			*/
-			func function(const zpath& symbolName) noexcept;
+			template<typename RETURNTYPE, typename... PARAMTYPES>
+			RETURNTYPE (* function(const zpath& symbolName))(PARAMTYPES...) noexcept
+			{
+				return reinterpret_cast<RETURNTYPE (*)(PARAMTYPES...)>(getRawSymbol(symbolName));
+			}
+
+		private:
+			void* getRawSymbol(const zpath& symbolName) noexcept;
 		};
 	}
 }
