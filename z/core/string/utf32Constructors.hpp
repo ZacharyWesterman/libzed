@@ -17,7 +17,7 @@ namespace z
 		template <>
 		string<utf32>::string(char chr) noexcept
 		{
-			data = new uint8_t[4];
+			data = new uint8_t[8];
 			uint32_t* data32 = (uint32_t*)data;
 
 			data32[0] = chr;
@@ -30,7 +30,7 @@ namespace z
 		template <>
 		string<utf32>::string(wchar_t chr) noexcept
 		{
-			data = new uint8_t[4];
+			data = new uint8_t[8];
 			uint32_t* data32 = (uint32_t*)data;
 
 			data32[0] = chr;
@@ -43,7 +43,7 @@ namespace z
 		template <>
 		string<utf32>::string(const uint32_t& chr) noexcept
 		{
-			data = new uint8_t[4];
+			data = new uint8_t[8];
 			uint32_t* data32 = (uint32_t*)data;
 
 			data32[0] = chr;
