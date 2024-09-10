@@ -19,7 +19,12 @@ namespace z
 
 		inputStream::inputStream(const zpath& fileName)
 		{
-			filestream.open((const char*)fileName.cstring(), std::ios::in | std::ios::binary);
+			auto ptr = (const char*)fileName.cstring();
+			if (!ptr) {
+				throw "ERROR AND A HALF";
+			}
+
+			filestream.open(ptr, std::ios::in | std::ios::binary);
 			initialized = false;
 			endianness_ = __BYTE_ORDER__;
 			streamFormat = ascii;
