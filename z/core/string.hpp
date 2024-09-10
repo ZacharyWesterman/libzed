@@ -1346,12 +1346,13 @@ namespace z
 			/**
 			* \brief Convert this string from one set of characters to another.
 			*
-			* Example `zstring("message").cipher("aegms","12345")` will output `4255132`
+			* For each character in this string, if it's one of the keys, it will be replaced with the respective value.
+			* For example `zstring("message").cipher("aegms","12345")` will output `4255132`.
 			*
 			* \param keys The characters to find and convert.
 			* \param values The characters to convert to.
 			*
-			* \return A string with all the specified characters replaced
+			* \return A string with all the specified characters replaced.
 			*/
 			string cipher(const string& keys, const string& values) const noexcept
 			{
@@ -1377,6 +1378,30 @@ namespace z
 					{
 						result.append(chr);
 					}
+				}
+
+				return result;
+			}
+
+			/**
+			* \brief Convert this string from one set of characters to another.
+			*
+			* For each character in this string, it is passed to a function to mutate it.
+			* The function is expected to be of the form `uint32_t func(uint32_t ch) {...}`.
+			* For example `zstring("message").cipher([](auto a){ return a + 1; })` will output `nfttbhf`.
+			*
+			* \param lambda An arbitrary function that converts the characters in this string.
+			*
+			* \return A string with all characters converted according to the lambda.
+			*/
+			string cipher(uint32_t(lambda(uint32_t))) const noexcept
+			{
+				string result;
+				result.increase(length());
+
+				for (auto chr : *this)
+				{
+					result.append(lambda(chr));
 				}
 
 				return result;
