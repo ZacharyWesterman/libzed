@@ -2,7 +2,7 @@
 #include <z/file/inputStream.hpp>
 #include <iostream>
 
-int main()
+int main(int argc, char** argv)
 {
 	z::util::dictionary dict;
 	z::file::inputStream file ("/usr/share/dict/words");
@@ -17,4 +17,9 @@ int main()
 	}
 
 	std::cout << " Loaded " << dict.length() << " words." << std::endl;
+	
+	if (argc > 1)
+	{
+		std::cout << dict.isWord(argv[1]) << std::endl;
+	}
 }

@@ -19,8 +19,8 @@ namespace z
 		private:
 			core::sortedRefArray<const zstring*> wordList;
 
-			bool readingStream;
 			bool caseSensitive;
+			bool readingStream;
 
 			zstring* readWordFromStream(core::inputStream& stream) noexcept;
 

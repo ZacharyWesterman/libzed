@@ -58,7 +58,15 @@ namespace z
 
 		int dictionary::find(const zstring& word) const noexcept
 		{
-			return wordList.find(caseSensitive ? &word : &(word.lower()));
+			if (caseSensitive)
+			{
+				return wordList.find(&word);
+			}
+			else
+			{
+				auto newWord = word.lower();
+				return wordList.find(&newWord);
+			}
 		}
 
 		int dictionary::length() const noexcept
