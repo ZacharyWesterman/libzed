@@ -149,7 +149,7 @@ namespace z
 			int b_i = 0;
 
 			//Read the BOM if it exists. if it has one, consume the BOM so the user does not read it.
-			uint8_t BOM[] = {0xFF, 0xFE, 0x00, 0x00};
+			// uint8_t BOM[] = {0xFF, 0xFE, 0x00, 0x00};
 			for (b_i=0; b_i<4; ++b_i)
 			{
 				buf[b_i] = get();
