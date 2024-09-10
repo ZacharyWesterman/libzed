@@ -1526,6 +1526,23 @@ namespace z
 				return "th";
 			}
 
+/**
+			* \brief Concatenate two strings.
+			*
+			* \param other The string to append.
+			*
+			* \return The concatenation of this and the given string.
+			*
+			* Appends the given string to the end of this string's characters and
+			* returns the result. This string is not modified.
+			*
+			* \see operator+()
+			*/
+			string concat(const string& other) const noexcept
+			{
+				return *this + other;
+			}
+
 			/**
 			* \brief Concatenate two strings.
 			*
