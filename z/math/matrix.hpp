@@ -14,6 +14,8 @@ namespace z
 		template <unsigned int N>
 		class matrix
 		{
+			static_assert(N >= 2, "Matrices must be at least 2x2!");
+
 		public:
 			double value[N][N]; ///< Array of all elements in the matrix.
 
@@ -58,14 +60,7 @@ namespace z
 			}
 		};
 
-		/**
-		* \brief Calculate the determinant of a 2x2 matrix
-		* \return The determinant.
-		*/
 		template<>
-		double matrix<2>::det() noexcept
-		{
-			return (value[0][0]*value[1][1]-value[1][0]*value[0][1]);
-		}
+		double matrix<2>::det() noexcept;
 	}
 }
