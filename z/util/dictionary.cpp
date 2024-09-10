@@ -36,6 +36,9 @@ namespace z
 				word->read(stream);
 				if (word->length())
 				{
+					if (!caseSensitive)
+						word->toLower();
+
 					if (assumePresorted)
 						wordList.append(word);
 					else
@@ -50,13 +53,12 @@ namespace z
 
 		bool dictionary::isWord(const zstring& word) const noexcept
 		{
-			auto index = wordList.find(&word);
-			return index >= 0;
+			return find(word) >= 0;
 		}
 
 		int dictionary::find(const zstring& word) const noexcept
 		{
-			return wordList.find(&word);
+			return wordList.find(caseSensitive ? &word : &(word.lower()));
 		}
 
 		int dictionary::length() const noexcept
@@ -66,18 +68,17 @@ namespace z
 
 		void dictionary::addWord(const zstring& word) noexcept
 		{
-			auto index = wordList.find(&word);
-			if (index < 0) wordList.add(new zstring(word));
+			if (find(word) < 0) wordList.add(new zstring(caseSensitive ? word : word.lower()));
 		}
 
-		const zstring& dictionary::language() const noexcept
+		bool dictionary::isCaseSensitive() const noexcept
 		{
-			return lang;
+			return caseSensitive;
 		}
 
-		void dictionary::setLanguage(const zstring& newLang) noexcept
+		void dictionary::setCaseSensitive(bool caseSensitive) noexcept
 		{
-			lang = newLang;
+			this->caseSensitive = caseSensitive;
 		}
 
 		size_t dictionary::size() const noexcept
