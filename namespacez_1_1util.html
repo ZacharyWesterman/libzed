@@ -30,7 +30,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.6</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.7</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -97,10 +97,7 @@ $(document).ready(function(){initNavTree('namespacez_1_1util.html',''); initResi
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">z::util Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -108,12 +105,6 @@ $(document).ready(function(){initNavTree('namespacez_1_1util.html',''); initResi
 <p>Section containing utility classes.  
 <a href="namespacez_1_1util.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacez_1_1util_1_1rgx" id="r_namespacez_1_1util_1_1rgx"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util_1_1rgx.html">rgx</a></td></tr>
-<tr class="memdesc:namespacez_1_1util_1_1rgx"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace containing all regex rules for the sake of organization. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a></td></tr>
@@ -128,284 +119,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1util_1_1nonNumber.html">nonNumber</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception to throw when attempting a numeric operation on a non-number.  <a href="structz_1_1util_1_1nonNumber.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1regex.html">regex</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for parsing and matching regular expressions.  <a href="classz_1_1util_1_1regex.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regex pattern scan symbol.  <a href="classz_1_1util_1_1rgxss.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a35373b3c1154a49f3b768c34a1eaa710" id="r_a35373b3c1154a49f3b768c34a1eaa710"><td class="memItemLeft" align="right" valign="top"><a id="a35373b3c1154a49f3b768c34a1eaa710" name="a35373b3c1154a49f3b768c34a1eaa710"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> { <br />
-&#160;&#160;<b>RGX_NO_ERROR</b> = 0
-, <b>RGX_ERROR</b>
-, <b>RGX_PARENTH_MISMATCH</b>
-, <b>RGX_BRACKET_MISMATCH</b>
-, <br />
-&#160;&#160;<b>RGX_BRACE_MISMATCH</b>
-, <b>RGX_BRACE_INVALID</b>
-, <b>RGX_LEX_FAIL</b>
-, <b>RGX_BAD_HEX</b>
-, <br />
-&#160;&#160;<b>RGX_BAD_RANGE</b>
-, <b>RGX_BAD_COUNT_LOC</b>
-, <b>RGX_BAD_COUNT_FORM</b>
-, <b>RGX_BAD_GREED_LOC</b>
-, <br />
-&#160;&#160;<b>RGX_GREED_INEFFECTIVE</b>
-, <b>RGX_BAD_LOOKAHEAD</b>
-, <b>RGX_BAD_LOOKBEHIND</b>
-, <b>RGX_BAD_NEG_FLAG</b>
-, <br />
-&#160;&#160;<b>RGX_BAD_POS_FLAG</b>
-, <b>RGX_BAD_STREAM</b>
-, <b>RGX_NOT_SEEKABLE</b>
-, <b>RGX_ERR_COUNT</b>
-<br />
- }</td></tr>
-<tr class="memdesc:a35373b3c1154a49f3b768c34a1eaa710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regex error flags. <br /></td></tr>
-<tr class="separator:a35373b3c1154a49f3b768c34a1eaa710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3509b3c93adf7807600ed1f6043f7969" id="r_a3509b3c93adf7807600ed1f6043f7969"><td class="memItemLeft" align="right" valign="top"><a id="a3509b3c93adf7807600ed1f6043f7969" name="a3509b3c93adf7807600ed1f6043f7969"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#a3509b3c93adf7807600ed1f6043f7969">rgxflag</a> { <b>INSENSITIVE</b> =1
-, <b>NEWLINE</b> =2
-, <b>ENDLINE</b> =4
-, <b>NEGATE</b> =8
- }</td></tr>
-<tr class="memdesc:a3509b3c93adf7807600ed1f6043f7969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported regex pattern flags. <br /></td></tr>
-<tr class="separator:a3509b3c93adf7807600ed1f6043f7969"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10ab9dfc3e7882616b247bb6c56f8cc1" id="r_a10ab9dfc3e7882616b247bb6c56f8cc1"><td class="memItemLeft" align="right" valign="top"><a id="a10ab9dfc3e7882616b247bb6c56f8cc1" name="a10ab9dfc3e7882616b247bb6c56f8cc1"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#a10ab9dfc3e7882616b247bb6c56f8cc1">rgxid</a> { <br />
-&#160;&#160;<b>RGX_SYMBOL</b>
-, <b>RGX_LPAREN</b>
-, <b>RGX_RPAREN</b>
-, <b>RGX_LBRACKET</b>
-, <br />
-&#160;&#160;<b>RGX_RBRACKET</b>
-, <b>RGX_LBRACE</b>
-, <b>RGX_RBRACE</b>
-, <b>RGX_DASH</b>
-, <br />
-&#160;&#160;<b>RGX_QUESTION</b>
-, <b>RGX_QUERY</b>
-, <b>RGX_GREEDY</b>
-, <b>RGX_COLUMN</b>
-, <br />
-&#160;&#160;<b>RGX_ASTERISK</b>
-, <b>RGX_COMMA</b>
-, <b>RGX_NOT</b>
-, <b>RGX_BANG</b>
-, <br />
-&#160;&#160;<b>RGX_PREVIOUS</b>
-, <b>RGX_EQUALS</b>
-, <b>RGX_PLUS</b>
-, <b>RGX_BEGIN</b>
-, <br />
-&#160;&#160;<b>RGX_PERIOD</b>
-, <b>RGX_SPACE</b>
-, <b>RGX_NOT_SPACE</b>
-, <b>RGX_ALPHA</b>
-, <br />
-&#160;&#160;<b>RGX_NOT_ALPHA</b>
-, <b>RGX_DIGIT</b>
-, <b>RGX_NOT_DIGIT</b>
-, <b>RGX_ALNUM</b>
-, <br />
-&#160;&#160;<b>RGX_NOT_ALNUM</b>
-, <b>RGX_WORD</b>
-, <b>RGX_NOT_WORD</b>
-, <b>RGX_NEWLINE</b>
-, <br />
-&#160;&#160;<b>RGX_BREAK</b>
-, <b>RGX_NOT_BREAK</b>
-, <b>RGX_PUNCT</b>
-, <b>RGX_NOT_PUNCT</b>
-, <br />
-&#160;&#160;<b>RGX_POS_LOOKAHEAD</b>
-, <b>RGX_NEG_LOOKAHEAD</b>
-, <b>RGX_POS_LOOKBEHIND</b>
-, <b>RGX_NEG_LOOKBEHIND</b>
-, <br />
-&#160;&#160;<b>RGX_POS_FLAG</b>
-, <b>RGX_NEG_FLAG</b>
-, <b>RGX_END</b>
-, <b>RGX_HEXDIGIT</b>
-, <br />
-&#160;&#160;<b>RGX_OR_LIST</b>
-, <b>RGX_AND_LIST</b>
-, <b>RGX_COUNT</b>
-, <b>RGX_ID_COUNT</b>
-<br />
- }</td></tr>
-<tr class="memdesc:a10ab9dfc3e7882616b247bb6c56f8cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbol IDs for regex pattern nodes. <br /></td></tr>
-<tr class="separator:a10ab9dfc3e7882616b247bb6c56f8cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:acf7154e16d512f66511929fe4c7dbdeb" id="r_acf7154e16d512f66511929fe4c7dbdeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1rgx_1_1compound.html">rgx::compound</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#acf7154e16d512f66511929fe4c7dbdeb">rgxlex</a> (const <a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a> &gt; &amp;input, <a class="el" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> &amp;parseError, int &amp;position, int inType=0, int flags=0) noexcept</td></tr>
-<tr class="memdesc:acf7154e16d512f66511929fe4c7dbdeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a list of regex symbols into a rule tree.  <br /></td></tr>
-<tr class="separator:acf7154e16d512f66511929fe4c7dbdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43ffc4f90a178477a7d533a0c71fe0d5" id="r_a43ffc4f90a178477a7d533a0c71fe0d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#a43ffc4f90a178477a7d533a0c71fe0d5">rgxscan</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;pattern, <a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a> &gt; &amp;output) noexcept</td></tr>
-<tr class="memdesc:a43ffc4f90a178477a7d533a0c71fe0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan a string, creating a list of regex symbols.  <br /></td></tr>
-<tr class="separator:a43ffc4f90a178477a7d533a0c71fe0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f3f331dda5432a04f77369aeff1b7bd" id="r_a1f3f331dda5432a04f77369aeff1b7bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#a1f3f331dda5432a04f77369aeff1b7bd">rgxsesc</a> (uint32_t ch) noexcept</td></tr>
-<tr class="memdesc:a1f3f331dda5432a04f77369aeff1b7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the appropriate regex symbol from an escape character.  <br /></td></tr>
-<tr class="separator:a1f3f331dda5432a04f77369aeff1b7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Section containing utility classes. </p>
 <p>This section adds extra classes and functionality for more complicated data manipulation. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="acf7154e16d512f66511929fe4c7dbdeb" name="acf7154e16d512f66511929fe4c7dbdeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf7154e16d512f66511929fe4c7dbdeb">&#9670;&#160;</a></span>rgxlex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1util_1_1rgx_1_1compound.html">rgx::compound</a> * z::util::rgxlex </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> &amp;&#160;</td>
-          <td class="paramname"><em>parseError</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>inType</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>flags</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Parse a list of regex symbols into a rule tree. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The regex scan symbol list. </td></tr>
-    <tr><td class="paramname">parseError</td><td>If an error is encountered, gives a nonzero value indicating the first error. Otherwise, gives RGX_NO_ERROR (0). </td></tr>
-    <tr><td class="paramname">position</td><td>The index of the next scan symbol we are looking at. Should be set to 0 when calling externally. </td></tr>
-    <tr><td class="paramname">inType</td><td>The type of compound rule we are creating. Should be set to 0 when calling externally. </td></tr>
-    <tr><td class="paramname">flags</td><td>Regex flags for the current level. These are defined in <a class="el" href="rgxflag_8hpp_source.html">z/util/regex/rgxflag.hpp</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to an initialized root rule. If not null, deallocation must be handled by the caller. </dd></dl>
-
-</div>
-</div>
-<a id="a43ffc4f90a178477a7d533a0c71fe0d5" name="a43ffc4f90a178477a7d533a0c71fe0d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43ffc4f90a178477a7d533a0c71fe0d5">&#9670;&#160;</a></span>rgxscan()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacez_1_1util.html#a35373b3c1154a49f3b768c34a1eaa710">rgxerr</a> z::util::rgxscan </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
-          <td class="paramname"><em>pattern</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>output</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Scan a string, creating a list of regex symbols. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pattern</td><td>The string to scan. </td></tr>
-    <tr><td class="paramname">output</td><td>An array of regex symbols, returned by reference.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The first error encountered in the pattern. If no error, gives RGX_NO_ERROR (0).</dd></dl>
-<dl class="section user"><dt>Re-Entry:Simultaneous calls to this function with the same parameters may cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a1f3f331dda5432a04f77369aeff1b7bd" name="a1f3f331dda5432a04f77369aeff1b7bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f3f331dda5432a04f77369aeff1b7bd">&#9670;&#160;</a></span>rgxsesc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1util_1_1rgxss.html">rgxss</a> z::util::rgxsesc </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the appropriate regex symbol from an escape character. </p>
-<p>This is called after having read a backslash. So we get results like &lsquo;'s&rsquo; &rarr; RGX_SPACE<code>,</code>'b' &rarr; RGX_BREAK`, etc.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ch</td><td>The character that has been escaped.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The regex symbol resulting from the escaped character.</dd></dl>
-<dl class="section user"><dt>Re-Entry:This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

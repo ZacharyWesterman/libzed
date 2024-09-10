@@ -30,7 +30,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.6</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.7</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -119,9 +119,9 @@ Inheritance diagram for z::util::dictionary:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f8fc1d157a2b843a5778738170ae6c1" id="r_a0f8fc1d157a2b843a5778738170ae6c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a0f8fc1d157a2b843a5778738170ae6c1">dictionary</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;langName=&quot;&quot;) noexcept</td></tr>
-<tr class="memdesc:a0f8fc1d157a2b843a5778738170ae6c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
-<tr class="separator:a0f8fc1d157a2b843a5778738170ae6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc61f8957af8f878e40d2342a29ff533" id="r_acc61f8957af8f878e40d2342a29ff533"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#acc61f8957af8f878e40d2342a29ff533">dictionary</a> (bool caseSensitive=false) noexcept</td></tr>
+<tr class="memdesc:acc61f8957af8f878e40d2342a29ff533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="separator:acc61f8957af8f878e40d2342a29ff533"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82c4b3c88bb90eb35e408075a188af67" id="r_a82c4b3c88bb90eb35e408075a188af67"><td class="memItemLeft" align="right" valign="top"><a id="a82c4b3c88bb90eb35e408075a188af67" name="a82c4b3c88bb90eb35e408075a188af67"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~dictionary</b> () noexcept</td></tr>
 <tr class="memdesc:a82c4b3c88bb90eb35e408075a188af67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
@@ -130,9 +130,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
 <tr class="memdesc:a54f763909cb5492132cff2c3532f1740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the word list. <br /></td></tr>
 <tr class="separator:a54f763909cb5492132cff2c3532f1740"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4c29d6964519b06cea7fe6cd7b950cb" id="r_af4c29d6964519b06cea7fe6cd7b950cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#af4c29d6964519b06cea7fe6cd7b950cb">read</a> (<a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;stream, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false) noexcept</td></tr>
-<tr class="memdesc:af4c29d6964519b06cea7fe6cd7b950cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <br /></td></tr>
-<tr class="separator:af4c29d6964519b06cea7fe6cd7b950cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adacd7a1c5b922677f17c51ac8497e129" id="r_adacd7a1c5b922677f17c51ac8497e129"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">read</a> (std::istream &amp;stream, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false) noexcept</td></tr>
+<tr class="memdesc:adacd7a1c5b922677f17c51ac8497e129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <br /></td></tr>
+<tr class="separator:adacd7a1c5b922677f17c51ac8497e129"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c970dcbb9203f28a046d1d126752774" id="r_a4c970dcbb9203f28a046d1d126752774"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">isWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) const noexcept</td></tr>
 <tr class="memdesc:a4c970dcbb9203f28a046d1d126752774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a valid word in the dictionary (case is ignored).  <br /></td></tr>
 <tr class="separator:a4c970dcbb9203f28a046d1d126752774"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,12 +145,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 <tr class="memitem:abbb4920765f53227bf403c9466af36ba" id="r_abbb4920765f53227bf403c9466af36ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#abbb4920765f53227bf403c9466af36ba">addWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) noexcept</td></tr>
 <tr class="memdesc:abbb4920765f53227bf403c9466af36ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a word to the dictionary.  <br /></td></tr>
 <tr class="separator:abbb4920765f53227bf403c9466af36ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82dbf1c17d75763c8c452f990871afd8" id="r_a82dbf1c17d75763c8c452f990871afd8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a82dbf1c17d75763c8c452f990871afd8">language</a> () const noexcept</td></tr>
-<tr class="memdesc:a82dbf1c17d75763c8c452f990871afd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the language of this dictionary.  <br /></td></tr>
-<tr class="separator:a82dbf1c17d75763c8c452f990871afd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a662b07a4a0efb8a8e90613d302452774" id="r_a662b07a4a0efb8a8e90613d302452774"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a662b07a4a0efb8a8e90613d302452774">setLanguage</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;newLang) noexcept</td></tr>
-<tr class="memdesc:a662b07a4a0efb8a8e90613d302452774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the language of this dictionary.  <br /></td></tr>
-<tr class="separator:a662b07a4a0efb8a8e90613d302452774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac758d4aa61da2d29f39a5be5f37857ba" id="r_ac758d4aa61da2d29f39a5be5f37857ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ac758d4aa61da2d29f39a5be5f37857ba">isCaseSensitive</a> () const noexcept</td></tr>
+<tr class="memdesc:ac758d4aa61da2d29f39a5be5f37857ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether this dictionary is case sensitive.  <br /></td></tr>
+<tr class="separator:ac758d4aa61da2d29f39a5be5f37857ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef268f57ce950294fb9660861f7962e" id="r_a5ef268f57ce950294fb9660861f7962e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a5ef268f57ce950294fb9660861f7962e">setCaseSensitive</a> (bool caseSensitive) noexcept</td></tr>
+<tr class="memdesc:a5ef268f57ce950294fb9660861f7962e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the case sensitivity of this dictionary.  <br /></td></tr>
+<tr class="separator:a5ef268f57ce950294fb9660861f7962e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b78626d1790ca65023fd6c206bbe837" id="r_a2b78626d1790ca65023fd6c206bbe837"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a2b78626d1790ca65023fd6c206bbe837">size</a> () const noexcept</td></tr>
 <tr class="memdesc:a2b78626d1790ca65023fd6c206bbe837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the object in memory.  <br /></td></tr>
 <tr class="separator:a2b78626d1790ca65023fd6c206bbe837"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,8 +177,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for performing searches on a dictionary of words. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0f8fc1d157a2b843a5778738170ae6c1" name="a0f8fc1d157a2b843a5778738170ae6c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f8fc1d157a2b843a5778738170ae6c1">&#9670;&#160;</a></span>dictionary()</h2>
+<a id="acc61f8957af8f878e40d2342a29ff533" name="acc61f8957af8f878e40d2342a29ff533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc61f8957af8f878e40d2342a29ff533">&#9670;&#160;</a></span>dictionary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,8 +189,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
         <tr>
           <td class="memname">z::util::dictionary::dictionary </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
-          <td class="paramname"><em>langName</em> = <code>&quot;&quot;</code></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>caseSensitive</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -204,7 +204,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">langName</td><td>A name to help identify the language (optional). </td></tr>
+    <tr><td class="paramname">caseSensitive</td><td>Whether searches on this dictionary are case sensitive. </td></tr>
   </table>
   </dd>
 </dl>
@@ -284,6 +284,35 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 
 </div>
 </div>
+<a id="ac758d4aa61da2d29f39a5be5f37857ba" name="ac758d4aa61da2d29f39a5be5f37857ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac758d4aa61da2d29f39a5be5f37857ba">&#9670;&#160;</a></span>isCaseSensitive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::util::dictionary::isCaseSensitive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check whether this dictionary is case sensitive. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if case sensitive, false otherwise.</dd></dl>
+<dl class="section user"><dt>Re-Entry:This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a4c970dcbb9203f28a046d1d126752774" name="a4c970dcbb9203f28a046d1d126752774"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c970dcbb9203f28a046d1d126752774">&#9670;&#160;</a></span>isWord()</h2>
 
@@ -316,35 +345,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it is a valid word, false otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry:This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a82dbf1c17d75763c8c452f990871afd8" name="a82dbf1c17d75763c8c452f990871afd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82dbf1c17d75763c8c452f990871afd8">&#9670;&#160;</a></span>language()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp; z::util::dictionary::language </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the language of this dictionary. </p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the language name.</dd></dl>
 <dl class="section user"><dt>Re-Entry:This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
 
 </div>
@@ -489,8 +489,8 @@ template&lt;class archive &gt; </div>
 
 </div>
 </div>
-<a id="af4c29d6964519b06cea7fe6cd7b950cb" name="af4c29d6964519b06cea7fe6cd7b950cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4c29d6964519b06cea7fe6cd7b950cb">&#9670;&#160;</a></span>read()</h2>
+<a id="adacd7a1c5b922677f17c51ac8497e129" name="adacd7a1c5b922677f17c51ac8497e129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adacd7a1c5b922677f17c51ac8497e129">&#9670;&#160;</a></span>read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -501,7 +501,7 @@ template&lt;class archive &gt; </div>
         <tr>
           <td class="memname">int z::util::dictionary::read </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1inputStream.html">core::inputStream</a> &amp;&#160;</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
         </tr>
         <tr>
@@ -581,8 +581,8 @@ template&lt;typename archive &gt; </div>
 
 </div>
 </div>
-<a id="a662b07a4a0efb8a8e90613d302452774" name="a662b07a4a0efb8a8e90613d302452774"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a662b07a4a0efb8a8e90613d302452774">&#9670;&#160;</a></span>setLanguage()</h2>
+<a id="a5ef268f57ce950294fb9660861f7962e" name="a5ef268f57ce950294fb9660861f7962e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef268f57ce950294fb9660861f7962e">&#9670;&#160;</a></span>setCaseSensitive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -591,10 +591,10 @@ template&lt;typename archive &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::util::dictionary::setLanguage </td>
+          <td class="memname">void z::util::dictionary::setCaseSensitive </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
-          <td class="paramname"><em>newLang</em></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>caseSensitive</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -605,10 +605,10 @@ template&lt;typename archive &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Set the language of this dictionary. </p>
+<p>Set the case sensitivity of this dictionary. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newLang</td><td>The string to set as the language name. </td></tr>
+    <tr><td class="paramname">caseSensitive</td><td>Whether this dictionary is case sensitive. </td></tr>
   </table>
   </dd>
 </dl>

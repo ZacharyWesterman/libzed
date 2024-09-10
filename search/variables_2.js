@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['charpos_0',['charPos',['../classz_1_1util_1_1dictRange.html#afb5eb9db95baa3d3d1768dbc57da6573',1,'z::util::dictRange']]],
-  ['children_1',['children',['../classz_1_1util_1_1rgx_1_1compound.html#aed38bba22516d29f6f3d009cf7726582',1,'z::util::rgx::compound']]]
+  ['dictionary_0',['dictionary',['../classz_1_1util_1_1dictRange.html#a71976d3aee915c7d8a365e5a7b8491be',1,'z::util::dictRange']]]
 ];

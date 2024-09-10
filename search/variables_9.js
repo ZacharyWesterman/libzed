@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['max_0',['max',['../classz_1_1util_1_1rgx_1_1rule.html#a83d876a949307d2b8c67f001048a440b',1,'z::util::rgx::rule']]],
-  ['min_1',['min',['../classz_1_1util_1_1rgx_1_1rule.html#ad1e24d8fcab6da776baed9786f43adb9',1,'z::util::rgx::rule']]]
+  ['sqrt2_0',['sqrt2',['../namespacez_1_1math.html#a97e7c45e6eb2b403283aca84e1f06a61',1,'z::math']]],
+  ['sqrt5_1',['sqrt5',['../namespacez_1_1math.html#a0ee3b1a5ef81cd2e066f9ac7f68a4150',1,'z::math']]]
 ];

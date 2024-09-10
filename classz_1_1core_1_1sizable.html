@@ -30,7 +30,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.6</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.7</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -113,15 +113,18 @@ Inheritance diagram for z::core::sizable:</div>
  <div class="center">
   <img src="classz_1_1core_1_1sizable.png" usemap="#z::core::sizable_map" alt=""/>
   <map id="z::core::sizable_map" name="z::core::sizable_map">
-<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; uint8_t &gt;" shape="rect" coords="243,56,476,80"/>
-<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; const z::core::string * &gt;" shape="rect" coords="243,112,476,136"/>
-<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; z::util::rgx::rule * &gt;" shape="rect" coords="243,168,476,192"/>
-<area href="classz_1_1core_1_1string.html" alt="z::core::string&lt; ascii &gt;" shape="rect" coords="243,224,476,248"/>
-<area href="classz_1_1core_1_1array.html" title="A wrapper for std::vector." alt="z::core::array&lt; T &gt;" shape="rect" coords="243,280,476,304"/>
-<area href="classz_1_1core_1_1circularBuffer.html" title="A circular buffer of fixed size. Appending can be done indefinitely, as the index will just loop back..." alt="z::core::circularBuffer&lt; TYPE, LEN &gt;" shape="rect" coords="243,336,476,360"/>
-<area href="classz_1_1core_1_1string.html" title="A template class for character strings." alt="z::core::string&lt; E &gt;" shape="rect" coords="243,392,476,416"/>
-<area href="classz_1_1file_1_1info.html" title="A class to allow a platform-independent way to get information on a file." alt="z::file::info" shape="rect" coords="243,448,476,472"/>
-<area href="classz_1_1util_1_1dictionary.html" title="A class for performing searches on a dictionary of words." alt="z::util::dictionary" shape="rect" coords="243,504,476,528"/>
+<area href="classz_1_1core_1_1array.html" alt="z::core::array&lt; const z::core::string * &gt;" shape="rect" coords="0,56,289,80"/>
+<area href="classz_1_1core_1_1string.html" alt="z::core::string&lt; ascii &gt;" shape="rect" coords="299,56,588,80"/>
+<area href="classz_1_1core_1_1array.html" title="A wrapper for std::vector." alt="z::core::array&lt; T &gt;" shape="rect" coords="598,56,887,80"/>
+<area href="classz_1_1core_1_1circularBuffer.html" title="A circular buffer of fixed size. Appending can be done indefinitely, as the index will just loop back..." alt="z::core::circularBuffer&lt; TYPE, LEN &gt;" shape="rect" coords="897,56,1186,80"/>
+<area href="classz_1_1core_1_1string.html" title="A template class for character strings." alt="z::core::string&lt; E &gt;" shape="rect" coords="1196,56,1485,80"/>
+<area href="classz_1_1file_1_1info.html" title="A class to allow a platform-independent way to get information on a file." alt="z::file::info" shape="rect" coords="1495,56,1784,80"/>
+<area href="classz_1_1util_1_1dictionary.html" title="A class for performing searches on a dictionary of words." alt="z::util::dictionary" shape="rect" coords="1794,56,2083,80"/>
+<area href="classz_1_1core_1_1sortedArray.html" alt="z::core::sortedArray&lt; const z::core::string * &gt;" shape="rect" coords="299,112,588,136"/>
+<area href="classz_1_1core_1_1refArray.html" title="An extension of the core::array class which assumes all elements to be pointers." alt="z::core::refArray&lt; T &gt;" shape="rect" coords="598,112,887,136"/>
+<area href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted." alt="z::core::sortedArray&lt; T &gt;" shape="rect" coords="897,112,1186,136"/>
+<area href="classz_1_1core_1_1sortedRefArray.html" alt="z::core::sortedRefArray&lt; const z::core::string * &gt;" shape="rect" coords="747,168,1036,192"/>
+<area href="classz_1_1core_1_1sortedRefArray.html" title="An extension of the core::sortedArray class, specialized for pointers." alt="z::core::sortedRefArray&lt; T &gt;" shape="rect" coords="1046,168,1335,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -164,7 +167,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the size of the object in memory. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes in memory this object currently consumes. </dd></dl>
 
-<p>Implemented in <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; const z::core::string * &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; uint8_t &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; z::util::rgx::rule * &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a961659a5ec0b38a0c48ff2ed6f0c2f56">z::core::string&lt; E &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a961659a5ec0b38a0c48ff2ed6f0c2f56">z::core::string&lt; ascii &gt;</a>, <a class="el" href="classz_1_1util_1_1dictionary.html#a2b78626d1790ca65023fd6c206bbe837">z::util::dictionary</a>, <a class="el" href="classz_1_1core_1_1circularBuffer.html#a92c361fd3b14c8ef0ab3ebdfc6406a0f">z::core::circularBuffer&lt; TYPE, LEN &gt;</a>, and <a class="el" href="classz_1_1file_1_1info.html#a96dceb2f5673bbeab03165808bbaa1bb">z::file::info</a>.</p>
+<p>Implemented in <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274">z::core::array&lt; const z::core::string * &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a961659a5ec0b38a0c48ff2ed6f0c2f56">z::core::string&lt; E &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a961659a5ec0b38a0c48ff2ed6f0c2f56">z::core::string&lt; ascii &gt;</a>, <a class="el" href="classz_1_1util_1_1dictionary.html#a2b78626d1790ca65023fd6c206bbe837">z::util::dictionary</a>, <a class="el" href="classz_1_1core_1_1circularBuffer.html#a92c361fd3b14c8ef0ab3ebdfc6406a0f">z::core::circularBuffer&lt; TYPE, LEN &gt;</a>, and <a class="el" href="classz_1_1file_1_1info.html#a96dceb2f5673bbeab03165808bbaa1bb">z::file::info</a>.</p>
 
 </div>
 </div>

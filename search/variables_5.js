@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['function_0',['function',['../classz_1_1file_1_1library.html#a2a8ccebecdd020c880c12f8ac37a92a5',1,'z::file::library']]]
+  ['isword_0',['isWord',['../classz_1_1util_1_1dictRange.html#a6d67258a94bb6d658bc2b3cf855a9850',1,'z::util::dictRange']]]
 ];

@@ -30,7 +30,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.6</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.7</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -126,7 +126,7 @@ Optional dependency</h3>
 <li><a class="el" href="classz_1_1core_1_1timer.html" title="A class for easily managing timers.">z::core::timer</a></li>
 <li><a class="el" href="classz_1_1core_1_1timeout.html" title="A class for easily managing timing.">z::core::timeout</a></li>
 <li><a class="el" href="classz_1_1util_1_1dictionary.html" title="A class for performing searches on a dictionary of words.">z::util::dictionary</a></li>
-<li><a class="el" href="classz_1_1util_1_1regex.html" title="A class for parsing and matching regular expressions.">z::util::regex</a></li>
+<li>z::util::regex</li>
 <li><a class="el" href="classz_1_1util_1_1generic.html" title="A class for simple storage and manipulation of data regardless of type.">z::util::generic</a></li>
 </ul>
 <p>If cereal is not installed however, this library should compile just fine. Again, totally optional.</p>
@@ -162,7 +162,7 @@ Linking to this library</h3>
 <div class="line">    std::cout &lt;&lt; <span class="keywordtype">string</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:63</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:64</div></div>
 </div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
 <div class="line">$ g++ -lzed -o example.out example.o</div>
 </div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
