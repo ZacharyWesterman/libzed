@@ -7,6 +7,8 @@
 #include "dictionary/dictRange.hpp"
 #include "../core/sortedRefArray.hpp"
 
+#include <istream>
+
 namespace z
 {
 	namespace util
@@ -17,19 +19,17 @@ namespace z
 		class dictionary : public core::sizable
 		{
 		private:
-			zstring lang;
 			core::sortedRefArray<const zstring*> wordList;
 
+			bool caseSensitive;
 			bool readingStream;
-
-			zstring* readWordFromStream(core::inputStream& stream) noexcept;
 
 		public:
 			/**
 			* \brief Constructor
-			* \param langName A name to help identify the language (optional).
+			* \param caseSensitive Whether searches on this dictionary are case sensitive.
 			*/
-			dictionary(const zstring& langName = "") noexcept : lang(langName), readingStream(false) {};
+			dictionary(bool caseSensitive = false) noexcept : caseSensitive(caseSensitive), readingStream(false) {};
 
 			///Destructor
 			~dictionary() noexcept;
@@ -59,7 +59,7 @@ namespace z
 			*
 			* \threadsafe_member_no
 			*/
-			int read(core::inputStream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
+			int read(std::istream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
 
 			/**
 			* \brief Check if the given string is a valid word in the dictionary (case is ignored).
@@ -104,20 +104,20 @@ namespace z
 			void addWord(const zstring& word) noexcept;
 
 			/**
-			* \brief Get the language of this dictionary.
+			* \brief Check whether this dictionary is case sensitive.
 			*
-			* \return A reference to the language name.
+			* \return true if case sensitive, false otherwise.
 			*
 			* \threadsafe_member_yes
 			*/
-			const zstring& language() const noexcept;
+			bool isCaseSensitive() const noexcept;
 
 			/**
-			* \brief Set the language of this dictionary.
+			* \brief Set the case sensitivity of this dictionary.
 			*
-			* \param newLang The string to set as the language name.
+			* \param caseSensitive Whether this dictionary is case sensitive.
 			*/
-			void setLanguage(const zstring& newLang) noexcept;
+			void setCaseSensitive(bool caseSensitive) noexcept;
 
 			size_t size() const noexcept;
 

@@ -19,10 +19,10 @@ namespace z
 			wordList.clear();
 		}
 
-		int dictionary::read(core::inputStream& stream, const core::timeout& time, bool assumePresorted) noexcept
+		int dictionary::read(std::istream& stream, const core::timeout& time, bool assumePresorted) noexcept
 		{
 			if (stream.bad()) return -1;
-			if (stream.empty()) return 1;
+			if (stream.eof()) return 1;
 
 			if (!readingStream)
 			{
@@ -30,12 +30,15 @@ namespace z
 				readingStream = true;
 			}
 
-			while (!(stream.empty() || time.timedOut()))
+			while (!(stream.eof() || time.timedOut()))
 			{
 				zstring* word = new zstring;
 				word->read(stream);
 				if (word->length())
 				{
+					if (!caseSensitive)
+						word->toLower();
+
 					if (assumePresorted)
 						wordList.append(word);
 					else
@@ -45,18 +48,25 @@ namespace z
 					delete word;
 			}
 
-			return stream.empty();
+			return stream.eof();
 		}
 
 		bool dictionary::isWord(const zstring& word) const noexcept
 		{
-			auto index = wordList.find(&word);
-			return index >= 0;
+			return find(word) >= 0;
 		}
 
 		int dictionary::find(const zstring& word) const noexcept
 		{
-			return wordList.find(&word);
+			if (caseSensitive)
+			{
+				return wordList.find(&word);
+			}
+			else
+			{
+				auto newWord = word.lower();
+				return wordList.find(&newWord);
+			}
 		}
 
 		int dictionary::length() const noexcept
@@ -66,18 +76,17 @@ namespace z
 
 		void dictionary::addWord(const zstring& word) noexcept
 		{
-			auto index = wordList.find(&word);
-			if (index < 0) wordList.add(new zstring(word));
+			if (find(word) < 0) wordList.add(new zstring(caseSensitive ? word : word.lower()));
 		}
 
-		const zstring& dictionary::language() const noexcept
+		bool dictionary::isCaseSensitive() const noexcept
 		{
-			return lang;
+			return caseSensitive;
 		}
 
-		void dictionary::setLanguage(const zstring& newLang) noexcept
+		void dictionary::setCaseSensitive(bool caseSensitive) noexcept
 		{
-			lang = newLang;
+			this->caseSensitive = caseSensitive;
 		}
 
 		size_t dictionary::size() const noexcept

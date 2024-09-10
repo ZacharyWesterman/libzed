@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <initializer_list>
-#include "stream.hpp"
 #include "sizable.hpp"
 #include "arrayLike.hpp"
 #include "typeChecks.hpp"

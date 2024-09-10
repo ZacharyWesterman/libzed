@@ -6,7 +6,8 @@
 #include <utility>
 #include <initializer_list>
 
-#include "stream.hpp"
+#include <istream>
+#include <ostream>
 
 #include "charFunctions.hpp"
 #include "../encoding.hpp"
@@ -58,7 +59,7 @@ namespace z
 		* \see encoding.h
 		* \see zstr.h
 		*/
-		template <encoding E = utf32>
+		template <encoding E = utf8>
 		class string : public sizable, public arrayLike<uint32_t, stringIterator<E>>
 		{
 			friend string<ascii>;
@@ -1345,12 +1346,13 @@ namespace z
 			/**
 			* \brief Convert this string from one set of characters to another.
 			*
-			* Example `zstring("message").cipher("aegms","12345")` will output `4255132`
+			* For each character in this string, if it's one of the keys, it will be replaced with the respective value.
+			* For example `zstring("message").cipher("aegms","12345")` will output `4255132`.
 			*
 			* \param keys The characters to find and convert.
 			* \param values The characters to convert to.
 			*
-			* \return A string with all the specified characters replaced
+			* \return A string with all the specified characters replaced.
 			*/
 			string cipher(const string& keys, const string& values) const noexcept
 			{
@@ -1376,6 +1378,30 @@ namespace z
 					{
 						result.append(chr);
 					}
+				}
+
+				return result;
+			}
+
+			/**
+			* \brief Convert this string from one set of characters to another.
+			*
+			* For each character in this string, it is passed to a function to mutate it.
+			* The function is expected to be of the form `uint32_t func(uint32_t ch) {...}`.
+			* For example `zstring("message").cipher([](auto a){ return a + 1; })` will output `nfttbhf`.
+			*
+			* \param lambda An arbitrary function that converts the characters in this string.
+			*
+			* \return A string with all characters converted according to the lambda.
+			*/
+			string cipher(uint32_t(lambda(uint32_t))) const noexcept
+			{
+				string result;
+				result.increase(length());
+
+				for (auto chr : *this)
+				{
+					result.append(lambda(chr));
 				}
 
 				return result;
@@ -1526,6 +1552,23 @@ namespace z
 				return "th";
 			}
 
+/**
+			* \brief Concatenate two strings.
+			*
+			* \param other The string to append.
+			*
+			* \return The concatenation of this and the given string.
+			*
+			* Appends the given string to the end of this string's characters and
+			* returns the result. This string is not modified.
+			*
+			* \see operator+()
+			*/
+			string concat(const string& other) const noexcept
+			{
+				return *this + other;
+			}
+
 			/**
 			* \brief Concatenate two strings.
 			*
@@ -1637,7 +1680,7 @@ namespace z
 			*
 			* \return A reference to this string after reading.
 			*/
-			string& read(inputStream& stream, uint32_t delim = 0) noexcept;
+			string& read(std::istream& stream, uint32_t delim = 0) noexcept;
 
 			/**
 			* \brief Read string data from a stream until a newline is encountered.
@@ -1650,38 +1693,17 @@ namespace z
 			*
 			* \return A reference to this string after reading the line.
 			*/
-			string& readln(inputStream& stream) noexcept;
-
-			/**
-			* \brief Write string data to a stream.
-			*
-			* \param stream The stream to write to.
-			* \param enc The encoding of characters on the stream.
-			*/
-			void write(outputStream& stream, encoding enc) const noexcept;
+			string& readln(std::istream& stream) noexcept;
 
 			/**
 			* \brief Write string data to a stream in that stream's encoding.
 			*
 			* \param stream The stream to write to.
 			*/
-			void write(outputStream& stream) const noexcept
+			void write(std::ostream& stream) const noexcept
 			{
-				stream.setFormat(E);
-				encoding enc = stream.format();
-
-				write(stream, enc);
+				stream << *this;
 			}
-
-			/**
-			* \brief Write string data to a stream, appending a newline.
-			*
-			* Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
-			*
-			* \param stream The stream to write to.
-			* \param enc The encoding of characters on the stream.
-			*/
-			void writeln(outputStream& stream, encoding enc) const noexcept;
 
 			/**
 			* \brief Write string data to a stream in its format, appending a newline.
@@ -1690,12 +1712,9 @@ namespace z
 			*
 			* \param stream The stream to write to.
 			*/
-			void writeln(outputStream& stream) const noexcept
+			void writeln(std::ostream& stream) const noexcept
 			{
-				stream.setFormat(E);
-				encoding enc = stream.format();
-
-				writeln(stream, enc);
+				stream << *this << std::endl;
 			}
 
 			/**
@@ -1771,6 +1790,11 @@ namespace z
 				str = s.c_str(); //not efficient to cast strings back & forth, but it works for now.
 				return istr;
 			}
+
+			std::string str() const noexcept
+			{
+				return string<utf8>(*this).cstring();
+			}
 		};
 	}
 }
@@ -1802,3 +1826,9 @@ z::core::string<z::ascii> operator "" _asc(wchar_t value);
 z::core::string<z::ascii> operator "" _asc(const char* value);
 z::core::string<z::ascii> operator "" _asc(const char* value, size_t);
 z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t);
+
+zstring operator "" _zs(char value);
+zstring operator "" _zs(wchar_t value);
+zstring operator "" _zs(const char* value);
+zstring operator "" _zs(const char* value, size_t);
+zstring operator "" _zs(const wchar_t* value, size_t);

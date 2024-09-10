@@ -2,47 +2,44 @@
 * A short example to demonstrate stream IO and regex pattern matching.
 */
 
-#include <z/system/console.hpp>
 #include <z/core.hpp> //for core::memoryStream and core::string
-#include <z/util/regex.hpp>
+#include <regex>
+#include <iostream>
 
 int main()
 {
-	z::system::console console;
+	std::regex regex;
 	zstring pattern;
-	z::util::regex regex;
 
-	while(!console.empty())
+	while(!std::cin.eof())
 	{
 		//Get regex pattern to match against, exiting if user hits ctrl-D.
-		pattern.readln(console);
-		if (console.empty() && !pattern.length()) break;
+		pattern.readln(std::cin);
+		if (std::cin.eof() && !pattern.length()) break;
 
 		//If pattern is invalid, print a short description of the error.
-		regex.set(pattern);
-		if (regex.error())
+		try
 		{
-			regex.errorString().writeln(console);
+			regex.assign(pattern.str());
+		}
+		catch (const std::regex_error& err)
+		{
+			zstring(err.what()).writeln(std::cout);
 			continue;
 		}
 
 		//Prompt for the string to match to the regex pattern.
 		//Note that zstring is equivalent to z::core::string<z::utf32>
-		zstring(":").write(console);
+		zstring(":").write(std::cout);
 		zstring text;
-		text.readln(console);
-
-		//Temporary stream to directly access a string's content.
-		//This can break stuff if used incorrectly, but using
-		//it here is much faster than writing to a binary stream.
-		z::core::memoryStream temp(text.wstring(), text.length());
-		temp.setFormat(z::utf32);
+		text.readln(std::cin);
 
 		//Show what substring the regex matched, if anything.
-		if (regex.match(temp))
-			(regex.matched() + " matches!").writeln(console);
+		auto match = std::regex_search(text.str(), regex);
+		if (std::regex_search(text.str(), regex))
+			(text + " matches!").writeln(std::cout);
 		else
-			zstring("does not match.").writeln(console);
+			zstring("does not match.").writeln(std::cout);
 	}
 
 	return 0;

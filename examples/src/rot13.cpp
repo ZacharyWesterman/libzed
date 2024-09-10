@@ -1,13 +1,28 @@
 #include <z/all.hpp>
+#include <iostream>
 
 int main(int argc, char** argv)
 {
-	z::system::stdout console;
 	zstring from = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	zstring to   = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	for (int i=1; i<argc; ++i)
 	{
-		(zstring(argv[i]) + " ").cipher(from, to).write(console);
+		//The easiest way is to use a set of characters to perform the cipher.
+		(zstring(argv[i]) + " ").cipher(from, to).write(std::cout);
+		
+		//Alternatively, you can pass a function in to perform the cipher.
+		//This is almost guaranteed to be faster.
+		/*
+		(zstring(argv[i]) + " ").cipher([](auto chr) {
+			if (z::core::isLowerAlpha(chr)) {
+				return ((chr - 'a') + 13) % 26 + 'a';
+			} else if (z::core::isUpperAlpha(chr)) {
+				return ((chr - 'A') + 13) % 26 + 'A';
+			}
+
+			return chr;
+		}).write(std::cout);
+		*/
 	}
-	zstring().writeln(console);
+	zstring().writeln(std::cout);
 }

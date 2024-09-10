@@ -11,8 +11,5 @@
 ///Generic class
 #include "util/generic.hpp"
 
-///Regular expressions
-#include "util/regex.hpp"
-
 ///Dictionary
 #include "util/dictionary.hpp"
