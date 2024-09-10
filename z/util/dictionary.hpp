@@ -7,6 +7,9 @@
 #include "dictionary/dictRange.hpp"
 #include "../core/sortedRefArray.hpp"
 
+#include <fstream>
+
+
 namespace z
 {
 	namespace util
@@ -59,7 +62,7 @@ namespace z
 			*
 			* \threadsafe_member_no
 			*/
-			int read(core::inputStream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
+			int read(std::ifstream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
 
 			/**
 			* \brief Check if the given string is a valid word in the dictionary (case is ignored).

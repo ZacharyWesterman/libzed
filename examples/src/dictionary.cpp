@@ -1,11 +1,12 @@
 #include <z/util/dictionary.hpp>
 #include <z/file/inputStream.hpp>
 #include <iostream>
+#include <fstream>
 
 int main()
 {
 	z::util::dictionary dict;
-	z::file::inputStream file ("/usr/share/dict/words");
+	std::ifstream file ("/usr/share/dict/words");
 
 	z::core::timeout time (1000000); //1 second timeout
 
