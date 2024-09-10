@@ -13,20 +13,16 @@ namespace z
 		inputStream::inputStream()
 		{
 			initialized = false;
-			endianness_ = __BYTE_ORDER__;
+			// endianness_ = __BYTE_ORDER__;
+			endianness_ = 0;
 			streamFormat = ascii;
 		}
 
 		inputStream::inputStream(const zpath& fileName)
 		{
-			auto ptr = (const char*)fileName.cstring();
-			if (!ptr) {
-				throw "ERROR AND A HALF";
-			}
-
-			filestream.open(ptr, std::ios::in | std::ios::binary);
+			filestream.open((const char*)fileName.cstring(), std::ios::in | std::ios::binary);
 			initialized = false;
-			endianness_ = __BYTE_ORDER__;
+			// endianness_ = __BYTE_ORDER__;
 			streamFormat = ascii;
 		}
 
@@ -66,11 +62,11 @@ namespace z
 
 				//If the file's endianness != system endianness, swap byte order
 				filestream.read(buf, 4);
-				if (endianness_ != __BYTE_ORDER__)
-				{
-					std::swap(buf[0], buf[3]);
-					std::swap(buf[1], buf[2]);
-				}
+				// if (endianness_ != __BYTE_ORDER__)
+				// {
+				// 	std::swap(buf[0], buf[3]);
+				// 	std::swap(buf[1], buf[2]);
+				// }
 
 				return result;
 			}
@@ -81,10 +77,10 @@ namespace z
 
 				//If the file's endianness != system endianness, swap byte order
 				filestream.read(buf, 2);
-				if (endianness_ != __BYTE_ORDER__)
-				{
-					std::swap(buf[0], buf[1]);
-				}
+				// if (endianness_ != __BYTE_ORDER__)
+				// {
+				// 	std::swap(buf[0], buf[1]);
+				// }
 
 				return result;
 			}
@@ -140,7 +136,7 @@ namespace z
 			if (bad()) return ascii;
 			if (initialized) return streamFormat;
 
-			endianness_ = __BYTE_ORDER__;
+			// endianness_ = __BYTE_ORDER__;
 
 			size_t init_pos = tell();
 			size_t read_max = end() - init_pos;
@@ -157,18 +153,18 @@ namespace z
 			for (b_i=0; b_i<4; ++b_i)
 			{
 				buf[b_i] = get();
-				if (buf[b_i] == BOM[b_i])
-				{
-					endianness_ = __ORDER_LITTLE_ENDIAN__;
-				}
-				else if (buf[b_i] == BOM[3-b_i])
-				{
-					endianness_ = __ORDER_BIG_ENDIAN__;
-				}
-				else
-				{
+				// if (buf[b_i] == BOM[b_i])
+				// {
+				// 	endianness_ = __ORDER_LITTLE_ENDIAN__;
+				// }
+				// else if (buf[b_i] == BOM[3-b_i])
+				// {
+				// 	endianness_ = __ORDER_BIG_ENDIAN__;
+				// }
+				// else
+				// {
 					break;
-				}
+				// }
 			}
 
 			if (b_i == 2)
@@ -204,25 +200,25 @@ namespace z
 					else if (!(key & 0xC))//00..
 					{
 						initialized = true;
-						endianness_ = __ORDER_BIG_ENDIAN__;
+						// endianness_ = __ORDER_BIG_ENDIAN__;
 						seek(init_pos);
 						return streamFormat = utf32;
 					}
 					else if (!(key & 0x3))//..00
 					{
 						initialized = true;
-						endianness_ = __ORDER_LITTLE_ENDIAN__;
+						// endianness_ = __ORDER_LITTLE_ENDIAN__;
 						seek(init_pos);
 						return streamFormat = utf32;
 					}
 					else if (!(key & 0x8) || !(key & 0x2))//0... or ..0.
 					{
-						endianness_ = __ORDER_BIG_ENDIAN__;
+						// endianness_ = __ORDER_BIG_ENDIAN__;
 						has_null = true;
 					}
 					else if (!(key & 0x4) || !(key & 0x1))//.0.. or ...0
 					{
-						endianness_ = __ORDER_LITTLE_ENDIAN__;
+						// endianness_ = __ORDER_LITTLE_ENDIAN__;
 						has_null = true;
 					}
 
