@@ -7,6 +7,8 @@
 #include "dictionary/dictRange.hpp"
 #include "../core/sortedRefArray.hpp"
 
+#include <istream>
+
 namespace z
 {
 	namespace util
@@ -21,8 +23,6 @@ namespace z
 
 			bool caseSensitive;
 			bool readingStream;
-
-			zstring* readWordFromStream(core::inputStream& stream) noexcept;
 
 		public:
 			/**
@@ -59,7 +59,7 @@ namespace z
 			*
 			* \threadsafe_member_no
 			*/
-			int read(core::inputStream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
+			int read(std::istream& stream, const core::timeout& time = -1, bool assumePresorted = false) noexcept;
 
 			/**
 			* \brief Check if the given string is a valid word in the dictionary (case is ignored).

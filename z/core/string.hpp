@@ -6,7 +6,8 @@
 #include <utility>
 #include <initializer_list>
 
-#include "stream.hpp"
+#include <istream>
+#include <ostream>
 
 #include "charFunctions.hpp"
 #include "../encoding.hpp"
@@ -58,7 +59,7 @@ namespace z
 		* \see encoding.h
 		* \see zstr.h
 		*/
-		template <encoding E = utf32>
+		template <encoding E = utf8>
 		class string : public sizable, public arrayLike<uint32_t, stringIterator<E>>
 		{
 			friend string<ascii>;
@@ -1654,7 +1655,7 @@ namespace z
 			*
 			* \return A reference to this string after reading.
 			*/
-			string& read(inputStream& stream, uint32_t delim = 0) noexcept;
+			string& read(std::istream& stream, uint32_t delim = 0) noexcept;
 
 			/**
 			* \brief Read string data from a stream until a newline is encountered.
@@ -1667,38 +1668,17 @@ namespace z
 			*
 			* \return A reference to this string after reading the line.
 			*/
-			string& readln(inputStream& stream) noexcept;
-
-			/**
-			* \brief Write string data to a stream.
-			*
-			* \param stream The stream to write to.
-			* \param enc The encoding of characters on the stream.
-			*/
-			void write(outputStream& stream, encoding enc) const noexcept;
+			string& readln(std::istream& stream) noexcept;
 
 			/**
 			* \brief Write string data to a stream in that stream's encoding.
 			*
 			* \param stream The stream to write to.
 			*/
-			void write(outputStream& stream) const noexcept
+			void write(std::ostream& stream) const noexcept
 			{
-				stream.setFormat(E);
-				encoding enc = stream.format();
-
-				write(stream, enc);
+				stream << *this;
 			}
-
-			/**
-			* \brief Write string data to a stream, appending a newline.
-			*
-			* Actual characters in the newline depends on operating system (usually `\n`, `\r\n` on Windows).
-			*
-			* \param stream The stream to write to.
-			* \param enc The encoding of characters on the stream.
-			*/
-			void writeln(outputStream& stream, encoding enc) const noexcept;
 
 			/**
 			* \brief Write string data to a stream in its format, appending a newline.
@@ -1707,12 +1687,9 @@ namespace z
 			*
 			* \param stream The stream to write to.
 			*/
-			void writeln(outputStream& stream) const noexcept
+			void writeln(std::ostream& stream) const noexcept
 			{
-				stream.setFormat(E);
-				encoding enc = stream.format();
-
-				writeln(stream, enc);
+				stream << *this << std::endl;
 			}
 
 			/**
@@ -1788,6 +1765,11 @@ namespace z
 				str = s.c_str(); //not efficient to cast strings back & forth, but it works for now.
 				return istr;
 			}
+
+			std::string str() const noexcept
+			{
+				return string<utf8>(*this).cstring();
+			}
 		};
 	}
 }
@@ -1819,3 +1801,9 @@ z::core::string<z::ascii> operator "" _asc(wchar_t value);
 z::core::string<z::ascii> operator "" _asc(const char* value);
 z::core::string<z::ascii> operator "" _asc(const char* value, size_t);
 z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t);
+
+zstring operator "" _zs(char value);
+zstring operator "" _zs(wchar_t value);
+zstring operator "" _zs(const char* value);
+zstring operator "" _zs(const char* value, size_t);
+zstring operator "" _zs(const wchar_t* value, size_t);

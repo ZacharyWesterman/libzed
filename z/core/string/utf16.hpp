@@ -533,43 +533,39 @@ namespace z
 		}
 
 		template <>
-		string<utf16>& string<utf16>::read(inputStream& stream, uint32_t delim) noexcept
+		string<utf16>& string<utf16>::read(std::istream& stream, uint32_t delim) noexcept
 		{
 			character_ct = 0;
 
 			uint16_t* data16 = (uint16_t*)data;
 			data16[0] = 0;
 
-			if (stream.bad() || stream.empty()) return *this;
+			if (stream.bad() || stream.eof()) return *this;
 
-			encoding enc = stream.format();
-			uint32_t last = stream.getChar();
+			uint32_t last = stream.get();
 
-			while (!stream.empty() && last && (delim ? (last == delim) : isWhiteSpace(last)))
-				last = stream.getChar();
+			while (!stream.eof() && last && (delim ? (last == delim) : isWhiteSpace(last)))
+				last = stream.get();
 
-			while (!stream.empty() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
+			while (!stream.eof() && last && !(delim ? (last == delim) : isWhiteSpace(last)))
 			{
-				if (enc == utf8)
+				uint8_t c[4];
+				c[0] = last;
+
+				int len = lenFromUTF8(c);
+				if (len)
 				{
-					uint8_t c[4];
-					c[0] = last;
+					for (int i=1; i<len; i++)
+						c[i] = stream.get();
 
-					int len = lenFromUTF8(c);
-					if (len)
-					{
-						for (int i=1; i<len; i++)
-							c[i] = stream.getChar();
-
-						last = fromUTF8(c);
-					}
+					last = fromUTF8(c);
 				}
 
 				increase(character_ct);
 				data16 = (uint16_t*)data;
 				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
-				last = stream.getChar();
+				last = stream.get();
 			}
 
 			increase(character_ct);
@@ -580,68 +576,38 @@ namespace z
 		}
 
 		template <>
-		string<utf16>& string<utf16>::readln(inputStream& stream) noexcept
+		string<utf16>& string<utf16>::readln(std::istream& stream) noexcept
 		{
 			character_ct = 0;
 
 			uint16_t* data16 = (uint16_t*)data;
 			data16[0] = 0;
 
-			if (stream.bad() || stream.empty()) return *this;
+			if (stream.bad() || stream.eof()) return *this;
 
-			encoding enc = stream.format();
-			uint32_t last = stream.getChar();
+			uint32_t last = stream.get();
 
-			while (!stream.empty())
+			while (!stream.eof())
 			{
-				if (stream.seekable())
-				{
-					if (last == '\r')
-					{
-						auto pos = stream.tell();
-						last = stream.getChar();
-						if (!stream.empty() && (last != '\n'))
-						{
-							stream.seek(pos);
-						}
-						break;
-					}
-					else if (last == '\n')
-					{
-						auto pos = stream.tell();
-						last = stream.getChar();
-						if (!stream.empty() && (last != '\r'))
-						{
-							stream.seek(pos);
-						}
-						break;
-					}
-				}
-				else
-				{
-					if ((last == '\n') || (last == '\r')) break;
-				}
+				if ((last == '\n') || (last == '\r')) break;
 
-				if (enc == utf8)
+				uint8_t c[4];
+				c[0] = last;
+
+				int len = lenFromUTF8(c);
+				if (len)
 				{
-					uint8_t c[4];
-					c[0] = last;
+					for (int i=1; i<len; i++)
+						c[i] = stream.get();
 
-					int len = lenFromUTF8(c);
-					if (len)
-					{
-						for (int i=1; i<len; i++)
-							c[i] = stream.getChar();
-
-						last = fromUTF8(c);
-					}
+					last = fromUTF8(c);
 				}
 
 				increase(character_ct);
 				data16 = (uint16_t*)data;
 				data16[character_ct++] = (last > 0xFFFF) ? '?' : last;
 
-				last = stream.getChar();
+				last = stream.get();
 			}
 
 			increase(character_ct);
@@ -1289,45 +1255,6 @@ namespace z
 			result += other;
 
 			return result;
-		}
-
-		template <>
-		void string<utf16>::write(outputStream& stream, encoding enc) const noexcept
-		{
-			if (stream.bad()) return;
-
-			if (character_ct)
-			{
-				if (enc == utf16)
-				{
-					stream.put(data, character_ct, enc);
-				}
-				else if (enc == utf32)
-				{
-					string<utf32> temp (*this);
-					stream.put(temp.data, temp.character_ct, enc);
-				}
-				else if (enc == utf8)
-				{
-					string<utf8> temp (*this);
-					stream.put(temp.data, temp.character_ct, enc);
-				}
-				else
-				{
-					string<ascii> temp (*this);
-					stream.put(temp.data, temp.character_ct, enc);
-				}
-			}
-		}
-
-		template <>
-		void string<utf16>::writeln(outputStream& stream, encoding enc) const noexcept
-		{
-			if (stream.bad()) return;
-			string<utf16> newl = "\n";
-
-			this->write(stream, enc);
-			newl.write(stream, enc);
 		}
 
 		template<>

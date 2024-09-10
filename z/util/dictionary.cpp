@@ -19,10 +19,10 @@ namespace z
 			wordList.clear();
 		}
 
-		int dictionary::read(core::inputStream& stream, const core::timeout& time, bool assumePresorted) noexcept
+		int dictionary::read(std::istream& stream, const core::timeout& time, bool assumePresorted) noexcept
 		{
 			if (stream.bad()) return -1;
-			if (stream.empty()) return 1;
+			if (stream.eof()) return 1;
 
 			if (!readingStream)
 			{
@@ -30,7 +30,7 @@ namespace z
 				readingStream = true;
 			}
 
-			while (!(stream.empty() || time.timedOut()))
+			while (!(stream.eof() || time.timedOut()))
 			{
 				zstring* word = new zstring;
 				word->read(stream);
@@ -48,7 +48,7 @@ namespace z
 					delete word;
 			}
 
-			return stream.empty();
+			return stream.eof();
 		}
 
 		bool dictionary::isWord(const zstring& word) const noexcept

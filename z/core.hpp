@@ -30,9 +30,3 @@
 #include "core/split.hpp"
 #include "core/join.hpp"
 #include "core/compare.hpp"
-
-///Streams
-#include "core/stream.hpp"
-#include "core/binaryStream.hpp"
-#include "core/memoryStream.hpp"
-#include "core/stringStream.hpp"
