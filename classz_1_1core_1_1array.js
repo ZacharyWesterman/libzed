@@ -42,5 +42,6 @@ var classz_1_1core_1_1array =
     [ "save", "classz_1_1core_1_1array.html#a4d31e60833f6319593d0d64216f40f74", null ],
     [ "size", "classz_1_1core_1_1array.html#a393699d21808e0b38a3d106cb6c65274", null ],
     [ "subset", "classz_1_1core_1_1array.html#a22e26780665bf8cd73cb058a99967aa8", null ],
+    [ "swap", "classz_1_1core_1_1array.html#af55a33c67b23883ffeb8d35cb5e9ad6a", null ],
     [ "array_data", "classz_1_1core_1_1array.html#a48670e71295cab3fd47f40c1c84ec357", null ]
 ];

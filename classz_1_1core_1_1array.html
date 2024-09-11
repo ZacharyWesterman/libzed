@@ -221,6 +221,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ebd66eb72fad817c60bce1f1840c00e" id="r_a9ebd66eb72fad817c60bce1f1840c00e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1circularIterator.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9ebd66eb72fad817c60bce1f1840c00e">isValid</a> (<a class="el" href="classz_1_1core_1_1circularIterator.html">int</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">position</a>) <a class="el" href="classz_1_1core_1_1circularIterator.html">const</a></td></tr>
 <tr class="memdesc:a9ebd66eb72fad817c60bce1f1840c00e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an index is within the bounds of the array.  <br /></td></tr>
 <tr class="separator:a9ebd66eb72fad817c60bce1f1840c00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55a33c67b23883ffeb8d35cb5e9ad6a" id="r_af55a33c67b23883ffeb8d35cb5e9ad6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af55a33c67b23883ffeb8d35cb5e9ad6a">swap</a> (<a class="el" href="classz_1_1core_1_1circularIterator.html">int</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">index1</a>, <a class="el" href="classz_1_1core_1_1circularIterator.html">int</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">index2</a>)</td></tr>
+<tr class="memdesc:af55a33c67b23883ffeb8d35cb5e9ad6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap two elements in an array.  <br /></td></tr>
+<tr class="separator:af55a33c67b23883ffeb8d35cb5e9ad6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec20e6f5c22919d76570faf7b60b54e9" id="r_aec20e6f5c22919d76570faf7b60b54e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1circularIterator.html">T</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aec20e6f5c22919d76570faf7b60b54e9">begin</a> () <a class="el" href="classz_1_1core_1_1circularIterator.html">const</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">noexcept</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">override</a></td></tr>
 <tr class="memdesc:aec20e6f5c22919d76570faf7b60b54e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the beginning of the array.  <br /></td></tr>
 <tr class="separator:aec20e6f5c22919d76570faf7b60b54e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -512,11 +515,17 @@ template&lt;<a class="el" href="classz_1_1core_1_1circularIterator.html">typenam
 <p>Identical behavior to <a class="el" href="classz_1_1core_1_1array.html#a864612cf1e7ec4e895e3211687ba2f82" title="Function to get the object at the given index.">at(int)</a>, but allows indexing with square brackets.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>the index of the desired object.</td></tr>
+    <tr><td class="paramname">index</td><td>the index of the desired object. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The object at the given index.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The object at the given index. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if index is an invalid index.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#a864612cf1e7ec4e895e3211687ba2f82" title="Function to get the object at the given index.">at(int)</a> </dd></dl>
 
 </div>
@@ -551,11 +560,17 @@ template&lt;<a class="el" href="classz_1_1core_1_1circularIterator.html">typenam
 <p>Identical behavior to <a class="el" href="classz_1_1core_1_1array.html#a864612cf1e7ec4e895e3211687ba2f82" title="Function to get the object at the given index.">at(int)</a>, but allows indexing with square brackets.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>the index of the desired object.</td></tr>
+    <tr><td class="paramname">index</td><td>the index of the desired object. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The object at the given index.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The object at the given index. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if index is an invalid index.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1array.html#ade8f090b10cd949235cebabb58f5c045" title="Const function to get the object at the given index.">at(int) const</a> </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1indexable.html#a64c0a7369dd895c00f79538ec85eb859">z::core::indexable&lt; T &gt;</a>.</p>
@@ -1721,6 +1736,52 @@ template&lt;<a class="el" href="classz_1_1core_1_1circularIterator.html">typenam
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A subset of the main array. </dd></dl>
+
+</div>
+</div>
+<a id="af55a33c67b23883ffeb8d35cb5e9ad6a" name="af55a33c67b23883ffeb8d35cb5e9ad6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55a33c67b23883ffeb8d35cb5e9ad6a">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1circularIterator.html">typename</a> <a class="el" href="classz_1_1core_1_1circularIterator.html">T</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1circularIterator.html">T</a> &gt; &amp; <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; <a class="el" href="classz_1_1core_1_1circularIterator.html">T</a> &gt;::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1circularIterator.html">int</a>&#160;</td>
+          <td class="paramname"><em>index1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1circularIterator.html">int</a>&#160;</td>
+          <td class="paramname"><em>index2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Swap two elements in an array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index1</td><td>The index of the first element to swap. </td></tr>
+    <tr><td class="paramname">index2</td><td>The index of the second element to swap. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this object, to allow for method chaining. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if either of the indexes is an invalid index. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
