@@ -28,7 +28,6 @@ namespace z
 {
 	namespace core
 	{
-
 		/**
 		* \brief A template class for character strings.
 		*
@@ -66,6 +65,9 @@ namespace z
 			friend string<utf8>;
 			friend string<utf16>;
 			friend string<utf32>;
+
+			typedef uint32_t(str_map_lambda(uint32_t));
+			typedef bool(str_filter_lambda(uint32_t));
 
 		private:
 			uint8_t* data;
@@ -1231,6 +1233,29 @@ namespace z
 			}
 
 			/**
+			* \brief Filter out characters based on a function.
+			*
+			* example: `my_string.filter(z::core::isAlphaNumeric)` will remove all characters that are not alphanumeric.
+			*
+			* \param lambda The function used to determine whether to keep a given character. If this function returns true, the character stays in the string. If false, the character is removed.
+			*
+			* \return A duplicate of this string with all non-matching characters removed.
+			*/
+			string filter(str_filter_lambda lambda) const noexcept
+			{
+				string result;
+				result.increase(length());
+
+				for (auto chr : *this)
+				{
+					if (lambda(chr))
+						result.append(chr);
+				}
+
+				return result;
+			}
+
+			/**
 			* \brief Check if this string contains any characters in the given range.
 			*
 			* example: this->contains('A', 'Z') will return true if this string contains a character in the
@@ -1394,7 +1419,7 @@ namespace z
 			*
 			* \return A string with all characters converted according to the lambda.
 			*/
-			string cipher(uint32_t(lambda(uint32_t))) const noexcept
+			string cipher(str_map_lambda lambda) const noexcept
 			{
 				string result;
 				result.increase(length());
@@ -1791,6 +1816,10 @@ namespace z
 				return istr;
 			}
 
+			/**
+			* \brief Convert to a std::string.
+			* \return A std::string representation, always in UTF-8.
+			*/
 			std::string str() const noexcept
 			{
 				return string<utf8>(*this).cstring();

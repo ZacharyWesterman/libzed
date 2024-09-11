@@ -172,3 +172,9 @@ z::core::string<z::ascii> operator "" _asc(wchar_t value) { return z::core::stri
 z::core::string<z::ascii> operator "" _asc(const char* value) { return z::core::string<z::ascii>(value); }
 z::core::string<z::ascii> operator "" _asc(const char* value, size_t) { return z::core::string<z::ascii>(value); }
 z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t) { return z::core::string<z::ascii>(value); }
+
+zstring operator "" _zs(char value) { return zstring(value); }
+zstring operator "" _zs(wchar_t value) { return zstring(value); }
+zstring operator "" _zs(const char* value) { return zstring(value); }
+zstring operator "" _zs(const char* value, size_t) { return zstring(value); }
+zstring operator "" _zs(const wchar_t* value, size_t) { return zstring(value); }
