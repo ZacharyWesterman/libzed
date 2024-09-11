@@ -227,8 +227,8 @@ namespace z
 			inline bool operator>=(const array& other) const;
 			inline bool operator<=(const array& other) const;
 
-
 			bool isValid(int position) const;
+			array& swap(int index1, int index2);
 
 			/**
 			* \brief Get pointer to the beginning of the array.
@@ -255,6 +255,8 @@ namespace z
 			{
 				return begin() + array_data.size();
 			}
+
+			
 
 #		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)
@@ -670,8 +672,8 @@ namespace z
 		* with square brackets.
 		*
 		* \param index the index of the desired object.
-		*
 		* \return The object at the given index.
+		* \exception std::out_of_range if index is an invalid index.
 		*
 		* \see at(int)
 		*/
@@ -688,8 +690,8 @@ namespace z
 		* with square brackets.
 		*
 		* \param index the index of the desired object.
-		*
 		* \return The object at the given index.
+		* \exception std::out_of_range if index is an invalid index.
 		*
 		* \see at(int) const
 		*/
@@ -841,6 +843,23 @@ namespace z
 		{
 			if (index < 0) index += array_data.size();
 			return (index < (int)array_data.size()) && (index >= 0);
+		}
+
+		/**
+		* \brief Swap two elements in an array.
+		*
+		* \param index1 The index of the first element to swap.
+		* \param index2 The index of the second element to swap.
+		* \return A reference to this object, to allow for method chaining.
+		* \exception std::out_of_range if either of the indexes is an invalid index.
+		*/
+		template <typename T>
+		array<T>& array<T>::swap(int index1, int index2)
+		{
+			auto temp = at(index1);
+			array_data[index1] = at(index2);
+			array_data[index2] = temp;
+			return *this;
 		}
 	}
 }
