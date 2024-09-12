@@ -13,10 +13,35 @@ namespace z
 {
 	namespace util
 	{
+		class dictIter
+		{
+			core::sortedRefArray<const zstring*> const* wordList;
+			int index;
+
+		public:
+			dictIter(core::sortedRefArray<const zstring*> const* wordList, int index) : wordList(wordList), index(index) {}
+
+			dictIter operator++() noexcept
+			{
+				index++;
+				return *this;
+			}
+
+			bool operator!=(const dictIter& other) const noexcept
+			{
+				return index != other.index;
+			}
+
+			const zstring& operator*() const noexcept
+			{
+				return *(wordList->at(index));
+			}
+		};
+
 		/**
 		* \brief A class for performing searches on a dictionary of words.
 		*/
-		class dictionary : public core::sizable
+		class dictionary : public core::sizable, public core::arrayLike<const zstring&, dictIter>
 		{
 		private:
 			core::sortedRefArray<const zstring*> wordList;
@@ -90,7 +115,7 @@ namespace z
 			*
 			* \threadsafe_member_yes
 			*/
-			int length() const noexcept;
+			int length() const noexcept override;
 
 			/**
 			* \brief Add a word to the dictionary.
@@ -140,6 +165,21 @@ namespace z
 			* \return true if the range can be narrowed further, false otherwise.
 			*/
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
+
+			dictIter begin() const noexcept override
+			{
+				return dictIter(&wordList, 0);
+			}
+
+			dictIter end() const noexcept override
+			{
+				return dictIter(&wordList, wordList.length());
+			}
+
+			const zstring& at(int index) const
+			{
+				return *(wordList.at(index));
+			}
 
 #		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)

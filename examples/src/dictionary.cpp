@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 	std::cout << "Loading..." << std::flush;
 
 	//Load the dictionary, pausing every 1 second to do other processes
-	while (!dict.read(file, 1000000, true))
+	while (!dict.read(file, 1000, false))
 	{
 		std::cout << '.' << std::flush;
 	}
