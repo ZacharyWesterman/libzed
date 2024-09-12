@@ -5,6 +5,7 @@
 #include <cstring>
 #include <utility>
 #include <initializer_list>
+#include <functional>
 
 #include <istream>
 #include <ostream>
@@ -65,9 +66,6 @@ namespace z
 			friend string<utf8>;
 			friend string<utf16>;
 			friend string<utf32>;
-
-			// typedef uint32_t(str_map_lambda(uint32_t));
-			// typedef bool(str_filter_lambda(uint32_t));
 
 		private:
 			uint8_t* data;
@@ -1241,7 +1239,7 @@ namespace z
 			*
 			* \return A duplicate of this string with all non-matching characters removed.
 			*/
-			string filter(bool(*lambda)(uint32_t)) const noexcept
+			string filter(std::function<bool(uint32_t)>) const noexcept
 			{
 				string result;
 				result.increase(length());
@@ -1419,7 +1417,7 @@ namespace z
 			*
 			* \return A string with all characters converted according to the lambda.
 			*/
-			string cipher(uint32_t(*lambda)(uint32_t)) const noexcept
+			string cipher(std::function<uint32_t(uint32_t)> lambda) const noexcept
 			{
 				string result;
 				result.increase(length());
