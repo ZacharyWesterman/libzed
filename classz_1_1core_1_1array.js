@@ -12,6 +12,7 @@ var classz_1_1core_1_1array =
     [ "at", "classz_1_1core_1_1array.html#ade8f090b10cd949235cebabb58f5c045", null ],
     [ "begin", "classz_1_1core_1_1array.html#aec20e6f5c22919d76570faf7b60b54e9", null ],
     [ "clear", "classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692", null ],
+    [ "contains", "classz_1_1core_1_1array.html#a0c339681af40a2d14e88ebff2e89cd07", null ],
     [ "end", "classz_1_1core_1_1array.html#af1f9e1261e762890f03307911b90bc14", null ],
     [ "eq", "classz_1_1core_1_1array.html#a05eecf0dc1fb018480e2f5d5b9ae3faa", null ],
     [ "find", "classz_1_1core_1_1array.html#a40863d5a8c5134a849e13f84a11889e6", null ],
