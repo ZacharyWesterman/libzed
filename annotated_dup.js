@@ -35,6 +35,7 @@ var annotated_dup =
       ] ],
       [ "util", "namespacez_1_1util.html", [
         [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
+        [ "dictIter", "classz_1_1util_1_1dictIter.html", null ],
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
         [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
         [ "nonNumber", "structz_1_1util_1_1nonNumber.html", "structz_1_1util_1_1nonNumber" ]

@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "z::core::circularIterator< TYPE, LEN >", "classz_1_1core_1_1circularIterator.html", null ],
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
+    [ "z::util::dictIter", "classz_1_1util_1_1dictIter.html", null ],
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
     [ "std::exception", null, [
@@ -24,6 +25,9 @@ var hierarchy =
         [ "z::core::circularBuffer< TYPE, LEN >", "classz_1_1core_1_1circularBuffer.html", null ]
       ] ],
       [ "z::core::arrayLike< uint32_t, stringIterator< utf8 > >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const zstring &, dictIter >", "classz_1_1core_1_1arrayLike.html", [
+        [ "z::util::dictionary", "classz_1_1util_1_1dictionary.html", null ]
+      ] ],
       [ "z::core::arrayLike< uint32_t, stringIterator< E > >", "classz_1_1core_1_1arrayLike.html", [
         [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ]
       ] ],
@@ -36,17 +40,20 @@ var hierarchy =
     [ "z::core::indexable< const const z::core::string *& >", "classz_1_1core_1_1indexable.html", null ],
     [ "z::core::indexable< const T & >", "classz_1_1core_1_1indexable.html", null ],
     [ "z::core::indexable< const TYPE & >", "classz_1_1core_1_1indexable.html", null ],
+    [ "z::core::indexable< const zstring & >", "classz_1_1core_1_1indexable.html", null ],
     [ "z::core::indexable< uint32_t >", "classz_1_1core_1_1indexable.html", null ],
     [ "z::core::iterable< ITER >", "classz_1_1core_1_1iterable.html", [
       [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< const TYPE &, circularIterator< TYPE, LEN > >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< uint32_t, stringIterator< utf8 > >", "classz_1_1core_1_1arrayLike.html", null ],
+      [ "z::core::arrayLike< const zstring &, dictIter >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< uint32_t, stringIterator< E > >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< const const z::core::string *&, const z::core::string ** >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< T, ITER >", "classz_1_1core_1_1arrayLike.html", null ]
     ] ],
     [ "z::core::iterable< circularIterator< TYPE, LEN > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< const z::core::string ** >", "classz_1_1core_1_1iterable.html", null ],
+    [ "z::core::iterable< dictIter >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< stringIterator< E > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< stringIterator< utf8 > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< T * >", "classz_1_1core_1_1iterable.html", null ],
