@@ -17,5 +17,9 @@ int main()
 
 	std::cout << val1.typeString() << " : " << val1.toString(true) << std::endl;
 	std::cout << val2.typeString() << " : " << val2.toString(true) << std::endl;
+#	else
+
+	"ERROR: This program was compiled without support for z::util:generic!"_zs.writeln(std::cout);
+
 #	endif
 }

@@ -1,3 +1,5 @@
+//Demonstrate the common "ROT13" version of the Caesar cipher.
+
 #include <z/all.hpp>
 #include <iostream>
 

@@ -2,7 +2,7 @@
 * A short example to demonstrate stream IO and regex pattern matching.
 */
 
-#include <z/core.hpp> //for core::memoryStream and core::string
+#include <z/core/string.hpp>
 #include <regex>
 #include <iostream>
 
