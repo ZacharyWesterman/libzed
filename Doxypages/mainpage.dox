@@ -42,7 +42,6 @@ The following classes should be able to be saved and loaded with cereal:
 - z::core::timer
 - z::core::timeout
 - z::util::dictionary
-- z::util::regex
 - z::util::generic
 
 If cereal is not installed however, this library should compile just fine. Again, totally optional.

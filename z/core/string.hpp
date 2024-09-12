@@ -66,8 +66,8 @@ namespace z
 			friend string<utf16>;
 			friend string<utf32>;
 
-			typedef uint32_t(str_map_lambda(uint32_t));
-			typedef bool(str_filter_lambda(uint32_t));
+			// typedef uint32_t(str_map_lambda(uint32_t));
+			// typedef bool(str_filter_lambda(uint32_t));
 
 		private:
 			uint8_t* data;
@@ -1241,7 +1241,7 @@ namespace z
 			*
 			* \return A duplicate of this string with all non-matching characters removed.
 			*/
-			string filter(str_filter_lambda lambda) const noexcept
+			string filter(bool(*lambda)(uint32_t)) const noexcept
 			{
 				string result;
 				result.increase(length());
@@ -1419,7 +1419,7 @@ namespace z
 			*
 			* \return A string with all characters converted according to the lambda.
 			*/
-			string cipher(str_map_lambda lambda) const noexcept
+			string cipher(uint32_t(*lambda)(uint32_t)) const noexcept
 			{
 				string result;
 				result.increase(length());
