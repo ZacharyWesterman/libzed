@@ -1,6 +1,8 @@
 #include "dictionary.hpp"
 #include "../core/charFunctions.hpp"
 
+#include <iostream>
+
 namespace z
 {
 	namespace util
@@ -21,7 +23,7 @@ namespace z
 
 		int dictionary::read(std::istream& stream, const core::timeout& time, bool assumePresorted) noexcept
 		{
-			if (stream.bad()) return -1;
+			if (stream.fail()) return -1;
 			if (stream.eof()) return 1;
 
 			if (!readingStream)

@@ -1084,7 +1084,7 @@ namespace z
 			character_ct = 0;
 			data[0] = 0;
 
-			if (stream.bad() || stream.eof()) return *this;
+			if (stream.fail() || stream.eof()) return *this;
 
 			uint32_t last = stream.get();
 
@@ -1123,7 +1123,7 @@ namespace z
 			character_ct = 0;
 			data[0] = 0;
 
-			if (stream.bad() || stream.eof()) return *this;
+			if (stream.fail() || stream.eof()) return *this;
 
 			uint32_t last = stream.get();
 

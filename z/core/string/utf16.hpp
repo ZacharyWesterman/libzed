@@ -540,7 +540,7 @@ namespace z
 			uint16_t* data16 = (uint16_t*)data;
 			data16[0] = 0;
 
-			if (stream.bad() || stream.eof()) return *this;
+			if (stream.fail() || stream.eof()) return *this;
 
 			uint32_t last = stream.get();
 
@@ -583,7 +583,7 @@ namespace z
 			uint16_t* data16 = (uint16_t*)data;
 			data16[0] = 0;
 
-			if (stream.bad() || stream.eof()) return *this;
+			if (stream.fail() || stream.eof()) return *this;
 
 			uint32_t last = stream.get();
 
