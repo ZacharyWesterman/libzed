@@ -1239,7 +1239,7 @@ namespace z
 			*
 			* \return A duplicate of this string with all non-matching characters removed.
 			*/
-			string filter(std::function<bool(uint32_t)>) const noexcept
+			string filter(std::function<bool(uint32_t)> lambda) const noexcept
 			{
 				string result;
 				result.increase(length());

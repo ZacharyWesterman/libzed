@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <initializer_list>
+#include <functional>
+
 #include "sizable.hpp"
 #include "arrayLike.hpp"
 #include "typeChecks.hpp"
@@ -241,6 +243,82 @@ namespace z
 
 			bool isValid(int position) const;
 			array& swap(int index1, int index2);
+
+			/**
+			* @brief Applies a transformation function to each element of the array and returns a new array with the results.
+			* 
+			* This function iterates through each element of the array, applies the provided lambda function,
+			* and stores the result in a new array of type `U`. The new array is returned after all elements have been processed.
+			* 
+			* @tparam U The type of elements in the resulting array.
+			* @param lambda A function that takes a constant reference to an element of type `T` and returns an element of type `U`.
+			* @return A new array containing the transformed elements.
+			*/
+			template <typename U>
+			array<U> map(std::function<U(const T&)> lambda) const
+			{
+				array<U> result;
+				result.increase(array_data.size());
+
+				for (const auto& i : array_data)
+				{
+					result.add(lambda(i));
+				}
+
+				return result;
+			}
+
+			/**
+			* @brief Filters the array based on a predicate and returns a new array containing the elements that satisfy the predicate.
+			* 
+			* This function iterates through the array, applies the given lambda function as a predicate to each element,
+			* and adds elements that satisfy the predicate to the resulting array. The size of the result array is adjusted dynamically.
+			* 
+			* @param lambda A function that takes a constant reference to an element of type `T` and returns a boolean indicating whether the element should be included.
+			* @return A new array containing the elements that satisfy the predicate.
+			*/
+			array filter(std::function<bool(const T&)> lambda) const
+			{
+				array result;
+				result.increase(array_data.size()); //Increase it to the max size, but it will likely be smaller than this.
+
+				for (const auto& i : array_data)
+				{
+					if (lambda(i))
+					{
+						result.add(i);
+					}
+				}
+
+				return result;
+			}
+
+			/**
+			* @brief Reduces the array to a single value by applying a binary operation cumulatively to the elements.
+			* 
+			* This function applies a binary operation (provided as a lambda) to combine the elements of the array into a single value.
+			* If the array is empty, the provided default value is returned.
+			* 
+			* @param defaultValue The value to return if the array is empty.
+			* @param lambda A function that takes two elements of type `T` and returns their combined result of type `T`.
+			* @return The result of the reduction operation.
+			*/
+			T reduce(const T& defaultValue, std::function<T(const T&, const T&)> lambda) const
+			{
+				const auto len = array_data.size();
+				if (len == 0)
+				{
+					return defaultValue;
+				}
+
+				auto result = array_data[0];
+				for (int i = 1; i < len; ++i)
+				{
+					result = lambda(result, array_data[i]);
+				}
+
+				return result;
+			}
 
 			/**
 			* \brief Get pointer to the beginning of the array.
