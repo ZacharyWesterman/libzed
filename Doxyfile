@@ -27,13 +27,13 @@ SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 4
 
 ALIASES                =\
-	"threadsafe_function_no=@par Re-Entry:<BR>Simultaneous calls to this function can cause data races."\
-	"threadsafe_function_ref=@par Re-Entry:<BR>Simultaneous calls to this function with the same parameters may cause data races."\
-	"threadsafe_function_yes=@par Re-Entry:<BR>This function is thread-safe. Simultaneous calls will not cause data races."\
-	"threadsafe_member_no=@par Re-Entry:<BR>Simultaneous calls to this member function on the same object can cause data races."\
-	"threadsafe_member_ref=@par Re-Entry:<BR>Simultaneous calls to this member function with the same parameters may cause data races."\
-	"threadsafe_member_yes=@par Re-Entry:<BR>This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering."\
-	"threadsafe_class_const=@par Re-Entry:<BR>All const member functions are thread-safe. Simultaneous calls will not cause data races, and any other thread-safe members may be called concurrently without interfering."
+	"threadsafe_function_no=@par Re-Entry: Simultaneous calls to this function can cause data races."\
+	"threadsafe_function_ref=@par Re-Entry: Simultaneous calls to this function with the same parameters may cause data races."\
+	"threadsafe_function_yes=@par Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races."\
+	"threadsafe_member_no=@par Re-Entry: Simultaneous calls to this member function on the same object can cause data races."\
+	"threadsafe_member_ref=@par Re-Entry: Simultaneous calls to this member function with the same parameters may cause data races."\
+	"threadsafe_member_yes=@par Re-Entry: This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering."\
+	"threadsafe_class_const=@par Re-Entry: All const member functions are thread-safe. Simultaneous calls will not cause data races, and any other thread-safe members may be called concurrently without interfering."
 
 TCL_SUBST              =
 OPTIMIZE_OUTPUT_FOR_C  = NO
