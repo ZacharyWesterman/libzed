@@ -199,7 +199,7 @@ namespace z
 			const T& at(int) const override;
 
 			/**
-			* \brief Check if a given object is in the array.
+			* \brief Find the index of a given object in the array.
 			*
 			* Locates the desired index using a linear search,
 			* as the array is expected to be unsorted.
@@ -216,6 +216,18 @@ namespace z
 						return i;
 
 				return -1;
+			}
+
+			/**
+			* \brief Check if a given object is in the array.
+			*
+			* \param object the object to search for.
+			*
+			* \return \b true if the object was found in the array, \b false otherwise.
+			*/
+			bool contains(const T& object) const noexcept
+			{
+				return find(object) > -1;
 			}
 
 			array& operator=(const array& other);
