@@ -133,6 +133,18 @@ namespace z
 			string(const wchar_t* str) noexcept;
 
 			/**
+			* \brief Construct from a std::string.
+			*
+			* \param str The string to copy.
+			*
+			* All characters are assumed to be compatible with this string's encoding.
+			*/
+			string(const std::string& str) noexcept
+			{
+				string(std.c_str());
+			}
+
+			/**
 			* \brief Construct from an integer.
 			*
 			* \param value An integer.
