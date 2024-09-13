@@ -141,7 +141,7 @@ namespace z
 			*/
 			string(const std::string& str) noexcept
 			{
-				string(std.c_str());
+				string(str.c_str());
 			}
 
 			/**
