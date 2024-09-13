@@ -13,25 +13,52 @@ namespace z
 {
 	namespace util
 	{
+		/**
+		* \brief A class for iterating over the words in a dictionary.
+		*
+		* This class should not be used directly, instead it is meant for use in range-based for loops.
+		*/
 		class dictIter
 		{
 			core::sortedRefArray<const zstring*> const* wordList;
 			int index;
 
 		public:
+			/**
+			* \brief Constructor
+			* \param wordList A pointer to a dictionary's word list.
+			* \param index The current index.
+			*/
 			dictIter(core::sortedRefArray<const zstring*> const* wordList, int index) : wordList(wordList), index(index) {}
 
+			/**
+			* \brief Increment the current word we're pointing to.
+			*
+			* \return A new iterator instance, incremented from the current position.
+			*/
 			dictIter operator++() noexcept
 			{
 				index++;
 				return *this;
 			}
 
+			/**
+			* \brief Equality operator
+			*
+			* \param other The object to compare to.
+			*
+			* \return True if this and other are pointing to the same word in the dictionary, false otherwise.
+			*/
 			bool operator!=(const dictIter& other) const noexcept
 			{
 				return index != other.index;
 			}
 
+			/**
+			* \brief Dereference operator.
+			*
+			* \return The current word this iterator is pointing to.
+			*/
 			const zstring& operator*() const noexcept
 			{
 				return *(wordList->at(index));
@@ -166,20 +193,9 @@ namespace z
 			*/
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
 
-			dictIter begin() const noexcept override
-			{
-				return dictIter(&wordList, 0);
-			}
-
-			dictIter end() const noexcept override
-			{
-				return dictIter(&wordList, wordList.length());
-			}
-
-			const zstring& at(int index) const
-			{
-				return *(wordList.at(index));
-			}
+			dictIter begin() const noexcept override;
+			dictIter end() const noexcept override;
+			const zstring& at(int index) const;
 
 #		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)

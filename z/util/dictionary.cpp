@@ -178,5 +178,20 @@ namespace z
 
 			return !(wordRange->exhausted);
 		}
+
+		dictIter dictionary::begin() const noexcept
+		{
+			return dictIter(&wordList, 0);
+		}
+
+		dictIter dictionary::end() const noexcept
+		{
+			return dictIter(&wordList, wordList.length());
+		}
+
+		const zstring& dictionary::at(int index) const
+		{
+			return *(wordList.at(index));
+		}
 	}
 }
