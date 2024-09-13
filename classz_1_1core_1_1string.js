@@ -6,6 +6,7 @@ var classz_1_1core_1_1string =
     [ "string", "classz_1_1core_1_1string.html#a6987eedf472fa0b1f5f32cb4dfa16141", null ],
     [ "string", "classz_1_1core_1_1string.html#a1a85952a47b96150a7f3f540535bdd25", null ],
     [ "string", "classz_1_1core_1_1string.html#aee9e76587629cc1cc42435c1646ef424", null ],
+    [ "string", "classz_1_1core_1_1string.html#a034452657847a884c4a6fe00168192d9", null ],
     [ "string", "classz_1_1core_1_1string.html#a24cd477dde33d3272f9780cec18297ef", null ],
     [ "string", "classz_1_1core_1_1string.html#ab8bed0f235b563c4c200bcb7a24f6374", null ],
     [ "string", "classz_1_1core_1_1string.html#a884576fbd00bc546b858771288041d42", null ],
