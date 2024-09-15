@@ -75,8 +75,67 @@ namespace z
 		}
 
 		template <>
+		string<utf8>::string(const char* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[len+1];
+				data_len = len+1;
+
+				for (size_t i=0; i<len; i++)
+					data[i] = str[i];
+
+				data[len] = '\0';
+			}
+			else
+			{
+				data = new uint8_t[1];
+				data[0] = 0;
+
+				data_len = 1;
+				character_ct = 0;
+			}
+		}
+
+		template <>
 		string<utf8>::string(const wchar_t* str) noexcept
 		{
+			if (str)
+			{
+				int i = 0;
+				int len = 0;
+
+				while (str[i])
+					len += lenToUTF8(str[i++]);
+
+				character_ct = len;
+
+				data_len = character_ct + 1;
+				data = new uint8_t[data_len];
+				data[character_ct] = 0;
+
+				int pos = 0;
+				for (int j=0; j<i; j++)
+				{
+					pos += toUTF8(&data[pos], str[j]);
+				}
+			}
+			else
+			{
+				data = new uint8_t[1];
+				data[0] = 0;
+
+				data_len = 1;
+				character_ct = 0;
+			}
+		}
+
+		template <>
+		string<utf8>::string(const wchar_t* str, size_t __len_ignore) noexcept
+		{
+			(void)__len_ignore;
+
 			if (str)
 			{
 				int i = 0;

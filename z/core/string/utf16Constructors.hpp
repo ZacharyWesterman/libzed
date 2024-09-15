@@ -85,6 +85,32 @@ namespace z
 		}
 
 		template <>
+		string<utf16>::string(const char* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[(len+1)<<1];
+				data_len = (len+1)<<1;
+
+				uint16_t* data16 = (uint16_t*)data;
+
+				for (size_t i=0; i<len; i++)
+					data16[i] = str[i];
+
+				data16[len] = '\0';
+			}
+			else
+			{
+				data = new uint8_t[2];
+				*((uint16_t*)data) = 0;
+
+				data_len = 2;
+				character_ct = 0;
+			}
+		}
+
+		template <>
 		string<utf16>::string(const wchar_t* str) noexcept
 		{
 			if (str)
@@ -106,6 +132,38 @@ namespace z
 					data16[i] = (str[i] > 0xFFFF) ? '?' : str[i];
 #					endif
 				}
+			}
+			else
+			{
+				data = new uint8_t[2];
+				*((uint16_t*)data) = 0;
+
+				data_len = 2;
+				character_ct = 0;
+			}
+		}
+
+		template <>
+		string<utf16>::string(const wchar_t* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[(len+1)<<1];
+				data_len = (len+1)<<1;
+
+				uint16_t* data16 = (uint16_t*)data;
+
+				for (size_t i=0; i<len; i++)
+				{
+#					ifdef _WIN32
+					data16[i] = str[i]; //In Windows, wchar_t is 16 bits
+#					else
+					data16[i] = (str[i] > 0xFFFF) ? '?' : str[i];
+#					endif
+				}
+
+				data16[len] = '\0';
 			}
 			else
 			{

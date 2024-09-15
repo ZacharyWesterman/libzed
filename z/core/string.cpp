@@ -152,29 +152,29 @@ std::ostream& operator<<(std::ostream& stream, const z::core::string<z::utf8>& o
 z::core::string<z::utf32> operator "" _u32(char value) { return z::core::string<z::utf32>(value); }
 z::core::string<z::utf32> operator "" _u32(wchar_t value) { return z::core::string<z::utf32>(value); }
 z::core::string<z::utf32> operator "" _u32(const char* value) { return z::core::string<z::utf32>(value); }
-z::core::string<z::utf32> operator "" _u32(const char* value, size_t) { return z::core::string<z::utf32>(value); }
-z::core::string<z::utf32> operator "" _u32(const wchar_t* value, size_t) { return z::core::string<z::utf32>(value); }
+z::core::string<z::utf32> operator "" _u32(const char* value, size_t len) { return z::core::string<z::utf32>(value, len); }
+z::core::string<z::utf32> operator "" _u32(const wchar_t* value, size_t len) { return z::core::string<z::utf32>(value, len); }
 
 z::core::string<z::utf16> operator "" _u16(char value) { return z::core::string<z::utf16>(value); }
 z::core::string<z::utf16> operator "" _u16(wchar_t value) { return z::core::string<z::utf16>(value); }
 z::core::string<z::utf16> operator "" _u16(const char* value) { return z::core::string<z::utf16>(value); }
-z::core::string<z::utf16> operator "" _u16(const char* value, size_t) { return z::core::string<z::utf16>(value); }
-z::core::string<z::utf16> operator "" _u16(const wchar_t* value, size_t) { return z::core::string<z::utf16>(value); }
+z::core::string<z::utf16> operator "" _u16(const char* value, size_t len) { return z::core::string<z::utf16>(value, len); }
+z::core::string<z::utf16> operator "" _u16(const wchar_t* value, size_t len) { return z::core::string<z::utf16>(value, len); }
 
 z::core::string<z::utf8> operator "" _u8(char value) { return z::core::string<z::utf8>(value); }
 z::core::string<z::utf8> operator "" _u8(wchar_t value) { return z::core::string<z::utf8>(value); }
 z::core::string<z::utf8> operator "" _u8(const char* value) { return z::core::string<z::utf8>(value); }
-z::core::string<z::utf8> operator "" _u8(const char* value, size_t) { return z::core::string<z::utf8>(value); }
-z::core::string<z::utf8> operator "" _u8(const wchar_t* value, size_t) { return z::core::string<z::utf8>(value); }
+z::core::string<z::utf8> operator "" _u8(const char* value, size_t len) { return z::core::string<z::utf8>(value, len); }
+z::core::string<z::utf8> operator "" _u8(const wchar_t* value, size_t len) { return z::core::string<z::utf8>(value, len); }
 
 z::core::string<z::ascii> operator "" _asc(char value) { return z::core::string<z::ascii>(value); }
 z::core::string<z::ascii> operator "" _asc(wchar_t value) { return z::core::string<z::ascii>(value); }
 z::core::string<z::ascii> operator "" _asc(const char* value) { return z::core::string<z::ascii>(value); }
-z::core::string<z::ascii> operator "" _asc(const char* value, size_t) { return z::core::string<z::ascii>(value); }
-z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t) { return z::core::string<z::ascii>(value); }
+z::core::string<z::ascii> operator "" _asc(const char* value, size_t len) { return z::core::string<z::ascii>(value, len); }
+z::core::string<z::ascii> operator "" _asc(const wchar_t* value, size_t len) { return z::core::string<z::ascii>(value, len); }
 
 zstring operator "" _zs(char value) { return zstring(value); }
 zstring operator "" _zs(wchar_t value) { return zstring(value); }
 zstring operator "" _zs(const char* value) { return zstring(value); }
-zstring operator "" _zs(const char* value, size_t) { return zstring(value); }
-zstring operator "" _zs(const wchar_t* value, size_t) { return zstring(value); }
+zstring operator "" _zs(const char* value, size_t len) { return zstring(value, len); }
+zstring operator "" _zs(const wchar_t* value, size_t len) { return zstring(value, len); }

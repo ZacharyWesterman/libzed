@@ -73,6 +73,30 @@ namespace z
 		}
 
 		template <>
+		string<ascii>::string(const char* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[len+1];
+				data_len = len+1;
+
+				for (size_t i=0; i<len; i++)
+					data[i] = str[i];
+
+				data[len] = '\0';
+			}
+			else
+			{
+				data = new uint8_t[1];
+				data[0] = 0;
+
+				data_len = 1;
+				character_ct = 0;
+			}
+		}
+
+		template <>
 		string<ascii>::string(const wchar_t* str) noexcept
 		{
 			if (str)
@@ -91,6 +115,35 @@ namespace z
 					else
 						data[i] = str[i];
 				}
+			}
+			else
+			{
+				data = new uint8_t[1];
+				data[0] = 0;
+
+				data_len = 1;
+				character_ct = 0;
+			}
+		}
+
+		template <>
+		string<ascii>::string(const wchar_t* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[len+1];
+				data_len = len+1;
+
+				for (size_t i=0; i<len; i++)
+				{
+					if (str[i] > 0xFF)
+						data[i] = '?';
+					else
+						data[i] = str[i];
+				}
+
+				data[len] = '\0';
 			}
 			else
 			{

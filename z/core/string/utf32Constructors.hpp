@@ -81,6 +81,32 @@ namespace z
 		}
 
 		template <>
+		string<utf32>::string(const char* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[(len+1)<<2];
+				data_len = (len+1)<<2;
+
+				uint32_t* data32 = (uint32_t*)data;
+
+				for (size_t i=0; i<len; i++)
+					data32[i] = str[i];
+
+				data32[len] = '\0';
+			}
+			else
+			{
+				data = new uint8_t[4];
+				*((uint32_t*)data) = 0;
+
+				data_len = 4;
+				character_ct = 0;
+			}
+		}
+
+		template <>
 		string<utf32>::string(const wchar_t* str) noexcept
 		{
 			if (str)
@@ -96,6 +122,32 @@ namespace z
 
 				for (int i=0; i<len; i++)
 					data32[i] = str[i];
+			}
+			else
+			{
+				data = new uint8_t[4];
+				*((uint32_t*)data) = 0;
+
+				data_len = 4;
+				character_ct = 0;
+			}
+		}
+
+		template <>
+		string<utf32>::string(const wchar_t* str, size_t len) noexcept
+		{
+			if (str)
+			{
+				character_ct = len;
+				data = new uint8_t[(len+1)<<2];
+				data_len = (len+1)<<2;
+
+				uint32_t* data32 = (uint32_t*)data;
+
+				for (size_t i=0; i<len; i++)
+					data32[i] = str[i];
+
+				data32[len] = '\0';
 			}
 			else
 			{

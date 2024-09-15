@@ -123,6 +123,16 @@ namespace z
 			string(const char* str) noexcept;
 
 			/**
+			* \brief Construct from a cstring of single-byte characters, with a known length.
+			*
+			* \param str A cstring, which may or may not be null-terminated.
+			* \param len The length of the string.
+			*
+			* All characters are assumed to be compatible with this string's encoding.
+			*/
+			string(const char* str, size_t len) noexcept;
+
+			/**
 			* \brief Construct from a cstring of wide characters.
 			*
 			* \param str Null-terminated cstring.
@@ -133,6 +143,16 @@ namespace z
 			string(const wchar_t* str) noexcept;
 
 			/**
+			* \brief Construct from a cstring of wide characters, with a known length.
+			*
+			* \param str A cstring, which may or may not be null-terminated.
+			* \param len The length of the string.
+			*
+			* All characters are assumed to be compatible with this string's encoding.
+			*/
+			string(const wchar_t* str, size_t len) noexcept;
+
+			/**
 			* \brief Construct from a std::string.
 			*
 			* \param str The string to copy.
@@ -141,7 +161,7 @@ namespace z
 			*/
 			string(const std::string& str) noexcept
 			{
-				string(str.c_str());
+				string(str.c_str(), str.length());
 			}
 
 			/**
