@@ -18,7 +18,7 @@ int main()
 	}
 
 	//Load a symbol, assuming it to be a function that returns void and has no parameters.
-	auto func = lib.function<void>("test");
+	auto func = lib.function<void()>("test");
 	if (!func)
 	{
 		std::cout << "Unable to load symbol \"test\"." << std::endl;

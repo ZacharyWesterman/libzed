@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include "../core/string.hpp"
 
 namespace z
@@ -12,12 +13,12 @@ namespace z
 		* This class is meant to allow an easy and
 		* platform-independent way to dynamically load libraries
 		* at run time. Note that if this is compiled for Linux,
-		* the linker flag <B>-ldl</B> must be included.
+		* the linker flag `-ldl` must be included.
 		*/
 		class library
 		{
-		private:
 			void* lib_ptr;
+			void* getRawSymbol(const zpath& symbolName) noexcept;
 
 		public:
 			/**
@@ -100,9 +101,9 @@ namespace z
 			*
 			* Example usage:
 			* To get a function of the form `bool func(int, float)`, call
-			* `this_lib.function<bool, int, float>("symbol_name")`. To
+			* `this_lib.function<bool(int, float)>("symbol_name")`. To
 			* get a function of the form `void func()`, call
-			* `this_lib.function<void>("symbol_name")`.
+			* `this_lib.function<void()>("symbol_name")`.
 			*
 			* \param symbolName the name of the symbol to retrieve.
 			*
@@ -110,14 +111,11 @@ namespace z
 			* a pointer to the symbol. Otherwise, if the symbol was not
 			* found or the library hasn't been loaded, returns \b NULL.
 			*/
-			template<typename RETURNTYPE, typename... PARAMTYPES>
-			RETURNTYPE (* function(const zpath& symbolName) noexcept)(PARAMTYPES...)
+			template<typename T>
+			std::function<T> function(const zpath& symbolName) noexcept
 			{
-				return reinterpret_cast<RETURNTYPE (*)(PARAMTYPES...)>(getRawSymbol(symbolName));
+				return std::function<T>(reinterpret_cast<T*>(getRawSymbol(symbolName)));
 			}
-
-		private:
-			void* getRawSymbol(const zpath& symbolName) noexcept;
 		};
 	}
 }
