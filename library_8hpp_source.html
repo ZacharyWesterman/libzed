@@ -101,62 +101,60 @@ $(document).ready(function(){initNavTree('library_8hpp_source.html',''); initRes
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../core/string.hpp&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>z</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">namespace </span>file</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html">   17</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classz_1_1file_1_1library.html">library</a></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../core/string.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>z</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">namespace </span>file</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html">   18</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classz_1_1file_1_1library.html">library</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keywordtype">void</span>* lib_ptr;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7">   26</a></span>            <a class="code hl_function" href="classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7">library</a>() noexcept;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#ac8c5743402e5f0ab3c50bb0f3deeb5eb">   31</a></span>            ~<a class="code hl_class" href="classz_1_1file_1_1library.html">library</a>() noexcept;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">   43</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">load</a>(const <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; fileName, <span class="keywordtype">bool</span> autoExtension = true) noexcept;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">   51</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">unload</a>() noexcept;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972">   61</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972">good</a>() noexcept;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">   71</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">bad</a>() noexcept;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            template&lt;typename T&gt;</div>
-<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">   86</a></span>            T* <a class="code hl_function" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">symbol</a>(const <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) noexcept</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(getRawSymbol(symbolName));</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordtype">void</span>* getRawSymbol(<span class="keyword">const</span> <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7">   27</a></span>            <a class="code hl_function" href="classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7">library</a>() noexcept;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#ac8c5743402e5f0ab3c50bb0f3deeb5eb">   32</a></span>            ~<a class="code hl_class" href="classz_1_1file_1_1library.html">library</a>() noexcept;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">   44</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">load</a>(const <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; fileName, <span class="keywordtype">bool</span> autoExtension = true) noexcept;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">   52</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">unload</a>() noexcept;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972">   62</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972">good</a>() noexcept;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">   72</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">bad</a>() noexcept;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            template&lt;typename T&gt;</div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">   87</a></span>            T* <a class="code hl_function" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">symbol</a>(const <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) noexcept</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(getRawSymbol(symbolName));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            }</div>
 </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURNTYPE, <span class="keyword">typename</span>... PARAMTYPES&gt;</div>
-<div class="foldopen" id="foldopen00114" data-start="{" data-end="};">
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#a2a8ccebecdd020c880c12f8ac37a92a5">  114</a></span>            RETURNTYPE (* <a class="code hl_variable" href="classz_1_1file_1_1library.html#a2a8ccebecdd020c880c12f8ac37a92a5">function</a>(<span class="keyword">const</span> <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) <span class="keyword">noexcept</span>)(PARAMTYPES...)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>RETURNTYPE (*)(PARAMTYPES...)<span class="keyword">&gt;</span>(getRawSymbol(symbolName));</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7">  115</a></span>            std::function&lt;T&gt; <a class="code hl_function" href="classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7">function</a>(<span class="keyword">const</span> <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="keywordflow">return</span> std::function&lt;T&gt;(<span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(getRawSymbol(symbolName)));</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            }</div>
 </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordtype">void</span>* getRawSymbol(<span class="keyword">const</span> <a class="code hl_class" href="classz_1_1core_1_1circularIterator.html">zpath</a>&amp; symbolName) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        };</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        };</div>
 </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
 <div class="ttc" id="aclassz_1_1core_1_1circularIterator_html"><div class="ttname"><a href="classz_1_1core_1_1circularIterator.html">z::core::circularIterator</a></div><div class="ttdoc">A custom iterator for circular buffers.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:16</div></div>
-<div class="ttc" id="aclassz_1_1file_1_1library_html"><div class="ttname"><a href="classz_1_1file_1_1library.html">z::file::library</a></div><div class="ttdoc">A class for loading dynamic libraries.</div><div class="ttdef"><b>Definition</b> library.hpp:18</div></div>
+<div class="ttc" id="aclassz_1_1file_1_1library_html"><div class="ttname"><a href="classz_1_1file_1_1library.html">z::file::library</a></div><div class="ttdoc">A class for loading dynamic libraries.</div><div class="ttdef"><b>Definition</b> library.hpp:19</div></div>
 <div class="ttc" id="aclassz_1_1file_1_1library_html_a1162df171e1f876a7e38a970d6809c82"><div class="ttname"><a href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">z::file::library::unload</a></div><div class="ttdeci">bool unload() noexcept</div><div class="ttdoc">Unload the dynamic library.</div></div>
-<div class="ttc" id="aclassz_1_1file_1_1library_html_a2a8ccebecdd020c880c12f8ac37a92a5"><div class="ttname"><a href="classz_1_1file_1_1library.html#a2a8ccebecdd020c880c12f8ac37a92a5">z::file::library::function</a></div><div class="ttdeci">RETURNTYPE(*)(PARAMTYPES...) function(const zpath &amp;symbolName) noexcept</div><div class="ttdoc">Get a pointer to the function with the given name.</div><div class="ttdef"><b>Definition</b> library.hpp:114</div></div>
 <div class="ttc" id="aclassz_1_1file_1_1library_html_a59bd01bd5c402f7508569cad06f42972"><div class="ttname"><a href="classz_1_1file_1_1library.html#a59bd01bd5c402f7508569cad06f42972">z::file::library::good</a></div><div class="ttdeci">bool good() noexcept</div><div class="ttdoc">Get whether the library has been loaded.</div></div>
 <div class="ttc" id="aclassz_1_1file_1_1library_html_a8f3da2f213a7e5f83a75448256c001b7"><div class="ttname"><a href="classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7">z::file::library::library</a></div><div class="ttdeci">library() noexcept</div><div class="ttdoc">Default empty constructor.</div></div>
 <div class="ttc" id="aclassz_1_1file_1_1library_html_aa2f463c8136fc0a31f7db650f5be7a02"><div class="ttname"><a href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">z::file::library::load</a></div><div class="ttdeci">bool load(const zpath &amp;fileName, bool autoExtension=true) noexcept</div><div class="ttdoc">Load a dynamic library with the given file name.</div></div>
 <div class="ttc" id="aclassz_1_1file_1_1library_html_aabe0eecebc67dc5d6842bc7492b40795"><div class="ttname"><a href="classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795">z::file::library::bad</a></div><div class="ttdeci">bool bad() noexcept</div><div class="ttdoc">Get whether the library has not been loaded.</div></div>
-<div class="ttc" id="aclassz_1_1file_1_1library_html_ad90549a70e68643d15bd9ff4b40bae8a"><div class="ttname"><a href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">z::file::library::symbol</a></div><div class="ttdeci">T * symbol(const zpath &amp;symbolName) noexcept</div><div class="ttdoc">Get a pointer to the symbol with the given name.</div><div class="ttdef"><b>Definition</b> library.hpp:86</div></div>
+<div class="ttc" id="aclassz_1_1file_1_1library_html_ab2a64f6aa686ce7b9b8653c02d7f9ab7"><div class="ttname"><a href="classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7">z::file::library::function</a></div><div class="ttdeci">std::function&lt; T &gt; function(const zpath &amp;symbolName) noexcept</div><div class="ttdoc">Get a pointer to the function with the given name.</div><div class="ttdef"><b>Definition</b> library.hpp:115</div></div>
+<div class="ttc" id="aclassz_1_1file_1_1library_html_ad90549a70e68643d15bd9ff4b40bae8a"><div class="ttname"><a href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">z::file::library::symbol</a></div><div class="ttdeci">T * symbol(const zpath &amp;symbolName) noexcept</div><div class="ttdoc">Get a pointer to the symbol with the given name.</div><div class="ttdef"><b>Definition</b> library.hpp:87</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

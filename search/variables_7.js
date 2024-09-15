@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['phi_0',['phi',['../namespacez_1_1math.html#a16d02c5f2d1bde240f47a45c676a3e12',1,'z::math']]],
-  ['pi_1',['pi',['../namespacez_1_1math.html#ab8fdf94bd8614236e8a0c5d307354e07',1,'z::math']]]
+  ['right_0',['right',['../classz_1_1util_1_1dictRange.html#ad7fdab6d43ff21003afc4a264c4274ca',1,'z::util::dictRange']]]
 ];
