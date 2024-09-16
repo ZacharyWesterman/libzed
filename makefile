@@ -41,9 +41,10 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 	-W -Wall -Wextra -Wno-psabi -Werror \
 	-pedantic -fexceptions \
 	-fPIC \
-	-fdata-sections -ffunction-sections
+	-fdata-sections -ffunction-sections \
+	$(EXTRA_CFLAGS)
 
-LFLAGS = -shared $(CCTARGET)
+LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 
 STD = c++17
 
@@ -84,6 +85,8 @@ endif
 ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
+#In Windows, some versions of GCC will falsely complain about "writing 1 byte into a region of size 0". Disable this warning.
+Z_STRING_FLAGS = -Wno-stringop-overflow
 else
 # link to std::filesystem if c++17 and linux
 ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
@@ -136,7 +139,7 @@ $(STATIC_LIB): $(OBJS)
 	$(CC) $(CCFLAGS) -o $@ -c $<
 
 z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
-	$(CC) $(CCFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) $(Z_STRING_FLAGS) -o $@ -c $<
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CCFLAGS) -o $@ -c $<
@@ -163,9 +166,12 @@ rebuild: clean default
 lint:
 	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
 
-docs:
+dox: html
+docs: html
+
+html:
 	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
 	doxygen
 	rm doxygen-awesome.css
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox

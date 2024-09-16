@@ -1469,7 +1469,7 @@ namespace z
 			* \param ordinal If true, output with ordinal suffix.
 			* \return A string of English words representing the number's value.
 			*/
-			static string words(long value, bool ordinal=false) noexcept
+			static string words(long long value, bool ordinal=false) noexcept
 			{
 				const char* tens[] = {
 					"", "",
@@ -1511,7 +1511,7 @@ namespace z
 					"hundred"
 				};
 
-				const long powvals[] = {
+				const long long powvals[] = {
 					#if __x86_64__
 					1000000000000000000,
 					1000000000000000,
@@ -1588,7 +1588,7 @@ namespace z
 			* \param value The value get the ordinal suffix of.
 			* \return A 2-character string representing the ordinal suffix of the given number.
 			*/
-			static string ordinal(long value) noexcept
+			static string ordinal(long long value) noexcept
 			{
 				value %= 100;
 				if (((value % 10) == 3) && (value != 13))
