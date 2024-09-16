@@ -143,6 +143,15 @@ void trimFloatBuf(int base, bool force, uint8_t* fbuf, int* fbufsiz, uint8_t* ib
 #include "string/utf32.hpp"
 #include "string/utf8.hpp"
 
+#define ENCODING ascii
+#include "string/shared.hpp"
+#define ENCODING utf8
+#include "string/shared.hpp"
+#define ENCODING utf16
+#include "string/shared.hpp"
+#define ENCODING utf32
+#include "string/shared.hpp"
+
 std::ostream& operator<<(std::ostream& stream, const z::core::string<z::utf8>& object)
 {
 	return stream << object.cstring();
