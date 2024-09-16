@@ -99,12 +99,12 @@ namespace z
 				}
 			}
 
-			constexpr size_t size() const noexcept override
+			size_t size() const noexcept override
 			{
 				return sizeof(TYPE) * LEN;
 			}
 
-			constexpr int length() const noexcept override
+			int length() const noexcept override
 			{
 				return LEN;
 			}

@@ -20,3 +20,6 @@
 
 ///Matrices
 #include "math/matrix.hpp"
+
+///String math
+#include "math/levenschtein.hpp"
