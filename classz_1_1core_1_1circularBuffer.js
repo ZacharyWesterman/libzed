@@ -11,12 +11,12 @@ var classz_1_1core_1_1circularBuffer =
     [ "current", "classz_1_1core_1_1circularBuffer.html#a151c3dcf3fbdf9b92d8b4fb98665ee2b", null ],
     [ "end", "classz_1_1core_1_1circularBuffer.html#a99007d51306c57886410c2af9fbb09e8", null ],
     [ "index", "classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937", null ],
-    [ "length", "classz_1_1core_1_1circularBuffer.html#aed3f2aac2b359eaeb8d8021d5abb1ab7", null ],
+    [ "length", "classz_1_1core_1_1circularBuffer.html#abdf607e69fb54b98d2d2cea6e0664983", null ],
     [ "maximum", "classz_1_1core_1_1circularBuffer.html#a61ffe8804b5467584f8710e04197f797", null ],
     [ "minimum", "classz_1_1core_1_1circularBuffer.html#a12fdf673a318954aaeda851dd63e9618", null ],
     [ "next", "classz_1_1core_1_1circularBuffer.html#a6e3b0f3012be36958481280c8238f895", null ],
     [ "populate", "classz_1_1core_1_1circularBuffer.html#a70dae61d9132e581cb221997051be32c", null ],
     [ "populate", "classz_1_1core_1_1circularBuffer.html#a2ff63ff3aada37d733ec8970d78a2ae2", null ],
     [ "prev", "classz_1_1core_1_1circularBuffer.html#a8b0b47af151214890dfdb594de3dd295", null ],
-    [ "size", "classz_1_1core_1_1circularBuffer.html#a92c361fd3b14c8ef0ab3ebdfc6406a0f", null ]
+    [ "size", "classz_1_1core_1_1circularBuffer.html#a37a1bb83c72be84f872ef79df6402b96", null ]
 ];

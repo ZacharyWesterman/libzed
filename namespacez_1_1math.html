@@ -130,6 +130,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a5d68e5d03b2df4c0db338569b66fed30" id="r_a5d68e5d03b2df4c0db338569b66fed30"><td class="memItemLeft" align="right" valign="top">std::complex&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a5d68e5d03b2df4c0db338569b66fed30">gcd</a> (const std::complex&lt; long &gt; &amp;x, const std::complex&lt; long &gt; &amp;y) noexcept</td></tr>
 <tr class="memdesc:a5d68e5d03b2df4c0db338569b66fed30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the greatest common denominator of two complex integers.  <br /></td></tr>
 <tr class="separator:a5d68e5d03b2df4c0db338569b66fed30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e" id="r_a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E&gt; </td></tr>
+<tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e">levenschtein</a> (const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word1, const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word2, int max=16) noexcept</td></tr>
+<tr class="memdesc:a0fd66ad1b980886da9c9a4a88193116e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Levenshtein distance between two strings with an optional maximum threshold.  <br /></td></tr>
+<tr class="separator:a0fd66ad1b980886da9c9a4a88193116e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad23d182483378f2ba9c3e2ad2e9ca8c" id="r_aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#aad23d182483378f2ba9c3e2ad2e9ca8c">zeta</a> (const int s) noexcept</td></tr>
 <tr class="memdesc:aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function for approximating Reimann-zeta sums.  <br /></td></tr>
 <tr class="separator:aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,6 +379,63 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>phi</b> = 1.6
 <dl class="section return"><dt>Returns</dt><dd>The greatest common denominator of both numbers.</dd></dl>
 <dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacez_1_1math.html#a5d68e5d03b2df4c0db338569b66fed30" title="Calculate the greatest common denominator of two complex integers.">gcd(const std::complex&lt;long&gt;&amp;,const std::complex&lt;long&gt;&amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0fd66ad1b980886da9c9a4a88193116e" name="a0fd66ad1b980886da9c9a4a88193116e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fd66ad1b980886da9c9a4a88193116e">&#9670;&#160;</a></span>levenschtein()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int z::math::levenschtein </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>word1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;&#160;</td>
+          <td class="paramname"><em>word2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em> = <code>16</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the Levenshtein distance between two strings with an optional maximum threshold. </p>
+<p>This function calculates the Levenshtein distance, which is a metric for measuring the difference between two strings <code>word1</code> and <code>word2</code>. It represents the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into the other.</p>
+<p>The function allows for an optional maximum distance <code>max</code>. If the calculated Levenshtein distance exceeds this threshold, it will return early with the maximum possible value, as the strings are &ndash; for all intents and purposes &ndash; completely different.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">word1</td><td>The first string to compare. </td></tr>
+    <tr><td class="paramname">word2</td><td>The second string to compare. </td></tr>
+    <tr><td class="paramname">max</td><td>The optional maximum distance threshold. If the Levenshtein distance exceeds this value, the maximum integer value is returned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Levenshtein distance between the two strings. </dd></dl>
 
 </div>
 </div>
