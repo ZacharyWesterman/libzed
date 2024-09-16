@@ -23,5 +23,5 @@ var searchData=
   ['operator_3e_20',['operator&gt;',['../classz_1_1core_1_1array.html#a130988c06198f98bf7b2eab6b94de5af',1,'z::core::array::operator&gt;()'],['../classz_1_1core_1_1string.html#a52b71a49ce01ad6de4b49d7fb8f90f6f',1,'z::core::string::operator&gt;()']]],
   ['operator_3e_3d_21',['operator&gt;=',['../classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780',1,'z::core::array::operator&gt;=()'],['../classz_1_1core_1_1string.html#a27ab0b269111dc5a51da7583d1da9358',1,'z::core::string::operator&gt;=()']]],
   ['operator_5b_5d_22',['operator[]',['../classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a',1,'z::core::indexable']]],
-  ['ordinal_23',['ordinal',['../classz_1_1core_1_1string.html#ad38514a389f48290ed67d4db73be4a2b',1,'z::core::string']]]
+  ['ordinal_23',['ordinal',['../classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1',1,'z::core::string']]]
 ];

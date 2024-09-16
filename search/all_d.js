@@ -27,5 +27,5 @@ var searchData=
   ['operator_5b_5d_24',['operator[]',['../classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a',1,'z::core::indexable']]],
   ['optional_20dependency_25',['Optional dependency',['../index.html#autotoc_md2',1,'']]],
   ['options_26',['Build options',['../index.html#autotoc_md3',1,'']]],
-  ['ordinal_27',['ordinal',['../classz_1_1core_1_1string.html#ad38514a389f48290ed67d4db73be4a2b',1,'z::core::string']]]
+  ['ordinal_27',['ordinal',['../classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1',1,'z::core::string']]]
 ];
