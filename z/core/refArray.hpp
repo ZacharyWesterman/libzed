@@ -59,6 +59,10 @@ public:
 	template <typename... Args> refArray(const T &arg1, const Args &...args) {
 		this->init(arg1, args...);
 	}
+
+	virtual bool operator()(const T &arg1, const T &arg2) const override {
+		return greater(*arg1, *arg2);
+	}
 };
 } // namespace core
 } // namespace z
