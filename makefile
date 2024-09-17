@@ -164,7 +164,7 @@ cleandox:
 rebuild: clean default
 
 lint:
-	clang-tidy -header-filter=.* $(SRCS) -- $(CCFLAGS) -Wno-unused-private-field >lint.log
+	find z/ -type f -name '*.cpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- $(CCFLAGS) -Wno-unused-private-field > lint.log
 
 dox: html
 docs: html
