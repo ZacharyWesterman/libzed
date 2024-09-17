@@ -3,7 +3,7 @@ var searchData=
   ['increase_0',['increase',['../classz_1_1core_1_1string.html#ac428c7c81a4b4b76cfa8b68eafa00076',1,'z::core::string::increase()'],['../classz_1_1core_1_1array.html#a04b6d23e5d9586b798df18aac714aa4d',1,'z::core::array::increase()']]],
   ['index_1',['index',['../classz_1_1core_1_1circularBuffer.html#a424095edd234c7f59405d9b1b39d3937',1,'z::core::circularBuffer']]],
   ['info_2',['info',['../classz_1_1file_1_1info.html#aeb4d545c42083739c34e834a4b7016dd',1,'z::file::info']]],
-  ['init_3',['init',['../classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3',1,'z::core::array::init(const T &amp;arg1)'],['../classz_1_1core_1_1array.html#a6d729c7bb182377cdb90e537cd4e1187',1,'z::core::array::init(const T &amp;arg1, const Args &amp;... args)']]],
+  ['init_3',['init',['../classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3',1,'z::core::array::init(const T &amp;arg1)'],['../classz_1_1core_1_1array.html#a8baac7448507925fc559e1d310809c6e',1,'z::core::array::init(const T &amp;arg1, const Args &amp;...args)']]],
   ['insert_4',['insert',['../classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aef7a2f1f19646da680ff76db8f744ebf',1,'z::core::string::insert(const string &amp;other, int index) noexcept']]],
   ['integer_5',['integer',['../classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a',1,'z::core::string::integer()'],['../classz_1_1util_1_1generic.html#adc841964eb03fbb344356931acdbd5d6',1,'z::util::generic::integer() const noexcept']]],
   ['is_6',['is',['../classz_1_1util_1_1generic.html#a9571a5652422f3d0c572924f35d7713c',1,'z::util::generic']]],
