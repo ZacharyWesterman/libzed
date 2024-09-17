@@ -75,7 +75,7 @@ public:
 	 * \brief Constructor
 	 * \param caseSensitive Whether searches on this dictionary are case sensitive.
 	 */
-	dictionary(bool caseSensitive = false) noexcept : caseSensitive(caseSensitive), readingStream(false), maxWordLen(0) {};
+	dictionary(bool caseSensitive = false) noexcept : caseSensitive(caseSensitive), readingStream(false), maxWordLen(0) {}
 
 	/// Destructor
 	~dictionary() noexcept;

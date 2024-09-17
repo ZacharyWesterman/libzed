@@ -164,7 +164,10 @@ cleandox:
 rebuild: clean default
 
 lint:
-	find z/ -type f -name '*.cpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- $(CCFLAGS) -Wno-unused-private-field > lint.log
+	find z/ -type f -name '*.cpp' -not -name 'catch.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- $(CCFLAGS) -Wno-unused-private-field > lint.log
+
+format:
+	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
 
 dox: html
 docs: html
@@ -174,4 +177,4 @@ html:
 	doxygen
 	rm doxygen-awesome.css
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format
