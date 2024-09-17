@@ -13,11 +13,9 @@
  *
  * \threadsafe_function_yes
  */
-template <typename T>
-bool operator>(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcept
-{
-	T norm1 = arg1.real()*arg1.real() + arg1.imag()*arg1.imag();
-	T norm2 = arg2.real()*arg2.real() + arg2.imag()*arg2.imag();
+template <typename T> bool operator>(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+	T norm1 = arg1.real() * arg1.real() + arg1.imag() * arg1.imag();
+	T norm2 = arg2.real() * arg2.real() + arg2.imag() * arg2.imag();
 
 	return norm1 > norm2;
 }
@@ -33,11 +31,9 @@ bool operator>(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcep
  *
  * \threadsafe_function_yes
  */
-template <typename T>
-bool operator<(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcept
-{
-	T norm1 = arg1.real()*arg1.real() + arg1.imag()*arg1.imag();
-	T norm2 = arg2.real()*arg2.real() + arg2.imag()*arg2.imag();
+template <typename T> bool operator<(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+	T norm1 = arg1.real() * arg1.real() + arg1.imag() * arg1.imag();
+	T norm2 = arg2.real() * arg2.real() + arg2.imag() * arg2.imag();
 
 	return norm1 < norm2;
 }
@@ -54,9 +50,7 @@ bool operator<(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcep
  *
  * \threadsafe_function_yes
  */
-template <typename T>
-bool operator>=(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcept
-{
+template <typename T> bool operator>=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	return !(operator<(arg1, arg2));
 }
 
@@ -72,8 +66,6 @@ bool operator>=(const std::complex<T>& arg1, const std::complex<T>& arg2) noexce
  *
  * \threadsafe_function_yes
  */
-template <typename T>
-bool operator<=(const std::complex<T>& arg1, const std::complex<T>& arg2) noexcept
-{
+template <typename T> bool operator<=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	return !(operator>(arg1, arg2));
 }

@@ -64,5 +64,5 @@
         "map": "cpp",
         "set": "cpp"
     },
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
 }

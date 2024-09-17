@@ -3,23 +3,23 @@
  * \file z/math.hpp
  * \namespace z::math
  * \brief This section contains math-related functions, constants, and datatypes.
-**/
+ **/
 
-///Constants
+/// Constants
 #include "math/constants.hpp"
 
-///Functions
+/// Functions
 #include "math/factorial.hpp"
 #include "math/fibonacci.hpp"
 #include "math/gcd.hpp"
 #include "math/remainder.hpp"
 #include "math/zeta.hpp"
 
-///Operators
+/// Operators
 #include "math/complexOps.hpp"
 
-///Matrices
+/// Matrices
 #include "math/matrix.hpp"
 
-///String math
+/// String math
 #include "math/levenschtein.hpp"

@@ -6,10 +6,10 @@
  *
  * This section adds extra classes and functionality
  * for more complicated data manipulation.
-**/
+ **/
 
-///Generic class
+/// Generic class
 #include "util/generic.hpp"
 
-///Dictionary
+/// Dictionary
 #include "util/dictionary.hpp"
