@@ -5,7 +5,7 @@ var classz_1_1core_1_1array =
     [ "array", "classz_1_1core_1_1array.html#a4eb59da79dc5b03c05437c4f61014695", null ],
     [ "array", "classz_1_1core_1_1array.html#ad209824099ad854bc24b368733840d6c", null ],
     [ "~array", "classz_1_1core_1_1array.html#aa1a7259bdf173e04f1ab908d5327a65e", null ],
-    [ "add", "classz_1_1core_1_1array.html#a60999f0a64d2c6a0eddab40760a8d939", null ],
+    [ "add", "classz_1_1core_1_1array.html#a42ef4dd7d7fcb8c90eac2eb56f010fa2", null ],
     [ "add", "classz_1_1core_1_1array.html#ab50fcdc284b701c282d01aa397cfed09", null ],
     [ "append", "classz_1_1core_1_1array.html#a9e4325166734d7d716dbdec5f60cc5f1", null ],
     [ "at", "classz_1_1core_1_1array.html#a864612cf1e7ec4e895e3211687ba2f82", null ],
