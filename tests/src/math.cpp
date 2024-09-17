@@ -2,8 +2,7 @@
 
 #include "../../z/math/fibonacci.hpp"
 
-TEST_CASE("Computing Fibonacci numbers", "[z::math::fibonacci]")
-{
+TEST_CASE("Computing Fibonacci numbers", "[z::math::fibonacci]") {
 	REQUIRE(z::math::fibonacci(0) == 0);
 	REQUIRE(z::math::fibonacci(1) == 1);
 	REQUIRE(z::math::fibonacci(2) == 1);
