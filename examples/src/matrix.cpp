@@ -1,8 +1,7 @@
-#include <z/all.hpp>
 #include <iostream>
+#include <z/all.hpp>
 
-int main()
-{
-    z::math::matrix<5> matrix;
-    std::cout << matrix.det() << std::endl;
+int main() {
+	z::math::matrix<5> matrix;
+	std::cout << matrix.det() << std::endl;
 }

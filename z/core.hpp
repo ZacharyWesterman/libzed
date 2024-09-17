@@ -8,25 +8,25 @@
  * required as it is often referenced by other parts of the library.
  * It can be used by itself, however, as it does not
  * require any libraries besides STL.
-**/
+ **/
 
-///Strings
+/// Strings
 #include "core/string.hpp"
 
-///Arrays
+/// Arrays
 #include "core/array.hpp"
-#include "core/sortedArray.hpp"
-#include "core/refArray.hpp"
-#include "core/sortedRefArray.hpp"
 #include "core/circularBuffer.hpp"
+#include "core/refArray.hpp"
+#include "core/sortedArray.hpp"
+#include "core/sortedRefArray.hpp"
 
-///Timers
-#include "core/timer.hpp"
+/// Timers
 #include "core/timeout.hpp"
+#include "core/timer.hpp"
 
-///Miscellaneous
+/// Miscellaneous
 #include "core/charFunctions.hpp"
+#include "core/compare.hpp"
+#include "core/join.hpp"
 #include "core/sizable.hpp"
 #include "core/split.hpp"
-#include "core/join.hpp"
-#include "core/compare.hpp"
