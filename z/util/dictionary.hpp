@@ -75,13 +75,14 @@ namespace z
 
 			bool caseSensitive;
 			bool readingStream;
+			int maxWordLen;
 
 		public:
 			/**
 			* \brief Constructor
 			* \param caseSensitive Whether searches on this dictionary are case sensitive.
 			*/
-			dictionary(bool caseSensitive = false) noexcept : caseSensitive(caseSensitive), readingStream(false) {};
+			dictionary(bool caseSensitive = false) noexcept : caseSensitive(caseSensitive), readingStream(false), maxWordLen(0) {};
 
 			///Destructor
 			~dictionary() noexcept;
@@ -192,6 +193,8 @@ namespace z
 			* \return true if the range can be narrowed further, false otherwise.
 			*/
 			bool narrow(dictRange* wordRange, uint32_t nextChar) const noexcept;
+
+			int maxWordLength() const noexcept;
 
 			dictIter begin() const noexcept override;
 			dictIter end() const noexcept override;

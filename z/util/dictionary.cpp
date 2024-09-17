@@ -2,6 +2,7 @@
 #include "../core/charFunctions.hpp"
 
 #include <iostream>
+#include <algorithm>
 
 namespace z
 {
@@ -29,6 +30,7 @@ namespace z
 			if (!readingStream)
 			{
 				clear();
+				maxWordLen = 0;
 				readingStream = true;
 			}
 
@@ -45,6 +47,8 @@ namespace z
 						wordList.append(word);
 					else
 						wordList.add(word);
+
+					maxWordLen = std::max(word->length(), maxWordLen);
 				}
 				else
 					delete word;
@@ -78,7 +82,9 @@ namespace z
 
 		void dictionary::addWord(const zstring& word) noexcept
 		{
-			if (find(word) < 0) wordList.add(new zstring(caseSensitive ? word : word.lower()));
+			auto wordptr = new zstring(caseSensitive ? word : word.lower());
+			maxWordLen = std::max(wordptr->length(), maxWordLen);
+			if (find(wordptr) < 0) wordList.add(wordptr);
 		}
 
 		bool dictionary::isCaseSensitive() const noexcept
@@ -192,6 +198,11 @@ namespace z
 		const zstring& dictionary::at(int index) const
 		{
 			return *(wordList.at(index));
+		}
+
+		int dictionary::maxWordLength() const noexcept
+		{
+			return maxWordLen;
 		}
 	}
 }
