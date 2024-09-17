@@ -155,22 +155,11 @@ template <> string<ENCODING> string<ENCODING>::ordinal(long long value) noexcept
 
 template <> string<ENCODING> string<ENCODING>::words(long long value, bool ordinal) noexcept {
 	const char *tens[] = {"", "", "twen", "thir", "four", "fif", "six", "seven", "eigh", "nine"};
-
 	const char *ones[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"};
-
 	const char *ord[] = {"", "fir", "seco", "thi", "for", "fif", "six", "seven", "eigh", "nin", "ten", "eleven", "twelf"};
 
-	const char *powers[] = {
-#if __x86_64__
-			"quintillion", "quadrillion", "trillion",
-#endif
-			"billion",		 "million",			"thousand", "hundred"};
-
-	const long long powvals[] = {
-#if __x86_64__
-			1000000000000000000, 1000000000000000, 1000000000000,
-#endif
-			1000000000,					 1000000,					 1000,					100};
+	const char *powers[] = {"quintillion", "quadrillion", "trillion", "billion", "million", "thousand", "hundred"};
+	const long long powvals[] = {1000000000000000000, 1000000000000000, 1000000000000, 1000000000, 1000000, 1000, 100};
 
 	string<ENCODING> result;
 	auto orig_value = value;
