@@ -659,7 +659,12 @@ template <typename T> array<T> &array<T>::insert(const T &object, int index) {
  *
  * Appends the given data to the end of the array.
  *
+ * \warning This method ignores any sorting that the current array may have in place!
+ * Subsequent searches on sorted arrays may return unpredictable results if used incorrectly.
+ *
  * \param object the data to aappend to the array.
+ * \see add()
+ * \see push()
  */
 template <typename T> void array<T>::append(const T &object) {
 	array_data.push_back(object);
