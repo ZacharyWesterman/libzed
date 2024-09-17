@@ -37,6 +37,9 @@ public:
 
 	virtual int find(const T &) const override;
 	virtual int findInsert(const T &, bool allowDuplicates = true) const;
+
+	// For sorted arrays, shuffle does nothing.
+	virtual void shuffle() noexcept override {}
 };
 
 /**

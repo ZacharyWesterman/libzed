@@ -2,6 +2,7 @@
 
 #include <functional>
 #include <initializer_list>
+#include <random>
 #include <vector>
 
 #include "arrayLike.hpp"
@@ -247,6 +248,18 @@ public:
 	array sorted(std::function<bool(const T &, const T &)> lambda) const noexcept {
 		auto new_array = *this;
 		new_array.sort(lambda);
+		return new_array;
+	}
+
+	virtual void shuffle() noexcept {
+		std::random_device device;
+		std::mt19937 generator(device());
+		std::shuffle(array_data.begin(), array_data.end(), generator);
+	}
+
+	array shuffled() const noexcept {
+		auto new_array = *this;
+		new_array.shuffle();
 		return new_array;
 	}
 
