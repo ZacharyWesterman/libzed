@@ -159,9 +159,24 @@ public:
 	 *
 	 * \param other the array to copy from.
 	 */
-	void add(const array &other) {
-		for (int i = 0; i < other.size(); i++)
+	void add(const array &other) noexcept {
+		for (int i = 0; i < other.size(); i++) {
 			add(other.array_data[i]);
+		}
+	}
+
+	inline void push(const T &object) noexcept {
+		add(object);
+	}
+
+	inline void push(const array &other) noexcept {
+		add(other);
+	}
+
+	T pop() {
+		T element = at(length());
+		array_data.pop_back();
+		return element;
 	}
 
 	array &insert(const T &, int);
@@ -195,9 +210,11 @@ public:
 	 * \b -1 if it was not found.
 	 */
 	virtual int find(const T &object) const {
-		for (int i = 0; i < (int)array_data.size(); i++)
-			if (eq(array_data.at(i), object))
+		for (int i = 0; i < (int)array_data.size(); i++) {
+			if (eq(array_data.at(i), object)) {
 				return i;
+			}
+		}
 
 		return -1;
 	}
@@ -213,6 +230,26 @@ public:
 		return find(object) > -1;
 	}
 
+	void sort() noexcept {
+		std::sort(array_data.begin(), array_data.end(), *this);
+	}
+
+	void sort(std::function<bool(const T &, const T &)> lambda) noexcept {
+		std::sort(array_data.begin(), array_data.end(), lambda);
+	}
+
+	array sorted() const noexcept {
+		auto new_array = *this;
+		new_array.sort();
+		return new_array;
+	}
+
+	array sorted(std::function<bool(const T &, const T &)> lambda) const noexcept {
+		auto new_array = *this;
+		new_array.sort(lambda);
+		return new_array;
+	}
+
 	array &operator=(const array &other);
 	array &operator=(const std::initializer_list<T> &other);
 
@@ -221,6 +258,10 @@ public:
 	bool operator<(const array &other) const;
 	inline bool operator>=(const array &other) const;
 	inline bool operator<=(const array &other) const;
+
+	virtual bool operator()(const T &arg1, const T &arg2) const {
+		return greater(arg1, arg2);
+	}
 
 	bool isValid(int position) const;
 	array &swap(int index1, int index2);
@@ -456,8 +497,9 @@ template <typename T> array<T> &array<T>::operator=(const array<T> &other) {
 template <typename T> array<T> &array<T>::operator=(const std::initializer_list<T> &other) {
 	array_data.clear();
 	array_data.reserve(other.size());
-	for (auto &item : other)
+	for (auto &item : other) {
 		array_data.push_back(item);
+	}
 
 	return *this;
 }
@@ -472,12 +514,15 @@ template <typename T> array<T> &array<T>::operator=(const std::initializer_list<
  * contents. \b False otherwise.
  */
 template <typename T> bool array<T>::operator==(const array<T> &other) const {
-	if (array_data.size() != other.array_data.size())
+	if (array_data.size() != other.array_data.size()) {
 		return false;
+	}
 
-	for (int i = 0; i < (int)array_data.size(); i++)
-		if (!eq(array_data.at(i), other.array_data.at(i)))
+	for (int i = 0; i < (int)array_data.size(); i++) {
+		if (!eq(array_data.at(i), other.array_data.at(i))) {
 			return false;
+		}
+	}
 
 	return true;
 }
@@ -492,16 +537,18 @@ template <typename T> bool array<T>::operator==(const array<T> &other) const {
  * elements. \b False otherwise.
  */
 template <typename T> bool array<T>::operator>(const array<T> &other) const {
-	if (array_data.size() != other.array_data.size())
+	if (array_data.size() != other.array_data.size()) {
 		return (array_data.size() > other.array_data.size());
+	}
 
 	int gt_count = 0;
 
 	for (int i = 0; i < (int)array_data.size(); i++) {
-		if (gt(array_data.at(i), other.array_data.at(i)))
+		if (gt(array_data.at(i), other.array_data.at(i))) {
 			gt_count++;
-		else if (lt(array_data.at(i), other.array_data.at(i)))
+		} else if (lt(array_data.at(i), other.array_data.at(i))) {
 			gt_count--;
+		}
 	}
 
 	return gt_count > 0;
@@ -517,16 +564,18 @@ template <typename T> bool array<T>::operator>(const array<T> &other) const {
  * elements. \b False otherwise.
  */
 template <typename T> bool array<T>::operator<(const array &other) const {
-	if (array_data.size() != other.array_data.size())
+	if (array_data.size() != other.array_data.size()) {
 		return (array_data.size() < other.array_data.size());
+	}
 
 	int gt_count = 0;
 
 	for (int i = 0; i < (int)array_data.size(); i++) {
-		if (gt(array_data.at(i), other.array_data.at(i)))
+		if (gt(array_data.at(i), other.array_data.at(i))) {
 			gt_count++;
-		else if (lt(array_data.at(i), other.array_data.at(i)))
+		} else if (lt(array_data.at(i), other.array_data.at(i))) {
 			gt_count--;
+		}
 	}
 
 	return gt_count < 0;
@@ -575,14 +624,17 @@ template <typename T> inline void array<T>::clear() {
  */
 template <typename T> array<T> &array<T>::insert(const T &object, int index) {
 	// if index is negative, insert from end of the array.
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size() + 1;
+	}
 
 	// keep within bounds of array.
-	if (index > (int)array_data.size())
+	if (index > (int)array_data.size()) {
 		index = array_data.size();
-	if (index < 0)
+	}
+	if (index < 0) {
 		index = 0;
+	}
 
 	array_data.insert(array_data.begin() + index, object);
 
@@ -608,10 +660,12 @@ template <typename T> void array<T>::append(const T &object) {
  * \return A reference to this array after modification.
  */
 template <typename T> array<T> &array<T>::remove(int index) {
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size() + 1;
-	if ((index >= array_data.size()) || (index < 0))
+	}
+	if ((index >= array_data.size()) || (index < 0)) {
 		return *this;
+	}
 
 	array_data.erase(array_data.begin() + index);
 
@@ -627,11 +681,13 @@ template <typename T> array<T> &array<T>::remove(int index) {
  * \return A reference to this array after modification.
  */
 template <typename T> array<T> &array<T>::remove(int index, int count) {
-	if (!count)
+	if (!count) {
 		return *this;
+	}
 
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size() + 1;
+	}
 
 	int start, end;
 
@@ -643,12 +699,15 @@ template <typename T> array<T> &array<T>::remove(int index, int count) {
 		end = index + 1;
 	}
 
-	if ((end <= 0) || (start >= (int)array_data.size()))
+	if ((end <= 0) || (start >= (int)array_data.size())) {
 		return *this;
-	if (start < 0)
+	}
+	if (start < 0) {
 		start = 0;
-	if (end > (int)array_data.size())
+	}
+	if (end > (int)array_data.size()) {
 		end = array_data.size();
+	}
 
 	array_data.erase(array_data.begin() + start, array_data.begin() + end);
 
@@ -723,11 +782,13 @@ template <typename T> const T &array<T>::at(int index) const {
  * \see replace(int,int,const array&)
  */
 template <typename T> array<T> &array<T>::replace(int index, int count, const T &object) {
-	if (!count)
+	if (!count) {
 		return *this;
+	}
 
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size() + 1;
+	}
 
 	int start, end;
 
@@ -739,12 +800,15 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const T 
 		end = index + 1;
 	}
 
-	if ((end <= 0) || (start >= (int)array_data.size()))
+	if ((end <= 0) || (start >= (int)array_data.size())) {
 		return *this;
-	if (start < 0)
+	}
+	if (start < 0) {
 		start = 0;
-	if (end > (int)array_data.size())
+	}
+	if (end > (int)array_data.size()) {
 		end = array_data.size();
+	}
 
 	array_data.erase(array_data.begin() + start, array_data.begin() + end);
 	array_data.insert(array_data.begin() + start, object);
@@ -764,8 +828,9 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const T 
  * \see replace(int,int,const T&)
  */
 template <typename T> array<T> &array<T>::replace(int index, int count, const array<T> &other) {
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size();
+	}
 
 	int start, end;
 
@@ -777,15 +842,19 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const ar
 		end = index + 1;
 	}
 
-	if ((end <= 0) || (start >= (int)array_data.size()))
+	if ((end <= 0) || (start >= (int)array_data.size())) {
 		return *this;
-	if (start < 0)
+	}
+	if (start < 0) {
 		start = 0;
-	if (end > (int)array_data.size())
+	}
+	if (end > (int)array_data.size()) {
 		end = array_data.size();
+	}
 
-	if (count)
+	if (count) {
 		array_data.erase(array_data.begin() + start, array_data.begin() + end);
+	}
 	array_data.insert(array_data.begin() + start, other.array_data.begin(), other.array_data.end());
 
 	return *this;
@@ -807,11 +876,13 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const ar
 template <typename T> array<T> array<T>::subset(int index, int count) const {
 	array<T> output;
 
-	if (!count)
+	if (!count) {
 		return *this;
+	}
 
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size() + 1;
+	}
 
 	int start, end;
 
@@ -823,17 +894,22 @@ template <typename T> array<T> array<T>::subset(int index, int count) const {
 		end = index + 1;
 	}
 
-	if ((end <= 0) || (start >= (int)array_data.size()))
+	if ((end <= 0) || (start >= (int)array_data.size())) {
 		return *this;
-	if (start < 0)
+	}
+	if (start < 0) {
 		start = 0;
-	if (end > (int)array_data.size())
+	}
+	if (end > (int)array_data.size()) {
 		end = array_data.size();
+	}
 
-	if (end - start > 0)
+	if (end - start > 0) {
 		output.array_data.reserve(end - start);
-	for (int i = start; i < end; i++)
+	}
+	for (int i = start; i < end; i++) {
 		output.array_data.push_back(array_data[i]);
+	}
 
 	return output;
 }
@@ -847,8 +923,9 @@ template <typename T> array<T> array<T>::subset(int index, int count) const {
  * \b False otherwise.
  */
 template <typename T> bool array<T>::isValid(int index) const {
-	if (index < 0)
+	if (index < 0) {
 		index += array_data.size();
+	}
 	return (index < (int)array_data.size()) && (index >= 0);
 }
 

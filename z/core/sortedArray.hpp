@@ -37,8 +37,6 @@ public:
 
 	virtual int find(const T &) const override;
 	virtual int findInsert(const T &, bool allowDuplicates = true) const;
-
-	virtual void sort();
 };
 
 /**
@@ -142,30 +140,6 @@ template <typename T> int sortedArray<T>::findInsert(const T &object, bool allow
 	}
 }
 
-/**
- * \brief Sorts the array.
- *
- * This function currently uses bubble-sort. As
- * such, it is <B>very slow</B> for large arrays!
- * I intend to implement a faster version later.
- */
-template <typename T> void sortedArray<T>::sort() {
-	bool done = true;
-
-	do {
-		done = true;
-
-		for (int i = 0; i < (int)(this->array_data.size() - 1); i++) {
-			if (this->gt(this->array_data[i], this->array_data[i + 1])) {
-				done = false;
-
-				T temp = this->array_data[i];
-				this->array_data[i] = this->array_data[i + 1];
-				this->array_data[i + 1] = temp;
-			}
-		}
-	} while (!done);
-}
 } // namespace core
 } // namespace z
 
