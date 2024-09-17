@@ -171,7 +171,7 @@ namespace z
 			*/
 			void setCaseSensitive(bool caseSensitive) noexcept;
 
-			size_t size() const noexcept;
+			size_t size() const noexcept override;
 
 			/**
 			* \brief Create a new range of words encompassing the whole dictionary.
@@ -195,7 +195,7 @@ namespace z
 
 			dictIter begin() const noexcept override;
 			dictIter end() const noexcept override;
-			const zstring& at(int index) const;
+			const zstring& at(int index) const override;
 
 #		ifdef __has_include
 #		if __has_include(<cereal/cereal.hpp>)

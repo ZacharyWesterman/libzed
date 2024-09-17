@@ -369,7 +369,7 @@ namespace z
 			*
 			* \return The number of bytes in memory this string currently consumes.
 			*/
-			size_t size() const noexcept;
+			size_t size() const noexcept override;
 
 			/**
 			* \brief Get the character count of the string.

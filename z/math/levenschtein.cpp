@@ -33,7 +33,7 @@ namespace z
 \
 				for (int j = 0; j <= len2 - 1; ++j)\
 				{\
-					auto deletionCost = row0[j + 1] + 1;\
+					auto deletionCost = row0[j + 1] + 1; /*NOLINT*/\
 					auto insertionCost = row1[j] + 1;\
 					auto substitutionCost = row0[j] + (word1[i] != word2[j]);\
 					\

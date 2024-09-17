@@ -193,7 +193,7 @@ namespace z
 
 			array subset(int, int) const;
 
-			size_t size() const noexcept;
+			size_t size() const noexcept override;
 
 			int length() const noexcept override;
 
