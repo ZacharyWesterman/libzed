@@ -3,8 +3,9 @@
 namespace z {
 namespace core {
 timer::timer(bool run) noexcept {
-	if (run)
+	if (run) {
 		reset();
+	}
 }
 
 void timer::reset() noexcept {

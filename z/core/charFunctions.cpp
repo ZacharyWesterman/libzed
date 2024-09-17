@@ -46,59 +46,70 @@ uint32_t toUpper(uint32_t ch, bool camel) noexcept {
 
 	int i = 1;
 	while ((beg = begRangesGroup[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if ((ch >= beg) && (ch <= endRangesGroup[i]))
+		if ((ch >= beg) && (ch <= endRangesGroup[i])) {
 			return (ch - beg + begRangesGroup[i - 1]);
+		}
 
 		i += 2;
 	}
 
 	i = 1;
 	while ((beg = begRangesSequence[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if ((ch >= beg) && (ch <= endRangesSequence[i]))
+		if ((ch >= beg) && (ch <= endRangesSequence[i])) {
 			return (ch - 1);
+		}
 
 		i += 2;
 	}
 
 	i = 1;
 	while ((beg = directCases[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if (beg == ch)
+		if (beg == ch) {
 			return directCases[i - 1];
+		}
 
 		i += 2;
 	}
 
 	i = 1;
 	while ((beg = alternateUpper[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if (beg == ch)
+		if (beg == ch) {
 			return alternateUpper[i - 1];
+		}
 
 		i += 2;
 	}
 
 	i = 0;
 	while ((beg = camelConvs[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
 		if (camel) {
-			if ((ch == beg) || (ch == camelConvs[i + 2]))
+			if ((ch == beg) || (ch == camelConvs[i + 2])) {
 				return camelConvs[i + 1];
+			}
 		} else {
-			if ((ch == camelConvs[i + 1]) || (ch == camelConvs[i + 2]))
+			if ((ch == camelConvs[i + 1]) || (ch == camelConvs[i + 2])) {
 				return beg;
+			}
 		}
 
 		i += 3;
@@ -115,11 +126,13 @@ uint32_t toLower(uint32_t ch, bool alternate) noexcept {
 	if (alternate) {
 		i = 0;
 		while ((beg = alternateUpper[i])) {
-			if (ch < beg)
+			if (ch < beg) {
 				break;
+			}
 
-			if (beg == ch)
+			if (beg == ch) {
 				return alternateUpper[i + 1];
+			}
 
 			i += 2;
 		}
@@ -127,44 +140,52 @@ uint32_t toLower(uint32_t ch, bool alternate) noexcept {
 
 	i = 0;
 	while ((beg = begRangesGroup[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if ((ch >= beg) && (ch <= endRangesGroup[i]))
+		if ((ch >= beg) && (ch <= endRangesGroup[i])) {
 			return (ch - beg + begRangesGroup[i + 1]);
+		}
 
 		i += 2;
 	}
 
 	i = 0;
 	while ((beg = begRangesSequence[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if ((ch >= beg) && (ch <= endRangesSequence[i]))
+		if ((ch >= beg) && (ch <= endRangesSequence[i])) {
 			return (ch + 1);
+		}
 
 		i += 2;
 	}
 
 	i = 0;
 	while ((beg = directCases[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if (beg == ch)
+		if (beg == ch) {
 			return directCases[i + 1];
+		}
 
 		i += 2;
 	}
 
 	i = 0;
 	while ((beg = camelConvs[i])) {
-		if (ch < beg)
+		if (ch < beg) {
 			break;
+		}
 
-		if ((ch == beg) || (ch == camelConvs[i + 1]))
+		if ((ch == beg) || (ch == camelConvs[i + 1])) {
 			return camelConvs[i + 2];
+		}
 
 		i += 3;
 	}
@@ -179,24 +200,27 @@ bool isAlpha(uint32_t ch) noexcept {
 
 int numeralValue(uint32_t ch) noexcept {
 	if ((ch >= '0') && // from 0
-			(ch <= '9'))	 // to 9
+			(ch <= '9')) { // to 9
 		return (ch - '0');
-	else if (isLowerAlpha(ch)) // a-z
+	} else if (isLowerAlpha(ch)) { // a-z
 		return (ch - 'a' + 10);
-	else if (isUpperAlpha(ch)) // A-Z
+	} else if (isUpperAlpha(ch)) { // A-Z
 		return (ch - 'A' + 10);
-	else
+	} else {
 		return -1;
+	}
 }
 
 uint32_t numeral(int value) noexcept {
-	if ((value > 36) || (value < 1))
+	if ((value > 36) || (value < 1)) {
 		return '0';
+	}
 
-	if (value < 10)
+	if (value < 10) {
 		return value + '0';
-	else
+	} else {
 		return (value - 10) + 'A';
+	}
 }
 
 bool isNumeric(uint32_t ch, int base) noexcept {
@@ -216,10 +240,11 @@ bool isWhiteSpace(uint32_t ch) noexcept {
 			(ch == 32) || // space
 			(ch == 12) || // form feed
 			(ch == 11) || // vertical tab
-			(ch == 0))		// null
+			(ch == 0)) {	// null
 		return true;
-	else
+	} else {
 		return false;
+	}
 }
 
 int toUTF8(uint8_t *c, uint32_t chr) noexcept {
@@ -245,14 +270,15 @@ int toUTF8(uint8_t *c, uint32_t chr) noexcept {
 }
 
 int lenToUTF8(uint32_t chr) noexcept {
-	if (chr < 0x80)
+	if (chr < 0x80) {
 		return 1;
-	else if (chr < 0x0800)
+	} else if (chr < 0x0800) {
 		return 2;
-	else if (chr < 0xFFFF)
+	} else if (chr < 0xFFFF) {
 		return 3;
-	else
+	} else {
 		return 4;
+	}
 }
 
 uint32_t fromUTF8(uint8_t *c) noexcept {
@@ -271,16 +297,18 @@ uint32_t fromUTF8(uint8_t *c) noexcept {
 				uint32_t res[] = {(chr & 0x1F) << 6, (uint32_t)(c[1] & 0x3F)};
 
 				return res[0] + res[1];
-			} else
+			} else {
 				return '?';
+			}
 		} else if (chr < 0xF0) // 1110 xxxx, 10xx xxxx, 10xx xxxx
 		{
 			if (c[1] && c[2]) {
 				uint32_t res[] = {(chr & 0x0F) << 12, (uint32_t)(c[1] & 0x3F) << 6, (uint32_t)(c[2] & 0x3F)};
 
 				return res[0] + res[1] + res[2];
-			} else
+			} else {
 				return '?';
+			}
 		} else // 1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
 		{
 			if (c[1] && c[2] && c[3]) {
@@ -288,8 +316,9 @@ uint32_t fromUTF8(uint8_t *c) noexcept {
 													(uint32_t)(c[3] & 0x3F)};
 
 				return res[0] + res[1] + res[2] + res[3];
-			} else
+			} else {
 				return '?';
+			}
 		}
 	}
 
@@ -300,18 +329,20 @@ int lenFromUTF8(uint8_t *c) noexcept {
 	if (c) {
 		uint8_t chr = c[0];
 
-		if (chr < 0x80) // 0xxx xxxx
+		if (chr < 0x80) { // 0xxx xxxx
 			return 1;
-		else if (chr < 0xC0) // 10xx xxxx
-			return 0;					 // not a starting char in UTF8 format
-		else if (chr < 0xE0) // 110x xxxx, 10xx xxxx
+		} else if (chr < 0xC0) { // 10xx xxxx
+			return 0;							 // not a starting char in UTF8 format
+		} else if (chr < 0xE0) { // 110x xxxx, 10xx xxxx
 			return 2;
-		else if (chr < 0xF0) // 1110 xxxx, 10xx xxxx, 10xx xxxx
+		} else if (chr < 0xF0) { // 1110 xxxx, 10xx xxxx, 10xx xxxx
 			return 3;
-		else // 1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
+		} else { // 1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
 			return 4;
-	} else
+		}
+	} else {
 		return 0;
+	}
 }
 
 bool isUTF8(uint8_t *c, int len) noexcept {
@@ -324,18 +355,21 @@ bool isUTF8(uint8_t *c, int len) noexcept {
 			return false;					// invalid UTF8
 		} else if (c[0] < 0xE0) // 110x xxxx, 10xx xxxx
 		{
-			if (len < 2)
+			if (len < 2) {
 				return false;
+			}
 			return ((c[1] & 0xC0) == 0xC0);
 		} else if (c[0] < 0xF0) // 1110 xxxx, 10xx xxxx, 10xx xxxx
 		{
-			if (len < 3)
+			if (len < 3) {
 				return false;
+			}
 			return ((c[1] & 0xC0) == 0xC0) && ((c[2] & 0xC0) == 0xC0);
 		} else // 1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
 		{
-			if (len < 4)
+			if (len < 4) {
 				return false;
+			}
 			return ((c[1] & 0xC0) == 0xC0) && ((c[2] & 0xC0) == 0xC0) && ((c[3] & 0xC0) == 0xC0);
 		}
 	}

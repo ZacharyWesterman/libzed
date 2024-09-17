@@ -19,8 +19,9 @@ template <typename T, encoding E> string<E> join(const iterable<T> &list, const 
 	string<E> result;
 
 	for (auto &item : list) {
-		if (result.length())
+		if (result.length()) {
 			result += delim;
+		}
 		result += item;
 	}
 
@@ -41,8 +42,9 @@ template <typename T> zstring join(const iterable<T> &list, const zstring &delim
 	zstring result;
 
 	for (auto &item : list) {
-		if (result.length())
+		if (result.length()) {
 			result += delim;
+		}
 		result += item;
 	}
 
@@ -65,8 +67,9 @@ template <typename T, encoding E> string<E> joinDeref(const iterable<T> &list, c
 	string<E> result;
 
 	for (auto &item : list) {
-		if (result.length())
+		if (result.length()) {
 			result += delim;
+		}
 		result += *item;
 	}
 

@@ -15,10 +15,11 @@ core::array<zpath> listFiles(const zpath &dir, const zpath &file_type) noexcept 
 
 	zpath search_path = dir;
 
-	if (!dir.length())
+	if (!dir.length()) {
 		search_path += "./";
-	else
+	} else {
 		search_path += "/";
+	}
 
 #ifdef _WIN32
 	search_path += "/*.";
@@ -57,8 +58,9 @@ core::array<zpath> listFiles(const zpath &dir, const zpath &file_type) noexcept 
 					output.add(filename);
 				} else {
 
-					if (filename.endsWith(zpath('.') + file_type))
+					if (filename.endsWith(zpath('.') + file_type)) {
 						output.add(filename);
+					}
 				}
 			}
 		}
@@ -75,10 +77,11 @@ core::array<zpath> listDirs(const zpath &dir, bool showAll) noexcept {
 
 	zpath search_path = dir;
 
-	if (!dir.length())
+	if (!dir.length()) {
 		search_path += "./";
-	else
+	} else {
 		search_path += "/";
+	}
 
 #ifdef _WIN32
 	search_path += "/*";
@@ -91,8 +94,9 @@ core::array<zpath> listDirs(const zpath &dir, bool showAll) noexcept {
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
 				zpath filename = fd.cFileName;
 
-				if (showAll || (filename[0] != '.'))
+				if (showAll || (filename[0] != '.')) {
 					output.add(filename);
+				}
 			}
 		} while (FindNextFile(hFind, &fd));
 
@@ -110,8 +114,9 @@ core::array<zpath> listDirs(const zpath &dir, bool showAll) noexcept {
 			zpath filename(epdf->d_name);
 
 			if (epdf->d_type == DT_DIR) {
-				if (showAll || (filename[0] != '.'))
+				if (showAll || (filename[0] != '.')) {
 					output.add(filename);
+				}
 			}
 		}
 

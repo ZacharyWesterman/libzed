@@ -40,15 +40,17 @@ template <> string<ascii>::string(const uint32_t &chr) noexcept {
 template <> string<ascii>::string(const char *str) noexcept {
 	if (str) {
 		int len = 0;
-		while (str[len])
+		while (str[len]) {
 			len++;
+		}
 
 		character_ct = len;
 		data = new uint8_t[++len];
 		data_len = len;
 
-		for (int i = 0; i < len; i++)
+		for (int i = 0; i < len; i++) {
 			data[i] = str[i];
+		}
 	} else {
 		data = new uint8_t[1];
 		data[0] = 0;
@@ -64,8 +66,9 @@ template <> string<ascii>::string(const char *str, size_t len) noexcept {
 		data = new uint8_t[len + 1];
 		data_len = len + 1;
 
-		for (size_t i = 0; i < len; i++)
+		for (size_t i = 0; i < len; i++) {
 			data[i] = str[i];
+		}
 
 		data[len] = '\0';
 	} else {
@@ -80,18 +83,20 @@ template <> string<ascii>::string(const char *str, size_t len) noexcept {
 template <> string<ascii>::string(const wchar_t *str) noexcept {
 	if (str) {
 		int len = 0;
-		while (str[len])
+		while (str[len]) {
 			len++;
+		}
 
 		character_ct = len;
 		data = new uint8_t[++len];
 		data_len = len;
 
 		for (int i = 0; i < len; i++) {
-			if (str[i] > 0xFF)
+			if (str[i] > 0xFF) {
 				data[i] = '?';
-			else
+			} else {
 				data[i] = str[i];
+			}
 		}
 	} else {
 		data = new uint8_t[1];
@@ -109,10 +114,11 @@ template <> string<ascii>::string(const wchar_t *str, size_t len) noexcept {
 		data_len = len + 1;
 
 		for (size_t i = 0; i < len; i++) {
-			if (str[i] > 0xFF)
+			if (str[i] > 0xFF) {
 				data[i] = '?';
-			else
+			} else {
 				data[i] = str[i];
+			}
 		}
 
 		data[len] = '\0';
@@ -131,8 +137,9 @@ template <> string<ascii>::string(const string<ascii> &other) noexcept {
 
 	data = new uint8_t[data_len];
 
-	for (int i = 0; i < data_len; i++)
+	for (int i = 0; i < data_len; i++) {
 		data[i] = other.data[i];
+	}
 }
 
 template <> string<ascii>::string(const string<utf8> &other) noexcept {
@@ -174,8 +181,9 @@ template <> string<ascii>::string(const string<utf32> &other) noexcept {
 
 	uint32_t *data32 = (uint32_t *)other.data;
 
-	for (int i = 0; i <= character_ct; i++)
+	for (int i = 0; i <= character_ct; i++) {
 		data[i] = (data32[i] > 0xFF) ? '?' : (uint8_t)data32[i];
+	}
 }
 } // namespace core
 } // namespace z

@@ -49,8 +49,9 @@ template <> string<ENCODING> string<ENCODING>::filter(std::function<bool(uint32_
 	result.increase(length());
 
 	for (auto chr : *this) {
-		if (lambda(chr))
+		if (lambda(chr)) {
 			result.append(chr);
+		}
 	}
 
 	return result;
@@ -208,8 +209,9 @@ template <> string<ENCODING> string<ENCODING>::words(long long value, bool ordin
 		}
 	}
 
-	if (ordinal)
+	if (ordinal) {
 		result += string<ENCODING>::ordinal(orig_value);
+	}
 	return result;
 }
 } // namespace core

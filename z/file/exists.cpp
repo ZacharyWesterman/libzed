@@ -6,10 +6,11 @@ namespace file {
 bool exists(const zpath &pathname) noexcept {
 	struct stat info;
 
-	if (stat((char *)pathname.cstring(), &info) == 0)
+	if (stat((char *)pathname.cstring(), &info) == 0) {
 		return true; // directory item exists
-	else
+	} else {
 		return false; // does not exist
+	}
 }
 } // namespace file
 } // namespace z

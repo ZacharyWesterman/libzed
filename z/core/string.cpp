@@ -68,14 +68,17 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			buf[i] = chr;
 
 			i++;
-			if (chr != '0')
+			if (chr != '0') {
 				length = i;
-			if (!fractional && !force)
+			}
+			if (!fractional && !force) {
 				cont = false;
+			}
 		}
 
-		if ((fractional * mult) >= (base / 2))
+		if ((fractional * mult) >= (base / 2)) {
 			*overflow = true;
+		}
 
 		return length;
 	} else {
@@ -90,19 +93,22 @@ void trimFloatBuf(int base, bool force, uint8_t *fbuf, int *fbufsiz, uint8_t *ib
 
 		if (val >= base) {
 			fbuf[i] = '0';
-			if (!force)
+			if (!force) {
 				--(*fbufsiz);
+			}
 		} else {
 			fbuf[i] = z::core::numeral(val);
 		}
 
 		overflow = val > (base / 2);
-		if (!overflow)
+		if (!overflow) {
 			break;
+		}
 	}
 
-	if (!overflow)
+	if (!overflow) {
 		return;
+	}
 
 	// if fractional rounding spilled over into integer part
 	for (int i = 0; i < *ibufsiz; ++i) {

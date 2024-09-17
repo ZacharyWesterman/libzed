@@ -31,8 +31,9 @@ public:
 				int xoffs = 0;
 
 				for (unsigned int x = 0; x < N - 1; x++) {
-					if (xoffs == col)
+					if (xoffs == col) {
 						xoffs++;
+					}
 
 					mat.value[y][x] = value[y + 1][xoffs];
 
@@ -40,10 +41,11 @@ public:
 				}
 			}
 
-			if (col % 2)
+			if (col % 2) {
 				result -= value[0][col] * mat.det();
-			else
+			} else {
 				result += value[0][col] * mat.det();
+			}
 		}
 
 		return result;

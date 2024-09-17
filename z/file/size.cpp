@@ -17,8 +17,9 @@ size_t size(const zpath &path) noexcept {
 #else
 	// Otherwise default to fstream version.
 	std::ifstream in((const char *)path.cstring(), std::ios::binary);
-	if (in.bad())
+	if (in.bad()) {
 		return 0;
+	}
 	const auto begin = in.tellg();
 	in.seekg(0, std::ios::end);
 	const auto end = in.tellg();

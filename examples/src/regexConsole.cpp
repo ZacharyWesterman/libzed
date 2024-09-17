@@ -13,8 +13,9 @@ int main() {
 	while (!std::cin.eof()) {
 		// Get regex pattern to match against, exiting if user hits ctrl-D.
 		pattern.readln(std::cin);
-		if (std::cin.eof() && !pattern.length())
+		if (std::cin.eof() && !pattern.length()) {
 			break;
+		}
 
 		// If pattern is invalid, print a short description of the error.
 		try {
@@ -32,10 +33,11 @@ int main() {
 
 		// Show what substring the regex matched, if anything.
 		auto match = std::regex_search(text.str(), regex);
-		if (std::regex_search(text.str(), regex))
+		if (std::regex_search(text.str(), regex)) {
 			(text + " matches!").writeln(std::cout);
-		else
+		} else {
 			zstring("does not match.").writeln(std::cout);
+		}
 	}
 
 	return 0;

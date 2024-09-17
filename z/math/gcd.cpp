@@ -3,8 +3,9 @@
 namespace z {
 namespace math {
 long gcd(long x, long y) noexcept {
-	if ((x == 0) && (y == 0))
+	if ((x == 0) && (y == 0)) {
 		return 1;
+	}
 
 	long hi, lo;
 
@@ -16,10 +17,12 @@ long gcd(long x, long y) noexcept {
 		lo = x;
 	}
 
-	if (hi < 0)
+	if (hi < 0) {
 		hi = -hi;
-	if (lo < 0)
+	}
+	if (lo < 0) {
 		lo = -lo;
+	}
 
 	do {
 		while (hi >= lo) {
@@ -52,14 +55,18 @@ std::complex<long> gcd(const std::complex<long> &x, const std::complex<long> &y)
 		lo = x;
 	}
 
-	if (hi.real() < 0)
+	if (hi.real() < 0) {
 		hi = std::complex<long>(-hi.real(), hi.imag());
-	if (hi.imag() < 0)
+	}
+	if (hi.imag() < 0) {
 		hi = std::complex<long>(hi.real(), -hi.imag());
-	if (lo.real() < 0)
+	}
+	if (lo.real() < 0) {
 		lo = std::complex<long>(-lo.real(), lo.imag());
-	if (lo.imag() < 0)
+	}
+	if (lo.imag() < 0) {
 		lo = std::complex<long>(lo.real(), -lo.imag());
+	}
 
 	norm_hi = (hi.real() * hi.real()) + (hi.imag() * hi.imag());
 	norm_lo = (lo.real() * lo.real()) + (lo.imag() * lo.imag());

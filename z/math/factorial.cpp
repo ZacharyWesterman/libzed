@@ -3,8 +3,9 @@
 namespace z {
 namespace math {
 long long factorial(long long n) noexcept {
-	if (n < 0)
+	if (n < 0) {
 		return 0;
+	}
 
 	long long result = 1;
 
@@ -12,8 +13,9 @@ long long factorial(long long n) noexcept {
 	while (i <= n) {
 		long long newResult = result * i;
 
-		if ((newResult == result) || (newResult <= 0))
+		if ((newResult == result) || (newResult <= 0)) {
 			return 0;
+		}
 
 		result = newResult;
 		i++;

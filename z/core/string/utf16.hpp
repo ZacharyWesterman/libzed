@@ -4,15 +4,17 @@ namespace z {
 namespace core {
 template <> void string<utf16>::increase(int max_chars) noexcept {
 	int goal = (max_chars << 1) + 2; // account for null byte at the end
-	if (data_len >= goal)
+	if (data_len >= goal) {
 		return;
+	}
 
 	uint8_t *old_data = data;
 	int old_data_len = data_len;
 
 	//~1.5x string growth
-	while (data_len < goal)
+	while (data_len < goal) {
 		data_len += (data_len + 4) >> 1;
+	}
 	data = new uint8_t[data_len];
 
 	int remain = old_data_len;
@@ -43,12 +45,14 @@ template <> void string<utf16>::increase(int max_chars) noexcept {
 template <> uint32_t string<utf16>::at(int index) const noexcept {
 	uint16_t *data16 = (uint16_t *)data;
 
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if ((index < character_ct) && (index >= 0))
+	}
+	if ((index < character_ct) && (index >= 0)) {
 		return data16[index];
-	else
+	} else {
 		return 0;
+	}
 }
 
 template <> const char *string<utf16>::cstring() const noexcept {
@@ -92,8 +96,9 @@ template <> string<utf16> &string<utf16>::operator+=(const string<utf16> &other)
 
 /// analyzers
 template <> int string<utf16>::count(const string<utf16> &other) const noexcept {
-	if (!other.character_ct)
+	if (!other.character_ct) {
 		return 0;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 	uint16_t *other16 = (uint16_t *)other.data;
@@ -104,14 +109,17 @@ template <> int string<utf16>::count(const string<utf16> &other) const noexcept 
 	for (int i = 0; i < character_ct; i++) {
 		if (data16[i] == other16[other_i]) {
 			other_i++;
-			if (other_i >= other.character_ct)
+			if (other_i >= other.character_ct) {
 				occurrence++;
+			}
 
-			if (!occurrence)
+			if (!occurrence) {
 				return (i - other_i + 1);
+			}
 		} else {
-			if ((character_ct - i) <= other.character_ct)
+			if ((character_ct - i) <= other.character_ct) {
 				return occurrence;
+			}
 
 			other_i = 0;
 		}
@@ -121,12 +129,15 @@ template <> int string<utf16>::count(const string<utf16> &other) const noexcept 
 }
 
 template <> int string<utf16>::findAfter(const string<utf16> &other, int index, int occurrence) const noexcept {
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if (index < 0)
+	}
+	if (index < 0) {
 		return -1;
-	if (!other.character_ct || (occurrence < 1))
+	}
+	if (!other.character_ct || (occurrence < 1)) {
 		return -1;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 	uint16_t *other16 = (uint16_t *)other.data;
@@ -134,8 +145,9 @@ template <> int string<utf16>::findAfter(const string<utf16> &other, int index, 
 	int other_i = 0;
 	for (int i = index; i < character_ct; i++) {
 		// reset to first char of other if not still matching
-		if (data16[i] != other16[other_i])
+		if (data16[i] != other16[other_i]) {
 			other_i = 0;
+		}
 
 		if (data16[i] == other16[other_i]) {
 			other_i++;
@@ -144,8 +156,9 @@ template <> int string<utf16>::findAfter(const string<utf16> &other, int index, 
 				other_i = 0;
 			}
 
-			if (!occurrence)
+			if (!occurrence) {
 				return (i - other.character_ct + 1);
+			}
 		}
 	}
 
@@ -153,18 +166,22 @@ template <> int string<utf16>::findAfter(const string<utf16> &other, int index, 
 }
 
 template <> int string<utf16>::findBefore(const string<utf16> &other, int index, int occurrence) const noexcept {
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if (index < 0)
+	}
+	if (index < 0) {
 		return -1;
-	if (!other.character_ct || (occurrence < 1))
+	}
+	if (!other.character_ct || (occurrence < 1)) {
 		return -1;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 	uint16_t *other16 = (uint16_t *)other.data;
 
-	if (index > (character_ct - other.character_ct))
+	if (index > (character_ct - other.character_ct)) {
 		index = character_ct - other.character_ct;
+	}
 
 	int other_i = other.character_ct - 1;
 	for (int i = index; i < character_ct; i--) {
@@ -173,17 +190,21 @@ template <> int string<utf16>::findBefore(const string<utf16> &other, int index,
 			if (!other_i) {
 				occurrence--;
 
-				if (occurrence && (i < other.character_ct))
+				if (occurrence && (i < other.character_ct)) {
 					i = 0;
+				}
 				other_i = other.character_ct - 1;
-			} else
+			} else {
 				other_i--;
+			}
 
-			if (!occurrence)
+			if (!occurrence) {
 				return i;
+			}
 		} else {
-			if (occurrence && (i < other.character_ct))
+			if (occurrence && (i < other.character_ct)) {
 				return -1;
+			}
 			other_i = other.character_ct - 1;
 		}
 	}
@@ -192,8 +213,9 @@ template <> int string<utf16>::findBefore(const string<utf16> &other, int index,
 }
 
 template <> int string<utf16>::type(int base, uint32_t decimal) const noexcept {
-	if ((base < 2) || (base > 36) || !character_ct)
+	if ((base < 2) || (base > 36) || !character_ct) {
 		return zstr::string;
+	}
 
 	bool pastDecimal, pastExponent, imag, ir;
 	pastDecimal = pastExponent = imag = ir = false;
@@ -202,43 +224,47 @@ template <> int string<utf16>::type(int base, uint32_t decimal) const noexcept {
 
 	int start = ((data16[0] == '-') || (data16[0] == '+'));
 
-	if (start >= character_ct)
+	if (start >= character_ct) {
 		return zstr::string;
+	}
 
 	for (int i = start; i < character_ct; i++) {
 		if (!isNumeric(data16[i], 10)) {
 			if (data16[i] == decimal) {
-				if (pastDecimal || pastExponent)
+				if (pastDecimal || pastExponent) {
 					return zstr::string;
-				else {
-					if ((i >= character_ct - 1) || (core::toLower(data16[i + 1]) == 'i'))
+				} else {
+					if ((i >= character_ct - 1) || (core::toLower(data16[i + 1]) == 'i')) {
 						return zstr::string;
+					}
 					pastDecimal = true;
 				}
 			} else if (core::toLower(data16[i]) == 'e') {
-				if (pastExponent)
+				if (pastExponent) {
 					return zstr::string;
-				else {
+				} else {
 					pastExponent = true;
-					if ((data16[i + 1] == '+') || (data16[i + 1] == '-'))
+					if ((data16[i + 1] == '+') || (data16[i + 1] == '-')) {
 						i++;
+					}
 				}
 			} else if (core::toLower(data16[i]) == 'i') {
-				if (imag)
+				if (imag) {
 					return zstr::string;
-				else {
+				} else {
 					pastExponent = pastDecimal = false;
 					imag = true;
 				}
 			} else if ((data16[i] == '-') || (data16[i] == '+')) {
-				if (ir || (i >= character_ct - 1))
+				if (ir || (i >= character_ct - 1)) {
 					return zstr::string;
-				else {
+				} else {
 					pastDecimal = pastExponent = false;
 					ir = true;
 				}
-			} else
+			} else {
 				return zstr::string;
+			}
 		}
 	}
 
@@ -262,12 +288,14 @@ template <> string<utf16> &string<utf16>::operator=(const string<utf16> &other) 
 		uint32_t *other32 = (uint32_t *)other.data;
 		int len32 = data_len >> 2;
 
-		for (int i = 0; i < len32; i++)
+		for (int i = 0; i < len32; i++) {
 			data32[i] = other32[i];
+		}
 
 		int len = len32 << 2;
-		for (int i = len; i < data_len; i++)
+		for (int i = len; i < data_len; i++) {
 			data[i] = other.data[i];
+		}
 	}
 
 	return *this;
@@ -287,13 +315,16 @@ template <> string<utf16> &string<utf16>::append(uint32_t chr) noexcept {
 template <>
 string<utf16> &string<utf16>::insert(const string<utf16> &other, int index) noexcept // insert before index
 {
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if (!other.character_ct || index < 0)
+	}
+	if (!other.character_ct || index < 0) {
 		return *this;
+	}
 
-	if (index >= character_ct)
+	if (index >= character_ct) {
 		index = character_ct;
+	}
 
 	int start = index + other.character_ct;
 	int end = character_ct + other.character_ct;
@@ -319,10 +350,12 @@ string<utf16> &string<utf16>::insert(const string<utf16> &other, int index) noex
 
 template <> string<utf16> &string<utf16>::remove(int index, int count) noexcept {
 	if (count) {
-		if (index < 0)
+		if (index < 0) {
 			index += character_ct;
-		if (index >= character_ct || index < 0)
+		}
+		if (index >= character_ct || index < 0) {
 			return *this;
+		}
 
 		int start, end, offset;
 
@@ -335,10 +368,11 @@ template <> string<utf16> &string<utf16>::remove(int index, int count) noexcept 
 				offset = -count;
 			}
 		} else {
-			if ((index + count) > character_ct)
+			if ((index + count) > character_ct) {
 				offset = character_ct - index;
-			else
+			} else {
 				offset = count;
+			}
 
 			start = index;
 		}
@@ -359,15 +393,18 @@ template <> string<utf16> &string<utf16>::remove(int index, int count) noexcept 
 
 template <> string<utf16> &string<utf16>::replace(int index, int count, const string<utf16> &other) noexcept {
 	if (count) {
-		if (index < 0)
+		if (index < 0) {
 			index += character_ct;
-		if (index < 0)
+		}
+		if (index < 0) {
 			index = 0;
+		}
 		int start, end;
 
 		if (count < 0) {
-			if ((index >= character_ct) && (-count >= character_ct))
+			if ((index >= character_ct) && (-count >= character_ct)) {
 				return operator=(other);
+			}
 
 			if (index >= character_ct) {
 				start = character_ct + count;
@@ -375,23 +412,27 @@ template <> string<utf16> &string<utf16>::replace(int index, int count, const st
 			} else {
 				end = index + 1;
 
-				if (-count >= character_ct)
+				if (-count >= character_ct) {
 					start = 0;
-				else
+				} else {
 					start = end + count;
+				}
 			}
 		} else {
-			if (index >= character_ct)
+			if (index >= character_ct) {
 				return operator+=(other);
+			}
 
-			if (!index && (count >= character_ct))
+			if (!index && (count >= character_ct)) {
 				return operator=(other);
+			}
 
 			start = index;
-			if (count >= character_ct)
+			if (count >= character_ct) {
 				end = character_ct;
-			else
+			} else {
 				end = start + count;
+			}
 		}
 
 		int offset = end - start;
@@ -405,20 +446,23 @@ template <> string<utf16> &string<utf16>::replace(int index, int count, const st
 			// pull chars in
 			int toOffs = newCharCt - character_ct;
 
-			for (int i = end; i < character_ct; i++)
+			for (int i = end; i < character_ct; i++) {
 				data16[i + toOffs] = data16[i];
+			}
 		} else if (newCharCt > character_ct) {
 			// pull chars out
 			int toPos = newCharCt + 1;
 			int fromPos = character_ct + 1;
 
-			for (int i = end; i < character_ct; i++)
+			for (int i = end; i < character_ct; i++) {
 				data16[toPos - i] = data16[fromPos - i];
+			}
 		}
 		// else just directly replace chars
 
-		for (int i = 0; i < other.character_ct; i++)
+		for (int i = 0; i < other.character_ct; i++) {
 			data16[i + start] = other16[i];
+		}
 
 		character_ct = newCharCt;
 		data16[character_ct] = 0;
@@ -430,8 +474,9 @@ template <> string<utf16> &string<utf16>::replace(int index, int count, const st
 template <> string<utf16> &string<utf16>::toUpper() noexcept {
 	uint16_t *data16 = (uint16_t *)data;
 
-	for (int i = 0; i < character_ct; i++)
+	for (int i = 0; i < character_ct; i++) {
 		data16[i] = core::toUpper(data16[i]);
+	}
 
 	return *this;
 }
@@ -439,8 +484,9 @@ template <> string<utf16> &string<utf16>::toUpper() noexcept {
 template <> string<utf16> &string<utf16>::toLower() noexcept {
 	uint16_t *data16 = (uint16_t *)data;
 
-	for (int i = 0; i < character_ct; i++)
+	for (int i = 0; i < character_ct; i++) {
 		data16[i] = core::toLower(data16[i]);
+	}
 
 	return *this;
 }
@@ -465,13 +511,15 @@ template <> string<utf16> &string<utf16>::read(std::istream &stream, uint32_t de
 	uint16_t *data16 = (uint16_t *)data;
 	data16[0] = 0;
 
-	if (stream.fail() || stream.eof())
+	if (stream.fail() || stream.eof()) {
 		return *this;
+	}
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof() && last && (delim ? (last == delim) : isWhiteSpace(last)))
+	while (!stream.eof() && last && (delim ? (last == delim) : isWhiteSpace(last))) {
 		last = stream.get();
+	}
 
 	while (!stream.eof() && last && !(delim ? (last == delim) : isWhiteSpace(last))) {
 		uint8_t c[4];
@@ -479,8 +527,9 @@ template <> string<utf16> &string<utf16>::read(std::istream &stream, uint32_t de
 
 		int len = lenFromUTF8(c);
 		if (len) {
-			for (int i = 1; i < len; i++)
+			for (int i = 1; i < len; i++) {
 				c[i] = stream.get();
+			}
 
 			last = fromUTF8(c);
 		}
@@ -505,22 +554,25 @@ template <> string<utf16> &string<utf16>::readln(std::istream &stream) noexcept 
 	uint16_t *data16 = (uint16_t *)data;
 	data16[0] = 0;
 
-	if (stream.fail() || stream.eof())
+	if (stream.fail() || stream.eof()) {
 		return *this;
+	}
 
 	uint32_t last = stream.get();
 
 	while (!stream.eof()) {
-		if ((last == '\n') || (last == '\r'))
+		if ((last == '\n') || (last == '\r')) {
 			break;
+		}
 
 		uint8_t c[4];
 		c[0] = last;
 
 		int len = lenFromUTF8(c);
 		if (len) {
-			for (int i = 1; i < len; i++)
+			for (int i = 1; i < len; i++) {
 				c[i] = stream.get();
+			}
 
 			last = fromUTF8(c);
 		}
@@ -541,8 +593,9 @@ template <> string<utf16> &string<utf16>::readln(std::istream &stream) noexcept 
 
 template <> void string<utf16>::initInt(long long value, int base, int padSize) noexcept {
 	uint8_t ibuf[Z_STR_INT_BUFSIZE];
-	if ((base < 2) || (base > 36))
+	if ((base < 2) || (base > 36)) {
 		base = 10;
+	}
 
 	bool negative = false;
 	if (value < 0) {
@@ -554,24 +607,28 @@ template <> void string<utf16>::initInt(long long value, int base, int padSize) 
 
 	// initialize string data
 	character_ct = ibufsiz + negative;
-	if (character_ct < padSize)
+	if (character_ct < padSize) {
 		character_ct += (padSize -= character_ct);
-	else
+	} else {
 		padSize = 0;
+	}
 
 	data_len = (character_ct + 1) * this->charSize();
 	data = new uint8_t[data_len];
 
-	if (negative)
+	if (negative) {
 		this->initChar('-', 0);
+	}
 
 	int pos = negative;
 
-	for (int i = 0; i < padSize; i++)
+	for (int i = 0; i < padSize; i++) {
 		this->initChar('0', pos++);
+	}
 
-	for (int i = 0; i < ibufsiz; i++)
+	for (int i = 0; i < ibufsiz; i++) {
 		this->initChar(ibuf[ibufsiz - i - 1], pos++);
+	}
 
 	initChar(0, character_ct);
 }
@@ -590,10 +647,11 @@ template <> void string<utf16>::initPointer(void *pointer) noexcept {
 	int padSize;
 
 	// initialize string data
-	if (Z_STR_POINTER_FORCE && (pbufsiz < Z_STR_POINTER_CHARS))
+	if (Z_STR_POINTER_FORCE && (pbufsiz < Z_STR_POINTER_CHARS)) {
 		padSize = Z_STR_POINTER_CHARS - pbufsiz;
-	else
+	} else {
 		padSize = 0;
+	}
 
 	character_ct = padSize + pbufsiz + 2;
 	data_len = (character_ct + 1) * this->charSize();
@@ -606,11 +664,13 @@ template <> void string<utf16>::initPointer(void *pointer) noexcept {
 	this->initChar('0', pos++);
 	this->initChar('x', pos++);
 
-	for (int i = 0; i < padSize; i++)
+	for (int i = 0; i < padSize; i++) {
 		this->initChar('0', pos++);
+	}
 
-	for (int i = 0; i < pbufsiz; i++)
+	for (int i = 0; i < pbufsiz; i++) {
 		this->initChar(pbuf[pbufsiz - i - 1], pos++);
+	}
 }
 
 template <> void string<utf16>::initFloat(double value, int base, int precision, bool scientific, int padSize) noexcept {
@@ -622,16 +682,18 @@ template <> void string<utf16>::initFloat(double value, int base, int precision,
 
 	bool force = true;
 
-	if ((base < 2) || (base > 36))
+	if ((base < 2) || (base > 36)) {
 		base = 10;
+	}
 	if (precision <= 0) {
 		precision = Z_STR_FLOAT_PRECISION;
 		force = false;
 	}
 
 	bool negative = (value < 0.0);
-	if (negative)
+	if (negative) {
 		value = -value;
+	}
 
 	int exponent = 0;
 	bool negexponent = false;
@@ -668,43 +730,51 @@ template <> void string<utf16>::initFloat(double value, int base, int precision,
 	bool overflow = false;
 	int ibufsiz = integralBuf(integral, base, ibuf);
 	int fbufsiz = fractionalBuf(fractional, base, precision, force, fbuf, &overflow);
-	if (overflow)
+	if (overflow) {
 		trimFloatBuf(base, force, fbuf, &fbufsiz, ibuf, &ibufsiz);
+	}
 	int ebufsiz = exponent ? integralBuf(exponent, base, ebuf) : 0;
 	// initialize string data
 	character_ct = ibufsiz + negative + (bool)fractional + fbufsiz + (bool)exponent + negexponent + ebufsiz;
-	if (character_ct < padSize)
+	if (character_ct < padSize) {
 		character_ct += (padSize -= character_ct);
-	else
+	} else {
 		padSize = 0;
+	}
 
 	data_len = (character_ct + 1) * this->charSize();
 	data = new uint8_t[data_len];
-	if (negative)
+	if (negative) {
 		this->initChar('-', 0);
+	}
 
 	int pos = negative;
 
-	for (int i = 0; i < padSize; i++)
+	for (int i = 0; i < padSize; i++) {
 		this->initChar('0', pos++);
+	}
 
-	for (int i = 0; i < ibufsiz; i++)
+	for (int i = 0; i < ibufsiz; i++) {
 		this->initChar(ibuf[ibufsiz - i - 1], pos++);
+	}
 
 	if (fbufsiz) {
 		this->initChar('.', pos++);
 
-		for (int i = 0; i < fbufsiz; i++)
+		for (int i = 0; i < fbufsiz; i++) {
 			this->initChar(fbuf[i], pos++);
+		}
 	}
 
 	if (exponent) {
 		this->initChar('e', pos++);
-		if (negexponent)
+		if (negexponent) {
 			this->initChar('-', pos++);
+		}
 
-		for (int i = 0; i < ebufsiz; i++)
+		for (int i = 0; i < ebufsiz; i++) {
 			this->initChar(ebuf[ebufsiz - i - 1], pos++);
+		}
 	}
 
 	this->initChar(0, pos);
@@ -720,8 +790,9 @@ void string<utf16>::initComplex(const std::complex<double> &value, int base, int
 
 	if (value.real() && value.imag()) {
 		operator=(string<utf16>(value.real(), base, precision, scientific, padSize));
-		if (value.imag() > 0)
+		if (value.imag() > 0) {
 			operator+=("+");
+		}
 		operator+=(string<utf16>(value.imag(), base, precision, scientific, padSize));
 		operator+=("i");
 	} else if (value.imag()) {
@@ -749,18 +820,22 @@ template <> string<utf16> string<utf16>::substr(int index, int count) const noex
 	uint16_t *data16 = (uint16_t *)data;
 	uint16_t *result16;
 
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if (index < 0)
+	}
+	if (index < 0) {
 		index = 0;
+	}
 
 	if (count < 0) {
-		if (index >= character_ct)
+		if (index >= character_ct) {
 			index = character_ct - 1;
+		}
 
 		count = -count;
-		if (count > (character_ct - index))
+		if (count > (character_ct - index)) {
 			count = character_ct - index;
+		}
 		result.increase(count);
 
 		result16 = (uint16_t *)result.data;
@@ -772,18 +847,21 @@ template <> string<utf16> string<utf16>::substr(int index, int count) const noex
 		result16[count] = 0;
 		result.character_ct = count;
 	} else if (count) {
-		if (index >= character_ct)
+		if (index >= character_ct) {
 			return result;
+		}
 
-		if (count > (character_ct - index))
+		if (count > (character_ct - index)) {
 			count = character_ct - index;
+		}
 		result.increase(count);
 
 		result16 = (uint16_t *)result.data;
 
 		int end = index + count;
-		for (int i = index; i < end; i++)
+		for (int i = index; i < end; i++) {
 			result16[i - index] = data16[i];
+		}
 
 		result16[count] = 0;
 		result.character_ct = count;
@@ -793,8 +871,9 @@ template <> string<utf16> string<utf16>::substr(int index, int count) const noex
 }
 
 template <> long string<utf16>::integer(int base, uint32_t decimal) const noexcept {
-	if ((base < 2) || (base > 36))
+	if ((base < 2) || (base > 36)) {
 		return 0;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 
@@ -809,21 +888,24 @@ template <> long string<utf16>::integer(int base, uint32_t decimal) const noexce
 		if (isNumeric(chr)) {
 			result *= base;
 			result += numeralValue(chr);
-		} else if (chr == decimal)
+		} else if (chr == decimal) {
 			break;
-		else
+		} else {
 			return 0;
+		}
 	}
 
 	return (negative ? -result : result);
 }
 
 template <> double string<utf16>::floating(int base, uint32_t decimal) const noexcept {
-	if ((base < 2) || (base > 36))
+	if ((base < 2) || (base > 36)) {
 		return 0;
+	}
 
-	if (!character_ct)
+	if (!character_ct) {
 		return 0;
+	}
 
 	bool pastDecimal, pastExponent, negexponent;
 	pastDecimal = pastExponent = negexponent = false;
@@ -833,8 +915,9 @@ template <> double string<utf16>::floating(int base, uint32_t decimal) const noe
 	bool negative = (data16[0] == '-');
 	int start = (negative || (data16[0] == '+'));
 
-	if (start >= character_ct)
+	if (start >= character_ct) {
 		return 0;
+	}
 
 	double result = 0;
 	double frac = 1;
@@ -843,24 +926,27 @@ template <> double string<utf16>::floating(int base, uint32_t decimal) const noe
 	for (int i = start; i < character_ct; i++) {
 		if (!isNumeric(data16[i], base)) {
 			if (data16[i] == decimal) {
-				if (pastDecimal || pastExponent)
+				if (pastDecimal || pastExponent) {
 					return 0;
-				else {
-					if (i >= character_ct - 1)
+				} else {
+					if (i >= character_ct - 1) {
 						return false;
+					}
 					pastDecimal = true;
 				}
 			} else if (core::toLower(data16[i]) == 'e') {
-				if (pastExponent)
+				if (pastExponent) {
 					return 0;
-				else {
+				} else {
 					pastExponent = true;
 					negexponent = (data16[i + 1] == '-');
-					if (negexponent || (data16[i + 1] == '+'))
+					if (negexponent || (data16[i + 1] == '+')) {
 						i++;
+					}
 				}
-			} else
+			} else {
 				return 0;
+			}
 		} else {
 			if (pastExponent) {
 				exponent *= base;
@@ -877,10 +963,11 @@ template <> double string<utf16>::floating(int base, uint32_t decimal) const noe
 
 	if (pastExponent) {
 		for (int i = 0; i < exponent; i++) {
-			if (negexponent)
+			if (negexponent) {
 				result /= base;
-			else
+			} else {
 				result *= base;
+			}
 		}
 	}
 
@@ -888,10 +975,12 @@ template <> double string<utf16>::floating(int base, uint32_t decimal) const noe
 }
 
 template <> std::complex<double> string<utf16>::complex(int base, uint32_t decimal) const noexcept {
-	if ((base < 2) || (base > 36))
+	if ((base < 2) || (base > 36)) {
 		return 0;
-	if (!character_ct)
+	}
+	if (!character_ct) {
 		return 0;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 
@@ -899,11 +988,13 @@ template <> std::complex<double> string<utf16>::complex(int base, uint32_t decim
 	bool imag = false;
 	bool imagEnd = core::toLower(data16[character_ct - 1]) == 'i';
 	for (int i = start; i < character_ct; ++i) {
-		if (core::toLower(data16[i]) == 'i')
+		if (core::toLower(data16[i]) == 'i') {
 			imag = true;
+		}
 		if (((data16[i] == '-') || (data16[i] == '+')) && (base < 14) && i && (core::toLower(data16[i - 1]) != 'e')) {
-			if (!(imag ^ imagEnd))
+			if (!(imag ^ imagEnd)) {
 				return 0;
+			}
 			auto sub1 = substr(0, i - imag);
 			auto sub2 = substr(i, character_ct - i - imagEnd);
 
@@ -915,18 +1006,21 @@ template <> std::complex<double> string<utf16>::complex(int base, uint32_t decim
 		}
 	}
 
-	if (imagEnd)
+	if (imagEnd) {
 		return std::complex<double>(0, substr(0, character_ct - 1).floating(base, decimal));
-	else
+	} else {
 		return floating(base, decimal);
+	}
 }
 
 /// analyzers
 template <> bool string<utf16>::foundAt(const string<utf16> &other, int index) const noexcept {
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if ((character_ct - index) < other.character_ct || index < 0)
+	}
+	if ((character_ct - index) < other.character_ct || index < 0) {
 		return false;
+	}
 
 	uint32_t *data32 = (uint32_t *)data;
 	uint32_t *other32 = (uint32_t *)other.data;
@@ -937,13 +1031,15 @@ template <> bool string<utf16>::foundAt(const string<utf16> &other, int index) c
 	int idx = index * charSz;
 	int end = (other.character_ct * charSz) >> 2;
 	for (i = 0; i < end; i++) {
-		if (data32[i + index] != other32[i])
+		if (data32[i + index] != other32[i]) {
 			return false;
+		}
 	}
 
 	for (i = (end << 2); i < (other.character_ct * charSz); i++) {
-		if (data[i + idx] != other[i])
+		if (data[i + idx] != other[i]) {
 			return false;
+		}
 	}
 
 	return true;
@@ -954,12 +1050,15 @@ template <> bool string<utf16>::beginsWith(const string<utf16> &other) const noe
 }
 
 template <> bool string<utf16>::foundEndAt(const string<utf16> &other, int index) const noexcept {
-	if (index < 0)
+	if (index < 0) {
 		index += character_ct;
-	if (index < other.character_ct)
+	}
+	if (index < other.character_ct) {
 		return false;
-	if (index >= character_ct)
+	}
+	if (index >= character_ct) {
 		return false;
+	}
 
 	const int charSz = this->charSize();
 	const int idx = (index - other.character_ct + 1) * charSz;
@@ -971,15 +1070,17 @@ template <> bool string<utf16>::foundEndAt(const string<utf16> &other, int index
 	int i = 0;
 	int end = last >> 2;
 	while (i < end) {
-		if (data32[i] != other32[i])
+		if (data32[i] != other32[i]) {
 			return false;
+		}
 
 		i++;
 	}
 
 	for (i = (end << 2); i < last; i++) {
-		if (data[i + idx] != other[i])
+		if (data[i + idx] != other[i]) {
 			return false;
+		}
 	}
 
 	return true;
@@ -1008,12 +1109,14 @@ template <> string<utf16> &string<utf16>::remove(const string &other, int occurr
 }
 
 template <> string<utf16> &string<utf16>::truncate(int index) noexcept {
-	if (index >= character_ct)
+	if (index >= character_ct) {
 		return *this;
-	if (index < -character_ct)
+	}
+	if (index < -character_ct) {
 		index = 0;
-	else if (index < 0)
+	} else if (index < 0) {
 		index += character_ct;
+	}
 
 	uint16_t *data16 = (uint16_t *)data;
 	data16[index] = 0;
@@ -1044,8 +1147,9 @@ string<utf16> &string<utf16>::replace(const string<utf16> &findStr, const string
 }
 
 template <> string<utf16> &string<utf16>::padLeftIn(const string<utf16> &other, int padSize) noexcept {
-	if (padSize <= character_ct)
+	if (padSize <= character_ct) {
 		return *this;
+	}
 
 	string<utf16> padStr;
 
@@ -1056,15 +1160,17 @@ template <> string<utf16> &string<utf16>::padLeftIn(const string<utf16> &other, 
 		padChars -= other.character_ct;
 	}
 
-	if (padChars > 0)
+	if (padChars > 0) {
 		padStr += other.substr(0, padChars);
+	}
 
 	return this->insert(padStr, 0);
 }
 
 template <> string<utf16> &string<utf16>::padRightIn(const string<utf16> &other, int padSize) noexcept {
-	if (padSize <= character_ct)
+	if (padSize <= character_ct) {
 		return *this;
+	}
 
 	string<utf16> padStr;
 
@@ -1075,8 +1181,9 @@ template <> string<utf16> &string<utf16>::padRightIn(const string<utf16> &other,
 		padChars -= other.character_ct;
 	}
 
-	if (padChars > 0)
+	if (padChars > 0) {
 		padStr += other.substr(0, padChars);
+	}
 
 	return operator+=(padStr);
 }
@@ -1110,47 +1217,54 @@ template <> string<utf16> string<utf16>::operator+(const string<utf16> &other) c
 }
 
 template <> bool string<utf16>::operator==(const string<utf16> &other) const noexcept {
-	if (character_ct != other.character_ct)
+	if (character_ct != other.character_ct) {
 		return false;
-	if (this == &other)
+	}
+	if (this == &other) {
 		return true;
+	}
 
 	auto data16 = (uint16_t *)data;
 	auto other16 = (uint16_t *)other.data;
 
 	for (int i = 0; i < character_ct; ++i) {
-		if (data16[i] != other16[i])
+		if (data16[i] != other16[i]) {
 			return false;
+		}
 	}
 	return true;
 }
 
 template <> bool string<utf16>::operator>(const string<utf16> &other) const noexcept {
 	int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
-	if (this == &other)
+	if (this == &other) {
 		return false;
+	}
 
 	auto data16 = (uint16_t *)data;
 	auto other16 = (uint16_t *)other.data;
 
 	for (int i = 0; i < len; ++i) {
-		if (data16[i] != other16[i])
+		if (data16[i] != other16[i]) {
 			return data16[i] > other16[i];
+		}
 	}
 	return character_ct > other.character_ct;
 }
 
 template <> bool string<utf16>::operator<(const string<utf16> &other) const noexcept {
 	int len = (character_ct > other.character_ct) ? other.character_ct : character_ct;
-	if (this == &other)
+	if (this == &other) {
 		return false;
+	}
 
 	auto data16 = (uint16_t *)data;
 	auto other16 = (uint16_t *)other.data;
 
 	for (int i = 0; i < len; ++i) {
-		if (data16[i] != other16[i])
+		if (data16[i] != other16[i]) {
 			return data16[i] < other16[i];
+		}
 	}
 	return character_ct < other.character_ct;
 }

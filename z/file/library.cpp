@@ -23,17 +23,21 @@ library::~library() noexcept {
 bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 	auto fname = fileName;
 #ifdef _WIN32
-	if (autoExtension)
+	if (autoExtension) {
 		fname.append(".dll");
-	if (lib_ptr)
+	}
+	if (lib_ptr) {
 		FreeLibrary((HMODULE)lib_ptr);
+	}
 	lib_ptr = (void *)LoadLibrary((char *)fname.cstring());
 	return (bool)lib_ptr;
 #elif __linux__
-	if (autoExtension)
+	if (autoExtension) {
 		fname.append(".so");
-	if (lib_ptr)
+	}
+	if (lib_ptr) {
 		dlclose(lib_ptr);
+	}
 	lib_ptr = dlopen((char *)fname.cstring(), RTLD_NOW);
 	return (bool)lib_ptr;
 #else
@@ -43,15 +47,17 @@ bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 
 bool library::unload() noexcept {
 #ifdef _WIN32
-	if (lib_ptr)
+	if (lib_ptr) {
 		return (bool)FreeLibrary((HMODULE)lib_ptr);
-	else
+	} else {
 		return true;
+	}
 #elif __linux__
-	if (lib_ptr)
+	if (lib_ptr) {
 		return (bool)dlclose(lib_ptr);
-	else
+	} else {
 		return true;
+	}
 #else
 	return true;
 #endif
@@ -68,11 +74,13 @@ bool library::bad() noexcept {
 void *library::getRawSymbol(const zpath &symbol_name) noexcept {
 	void *symbol_pointer = NULL;
 #ifdef _WIN32
-	if (lib_ptr)
+	if (lib_ptr) {
 		symbol_pointer = (void *)GetProcAddress((HMODULE)lib_ptr, (const char *)symbol_name.cstring());
+	}
 #elif __linux__
-	if (lib_ptr)
+	if (lib_ptr) {
 		symbol_pointer = dlsym(lib_ptr, (const char *)symbol_name.cstring());
+	}
 #endif
 
 	return symbol_pointer;

@@ -319,8 +319,9 @@ public:
 
 	/// Destructor
 	~string() noexcept {
-		if (data)
+		if (data) {
 			delete[] data;
+		}
 	}
 
 	/**
@@ -905,8 +906,9 @@ public:
 	string repeat(int count) const noexcept {
 		string value;
 		value.increase(character_ct * count);
-		for (int i = 0; i < count; ++i)
+		for (int i = 0; i < count; ++i) {
 			value.append(*this);
+		}
 		return value;
 	}
 
@@ -921,8 +923,9 @@ public:
 	 * side of this string.
 	 */
 	string trimLeft(const string &other = "") const noexcept {
-		if ((character_ct < other.character_ct) || !character_ct)
+		if ((character_ct < other.character_ct) || !character_ct) {
 			return *this;
+		}
 
 		int index = 0;
 		if (other.length()) {
@@ -949,8 +952,9 @@ public:
 	 * side of this string.
 	 */
 	string trimRight(const string &other = "") const noexcept {
-		if ((character_ct < other.character_ct) || !character_ct)
+		if ((character_ct < other.character_ct) || !character_ct) {
 			return *this;
+		}
 
 		int index = character_ct - 1;
 		if (other.length()) {
@@ -977,8 +981,9 @@ public:
 	 * side of this string.
 	 */
 	string &trimLeftIn(const string &other = "") noexcept {
-		if ((character_ct < other.character_ct) || !character_ct)
+		if ((character_ct < other.character_ct) || !character_ct) {
 			return *this;
+		}
 
 		int index = 0;
 		if (other.length()) {
@@ -1005,8 +1010,9 @@ public:
 	 * side of this string.
 	 */
 	string &trimRightIn(const string &other = "") noexcept {
-		if ((character_ct < other.character_ct) || !character_ct)
+		if ((character_ct < other.character_ct) || !character_ct) {
 			return *this;
+		}
 
 		int index = character_ct - 1;
 		if (other.length()) {

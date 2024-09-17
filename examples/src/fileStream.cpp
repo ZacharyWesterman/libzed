@@ -16,26 +16,29 @@ int main() {
 	// stream is empty BEFORE processing the character.
 	while (true) {
 		auto ch = in.get();
-		if (in.eof())
+		if (in.eof()) {
 			break;
+		}
 
-		if (ch > 32)
+		if (ch > 32) {
 			text = ch;
-		else if (ch == 32)
+		} else if (ch == 32) {
 			text = "˽";
-		else if (ch == '\n')
+		} else if (ch == '\n') {
 			text = "˥";
-		else if (ch == '\r')
+		} else if (ch == '\r') {
 			text = "˿";
-		else if (ch == '\t')
+		} else if (ch == '\t') {
 			text = "˾";
-		else
+		} else {
 			text = (int)ch;
+		}
 
-		if (ch == '\n')
+		if (ch == '\n') {
 			text.writeln(std::cout);
-		else
+		} else {
 			text.write(std::cout);
+		}
 	}
 
 	// However, if we're reading lines from a stream, we should not just exit when we pass
@@ -47,8 +50,9 @@ int main() {
 	std::cout << std::endl;
 	while (true) {
 		text.readln(in);
-		if (!text.length())
+		if (!text.length()) {
 			break;
+		}
 
 		text.writeln(std::cout);
 	}

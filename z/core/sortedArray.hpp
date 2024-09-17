@@ -75,8 +75,9 @@ template <typename T> int sortedArray<T>::add(const T &object) {
  * \b -1 if it was not found.
  */
 template <typename T> int sortedArray<T>::find(const T &object) const {
-	if (this->array_data.size() == 0)
+	if (this->array_data.size() == 0) {
 		return -1;
+	}
 
 	int left = 0;
 	int right = this->array_data.size() - 1;
@@ -93,10 +94,11 @@ template <typename T> int sortedArray<T>::find(const T &object) const {
 		}
 	}
 
-	if (this->eq(this->array_data.at(left), object))
+	if (this->eq(this->array_data.at(left), object)) {
 		return left;
-	else
+	} else {
 		return -1;
+	}
 }
 
 /**
@@ -112,8 +114,9 @@ template <typename T> int sortedArray<T>::find(const T &object) const {
  * \return The first index where the object can be inserted.
  */
 template <typename T> int sortedArray<T>::findInsert(const T &object, bool allowDuplicates) const {
-	if (this->array_data.size() == 0)
+	if (this->array_data.size() == 0) {
 		return 0;
+	}
 
 	int left = 0;
 	int right = this->array_data.size() - 1;
@@ -130,12 +133,13 @@ template <typename T> int sortedArray<T>::findInsert(const T &object, bool allow
 		}
 	}
 
-	if (this->lt(this->array_data.at(left), object))
+	if (this->lt(this->array_data.at(left), object)) {
 		return left + 1;
-	else if (allowDuplicates || !this->eq(this->array_data.at(left), object))
+	} else if (allowDuplicates || !this->eq(this->array_data.at(left), object)) {
 		return left;
-	else
+	} else {
 		return -1;
+	}
 }
 
 /**

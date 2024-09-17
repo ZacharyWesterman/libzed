@@ -18,10 +18,12 @@ void dictionary::clear() noexcept {
 }
 
 int dictionary::read(std::istream &stream, const core::timeout &time, bool assumePresorted) noexcept {
-	if (stream.fail())
+	if (stream.fail()) {
 		return -1;
-	if (stream.eof())
+	}
+	if (stream.eof()) {
 		return 1;
+	}
 
 	if (!readingStream) {
 		clear();
@@ -33,17 +35,20 @@ int dictionary::read(std::istream &stream, const core::timeout &time, bool assum
 		zstring *word = new zstring;
 		word->read(stream);
 		if (word->length()) {
-			if (!caseSensitive)
+			if (!caseSensitive) {
 				word->toLower();
+			}
 
-			if (assumePresorted)
+			if (assumePresorted) {
 				wordList.append(word);
-			else
+			} else {
 				wordList.add(word);
+			}
 
 			maxWordLen = std::max(word->length(), maxWordLen);
-		} else
+		} else {
 			delete word;
+		}
 	}
 
 	return stream.eof();
@@ -69,8 +74,9 @@ int dictionary::length() const noexcept {
 void dictionary::addWord(const zstring &word) noexcept {
 	auto wordptr = new zstring(caseSensitive ? word : word.lower());
 	maxWordLen = std::max(wordptr->length(), maxWordLen);
-	if (find(wordptr) < 0)
+	if (find(wordptr) < 0) {
 		wordList.add(wordptr);
+	}
 }
 
 bool dictionary::isCaseSensitive() const noexcept {
@@ -84,8 +90,9 @@ void dictionary::setCaseSensitive(bool caseSensitive) noexcept {
 size_t dictionary::size() const noexcept {
 	size_t total = wordList.size();
 
-	for (int i = 0; i < wordList.length(); i++)
+	for (int i = 0; i < wordList.length(); i++) {
 		total += wordList[i]->size();
+	}
 
 	return total;
 }
@@ -103,8 +110,9 @@ dictRange dictionary::range() const noexcept {
 }
 
 bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept {
-	if (wordRange->exhausted || !wordRange)
+	if (wordRange->exhausted || !wordRange) {
 		return false;
+	}
 	wordRange->isWord = false;
 
 	nextChar = z::core::toUpper(nextChar);
@@ -116,13 +124,15 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 		int center = (left + right) >> 1;
 		auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
 
-		if (thisChar < nextChar)
+		if (thisChar < nextChar) {
 			left = center + 1;
-		else
+		} else {
 			right = center - 1;
+		}
 	}
-	if (z::core::toUpper(wordList[left]->at(wordRange->charPos)) < nextChar)
+	if (z::core::toUpper(wordList[left]->at(wordRange->charPos)) < nextChar) {
 		++left;
+	}
 
 	// If we've skipped past the last successful match, we're done.
 	if (wordRange->charPos) {
@@ -143,13 +153,15 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 		int center = (left + right) >> 1;
 		auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
 
-		if (thisChar > nextChar)
+		if (thisChar > nextChar) {
 			right = center - 1;
-		else
+		} else {
 			left = center + 1;
+		}
 	}
-	if (z::core::toUpper(wordList[right]->at(wordRange->charPos)) < nextChar)
+	if (z::core::toUpper(wordList[right]->at(wordRange->charPos)) < nextChar) {
 		--right;
+	}
 	wordRange->right = right;
 
 	if (z::core::toUpper(wordList[wordRange->left]->at(wordRange->charPos)) != nextChar) {

@@ -130,8 +130,9 @@ public:
 	void append(const TYPE value) noexcept {
 		data[counter] = value;
 		counter = (counter + 1) % LEN;
-		if (total < LEN)
+		if (total < LEN) {
 			++total;
+		}
 	}
 
 	/**
@@ -212,8 +213,9 @@ public:
 
 		TYPE value = data[0];
 		for (int i = 1; i < LEN; ++i) {
-			if (data[i] < value)
+			if (data[i] < value) {
 				value = data[i];
+			}
 		}
 		return value;
 	}
@@ -228,8 +230,9 @@ public:
 
 		TYPE value = data[0];
 		for (int i = 1; i < LEN; ++i) {
-			if (data[i] > value)
+			if (data[i] > value) {
 				value = data[i];
+			}
 		}
 		return value;
 	}

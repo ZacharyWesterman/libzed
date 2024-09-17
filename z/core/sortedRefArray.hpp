@@ -33,21 +33,23 @@ protected:
 	}
 
 	virtual bool gt(const T &arg1, const T &arg2) const override {
-		if (arg1 == arg2)
+		if (arg1 == arg2) {
 			return false;
-		else if (arg1 && arg2)
+		} else if (arg1 && arg2) {
 			return greater(*arg1, *arg2);
-		else
+		} else {
 			return arg1;
+		}
 	}
 
 	virtual bool lt(const T &arg1, const T &arg2) const override {
-		if (arg1 == arg2)
+		if (arg1 == arg2) {
 			return false;
-		else if (arg1 && arg2)
+		} else if (arg1 && arg2) {
 			return lesser(*arg1, *arg2);
-		else
+		} else {
 			return arg2;
+		}
 	}
 
 public:
