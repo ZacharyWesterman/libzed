@@ -781,6 +781,45 @@ template <> string<utf32> &string<utf32>::readln(std::istream &stream) noexcept 
 	return *this;
 }
 
+template <> string<utf32> &string<utf32>::readall(std::istream &stream) noexcept {
+	character_ct = 0;
+
+	uint32_t *data32 = (uint32_t *)data;
+	data32[0] = 0;
+
+	if (stream.fail() || stream.eof()) {
+		return *this;
+	}
+
+	uint32_t last = stream.get();
+
+	while (!stream.eof()) {
+		uint8_t c[4];
+		c[0] = last;
+
+		int len = lenFromUTF8(c);
+		if (len) {
+			for (int i = 1; i < len; i++) {
+				c[i] = stream.get();
+			}
+
+			last = fromUTF8(c);
+		}
+
+		increase(character_ct);
+		data32 = (uint32_t *)data;
+		data32[character_ct++] = last;
+
+		last = stream.get();
+	}
+
+	increase(character_ct);
+	data32 = (uint32_t *)data;
+	data32[character_ct] = 0;
+
+	return *this;
+}
+
 template <> void string<utf32>::initInt(long long value, int base, int padSize) noexcept {
 	uint8_t ibuf[Z_STR_INT_BUFSIZE];
 	if ((base < 2) || (base > 36)) {

@@ -1113,6 +1113,41 @@ template <> string<ascii> &string<ascii>::readln(std::istream &stream) noexcept 
 	return *this;
 }
 
+template <> string<ascii> &string<ascii>::readall(std::istream &stream) noexcept {
+	character_ct = 0;
+	data[0] = 0;
+
+	if (stream.fail() || stream.eof()) {
+		return *this;
+	}
+
+	uint32_t last = stream.get();
+
+	while (!stream.eof()) {
+		uint8_t c[4];
+		c[0] = last;
+
+		int len = lenFromUTF8(c);
+		if (len) {
+			for (int i = 1; i < len; i++) {
+				c[i] = stream.get();
+			}
+
+			last = fromUTF8(c);
+		}
+
+		increase(character_ct);
+		data[character_ct++] = (last > 0xFF) ? '?' : last;
+
+		last = stream.get();
+	}
+
+	increase(character_ct);
+	data[character_ct] = 0;
+
+	return *this;
+}
+
 template <> bool string<ascii>::operator==(const string<ascii> &other) const noexcept {
 	if (character_ct != other.character_ct) {
 		return false;

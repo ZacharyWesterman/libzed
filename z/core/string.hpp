@@ -1447,6 +1447,9 @@ public:
 	 */
 	string &readln(std::istream &stream) noexcept;
 
+	// Read an entire stream's contents into this string.
+	string &readall(std::istream &stream) noexcept;
+
 	/**
 	 * \brief Write string data to a stream in that stream's encoding.
 	 *
