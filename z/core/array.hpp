@@ -263,6 +263,19 @@ public:
 		return new_array;
 	}
 
+	virtual void reverse() noexcept {
+		const auto len = length();
+		for (int i = 0; i < (len / 2); ++i) {
+			std::swap(array_data[i], array_data[len - 1 - i]);
+		}
+	}
+
+	array reversed() const noexcept {
+		auto new_array = *this;
+		new_array.reverse();
+		return new_array;
+	}
+
 	array &operator=(const array &other);
 	array &operator=(const std::initializer_list<T> &other);
 

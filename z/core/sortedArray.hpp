@@ -40,6 +40,9 @@ public:
 
 	// For sorted arrays, shuffle does nothing.
 	virtual void shuffle() noexcept override {}
+
+	// For sorted arrays, reverse does nothing.
+	virtual void reverse() noexcept override {}
 };
 
 /**
