@@ -18,7 +18,5 @@ int main() {
 	auto nonneg_sum = numbers.filter([](auto item) { return item >= 0; }).reduce(0, [](auto a, auto b) { return a + b; });
 
 	// Print output
-	("Number list = ["_zs + join(numbers, ", ") + "]\n" + "Sum of all numbers = " + total_sum + "\n" +
-	 "Sum of non-negative numbers = " + nonneg_sum + "\n")
-			.write(std::cout);
+	("Number list = ["_zs + join(numbers, ", ") + "]\n" + "Sum of all numbers = " + total_sum + "\n" + "Sum of non-negative numbers = " + nonneg_sum + "\n").write(std::cout);
 }

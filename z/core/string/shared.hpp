@@ -7,8 +7,7 @@
 namespace z {
 namespace core {
 template <>
-string<ENCODING> string<ENCODING>::filter(const std::initializer_list<const std::pair<uint32_t, uint32_t>> &list,
-																					bool invert) const noexcept {
+string<ENCODING> string<ENCODING>::filter(const std::initializer_list<const std::pair<uint32_t, uint32_t>> &list, bool invert) const noexcept {
 	string<ENCODING> result;
 	for (uint32_t chr : *this) {
 		bool matched = false;
@@ -26,7 +25,8 @@ string<ENCODING> string<ENCODING>::filter(const std::initializer_list<const std:
 	return result;
 }
 
-template <> string<ENCODING> string<ENCODING>::filter(const string<ENCODING> &list, bool invert) const noexcept {
+template <>
+string<ENCODING> string<ENCODING>::filter(const string<ENCODING> &list, bool invert) const noexcept {
 	string<ENCODING> result;
 	for (uint32_t chr : *this) {
 		bool matched = false;
@@ -44,7 +44,8 @@ template <> string<ENCODING> string<ENCODING>::filter(const string<ENCODING> &li
 	return result;
 }
 
-template <> string<ENCODING> string<ENCODING>::filter(std::function<bool(uint32_t)> lambda) const noexcept {
+template <>
+string<ENCODING> string<ENCODING>::filter(std::function<bool(uint32_t)> lambda) const noexcept {
 	string<ENCODING> result;
 	result.increase(length());
 
@@ -58,8 +59,7 @@ template <> string<ENCODING> string<ENCODING>::filter(std::function<bool(uint32_
 }
 
 template <>
-bool string<ENCODING>::contains(const std::initializer_list<const std::pair<uint32_t, uint32_t>> &list,
-																bool exclusive) const noexcept {
+bool string<ENCODING>::contains(const std::initializer_list<const std::pair<uint32_t, uint32_t>> &list, bool exclusive) const noexcept {
 	string<ENCODING> result;
 	for (uint32_t chr : *this) {
 		bool matched = false;
@@ -82,7 +82,8 @@ bool string<ENCODING>::contains(const std::initializer_list<const std::pair<uint
 	return exclusive;
 }
 
-template <> bool string<ENCODING>::contains(const string<ENCODING> &list, bool exclusive) const noexcept {
+template <>
+bool string<ENCODING>::contains(const string<ENCODING> &list, bool exclusive) const noexcept {
 	for (uint32_t chr : *this) {
 		bool matched = false;
 		for (uint32_t other : list) {
@@ -129,7 +130,8 @@ string<ENCODING> string<ENCODING>::cipher(const string<ENCODING> &keys, const st
 	return result;
 }
 
-template <> string<ENCODING> string<ENCODING>::cipher(std::function<uint32_t(uint32_t)> lambda) const noexcept {
+template <>
+string<ENCODING> string<ENCODING>::cipher(std::function<uint32_t(uint32_t)> lambda) const noexcept {
 	string<ENCODING> result;
 	result.increase(length());
 
@@ -140,7 +142,8 @@ template <> string<ENCODING> string<ENCODING>::cipher(std::function<uint32_t(uin
 	return result;
 }
 
-template <> string<ENCODING> string<ENCODING>::ordinal(long long value) noexcept {
+template <>
+string<ENCODING> string<ENCODING>::ordinal(long long value) noexcept {
 	value %= 100;
 	if (((value % 10) == 3) && (value != 13)) {
 		return "rd";
@@ -153,7 +156,8 @@ template <> string<ENCODING> string<ENCODING>::ordinal(long long value) noexcept
 	return "th";
 }
 
-template <> string<ENCODING> string<ENCODING>::words(long long value, bool ordinal) noexcept {
+template <>
+string<ENCODING> string<ENCODING>::words(long long value, bool ordinal) noexcept {
 	const char *tens[] = {"", "", "twen", "thir", "four", "fif", "six", "seven", "eigh", "nine"};
 	const char *ones[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"};
 	const char *ord[] = {"", "fir", "seco", "thi", "for", "fif", "six", "seven", "eigh", "nin", "ten", "eleven", "twelf"};

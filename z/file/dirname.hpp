@@ -9,7 +9,8 @@ namespace file {
  * \return A string containing the directory above a given path.
  * \threadsafe_function_yes
  */
-template <encoding E> core::string<E> dirname(const core::string<E> &path) noexcept {
+template <encoding E>
+core::string<E> dirname(const core::string<E> &path) noexcept {
 	core::string<E> dir = path;
 	dir.replace("\\", "/");
 	dir.trimRightIn("/");

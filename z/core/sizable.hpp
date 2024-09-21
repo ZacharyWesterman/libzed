@@ -31,8 +31,7 @@ public:
  * \return The number of bytes in memory this object currently consumes.
  */
 template <typename T>
-inline typename std::enable_if<std::is_base_of<z::core::sizable, T>::value>::type size(const T &object,
-																																											 size_t &bytes) noexcept {
+inline typename std::enable_if<std::is_base_of<z::core::sizable, T>::value>::type size(const T &object, size_t &bytes) noexcept {
 	bytes = object.size();
 }
 
@@ -42,8 +41,7 @@ inline typename std::enable_if<std::is_base_of<z::core::sizable, T>::value>::typ
  * \return The number of bytes in memory this object currently consumes.
  */
 template <typename T>
-inline typename std::enable_if<!std::is_base_of<z::core::sizable, T>::value>::type size(const T &object,
-																																												size_t &bytes) noexcept {
+inline typename std::enable_if<!std::is_base_of<z::core::sizable, T>::value>::type size(const T &object, size_t &bytes) noexcept {
 	bytes = sizeof(object);
 }
 } // namespace core

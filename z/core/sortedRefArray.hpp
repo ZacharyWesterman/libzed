@@ -22,7 +22,8 @@ namespace core {
  * \see refArray
  * \see sortedArray
  */
-template <typename T> class sortedRefArray : public sortedArray<T> {
+template <typename T>
+class sortedRefArray : public sortedArray<T> {
 private:
 	// only allow this class to work with pointers
 	static_assert(std::is_pointer<T>::value, "Template must be of pointer type.");
@@ -66,7 +67,8 @@ public:
 	 * \param arg1 initializing data.
 	 * \param args cont. initializing data.
 	 */
-	template <typename... Args> sortedRefArray(const T &arg1, const Args &...args) {
+	template <typename... Args>
+	sortedRefArray(const T &arg1, const Args &...args) {
 		this->init(arg1, args...);
 	}
 

@@ -1,22 +1,14 @@
 #include "charFunctions.hpp"
 
-static const uint32_t begRangesGroup[] = {L'A', L'a', L'À', L'à', L'Ø', L'ø', L'Έ', L'έ', L'Ό', L'ό', L'Α', L'α',
-																					L'Σ', L'σ', L'Ϙ', L'ϙ', L'Ϟ', L'ϟ', L'А', L'а', L'Ѐ', L'ѐ', 0,		0};
+static const uint32_t begRangesGroup[] = {L'A', L'a', L'À', L'à', L'Ø', L'ø', L'Έ', L'έ', L'Ό', L'ό', L'Α', L'α', L'Σ', L'σ', L'Ϙ', L'ϙ', L'Ϟ', L'ϟ', L'А', L'а', L'Ѐ', L'ѐ', 0, 0};
 
-static const uint32_t endRangesGroup[] = {L'Z', L'z', L'Ö', L'ö', L'Þ', L'þ', L'Ί', L'ί', L'Ώ', L'ώ', L'Ρ', L'ρ',
-																					L'Ϋ', L'ϋ', L'Ϝ', L'ϝ', L'Ϯ', L'ϯ', L'Я', L'я', L'Џ', L'џ', 0,		0};
+static const uint32_t endRangesGroup[] = {L'Z', L'z', L'Ö', L'ö', L'Þ', L'þ', L'Ί', L'ί', L'Ώ', L'ώ', L'Ρ', L'ρ', L'Ϋ', L'ϋ', L'Ϝ', L'ϝ', L'Ϯ', L'ϯ', L'Я', L'я', L'Џ', L'џ', 0, 0};
 
-static const uint32_t begRangesSequence[] = {L'Ā', L'ā', L'Ĳ', L'ĳ', L'Ĺ', L'ĺ', L'Ŋ', L'ŋ', L'Ź', L'ź', L'Ơ', L'ơ',
-																						 L'Ǎ', L'ǎ', L'Ǟ', L'ǟ', L'Ǹ', L'ǹ', L'Ȣ', L'ȣ', L'Ɇ', L'ɇ', L'Ḃ', L'ḃ',
-																						 L'Ͱ', L'ͱ', L'Ѡ', L'ѡ', L'Ҋ', L'ҋ', L'Ӂ', L'ӂ', L'Ӑ', L'ӑ', 0,		 0};
+static const uint32_t begRangesSequence[] = {L'Ā', L'ā', L'Ĳ', L'ĳ', L'Ĺ', L'ĺ', L'Ŋ', L'ŋ', L'Ź', L'ź', L'Ơ', L'ơ', L'Ǎ', L'ǎ', L'Ǟ', L'ǟ', L'Ǹ', L'ǹ', L'Ȣ', L'ȣ', L'Ɇ', L'ɇ', L'Ḃ', L'ḃ', L'Ͱ', L'ͱ', L'Ѡ', L'ѡ', L'Ҋ', L'ҋ', L'Ӂ', L'ӂ', L'Ӑ', L'ӑ', 0, 0};
 
-static const uint32_t endRangesSequence[] = {L'Į', L'į', L'Ķ', L'ķ', L'Ň', L'ň', L'Ŷ', L'ŷ', L'Ž', L'ž', L'Ƥ', L'ƥ',
-																						 L'Ǜ', L'ǜ', L'Ǯ', L'ǯ', L'Ȟ', L'ȟ', L'Ȳ', L'ȳ', L'Ɏ', L'ɏ', L'Ẅ', L'ẅ',
-																						 L'Ͷ', L'ͷ', L'Ҁ', L'ҁ', L'Ҿ', L'ҿ', L'Ӎ', L'ӎ', L'Ӿ', L'ӿ', 0,		 0};
+static const uint32_t endRangesSequence[] = {L'Į', L'į', L'Ķ', L'ķ', L'Ň', L'ň', L'Ŷ', L'ŷ', L'Ž', L'ž', L'Ƥ', L'ƥ', L'Ǜ', L'ǜ', L'Ǯ', L'ǯ', L'Ȟ', L'ȟ', L'Ȳ', L'ȳ', L'Ɏ', L'ɏ', L'Ẅ', L'ẅ', L'Ͷ', L'ͷ', L'Ҁ', L'ҁ', L'Ҿ', L'ҿ', L'Ӎ', L'ӎ', L'Ӿ', L'ӿ', 0, 0};
 
-static const uint32_t directCases[] = {L'Ÿ', L'ÿ', L'Ƃ', L'ƃ', L'Ƅ', L'ƅ', L'Ƈ', L'ƈ', L'Ƌ', L'ƌ', L'Ƒ', L'ƒ', L'Ƙ', L'ƙ', L'Ƨ',
-																			 L'ƨ', L'Ƭ', L'ƭ', L'Ư', L'ư', L'Ƴ', L'ƴ', L'Ƶ', L'ƶ', L'Ƹ', L'ƹ', L'Ƽ', L'ƽ', L'Ǵ', L'ǵ',
-																			 L'Ȼ', L'ȼ', L'Ɂ', L'ɂ', L'Ỳ', L'ỳ', L'Ά', L'ά', L'Ϸ', L'ϸ', L'Ϻ', L'ϻ', 0,		 0};
+static const uint32_t directCases[] = {L'Ÿ', L'ÿ', L'Ƃ', L'ƃ', L'Ƅ', L'ƅ', L'Ƈ', L'ƈ', L'Ƌ', L'ƌ', L'Ƒ', L'ƒ', L'Ƙ', L'ƙ', L'Ƨ', L'ƨ', L'Ƭ', L'ƭ', L'Ư', L'ư', L'Ƴ', L'ƴ', L'Ƶ', L'ƶ', L'Ƹ', L'ƹ', L'Ƽ', L'ƽ', L'Ǵ', L'ǵ', L'Ȼ', L'ȼ', L'Ɂ', L'ɂ', L'Ỳ', L'ỳ', L'Ά', L'ά', L'Ϸ', L'ϸ', L'Ϻ', L'ϻ', 0, 0};
 
 // These lowercase characters convert to uppercase, but not the other way
 static const uint32_t alternateUpper[] = {L'Σ', L'ς', 0, 0};
@@ -312,8 +304,7 @@ uint32_t fromUTF8(uint8_t *c) noexcept {
 		} else // 1111 xxxx, 10xx xxxx, 10xx xxxx, 10xx xxxx
 		{
 			if (c[1] && c[2] && c[3]) {
-				uint32_t res[] = {(chr & 0x0F) << 18, (uint32_t)(c[1] & 0x3F) << 12, (uint32_t)(c[2] & 0x3F) << 6,
-													(uint32_t)(c[3] & 0x3F)};
+				uint32_t res[] = {(chr & 0x0F) << 18, (uint32_t)(c[1] & 0x3F) << 12, (uint32_t)(c[2] & 0x3F) << 6, (uint32_t)(c[3] & 0x3F)};
 
 				return res[0] + res[1] + res[2] + res[3];
 			} else {

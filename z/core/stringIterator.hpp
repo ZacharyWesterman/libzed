@@ -13,7 +13,8 @@ namespace core {
  * That represent a single "character", this iterator allows for looping over each
  * character in strings of different encoding identically.
  */
-template <encoding E> class stringIterator {
+template <encoding E>
+class stringIterator {
 private:
 	uint8_t *data;
 	uint32_t chr;

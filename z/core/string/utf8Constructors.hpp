@@ -2,7 +2,8 @@
 
 namespace z {
 namespace core {
-template <> string<utf8>::string() noexcept {
+template <>
+string<utf8>::string() noexcept {
 	data = new uint8_t[1];
 	data[0] = 0;
 
@@ -10,7 +11,8 @@ template <> string<utf8>::string() noexcept {
 	character_ct = 0;
 }
 
-template <> string<utf8>::string(char chr) noexcept {
+template <>
+string<utf8>::string(char chr) noexcept {
 	data = new uint8_t[2];
 	data[0] = chr;
 	data[1] = 0;
@@ -19,7 +21,8 @@ template <> string<utf8>::string(char chr) noexcept {
 	character_ct = 1;
 }
 
-template <> string<utf8>::string(wchar_t chr) noexcept {
+template <>
+string<utf8>::string(wchar_t chr) noexcept {
 	data = new uint8_t[5];
 	data_len = 5;
 
@@ -29,7 +32,8 @@ template <> string<utf8>::string(wchar_t chr) noexcept {
 	character_ct = 1;
 }
 
-template <> string<utf8>::string(const uint32_t &chr) noexcept {
+template <>
+string<utf8>::string(const uint32_t &chr) noexcept {
 	data = new uint8_t[5];
 	data_len = 5;
 
@@ -39,7 +43,8 @@ template <> string<utf8>::string(const uint32_t &chr) noexcept {
 	character_ct = 1;
 }
 
-template <> string<utf8>::string(const char *str) noexcept {
+template <>
+string<utf8>::string(const char *str) noexcept {
 	if (str) {
 		int len = 0;
 		while (str[len]) {
@@ -62,7 +67,8 @@ template <> string<utf8>::string(const char *str) noexcept {
 	}
 }
 
-template <> string<utf8>::string(const char *str, size_t len) noexcept {
+template <>
+string<utf8>::string(const char *str, size_t len) noexcept {
 	if (str) {
 		character_ct = len;
 		data = new uint8_t[len + 1];
@@ -82,7 +88,8 @@ template <> string<utf8>::string(const char *str, size_t len) noexcept {
 	}
 }
 
-template <> string<utf8>::string(const wchar_t *str) noexcept {
+template <>
+string<utf8>::string(const wchar_t *str) noexcept {
 	if (str) {
 		int i = 0;
 		int len = 0;
@@ -110,7 +117,8 @@ template <> string<utf8>::string(const wchar_t *str) noexcept {
 	}
 }
 
-template <> string<utf8>::string(const wchar_t *str, size_t __len_ignore) noexcept {
+template <>
+string<utf8>::string(const wchar_t *str, size_t __len_ignore) noexcept {
 	(void)__len_ignore;
 
 	if (str) {
@@ -140,7 +148,8 @@ template <> string<utf8>::string(const wchar_t *str, size_t __len_ignore) noexce
 	}
 }
 
-template <> string<utf8>::string(const string<ascii> &other) noexcept {
+template <>
+string<utf8>::string(const string<ascii> &other) noexcept {
 	data_len = 1;
 	character_ct = other.character_ct;
 
@@ -159,7 +168,8 @@ template <> string<utf8>::string(const string<ascii> &other) noexcept {
 	character_ct = data_len - 1;
 }
 
-template <> string<utf8>::string(const string<utf8> &other) noexcept {
+template <>
+string<utf8>::string(const string<utf8> &other) noexcept {
 	data_len = other.data_len;
 	character_ct = other.character_ct;
 
@@ -170,7 +180,8 @@ template <> string<utf8>::string(const string<utf8> &other) noexcept {
 	}
 }
 
-template <> string<utf8>::string(const string<utf16> &other) noexcept {
+template <>
+string<utf8>::string(const string<utf16> &other) noexcept {
 	data_len = 1;
 	character_ct = other.character_ct;
 
@@ -191,7 +202,8 @@ template <> string<utf8>::string(const string<utf16> &other) noexcept {
 	character_ct = len;
 }
 
-template <> string<utf8>::string(const string<utf32> &other) noexcept {
+template <>
+string<utf8>::string(const string<utf32> &other) noexcept {
 	data_len = 1;
 	character_ct = other.character_ct;
 

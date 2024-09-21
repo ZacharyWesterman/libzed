@@ -15,7 +15,8 @@ namespace core {
  *
  * \threadsafe_function_yes
  */
-template <typename T, encoding E> string<E> join(const iterable<T> &list, const string<E> &delim) noexcept {
+template <typename T, encoding E>
+string<E> join(const iterable<T> &list, const string<E> &delim) noexcept {
 	string<E> result;
 
 	for (auto &item : list) {
@@ -38,7 +39,8 @@ template <typename T, encoding E> string<E> join(const iterable<T> &list, const 
  *
  * \threadsafe_function_yes
  */
-template <typename T> zstring join(const iterable<T> &list, const zstring &delim) noexcept {
+template <typename T>
+zstring join(const iterable<T> &list, const zstring &delim) noexcept {
 	zstring result;
 
 	for (auto &item : list) {
@@ -61,7 +63,8 @@ template <typename T> zstring join(const iterable<T> &list, const zstring &delim
  *
  * \threadsafe_function_yes
  */
-template <typename T, encoding E> string<E> joinDeref(const iterable<T> &list, const string<E> &delim) noexcept {
+template <typename T, encoding E>
+string<E> joinDeref(const iterable<T> &list, const string<E> &delim) noexcept {
 	static_assert(std::is_pointer<T>::value, "Array template must be of pointer type.");
 
 	string<E> result;

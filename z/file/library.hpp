@@ -80,7 +80,8 @@ public:
 	 * a pointer to the symbol. Otherwise, if the symbol was not
 	 * found or the library hasn't been loaded, returns \b NULL.
 	 */
-	template <typename T> T *symbol(const zpath &symbolName) noexcept {
+	template <typename T>
+	T *symbol(const zpath &symbolName) noexcept {
 		return reinterpret_cast<T *>(getRawSymbol(symbolName));
 	}
 
@@ -106,7 +107,8 @@ public:
 	 * a pointer to the symbol. Otherwise, if the symbol was not
 	 * found or the library hasn't been loaded, returns \b NULL.
 	 */
-	template <typename T> std::function<T> function(const zpath &symbolName) noexcept {
+	template <typename T>
+	std::function<T> function(const zpath &symbolName) noexcept {
 		return std::function<T>(reinterpret_cast<T *>(getRawSymbol(symbolName)));
 	}
 };

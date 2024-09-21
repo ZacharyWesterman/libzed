@@ -50,7 +50,8 @@ public:
 	 * \brief Serialization output.
 	 * \param ar The output archive.
 	 */
-	template <class Archive> void save(Archive &ar) const {
+	template <class Archive>
+	void save(Archive &ar) const {
 		time_t elapsed = micros();
 		int goal = timeout_goal;
 		ar(CEREAL_NVP(elapsed));
@@ -61,7 +62,8 @@ public:
 	 * \brief Serialization input.
 	 * \param ar The input archive.
 	 */
-	template <class Archive> void load(Archive &ar) {
+	template <class Archive>
+	void load(Archive &ar) {
 		time_t elapsed;
 		int goal;
 		ar(CEREAL_NVP(elapsed));

@@ -21,6 +21,7 @@ namespace math {
  * is returned.
  * @return The Levenshtein distance between the two strings.
  */
-template <encoding E> int levenschtein(const z::core::string<E> &word1, const z::core::string<E> &word2, int max = 16) noexcept;
+template <encoding E>
+int levenschtein(const z::core::string<E> &word1, const z::core::string<E> &word2, int max = 16) noexcept;
 } // namespace math
 } // namespace z

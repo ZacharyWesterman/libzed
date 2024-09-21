@@ -6,7 +6,8 @@ namespace core {
  * \interface indexable
  * \brief A base interface for all objects whose elements can be directly indexed.
  */
-template <typename T> class indexable {
+template <typename T>
+class indexable {
 public:
 	/// Virtual destructor
 	virtual ~indexable() noexcept {}

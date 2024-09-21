@@ -57,7 +57,8 @@ namespace core {
  * \see encoding.h
  * \see zstr.h
  */
-template <encoding E = utf8> class string : public sizable, public arrayLike<uint32_t, stringIterator<E>> {
+template <encoding E = utf8>
+class string : public sizable, public arrayLike<uint32_t, stringIterator<E>> {
 	friend string<ascii>;
 	friend string<utf8>;
 	friend string<utf16>;
@@ -171,9 +172,7 @@ public:
 	 * else is assumed to be base 10. If the pad size is less than 1,
 	 * no character padding is applied.
 	 */
-	template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value && !std::is_same<INT, char>::value &&
-																																 !std::is_same<INT, wchar_t>::value,
-																														 INT>::type>
+	template <typename INT, typename = typename std::enable_if<std::is_integral<INT>::value && !std::is_same<INT, char>::value && !std::is_same<INT, wchar_t>::value, INT>::type>
 	string(INT value, int base = 10, int padSize = 0) noexcept {
 		this->initInt((long long)value, base, padSize);
 	}
@@ -188,9 +187,7 @@ public:
 	 * then the hex part of the string is padded up to
 	 * `Z_STR_POINTER_CHARS` characters (default is 8).
 	 */
-	template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value && !std::is_same<PTR, char *>::value &&
-																																 !std::is_same<PTR, wchar_t *>::value,
-																														 PTR>::type>
+	template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value && !std::is_same<PTR, char *>::value && !std::is_same<PTR, wchar_t *>::value, PTR>::type>
 	string(PTR pointer) noexcept {
 		this->initPointer((void *)pointer);
 	}
@@ -1509,7 +1506,8 @@ public:
 	 * \param ar The output archive.
 	 * \return The string to output to serial archive.
 	 */
-	template <class archive> std::string save_minimal(archive &ar) const {
+	template <class archive>
+	std::string save_minimal(archive &ar) const {
 		(void)ar;
 		return string<utf8>(*this).cstring();
 	}
@@ -1519,7 +1517,8 @@ public:
 	 * \param ar The input archive.
 	 * \param value The string to input from serial archive.
 	 */
-	template <class archive> void load_minimal(archive const &ar, std::string const &value) {
+	template <class archive>
+	void load_minimal(archive const &ar, std::string const &value) {
 		(void)ar;
 		operator=(value.c_str());
 	}

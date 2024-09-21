@@ -6,7 +6,8 @@ namespace core {
  * \interface iterable
  * \brief A base interface for all objects that can be iterated over.
  */
-template <typename ITER> class iterable {
+template <typename ITER>
+class iterable {
 public:
 	/// Virtual destructor
 	virtual ~iterable() noexcept {}

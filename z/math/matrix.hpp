@@ -9,7 +9,8 @@ namespace math {
  * of size at least 2x2.
  * Includes methods for calculating determinants.
  */
-template <unsigned int N> class matrix {
+template <unsigned int N>
+class matrix {
 	static_assert(N >= 2, "Matrices must be at least 2x2!");
 
 public:
@@ -56,6 +57,7 @@ public:
  * \brief Calculate the determinant of 2x2 matrix
  * \return The determinant.
  */
-template <> double matrix<2>::det() noexcept;
+template <>
+double matrix<2>::det() noexcept;
 } // namespace math
 } // namespace z

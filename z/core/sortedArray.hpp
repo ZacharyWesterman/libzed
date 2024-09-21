@@ -14,7 +14,8 @@ namespace core {
  * \see refArray
  * \see sortedRefArray
  */
-template <typename T> class sortedArray : public array<T> {
+template <typename T>
+class sortedArray : public array<T> {
 public:
 	/// Default constructor.
 	sortedArray() {}
@@ -29,7 +30,8 @@ public:
 	 * \param arg1 initializing data.
 	 * \param args cont. initializing data.
 	 */
-	template <typename... Args> sortedArray(const T &arg1, const Args &...args) {
+	template <typename... Args>
+	sortedArray(const T &arg1, const Args &...args) {
 		this->init(arg1, args...);
 	}
 
@@ -56,7 +58,8 @@ public:
  *
  * \return The index where the inserted object now resides.
  */
-template <typename T> int sortedArray<T>::add(const T &object) {
+template <typename T>
+int sortedArray<T>::add(const T &object) {
 	int index = findInsert(object);
 
 	this->insert(object, index);
@@ -78,7 +81,8 @@ template <typename T> int sortedArray<T>::add(const T &object) {
  * \return The first index that the object was found at.
  * \b -1 if it was not found.
  */
-template <typename T> int sortedArray<T>::find(const T &object) const {
+template <typename T>
+int sortedArray<T>::find(const T &object) const {
 	if (this->array_data.size() == 0) {
 		return -1;
 	}
@@ -117,7 +121,8 @@ template <typename T> int sortedArray<T>::find(const T &object) const {
  *
  * \return The first index where the object can be inserted.
  */
-template <typename T> int sortedArray<T>::findInsert(const T &object, bool allowDuplicates) const {
+template <typename T>
+int sortedArray<T>::findInsert(const T &object, bool allowDuplicates) const {
 	if (this->array_data.size() == 0) {
 		return 0;
 	}

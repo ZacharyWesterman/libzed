@@ -199,7 +199,8 @@ public:
 	 * \brief Serialization output.
 	 * \param ar The output archive.
 	 */
-	template <typename archive> void save(archive &ar) const {
+	template <typename archive>
+	void save(archive &ar) const {
 		ar((CEREAL_SIZE_TYPE)wordList.length());
 		for (int i = 0; i < wordList.length(); i++) {
 			ar(*(wordList[i]));
@@ -210,7 +211,8 @@ public:
 	 * \brief Serialization input.
 	 * \param ar The input archive.
 	 */
-	template <class archive> void load(archive &ar) {
+	template <class archive>
+	void load(archive &ar) {
 		clear();
 		CEREAL_SIZE_TYPE sz;
 		ar(sz);

@@ -32,7 +32,8 @@ namespace core {
  * \see sortedArray
  * \see sortedRefArray
  */
-template <typename T> class array : public sizable, public arrayLike<const T &, T *> {
+template <typename T>
+class array : public sizable, public arrayLike<const T &, T *> {
 protected:
 	/// The data in the array.
 	std::vector<T> array_data;
@@ -50,7 +51,8 @@ protected:
 	 * \param arg1 The first object to add to the array.
 	 * \param args Any following objects to add to the array.
 	 */
-	template <typename... Args> inline void init(const T &arg1, const Args &...args) {
+	template <typename... Args>
+	inline void init(const T &arg1, const Args &...args) {
 		add(arg1);
 
 		init(args...);
@@ -110,7 +112,8 @@ public:
 
 	array(const array &);
 
-	template <typename... Args> array(const T &arg1, const Args &...args);
+	template <typename... Args>
+	array(const T &arg1, const Args &...args);
 
 	/**
 	 * \brief Construct from a generic initializer list
@@ -310,7 +313,8 @@ public:
 	 * @param lambda A function that takes a constant reference to an element of type `T` and returns an element of type `U`.
 	 * @return A new array containing the transformed elements.
 	 */
-	template <typename U> array<U> map(std::function<U(const T &)> lambda) const {
+	template <typename U>
+	array<U> map(std::function<U(const T &)> lambda) const {
 		array<U> result;
 		result.increase(array_data.size());
 
@@ -419,7 +423,8 @@ public:
 	 * \brief Binary specialization of serialization output.
 	 * \param ar The output archive.
 	 */
-	template <typename archive> void save(archive &ar) const {
+	template <typename archive>
+	void save(archive &ar) const {
 		ar((size_t)array_data.size());
 		for (int i = 0; i < (int)array_data.size(); i++) {
 			ar(array_data[i]);
@@ -462,7 +467,8 @@ public:
 	 * \brief Binary specialization of serialization input.
 	 * \param ar The input archive.
 	 */
-	template <class archive> void load(archive &ar) {
+	template <class archive>
+	void load(archive &ar) {
 		clear();
 		CEREAL_SIZE_TYPE sz;
 		ar(sz);
@@ -480,7 +486,8 @@ public:
 };
 
 /// Copy constructor
-template <typename T> array<T>::array(const array<T> &other) {
+template <typename T>
+array<T>::array(const array<T> &other) {
 	array_data = other.array_data;
 }
 
@@ -496,7 +503,9 @@ template <typename T> array<T>::array(const array<T> &other) {
  * \param arg1 initializing data.
  * \param args cont. initializing data.
  */
-template <typename T> template <typename... Args> array<T>::array(const T &arg1, const Args &...args) {
+template <typename T>
+template <typename... Args>
+array<T>::array(const T &arg1, const Args &...args) {
 	init(arg1, args...);
 }
 
@@ -511,7 +520,8 @@ template <typename T> template <typename... Args> array<T>::array(const T &arg1,
  * \return This array after the operation (for
  * \b a=b=c type expressions).
  */
-template <typename T> array<T> &array<T>::operator=(const array<T> &other) {
+template <typename T>
+array<T> &array<T>::operator=(const array<T> &other) {
 	array_data = other.array_data;
 
 	return *this;
@@ -528,7 +538,8 @@ template <typename T> array<T> &array<T>::operator=(const array<T> &other) {
  * \return This array after the operation (for
  * \b a=b=c type expressions).
  */
-template <typename T> array<T> &array<T>::operator=(const std::initializer_list<T> &other) {
+template <typename T>
+array<T> &array<T>::operator=(const std::initializer_list<T> &other) {
 	array_data.clear();
 	array_data.reserve(other.size());
 	for (auto &item : other) {
@@ -547,7 +558,8 @@ template <typename T> array<T> &array<T>::operator=(const std::initializer_list<
  * contents in the same order, and the same number of
  * contents. \b False otherwise.
  */
-template <typename T> bool array<T>::operator==(const array<T> &other) const {
+template <typename T>
+bool array<T>::operator==(const array<T> &other) const {
 	if (array_data.size() != other.array_data.size()) {
 		return false;
 	}
@@ -570,7 +582,8 @@ template <typename T> bool array<T>::operator==(const array<T> &other) const {
  * elements add to a positive number, or this array has more
  * elements. \b False otherwise.
  */
-template <typename T> bool array<T>::operator>(const array<T> &other) const {
+template <typename T>
+bool array<T>::operator>(const array<T> &other) const {
 	if (array_data.size() != other.array_data.size()) {
 		return (array_data.size() > other.array_data.size());
 	}
@@ -597,7 +610,8 @@ template <typename T> bool array<T>::operator>(const array<T> &other) const {
  * elements add to a negative number, or this array has fewer
  * elements. \b False otherwise.
  */
-template <typename T> bool array<T>::operator<(const array &other) const {
+template <typename T>
+bool array<T>::operator<(const array &other) const {
 	if (array_data.size() != other.array_data.size()) {
 		return (array_data.size() < other.array_data.size());
 	}
@@ -624,7 +638,8 @@ template <typename T> bool array<T>::operator<(const array &other) const {
  * elements add to a negative number, or this array has fewer
  * elements. \b True otherwise.
  */
-template <typename T> inline bool array<T>::operator>=(const array &other) const {
+template <typename T>
+inline bool array<T>::operator>=(const array &other) const {
 	return !operator<(other);
 }
 
@@ -637,12 +652,14 @@ template <typename T> inline bool array<T>::operator>=(const array &other) const
  * elements add to a positive number, or this array has more
  * elements. \b True otherwise.
  */
-template <typename T> inline bool array<T>::operator<=(const array<T> &other) const {
+template <typename T>
+inline bool array<T>::operator<=(const array<T> &other) const {
 	return !operator>(other);
 }
 
 /// Clear the data in the array.
-template <typename T> inline void array<T>::clear() {
+template <typename T>
+inline void array<T>::clear() {
 	array_data.clear();
 }
 
@@ -656,7 +673,8 @@ template <typename T> inline void array<T>::clear() {
  *
  * \return A reference to this array after modification.
  */
-template <typename T> array<T> &array<T>::insert(const T &object, int index) {
+template <typename T>
+array<T> &array<T>::insert(const T &object, int index) {
 	// if index is negative, insert from end of the array.
 	if (index < 0) {
 		index += array_data.size() + 1;
@@ -687,7 +705,8 @@ template <typename T> array<T> &array<T>::insert(const T &object, int index) {
  * \see add()
  * \see push()
  */
-template <typename T> void array<T>::append(const T &object) {
+template <typename T>
+void array<T>::append(const T &object) {
 	array_data.push_back(object);
 }
 
@@ -698,7 +717,8 @@ template <typename T> void array<T>::append(const T &object) {
  *
  * \return A reference to this array after modification.
  */
-template <typename T> array<T> &array<T>::remove(int index) {
+template <typename T>
+array<T> &array<T>::remove(int index) {
 	if (index < 0) {
 		index += array_data.size() + 1;
 	}
@@ -719,7 +739,8 @@ template <typename T> array<T> &array<T>::remove(int index) {
  *
  * \return A reference to this array after modification.
  */
-template <typename T> array<T> &array<T>::remove(int index, int count) {
+template <typename T>
+array<T> &array<T>::remove(int index, int count) {
 	if (!count) {
 		return *this;
 	}
@@ -758,7 +779,8 @@ template <typename T> array<T> &array<T>::remove(int index, int count) {
  *
  * \return The (approximate) number of bytes the array consumes.
  */
-template <typename T> size_t array<T>::size() const noexcept {
+template <typename T>
+size_t array<T>::size() const noexcept {
 	size_t bytes = 0;
 	for (auto &item : array_data) {
 		size_t objBytes;
@@ -773,7 +795,8 @@ template <typename T> size_t array<T>::size() const noexcept {
  *
  * \return The number of objects in the array.
  */
-template <typename T> int array<T>::length() const noexcept {
+template <typename T>
+int array<T>::length() const noexcept {
 	return array_data.size();
 }
 
@@ -789,7 +812,8 @@ template <typename T> int array<T>::length() const noexcept {
  *
  * \see at(int)
  */
-template <typename T> T &array<T>::at(int index) {
+template <typename T>
+T &array<T>::at(int index) {
 	return array_data.at(index);
 }
 
@@ -805,7 +829,8 @@ template <typename T> T &array<T>::at(int index) {
  *
  * \see at(int) const
  */
-template <typename T> const T &array<T>::at(int index) const {
+template <typename T>
+const T &array<T>::at(int index) const {
 	return array_data.at(index);
 }
 
@@ -820,7 +845,8 @@ template <typename T> const T &array<T>::at(int index) const {
  *
  * \see replace(int,int,const array&)
  */
-template <typename T> array<T> &array<T>::replace(int index, int count, const T &object) {
+template <typename T>
+array<T> &array<T>::replace(int index, int count, const T &object) {
 	if (!count) {
 		return *this;
 	}
@@ -866,7 +892,8 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const T 
  *
  * \see replace(int,int,const T&)
  */
-template <typename T> array<T> &array<T>::replace(int index, int count, const array<T> &other) {
+template <typename T>
+array<T> &array<T>::replace(int index, int count, const array<T> &other) {
 	if (index < 0) {
 		index += array_data.size();
 	}
@@ -912,7 +939,8 @@ template <typename T> array<T> &array<T>::replace(int index, int count, const ar
  *
  * \return A subset of the main array.
  */
-template <typename T> array<T> array<T>::subset(int index, int count) const {
+template <typename T>
+array<T> array<T>::subset(int index, int count) const {
 	array<T> output;
 
 	if (!count) {
@@ -961,7 +989,8 @@ template <typename T> array<T> array<T>::subset(int index, int count) const {
  * \return \b True if the given index is within array bounds.
  * \b False otherwise.
  */
-template <typename T> bool array<T>::isValid(int index) const {
+template <typename T>
+bool array<T>::isValid(int index) const {
 	if (index < 0) {
 		index += array_data.size();
 	}
@@ -976,7 +1005,8 @@ template <typename T> bool array<T>::isValid(int index) const {
  * \return A reference to this object, to allow for method chaining.
  * \exception std::out_of_range if either of the indexes is an invalid index.
  */
-template <typename T> array<T> &array<T>::swap(int index1, int index2) {
+template <typename T>
+array<T> &array<T>::swap(int index1, int index2) {
 	auto temp = at(index1);
 	array_data[index1] = at(index2);
 	array_data[index2] = temp;

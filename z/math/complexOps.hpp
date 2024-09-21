@@ -13,7 +13,8 @@
  *
  * \threadsafe_function_yes
  */
-template <typename T> bool operator>(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+template <typename T>
+bool operator>(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	T norm1 = arg1.real() * arg1.real() + arg1.imag() * arg1.imag();
 	T norm2 = arg2.real() * arg2.real() + arg2.imag() * arg2.imag();
 
@@ -31,7 +32,8 @@ template <typename T> bool operator>(const std::complex<T> &arg1, const std::com
  *
  * \threadsafe_function_yes
  */
-template <typename T> bool operator<(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+template <typename T>
+bool operator<(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	T norm1 = arg1.real() * arg1.real() + arg1.imag() * arg1.imag();
 	T norm2 = arg2.real() * arg2.real() + arg2.imag() * arg2.imag();
 
@@ -50,7 +52,8 @@ template <typename T> bool operator<(const std::complex<T> &arg1, const std::com
  *
  * \threadsafe_function_yes
  */
-template <typename T> bool operator>=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+template <typename T>
+bool operator>=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	return !(operator<(arg1, arg2));
 }
 
@@ -66,6 +69,7 @@ template <typename T> bool operator>=(const std::complex<T> &arg1, const std::co
  *
  * \threadsafe_function_yes
  */
-template <typename T> bool operator<=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
+template <typename T>
+bool operator<=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
 	return !(operator>(arg1, arg2));
 }

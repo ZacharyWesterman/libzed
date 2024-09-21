@@ -85,7 +85,8 @@ public:
 	 * \brief Serialization output.
 	 * \param ar The output archive.
 	 */
-	template <class Archive> void save(Archive &ar) const {
+	template <class Archive>
+	void save(Archive &ar) const {
 		time_t elapsed = micros();
 		ar(CEREAL_NVP(elapsed));
 	}
@@ -94,7 +95,8 @@ public:
 	 * \brief Serialization input.
 	 * \param ar The input archive.
 	 */
-	template <class Archive> void load(Archive &ar) {
+	template <class Archive>
+	void load(Archive &ar) {
 		time_t elapsed;
 		ar(CEREAL_NVP(elapsed));
 		reset(std::chrono::high_resolution_clock::now() - std::chrono::microseconds(elapsed));

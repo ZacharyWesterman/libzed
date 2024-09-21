@@ -1,8 +1,7 @@
 #pragma once
 
 #if __cplusplus < 201703L
-#pragma message( \
-		"\nNote: std::variant is not available so z::util::generic is disabled.\nCompile with STD=c++17 or greater to enable this feature.")
+#pragma message("\nNote: std::variant is not available so z::util::generic is disabled.\nCompile with STD=c++17 or greater to enable this feature.")
 #else // Otherwise std::variant is available
 #define Z_GENERIC_EXISTS
 
@@ -389,7 +388,8 @@ public:
 	 * \brief Serialization output.
 	 * \param ar The output archive.
 	 */
-	template <typename archive> void save(archive &ar) const {
+	template <typename archive>
+	void save(archive &ar) const {
 		const short int type = this->value.index();
 		ar(CEREAL_NVP(type));
 
@@ -411,7 +411,8 @@ public:
 	 * \brief Serialization input.
 	 * \param ar The input archive.
 	 */
-	template <class archive> void load(archive &ar) {
+	template <class archive>
+	void load(archive &ar) {
 		short int type = VOID;
 		ar(CEREAL_NVP(type));
 

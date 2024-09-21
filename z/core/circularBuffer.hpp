@@ -10,7 +10,8 @@ namespace core {
  *
  * This iterator allows C++'s range based for loop syntax.
  */
-template <typename TYPE, unsigned int LEN> class circularIterator {
+template <typename TYPE, unsigned int LEN>
+class circularIterator {
 	const TYPE *ptr;
 	int offset;
 
@@ -74,7 +75,8 @@ public:
 	 *
 	 * \param args A list of elements to append to the buffer.
 	 */
-	template <typename... ARGS> circularBuffer(const ARGS &...args) noexcept {
+	template <typename... ARGS>
+	circularBuffer(const ARGS &...args) noexcept {
 		populate(args...);
 	}
 
@@ -187,7 +189,8 @@ public:
 	 * \param first The first element to append.
 	 * \param args All other elements to append.
 	 */
-	template <typename... ARGS> void populate(const TYPE &first, const ARGS &...args) noexcept {
+	template <typename... ARGS>
+	void populate(const TYPE &first, const ARGS &...args) noexcept {
 		append(first);
 		populate(args...);
 	}
