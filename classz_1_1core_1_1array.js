@@ -36,6 +36,7 @@ var classz_1_1core_1_1array =
     [ "operator==", "classz_1_1core_1_1array.html#af318e6ae029afb8edf19c0001ec839da", null ],
     [ "operator>", "classz_1_1core_1_1array.html#a130988c06198f98bf7b2eab6b94de5af", null ],
     [ "operator>=", "classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780", null ],
+    [ "operator[]", "classz_1_1core_1_1array.html#a53898d4cdcd8deca56222d91fbac56ea", null ],
     [ "reduce", "classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518", null ],
     [ "remove", "classz_1_1core_1_1array.html#aa0c5687a4cced6de20ed24e410f02833", null ],
     [ "remove", "classz_1_1core_1_1array.html#ae9929b10e5e0473551da4e120d3a3735", null ],
