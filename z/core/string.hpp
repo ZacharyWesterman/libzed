@@ -156,7 +156,7 @@ public:
 	 * All characters are assumed to be compatible with this string's encoding.
 	 */
 	string(const std::string &str) noexcept {
-		string(str.c_str(), str.length());
+		string(str.c_str(), str.size());
 	}
 
 	/**
