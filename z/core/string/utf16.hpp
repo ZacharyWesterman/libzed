@@ -1061,21 +1061,21 @@ template <> bool string<utf16>::foundAt(const string<utf16> &other, int index) c
 		return false;
 	}
 
-	uint32_t *data32 = (uint32_t *)data;
-	uint32_t *other32 = (uint32_t *)other.data;
+	uint16_t *data16 = (uint16_t *)data;
+	uint16_t *other16 = (uint16_t *)other.data;
 
 	const int charSz = this->charSize();
 
 	int i = 0;
 	int idx = index * charSz;
-	int end = (other.character_ct * charSz) >> 2;
+	int end = (other.character_ct * charSz) >> 1;
 	for (i = 0; i < end; i++) {
-		if (data32[i + index] != other32[i]) {
+		if (data16[i + index] != other16[i]) {
 			return false;
 		}
 	}
 
-	for (i = (end << 2); i < (other.character_ct * charSz); i++) {
+	for (i = (end << 1); i < (other.character_ct * charSz); i++) {
 		if (data[i + idx] != other[i]) {
 			return false;
 		}

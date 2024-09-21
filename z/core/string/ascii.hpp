@@ -758,22 +758,19 @@ template <> bool string<ascii>::foundAt(const string<ascii> &other, int index) c
 		return false;
 	}
 
-	uint32_t *data32 = (uint32_t *)data;
-	uint32_t *other32 = (uint32_t *)other.data;
-
 	const int charSz = this->charSize();
 
 	int i = 0;
 	int idx = index * charSz;
-	int end = (other.character_ct * charSz) >> 2;
+	int end = other.character_ct;
 	for (i = 0; i < end; i++) {
-		if (data32[i + index] != other32[i]) {
+		if (data[i + index] != other.data[i]) {
 			return false;
 		}
 	}
 
-	for (i = (end << 2); i < (other.character_ct * charSz); i++) {
-		if (data[i + idx] != other[i]) {
+	for (i = end; i < other.character_ct; i++) {
+		if (data[i + idx] != other.data[i]) {
 			return false;
 		}
 	}
