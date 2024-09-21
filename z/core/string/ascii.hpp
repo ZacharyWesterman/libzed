@@ -93,37 +93,6 @@ template <> int string<ascii>::count(const string<ascii> &other) const noexcept 
 	return occurrence;
 }
 
-template <> int string<ascii>::findAfter(const string<ascii> &other, int index, int occurrence) const noexcept {
-	if (index < 0) {
-		index += character_ct;
-	}
-	if (!other.character_ct || (occurrence < 1) || (index < 0)) {
-		return -1;
-	}
-
-	int other_i = 0;
-	for (int i = index; i < character_ct; i++) {
-		// reset to first char of other if not still matching
-		if (data[i] != other.data[other_i]) {
-			other_i = 0;
-		}
-
-		if (data[i] == other.data[other_i]) {
-			other_i++;
-			if (other_i >= other.character_ct) {
-				occurrence--;
-				other_i = 0;
-			}
-
-			if (!occurrence) {
-				return (i - other.character_ct + 1);
-			}
-		}
-	}
-
-	return -1;
-}
-
 template <> int string<ascii>::findBefore(const string<ascii> &other, int index, int occurrence) const noexcept {
 	if (index < 0) {
 		index += character_ct;

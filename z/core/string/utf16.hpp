@@ -128,43 +128,6 @@ template <> int string<utf16>::count(const string<utf16> &other) const noexcept 
 	return occurrence;
 }
 
-template <> int string<utf16>::findAfter(const string<utf16> &other, int index, int occurrence) const noexcept {
-	if (index < 0) {
-		index += character_ct;
-	}
-	if (index < 0) {
-		return -1;
-	}
-	if (!other.character_ct || (occurrence < 1)) {
-		return -1;
-	}
-
-	uint16_t *data16 = (uint16_t *)data;
-	uint16_t *other16 = (uint16_t *)other.data;
-
-	int other_i = 0;
-	for (int i = index; i < character_ct; i++) {
-		// reset to first char of other if not still matching
-		if (data16[i] != other16[other_i]) {
-			other_i = 0;
-		}
-
-		if (data16[i] == other16[other_i]) {
-			other_i++;
-			if (other_i >= other.character_ct) {
-				occurrence--;
-				other_i = 0;
-			}
-
-			if (!occurrence) {
-				return (i - other.character_ct + 1);
-			}
-		}
-	}
-
-	return -1;
-}
-
 template <> int string<utf16>::findBefore(const string<utf16> &other, int index, int occurrence) const noexcept {
 	if (index < 0) {
 		index += character_ct;

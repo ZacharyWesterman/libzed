@@ -567,7 +567,16 @@ public:
 	 * forward starting at the given index. Note that the occurrence starts at 1.
 	 * If the occurrence is less than 1, then -1 is returned.
 	 */
-	int findAfter(const string &other, int index, int occurrence = 1) const noexcept;
+	int findAfter(const string &other, int index, int occurrence = 1) const noexcept {
+		(void)occurrence;
+		for (int i = index; i < character_ct; i++) {
+			if (foundAt(other, i)) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
 
 	/**
 	 * \brief Reverse-find a specific occurrence of a sub-string.
