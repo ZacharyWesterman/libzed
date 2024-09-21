@@ -155,9 +155,7 @@ public:
 	 *
 	 * All characters are assumed to be compatible with this string's encoding.
 	 */
-	string(const std::string &str) noexcept {
-		string(str.c_str(), str.size());
-	}
+	string(const std::string &str) noexcept : string(str.c_str(), str.size()) {}
 
 	/**
 	 * \brief Construct from an integer.
