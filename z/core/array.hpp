@@ -199,6 +199,14 @@ public:
 	T &at(int);
 	const T &at(int) const override;
 
+	const T &operator[](int index) const override {
+		return at(index);
+	}
+
+	T &operator[](int index) {
+		return at(index);
+	}
+
 	/**
 	 * \brief Find the index of a given object in the array.
 	 *
