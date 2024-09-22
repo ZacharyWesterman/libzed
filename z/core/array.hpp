@@ -54,7 +54,6 @@ protected:
 	template <typename... Args>
 	inline void init(const T &arg1, const Args &...args) {
 		add(arg1);
-
 		init(args...);
 	}
 
@@ -110,8 +109,24 @@ public:
 	/// Default constructor.
 	array() {}
 
-	array(const array &);
+	/// Copy constructor
+	array(const array &other);
 
+	/// Copy from std::vector
+	array(const std::vector<T> &other);
+
+	/**
+	 * \brief List-initialized constructor.
+	 *
+	 * Constructs the array with an arbitrary
+	 * number of elements already contained.<BR>
+	 *
+	 * \b Syntax: array<T> X {arg1, arg2, ...};
+	 * array<T> X = {arg1, arg2, ...};
+	 *
+	 * \param arg1 initializing data.
+	 * \param args cont. initializing data.
+	 */
 	template <typename... Args>
 	array(const T &arg1, const Args &...args);
 
@@ -193,10 +208,33 @@ public:
 	array &replace(int, int, const T &);
 	array &replace(int, int, const array<T> &);
 
-	array subset(int, int) const;
+	/**
+	 * \brief Get a contiguous subset of the elements in the array.
+	 *
+	 * Copies all elements in the given range, inclusive. If either
+	 * of the parameters is \b -1, gives an empty array. If the
+	 * \b stop parameter is less than \b start, then the subset is
+	 * copied in reverse order.
+	 *
+	 * \param index the index of the first object to copy.
+	 * \param count the number of objects to copy.
+	 *
+	 * \return A subset of the main array.
+	 */
+	array subset(int index, int count) const;
 
+	/**
+	 * \brief Get the size of the array.
+	 *
+	 * \return The (approximate) number of bytes the array consumes.
+	 */
 	size_t size() const noexcept override;
 
+	/**
+	 * \brief Get the length of the array.
+	 *
+	 * \return The number of objects in the array.
+	 */
 	int length() const noexcept override;
 
 	T &at(int);
@@ -296,11 +334,26 @@ public:
 	inline bool operator>=(const array &other) const;
 	inline bool operator<=(const array &other) const;
 
-	virtual bool operator()(const T &arg1, const T &arg2) const {
-		return greater(arg1, arg2);
-	}
+	virtual bool operator()(const T &arg1, const T &arg2) const;
 
+	/**
+	 * \brief Check if an index is within the bounds of the array.
+	 *
+	 * \param index the index to check.
+	 *
+	 * \return \b True if the given index is within array bounds.
+	 * \b False otherwise.
+	 */
 	bool isValid(int position) const;
+
+	/**
+	 * \brief Swap two elements in an array.
+	 *
+	 * \param index1 The index of the first element to swap.
+	 * \param index2 The index of the second element to swap.
+	 * \return A reference to this object, to allow for method chaining.
+	 * \exception std::out_of_range if either of the indexes is an invalid index.
+	 */
 	array &swap(int index1, int index2);
 
 	/**
@@ -314,16 +367,7 @@ public:
 	 * @return A new array containing the transformed elements.
 	 */
 	template <typename U>
-	array<U> map(std::function<U(const T &)> lambda) const {
-		array<U> result;
-		result.increase(array_data.size());
-
-		for (const auto &i : array_data) {
-			result.add(lambda(i));
-		}
-
-		return result;
-	}
+	array<U> map(std::function<U(const T &)> lambda) const;
 
 	/**
 	 * @brief Filters the array based on a predicate and returns a new array containing the elements that satisfy the predicate.
@@ -335,18 +379,7 @@ public:
 	 * the element should be included.
 	 * @return A new array containing the elements that satisfy the predicate.
 	 */
-	array filter(std::function<bool(const T &)> lambda) const {
-		array result;
-		result.increase(array_data.size()); // Increase it to the max size, but it will likely be smaller than this.
-
-		for (const auto &i : array_data) {
-			if (lambda(i)) {
-				result.add(i);
-			}
-		}
-
-		return result;
-	}
+	array filter(std::function<bool(const T &)> lambda) const;
 
 	/**
 	 * @brief Reduces the array to a single value by applying a binary operation cumulatively to the elements.
@@ -358,19 +391,7 @@ public:
 	 * @param lambda A function that takes two elements of type `T` and returns their combined result of type `T`.
 	 * @return The result of the reduction operation.
 	 */
-	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const {
-		const auto len = array_data.size();
-		if (len == 0) {
-			return defaultValue;
-		}
-
-		auto result = array_data[0];
-		for (int i = 1; i < len; ++i) {
-			result = lambda(result, array_data[i]);
-		}
-
-		return result;
-	}
+	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const;
 
 	/**
 	 * \brief Get pointer to the beginning of the array.
@@ -485,24 +506,16 @@ public:
 #endif
 };
 
-/// Copy constructor
 template <typename T>
 array<T>::array(const array<T> &other) {
 	array_data = other.array_data;
 }
 
-/**
- * \brief List-initialized constructor.
- *
- * Constructs the array with an arbitrary
- * number of elements already contained.<BR>
- *
- * \b Syntax: array<T> X {arg1, arg2, ...};
- * array<T> X = {arg1, arg2, ...};
- *
- * \param arg1 initializing data.
- * \param args cont. initializing data.
- */
+template <typename T>
+array<T>::array(const std::vector<T> &other) {
+	array_data = other;
+}
+
 template <typename T>
 template <typename... Args>
 array<T>::array(const T &arg1, const Args &...args) {
@@ -774,11 +787,6 @@ array<T> &array<T>::remove(int index, int count) {
 	return *this;
 }
 
-/**
- * \brief Get the size of the array.
- *
- * \return The (approximate) number of bytes the array consumes.
- */
 template <typename T>
 size_t array<T>::size() const noexcept {
 	size_t bytes = 0;
@@ -790,11 +798,6 @@ size_t array<T>::size() const noexcept {
 	return bytes;
 }
 
-/**
- * \brief Get the length of the array.
- *
- * \return The number of objects in the array.
- */
 template <typename T>
 int array<T>::length() const noexcept {
 	return array_data.size();
@@ -926,19 +929,6 @@ array<T> &array<T>::replace(int index, int count, const array<T> &other) {
 	return *this;
 }
 
-/**
- * \brief Get a contiguous subset of the elements in the array.
- *
- * Copies all elements in the given range, inclusive. If either
- * of the parameters is \b -1, gives an empty array. If the
- * \b stop parameter is less than \b start, then the subset is
- * copied in reverse order.
- *
- * \param index the index of the first object to copy.
- * \param count the number of objects to copy.
- *
- * \return A subset of the main array.
- */
 template <typename T>
 array<T> array<T>::subset(int index, int count) const {
 	array<T> output;
@@ -981,14 +971,11 @@ array<T> array<T>::subset(int index, int count) const {
 	return output;
 }
 
-/**
- * \brief Check if an index is within the bounds of the array.
- *
- * \param index the index to check.
- *
- * \return \b True if the given index is within array bounds.
- * \b False otherwise.
- */
+template <typename T>
+bool array<T>::operator()(const T &arg1, const T &arg2) const {
+	return greater(arg1, arg2);
+}
+
 template <typename T>
 bool array<T>::isValid(int index) const {
 	if (index < 0) {
@@ -997,14 +984,6 @@ bool array<T>::isValid(int index) const {
 	return (index < (int)array_data.size()) && (index >= 0);
 }
 
-/**
- * \brief Swap two elements in an array.
- *
- * \param index1 The index of the first element to swap.
- * \param index2 The index of the second element to swap.
- * \return A reference to this object, to allow for method chaining.
- * \exception std::out_of_range if either of the indexes is an invalid index.
- */
 template <typename T>
 array<T> &array<T>::swap(int index1, int index2) {
 	auto temp = at(index1);
@@ -1012,5 +991,48 @@ array<T> &array<T>::swap(int index1, int index2) {
 	array_data[index2] = temp;
 	return *this;
 }
+
+template <typename T>
+template <typename U>
+array<U> array<T>::map(std::function<U(const T &)> lambda) const {
+	array<U> result;
+	result.increase(array_data.size());
+
+	for (const auto &i : array_data) {
+		result.add(lambda(i));
+	}
+
+	return result;
+}
+
+template <typename T>
+array<T> array<T>::filter(std::function<bool(const T &)> lambda) const {
+	array result;
+	result.increase(array_data.size()); // Increase it to the max size for performance, but it will likely be smaller than this.
+
+	for (const auto &i : array_data) {
+		if (lambda(i)) {
+			result.add(i);
+		}
+	}
+
+	return result;
+}
+
+template <typename T>
+T array<T>::reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const {
+	const auto len = array_data.size();
+	if (len == 0) {
+		return defaultValue;
+	}
+
+	auto result = array_data[0];
+	for (int i = 1; i < len; ++i) {
+		result = lambda(result, array_data[i]);
+	}
+
+	return result;
+}
+
 } // namespace core
 } // namespace z
