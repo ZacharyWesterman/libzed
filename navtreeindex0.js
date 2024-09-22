@@ -3,6 +3,7 @@ var NAVTREEINDEX0 =
 "all_8hpp_source.html":[3,0,0,5],
 "annotated.html":[2,0],
 "arrayLike_8hpp_source.html":[3,0,0,0,1],
+"array_8cpp-example.html":[4,0],
 "array_8hpp_source.html":[3,0,0,0,0],
 "basename_8hpp_source.html":[3,0,0,1,0],
 "charFunctions_8hpp_source.html":[3,0,0,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classz_1_1core_1_1stringIterator.html":[2,0,0,0,12],
 "classz_1_1core_1_1stringIterator.html#a0f114d9e406204643544a460e51931e1":[2,0,0,0,12,0],
 "classz_1_1core_1_1stringIterator.html#a7cadf7ee50f8a820e9440a10ec1a0a5d":[2,0,0,0,12,3],
-"classz_1_1core_1_1stringIterator.html#a8f9c9a3e4853b17037614186809e0384":[2,0,0,0,12,1],
-"classz_1_1core_1_1stringIterator.html#a9bba4fe915e1162ee1524851dec51e6a":[2,0,0,0,12,2]
+"classz_1_1core_1_1stringIterator.html#a8f9c9a3e4853b17037614186809e0384":[2,0,0,0,12,1]
 };

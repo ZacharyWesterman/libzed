@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~library</b> () noexcept</td></tr>
 <tr class="memdesc:ac8c5743402e5f0ab3c50bb0f3deeb5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor frees any loaded library. <br /></td></tr>
 <tr class="separator:ac8c5743402e5f0ab3c50bb0f3deeb5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f463c8136fc0a31f7db650f5be7a02" id="r_aa2f463c8136fc0a31f7db650f5be7a02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">load</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;fileName, bool autoExtension=true) noexcept</td></tr>
+<tr class="memitem:aa2f463c8136fc0a31f7db650f5be7a02" id="r_aa2f463c8136fc0a31f7db650f5be7a02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">load</a> (const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;fileName, bool autoExtension=true) noexcept</td></tr>
 <tr class="memdesc:aa2f463c8136fc0a31f7db650f5be7a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a dynamic library with the given file name.  <br /></td></tr>
 <tr class="separator:aa2f463c8136fc0a31f7db650f5be7a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1162df171e1f876a7e38a970d6809c82" id="r_a1162df171e1f876a7e38a970d6809c82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">unload</a> () noexcept</td></tr>
@@ -132,17 +132,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aabe0eecebc67dc5d6842bc7492b40795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether the library has not been loaded.  <br /></td></tr>
 <tr class="separator:aabe0eecebc67dc5d6842bc7492b40795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad90549a70e68643d15bd9ff4b40bae8a" id="r_ad90549a70e68643d15bd9ff4b40bae8a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad90549a70e68643d15bd9ff4b40bae8a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">symbol</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName) noexcept</td></tr>
+<tr class="memitem:ad90549a70e68643d15bd9ff4b40bae8a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a">symbol</a> (const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;symbolName) noexcept</td></tr>
 <tr class="memdesc:ad90549a70e68643d15bd9ff4b40bae8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the symbol with the given name.  <br /></td></tr>
 <tr class="separator:ad90549a70e68643d15bd9ff4b40bae8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2a64f6aa686ce7b9b8653c02d7f9ab7" id="r_ab2a64f6aa686ce7b9b8653c02d7f9ab7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab2a64f6aa686ce7b9b8653c02d7f9ab7"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7">function</a> (const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;symbolName) noexcept</td></tr>
+<tr class="memitem:ab2a64f6aa686ce7b9b8653c02d7f9ab7"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7">function</a> (const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;symbolName) noexcept</td></tr>
 <tr class="memdesc:ab2a64f6aa686ce7b9b8653c02d7f9ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the function with the given name.  <br /></td></tr>
 <tr class="separator:ab2a64f6aa686ce7b9b8653c02d7f9ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for loading dynamic libraries. </p>
 <p>This class is meant to allow an easy and platform-independent way to dynamically load libraries at run time. Note that if this is compiled for Linux, the linker flag <code>-ldl</code> must be included. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#_a0">loadLib.cpp</a>.</dd>
+</dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aabe0eecebc67dc5d6842bc7492b40795" name="aabe0eecebc67dc5d6842bc7492b40795"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabe0eecebc67dc5d6842bc7492b40795">&#9670;&#160;</a></span>bad()</h2>
@@ -187,7 +189,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">std::function&lt; T &gt; z::file::library::function </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>symbolName</em></td><td>)</td>
           <td></td>
         </tr>
@@ -210,6 +212,8 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If a symbol with the given name was found, returns a pointer to the symbol. Otherwise, if the symbol was not found or the library hasn't been loaded, returns <b>NULL</b>. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#a4">loadLib.cpp</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -254,7 +258,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">bool z::file::library::load </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>fileName</em>, </td>
         </tr>
         <tr>
@@ -285,6 +289,8 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>True</b> if the library loaded successfully. <b>False</b> otherwise. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#a3">loadLib.cpp</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -302,7 +308,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">T * z::file::library::symbol </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1circularIterator.html">zpath</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1array.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>symbolName</em></td><td>)</td>
           <td></td>
         </tr>
@@ -351,6 +357,8 @@ template&lt;typename T &gt; </div>
 
 <p>Unload the dynamic library. </p>
 <dl class="section return"><dt>Returns</dt><dd><b>False</b> if unable to unload previously loaded library. <b>True</b> otherwise. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#a5">loadLib.cpp</a>.</dd>
+</dl>
 
 </div>
 </div>

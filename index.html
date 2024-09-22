@@ -170,9 +170,7 @@ Linking to this library</h3>
 </div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -Wl,--gc-sections</div>
 </div><!-- fragment --><p> Note the effectiveness of this depends on the architecture and the specific compiler used.</p>
 <p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
-Examples</h3>
-<p>Example programs are stored with the source code under the <code>examples/</code> directory. </p><hr  />
+</div><!-- fragment --> <hr  />
 <p> Download or fork: <a href="https://github.com/ZacharyWesterman/libzed">GitHub repo</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

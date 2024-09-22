@@ -48,15 +48,16 @@ var NAVTREE =
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
-"classz_1_1core_1_1timeout.html",
-"zeta_8hpp_source.html"
+"classz_1_1core_1_1stringIterator.html#a9bba4fe915e1162ee1524851dec51e6a",
+"structz_1_1core_1_1types_1_1equalExists.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
