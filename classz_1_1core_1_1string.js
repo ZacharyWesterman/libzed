@@ -83,6 +83,7 @@ var classz_1_1core_1_1string =
     [ "padRight", "classz_1_1core_1_1string.html#a4177775bd189938a963d902bb41d6520", null ],
     [ "padRightIn", "classz_1_1core_1_1string.html#a18e170d5654d84aae77fe594b1fcef91", null ],
     [ "read", "classz_1_1core_1_1string.html#acf1dfdbb3edc08ceda8bd1c5763df214", null ],
+    [ "readall", "classz_1_1core_1_1string.html#a9c11a8382545cf60d73e6b698476ef4e", null ],
     [ "readln", "classz_1_1core_1_1string.html#a4d740a2849ffb1ce941d0c1e8610a434", null ],
     [ "remove", "classz_1_1core_1_1string.html#a5c63a38a8019048eb3d83ac6825d612a", null ],
     [ "remove", "classz_1_1core_1_1string.html#a4cb35537b79d83ba58959401a77891b2", null ],
