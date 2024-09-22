@@ -187,6 +187,15 @@ public:
 	 */
 	bool narrow(dictRange *wordRange, uint32_t nextChar) const noexcept;
 
+	/**
+	 * \brief Get the length of the longest word in the dictionary.
+	 *
+	 * This function is very fast, as the value is calculated when the dictionary is
+	 * loaded or changed, \b not when this function is called. Prefer this function over
+	 * manually scanning the dictionary for the longest word.
+	 *
+	 * \return The length of the longest word.
+	 */
 	int maxWordLength() const noexcept;
 
 	dictIter begin() const noexcept override;

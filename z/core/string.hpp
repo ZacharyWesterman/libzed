@@ -1451,7 +1451,16 @@ public:
 	 */
 	string &readln(std::istream &stream) noexcept;
 
-	// Read an entire stream's contents into this string.
+	/**
+	 * \brief Read an entire stream's contents into this string.
+	 *
+	 * Reads until the stream is exhausted.
+	 * Any data this string contains is wiped when this function is called.
+	 *
+	 * \param stream The stream to read from.
+	 *
+	 * \return A reference to this string after reading the line.
+	 */
 	string &readall(std::istream &stream) noexcept;
 
 	/**

@@ -5,6 +5,7 @@ driver
 *.dll
 *.a
 html/
+xml/
 *.log
 examples/bin
 examples/obj

@@ -163,6 +163,8 @@ public:
 	 * \param object the data to add to the array.
 	 *
 	 * \return The index where the inserted object now resides.
+	 * \see push()
+	 * \see append()
 	 */
 	virtual int add(const T &object) {
 		array_data.push_back(object);
@@ -177,6 +179,8 @@ public:
 	 * appends them to the end of this array.
 	 *
 	 * \param other the array to copy from.
+	 * \see push()
+	 * \see append()
 	 */
 	void add(const array &other) noexcept {
 		for (int i = 0; i < other.size(); i++) {
@@ -184,14 +188,44 @@ public:
 		}
 	}
 
-	inline void push(const T &object) noexcept {
+	/**
+	 * \brief Add an object to the array.
+	 *
+	 * Adds the given data to a position in the array. That
+	 * position is up to implementation.
+	 *
+	 * \param object the data to add to the array.
+	 *
+	 * \return The index where the inserted object now resides.
+	 * \see push()
+	 * \see append()
+	 */
+	inline int push(const T &object) noexcept {
 		add(object);
 	}
 
+	/**
+	 * \brief Add another array to this array.
+	 *
+	 * Copies the contents of another array and
+	 * appends them to the end of this array.
+	 *
+	 * \param other the array to copy from.
+	 * \see push()
+	 * \see append()
+	 */
 	inline void push(const array &other) noexcept {
 		add(other);
 	}
 
+	/**
+	 * \brief Remove the last element from this array.
+	 *
+	 * Pops the last element, returning it.
+	 *
+	 * \return The last element on the array before popping.
+	 * \exception std::out_of_range if there are no elements in the array.
+	 */
 	T pop() {
 		T element = at(length());
 		array_data.pop_back();
@@ -240,10 +274,34 @@ public:
 	T &at(int);
 	const T &at(int) const override;
 
+	/**
+	 * \brief Function to get the object at the given index.
+	 *
+	 * Identical behavior to at(int), but allows indexing
+	 * with square brackets.
+	 *
+	 * \note This function is used when mutation of an object is not needed.
+	 *
+	 * \param index the index of the desired object.
+	 * \return A const reference to the object at the given index.
+	 * \see at(int)
+	 */
 	const T &operator[](int index) const override {
 		return at(index);
 	}
 
+	/**
+	 * \brief Function to get the object at the given index.
+	 *
+	 * Identical behavior to at(int), but allows indexing
+	 * with square brackets.
+	 *
+	 * \note This function is used when mutation of an object is needed.
+	 *
+	 * \param index the index of the desired object.
+	 * \return A reference to the object at the given index.
+	 * \see at(int)
+	 */
 	T &operator[](int index) {
 		return at(index);
 	}
@@ -280,38 +338,82 @@ public:
 		return find(object) > -1;
 	}
 
+	/**
+	 * \brief Sort the array based on default comparison operator.
+	 *
+	 * Sorts the array in-place, mutating existing values.
+	 */
 	void sort() noexcept {
 		std::sort(array_data.begin(), array_data.end(), *this);
 	}
 
+	/**
+	 * \brief Sort the array based on an arbitrary function.
+	 *
+	 * Sorts the array in-place, mutating existing values.
+	 *
+	 * \param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 */
 	void sort(std::function<bool(const T &, const T &)> lambda) noexcept {
 		std::sort(array_data.begin(), array_data.end(), lambda);
 	}
 
+	/**
+	 * \brief Sort the array based on default comparison operator.
+	 *
+	 * Creates a new, sorted version of the array, without mutating existing values.
+	 *
+	 * \return A copy of this array, sorted.
+	 */
 	array sorted() const noexcept {
 		auto new_array = *this;
 		new_array.sort();
 		return new_array;
 	}
 
+	/**
+	 * \brief Sort the array based on an arbitrary function.
+	 *
+	 * Creates a new, sorted version of the array, without mutating existing values.
+	 *
+	 * \param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 * \return A copy of this array, sorted.
+	 */
 	array sorted(std::function<bool(const T &, const T &)> lambda) const noexcept {
 		auto new_array = *this;
 		new_array.sort(lambda);
 		return new_array;
 	}
 
+	/**
+	 * \brief Shuffle the elements of the array into a random order.
+	 *
+	 * Shuffles the array in-place, mutating existing values.
+	 */
 	virtual void shuffle() noexcept {
 		std::random_device device;
 		std::mt19937 generator(device());
 		std::shuffle(array_data.begin(), array_data.end(), generator);
 	}
 
+	/**
+	 * \brief Shuffle the elements of the array into a random order.
+	 *
+	 * Creates a new, shuffled version of the array, without mutating existing values.
+	 *
+	 * \return A copy of this array, shuffled.
+	 */
 	array shuffled() const noexcept {
 		auto new_array = *this;
 		new_array.shuffle();
 		return new_array;
 	}
 
+	/**
+	 * \brief Reverse the order of all elements in the array.
+	 *
+	 * Reverses the array in-place, mutating existing values.
+	 */
 	virtual void reverse() noexcept {
 		const auto len = length();
 		for (int i = 0; i < (len / 2); ++i) {
@@ -319,6 +421,13 @@ public:
 		}
 	}
 
+	/**
+	 * \brief Reverse the order of all elements in the array.
+	 *
+	 * Creates a new, reversed version of the array, without mutating existing values.
+	 *
+	 * \return A copy of this array, reversed.
+	 */
 	array reversed() const noexcept {
 		auto new_array = *this;
 		new_array.reverse();
@@ -334,6 +443,15 @@ public:
 	inline bool operator>=(const array &other) const;
 	inline bool operator<=(const array &other) const;
 
+	/**
+	 * \brief Callable operator.
+	 *
+	 * This is used to compare array elements for sorting.
+	 *
+	 * \param arg1 The first element to compare.
+	 * \param arg2 The second element to compare.
+	 * \return \b true if arg1 is greater than arg2.
+	 */
 	virtual bool operator()(const T &arg1, const T &arg2) const;
 
 	/**
@@ -344,7 +462,7 @@ public:
 	 * \return \b True if the given index is within array bounds.
 	 * \b False otherwise.
 	 */
-	bool isValid(int position) const;
+	bool isValid(int index) const;
 
 	/**
 	 * \brief Swap two elements in an array.

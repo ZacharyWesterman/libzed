@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.dox": "markdown",
         "iostream": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -62,7 +63,14 @@
         "any": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "codecvt": "cpp",
+        "condition_variable": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     },
     "editor.formatOnSave": true
 }
