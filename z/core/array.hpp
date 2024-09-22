@@ -201,7 +201,7 @@ public:
 	 * \see append()
 	 */
 	inline int push(const T &object) noexcept {
-		add(object);
+		return add(object);
 	}
 
 	/**
