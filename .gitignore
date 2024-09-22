@@ -12,4 +12,3 @@ examples/obj
 *.gcno
 *.gcda
 *.gcov
-*.css

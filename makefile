@@ -173,12 +173,9 @@ format:
 dox: html
 docs: html
 
-html: doxygen-awesome.css $(HEADERS)
+html: $(HEADERS)
 	$(RMDIR) html
 	doxygen
-
-doxygen-awesome.css:
-	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
 
 loc:
 	find z -type f \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} +
