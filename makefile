@@ -9,6 +9,7 @@ D0 = $(sort $(dir $(wildcard z/*/)))
 D1 = $(sort $(dir $(wildcard $(D0)*/)))
 DIRS = $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
 SRCS = $(wildcard $(addsuffix *.cpp, $(DIRS)))
+HEADERS = $(wildcard $(addsuffix *.hpp, $(DIRS)))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
@@ -159,7 +160,7 @@ cleancov:
 
 cleandox:
 	$(RMDIR) html
-	$(RM) *.log
+	$(RM) *.log *.css
 
 rebuild: clean default
 
@@ -172,9 +173,11 @@ format:
 dox: html
 docs: html
 
-html:
-	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+html: doxygen-awesome.css $(HEADERS)
+	$(RMDIR) html
 	doxygen
-	rm doxygen-awesome.css
+
+doxygen-awesome.css:
+	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
 
 .PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format
