@@ -120,10 +120,6 @@ Afterwards, if binary size is still an issue, stripping out symbols may help a b
 ~~~
 $ strip example.out --strip-all
 ~~~
-
-
-###Examples
-Example programs are stored with the source code under the `examples/` directory.
 ___
 Download or fork: [GitHub repo][repo].
 

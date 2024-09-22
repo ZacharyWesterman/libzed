@@ -160,7 +160,7 @@ cleancov:
 
 cleandox:
 	$(RMDIR) html
-	$(RM) *.log *.css
+	$(RM) *.log
 
 rebuild: clean default
 
@@ -173,7 +173,7 @@ format:
 dox: html
 docs: html
 
-html: $(HEADERS)
+html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) $(wildcard examples/src/*.cpp)
 	$(RMDIR) html
 	doxygen
 
