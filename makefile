@@ -180,4 +180,7 @@ html: doxygen-awesome.css $(HEADERS)
 doxygen-awesome.css:
 	wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format
+loc:
+	find z -type f \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} +
+
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format loc
