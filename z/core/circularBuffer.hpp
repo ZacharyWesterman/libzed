@@ -6,7 +6,7 @@
 namespace z {
 namespace core {
 /**
- * \brief A custom iterator for circular buffers.
+ * @brief A custom iterator for circular buffers.
  *
  * This iterator allows C++'s range based for loop syntax.
  */
@@ -17,15 +17,15 @@ class circularIterator {
 
 public:
 	/**
-	 * \brief Constructor
-	 * \param buffer The raw buffer data.
-	 * \param index The current index in the buffer.
+	 * @brief Constructor
+	 * @param buffer The raw buffer data.
+	 * @param index The current index in the buffer.
 	 */
 	circularIterator(const TYPE *buffer, int index) noexcept : ptr(buffer), offset(index) {}
 
 	/**
-	 * \brief Move to the next spot in the buffer.
-	 * \return A new iterator at the next index.
+	 * @brief Move to the next spot in the buffer.
+	 * @return A new iterator at the next index.
 	 */
 	circularIterator operator++() noexcept {
 		++offset;
@@ -33,17 +33,17 @@ public:
 	}
 
 	/**
-	 * \brief Inequality operator.
-	 * \param other The other iterator to compare against.
-	 * \return True if these iterators are not pointing at the same item, false otherwise.
+	 * @brief Inequality operator.
+	 * @param other The other iterator to compare against.
+	 * @return True if these iterators are not pointing at the same item, false otherwise.
 	 */
 	bool operator!=(const circularIterator &other) const noexcept {
 		return offset != other.offset;
 	}
 
 	/**
-	 * \brief Dereference operator.
-	 * \return The data at the current index.
+	 * @brief Dereference operator.
+	 * @return The data at the current index.
 	 */
 	const TYPE &operator*() const noexcept {
 		return ptr[offset % LEN];
@@ -51,7 +51,7 @@ public:
 };
 
 /**
- * \brief A circular buffer of fixed size.
+ * @brief A circular buffer of fixed size.
  * Appending can be done indefinitely,
  * as the index will just loop back around to the beginning.
  */
@@ -68,12 +68,12 @@ public:
 	circularBuffer() noexcept {}
 
 	/**
-	 * \brief Initialize the buffer with the contents of an array.
+	 * @brief Initialize the buffer with the contents of an array.
 	 *
 	 * This allows for brace-enclosed initialization e.g.
 	 * `circularBuffer<int, 3> buffer = {1, 2, 3};`
 	 *
-	 * \param args A list of elements to append to the buffer.
+	 * @param args A list of elements to append to the buffer.
 	 */
 	template <typename... ARGS>
 	circularBuffer(const ARGS &...args) noexcept {
@@ -81,8 +81,8 @@ public:
 	}
 
 	/**
-	 * \brief Initialize all elements with a single value.
-	 * \param default_value The value to initialize elements with.
+	 * @brief Initialize all elements with a single value.
+	 * @param default_value The value to initialize elements with.
 	 */
 	circularBuffer(TYPE default_value) noexcept {
 		for (int i = 0; i < LEN; ++i) {
@@ -99,11 +99,11 @@ public:
 	}
 
 	/**
-	 * \brief Get an element from the buffer.
+	 * @brief Get an element from the buffer.
 	 *
 	 * This method is used when we're not modifying the resultant value.
-	 * \param index The index of the value we want.
-	 * \return The value at that index.
+	 * @param index The index of the value we want.
+	 * @return The value at that index.
 	 */
 	const TYPE &at(const int index) const noexcept override {
 		return data[index % LEN];
@@ -113,21 +113,21 @@ public:
 	// The compiler knows the difference and will use this function only when needed.
 
 	/**
-	 * \brief Get a modifiable element from the buffer.
+	 * @brief Get a modifiable element from the buffer.
 	 *
 	 * This method is used when we ARE modifying the resultant value.
 	 * The compiler knows the difference and will use this function only when needed.
 	 *
-	 * \param index The index of the value we want.
-	 * \return The value at that index.
+	 * @param index The index of the value we want.
+	 * @return The value at that index.
 	 */
 	TYPE &at(const int index) noexcept {
 		return data[index % LEN];
 	}
 
 	/**
-	 * \brief Add a value to the buffer, and increment the current index.
-	 * \param value The value to append.
+	 * @brief Add a value to the buffer, and increment the current index.
+	 * @param value The value to append.
 	 */
 	void append(const TYPE value) noexcept {
 		data[counter] = value;
@@ -138,29 +138,29 @@ public:
 	}
 
 	/**
-	 * \brief Get the index of the current top of the buffer.
+	 * @brief Get the index of the current top of the buffer.
 	 *
 	 * This index will always be a value from 0 to the length of the buffer.
-	 * \return The current index.
+	 * @return The current index.
 	 */
 	int index() const noexcept {
 		return counter;
 	}
 
 	/**
-	 * \brief Get a reference to the topmost item in the buffer.
-	 * \return The topmost item.
+	 * @brief Get a reference to the topmost item in the buffer.
+	 * @return The topmost item.
 	 */
 	TYPE &current() noexcept {
 		return data[counter];
 	}
 
 	/**
-	 * \brief Get the total number of items in the buffer.
+	 * @brief Get the total number of items in the buffer.
 	 *
 	 * This will return at most the maximum buffer size.
 	 *
-	 * \return The number of items in the buffer.
+	 * @return The number of items in the buffer.
 	 */
 	int count() const noexcept {
 		return total;
@@ -185,9 +185,9 @@ public:
 	}
 
 	/**
-	 * \brief Append an arbitrary number of elements to the buffer.
-	 * \param first The first element to append.
-	 * \param args All other elements to append.
+	 * @brief Append an arbitrary number of elements to the buffer.
+	 * @param first The first element to append.
+	 * @param args All other elements to append.
 	 */
 	template <typename... ARGS>
 	void populate(const TYPE &first, const ARGS &...args) noexcept {
@@ -196,20 +196,20 @@ public:
 	}
 
 	/**
-	 * \brief Append an element to the buffer.
+	 * @brief Append an element to the buffer.
 	 *
 	 * This is the tail end of calling populate() with 2 or more arguments.
 	 *
-	 * \param arg The element to append.
+	 * @param arg The element to append.
 	 */
 	void populate(const TYPE &arg) noexcept {
 		append(arg);
 	}
 
 	/**
-	 * \brief Get the minimum value contained in this buffer.
-	 * \note This method is only available for arithmetic types.
-	 * \return The minimum value in the buffer.
+	 * @brief Get the minimum value contained in this buffer.
+	 * @note This method is only available for arithmetic types.
+	 * @return The minimum value in the buffer.
 	 */
 	TYPE minimum() const noexcept {
 		static_assert(std::is_arithmetic<TYPE>::value, "circularBuffer::minimum() is only defined for arithmetic types.");
@@ -224,9 +224,9 @@ public:
 	}
 
 	/**
-	 * \brief Get the maximum value contained in this buffer.
-	 * \note This method is only available for arithmetic types.
-	 * \return The maximum value in the buffer.
+	 * @brief Get the maximum value contained in this buffer.
+	 * @note This method is only available for arithmetic types.
+	 * @return The maximum value in the buffer.
 	 */
 	TYPE maximum() const noexcept {
 		static_assert(std::is_arithmetic<TYPE>::value, "circularBuffer::maximum() is only defined for arithmetic types.");

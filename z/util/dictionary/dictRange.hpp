@@ -5,9 +5,9 @@ namespace util {
 class dictionary;
 
 /**
- * \brief A class to allow efficient, custom dictionary search functions.
+ * @brief A class to allow efficient, custom dictionary search functions.
  *
- * \note This class has no use on its own, it is meant to be used in
+ * @note This class has no use on its own, it is meant to be used in
  * conjunction with z::util::dictionary.
  */
 class dictRange {

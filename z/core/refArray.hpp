@@ -7,11 +7,11 @@
 namespace z {
 namespace core {
 /**
- * \brief An extension of the core::array class which
+ * @brief An extension of the core::array class which
  * assumes all elements to be pointers.
  *
- * \see array
- * \see sortedArray
+ * @see array
+ * @see sortedArray
  */
 template <typename T>
 class refArray : public array<T> {
@@ -49,13 +49,13 @@ public:
 	refArray() {}
 
 	/**
-	 * \brief List-initialized constructor.
+	 * @brief List-initialized constructor.
 	 *
 	 * Constructs the array with an arbitrary
 	 * number of elements already contained.
 	 *
-	 * \param arg1 initializing data.
-	 * \param args cont. initializing data.
+	 * @param arg1 initializing data.
+	 * @param args cont. initializing data.
 	 */
 	template <typename... Args>
 	refArray(const T &arg1, const Args &...args) {

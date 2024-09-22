@@ -7,12 +7,12 @@
 namespace z {
 namespace core {
 /**
- * \brief An extension of the core::array class
+ * @brief An extension of the core::array class
  * which attempts to keep all data sorted.
  *
- * \see array
- * \see refArray
- * \see sortedRefArray
+ * @see array
+ * @see refArray
+ * @see sortedRefArray
  */
 template <typename T>
 class sortedArray : public array<T> {
@@ -21,14 +21,14 @@ public:
 	sortedArray() {}
 
 	/**
-	 * \brief List-initialized constructor.
+	 * @brief List-initialized constructor.
 	 *
 	 * Constructs the array with an arbitrary
 	 * number of elements already contained.
-	 * \note All elements will be automatically sorted.
+	 * @note All elements will be automatically sorted.
 	 *
-	 * \param arg1 initializing data.
-	 * \param args cont. initializing data.
+	 * @param arg1 initializing data.
+	 * @param args cont. initializing data.
 	 */
 	template <typename... Args>
 	sortedArray(const T &arg1, const Args &...args) {
@@ -36,20 +36,20 @@ public:
 	}
 
 	/**
-	 * \brief Add an object to the array.
+	 * @brief Add an object to the array.
 	 *
 	 * Finds an appropriate location and inserts the
 	 * object into the array, such that the array
 	 * remains sorted.
 	 *
-	 * \param object the data to add to the array.
+	 * @param object the data to add to the array.
 	 *
-	 * \return The index where the inserted object now resides.
+	 * @return The index where the inserted object now resides.
 	 */
 	virtual int add(const T &object) override;
 
 	/**
-	 * \brief Check if a given object is in the array.
+	 * @brief Check if a given object is in the array.
 	 *
 	 * Locates the desired index using a binary search,
 	 * as the array is expected to be sorted.
@@ -57,24 +57,24 @@ public:
 	 * /note The objects this array contains must be trivially
 	 * comparable, or have operator>() and operator<() defined.
 	 *
-	 * \param object the object to search for.
+	 * @param object the object to search for.
 	 *
-	 * \return The first index that the object was found at.
-	 * \b -1 if it was not found.
+	 * @return The first index that the object was found at.
+	 * @b -1 if it was not found.
 	 */
 	virtual int find(const T &object) const override;
 
 	/**
-	 * \brief Find an index where the given object
+	 * @brief Find an index where the given object
 	 * can be inserted while keeping the array sorted.
 	 *
 	 * Locates the desired index using a binary search,
 	 * as the array is expected to be sorted.
 	 *
-	 * \param object The object to search for.
-	 * \param allowDuplicates Whether to allow multiple identical objects.
+	 * @param object The object to search for.
+	 * @param allowDuplicates Whether to allow multiple identical objects.
 	 *
-	 * \return The first index where the object can be inserted.
+	 * @return The first index where the object can be inserted.
 	 */
 	virtual int findInsert(const T &object, bool allowDuplicates = true) const;
 

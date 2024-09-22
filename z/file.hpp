@@ -1,8 +1,8 @@
 #pragma once
 /**
- * \file z/file.hpp
- * \namespace z::file
- * \brief This section contains file management functions and classes.
+ * @file z/file.hpp
+ * @namespace z::file
+ * @brief This section contains file management functions and classes.
  **/
 
 /// Directory operations

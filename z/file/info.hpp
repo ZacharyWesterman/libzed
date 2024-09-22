@@ -14,7 +14,7 @@
 namespace z {
 namespace file {
 /**
- * \brief A class to allow a platform-independent
+ * @brief A class to allow a platform-independent
  * way to get information on a file.
  *
  * As not all Linux file system options have a
@@ -30,84 +30,84 @@ private:
 
 public:
 	/**
-	 * \brief Constructor with file path.
+	 * @brief Constructor with file path.
 	 *
-	 * \param path a string of the path to
+	 * @param path a string of the path to
 	 * the file object.
 	 */
 	info(const zpath &path) noexcept;
 
 	/**
-	 * \brief Get whether the file object exists
+	 * @brief Get whether the file object exists
 	 * and can be accessed.
 	 *
-	 * \return \b False if the file does not exist
+	 * @return \b False if the file does not exist
 	 * or cannot be accessed for some reason.
-	 * \b True otherwise.
+	 * @b True otherwise.
 	 */
 	bool exists() const noexcept;
 
 	/**
-	 * \brief Get the time that the file was last accessed.
+	 * @brief Get the time that the file was last accessed.
 	 *
-	 * \return When the file was last accessed, if it exists.
-	 * \b 0 otherwise.
+	 * @return When the file was last accessed, if it exists.
+	 * @b 0 otherwise.
 	 */
 	time_t accessed() const noexcept;
 
 	/**
-	 * \brief Get the time that the file was last modified.
+	 * @brief Get the time that the file was last modified.
 	 *
-	 * \return When the file was last modified, if it exists.
-	 * \b 0 otherwise.
+	 * @return When the file was last modified, if it exists.
+	 * @b 0 otherwise.
 	 */
 	time_t modified() const noexcept;
 
 	/**
-	 * \brief Get the time that the file's status was last changed.
+	 * @brief Get the time that the file's status was last changed.
 	 *
-	 * \return When the file status was last changed, if it exists.
-	 * \b 0 otherwise.
+	 * @return When the file status was last changed, if it exists.
+	 * @b 0 otherwise.
 	 */
 	time_t changed() const noexcept;
 
 	/**
-	 * \brief Get the size of the file.
+	 * @brief Get the size of the file.
 	 *
-	 * \return The size of the file (in Bytes), if it exists.
-	 * \b 0 otherwise.
+	 * @return The size of the file (in Bytes), if it exists.
+	 * @b 0 otherwise.
 	 */
 	size_t size() const noexcept override;
 
 	/**
-	 * \brief Get the number of the device where the file is stored.
+	 * @brief Get the number of the device where the file is stored.
 	 *
-	 * \return The device number of the file, if it exists.
-	 * \b 0 otherwise.
+	 * @return The device number of the file, if it exists.
+	 * @b 0 otherwise.
 	 */
 	int device() const noexcept;
 
 	/**
-	 * \brief Get the mode (permissions) of the file.
-	 * \return The file permissions.
+	 * @brief Get the mode (permissions) of the file.
+	 * @return The file permissions.
 	 */
 	mode_t mode() const noexcept;
 
 	/**
-	 * \brief Check if this file is a directory.
-	 * \return True if this is a directory, false otherwise.
+	 * @brief Check if this file is a directory.
+	 * @return True if this is a directory, false otherwise.
 	 */
 	bool directory() const noexcept;
 
 	/**
-	 * \brief Check if this file is a symbolic link.
-	 * \return True if this is a symlink, false otherwise.
+	 * @brief Check if this file is a symbolic link.
+	 * @return True if this is a symlink, false otherwise.
 	 */
 	bool symlink() const noexcept;
 
 	/**
-	 * \brief Check if this file is a regular file.
-	 * \return True if this is a file, false otherwise.
+	 * @brief Check if this file is a regular file.
+	 * @return True if this is a file, false otherwise.
 	 */
 	bool regular() const noexcept;
 };

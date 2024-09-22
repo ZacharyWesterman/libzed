@@ -6,15 +6,15 @@
 namespace z {
 namespace core {
 /**
- * \brief Split a string into an array of strings according to a specified delimiter.
+ * @brief Split a string into an array of strings according to a specified delimiter.
  *
- * \param input The string to split into an array.
- * \param delim The delimiter that separates items.
+ * @param input The string to split into an array.
+ * @param delim The delimiter that separates items.
  *
- * \return A null array if the input string has 0 characters.
+ * @return A null array if the input string has 0 characters.
  * Otherwise, an array containing all substrings between any occurring delimiters.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <encoding E>
 array<string<E>> split(const string<E> &input, const string<E> &delim = "") noexcept;

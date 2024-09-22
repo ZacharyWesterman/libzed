@@ -20,7 +20,7 @@
 namespace z {
 namespace core {
 /**
- * \brief A wrapper for std::vector.
+ * @brief A wrapper for std::vector.
  *
  * This class is a wrapper for the std::vector class
  * that adds ease of use and hides implementation from the user.
@@ -28,9 +28,9 @@ namespace core {
  * /note This will only compile for objects that are copyable.
  * Use std::vector for non-copyable objects.
  *
- * \see refArray
- * \see sortedArray
- * \see sortedRefArray
+ * @see refArray
+ * @see sortedArray
+ * @see sortedRefArray
  */
 template <typename T>
 class array : public sizable, public arrayLike<const T &, T *> {
@@ -39,17 +39,17 @@ protected:
 	std::vector<T> array_data;
 
 	/**
-	 * \brief Helper function for single object initialization.
-	 * \param arg1 The object to initialize the array with.
+	 * @brief Helper function for single object initialization.
+	 * @param arg1 The object to initialize the array with.
 	 */
 	inline void init(const T &arg1) {
 		add(arg1);
 	}
 
 	/**
-	 * \brief Helper function for brace-enclosed list initialization.
-	 * \param arg1 The first object to add to the array.
-	 * \param args Any following objects to add to the array.
+	 * @brief Helper function for brace-enclosed list initialization.
+	 * @param arg1 The first object to add to the array.
+	 * @param args Any following objects to add to the array.
 	 */
 	template <typename... Args>
 	inline void init(const T &arg1, const Args &...args) {
@@ -58,48 +58,48 @@ protected:
 	}
 
 	/**
-	 * \brief Check if two objects are equal.
+	 * @brief Check if two objects are equal.
 	 *
 	 * This member function allows object comparison to be
 	 * different for different array types (e.g. reference arrays
 	 * will need to sort by value after dereference).
 	 *
-	 * \param arg1 First object to compare.
-	 * \param arg2 Second object to compare.
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
 	 *
-	 * \return True if the objects are equal, false otherwise.
+	 * @return True if the objects are equal, false otherwise.
 	 */
 	virtual bool eq(const T &arg1, const T &arg2) const {
 		return equals(arg1, arg2);
 	}
 
 	/**
-	 * \brief Check if one object is greater than another.
+	 * @brief Check if one object is greater than another.
 	 *
 	 * This member function allows object comparison to be
 	 * different for different array types (e.g. reference arrays
 	 * will need to sort by value after dereference).
 	 *
-	 * \param arg1 First object to compare.
-	 * \param arg2 Second object to compare.
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
 	 *
-	 * \return True if arg1 is greater than arg2, false otherwise.
+	 * @return True if arg1 is greater than arg2, false otherwise.
 	 */
 	virtual bool gt(const T &arg1, const T &arg2) const {
 		return greater(arg1, arg2);
 	}
 
 	/**
-	 * \brief Check if one object is less than another.
+	 * @brief Check if one object is less than another.
 	 *
 	 * This member function allows object comparison to be
 	 * different for different array types (e.g. reference arrays
 	 * will need to sort by value after dereference).
 	 *
-	 * \param arg1 First object to compare.
-	 * \param arg2 Second object to compare.
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
 	 *
-	 * \return True if arg1 is less than arg2, false otherwise.
+	 * @return True if arg1 is less than arg2, false otherwise.
 	 */
 	virtual bool lt(const T &arg1, const T &arg2) const {
 		return lesser(arg1, arg2);
@@ -116,24 +116,24 @@ public:
 	array(const std::vector<T> &other);
 
 	/**
-	 * \brief List-initialized constructor.
+	 * @brief List-initialized constructor.
 	 *
 	 * Constructs the array with an arbitrary
 	 * number of elements already contained.<BR>
 	 *
-	 * \b Syntax: array<T> X {arg1, arg2, ...};
+	 * @b Syntax: array<T> X {arg1, arg2, ...};
 	 * array<T> X = {arg1, arg2, ...};
 	 *
-	 * \param arg1 initializing data.
-	 * \param args cont. initializing data.
+	 * @param arg1 initializing data.
+	 * @param args cont. initializing data.
 	 */
 	template <typename... Args>
 	array(const T &arg1, const Args &...args);
 
 	/**
-	 * \brief Construct from a generic initializer list
+	 * @brief Construct from a generic initializer list
 	 *
-	 * \param other The list to initialize this array with.
+	 * @param other The list to initialize this array with.
 	 */
 	array(const std::initializer_list<T> &other) : array_data(other) {}
 
@@ -143,28 +143,28 @@ public:
 	inline void clear();
 
 	/**
-	 * \brief Increase the space allocated for this array.
+	 * @brief Increase the space allocated for this array.
 	 *
 	 * If this array currently has fewer than newSize elements allocated,
 	 * enough space is reallocated to hold at least that many characters.
 	 *
-	 * \param newSize The minimum number of elements this array should be able to contain.
+	 * @param newSize The minimum number of elements this array should be able to contain.
 	 */
 	void increase(int newSize) noexcept {
 		array_data.reserve(newSize);
 	}
 
 	/**
-	 * \brief Add an object to the array.
+	 * @brief Add an object to the array.
 	 *
 	 * Adds the given data to a position in the array. That
 	 * position is up to implementation.
 	 *
-	 * \param object the data to add to the array.
+	 * @param object the data to add to the array.
 	 *
-	 * \return The index where the inserted object now resides.
-	 * \see push()
-	 * \see append()
+	 * @return The index where the inserted object now resides.
+	 * @see push()
+	 * @see append()
 	 */
 	virtual int add(const T &object) {
 		array_data.push_back(object);
@@ -173,14 +173,14 @@ public:
 	}
 
 	/**
-	 * \brief Add another array to this array.
+	 * @brief Add another array to this array.
 	 *
 	 * Copies the contents of another array and
 	 * appends them to the end of this array.
 	 *
-	 * \param other the array to copy from.
-	 * \see push()
-	 * \see append()
+	 * @param other the array to copy from.
+	 * @see push()
+	 * @see append()
 	 */
 	void add(const array &other) noexcept {
 		for (int i = 0; i < other.size(); i++) {
@@ -189,42 +189,42 @@ public:
 	}
 
 	/**
-	 * \brief Add an object to the array.
+	 * @brief Add an object to the array.
 	 *
 	 * Adds the given data to a position in the array. That
 	 * position is up to implementation.
 	 *
-	 * \param object the data to add to the array.
+	 * @param object the data to add to the array.
 	 *
-	 * \return The index where the inserted object now resides.
-	 * \see push()
-	 * \see append()
+	 * @return The index where the inserted object now resides.
+	 * @see push()
+	 * @see append()
 	 */
 	inline int push(const T &object) noexcept {
 		return add(object);
 	}
 
 	/**
-	 * \brief Add another array to this array.
+	 * @brief Add another array to this array.
 	 *
 	 * Copies the contents of another array and
 	 * appends them to the end of this array.
 	 *
-	 * \param other the array to copy from.
-	 * \see push()
-	 * \see append()
+	 * @param other the array to copy from.
+	 * @see push()
+	 * @see append()
 	 */
 	inline void push(const array &other) noexcept {
 		add(other);
 	}
 
 	/**
-	 * \brief Remove the last element from this array.
+	 * @brief Remove the last element from this array.
 	 *
 	 * Pops the last element, returning it.
 	 *
-	 * \return The last element on the array before popping.
-	 * \exception std::out_of_range if there are no elements in the array.
+	 * @return The last element on the array before popping.
+	 * @exception std::out_of_range if there are no elements in the array.
 	 */
 	T pop() {
 		T element = at(length());
@@ -243,31 +243,31 @@ public:
 	array &replace(int, int, const array<T> &);
 
 	/**
-	 * \brief Get a contiguous subset of the elements in the array.
+	 * @brief Get a contiguous subset of the elements in the array.
 	 *
 	 * Copies all elements in the given range, inclusive. If either
 	 * of the parameters is \b -1, gives an empty array. If the
-	 * \b stop parameter is less than \b start, then the subset is
+	 * @b stop parameter is less than \b start, then the subset is
 	 * copied in reverse order.
 	 *
-	 * \param index the index of the first object to copy.
-	 * \param count the number of objects to copy.
+	 * @param index the index of the first object to copy.
+	 * @param count the number of objects to copy.
 	 *
-	 * \return A subset of the main array.
+	 * @return A subset of the main array.
 	 */
 	array subset(int index, int count) const;
 
 	/**
-	 * \brief Get the size of the array.
+	 * @brief Get the size of the array.
 	 *
-	 * \return The (approximate) number of bytes the array consumes.
+	 * @return The (approximate) number of bytes the array consumes.
 	 */
 	size_t size() const noexcept override;
 
 	/**
-	 * \brief Get the length of the array.
+	 * @brief Get the length of the array.
 	 *
-	 * \return The number of objects in the array.
+	 * @return The number of objects in the array.
 	 */
 	int length() const noexcept override;
 
@@ -275,47 +275,47 @@ public:
 	const T &at(int) const override;
 
 	/**
-	 * \brief Function to get the object at the given index.
+	 * @brief Function to get the object at the given index.
 	 *
 	 * Identical behavior to at(int), but allows indexing
 	 * with square brackets.
 	 *
-	 * \note This function is used when mutation of an object is not needed.
+	 * @note This function is used when mutation of an object is not needed.
 	 *
-	 * \param index the index of the desired object.
-	 * \return A const reference to the object at the given index.
-	 * \see at(int)
+	 * @param index the index of the desired object.
+	 * @return A const reference to the object at the given index.
+	 * @see at(int)
 	 */
 	const T &operator[](int index) const override {
 		return at(index);
 	}
 
 	/**
-	 * \brief Function to get the object at the given index.
+	 * @brief Function to get the object at the given index.
 	 *
 	 * Identical behavior to at(int), but allows indexing
 	 * with square brackets.
 	 *
-	 * \note This function is used when mutation of an object is needed.
+	 * @note This function is used when mutation of an object is needed.
 	 *
-	 * \param index the index of the desired object.
-	 * \return A reference to the object at the given index.
-	 * \see at(int)
+	 * @param index the index of the desired object.
+	 * @return A reference to the object at the given index.
+	 * @see at(int)
 	 */
 	T &operator[](int index) {
 		return at(index);
 	}
 
 	/**
-	 * \brief Find the index of a given object in the array.
+	 * @brief Find the index of a given object in the array.
 	 *
 	 * Locates the desired index using a linear search,
 	 * as the array is expected to be unsorted.
 	 *
-	 * \param object the object to search for.
+	 * @param object the object to search for.
 	 *
-	 * \return The first index that the object was found at.
-	 * \b -1 if it was not found.
+	 * @return The first index that the object was found at.
+	 * @b -1 if it was not found.
 	 */
 	virtual int find(const T &object) const {
 		for (int i = 0; i < (int)array_data.size(); i++) {
@@ -328,18 +328,18 @@ public:
 	}
 
 	/**
-	 * \brief Check if a given object is in the array.
+	 * @brief Check if a given object is in the array.
 	 *
-	 * \param object the object to search for.
+	 * @param object the object to search for.
 	 *
-	 * \return \b true if the object was found in the array, \b false otherwise.
+	 * @return \b true if the object was found in the array, \b false otherwise.
 	 */
 	bool contains(const T &object) const noexcept {
 		return find(object) > -1;
 	}
 
 	/**
-	 * \brief Sort the array based on default comparison operator.
+	 * @brief Sort the array based on default comparison operator.
 	 *
 	 * Sorts the array in-place, mutating existing values.
 	 */
@@ -348,22 +348,22 @@ public:
 	}
 
 	/**
-	 * \brief Sort the array based on an arbitrary function.
+	 * @brief Sort the array based on an arbitrary function.
 	 *
 	 * Sorts the array in-place, mutating existing values.
 	 *
-	 * \param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 * @param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
 	 */
 	void sort(std::function<bool(const T &, const T &)> lambda) noexcept {
 		std::sort(array_data.begin(), array_data.end(), lambda);
 	}
 
 	/**
-	 * \brief Sort the array based on default comparison operator.
+	 * @brief Sort the array based on default comparison operator.
 	 *
 	 * Creates a new, sorted version of the array, without mutating existing values.
 	 *
-	 * \return A copy of this array, sorted.
+	 * @return A copy of this array, sorted.
 	 */
 	array sorted() const noexcept {
 		auto new_array = *this;
@@ -372,12 +372,12 @@ public:
 	}
 
 	/**
-	 * \brief Sort the array based on an arbitrary function.
+	 * @brief Sort the array based on an arbitrary function.
 	 *
 	 * Creates a new, sorted version of the array, without mutating existing values.
 	 *
-	 * \param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
-	 * \return A copy of this array, sorted.
+	 * @param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 * @return A copy of this array, sorted.
 	 */
 	array sorted(std::function<bool(const T &, const T &)> lambda) const noexcept {
 		auto new_array = *this;
@@ -386,7 +386,7 @@ public:
 	}
 
 	/**
-	 * \brief Shuffle the elements of the array into a random order.
+	 * @brief Shuffle the elements of the array into a random order.
 	 *
 	 * Shuffles the array in-place, mutating existing values.
 	 */
@@ -397,11 +397,11 @@ public:
 	}
 
 	/**
-	 * \brief Shuffle the elements of the array into a random order.
+	 * @brief Shuffle the elements of the array into a random order.
 	 *
 	 * Creates a new, shuffled version of the array, without mutating existing values.
 	 *
-	 * \return A copy of this array, shuffled.
+	 * @return A copy of this array, shuffled.
 	 */
 	array shuffled() const noexcept {
 		auto new_array = *this;
@@ -410,7 +410,7 @@ public:
 	}
 
 	/**
-	 * \brief Reverse the order of all elements in the array.
+	 * @brief Reverse the order of all elements in the array.
 	 *
 	 * Reverses the array in-place, mutating existing values.
 	 */
@@ -422,11 +422,11 @@ public:
 	}
 
 	/**
-	 * \brief Reverse the order of all elements in the array.
+	 * @brief Reverse the order of all elements in the array.
 	 *
 	 * Creates a new, reversed version of the array, without mutating existing values.
 	 *
-	 * \return A copy of this array, reversed.
+	 * @return A copy of this array, reversed.
 	 */
 	array reversed() const noexcept {
 		auto new_array = *this;
@@ -444,33 +444,33 @@ public:
 	inline bool operator<=(const array &other) const;
 
 	/**
-	 * \brief Callable operator.
+	 * @brief Callable operator.
 	 *
 	 * This is used to compare array elements for sorting.
 	 *
-	 * \param arg1 The first element to compare.
-	 * \param arg2 The second element to compare.
-	 * \return \b true if arg1 is greater than arg2.
+	 * @param arg1 The first element to compare.
+	 * @param arg2 The second element to compare.
+	 * @return \b true if arg1 is greater than arg2.
 	 */
 	virtual bool operator()(const T &arg1, const T &arg2) const;
 
 	/**
-	 * \brief Check if an index is within the bounds of the array.
+	 * @brief Check if an index is within the bounds of the array.
 	 *
-	 * \param index the index to check.
+	 * @param index the index to check.
 	 *
-	 * \return \b True if the given index is within array bounds.
-	 * \b False otherwise.
+	 * @return \b True if the given index is within array bounds.
+	 * @b False otherwise.
 	 */
 	bool isValid(int index) const;
 
 	/**
-	 * \brief Swap two elements in an array.
+	 * @brief Swap two elements in an array.
 	 *
-	 * \param index1 The index of the first element to swap.
-	 * \param index2 The index of the second element to swap.
-	 * \return A reference to this object, to allow for method chaining.
-	 * \exception std::out_of_range if either of the indexes is an invalid index.
+	 * @param index1 The index of the first element to swap.
+	 * @param index2 The index of the second element to swap.
+	 * @return A reference to this object, to allow for method chaining.
+	 * @exception std::out_of_range if either of the indexes is an invalid index.
 	 */
 	array &swap(int index1, int index2);
 
@@ -512,24 +512,24 @@ public:
 	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const;
 
 	/**
-	 * \brief Get pointer to the beginning of the array.
+	 * @brief Get pointer to the beginning of the array.
 	 *
 	 * This member function should not be used directly.
 	 * It is meant for C++11's range-based for loop syntax.
 	 *
-	 * \return A pointer to the first element in the array. 0 if no elements.
+	 * @return A pointer to the first element in the array. 0 if no elements.
 	 */
 	T *begin() const noexcept override {
 		return array_data.empty() ? NULL : (T *)&array_data.front();
 	}
 
 	/**
-	 * \brief Get pointer to the end of the array.
+	 * @brief Get pointer to the end of the array.
 	 *
 	 * This member function should not be used directly.
 	 * It is meant for C++11's range-based for loop syntax.
 	 *
-	 * \return A pointer to right after the last element in the array. 0 if no elements.
+	 * @return A pointer to right after the last element in the array. 0 if no elements.
 	 */
 	T *end() const noexcept override {
 		return begin() + array_data.size();
@@ -538,8 +538,8 @@ public:
 #ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 	/**
-	 * \brief JSON specialization of serialization output.
-	 * \param ar The output archive.
+	 * @brief JSON specialization of serialization output.
+	 * @param ar The output archive.
 	 */
 	void save(cereal::JSONOutputArchive &ar) const {
 		ar.makeArray();
@@ -549,8 +549,8 @@ public:
 	}
 
 	/**
-	 * \brief XML specialization of serialization output.
-	 * \param ar The output archive.
+	 * @brief XML specialization of serialization output.
+	 * @param ar The output archive.
 	 */
 	void save(cereal::XMLOutputArchive &ar) const {
 		for (int i = 0; i < (int)array_data.size(); i++) {
@@ -559,8 +559,8 @@ public:
 	}
 
 	/**
-	 * \brief Binary specialization of serialization output.
-	 * \param ar The output archive.
+	 * @brief Binary specialization of serialization output.
+	 * @param ar The output archive.
 	 */
 	template <typename archive>
 	void save(archive &ar) const {
@@ -571,8 +571,8 @@ public:
 	}
 
 	/**
-	 * \brief JSON specialization of serialization input.
-	 * \param ar The input archive.
+	 * @brief JSON specialization of serialization input.
+	 * @param ar The input archive.
 	 */
 	void load(cereal::JSONInputArchive &ar) {
 		CEREAL_SIZE_TYPE sz;
@@ -587,8 +587,8 @@ public:
 	}
 
 	/**
-	 * \brief XML specialization of serialization input.
-	 * \param ar The input archive.
+	 * @brief XML specialization of serialization input.
+	 * @param ar The input archive.
 	 */
 	void load(cereal::XMLInputArchive &ar) {
 		CEREAL_SIZE_TYPE sz;
@@ -603,8 +603,8 @@ public:
 	}
 
 	/**
-	 * \brief Binary specialization of serialization input.
-	 * \param ar The input archive.
+	 * @brief Binary specialization of serialization input.
+	 * @param ar The input archive.
 	 */
 	template <class archive>
 	void load(archive &ar) {
@@ -641,15 +641,15 @@ array<T>::array(const T &arg1, const Args &...args) {
 }
 
 /**
- * \brief Array assignment operator.
+ * @brief Array assignment operator.
  *
  * Clear the contents of this array and create
  * a copy of another array's contents into this one.
  *
- * \param other the array to copy from.
+ * @param other the array to copy from.
  *
- * \return This array after the operation (for
- * \b a=b=c type expressions).
+ * @return This array after the operation (for
+ * @b a=b=c type expressions).
  */
 template <typename T>
 array<T> &array<T>::operator=(const array<T> &other) {
@@ -659,15 +659,15 @@ array<T> &array<T>::operator=(const array<T> &other) {
 }
 
 /**
- * \brief Initializer list assignment operator.
+ * @brief Initializer list assignment operator.
  *
  * Clear the contents of this array and copy the contents
  * of an initializer list into this array.
  *
- * \param other The initializer list to copy from.
+ * @param other The initializer list to copy from.
  *
- * \return This array after the operation (for
- * \b a=b=c type expressions).
+ * @return This array after the operation (for
+ * @b a=b=c type expressions).
  */
 template <typename T>
 array<T> &array<T>::operator=(const std::initializer_list<T> &other) {
@@ -681,11 +681,11 @@ array<T> &array<T>::operator=(const std::initializer_list<T> &other) {
 }
 
 /**
- * \brief Check whether two arrays' contents are the same.
+ * @brief Check whether two arrays' contents are the same.
  *
- * \param other the array to compare with this one.
+ * @param other the array to compare with this one.
  *
- * \return \b True if both arrays contain the same
+ * @return \b True if both arrays contain the same
  * contents in the same order, and the same number of
  * contents. \b False otherwise.
  */
@@ -705,11 +705,11 @@ bool array<T>::operator==(const array<T> &other) const {
 }
 
 /**
- * \brief Array greater-than operator
+ * @brief Array greater-than operator
  *
- * \param other the array to compare with this one.
+ * @param other the array to compare with this one.
  *
- * \return \b True if the difference between the two arrays'
+ * @return \b True if the difference between the two arrays'
  * elements add to a positive number, or this array has more
  * elements. \b False otherwise.
  */
@@ -733,11 +733,11 @@ bool array<T>::operator>(const array<T> &other) const {
 }
 
 /**
- * \brief Array less-than operator
+ * @brief Array less-than operator
  *
- * \param other the array to compare with this one.
+ * @param other the array to compare with this one.
  *
- * \return \b True if the difference between the two arrays'
+ * @return \b True if the difference between the two arrays'
  * elements add to a negative number, or this array has fewer
  * elements. \b False otherwise.
  */
@@ -761,11 +761,11 @@ bool array<T>::operator<(const array &other) const {
 }
 
 /**
- * \brief Array greater-than-or-equal operator
+ * @brief Array greater-than-or-equal operator
  *
- * \param other the array to compare with this one.
+ * @param other the array to compare with this one.
  *
- * \return \b False if the difference between the two arrays'
+ * @return \b False if the difference between the two arrays'
  * elements add to a negative number, or this array has fewer
  * elements. \b True otherwise.
  */
@@ -775,11 +775,11 @@ inline bool array<T>::operator>=(const array &other) const {
 }
 
 /**
- * \brief Array less-than-or-equal operator
+ * @brief Array less-than-or-equal operator
  *
- * \param other the array to compare with this one.
+ * @param other the array to compare with this one.
  *
- * \return \b False if the difference between the two arrays'
+ * @return \b False if the difference between the two arrays'
  * elements add to a positive number, or this array has more
  * elements. \b True otherwise.
  */
@@ -795,14 +795,14 @@ inline void array<T>::clear() {
 }
 
 /**
- * \brief Insert an object into the array.
+ * @brief Insert an object into the array.
  *
  * Inserts an object into the given index in the array, if possible.
  *
- * \param object the data to add to the array.
- * \param index the index in the array to insert the object.
+ * @param object the data to add to the array.
+ * @param index the index in the array to insert the object.
  *
- * \return A reference to this array after modification.
+ * @return A reference to this array after modification.
  */
 template <typename T>
 array<T> &array<T>::insert(const T &object, int index) {
@@ -825,16 +825,16 @@ array<T> &array<T>::insert(const T &object, int index) {
 }
 
 /**
- * \brief Append an object to the end of the array.
+ * @brief Append an object to the end of the array.
  *
  * Appends the given data to the end of the array.
  *
- * \warning This method ignores any sorting that the current array may have in place!
+ * @warning This method ignores any sorting that the current array may have in place!
  * Subsequent searches on sorted arrays may return unpredictable results if used incorrectly.
  *
- * \param object the data to aappend to the array.
- * \see add()
- * \see push()
+ * @param object the data to aappend to the array.
+ * @see add()
+ * @see push()
  */
 template <typename T>
 void array<T>::append(const T &object) {
@@ -842,11 +842,11 @@ void array<T>::append(const T &object) {
 }
 
 /**
- * \brief Remove an object from the array.
+ * @brief Remove an object from the array.
  *
- * \param index the index of the object to be removed.
+ * @param index the index of the object to be removed.
  *
- * \return A reference to this array after modification.
+ * @return A reference to this array after modification.
  */
 template <typename T>
 array<T> &array<T>::remove(int index) {
@@ -863,12 +863,12 @@ array<T> &array<T>::remove(int index) {
 }
 
 /**
- * \brief Remove all elements in a subset of the array.
+ * @brief Remove all elements in a subset of the array.
  *
- * \param index the index of the first object to be removed.
- * \param count the number of objects to be removed.
+ * @param index the index of the first object to be removed.
+ * @param count the number of objects to be removed.
  *
- * \return A reference to this array after modification.
+ * @return A reference to this array after modification.
  */
 template <typename T>
 array<T> &array<T>::remove(int index, int count) {
@@ -922,16 +922,16 @@ int array<T>::length() const noexcept {
 }
 
 /**
- * \brief Function to get the object at the given index.
+ * @brief Function to get the object at the given index.
  *
  * Identical behavior to at(int), but allows indexing
  * with square brackets.
  *
- * \param index the index of the desired object.
- * \return The object at the given index.
- * \exception std::out_of_range if index is an invalid index.
+ * @param index the index of the desired object.
+ * @return The object at the given index.
+ * @exception std::out_of_range if index is an invalid index.
  *
- * \see at(int)
+ * @see at(int)
  */
 template <typename T>
 T &array<T>::at(int index) {
@@ -939,16 +939,16 @@ T &array<T>::at(int index) {
 }
 
 /**
- * \brief Const function to get the object at the given index.
+ * @brief Const function to get the object at the given index.
  *
  * Identical behavior to at(int), but allows indexing
  * with square brackets.
  *
- * \param index the index of the desired object.
- * \return The object at the given index.
- * \exception std::out_of_range if index is an invalid index.
+ * @param index the index of the desired object.
+ * @return The object at the given index.
+ * @exception std::out_of_range if index is an invalid index.
  *
- * \see at(int) const
+ * @see at(int) const
  */
 template <typename T>
 const T &array<T>::at(int index) const {
@@ -956,15 +956,15 @@ const T &array<T>::at(int index) const {
 }
 
 /**
- * \brief Replace all objects in the given range with an object.
+ * @brief Replace all objects in the given range with an object.
  *
- * \param index the index of the first object to replace.
- * \param count the number of objects to replace.
- * \param object the object to insert into the gap.
+ * @param index the index of the first object to replace.
+ * @param count the number of objects to replace.
+ * @param object the object to insert into the gap.
  *
- * \return A reference to this array after modification.
+ * @return A reference to this array after modification.
  *
- * \see replace(int,int,const array&)
+ * @see replace(int,int,const array&)
  */
 template <typename T>
 array<T> &array<T>::replace(int index, int count, const T &object) {
@@ -1003,15 +1003,15 @@ array<T> &array<T>::replace(int index, int count, const T &object) {
 }
 
 /**
- * \brief Replace all objects in the given range with an array of objects.
+ * @brief Replace all objects in the given range with an array of objects.
  *
- * \param index the index of the first object to replace.
- * \param count the number of objects to replace.
- * \param other the array to copy from.
+ * @param index the index of the first object to replace.
+ * @param count the number of objects to replace.
+ * @param other the array to copy from.
  *
- * \return A reference to this array after modification.
+ * @return A reference to this array after modification.
  *
- * \see replace(int,int,const T&)
+ * @see replace(int,int,const T&)
  */
 template <typename T>
 array<T> &array<T>::replace(int index, int count, const array<T> &other) {

@@ -3,7 +3,7 @@
 namespace z {
 namespace math {
 /**
- * \brief A class for managing square matrices
+ * @brief A class for managing square matrices
  *
  * Template class for square matrices
  * of size at least 2x2.
@@ -17,8 +17,8 @@ public:
 	double value[N][N]; ///< Array of all elements in the matrix.
 
 	/**
-	 * \brief Calculate the determinant of NxN matrix
-	 * \return The determinant.
+	 * @brief Calculate the determinant of NxN matrix
+	 * @return The determinant.
 	 */
 	double det() noexcept {
 		// the determinant of an NxN matrix requires
@@ -54,8 +54,8 @@ public:
 };
 
 /**
- * \brief Calculate the determinant of 2x2 matrix
- * \return The determinant.
+ * @brief Calculate the determinant of 2x2 matrix
+ * @return The determinant.
  */
 template <>
 double matrix<2>::det() noexcept;

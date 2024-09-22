@@ -6,7 +6,7 @@
 namespace z {
 namespace math {
 /**
- * \brief Calculate the n<SUP>th</SUP>
+ * @brief Calculate the n<SUP>th</SUP>
  * number in the Fibonacci sequence.
  *
  * To avoid recursion and
@@ -23,17 +23,17 @@ namespace math {
  * fibonacci(71).
  * <BR>
  * Note: this function will return
- * \b NaN if the parameter
+ * @b NaN if the parameter
  * is anything other than a whole number.
  * It does, however, work with negatives.
  *
- * \param n the index of the desired number in
+ * @param n the index of the desired number in
  * the Fibonacci sequence.
  *
- * \return The value of the n<SUP>th</SUP>
+ * @return The value of the n<SUP>th</SUP>
  * number in the Fibonacci sequence.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 long long fibonacci(int n) noexcept;
 } // namespace math

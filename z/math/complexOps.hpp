@@ -3,15 +3,15 @@
 #include <complex>
 
 /**
- * \brief Greater-than comparison for complex values.
+ * @brief Greater-than comparison for complex values.
  *
- * \param arg1 the left-hand operand.
- * \param arg2 the right-hand operand.
+ * @param arg1 the left-hand operand.
+ * @param arg2 the right-hand operand.
  *
- * \return \b True if the normalization of \b arg1 is
+ * @return \b True if the normalization of \b arg1 is
  * greater than that of \b arg2. \b False otherwise.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T>
 bool operator>(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
@@ -22,15 +22,15 @@ bool operator>(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcep
 }
 
 /**
- * \brief Less-than comparison for complex values.
+ * @brief Less-than comparison for complex values.
  *
- * \param arg1 the left-hand operand.
- * \param arg2 the right-hand operand.
+ * @param arg1 the left-hand operand.
+ * @param arg2 the right-hand operand.
  *
- * \return \b True if the normalization of \b arg1 is
+ * @return \b True if the normalization of \b arg1 is
  * less than that of \b arg2. \b False otherwise.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T>
 bool operator<(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
@@ -41,16 +41,16 @@ bool operator<(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcep
 }
 
 /**
- * \brief Greater-than comparison for complex values.
+ * @brief Greater-than comparison for complex values.
  *
- * \param arg1 the left-hand operand.
- * \param arg2 the right-hand operand.
+ * @param arg1 the left-hand operand.
+ * @param arg2 the right-hand operand.
  *
- * \return \b True if the normalization of \b arg1 is
+ * @return \b True if the normalization of \b arg1 is
  * greater than or equal to that of \b arg2. \b False
  * otherwise.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T>
 bool operator>=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {
@@ -58,16 +58,16 @@ bool operator>=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexce
 }
 
 /**
- * \brief Less-than comparison for complex values.
+ * @brief Less-than comparison for complex values.
  *
- * \param arg1 the left-hand operand.
- * \param arg2 the right-hand operand.
+ * @param arg1 the left-hand operand.
+ * @param arg2 the right-hand operand.
  *
- * \return \b True if the normalization of \b arg1 is
+ * @return \b True if the normalization of \b arg1 is
  * less than or equal to that of \b arg2. \b False
  * otherwise.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T>
 bool operator<=(const std::complex<T> &arg1, const std::complex<T> &arg2) noexcept {

@@ -6,14 +6,14 @@
 namespace z {
 namespace core {
 /**
- * \brief Concatenate elements in an array into a string, separated by a delimiter.
+ * @brief Concatenate elements in an array into a string, separated by a delimiter.
  *
- * \param list An iterable whose elements can implicitly convert to strings.
- * \param delim The delimiter to go between items.
+ * @param list An iterable whose elements can implicitly convert to strings.
+ * @param delim The delimiter to go between items.
  *
- * \return A string containing all elements in order, separated by the delimiter.
+ * @return A string containing all elements in order, separated by the delimiter.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T, encoding E>
 string<E> join(const iterable<T> &list, const string<E> &delim) noexcept {
@@ -30,14 +30,14 @@ string<E> join(const iterable<T> &list, const string<E> &delim) noexcept {
 }
 
 /**
- * \brief Concatenate elements in an array into a string, separated by a delimiter.
+ * @brief Concatenate elements in an array into a string, separated by a delimiter.
  *
- * \param list An iterable whose elements can implicitly convert to strings.
- * \param delim The delimiter to go between items.
+ * @param list An iterable whose elements can implicitly convert to strings.
+ * @param delim The delimiter to go between items.
  *
- * \return A string containing all elements in order, separated by the delimiter.
+ * @return A string containing all elements in order, separated by the delimiter.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T>
 zstring join(const iterable<T> &list, const zstring &delim) noexcept {
@@ -54,14 +54,14 @@ zstring join(const iterable<T> &list, const zstring &delim) noexcept {
 }
 
 /**
- * \brief Dereference elements in an array and concatenate them into a string, separated by a delimiter.
+ * @brief Dereference elements in an array and concatenate them into a string, separated by a delimiter.
  *
- * \param list An iterable of pointers whose objects can implicitly convert to strings.
- * \param delim The delimiter to go between items.
+ * @param list An iterable of pointers whose objects can implicitly convert to strings.
+ * @param delim The delimiter to go between items.
  *
- * \return A string containing all elements in order, separated by the delimiter.
+ * @return A string containing all elements in order, separated by the delimiter.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  */
 template <typename T, encoding E>
 string<E> joinDeref(const iterable<T> &list, const string<E> &delim) noexcept {

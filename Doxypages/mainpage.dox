@@ -1,4 +1,4 @@
-/** \mainpage Introduction
+/** @mainpage Introduction
 
 This library contains useful classes and functions for quick and simple data manipulation.
 The idea is that this will help decrease development time of other projects.

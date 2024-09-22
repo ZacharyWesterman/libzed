@@ -1,8 +1,8 @@
 #pragma once
 /**
- * \file z/core.hpp
- * \namespace z::core
- * \brief Section containing core functions and classes.
+ * @file z/core.hpp
+ * @namespace z::core
+ * @brief Section containing core functions and classes.
  *
  * This section adds core functionality and is
  * required as it is often referenced by other parts of the library.

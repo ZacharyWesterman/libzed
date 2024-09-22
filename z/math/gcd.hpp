@@ -5,32 +5,32 @@
 namespace z {
 namespace math {
 /**
- * \brief Calculate the greatest common denominator of
+ * @brief Calculate the greatest common denominator of
  * two integers.
  *
- * \param x the first integer.
- * \param y the second integer.
+ * @param x the first integer.
+ * @param y the second integer.
  *
- * \return The greatest common denominator of both numbers.
+ * @return The greatest common denominator of both numbers.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  *
- * \see gcd(const std::complex<long>&,const std::complex<long>&)
+ * @see gcd(const std::complex<long>&,const std::complex<long>&)
  */
 long gcd(long x, long y) noexcept;
 
 /**
- * \brief Calculate the greatest common denominator of
+ * @brief Calculate the greatest common denominator of
  * two complex integers.
  *
- * \param x the first integer of type \b std::complex.
- * \param y the second integer of type \b std::complex.
+ * @param x the first integer of type \b std::complex.
+ * @param y the second integer of type \b std::complex.
  *
- * \return The greatest common denominator of both numbers.
+ * @return The greatest common denominator of both numbers.
  *
- * \threadsafe_function_yes
+ * @threadsafe_function_yes
  *
- * \see gcd(long,long)
+ * @see gcd(long,long)
  */
 std::complex<long> gcd(const std::complex<long> &x, const std::complex<long> &y) noexcept;
 } // namespace math

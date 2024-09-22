@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "*.dox": "markdown",
         "iostream": "cpp",
         "array": "cpp",
         "atomic": "cpp",

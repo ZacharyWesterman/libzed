@@ -15,9 +15,9 @@ namespace math {
  * this threshold, it will return early with the maximum possible value, as the strings are -- for all intents
  * and purposes -- completely different.
  *
- * \param word1 The first string to compare.
- * \param word2 The second string to compare.
- * \param max The optional maximum distance threshold. If the Levenshtein distance exceeds this value, the maximum integer value
+ * @param word1 The first string to compare.
+ * @param word2 The second string to compare.
+ * @param max The optional maximum distance threshold. If the Levenshtein distance exceeds this value, the maximum integer value
  * is returned.
  * @return The Levenshtein distance between the two strings.
  */
