@@ -1,15 +1,14 @@
 // Example to load symbols from a dynamic library.
 
 #include <iostream>
-#include <z/file/dirname.hpp>
-#include <z/file/executable.hpp>
+#include <z/file/execdir.hpp>
 #include <z/file/library.hpp>
 
 int main() {
 	z::file::library lib;
 
 	// assume library is in same dir as executable, not necessarily the working dir.
-	auto libName = z::file::dirname(z::file::executable()) + "/dynamicLib";
+	auto libName = z::file::execdir() + "/dynamicLib";
 	if (!lib.load(libName)) {
 		std::cout << "Unable to load lib!" << std::endl;
 		return -1;
