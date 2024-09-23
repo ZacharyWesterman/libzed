@@ -135,6 +135,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a58d665fcc6d09027bc870a3ccd885e1d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; E &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a58d665fcc6d09027bc870a3ccd885e1d">dirname</a> (const <a class="el" href="classz_1_1core_1_1string.html">core::string</a>&lt; E &gt; &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>) noexcept</td></tr>
 <tr class="memdesc:a58d665fcc6d09027bc870a3ccd885e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the directory part of a file name.  <br /></td></tr>
 <tr class="separator:a58d665fcc6d09027bc870a3ccd885e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497fc168cc1b68e5f10e51e7a40a914b" id="r_a497fc168cc1b68e5f10e51e7a40a914b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">execdir</a> () noexcept</td></tr>
+<tr class="memdesc:a497fc168cc1b68e5f10e51e7a40a914b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the directory path of the running executable.  <br /></td></tr>
+<tr class="separator:a497fc168cc1b68e5f10e51e7a40a914b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41f863b6ddde6ae39cbb591c38db0e99" id="r_a41f863b6ddde6ae39cbb591c38db0e99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a41f863b6ddde6ae39cbb591c38db0e99">executable</a> () noexcept</td></tr>
 <tr class="memdesc:a41f863b6ddde6ae39cbb591c38db0e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the full path of the running executable.  <br /></td></tr>
 <tr class="separator:a41f863b6ddde6ae39cbb591c38db0e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -335,6 +338,35 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <p>Get the directory part of a file name. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string containing the directory above a given path. </dd></dl>
 <dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a497fc168cc1b68e5f10e51e7a40a914b" name="a497fc168cc1b68e5f10e51e7a40a914b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497fc168cc1b68e5f10e51e7a40a914b">&#9670;&#160;</a></span>execdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">zpath</a> z::file::execdir </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the directory path of the running executable. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the directory of the currently running executable. </dd></dl>
+<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#a1">loadLib.cpp</a>.</dd>
 </dl>
 
@@ -366,8 +398,6 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 <p>Get the full path of the running executable. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string containing the path of the currently running executable. </dd></dl>
 <dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="loadLib_8cpp-example.html#a2">loadLib.cpp</a>.</dd>
-</dl>
 
 </div>
 </div>

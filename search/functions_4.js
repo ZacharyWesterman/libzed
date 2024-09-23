@@ -5,6 +5,7 @@ var searchData=
   ['eq_2',['eq',['../classz_1_1core_1_1array.html#a05eecf0dc1fb018480e2f5d5b9ae3faa',1,'z::core::array::eq()'],['../classz_1_1core_1_1refArray.html#a619d672fc0dfeeab00e2dfba8ec9ab8b',1,'z::core::refArray::eq()'],['../classz_1_1core_1_1sortedRefArray.html#a2ae6ab402df9ad59084b919e154ac99d',1,'z::core::sortedRefArray::eq()']]],
   ['equals_3',['equals',['../classz_1_1util_1_1generic.html#a22f4661f0e4d8b3fb6d093b1eb615a9a',1,'z::util::generic']]],
   ['equivalent_4',['equivalent',['../classz_1_1util_1_1generic.html#aac43fd0a0df39f8d128c5cf9c96bcb00',1,'z::util::generic']]],
-  ['executable_5',['executable',['../namespacez_1_1file.html#a41f863b6ddde6ae39cbb591c38db0e99',1,'z::file']]],
-  ['exists_6',['exists',['../classz_1_1file_1_1info.html#a7441681a6584a45ea87fedbf41feb37f',1,'z::file::info::exists()'],['../namespacez_1_1file.html#aa2db5230e856498aab43ce0f1a5f11e1',1,'z::file::exists()']]]
+  ['execdir_5',['execdir',['../namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b',1,'z::file']]],
+  ['executable_6',['executable',['../namespacez_1_1file.html#a41f863b6ddde6ae39cbb591c38db0e99',1,'z::file']]],
+  ['exists_7',['exists',['../classz_1_1file_1_1info.html#a7441681a6584a45ea87fedbf41feb37f',1,'z::file::info::exists()'],['../namespacez_1_1file.html#aa2db5230e856498aab43ce0f1a5f11e1',1,'z::file::exists()']]]
 ];
