@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"sizable_8hpp_source.html":[3,0,0,0,9],
+"size_8hpp_source.html":[3,0,0,1,16],
 "sortedArray_8hpp_source.html":[3,0,0,0,10],
 "sortedRefArray_8hpp_source.html":[3,0,0,0,11],
 "split_8hpp_source.html":[3,0,0,0,12],

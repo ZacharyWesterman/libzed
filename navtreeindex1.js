@@ -41,7 +41,9 @@ var NAVTREEINDEX1 =
 "classz_1_1file_1_1library.html#ac8c5743402e5f0ab3c50bb0f3deeb5eb":[2,0,0,1,1,1],
 "classz_1_1file_1_1library.html#ad90549a70e68643d15bd9ff4b40bae8a":[2,0,0,1,1,6],
 "classz_1_1file_1_1unreadable.html":[2,0,0,1,2],
+"classz_1_1file_1_1unreadable.html#a40b11ab34115d90d3cdd7811fa5e89fa":[2,0,0,1,2,0],
 "classz_1_1file_1_1unwritable.html":[2,0,0,1,3],
+"classz_1_1file_1_1unwritable.html#a1e43e9dfc7df697004775b51df20df72":[2,0,0,1,3,0],
 "classz_1_1math_1_1matrix.html":[2,0,0,2,0],
 "classz_1_1math_1_1matrix.html#a806a127e61890cd79f0565c52b216a1d":[2,0,0,2,0,0],
 "classz_1_1math_1_1matrix.html#ac2899f742c4d1a808ac8370153e2d106":[2,0,0,2,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "regexConsole_8cpp-example.html":[4,9],
 "remainder_8hpp_source.html":[3,0,0,2,7],
 "rot13_8cpp-example.html":[4,10],
-"shorten_8hpp_source.html":[3,0,0,1,15],
-"sizable_8hpp_source.html":[3,0,0,0,9],
-"size_8hpp_source.html":[3,0,0,1,16]
+"shorten_8hpp_source.html":[3,0,0,1,15]
 };

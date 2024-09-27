@@ -26,8 +26,8 @@ var annotated_dup =
       [ "file", "namespacez_1_1file.html", [
         [ "info", "classz_1_1file_1_1info.html", "classz_1_1file_1_1info" ],
         [ "library", "classz_1_1file_1_1library.html", "classz_1_1file_1_1library" ],
-        [ "unreadable", "classz_1_1file_1_1unreadable.html", null ],
-        [ "unwritable", "classz_1_1file_1_1unwritable.html", null ]
+        [ "unreadable", "classz_1_1file_1_1unreadable.html", "classz_1_1file_1_1unreadable" ],
+        [ "unwritable", "classz_1_1file_1_1unwritable.html", "classz_1_1file_1_1unwritable" ]
       ] ],
       [ "math", "namespacez_1_1math.html", [
         [ "matrix", "classz_1_1math_1_1matrix.html", "classz_1_1math_1_1matrix" ]
