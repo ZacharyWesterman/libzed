@@ -54,6 +54,20 @@ zstring join(const iterable<T> &list, const zstring &delim) noexcept {
 }
 
 /**
+ * @brief Concatenate elements in an array into a string, separated by a delimiter.
+ *
+ * This is a specialization for joining a std::vector of std::strings into a single zstring.
+ *
+ * @param list A std::vector of std::string items.
+ * @param delim The delimiter to go between items.
+ *
+ * @return A string containing all elements in order, separated by the delimiter.
+ *
+ * @threadsafe_function_yes
+ */
+zstring join(const std::vector<std::string> &list, const zstring &delim) noexcept;
+
+/**
  * @brief Dereference elements in an array and concatenate them into a string, separated by a delimiter.
  *
  * @param list An iterable of pointers whose objects can implicitly convert to strings.
