@@ -21,6 +21,8 @@
 /// Manage file contents
 #include "file/copy.hpp"
 #include "file/info.hpp"
+#include "file/read.hpp"
+#include "file/write.hpp"
 
 /// Dynamic library loading
 #include "file/library.hpp"
