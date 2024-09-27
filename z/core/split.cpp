@@ -3,15 +3,9 @@
 namespace z {
 namespace core {
 
-#define GENERATE \
-	SPECIALIZE(ascii) \
-	SPECIALIZE(utf8) \
-	SPECIALIZE(utf16) \
-	SPECIALIZE(utf32)
-
 #define SPECIALIZE(ENCODING) \
 	template <> \
-	array<string<ENCODING>> split(const string<ENCODING> &input, const string<ENCODING> &delim = "") noexcept { \
+	array<string<ENCODING>> split(const string<ENCODING> &input, const string<ENCODING> &delim) noexcept { \
 		array<string<ENCODING>> list; \
 \
 		int beg = 0; \
@@ -36,6 +30,11 @@ namespace core {
 \
 		return list; \
 	}
+
+SPECIALIZE(ascii)
+SPECIALIZE(utf8)
+SPECIALIZE(utf16)
+SPECIALIZE(utf32)
 
 } // namespace core
 } // namespace z
