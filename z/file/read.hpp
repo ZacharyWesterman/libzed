@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../core/string.hpp"
 #include "exceptions.hpp"
 #include <fstream>
