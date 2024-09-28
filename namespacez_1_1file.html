@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.7</span>
+   &#160;<span id="projectnumber">1.7.8</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -164,9 +164,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6a3d8734325b192871b75dae9514cceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb">shorten</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>) noexcept</td></tr>
 <tr class="memdesc:a6a3d8734325b192871b75dae9514cceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shorten the given directory string.  <a href="namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb">More...</a><br /></td></tr>
 <tr class="separator:a6a3d8734325b192871b75dae9514cceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64c33ad949877121b86a515b4601ae86"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a64c33ad949877121b86a515b4601ae86">size</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>) noexcept</td></tr>
-<tr class="memdesc:a64c33ad949877121b86a515b4601ae86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a file in bytes.  <a href="namespacez_1_1file.html#a64c33ad949877121b86a515b4601ae86">More...</a><br /></td></tr>
-<tr class="separator:a64c33ad949877121b86a515b4601ae86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a">size</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>)</td></tr>
+<tr class="memdesc:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a file in bytes.  <a href="namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a">More...</a><br /></td></tr>
+<tr class="separator:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8330480adb4f0bbec621ef01a3be8883"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a8330480adb4f0bbec621ef01a3be8883">write</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;contents, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename)</td></tr>
 <tr class="memdesc:a8330480adb4f0bbec621ef01a3be8883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the contents of a string to a specified file.  <a href="namespacez_1_1file.html#a8330480adb4f0bbec621ef01a3be8883">More...</a><br /></td></tr>
 <tr class="separator:a8330480adb4f0bbec621ef01a3be8883"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -675,14 +675,11 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a64c33ad949877121b86a515b4601ae86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64c33ad949877121b86a515b4601ae86">&#9670;&nbsp;</a></span>size()</h2>
+<a id="a4f8eff2e02ed88ca3b04d76c1008885a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f8eff2e02ed88ca3b04d76c1008885a">&#9670;&nbsp;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t z::file::size </td>
@@ -692,11 +689,6 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Get the size of a file in bytes. </p>
@@ -707,6 +699,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The length of the file in bytes, or 0 if the file does not exist. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classz_1_1file_1_1unreadable.html" title="Exception thrown when a file cannot be opened for reading.">z::file::unreadable</a></td><td>If the file cannot be opened or read from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
