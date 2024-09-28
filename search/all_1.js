@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['bad_0',['bad',['../classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795',1,'z::file::library']]],
-  ['basename_1',['basename',['../namespacez_1_1file.html#a83b0a3f67ac13e6d5d91af88712d8ffa',1,'z::file']]],
-  ['begin_2',['begin',['../classz_1_1core_1_1array.html#aec20e6f5c22919d76570faf7b60b54e9',1,'z::core::array::begin()'],['../classz_1_1core_1_1circularBuffer.html#a15df3882634638a3d1d35be98dc5d156',1,'z::core::circularBuffer::begin()'],['../classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3',1,'z::core::iterable::begin()'],['../classz_1_1core_1_1string.html#a9e7221c8193852126febe812132eaa86',1,'z::core::string::begin() const noexcept override']]],
-  ['beginswith_3',['beginsWith',['../classz_1_1core_1_1string.html#abc1371419b27c739ff80f47661fd4c17',1,'z::core::string']]],
-  ['build_20options_4',['Build options',['../index.html#autotoc_md3',1,'']]]
+  ['bad_11',['bad',['../classz_1_1file_1_1library.html#aabe0eecebc67dc5d6842bc7492b40795',1,'z::file::library']]],
+  ['basename_12',['basename',['../namespacez_1_1file.html#aa71609ce063ffa95f0bb3a2d69e54a3a',1,'z::file']]],
+  ['begin_13',['begin',['../classz_1_1core_1_1array.html#a4fc80a918c0b7f75065c1a618b5247d8',1,'z::core::array::begin()'],['../classz_1_1core_1_1circularBuffer.html#ab56bb7f502ad53bafe7366b72992e4f0',1,'z::core::circularBuffer::begin()'],['../classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3',1,'z::core::iterable::begin()'],['../classz_1_1core_1_1string.html#adb3cd52f135a148a45ac0102932b2cec',1,'z::core::string::begin() const noexcept override']]],
+  ['beginswith_14',['beginsWith',['../classz_1_1core_1_1string.html#abc1371419b27c739ff80f47661fd4c17',1,'z::core::string']]]
 ];

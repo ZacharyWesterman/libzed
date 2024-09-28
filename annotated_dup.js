@@ -3,15 +3,15 @@ var annotated_dup =
     [ "z", null, [
       [ "core", "namespacez_1_1core.html", [
         [ "types", null, [
+          [ "no", "classz_1_1core_1_1types_1_1no.html", null ],
           [ "equalExists", "structz_1_1core_1_1types_1_1equalExists.html", null ],
-          [ "greaterExists", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
           [ "lesserExists", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
-          [ "no", "classz_1_1core_1_1types_1_1no.html", null ]
+          [ "greaterExists", "structz_1_1core_1_1types_1_1greaterExists.html", null ]
         ] ],
         [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],
         [ "arrayLike", "classz_1_1core_1_1arrayLike.html", "classz_1_1core_1_1arrayLike" ],
-        [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
         [ "circularIterator", "classz_1_1core_1_1circularIterator.html", "classz_1_1core_1_1circularIterator" ],
+        [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
         [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
@@ -24,10 +24,10 @@ var annotated_dup =
         [ "timer", "classz_1_1core_1_1timer.html", "classz_1_1core_1_1timer" ]
       ] ],
       [ "file", "namespacez_1_1file.html", [
-        [ "info", "classz_1_1file_1_1info.html", "classz_1_1file_1_1info" ],
-        [ "library", "classz_1_1file_1_1library.html", "classz_1_1file_1_1library" ],
         [ "unreadable", "classz_1_1file_1_1unreadable.html", "classz_1_1file_1_1unreadable" ],
-        [ "unwritable", "classz_1_1file_1_1unwritable.html", "classz_1_1file_1_1unwritable" ]
+        [ "unwritable", "classz_1_1file_1_1unwritable.html", "classz_1_1file_1_1unwritable" ],
+        [ "info", "classz_1_1file_1_1info.html", "classz_1_1file_1_1info" ],
+        [ "library", "classz_1_1file_1_1library.html", "classz_1_1file_1_1library" ]
       ] ],
       [ "math", "namespacez_1_1math.html", [
         [ "matrix", "classz_1_1math_1_1matrix.html", "classz_1_1math_1_1matrix" ]
@@ -36,8 +36,8 @@ var annotated_dup =
         [ "cpuid", "classz_1_1system_1_1cpuid.html", "classz_1_1system_1_1cpuid" ]
       ] ],
       [ "util", "namespacez_1_1util.html", [
-        [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
+        [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
         [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
         [ "nonNumber", "structz_1_1util_1_1nonNumber.html", "structz_1_1util_1_1nonNumber" ]
       ] ]

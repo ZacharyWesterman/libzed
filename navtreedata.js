@@ -27,7 +27,7 @@ var NAVTREE =
   [ "libzed", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", null ],
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
@@ -43,7 +43,7 @@ var NAVTREE =
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
-        [ "Related Symbols", "functions_rela.html", null ]
+        [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -56,8 +56,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
-"classz_1_1core_1_1stringIterator.html#a9bba4fe915e1162ee1524851dec51e6a",
-"structz_1_1util_1_1nonNumber.html#af734faf7e146fc2e5384227d1f3b64b6"
+"classz_1_1core_1_1stringIterator.html#aab3093f10f44992b0223daaa87d42763",
+"namespacez_1_1core.html#a2482372b407368005d6184c7a2298a71"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
