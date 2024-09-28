@@ -21,7 +21,9 @@ jobs:
     - name: Install Dependencies
       run: sudo apt-get install -y --no-install-recommends doxygen graphviz
     - name: Build Documentation
-      run: make docs
+      run: |
+        git fetch --unshallow
+        make docs
     - name: Deploy Documentation
       uses: peaceiris/actions-gh-pages@v3.9.3
       with:
