@@ -16,15 +16,7 @@ namespace file {
  *
  * @throws z::file::unwritable If the file cannot be opened or written to.
  */
-void write(const zstring &contents, const zpath &filename) {
-	std::ofstream file(filename.cstring());
-
-	if (!file) {
-		throw unwritable(filename);
-	}
-
-	contents.write(file);
-}
+void write(const zstring &contents, const zpath &filename);
 
 } // namespace file
 } // namespace z

@@ -13,15 +13,7 @@ namespace file {
  *
  * @throws z::file::unreadable If the file cannot be opened or read from.
  */
-zstring read(const zpath &filename) {
-	std::ifstream file(filename.cstring());
-
-	if (!file) {
-		throw unreadable(filename);
-	}
-
-	return zstring().readall(file).trimIn('\n');
-}
+zstring read(const zpath &filename);
 
 } // namespace file
 } // namespace z
