@@ -1,6 +1,20 @@
 LIBNAME = zed
-VERSION = 1
-VER_SUB = 7
+VER_MAJOR = 1
+VER_MINOR = 7
+VER_CUTOFF_COMMIT = fdeadf25ecf572dd510104981aaad04a36809d30
+
+#Auto-calculate patch version based on current commit.
+#If patch version can't be calculated, just use the OS name.
+LATEST_COMMIT = $(shell git rev-parse HEAD)
+ifeq ($(LATEST_COMMIT),)
+ifeq ($(OS),Windows_NT)
+VER_PATCH = Windows
+else
+VER_PATCH = Linux
+endif
+else
+VER_PATCH = $(shell git rev-list --count $(VER_CUTOFF_COMMIT)..HEAD)
+endif
 
 LIBDIR = /usr/lib
 ICLDIR = /usr/include
@@ -12,7 +26,7 @@ SRCS = $(wildcard $(addsuffix *.cpp, $(DIRS)))
 HEADERS = $(wildcard $(addsuffix *.hpp, $(DIRS)))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
-LIBFULL = $(LIBNAME).$(VERSION).$(VER_SUB)
+LIBFULL = $(LIBNAME).$(VER_MAJOR).$(VER_MINOR)
 
 CC = g++
 LN = $(CC)
@@ -95,10 +109,10 @@ LFLAGS += -lstdc++fs
 endif
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
-SHARED_LIB = lib$(LIBNAME)-$(VERSION).$(VER_SUB).so
+SHARED_LIB = lib$(LIBNAME)-$(VER_MAJOR).$(VER_MINOR).so
 endif
 
-SONAME1 = lib$(LIBNAME).so.$(VERSION)
+SONAME1 = lib$(LIBNAME).so.$(VER_MAJOR)
 SONAME2 = lib$(LIBNAME).so
 
 default: dynamic
@@ -175,9 +189,15 @@ docs: html
 
 html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) $(wildcard examples/src/*.cpp)
 	$(RMDIR) html
-	doxygen
+	PROJECT_NUMBER=$(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) doxygen
 
-loc:
-	find z -type f \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} +
+count-loc:
+	@find z -type f \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} +
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format loc
+get-version:
+	@echo $(VER_MAJOR).$(VER_MINOR).$(VER_PATCH)
+
+get-revision:
+	git rev-parse HEAD
+
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format count-loc get-version get-revision
