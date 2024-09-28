@@ -19,7 +19,7 @@ jobs:
     - name: Build Library
       run: make -j32
     - name: Install Dependencies
-      run: sudo apt-get install -y --no-install-recommends doxygen graphvis
+      run: sudo apt-get install -y --no-install-recommends doxygen graphviz
     - name: Build Documentation
       run: make docs
     - name: Deploy Documentation
