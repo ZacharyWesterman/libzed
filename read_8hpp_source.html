@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.6</span>
+   &#160;<span id="projectnumber">1.7.7</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -106,24 +106,12 @@ $(document).ready(function(){initNavTree('read_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>z {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>file {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">   16</a></span>&#160;<a class="code" href="classz_1_1core_1_1string.html">zstring</a> <a class="code" href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">read</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::ifstream file(filename.<a class="code" href="classz_1_1core_1_1string.html#ac5954e333c390718fe085e930bbf7317">cstring</a>());</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (!file) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classz_1_1file_1_1unreadable.html">unreadable</a>(filename);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classz_1_1core_1_1string.html">zstring</a>().<a class="code" href="classz_1_1core_1_1string.html#aaa23875bee3fe62a2b097f7ac0e5cafc">readall</a>(file).<a class="code" href="classz_1_1core_1_1string.html#a28ab15bdfd5a290e04e07b2cd34cbc05">trimIn</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">// namespace file</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">   16</a></span>&#160;<a class="code" href="classz_1_1core_1_1string.html">zstring</a> <a class="code" href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">read</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <span class="comment">// namespace file</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html_a28ab15bdfd5a290e04e07b2cd34cbc05"><div class="ttname"><a href="classz_1_1core_1_1string.html#a28ab15bdfd5a290e04e07b2cd34cbc05">z::core::string::trimIn</a></div><div class="ttdeci">string &amp; trimIn(const string &amp;other=&quot;&quot;) noexcept</div><div class="ttdoc">Remove padding from the both sides of this string.</div><div class="ttdef"><b>Definition:</b> string.hpp:1060</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html_aaa23875bee3fe62a2b097f7ac0e5cafc"><div class="ttname"><a href="classz_1_1core_1_1string.html#aaa23875bee3fe62a2b097f7ac0e5cafc">z::core::string::readall</a></div><div class="ttdeci">string &amp; readall(std::istream &amp;stream) noexcept</div><div class="ttdoc">Read an entire stream's contents into this string.</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html_ac5954e333c390718fe085e930bbf7317"><div class="ttname"><a href="classz_1_1core_1_1string.html#ac5954e333c390718fe085e930bbf7317">z::core::string::cstring</a></div><div class="ttdeci">const char * cstring() const noexcept</div><div class="ttdoc">Get the single-byte cstring pointer.</div></div>
-<div class="ttc" id="aclassz_1_1file_1_1unreadable_html"><div class="ttname"><a href="classz_1_1file_1_1unreadable.html">z::file::unreadable</a></div><div class="ttdoc">Exception thrown when a file cannot be opened for reading.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:12</div></div>
-<div class="ttc" id="anamespacez_1_1file_html_a5cca14bedca539f52f5732c15f0a3d6b"><div class="ttname"><a href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">z::file::read</a></div><div class="ttdeci">zstring read(const zpath &amp;filename)</div><div class="ttdoc">Reads the entire contents of a specified file.</div><div class="ttdef"><b>Definition:</b> read.hpp:16</div></div>
+<div class="ttc" id="anamespacez_1_1file_html_a5cca14bedca539f52f5732c15f0a3d6b"><div class="ttname"><a href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">z::file::read</a></div><div class="ttdeci">zstring read(const zpath &amp;filename)</div><div class="ttdoc">Reads the entire contents of a specified file.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
