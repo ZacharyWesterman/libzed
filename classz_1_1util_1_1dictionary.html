@@ -114,76 +114,277 @@ Inheritance diagram for z::util::dictionary:</div>
  <div class="center">
   <img src="classz_1_1util_1_1dictionary.png" usemap="#z::util::dictionary_map" alt=""/>
   <map id="z::util::dictionary_map" name="z::util::dictionary_map">
-<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,56,267,80"/>
-<area href="classz_1_1core_1_1arrayLike.html" alt="z::core::arrayLike&lt; const zstring &amp;, dictIter &gt;" shape="rect" coords="277,56,544,80"/>
-<area href="classz_1_1core_1_1indexable.html" title="A base interface for all objects whose elements can be directly indexed." alt="z::core::indexable&lt; T &gt;" shape="rect" coords="138,0,405,24"/>
-<area href="classz_1_1core_1_1iterable.html" title="A base interface for all objects that can be iterated over." alt="z::core::iterable&lt; ITER &gt;" shape="rect" coords="415,0,682,24"/>
+<area href="classz_1_1core_1_1sortedRefArray.html" alt="z::core::sortedRefArray&lt; zstring * &gt;" shape="rect" coords="114,224,332,248"/>
+<area href="classz_1_1core_1_1sortedArray.html" title="An extension of the core::array class which attempts to keep all data sorted." alt="z::core::sortedArray&lt; T &gt;" shape="rect" coords="114,168,332,192"/>
+<area href="classz_1_1core_1_1array.html" title="A wrapper for std::vector." alt="z::core::array&lt; T &gt;" shape="rect" coords="114,112,332,136"/>
+<area href="classz_1_1core_1_1sizable.html" title="An interface for getting an object&#39;s size." alt="z::core::sizable" shape="rect" coords="0,56,218,80"/>
+<area href="classz_1_1core_1_1arrayLike.html" alt="z::core::arrayLike&lt; const T &amp;, T * &gt;" shape="rect" coords="228,56,446,80"/>
+<area href="classz_1_1core_1_1indexable.html" title="A base interface for all objects whose elements can be directly indexed." alt="z::core::indexable&lt; T &gt;" shape="rect" coords="114,0,332,24"/>
+<area href="classz_1_1core_1_1iterable.html" title="A base interface for all objects that can be iterated over." alt="z::core::iterable&lt; ITER &gt;" shape="rect" coords="342,0,560,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acc61f8957af8f878e40d2342a29ff533" id="r_acc61f8957af8f878e40d2342a29ff533"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#acc61f8957af8f878e40d2342a29ff533">dictionary</a> (bool caseSensitive=false) noexcept</td></tr>
+<tr class="memitem:acc61f8957af8f878e40d2342a29ff533" id="r_acc61f8957af8f878e40d2342a29ff533"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#acc61f8957af8f878e40d2342a29ff533">dictionary</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> caseSensitive=<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">false</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:acc61f8957af8f878e40d2342a29ff533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
 <tr class="separator:acc61f8957af8f878e40d2342a29ff533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f1edb780ad70fed66def54926db23a" id="r_a74f1edb780ad70fed66def54926db23a"><td class="memItemLeft" align="right" valign="top"><a id="a74f1edb780ad70fed66def54926db23a" name="a74f1edb780ad70fed66def54926db23a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>dictionary</b> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">other</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
+<tr class="separator:a74f1edb780ad70fed66def54926db23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82c4b3c88bb90eb35e408075a188af67" id="r_a82c4b3c88bb90eb35e408075a188af67"><td class="memItemLeft" align="right" valign="top"><a id="a82c4b3c88bb90eb35e408075a188af67" name="a82c4b3c88bb90eb35e408075a188af67"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>~dictionary</b> () noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~dictionary</b> () <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a82c4b3c88bb90eb35e408075a188af67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
 <tr class="separator:a82c4b3c88bb90eb35e408075a188af67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54f763909cb5492132cff2c3532f1740" id="r_a54f763909cb5492132cff2c3532f1740"><td class="memItemLeft" align="right" valign="top"><a id="a54f763909cb5492132cff2c3532f1740" name="a54f763909cb5492132cff2c3532f1740"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a54f763909cb5492132cff2c3532f1740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the word list. <br /></td></tr>
 <tr class="separator:a54f763909cb5492132cff2c3532f1740"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adacd7a1c5b922677f17c51ac8497e129" id="r_adacd7a1c5b922677f17c51ac8497e129"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">read</a> (std::istream &amp;stream, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false) noexcept</td></tr>
+<tr class="memitem:adacd7a1c5b922677f17c51ac8497e129" id="r_adacd7a1c5b922677f17c51ac8497e129"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">read</a> (std::istream &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">stream</a>, <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">time</a>=-1, <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">assumePresorted</a>=<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">false</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:adacd7a1c5b922677f17c51ac8497e129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <br /></td></tr>
 <tr class="separator:adacd7a1c5b922677f17c51ac8497e129"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c970dcbb9203f28a046d1d126752774" id="r_a4c970dcbb9203f28a046d1d126752774"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">isWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) const noexcept</td></tr>
+<tr class="memitem:a4c970dcbb9203f28a046d1d126752774" id="r_a4c970dcbb9203f28a046d1d126752774"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">isWord</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">word</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a4c970dcbb9203f28a046d1d126752774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a valid word in the dictionary (case is ignored).  <br /></td></tr>
 <tr class="separator:a4c970dcbb9203f28a046d1d126752774"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24af9d02200512fc718db516e7c78fe0" id="r_a24af9d02200512fc718db516e7c78fe0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a24af9d02200512fc718db516e7c78fe0">find</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) const noexcept</td></tr>
-<tr class="memdesc:a24af9d02200512fc718db516e7c78fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locate a word in the dictionary.  <br /></td></tr>
-<tr class="separator:a24af9d02200512fc718db516e7c78fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69d925b43acf6e00d927da45964c502c" id="r_a69d925b43acf6e00d927da45964c502c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a69d925b43acf6e00d927da45964c502c">length</a> () const noexcept override</td></tr>
-<tr class="memdesc:a69d925b43acf6e00d927da45964c502c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the word count of this dictionary.  <br /></td></tr>
-<tr class="separator:a69d925b43acf6e00d927da45964c502c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbb4920765f53227bf403c9466af36ba" id="r_abbb4920765f53227bf403c9466af36ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#abbb4920765f53227bf403c9466af36ba">addWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) noexcept</td></tr>
+<tr class="memitem:abbb4920765f53227bf403c9466af36ba" id="r_abbb4920765f53227bf403c9466af36ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#abbb4920765f53227bf403c9466af36ba">addWord</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">word</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:abbb4920765f53227bf403c9466af36ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a word to the dictionary.  <br /></td></tr>
 <tr class="separator:abbb4920765f53227bf403c9466af36ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac758d4aa61da2d29f39a5be5f37857ba" id="r_ac758d4aa61da2d29f39a5be5f37857ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ac758d4aa61da2d29f39a5be5f37857ba">isCaseSensitive</a> () const noexcept</td></tr>
+<tr class="memitem:ac758d4aa61da2d29f39a5be5f37857ba" id="r_ac758d4aa61da2d29f39a5be5f37857ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ac758d4aa61da2d29f39a5be5f37857ba">isCaseSensitive</a> () <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:ac758d4aa61da2d29f39a5be5f37857ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether this dictionary is case sensitive.  <br /></td></tr>
 <tr class="separator:ac758d4aa61da2d29f39a5be5f37857ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ef268f57ce950294fb9660861f7962e" id="r_a5ef268f57ce950294fb9660861f7962e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a5ef268f57ce950294fb9660861f7962e">setCaseSensitive</a> (bool caseSensitive) noexcept</td></tr>
+<tr class="memitem:a5ef268f57ce950294fb9660861f7962e" id="r_a5ef268f57ce950294fb9660861f7962e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a5ef268f57ce950294fb9660861f7962e">setCaseSensitive</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> caseSensitive) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a5ef268f57ce950294fb9660861f7962e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the case sensitivity of this dictionary.  <br /></td></tr>
 <tr class="separator:a5ef268f57ce950294fb9660861f7962e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef4715bc2f1d68a6427928b9d269a7d6" id="r_aef4715bc2f1d68a6427928b9d269a7d6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#aef4715bc2f1d68a6427928b9d269a7d6">size</a> () const noexcept override</td></tr>
-<tr class="memdesc:aef4715bc2f1d68a6427928b9d269a7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the object in memory.  <br /></td></tr>
-<tr class="separator:aef4715bc2f1d68a6427928b9d269a7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f0b4179ed46656dbad142f6dabb309" id="r_a96f0b4179ed46656dbad142f6dabb309"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1dictRange.html">dictRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309">range</a> () const noexcept</td></tr>
+<tr class="memitem:a96f0b4179ed46656dbad142f6dabb309" id="r_a96f0b4179ed46656dbad142f6dabb309"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1dictRange.html">dictRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309">range</a> () <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a96f0b4179ed46656dbad142f6dabb309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new range of words encompassing the whole dictionary.  <br /></td></tr>
 <tr class="separator:a96f0b4179ed46656dbad142f6dabb309"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab834eb320860b4e50f87f293e21b4d27" id="r_ab834eb320860b4e50f87f293e21b4d27"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27">narrow</a> (<a class="el" href="classz_1_1util_1_1dictRange.html">dictRange</a> *wordRange, uint32_t nextChar) const noexcept</td></tr>
+<tr class="memitem:ab834eb320860b4e50f87f293e21b4d27" id="r_ab834eb320860b4e50f87f293e21b4d27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27">narrow</a> (<a class="el" href="classz_1_1util_1_1dictRange.html">dictRange</a> *<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">wordRange</a>, <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">uint32_t</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">nextChar</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:ab834eb320860b4e50f87f293e21b4d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Narrow the results of a range given the next character.  <br /></td></tr>
 <tr class="separator:ab834eb320860b4e50f87f293e21b4d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d67c78ab491ecc3d6155d9c277f49a9" id="r_a1d67c78ab491ecc3d6155d9c277f49a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a1d67c78ab491ecc3d6155d9c277f49a9">maxWordLength</a> () const noexcept</td></tr>
+<tr class="memitem:a1d67c78ab491ecc3d6155d9c277f49a9" id="r_a1d67c78ab491ecc3d6155d9c277f49a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a1d67c78ab491ecc3d6155d9c277f49a9">maxWordLength</a> () <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a1d67c78ab491ecc3d6155d9c277f49a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the longest word in the dictionary.  <br /></td></tr>
 <tr class="separator:a1d67c78ab491ecc3d6155d9c277f49a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a362a7a6b1050dde89ade64b4fb8546b2" id="r_a362a7a6b1050dde89ade64b4fb8546b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1dictIter.html">dictIter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a362a7a6b1050dde89ade64b4fb8546b2">begin</a> () const noexcept override</td></tr>
-<tr class="memdesc:a362a7a6b1050dde89ade64b4fb8546b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator for the first element in this object.  <br /></td></tr>
-<tr class="separator:a362a7a6b1050dde89ade64b4fb8546b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44d941b4c3c2d6df8caaed4469592014" id="r_a44d941b4c3c2d6df8caaed4469592014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1dictIter.html">dictIter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a44d941b4c3c2d6df8caaed4469592014">end</a> () const noexcept override</td></tr>
-<tr class="memdesc:a44d941b4c3c2d6df8caaed4469592014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator after the last element of this object.  <br /></td></tr>
-<tr class="separator:a44d941b4c3c2d6df8caaed4469592014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b6097e03c859c29efad754b9e93931a" id="r_a9b6097e03c859c29efad754b9e93931a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a9b6097e03c859c29efad754b9e93931a">at</a> (int index) const override</td></tr>
-<tr class="memdesc:a9b6097e03c859c29efad754b9e93931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
-<tr class="separator:a9b6097e03c859c29efad754b9e93931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafe3c0d726b61410f721f36f94c98876" id="r_aafe3c0d726b61410f721f36f94c98876"><td class="memTemplParams" colspan="2">template&lt;typename archive &gt; </td></tr>
-<tr class="memitem:aafe3c0d726b61410f721f36f94c98876"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#aafe3c0d726b61410f721f36f94c98876">save</a> (archive &amp;ar) const</td></tr>
+<tr class="memitem:a7f727dad2d7d610969796d0ebe85cce5" id="r_a7f727dad2d7d610969796d0ebe85cce5"><td class="memItemLeft" align="right" valign="top"><a id="a7f727dad2d7d610969796d0ebe85cce5" name="a7f727dad2d7d610969796d0ebe85cce5"></a>
+<a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><b>filter</b> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>(<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a></td></tr>
+<tr class="separator:a7f727dad2d7d610969796d0ebe85cce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8617879caf7ca006c2405b28889460cd" id="r_a8617879caf7ca006c2405b28889460cd"><td class="memItemLeft" align="right" valign="top"><a id="a8617879caf7ca006c2405b28889460cd" name="a8617879caf7ca006c2405b28889460cd"></a>
+<a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;&amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">other</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
+<tr class="separator:a8617879caf7ca006c2405b28889460cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d19aeeaf143d113f0cec631fec3ac80" id="r_a1d19aeeaf143d113f0cec631fec3ac80"><td class="memItemLeft" align="right" valign="top"><a id="a1d19aeeaf143d113f0cec631fec3ac80" name="a1d19aeeaf143d113f0cec631fec3ac80"></a>
+<a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">other</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
+<tr class="separator:a1d19aeeaf143d113f0cec631fec3ac80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafe3c0d726b61410f721f36f94c98876" id="r_aafe3c0d726b61410f721f36f94c98876"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">typename</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &gt; </td></tr>
+<tr class="memitem:aafe3c0d726b61410f721f36f94c98876"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#aafe3c0d726b61410f721f36f94c98876">save</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">ar</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a></td></tr>
 <tr class="memdesc:aafe3c0d726b61410f721f36f94c98876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization output.  <br /></td></tr>
 <tr class="separator:aafe3c0d726b61410f721f36f94c98876"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53498a8a2746edede125f102014277c0" id="r_a53498a8a2746edede125f102014277c0"><td class="memTemplParams" colspan="2">template&lt;class archive &gt; </td></tr>
-<tr class="memitem:a53498a8a2746edede125f102014277c0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a53498a8a2746edede125f102014277c0">load</a> (archive &amp;ar)</td></tr>
+<tr class="memitem:a53498a8a2746edede125f102014277c0" id="r_a53498a8a2746edede125f102014277c0"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">class</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &gt; </td></tr>
+<tr class="memitem:a53498a8a2746edede125f102014277c0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a53498a8a2746edede125f102014277c0">load</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">ar</a>)</td></tr>
 <tr class="memdesc:a53498a8a2746edede125f102014277c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization input.  <br /></td></tr>
 <tr class="separator:a53498a8a2746edede125f102014277c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classz_1_1core_1_1sortedRefArray"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1sortedRefArray')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1sortedRefArray.html">z::core::sortedRefArray&lt; zstring * &gt;</a></td></tr>
+<tr class="memitem:ae5fdb62c9dc04f85f2cbbbaf6487bc36 inherit pub_methods_classz_1_1core_1_1sortedRefArray" id="r_ae5fdb62c9dc04f85f2cbbbaf6487bc36"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>sortedRefArray</b> ()</td></tr>
+<tr class="memdesc:ae5fdb62c9dc04f85f2cbbbaf6487bc36 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:ae5fdb62c9dc04f85f2cbbbaf6487bc36 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab55e41d44f75674e651a506a41e5ee20 inherit pub_methods_classz_1_1core_1_1sortedRefArray" id="r_ab55e41d44f75674e651a506a41e5ee20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html#ab55e41d44f75674e651a506a41e5ee20">sortedRefArray</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">Args</a> &amp;...<a class="el" href="classz_1_1core_1_1array.html">args</a>)</td></tr>
+<tr class="memdesc:ab55e41d44f75674e651a506a41e5ee20 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">List-initialized constructor.  <br /></td></tr>
+<tr class="separator:ab55e41d44f75674e651a506a41e5ee20 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c04c540cb40c7c776e59511ec4556e9 inherit pub_methods_classz_1_1core_1_1sortedRefArray" id="r_a4c04c540cb40c7c776e59511ec4556e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html#a4c04c540cb40c7c776e59511ec4556e9">operator()</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a4c04c540cb40c7c776e59511ec4556e9 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callable operator.  <br /></td></tr>
+<tr class="separator:a4c04c540cb40c7c776e59511ec4556e9 inherit pub_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classz_1_1core_1_1sortedArray"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1sortedArray')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1sortedArray.html">z::core::sortedArray&lt; T &gt;</a></td></tr>
+<tr class="memitem:accd6ea416f946ed0cb8477aaf466d929 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_accd6ea416f946ed0cb8477aaf466d929"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>sortedArray</b> ()</td></tr>
+<tr class="memdesc:accd6ea416f946ed0cb8477aaf466d929 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:accd6ea416f946ed0cb8477aaf466d929 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0426c1d898d3c961d11de31a6d9dcee6 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_a0426c1d898d3c961d11de31a6d9dcee6"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a0426c1d898d3c961d11de31a6d9dcee6 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a0426c1d898d3c961d11de31a6d9dcee6">sortedArray</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">Args</a> &amp;...<a class="el" href="classz_1_1core_1_1array.html">args</a>)</td></tr>
+<tr class="memdesc:a0426c1d898d3c961d11de31a6d9dcee6 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">List-initialized constructor.  <br /></td></tr>
+<tr class="separator:a0426c1d898d3c961d11de31a6d9dcee6 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2aad907c648bba1790267bbd2a7c009 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_af2aad907c648bba1790267bbd2a7c009"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#af2aad907c648bba1790267bbd2a7c009">add</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">object</a>) <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:af2aad907c648bba1790267bbd2a7c009 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the array.  <br /></td></tr>
+<tr class="separator:af2aad907c648bba1790267bbd2a7c009 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9059a4f42345670c84ef031e3062f3ad inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_a9059a4f42345670c84ef031e3062f3ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a9059a4f42345670c84ef031e3062f3ad">find</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">object</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a9059a4f42345670c84ef031e3062f3ad inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <br /></td></tr>
+<tr class="separator:a9059a4f42345670c84ef031e3062f3ad inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6dfb18cdfcffdbaea58277aa8afb473 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_ac6dfb18cdfcffdbaea58277aa8afb473"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#ac6dfb18cdfcffdbaea58277aa8afb473">findInsert</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">object</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> <a class="el" href="classz_1_1core_1_1array.html">allowDuplicates</a>=<a class="el" href="classz_1_1core_1_1array.html">true</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:ac6dfb18cdfcffdbaea58277aa8afb473 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find an index where the given object can be inserted while keeping the array sorted.  <br /></td></tr>
+<tr class="separator:ac6dfb18cdfcffdbaea58277aa8afb473 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03dfc7c2f42a1ba00aed7c831844d8d6 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_a03dfc7c2f42a1ba00aed7c831844d8d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a03dfc7c2f42a1ba00aed7c831844d8d6">shuffle</a> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a03dfc7c2f42a1ba00aed7c831844d8d6 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffle the elements of the array into a random order.  <br /></td></tr>
+<tr class="separator:a03dfc7c2f42a1ba00aed7c831844d8d6 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2214e86681da782228431ced4a2aecc8 inherit pub_methods_classz_1_1core_1_1sortedArray" id="r_a2214e86681da782228431ced4a2aecc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedArray.html#a2214e86681da782228431ced4a2aecc8">reverse</a> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a2214e86681da782228431ced4a2aecc8 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the order of all elements in the array.  <br /></td></tr>
+<tr class="separator:a2214e86681da782228431ced4a2aecc8 inherit pub_methods_classz_1_1core_1_1sortedArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classz_1_1core_1_1array"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1array')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1array.html">z::core::array&lt; T &gt;</a></td></tr>
+<tr class="memitem:a6074006593c1f776b9bc4cbedcb88dd9 inherit pub_methods_classz_1_1core_1_1array" id="r_a6074006593c1f776b9bc4cbedcb88dd9"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>array</b> ()</td></tr>
+<tr class="memdesc:a6074006593c1f776b9bc4cbedcb88dd9 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a6074006593c1f776b9bc4cbedcb88dd9 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4fdd8a0c985a3dbca723bf5a67480c inherit pub_methods_classz_1_1core_1_1array" id="r_a1e4fdd8a0c985a3dbca723bf5a67480c"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>array</b> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:a1e4fdd8a0c985a3dbca723bf5a67480c inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor. <br /></td></tr>
+<tr class="separator:a1e4fdd8a0c985a3dbca723bf5a67480c inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cfffc96ca2d54fc92a7c690eb6d234f inherit pub_methods_classz_1_1core_1_1array" id="r_a9cfffc96ca2d54fc92a7c690eb6d234f"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>array</b> (<a class="el" href="classz_1_1core_1_1array.html">const</a> std::vector&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:a9cfffc96ca2d54fc92a7c690eb6d234f inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from std::vector. <br /></td></tr>
+<tr class="separator:a9cfffc96ca2d54fc92a7c690eb6d234f inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb59da79dc5b03c05437c4f61014695 inherit pub_methods_classz_1_1core_1_1array" id="r_a4eb59da79dc5b03c05437c4f61014695"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a4eb59da79dc5b03c05437c4f61014695 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a4eb59da79dc5b03c05437c4f61014695">array</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">Args</a> &amp;...<a class="el" href="classz_1_1core_1_1array.html">args</a>)</td></tr>
+<tr class="memdesc:a4eb59da79dc5b03c05437c4f61014695 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">List-initialized constructor.  <br /></td></tr>
+<tr class="separator:a4eb59da79dc5b03c05437c4f61014695 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad209824099ad854bc24b368733840d6c inherit pub_methods_classz_1_1core_1_1array" id="r_ad209824099ad854bc24b368733840d6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ad209824099ad854bc24b368733840d6c">array</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> std::initializer_list&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:ad209824099ad854bc24b368733840d6c inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a generic initializer list.  <br /></td></tr>
+<tr class="separator:ad209824099ad854bc24b368733840d6c inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a7259bdf173e04f1ab908d5327a65e inherit pub_methods_classz_1_1core_1_1array" id="r_aa1a7259bdf173e04f1ab908d5327a65e"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classz_1_1core_1_1array.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><b>~array</b> ()</td></tr>
+<tr class="memdesc:aa1a7259bdf173e04f1ab908d5327a65e inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
+<tr class="separator:aa1a7259bdf173e04f1ab908d5327a65e inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb00cc3926eb5f222662169692f62692 inherit pub_methods_classz_1_1core_1_1array" id="r_afb00cc3926eb5f222662169692f62692"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="memdesc:afb00cc3926eb5f222662169692f62692 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the data in the array. <br /></td></tr>
+<tr class="separator:afb00cc3926eb5f222662169692f62692 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b6d23e5d9586b798df18aac714aa4d inherit pub_methods_classz_1_1core_1_1array" id="r_a04b6d23e5d9586b798df18aac714aa4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a04b6d23e5d9586b798df18aac714aa4d">increase</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1array.html">newSize</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a04b6d23e5d9586b798df18aac714aa4d inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the space allocated for this array.  <br /></td></tr>
+<tr class="separator:a04b6d23e5d9586b798df18aac714aa4d inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ef4dd7d7fcb8c90eac2eb56f010fa2 inherit pub_methods_classz_1_1core_1_1array" id="r_a42ef4dd7d7fcb8c90eac2eb56f010fa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a42ef4dd7d7fcb8c90eac2eb56f010fa2">add</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a42ef4dd7d7fcb8c90eac2eb56f010fa2 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <br /></td></tr>
+<tr class="separator:a42ef4dd7d7fcb8c90eac2eb56f010fa2 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0563b29018ef6aeff5e0abbf33bd87d9 inherit pub_methods_classz_1_1core_1_1array" id="r_a0563b29018ef6aeff5e0abbf33bd87d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a0563b29018ef6aeff5e0abbf33bd87d9">push</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">object</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a0563b29018ef6aeff5e0abbf33bd87d9 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the array.  <br /></td></tr>
+<tr class="separator:a0563b29018ef6aeff5e0abbf33bd87d9 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a912677dc5a506bd5215d88ec97082af4 inherit pub_methods_classz_1_1core_1_1array" id="r_a912677dc5a506bd5215d88ec97082af4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a912677dc5a506bd5215d88ec97082af4">push</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a912677dc5a506bd5215d88ec97082af4 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add another array to this array.  <br /></td></tr>
+<tr class="separator:a912677dc5a506bd5215d88ec97082af4 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcfd0aa51e50a19ed774017792d1bcd8 inherit pub_methods_classz_1_1core_1_1array" id="r_afcfd0aa51e50a19ed774017792d1bcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#afcfd0aa51e50a19ed774017792d1bcd8">pop</a> ()</td></tr>
+<tr class="memdesc:afcfd0aa51e50a19ed774017792d1bcd8 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last element from this array.  <br /></td></tr>
+<tr class="separator:afcfd0aa51e50a19ed774017792d1bcd8 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c4816347d389719d52a78d4d233510d inherit pub_methods_classz_1_1core_1_1array" id="r_a6c4816347d389719d52a78d4d233510d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d">insert</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">int</a>)</td></tr>
+<tr class="memdesc:a6c4816347d389719d52a78d4d233510d inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an object into the array.  <br /></td></tr>
+<tr class="separator:a6c4816347d389719d52a78d4d233510d inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e4325166734d7d716dbdec5f60cc5f1 inherit pub_methods_classz_1_1core_1_1array" id="r_a9e4325166734d7d716dbdec5f60cc5f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a9e4325166734d7d716dbdec5f60cc5f1">append</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)</td></tr>
+<tr class="memdesc:a9e4325166734d7d716dbdec5f60cc5f1 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append an object to the end of the array.  <br /></td></tr>
+<tr class="separator:a9e4325166734d7d716dbdec5f60cc5f1 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0c5687a4cced6de20ed24e410f02833 inherit pub_methods_classz_1_1core_1_1array" id="r_aa0c5687a4cced6de20ed24e410f02833"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aa0c5687a4cced6de20ed24e410f02833">remove</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>)</td></tr>
+<tr class="memdesc:aa0c5687a4cced6de20ed24e410f02833 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an object from the array.  <br /></td></tr>
+<tr class="separator:aa0c5687a4cced6de20ed24e410f02833 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9929b10e5e0473551da4e120d3a3735 inherit pub_methods_classz_1_1core_1_1array" id="r_ae9929b10e5e0473551da4e120d3a3735"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ae9929b10e5e0473551da4e120d3a3735">remove</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a>)</td></tr>
+<tr class="memdesc:ae9929b10e5e0473551da4e120d3a3735 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all elements in a subset of the array.  <br /></td></tr>
+<tr class="separator:ae9929b10e5e0473551da4e120d3a3735 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982422836c73290b3443ad1f9d97b183 inherit pub_methods_classz_1_1core_1_1array" id="r_a982422836c73290b3443ad1f9d97b183"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a982422836c73290b3443ad1f9d97b183">replace</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)</td></tr>
+<tr class="memdesc:a982422836c73290b3443ad1f9d97b183 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an object.  <br /></td></tr>
+<tr class="separator:a982422836c73290b3443ad1f9d97b183 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d71b52d3203e1c5c09e52a1de5b364 inherit pub_methods_classz_1_1core_1_1array" id="r_ab4d71b52d3203e1c5c09e52a1de5b364"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ab4d71b52d3203e1c5c09e52a1de5b364">replace</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:ab4d71b52d3203e1c5c09e52a1de5b364 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all objects in the given range with an array of objects.  <br /></td></tr>
+<tr class="separator:ab4d71b52d3203e1c5c09e52a1de5b364 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36d40b612d36b011cb8d5bec6b166c0 inherit pub_methods_classz_1_1core_1_1array" id="r_ad36d40b612d36b011cb8d5bec6b166c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ad36d40b612d36b011cb8d5bec6b166c0">subset</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index, <a class="el" href="classz_1_1core_1_1array.html">int</a> count) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:ad36d40b612d36b011cb8d5bec6b166c0 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a contiguous subset of the elements in the array.  <br /></td></tr>
+<tr class="separator:ad36d40b612d36b011cb8d5bec6b166c0 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c28cb77f36ef85f4902c0f0ed5643c2 inherit pub_methods_classz_1_1core_1_1array" id="r_a5c28cb77f36ef85f4902c0f0ed5643c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5c28cb77f36ef85f4902c0f0ed5643c2">size</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a5c28cb77f36ef85f4902c0f0ed5643c2 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the array.  <br /></td></tr>
+<tr class="separator:a5c28cb77f36ef85f4902c0f0ed5643c2 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614ba0dff2431f71493d3d720c7d3ad2 inherit pub_methods_classz_1_1core_1_1array" id="r_a614ba0dff2431f71493d3d720c7d3ad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2">length</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a614ba0dff2431f71493d3d720c7d3ad2 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the array.  <br /></td></tr>
+<tr class="separator:a614ba0dff2431f71493d3d720c7d3ad2 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864612cf1e7ec4e895e3211687ba2f82 inherit pub_methods_classz_1_1core_1_1array" id="r_a864612cf1e7ec4e895e3211687ba2f82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a864612cf1e7ec4e895e3211687ba2f82">at</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>)</td></tr>
+<tr class="memdesc:a864612cf1e7ec4e895e3211687ba2f82 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:a864612cf1e7ec4e895e3211687ba2f82 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade8f090b10cd949235cebabb58f5c045 inherit pub_methods_classz_1_1core_1_1array" id="r_ade8f090b10cd949235cebabb58f5c045"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ade8f090b10cd949235cebabb58f5c045">at</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:ade8f090b10cd949235cebabb58f5c045 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:ade8f090b10cd949235cebabb58f5c045 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53898d4cdcd8deca56222d91fbac56ea inherit pub_methods_classz_1_1core_1_1array" id="r_a53898d4cdcd8deca56222d91fbac56ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a53898d4cdcd8deca56222d91fbac56ea">operator[]</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a53898d4cdcd8deca56222d91fbac56ea inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:a53898d4cdcd8deca56222d91fbac56ea inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b7826865b60c95fc4980ee755a289a5 inherit pub_methods_classz_1_1core_1_1array" id="r_a5b7826865b60c95fc4980ee755a289a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5b7826865b60c95fc4980ee755a289a5">operator[]</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index)</td></tr>
+<tr class="memdesc:a5b7826865b60c95fc4980ee755a289a5 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
+<tr class="separator:a5b7826865b60c95fc4980ee755a289a5 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c339681af40a2d14e88ebff2e89cd07 inherit pub_methods_classz_1_1core_1_1array" id="r_a0c339681af40a2d14e88ebff2e89cd07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a0c339681af40a2d14e88ebff2e89cd07">contains</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">object</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a0c339681af40a2d14e88ebff2e89cd07 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given object is in the array.  <br /></td></tr>
+<tr class="separator:a0c339681af40a2d14e88ebff2e89cd07 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500907121b1326466ff6c25429cb6435 inherit pub_methods_classz_1_1core_1_1array" id="r_a500907121b1326466ff6c25429cb6435"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a500907121b1326466ff6c25429cb6435">sort</a> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a500907121b1326466ff6c25429cb6435 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the array based on default comparison operator.  <br /></td></tr>
+<tr class="separator:a500907121b1326466ff6c25429cb6435 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bbb21197f1a23b3b90959f1426b3bb2 inherit pub_methods_classz_1_1core_1_1array" id="r_a2bbb21197f1a23b3b90959f1426b3bb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a2bbb21197f1a23b3b90959f1426b3bb2">sort</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">bool</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a2bbb21197f1a23b3b90959f1426b3bb2 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the array based on an arbitrary function.  <br /></td></tr>
+<tr class="separator:a2bbb21197f1a23b3b90959f1426b3bb2 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a384c048076abede5559b232430a32530 inherit pub_methods_classz_1_1core_1_1array" id="r_a384c048076abede5559b232430a32530"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a384c048076abede5559b232430a32530">sorted</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a384c048076abede5559b232430a32530 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the array based on default comparison operator.  <br /></td></tr>
+<tr class="separator:a384c048076abede5559b232430a32530 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ded0f443c85429d78edd14c6005804 inherit pub_methods_classz_1_1core_1_1array" id="r_a45ded0f443c85429d78edd14c6005804"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a45ded0f443c85429d78edd14c6005804">sorted</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">bool</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a45ded0f443c85429d78edd14c6005804 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the array based on an arbitrary function.  <br /></td></tr>
+<tr class="separator:a45ded0f443c85429d78edd14c6005804 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66c910eed79b2c10a1144acb32b5d084 inherit pub_methods_classz_1_1core_1_1array" id="r_a66c910eed79b2c10a1144acb32b5d084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a66c910eed79b2c10a1144acb32b5d084">shuffled</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a66c910eed79b2c10a1144acb32b5d084 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffle the elements of the array into a random order.  <br /></td></tr>
+<tr class="separator:a66c910eed79b2c10a1144acb32b5d084 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d10d72a93b9f66baac92aafac04c4d inherit pub_methods_classz_1_1core_1_1array" id="r_a75d10d72a93b9f66baac92aafac04c4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a75d10d72a93b9f66baac92aafac04c4d">reversed</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a75d10d72a93b9f66baac92aafac04c4d inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the order of all elements in the array.  <br /></td></tr>
+<tr class="separator:a75d10d72a93b9f66baac92aafac04c4d inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54792a72b41df67ea9b055c9e86e0cf0 inherit pub_methods_classz_1_1core_1_1array" id="r_a54792a72b41df67ea9b055c9e86e0cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a54792a72b41df67ea9b055c9e86e0cf0">operator=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:a54792a72b41df67ea9b055c9e86e0cf0 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array assignment operator.  <br /></td></tr>
+<tr class="separator:a54792a72b41df67ea9b055c9e86e0cf0 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4901d4a7897783989245b3f846b33b20 inherit pub_methods_classz_1_1core_1_1array" id="r_a4901d4a7897783989245b3f846b33b20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a4901d4a7897783989245b3f846b33b20">operator=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> std::initializer_list&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:a4901d4a7897783989245b3f846b33b20 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializer list assignment operator.  <br /></td></tr>
+<tr class="separator:a4901d4a7897783989245b3f846b33b20 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af318e6ae029afb8edf19c0001ec839da inherit pub_methods_classz_1_1core_1_1array" id="r_af318e6ae029afb8edf19c0001ec839da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af318e6ae029afb8edf19c0001ec839da">operator==</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:af318e6ae029afb8edf19c0001ec839da inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether two arrays' contents are the same.  <br /></td></tr>
+<tr class="separator:af318e6ae029afb8edf19c0001ec839da inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130988c06198f98bf7b2eab6b94de5af inherit pub_methods_classz_1_1core_1_1array" id="r_a130988c06198f98bf7b2eab6b94de5af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a130988c06198f98bf7b2eab6b94de5af">operator&gt;</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a130988c06198f98bf7b2eab6b94de5af inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array greater-than operator.  <br /></td></tr>
+<tr class="separator:a130988c06198f98bf7b2eab6b94de5af inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70552b7a320b77bc4cf47f7e73cfcfed inherit pub_methods_classz_1_1core_1_1array" id="r_a70552b7a320b77bc4cf47f7e73cfcfed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a70552b7a320b77bc4cf47f7e73cfcfed">operator&lt;</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a70552b7a320b77bc4cf47f7e73cfcfed inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array less-than operator.  <br /></td></tr>
+<tr class="separator:a70552b7a320b77bc4cf47f7e73cfcfed inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd7c706a961a5bbb018f73de106e780 inherit pub_methods_classz_1_1core_1_1array" id="r_aacd7c706a961a5bbb018f73de106e780"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780">operator&gt;=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:aacd7c706a961a5bbb018f73de106e780 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array greater-than-or-equal operator.  <br /></td></tr>
+<tr class="separator:aacd7c706a961a5bbb018f73de106e780 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f58076ee7dc8e7ed403b6e8246c24f inherit pub_methods_classz_1_1core_1_1array" id="r_a51f58076ee7dc8e7ed403b6e8246c24f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a51f58076ee7dc8e7ed403b6e8246c24f">operator&lt;=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a51f58076ee7dc8e7ed403b6e8246c24f inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array less-than-or-equal operator.  <br /></td></tr>
+<tr class="separator:a51f58076ee7dc8e7ed403b6e8246c24f inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0418c5928ff1fd9618500a700066b8 inherit pub_methods_classz_1_1core_1_1array" id="r_a6f0418c5928ff1fd9618500a700066b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a6f0418c5928ff1fd9618500a700066b8">operator()</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a6f0418c5928ff1fd9618500a700066b8 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callable operator.  <br /></td></tr>
+<tr class="separator:a6f0418c5928ff1fd9618500a700066b8 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02af6ec248de2098739f6c50048cff47 inherit pub_methods_classz_1_1core_1_1array" id="r_a02af6ec248de2098739f6c50048cff47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a02af6ec248de2098739f6c50048cff47">isValid</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a02af6ec248de2098739f6c50048cff47 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an index is within the bounds of the array.  <br /></td></tr>
+<tr class="separator:a02af6ec248de2098739f6c50048cff47 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55a33c67b23883ffeb8d35cb5e9ad6a inherit pub_methods_classz_1_1core_1_1array" id="r_af55a33c67b23883ffeb8d35cb5e9ad6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af55a33c67b23883ffeb8d35cb5e9ad6a">swap</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1array.html">index1</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1array.html">index2</a>)</td></tr>
+<tr class="memdesc:af55a33c67b23883ffeb8d35cb5e9ad6a inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap two elements in an array.  <br /></td></tr>
+<tr class="separator:af55a33c67b23883ffeb8d35cb5e9ad6a inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3812e9c00a7fccd4a9ef59f74c7cfe2 inherit pub_methods_classz_1_1core_1_1array" id="r_af3812e9c00a7fccd4a9ef59f74c7cfe2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:af3812e9c00a7fccd4a9ef59f74c7cfe2 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">map</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:af3812e9c00a7fccd4a9ef59f74c7cfe2 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a transformation function to each element of the array and returns a new array with the results.  <br /></td></tr>
+<tr class="separator:af3812e9c00a7fccd4a9ef59f74c7cfe2 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1418510943837a800e71d7025265c6 inherit pub_methods_classz_1_1core_1_1array" id="r_a1b1418510943837a800e71d7025265c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a1b1418510943837a800e71d7025265c6">filter</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">bool</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a1b1418510943837a800e71d7025265c6 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the array based on a predicate and returns a new array containing the elements that satisfy the predicate.  <br /></td></tr>
+<tr class="separator:a1b1418510943837a800e71d7025265c6 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaabbf3842555634a6a51b76a383b5518 inherit pub_methods_classz_1_1core_1_1array" id="r_aaabbf3842555634a6a51b76a383b5518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">reduce</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">defaultValue</a>, std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">lambda</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:aaabbf3842555634a6a51b76a383b5518 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the array to a single value by applying a binary operation cumulatively to the elements.  <br /></td></tr>
+<tr class="separator:aaabbf3842555634a6a51b76a383b5518 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec20e6f5c22919d76570faf7b60b54e9 inherit pub_methods_classz_1_1core_1_1array" id="r_aec20e6f5c22919d76570faf7b60b54e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aec20e6f5c22919d76570faf7b60b54e9">begin</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:aec20e6f5c22919d76570faf7b60b54e9 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the beginning of the array.  <br /></td></tr>
+<tr class="separator:aec20e6f5c22919d76570faf7b60b54e9 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1f9e1261e762890f03307911b90bc14 inherit pub_methods_classz_1_1core_1_1array" id="r_af1f9e1261e762890f03307911b90bc14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#af1f9e1261e762890f03307911b90bc14">end</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:af1f9e1261e762890f03307911b90bc14 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the end of the array.  <br /></td></tr>
+<tr class="separator:af1f9e1261e762890f03307911b90bc14 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a5ba997d706facc8217df0502a0c751 inherit pub_methods_classz_1_1core_1_1array" id="r_a2a5ba997d706facc8217df0502a0c751"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a2a5ba997d706facc8217df0502a0c751">save</a> (cereal::JSONOutputArchive &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a2a5ba997d706facc8217df0502a0c751 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">JSON specialization of serialization output.  <br /></td></tr>
+<tr class="separator:a2a5ba997d706facc8217df0502a0c751 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d31e60833f6319593d0d64216f40f74 inherit pub_methods_classz_1_1core_1_1array" id="r_a4d31e60833f6319593d0d64216f40f74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a4d31e60833f6319593d0d64216f40f74">save</a> (cereal::XMLOutputArchive &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a4d31e60833f6319593d0d64216f40f74 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">XML specialization of serialization output.  <br /></td></tr>
+<tr class="separator:a4d31e60833f6319593d0d64216f40f74 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3fa1ec8ee84ca2149263ead1b22f4a7 inherit pub_methods_classz_1_1core_1_1array" id="r_ab3fa1ec8ee84ca2149263ead1b22f4a7"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">archive</a> &gt; </td></tr>
+<tr class="memitem:ab3fa1ec8ee84ca2149263ead1b22f4a7 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ab3fa1ec8ee84ca2149263ead1b22f4a7">save</a> (<a class="el" href="classz_1_1core_1_1array.html">archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:ab3fa1ec8ee84ca2149263ead1b22f4a7 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary specialization of serialization output.  <br /></td></tr>
+<tr class="separator:ab3fa1ec8ee84ca2149263ead1b22f4a7 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae38cdeb9f0aeae4ee2478e331d7baa81 inherit pub_methods_classz_1_1core_1_1array" id="r_ae38cdeb9f0aeae4ee2478e331d7baa81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#ae38cdeb9f0aeae4ee2478e331d7baa81">load</a> (cereal::JSONInputArchive &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>)</td></tr>
+<tr class="memdesc:ae38cdeb9f0aeae4ee2478e331d7baa81 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">JSON specialization of serialization input.  <br /></td></tr>
+<tr class="separator:ae38cdeb9f0aeae4ee2478e331d7baa81 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4caa1062621e3da8d3b2f2fe448b3c6f inherit pub_methods_classz_1_1core_1_1array" id="r_a4caa1062621e3da8d3b2f2fe448b3c6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a4caa1062621e3da8d3b2f2fe448b3c6f">load</a> (cereal::XMLInputArchive &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>)</td></tr>
+<tr class="memdesc:a4caa1062621e3da8d3b2f2fe448b3c6f inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">XML specialization of serialization input.  <br /></td></tr>
+<tr class="separator:a4caa1062621e3da8d3b2f2fe448b3c6f inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4a56c9deb11fe2784e5bc0eeec02b8 inherit pub_methods_classz_1_1core_1_1array" id="r_a1e4a56c9deb11fe2784e5bc0eeec02b8"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">archive</a> &gt; </td></tr>
+<tr class="memitem:a1e4a56c9deb11fe2784e5bc0eeec02b8 inherit pub_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a1e4a56c9deb11fe2784e5bc0eeec02b8">load</a> (<a class="el" href="classz_1_1core_1_1array.html">archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>)</td></tr>
+<tr class="memdesc:a1e4a56c9deb11fe2784e5bc0eeec02b8 inherit pub_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary specialization of serialization input.  <br /></td></tr>
+<tr class="separator:a1e4a56c9deb11fe2784e5bc0eeec02b8 inherit pub_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1sizable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1sizable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1sizable.html">z::core::sizable</a></td></tr>
 <tr class="memitem:a193dcadd32340117e6cf8372d294d252 inherit pub_methods_classz_1_1core_1_1sizable" id="r_a193dcadd32340117e6cf8372d294d252"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classz_1_1core_1_1array.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><b>~sizable</b> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
@@ -194,14 +395,46 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 <a class="el" href="classz_1_1core_1_1array.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><b>~indexable</b> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:ae2bd8051308a22a2957924bf47bbf56c inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable" id="r_a2e791ea6904cbd35b79e4ad87cff4a3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a">operator[]</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
-<tr class="memdesc:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
-<tr class="separator:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1iterable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1iterable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1iterable.html">z::core::iterable&lt; ITER &gt;</a></td></tr>
 <tr class="memitem:aefc28c542f788b933cd256c9da233139 inherit pub_methods_classz_1_1core_1_1iterable" id="r_aefc28c542f788b933cd256c9da233139"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classz_1_1core_1_1array.html">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><b>~iterable</b> () <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:aefc28c542f788b933cd256c9da233139 inherit pub_methods_classz_1_1core_1_1iterable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:aefc28c542f788b933cd256c9da233139 inherit pub_methods_classz_1_1core_1_1iterable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classz_1_1core_1_1sortedRefArray"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classz_1_1core_1_1sortedRefArray')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classz_1_1core_1_1sortedRefArray.html">z::core::sortedRefArray&lt; zstring * &gt;</a></td></tr>
+<tr class="memitem:a2ae6ab402df9ad59084b919e154ac99d inherit pro_methods_classz_1_1core_1_1sortedRefArray" id="r_a2ae6ab402df9ad59084b919e154ac99d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html#a2ae6ab402df9ad59084b919e154ac99d">eq</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a2ae6ab402df9ad59084b919e154ac99d inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two objects are equal.  <br /></td></tr>
+<tr class="separator:a2ae6ab402df9ad59084b919e154ac99d inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a1c01b26597dd24848a5d76e67eddbd inherit pro_methods_classz_1_1core_1_1sortedRefArray" id="r_a5a1c01b26597dd24848a5d76e67eddbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html#a5a1c01b26597dd24848a5d76e67eddbd">gt</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a5a1c01b26597dd24848a5d76e67eddbd inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if one object is greater than another.  <br /></td></tr>
+<tr class="separator:a5a1c01b26597dd24848a5d76e67eddbd inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d39fd667f8da914ebcc73e8dc5b79d inherit pro_methods_classz_1_1core_1_1sortedRefArray" id="r_a44d39fd667f8da914ebcc73e8dc5b79d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1sortedRefArray.html#a44d39fd667f8da914ebcc73e8dc5b79d">lt</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> * &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">override</a></td></tr>
+<tr class="memdesc:a44d39fd667f8da914ebcc73e8dc5b79d inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if one object is less than another.  <br /></td></tr>
+<tr class="separator:a44d39fd667f8da914ebcc73e8dc5b79d inherit pro_methods_classz_1_1core_1_1sortedRefArray"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classz_1_1core_1_1array"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classz_1_1core_1_1array')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classz_1_1core_1_1array.html">z::core::array&lt; T &gt;</a></td></tr>
+<tr class="memitem:a3e92206f09413a1724056a4a290baed3 inherit pro_methods_classz_1_1core_1_1array" id="r_a3e92206f09413a1724056a4a290baed3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3">init</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>)</td></tr>
+<tr class="memdesc:a3e92206f09413a1724056a4a290baed3 inherit pro_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for single object initialization.  <br /></td></tr>
+<tr class="separator:a3e92206f09413a1724056a4a290baed3 inherit pro_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8baac7448507925fc559e1d310809c6e inherit pro_methods_classz_1_1core_1_1array" id="r_a8baac7448507925fc559e1d310809c6e"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a8baac7448507925fc559e1d310809c6e inherit pro_methods_classz_1_1core_1_1array"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a8baac7448507925fc559e1d310809c6e">init</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">Args</a> &amp;...<a class="el" href="classz_1_1core_1_1array.html">args</a>)</td></tr>
+<tr class="memdesc:a8baac7448507925fc559e1d310809c6e inherit pro_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for brace-enclosed list initialization.  <br /></td></tr>
+<tr class="separator:a8baac7448507925fc559e1d310809c6e inherit pro_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05eecf0dc1fb018480e2f5d5b9ae3faa inherit pro_methods_classz_1_1core_1_1array" id="r_a05eecf0dc1fb018480e2f5d5b9ae3faa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a05eecf0dc1fb018480e2f5d5b9ae3faa">eq</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a05eecf0dc1fb018480e2f5d5b9ae3faa inherit pro_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two objects are equal.  <br /></td></tr>
+<tr class="separator:a05eecf0dc1fb018480e2f5d5b9ae3faa inherit pro_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8f5b09464f513dd7fd41b261560e6f inherit pro_methods_classz_1_1core_1_1array" id="r_abd8f5b09464f513dd7fd41b261560e6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#abd8f5b09464f513dd7fd41b261560e6f">gt</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:abd8f5b09464f513dd7fd41b261560e6f inherit pro_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if one object is greater than another.  <br /></td></tr>
+<tr class="separator:abd8f5b09464f513dd7fd41b261560e6f inherit pro_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8b916d493639f1265ce405a5265466 inherit pro_methods_classz_1_1core_1_1array" id="r_aec8b916d493639f1265ce405a5265466"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aec8b916d493639f1265ce405a5265466">lt</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg1</a>, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">arg2</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:aec8b916d493639f1265ce405a5265466 inherit pro_methods_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if one object is less than another.  <br /></td></tr>
+<tr class="separator:aec8b916d493639f1265ce405a5265466 inherit pro_methods_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classz_1_1core_1_1array"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classz_1_1core_1_1array')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classz_1_1core_1_1array.html">z::core::array&lt; T &gt;</a></td></tr>
+<tr class="memitem:a48670e71295cab3fd47f40c1c84ec357 inherit pro_attribs_classz_1_1core_1_1array" id="r_a48670e71295cab3fd47f40c1c84ec357"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>array_data</b></td></tr>
+<tr class="memdesc:a48670e71295cab3fd47f40c1c84ec357 inherit pro_attribs_classz_1_1core_1_1array"><td class="mdescLeft">&#160;</td><td class="mdescRight">The data in the array. <br /></td></tr>
+<tr class="separator:a48670e71295cab3fd47f40c1c84ec357 inherit pro_attribs_classz_1_1core_1_1array"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for performing searches on a dictionary of words. </p>
@@ -220,14 +453,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
         <tr>
           <td class="memname">z::util::dictionary::dictionary </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>caseSensitive</em> = <code>false</code></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td>
+          <td class="paramname"><em>caseSensitive</em> = <code><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">false</a></code></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -253,9 +486,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::util::dictionary::addWord </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a> z::util::dictionary::addWord </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
           <td class="paramname"><em>word</em></td><td>)</td>
           <td></td>
         </tr>
@@ -279,142 +512,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 
 </div>
 </div>
-<a id="a9b6097e03c859c29efad754b9e93931a" name="a9b6097e03c859c29efad754b9e93931a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b6097e03c859c29efad754b9e93931a">&#9670;&#160;</a></span>at()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp; z::util::dictionary::at </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Function to get the object at the given index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>the index of the desired object. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The object at the given index. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>operator[](int) </dd></dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1indexable.html#a64c0a7369dd895c00f79538ec85eb859">z::core::indexable&lt; T &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a362a7a6b1050dde89ade64b4fb8546b2" name="a362a7a6b1050dde89ade64b4fb8546b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a362a7a6b1050dde89ade64b4fb8546b2">&#9670;&#160;</a></span>begin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1util_1_1dictIter.html">dictIter</a> z::util::dictionary::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get an iterator for the first element in this object. </p>
-<p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
-<dl class="section return"><dt>Returns</dt><dd>An iterator on the first element. </dd></dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3">z::core::iterable&lt; ITER &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a44d941b4c3c2d6df8caaed4469592014" name="a44d941b4c3c2d6df8caaed4469592014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44d941b4c3c2d6df8caaed4469592014">&#9670;&#160;</a></span>end()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1util_1_1dictIter.html">dictIter</a> z::util::dictionary::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get an iterator after the last element of this object. </p>
-<p>This member function should not be used directly. It is meant for C++11's range-based for loop syntax.</p>
-<dl class="section return"><dt>Returns</dt><dd>An iterator after the last element. </dd></dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#aab9329d902ed1c89c1bd484b7535da2a">z::core::iterable&lt; ITER &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a24af9d02200512fc718db516e7c78fe0" name="a24af9d02200512fc718db516e7c78fe0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24af9d02200512fc718db516e7c78fe0">&#9670;&#160;</a></span>find()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int z::util::dictionary::find </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
-          <td class="paramname"><em>word</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Locate a word in the dictionary. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">word</td><td>The word to find.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The index of the word if it exists in the dictionary, -1 otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
-
-</div>
-</div>
 <a id="ac758d4aa61da2d29f39a5be5f37857ba" name="ac758d4aa61da2d29f39a5be5f37857ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac758d4aa61da2d29f39a5be5f37857ba">&#9670;&#160;</a></span>isCaseSensitive()</h2>
 
@@ -425,7 +522,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::util::dictionary::isCaseSensitive </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> z::util::dictionary::isCaseSensitive </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -454,9 +551,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::util::dictionary::isWord </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> z::util::dictionary::isWord </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
           <td class="paramname"><em>word</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -477,40 +574,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it is a valid word, false otherwise.</dd></dl>
 <dl class="section user"><dt>Re-Entry: This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a4">dictionary.cpp</a>.</dd>
-</dl>
-
-</div>
-</div>
-<a id="a69d925b43acf6e00d927da45964c502c" name="a69d925b43acf6e00d927da45964c502c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69d925b43acf6e00d927da45964c502c">&#9670;&#160;</a></span>length()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int z::util::dictionary::length </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the word count of this dictionary. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of words in this dictionary.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This member function is thread-safe. Simultaneous calls will not cause data races, and any other thread-safe member may be called concurrently without interfering.</dt><dd></dd></dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5">z::core::arrayLike&lt; const zstring &amp;, dictIter &gt;</a>.</p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a2">dictionary.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a5">dictionary.cpp</a>.</dd>
 </dl>
 
 </div>
@@ -521,15 +585,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class archive &gt; </div>
+template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">class</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::util::dictionary::load </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a> z::util::dictionary::load </td>
           <td>(</td>
-          <td class="paramtype">archive &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &amp;&#160;</td>
           <td class="paramname"><em>ar</em></td><td>)</td>
           <td></td>
         </tr>
@@ -561,7 +625,7 @@ template&lt;class archive &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int z::util::dictionary::maxWordLength </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">int</a> z::util::dictionary::maxWordLength </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -590,7 +654,7 @@ template&lt;class archive &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::util::dictionary::narrow </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a> z::util::dictionary::narrow </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classz_1_1util_1_1dictRange.html">dictRange</a> *&#160;</td>
           <td class="paramname"><em>wordRange</em>, </td>
@@ -598,7 +662,7 @@ template&lt;class archive &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">uint32_t</a>&#160;</td>
           <td class="paramname"><em>nextChar</em>&#160;</td>
         </tr>
         <tr>
@@ -665,7 +729,7 @@ template&lt;class archive &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int z::util::dictionary::read </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">int</a> z::util::dictionary::read </td>
           <td>(</td>
           <td class="paramtype">std::istream &amp;&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
@@ -673,14 +737,14 @@ template&lt;class archive &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;&#160;</td>
           <td class="paramname"><em>time</em> = <code>-1</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>assumePresorted</em> = <code>false</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td>
+          <td class="paramname"><em>assumePresorted</em> = <code><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">false</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -719,15 +783,15 @@ template&lt;class archive &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename archive &gt; </div>
+template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">typename</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::util::dictionary::save </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a> z::util::dictionary::save </td>
           <td>(</td>
-          <td class="paramtype">archive &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &amp;&#160;</td>
           <td class="paramname"><em>ar</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -759,9 +823,9 @@ template&lt;typename archive &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void z::util::dictionary::setCaseSensitive </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a> z::util::dictionary::setCaseSensitive </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">bool</a>&#160;</td>
           <td class="paramname"><em>caseSensitive</em></td><td>)</td>
           <td></td>
         </tr>
@@ -780,36 +844,6 @@ template&lt;typename archive &gt; </div>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="aef4715bc2f1d68a6427928b9d269a7d6" name="aef4715bc2f1d68a6427928b9d269a7d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef4715bc2f1d68a6427928b9d269a7d6">&#9670;&#160;</a></span>size()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t z::util::dictionary::size </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the size of the object in memory. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of bytes in memory this object currently consumes. </dd></dl>
-
-<p>Implements <a class="el" href="classz_1_1core_1_1sizable.html#ad97c4d0fa6e63e9934c0a76e816ec7d7">z::core::sizable</a>.</p>
 
 </div>
 </div>
