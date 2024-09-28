@@ -10,6 +10,7 @@
 #include "file/chdir.hpp"
 #include "file/dir.hpp"
 #include "file/dirname.hpp"
+#include "file/execdir.hpp"
 #include "file/executable.hpp"
 #include "file/exists.hpp"
 #include "file/list.hpp"

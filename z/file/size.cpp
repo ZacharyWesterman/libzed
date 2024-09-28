@@ -1,4 +1,5 @@
 #include "size.hpp"
+#include "exceptions.hpp"
 
 #if __cplusplus >= 201703L
 #include <filesystem>
@@ -8,17 +9,20 @@
 
 namespace z {
 namespace file {
-size_t size(const zpath &path) noexcept {
+size_t size(const zpath &path) {
 #if __cplusplus >= 201703L
 	// If C++17, we can get file size faster than using fstream's seek() method.
 	std::error_code err{};
-	const auto len = std::filesystem::file_size((const char *)path.cstring());
-	return (err == std::error_code{}) ? 0 : len;
+	try {
+		return std::filesystem::file_size((const char *)path.cstring());
+	} catch (const std::filesystem::filesystem_error &e) {
+		throw unreadable(path);
+	}
 #else
 	// Otherwise default to fstream version.
 	std::ifstream in((const char *)path.cstring(), std::ios::binary);
 	if (in.bad()) {
-		return 0;
+		throw unreadable(path);
 	}
 	const auto begin = in.tellg();
 	in.seekg(0, std::ios::end);
