@@ -6,15 +6,29 @@
 
 namespace z {
 namespace util {
+
+dictionary::dictionary(bool caseSensitive) noexcept : caseSensitive(caseSensitive), readingStream(false), maxWordLen(0) {}
+
+dictionary::dictionary(const dictionary &other) noexcept : core::sortedRefArray<zstring *>(), caseSensitive(other.caseSensitive), readingStream(other.readingStream), maxWordLen(other.maxWordLen) {
+	increase(other.length());
+	caseSensitive = other.caseSensitive;
+	readingStream = other.readingStream;
+	maxWordLen = other.maxWordLen;
+
+	for (auto i : other.array_data) {
+		append(new zstring(*i));
+	}
+}
+
 dictionary::~dictionary() noexcept {
 	clear();
 }
 
 void dictionary::clear() noexcept {
-	for (int i = 0; i < wordList.length(); i++) {
-		delete wordList[i];
+	for (int i = 0; i < length(); i++) {
+		delete at(i);
 	}
-	wordList.clear();
+	array_data.clear();
 }
 
 int dictionary::read(std::istream &stream, const core::timeout &time, bool assumePresorted) noexcept {
@@ -40,9 +54,9 @@ int dictionary::read(std::istream &stream, const core::timeout &time, bool assum
 			}
 
 			if (assumePresorted) {
-				wordList.append(word);
+				append(word);
 			} else {
-				wordList.add(word);
+				add(word);
 			}
 
 			maxWordLen = std::max(word->length(), maxWordLen);
@@ -55,27 +69,14 @@ int dictionary::read(std::istream &stream, const core::timeout &time, bool assum
 }
 
 bool dictionary::isWord(const zstring &word) const noexcept {
-	return find(word) >= 0;
-}
-
-int dictionary::find(const zstring &word) const noexcept {
-	if (caseSensitive) {
-		return wordList.find(&word);
-	} else {
-		auto newWord = word.lower();
-		return wordList.find(&newWord);
-	}
-}
-
-int dictionary::length() const noexcept {
-	return wordList.length();
+	return find(const_cast<zstring *>(&word)) >= 0;
 }
 
 void dictionary::addWord(const zstring &word) noexcept {
 	auto wordptr = new zstring(caseSensitive ? word : word.lower());
 	maxWordLen = std::max(wordptr->length(), maxWordLen);
 	if (find(wordptr) < 0) {
-		wordList.add(wordptr);
+		add(wordptr);
 	}
 }
 
@@ -87,24 +88,14 @@ void dictionary::setCaseSensitive(bool caseSensitive) noexcept {
 	this->caseSensitive = caseSensitive;
 }
 
-size_t dictionary::size() const noexcept {
-	size_t total = wordList.size();
-
-	for (int i = 0; i < wordList.length(); i++) {
-		total += wordList[i]->size();
-	}
-
-	return total;
-}
-
 dictRange dictionary::range() const noexcept {
 	dictRange wordRange;
 
 	wordRange.left = 0;
-	wordRange.right = wordList.length() - 1;
+	wordRange.right = length() - 1;
 	wordRange.charPos = 0;
 	wordRange.isWord = false;
-	wordRange.exhausted = !wordList.length();
+	wordRange.exhausted = !length();
 
 	return wordRange;
 }
@@ -122,7 +113,7 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 	int right = wordRange->right;
 	while (left < right) {
 		int center = (left + right) >> 1;
-		auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
+		auto thisChar = z::core::toUpper(at(center)->at(wordRange->charPos));
 
 		if (thisChar < nextChar) {
 			left = center + 1;
@@ -130,14 +121,14 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 			right = center - 1;
 		}
 	}
-	if (z::core::toUpper(wordList[left]->at(wordRange->charPos)) < nextChar) {
+	if (z::core::toUpper(at(left)->at(wordRange->charPos)) < nextChar) {
 		++left;
 	}
 
 	// If we've skipped past the last successful match, we're done.
 	if (wordRange->charPos) {
-		auto oldLast = z::core::toUpper(wordList[wordRange->left]->at(wordRange->charPos - 1));
-		auto newLast = z::core::toUpper(wordList[left]->at(wordRange->charPos - 1));
+		auto oldLast = z::core::toUpper(at(wordRange->left)->at(wordRange->charPos - 1));
+		auto newLast = z::core::toUpper(at(left)->at(wordRange->charPos - 1));
 
 		if (oldLast != newLast) {
 			wordRange->exhausted = true;
@@ -151,7 +142,7 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 	right = wordRange->right;
 	while (left < right) {
 		int center = (left + right) >> 1;
-		auto thisChar = z::core::toUpper(wordList[center]->at(wordRange->charPos));
+		auto thisChar = z::core::toUpper(at(center)->at(wordRange->charPos));
 
 		if (thisChar > nextChar) {
 			right = center - 1;
@@ -159,35 +150,66 @@ bool dictionary::narrow(dictRange *wordRange, uint32_t nextChar) const noexcept 
 			left = center + 1;
 		}
 	}
-	if (z::core::toUpper(wordList[right]->at(wordRange->charPos)) < nextChar) {
+	if (z::core::toUpper(at(right)->at(wordRange->charPos)) < nextChar) {
 		--right;
 	}
 	wordRange->right = right;
 
-	if (z::core::toUpper(wordList[wordRange->left]->at(wordRange->charPos)) != nextChar) {
+	if (z::core::toUpper(at(wordRange->left)->at(wordRange->charPos)) != nextChar) {
 		wordRange->exhausted = true;
 	} else {
 		++(wordRange->charPos);
-		wordRange->isWord = (wordRange->charPos == (wordList[wordRange->left]->length()));
+		wordRange->isWord = (wordRange->charPos == (at(wordRange->left)->length()));
 	}
 
 	return !(wordRange->exhausted);
 }
 
-dictIter dictionary::begin() const noexcept {
-	return dictIter(&wordList, 0);
-}
-
-dictIter dictionary::end() const noexcept {
-	return dictIter(&wordList, wordList.length());
-}
-
-const zstring &dictionary::at(int index) const {
-	return *(wordList.at(index));
-}
-
 int dictionary::maxWordLength() const noexcept {
 	return maxWordLen;
 }
+
+dictionary dictionary::filter(std::function<bool(const zstring &)> lambda) const {
+	dictionary result;
+	result.caseSensitive = caseSensitive;
+
+	result.increase(array_data.size()); // Increase it to the max size for performance, but it will likely be smaller than this.
+
+	for (const zstring *i : array_data) {
+		if (lambda(*i)) {
+			result.append(new zstring(*i));
+		}
+	}
+
+	return result;
+}
+
+dictionary &dictionary::operator=(const dictionary &other) noexcept {
+	clear();
+	increase(other.length());
+
+	caseSensitive = other.caseSensitive;
+	readingStream = other.readingStream;
+	maxWordLen = other.maxWordLen;
+
+	for (auto i : other.array_data) {
+		append(new zstring(*i));
+	}
+
+	return *this;
+}
+
+dictionary &dictionary::operator=(dictionary &&other) noexcept {
+	clear();
+	array_data = other.array_data;
+	caseSensitive = other.caseSensitive;
+	readingStream = other.readingStream;
+	maxWordLen = other.maxWordLen;
+
+	other.array_data.clear();
+
+	return *this;
+}
+
 } // namespace util
 } // namespace z
