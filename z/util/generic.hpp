@@ -246,7 +246,7 @@ public:
 
 	/**
 	 * @brief Add a value to this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to add.
 	 * @return A reference to this after addition.
 	 */
@@ -254,7 +254,7 @@ public:
 
 	/**
 	 * @brief Add a value to this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to add.
 	 * @return The addition result.
 	 */
@@ -265,7 +265,7 @@ public:
 
 	/**
 	 * @brief Subtract a value from this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to subtract.
 	 * @return A reference to this after subtraction.
 	 */
@@ -273,7 +273,7 @@ public:
 
 	/**
 	 * @brief Subtract a value from this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to subtract.
 	 * @return The subtraction result.
 	 */
@@ -284,7 +284,7 @@ public:
 
 	/**
 	 * @brief Multiply a value with this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to multiply.
 	 * @return A reference to this after multiplication.
 	 */
@@ -292,7 +292,7 @@ public:
 
 	/**
 	 * @brief Multiply a value with this numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to multiply.
 	 * @return The multiplication result.
 	 */
@@ -303,7 +303,7 @@ public:
 
 	/**
 	 * @brief Divide this value by another numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to divide by.
 	 * @return A reference to this after division.
 	 */
@@ -311,7 +311,7 @@ public:
 
 	/**
 	 * @brief Divide this value by another numeric value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @param other The value to divide by.
 	 * @return The division result.
 	 */
@@ -322,7 +322,7 @@ public:
 
 	/**
 	 * @brief Get the remainder of division by another value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @note This casts both values to integers, truncating any other data.
 	 * @param other The value to get the remainder of division by.
 	 * @return A reference to this after division.
@@ -331,7 +331,7 @@ public:
 
 	/**
 	 * @brief Get the remainder of division by another value.
-	 * @throws nonNumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
 	 * @note This casts both values to integers, truncating any other data.
 	 * @param other The value to get the remainder of division by.
 	 * @return The remainder of division.
@@ -343,7 +343,7 @@ public:
 
 	/**
 	 * @brief Get the negation of this value.
-	 * @throws nonNumeric if the operation is attempted on a non-numeric value.
+	 * @throws nonnumeric if the operation is attempted on a non-numeric value.
 	 * @return A reference to this after negation.
 	 */
 	generic operator-() const;

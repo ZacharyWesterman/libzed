@@ -3,7 +3,7 @@
 // Only compile if std::variant is available
 #if __cplusplus >= 201703L
 
-#include "genericExceptions.hpp"
+#include "exceptions.hpp"
 
 #include "../core/join.hpp"
 
@@ -241,7 +241,7 @@ bool generic::promote(generic *other) noexcept {
 
 generic &generic::operator+=(const generic &other) {
 	if (!(numeric() && other.numeric())) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	generic alt = other;
@@ -261,7 +261,7 @@ generic &generic::operator+=(const generic &other) {
 
 generic &generic::operator-=(const generic &other) {
 	if (!(numeric() && other.numeric())) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	generic alt = other;
@@ -281,7 +281,7 @@ generic &generic::operator-=(const generic &other) {
 
 generic &generic::operator*=(const generic &other) {
 	if (!(numeric() && other.numeric())) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	generic alt = other;
@@ -301,7 +301,7 @@ generic &generic::operator*=(const generic &other) {
 
 generic &generic::operator/=(const generic &other) {
 	if (!(numeric() && other.numeric())) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	generic alt = other;
@@ -321,7 +321,7 @@ generic &generic::operator/=(const generic &other) {
 
 generic &generic::operator%=(const generic &other) {
 	if (!(numeric() && other.numeric())) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	value = integer() % other.integer();
@@ -331,7 +331,7 @@ generic &generic::operator%=(const generic &other) {
 
 generic generic::operator-() const {
 	if (!numeric()) {
-		throw nonNumber();
+		throw nonnumeric();
 	}
 
 	const int ix = value.index();

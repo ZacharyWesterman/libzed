@@ -29,10 +29,34 @@ private:
 	static_assert(std::is_pointer<T>::value, "Template must be of pointer type.");
 
 protected:
+	/**
+	 * @brief Check if two objects are equal.
+	 *
+	 * This member function allows object comparison to be
+	 * different for different array types (e.g. reference arrays
+	 * will need to sort by value after dereference).
+	 *
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
+	 *
+	 * @return True if the objects are equal, false otherwise.
+	 */
 	virtual bool eq(const T &arg1, const T &arg2) const override {
 		return (arg1 == arg2) || (arg1 && arg2 && equals(*arg1, *arg2));
 	}
 
+	/**
+	 * @brief Check if one object is greater than another.
+	 *
+	 * This member function allows object comparison to be
+	 * different for different array types (e.g. reference arrays
+	 * will need to sort by value after dereference).
+	 *
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
+	 *
+	 * @return True if arg1 is greater than arg2, false otherwise.
+	 */
 	virtual bool gt(const T &arg1, const T &arg2) const override {
 		if (arg1 == arg2) {
 			return false;
@@ -43,6 +67,18 @@ protected:
 		}
 	}
 
+	/**
+	 * @brief Check if one object is less than another.
+	 *
+	 * This member function allows object comparison to be
+	 * different for different array types (e.g. reference arrays
+	 * will need to sort by value after dereference).
+	 *
+	 * @param arg1 First object to compare.
+	 * @param arg2 Second object to compare.
+	 *
+	 * @return True if arg1 is less than arg2, false otherwise.
+	 */
 	virtual bool lt(const T &arg1, const T &arg2) const override {
 		if (arg1 == arg2) {
 			return false;
@@ -72,6 +108,15 @@ public:
 		this->init(arg1, args...);
 	}
 
+	/**
+	 * @brief Callable operator.
+	 *
+	 * This is used to compare array elements for sorting.
+	 *
+	 * @param arg1 The first element to compare.
+	 * @param arg2 The second element to compare.
+	 * @return \b true if arg1 is greater than arg2.
+	 */
 	virtual bool operator()(const T &arg1, const T &arg2) const override {
 		return greater(*arg1, *arg2);
 	}

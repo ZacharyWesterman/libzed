@@ -491,7 +491,7 @@ public:
 	 * @brief Filters the array based on a predicate and returns a new array containing the elements that satisfy the predicate.
 	 *
 	 * This function iterates through the array, applies the given lambda function as a predicate to each element,
-	 * and adds elements that satisfy the predicate to the resulting array. The size of the result array is adjusted dynamically.
+	 * and adds elements that satisfy the predicate to the resulting array.
 	 *
 	 * @param lambda A function that takes a constant reference to an element of type `T` and returns a boolean indicating whether
 	 * the element should be included.

@@ -11,54 +11,6 @@
 
 namespace z {
 namespace util {
-// /**
-//  * @brief A class for iterating over the words in a dictionary.
-//  *
-//  * This class should not be used directly, instead it is meant for use in range-based for loops.
-//  */
-// class dictIter {
-// 	core::sortedRefArray<const zstring *> const *wordList;
-// 	int index;
-
-// public:
-// 	/**
-// 	 * @brief Constructor
-// 	 * @param wordList A pointer to a dictionary's word list.
-// 	 * @param index The current index.
-// 	 */
-// 	dictIter(core::sortedRefArray<const zstring *> const *wordList, int index) : wordList(wordList), index(index) {}
-
-// 	/**
-// 	 * @brief Increment the current word we're pointing to.
-// 	 *
-// 	 * @return A new iterator instance, incremented from the current position.
-// 	 */
-// 	dictIter operator++() noexcept {
-// 		index++;
-// 		return *this;
-// 	}
-
-// 	/**
-// 	 * @brief Equality operator
-// 	 *
-// 	 * @param other The object to compare to.
-// 	 *
-// 	 * @return True if this and other are pointing to the same word in the dictionary, false otherwise.
-// 	 */
-// 	bool operator!=(const dictIter &other) const noexcept {
-// 		return index != other.index;
-// 	}
-
-// 	/**
-// 	 * @brief Dereference operator.
-// 	 *
-// 	 * @return The current word this iterator is pointing to.
-// 	 */
-// 	const zstring &operator*() const noexcept {
-// 		return *(wordList->at(index));
-// 	}
-// };
-
 /**
  * @brief A class for performing searches on a dictionary of words.
  */
@@ -74,6 +26,11 @@ public:
 	 * @param caseSensitive Whether searches on this dictionary are case sensitive.
 	 */
 	dictionary(bool caseSensitive = false) noexcept;
+
+	/**
+	 * @brief Copy constructor
+	 * @param other The dictionary to copy from.
+	 */
 	dictionary(const dictionary &other) noexcept;
 
 	/// Destructor
@@ -175,10 +132,41 @@ public:
 	 */
 	int maxWordLength() const noexcept;
 
+	/**
+	 * @brief Filters the dictionary based on a predicate and returns a new dictionary containing the words that satisfy the predicate.
+	 *
+	 * This function iterates through the dictionary, applies the given lambda function as a predicate to each element,
+	 * and adds words that satisfy the predicate to the resulting dictionary.
+	 *
+	 * @param lambda A function that takes a constant reference to a zstring and returns a boolean indicating whether
+	 * the element should be included.
+	 * @return A new dictionary containing the words that satisfy the predicate.
+	 */
 	dictionary filter(std::function<bool(const zstring &)> lambda) const;
 
+	/**
+	 * @brief Dictionary move operator.
+	 *
+	 * Move a dictionary's contents to this dictionary.
+	 *
+	 * @param other the dictionary to copy from.
+	 *
+	 * @return This dictionary after the operation (for
+	 * @b a=b=c type expressions).
+	 */
 	dictionary &operator=(dictionary &&other) noexcept;
 
+	/**
+	 * @brief Dictionary assignment operator.
+	 *
+	 * Clear the contents of this dictionary and create
+	 * a copy of another dictionary's contents into this one.
+	 *
+	 * @param other the dictionary to copy from.
+	 *
+	 * @return This dictionary after the operation (for
+	 * @b a=b=c type expressions).
+	 */
 	dictionary &operator=(const dictionary &other) noexcept;
 
 #ifdef __has_include
