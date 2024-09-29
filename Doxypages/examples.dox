@@ -8,6 +8,7 @@
 @example loadLib.cpp
 @example matrix.cpp
 @example numberwang.cpp
+@example range.cpp
 @example regexConsole.cpp
 @example rot13.cpp
 */
