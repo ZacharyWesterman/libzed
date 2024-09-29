@@ -1,9 +1,10 @@
 
 ifeq ($(OS),Windows_NT)
 LIBEXT = dll
+LFLAGS = -Wl,--gc-sections
 else
 LIBEXT = so
-LFLAGS = -ldl
+LFLAGS = -ldl -Wl,--gc-sections
 endif
 
 
@@ -39,7 +40,7 @@ obj/loadLib.o: src/loadLib.cpp bin/dynamicLib.$(LIBEXT)
 	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $<
 
 bin/dynamicLib.$(LIBEXT): src/dynamicLib.cpp $(STATICLIB)
-	g++ -I"../" -std=$(STD) -shared -fPIC -o $@ $^
+	g++ -I"../" -std=$(STD) -shared -fPIC -Wl,--gc-sections -o $@ $^
 
 bin/%: obj/%.o $(STATICLIB)
 	g++ -o $@ $^ $(LFLAGS)
