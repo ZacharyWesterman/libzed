@@ -33,7 +33,7 @@ struct dirscan {
 #endif
 	/// Whether to include hidden files in the output.
 	bool showAll;
-	///(reserved) Whether the directory has been opened yet.
+	/// Whether the directory has been opened yet.
 	bool used;
 
 	/// Destructor.

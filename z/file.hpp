@@ -22,6 +22,7 @@
 /// Manage file contents
 #include "file/copy.hpp"
 #include "file/info.hpp"
+#include "file/lines.hpp"
 #include "file/read.hpp"
 #include "file/write.hpp"
 

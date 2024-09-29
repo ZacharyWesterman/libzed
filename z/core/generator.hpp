@@ -44,7 +44,7 @@ public:
 	 * @param initial The initial value of the generator's state.
 	 * @param lambda The generator function.
 	 */
-	generator(const S &&initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
+	generator(const S &initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
 
 	/// Custom iterator for generators to allow for range-based for loops.
 	class iterator {
