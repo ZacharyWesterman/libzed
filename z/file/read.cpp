@@ -1,4 +1,5 @@
 #include "read.hpp"
+#include "exceptions.hpp"
 
 namespace z {
 namespace file {
