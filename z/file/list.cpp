@@ -1,130 +1,182 @@
 #include "list.hpp"
-
-#ifdef __linux__
-#include <dirent.h>
-#elif _WIN32
-#include <windows.h>
-#else
-#error file::list is incompatible with target OS.
-#endif
+#include <iostream>
 
 namespace z {
 namespace file {
-core::array<zpath> listFiles(const zpath &dir, const zpath &file_type) noexcept {
+
+dirscan::~dirscan() {
+	if (used) {
+#ifdef __linux__
+		if (dpdf) {
+			closedir(dpdf);
+		}
+#elif _WIN32
+		if (hFind != INVALID_HANDLE_VALUE) {
+			FindClose(hFind);
+		}
+#endif
+	}
+}
+
+core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileType, bool showAll) noexcept {
 	core::array<zpath> output;
 
-	zpath search_path = dir;
+	zpath searchPath = dir;
 
 	if (!dir.length()) {
-		search_path += "./";
+		searchPath += "./";
 	} else {
-		search_path += "/";
+		searchPath += "/";
 	}
 
 #ifdef _WIN32
-	search_path += "/*.";
+	searchPath += "/*.";
+	searchPath += fileType;
 
-	search_path += file_type;
+	return core::generator<zpath, dirscan>(
+		dirscan{
+			nullptr,
+			nullptr,
+			false,
+			showAll,
+		},
+		[](dirscan &state) {
+			state.used = true;
 
-	WIN32_FIND_DATA fd;
-	HANDLE hFind = FindFirstFile((char *)search_path.cstring(), &fd);
-
-	if (hFind != INVALID_HANDLE_VALUE) {
-		do {
-			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-				output.add(zpath(fd.cFileName));
+			if (!state.fd) {
+				state.hFind = FindFirstFile((char *)search_path.cstring(), &state.fd);
+			} else {
+				FindNextFile(state.hFind, &state.fd);
 			}
-		} while (FindNextFile(hFind, &fd));
 
-		FindClose(hFind);
-	}
-#else
-
-	bool any_extension;
-
-	any_extension = (file_type == "*");
-
-	DIR *dpdf;
-	dirent *epdf;
-
-	dpdf = opendir((char *)search_path.cstring());
-
-	if (dpdf) {
-		while ((epdf = readdir(dpdf))) {
-			zpath filename(epdf->d_name);
-
-			if (epdf->d_type != DT_DIR) {
-				if (any_extension) {
-					output.add(filename);
-				} else {
-
-					if (filename.endsWith(zpath('.') + file_type)) {
-						output.add(filename);
-					}
+			while (state.hFind != INVALID_HANDLE_VALUE) {
+				if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+					FindNextFile(state.hFind, &state.fd);
+					continue;
 				}
+
+				if (!state.showAll && fd.cFileName[0] == '.') {
+					continue;
+				}
+
+				return core::yield<zpath>{false, fd.cFileName};
 			}
-		}
 
-		closedir(dpdf);
-	}
+			return core::yield<zpath>{true, ""};
+		});
+#else
+	return core::generator<zpath, dirscan>(
+		dirscan{
+			opendir((char *)searchPath.cstring()),
+			nullptr,
+			fileType,
+			false,
+			showAll,
+		},
+		[](dirscan &state) {
+			state.used = true;
+
+			// Get the next file
+			while (state.dpdf && (state.epdf = readdir(state.dpdf))) {
+				if (state.epdf->d_type == DT_DIR) {
+					continue;
+				}
+
+				const zpath filename(state.epdf->d_name);
+
+				if (state.fileType != '*' && !filename.endsWith('.'_zs + state.fileType)) {
+					continue;
+				}
+
+				if (!state.showAll && filename[0] == '.') {
+					continue;
+				}
+
+				return core::yield<zpath>{false, filename};
+			}
+
+			return core::yield<zpath>{true, ""};
+		});
 #endif
-
-	return output;
 }
 
-core::array<zpath> listDirs(const zpath &dir, bool showAll) noexcept {
+core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcept {
 	core::array<zpath> output;
 
-	zpath search_path = dir;
+	zpath searchPath = dir;
 
 	if (!dir.length()) {
-		search_path += "./";
+		searchPath += "./";
 	} else {
-		search_path += "/";
+		searchPath += "/";
 	}
 
 #ifdef _WIN32
-	search_path += "/*";
+	searchPath += "/*";
+	searchPath += fileType;
 
-	WIN32_FIND_DATA fd;
-	HANDLE hFind = FindFirstFile((char *)search_path.cstring(), &fd);
+	return core::generator<zpath, dirscan>(
+		dirscan{
+			nullptr,
+			nullptr,
+			false,
+			showAll,
+		},
+		[](dirscan &state) {
+			state.used = true;
 
-	if (hFind != INVALID_HANDLE_VALUE) {
-		do {
-			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-				zpath filename = fd.cFileName;
-
-				if (showAll || (filename[0] != '.')) {
-					output.add(filename);
-				}
+			if (!state.fd) {
+				state.hFind = FindFirstFile((char *)search_path.cstring(), &state.fd);
+			} else {
+				FindNextFile(state.hFind, &state.fd);
 			}
-		} while (FindNextFile(hFind, &fd));
 
-		FindClose(hFind);
-	}
+			while (state.hFind != INVALID_HANDLE_VALUE) {
+				if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+					FindNextFile(state.hFind, &state.fd);
+					continue;
+				}
+
+				if (!state.showAll && fd.cFileName[0] == '.') {
+					continue;
+				}
+
+				return core::yield<zpath>{false, fd.cFileName};
+			}
+
+			return core::yield<zpath>{true, ""};
+		});
 #else
+	return core::generator<zpath, dirscan>(
+		dirscan{
+			opendir((char *)searchPath.cstring()),
+			nullptr,
+			"",
+			false,
+			showAll,
+		},
+		[](dirscan &state) {
+			state.used = true;
 
-	DIR *dpdf;
-	dirent *epdf;
-
-	dpdf = opendir((char *)search_path.cstring());
-
-	if (dpdf) {
-		while ((epdf = readdir(dpdf))) {
-			zpath filename(epdf->d_name);
-
-			if (epdf->d_type == DT_DIR) {
-				if (showAll || (filename[0] != '.')) {
-					output.add(filename);
+			// Get the next file
+			while (state.dpdf && (state.epdf = readdir(state.dpdf))) {
+				if (state.epdf->d_type != DT_DIR) {
+					continue;
 				}
+
+				const zpath filename(state.epdf->d_name);
+
+				if (!state.showAll && filename[0] == '.') {
+					continue;
+				}
+
+				return core::yield<zpath>{false, filename};
 			}
-		}
 
-		closedir(dpdf);
-	}
+			return core::yield<zpath>{true, ""};
+		});
 #endif
-
-	return output;
 }
+
 } // namespace file
 } // namespace z

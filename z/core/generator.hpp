@@ -44,13 +44,13 @@ public:
 	 * @param initial The initial value of the generator's state.
 	 * @param lambda The generator function.
 	 */
-	generator(const T &initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
+	generator(const S &&initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
 
 	/// Custom iterator for generators to allow for range-based for loops.
 	class iterator {
 		std::function<const yield<T>(S &)> lambda;
 		yield<T> current_yield;
-		S state;
+		S *state;
 
 	public:
 		/**
@@ -59,7 +59,7 @@ public:
 		 * @param state The state data that may be mutated by the generator function.
 		 * @param dummy If true, do not generate data. This is here just so range-based loop syntax will work.
 		 */
-		explicit iterator(std::function<const yield<T>(S &)> lambda, const S &state, bool dummy = false) : lambda(lambda), state(state), current_yield({false, {}}) {
+		explicit iterator(std::function<const yield<T>(S &)> lambda, S *state, bool dummy = false) : lambda(lambda), state(state), current_yield({false, {}}) {
 			if (!dummy) {
 				++(*this); // Load the first value
 			}
@@ -78,7 +78,7 @@ public:
 		 * @return This iterator after getting the next value from the generator.
 		 */
 		iterator &operator++() {
-			current_yield = lambda(state);
+			current_yield = lambda(*state);
 			return *this;
 		}
 
@@ -95,23 +95,23 @@ public:
 	 * @brief Begin iterator (start of the range)
 	 * @return An iterator that will give the first value in the generator.
 	 */
-	iterator begin() const {
-		return iterator(lambda, state);
+	iterator begin() {
+		return iterator(lambda, &state);
 	}
 
 	/**
 	 * @brief End iterator (end of the range)
 	 * @return A dummy iterator indicating the end of the range.
 	 */
-	iterator end() const {
-		return iterator(lambda, state, true);
+	iterator end() {
+		return iterator(lambda, &state, true);
 	}
 
 	/**
 	 * @brief Concatenate all generator elements into an array.
 	 * @return An array containing all elements from the generator.
 	 */
-	array<T> collect() const {
+	array<T> collect() {
 		array<T> result;
 		for (auto i : *this) {
 			result.push(i);
