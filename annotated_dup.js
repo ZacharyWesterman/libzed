@@ -12,6 +12,8 @@ var annotated_dup =
         [ "arrayLike", "classz_1_1core_1_1arrayLike.html", "classz_1_1core_1_1arrayLike" ],
         [ "circularIterator", "classz_1_1core_1_1circularIterator.html", "classz_1_1core_1_1circularIterator" ],
         [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
+        [ "yield", "structz_1_1core_1_1yield.html", "structz_1_1core_1_1yield" ],
+        [ "generator", "classz_1_1core_1_1generator.html", "classz_1_1core_1_1generator" ],
         [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
@@ -27,7 +29,9 @@ var annotated_dup =
         [ "unreadable", "classz_1_1file_1_1unreadable.html", "classz_1_1file_1_1unreadable" ],
         [ "unwritable", "classz_1_1file_1_1unwritable.html", "classz_1_1file_1_1unwritable" ],
         [ "info", "classz_1_1file_1_1info.html", "classz_1_1file_1_1info" ],
-        [ "library", "classz_1_1file_1_1library.html", "classz_1_1file_1_1library" ]
+        [ "library", "classz_1_1file_1_1library.html", "classz_1_1file_1_1library" ],
+        [ "fileHandle", "structz_1_1file_1_1fileHandle.html", "structz_1_1file_1_1fileHandle" ],
+        [ "dirscan", "structz_1_1file_1_1dirscan.html", "structz_1_1file_1_1dirscan" ]
       ] ],
       [ "math", "namespacez_1_1math.html", [
         [ "matrix", "classz_1_1math_1_1matrix.html", "classz_1_1math_1_1matrix" ]

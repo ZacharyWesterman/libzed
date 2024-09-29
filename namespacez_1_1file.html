@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.9</span>
+   &#160;<span id="projectnumber">1.7.15</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -119,6 +119,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1file_1_1library.html">library</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for loading dynamic libraries.  <a href="classz_1_1file_1_1library.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">State management struct for file streaming generator.  <a href="structz_1_1file_1_1fileHandle.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">State management struct for directory scanning generators.  <a href="structz_1_1file_1_1dirscan.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -146,12 +152,15 @@ Functions</h2></td></tr>
 <tr class="memitem:aa2db5230e856498aab43ce0f1a5f11e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#aa2db5230e856498aab43ce0f1a5f11e1">exists</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;pathname) noexcept</td></tr>
 <tr class="memdesc:aa2db5230e856498aab43ce0f1a5f11e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a file or directory with the given name exists.  <a href="namespacez_1_1file.html#aa2db5230e856498aab43ce0f1a5f11e1">More...</a><br /></td></tr>
 <tr class="separator:aa2db5230e856498aab43ce0f1a5f11e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20dd83df9a7156cf8d5f935103955863"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a20dd83df9a7156cf8d5f935103955863">listFiles</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;file_type) noexcept</td></tr>
-<tr class="memdesc:a20dd83df9a7156cf8d5f935103955863"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all files of a given type in the given directory.  <a href="namespacez_1_1file.html#a20dd83df9a7156cf8d5f935103955863">More...</a><br /></td></tr>
-<tr class="separator:a20dd83df9a7156cf8d5f935103955863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6f9931817b96fde3d71311db6f5943e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ac6f9931817b96fde3d71311db6f5943e">listDirs</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>, bool showAll=false) noexcept</td></tr>
-<tr class="memdesc:ac6f9931817b96fde3d71311db6f5943e"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all sub-directories in the given directory.  <a href="namespacez_1_1file.html#ac6f9931817b96fde3d71311db6f5943e">More...</a><br /></td></tr>
-<tr class="separator:ac6f9931817b96fde3d71311db6f5943e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392ba677167ff1404e042fd0eadd0b91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zstring</a>, <a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename)</td></tr>
+<tr class="memdesc:a392ba677167ff1404e042fd0eadd0b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the contents of a file line-by-line.  <a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">More...</a><br /></td></tr>
+<tr class="separator:a392ba677167ff1404e042fd0eadd0b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zpath</a>, <a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ae6c51b3c6444b4f3dba24dc55d3df7cc">listFiles</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileType=&quot;*&quot;, bool showAll=true) noexcept</td></tr>
+<tr class="memdesc:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all files of a given type in the given directory.  <a href="namespacez_1_1file.html#ae6c51b3c6444b4f3dba24dc55d3df7cc">More...</a><br /></td></tr>
+<tr class="separator:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bbba71414052500cf1e40f76838b7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zpath</a>, <a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a99bbba71414052500cf1e40f76838b7e">listDirs</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>, bool showAll=false) noexcept</td></tr>
+<tr class="memdesc:a99bbba71414052500cf1e40f76838b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all sub-directories in the given directory.  <a href="namespacez_1_1file.html#a99bbba71414052500cf1e40f76838b7e">More...</a><br /></td></tr>
+<tr class="separator:a99bbba71414052500cf1e40f76838b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace9a92a8d06c47199b8e0b9afc21b470"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470">makeDir</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>) noexcept</td></tr>
 <tr class="memdesc:ace9a92a8d06c47199b8e0b9afc21b470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a directory with the given path.  <a href="namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470">More...</a><br /></td></tr>
 <tr class="separator:ace9a92a8d06c47199b8e0b9afc21b470"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -440,8 +449,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac6f9931817b96fde3d71311db6f5943e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6f9931817b96fde3d71311db6f5943e">&#9670;&nbsp;</a></span>listDirs()</h2>
+<a id="a392ba677167ff1404e042fd0eadd0b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392ba677167ff1404e042fd0eadd0b91">&#9670;&nbsp;</a></span>lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zstring</a>, <a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a>&gt; z::file::lines </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the contents of a file line-by-line. </p>
+<p>This function uses a generator to read files, which can be particularly useful with files that may be too large to load all at once.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The path and name of the file to read from.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classz_1_1file_1_1unreadable.html" title="Exception thrown when a file cannot be opened for reading.">z::file::unreadable</a></td><td>If the file cannot be opened or read from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99bbba71414052500cf1e40f76838b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99bbba71414052500cf1e40f76838b7e">&#9670;&nbsp;</a></span>listDirs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -450,7 +492,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zpath</a>&gt; z::file::listDirs </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zpath</a>, <a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a>&gt; z::file::listDirs </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>dir</em>, </td>
@@ -483,12 +525,12 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An array containing the names of all sub-directories in the given directory. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that will list all directories in the given directory. </dd></dl>
 
 </div>
 </div>
-<a id="a20dd83df9a7156cf8d5f935103955863"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20dd83df9a7156cf8d5f935103955863">&#9670;&nbsp;</a></span>listFiles()</h2>
+<a id="ae6c51b3c6444b4f3dba24dc55d3df7cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c51b3c6444b4f3dba24dc55d3df7cc">&#9670;&nbsp;</a></span>listFiles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -497,7 +539,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">core::array</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zpath</a>&gt; z::file::listFiles </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zpath</a>, <a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a>&gt; z::file::listFiles </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>dir</em>, </td>
@@ -506,7 +548,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
-          <td class="paramname"><em>file_type</em>&#160;</td>
+          <td class="paramname"><em>fileType</em> = <code>&quot;*&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>showAll</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -526,11 +574,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dir</td><td>the working directory. If <b>dir</b> is <b>""</b>, then it is assumed to be the current working directory.</td></tr>
-    <tr><td class="paramname">file_type</td><td>the file extension. If the type is <b>"*"</b>, then all types are accepted. Otherwise, the file type is expected to have no leading period.</td></tr>
+    <tr><td class="paramname">fileType</td><td>the file extension. If the type is <b>"*"</b>, then all types are accepted. Otherwise, the file type is expected to have no leading period.</td></tr>
+    <tr><td class="paramname">showAll</td><td>flag specifying whether to include hidden files in the output.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An array containing the names of all files of the given type in the given directory. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that will list all files of the given type in the given directory. </dd></dl>
 
 </div>
 </div>

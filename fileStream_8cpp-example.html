@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.9</span>
+   &#160;<span id="projectnumber">1.7.15</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('fileStream_8cpp-example.html',''); ini
 <div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1core_1_1string.html">z::core::string&lt;z::utf8&gt;</a> text;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (!in) {</div>
-<div class="line">        <a class="code" href="classz_1_1core_1_1string.html">zstring</a>(<span class="stringliteral">&quot;File missing!&quot;</span>).<a name="a1"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="classz_1_1core_1_1string.html">zstring</a>(<span class="stringliteral">&quot;File missing!&quot;</span>).<a name="a2"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
 <div class="line">        <span class="keywordflow">return</span> 1;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
@@ -135,9 +135,9 @@ $(document).ready(function(){initNavTree('fileStream_8cpp-example.html',''); ini
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line">            text.<a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">            text.<a name="a3"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
 <div class="line">        } <span class="keywordflow">else</span> {</div>
-<div class="line">            text.<a name="a2"></a><a class="code" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::cout);</div>
+<div class="line">            text.<a name="a4"></a><a class="code" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::cout);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"> </div>
@@ -149,8 +149,8 @@ $(document).ready(function(){initNavTree('fileStream_8cpp-example.html',''); ini
 <div class="line"> </div>
 <div class="line">    std::cout &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line">        text.<a name="a3"></a><a class="code" href="classz_1_1core_1_1string.html#add83555e69ff34808f7f78c35ad8590d">readln</a>(in);</div>
-<div class="line">        <span class="keywordflow">if</span> (!text.<a name="a4"></a><a class="code" href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9">length</a>()) {</div>
+<div class="line">        text.<a name="a5"></a><a class="code" href="classz_1_1core_1_1string.html#add83555e69ff34808f7f78c35ad8590d">readln</a>(in);</div>
+<div class="line">        <span class="keywordflow">if</span> (!text.<a name="a6"></a><a class="code" href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9">length</a>()) {</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('fileStream_8cpp-example.html',''); ini
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string&lt; z::utf8 &gt;</a></div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_a2ee096fbead55283d629f20b8cf648a9"><div class="ttname"><a href="classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9">z::core::string::length</a></div><div class="ttdeci">int length() const noexcept override</div><div class="ttdoc">Get the character count of the string.</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_a688c43a5c734afd91175627f9ed52172"><div class="ttname"><a href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">z::core::string::write</a></div><div class="ttdeci">void write(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in that stream's encoding.</div><div class="ttdef"><b>Definition:</b> string.hpp:1471</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_add83555e69ff34808f7f78c35ad8590d"><div class="ttname"><a href="classz_1_1core_1_1string.html#add83555e69ff34808f7f78c35ad8590d">z::core::string::readln</a></div><div class="ttdeci">string &amp; readln(std::istream &amp;stream) noexcept</div><div class="ttdoc">Read string data from a stream until a newline is encountered.</div></div>

@@ -11,6 +11,7 @@ var dir_9a8214962be111a432ef85a20e528316 =
     [ "exists.hpp", "exists_8hpp_source.html", null ],
     [ "info.hpp", "info_8hpp_source.html", null ],
     [ "library.hpp", "library_8hpp_source.html", null ],
+    [ "lines.hpp", "lines_8hpp_source.html", null ],
     [ "list.hpp", "list_8hpp_source.html", null ],
     [ "makeDir.hpp", "makeDir_8hpp_source.html", null ],
     [ "path.hpp", "path_8hpp_source.html", null ],

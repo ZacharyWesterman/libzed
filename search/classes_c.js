@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['unreadable_296',['unreadable',['../classz_1_1file_1_1unreadable.html',1,'z::file']]],
-  ['unwritable_297',['unwritable',['../classz_1_1file_1_1unwritable.html',1,'z::file']]]
+  ['timeout_319',['timeout',['../classz_1_1core_1_1timeout.html',1,'z::core']]],
+  ['timer_320',['timer',['../classz_1_1core_1_1timer.html',1,'z::core']]]
 ];

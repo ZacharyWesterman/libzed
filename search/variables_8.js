@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sqrt2_541',['sqrt2',['../namespacez_1_1math.html#a97e7c45e6eb2b403283aca84e1f06a61',1,'z::math']]],
-  ['sqrt5_542',['sqrt5',['../namespacez_1_1math.html#a0ee3b1a5ef81cd2e066f9ac7f68a4150',1,'z::math']]]
+  ['phi_577',['phi',['../namespacez_1_1math.html#a16d02c5f2d1bde240f47a45c676a3e12',1,'z::math']]],
+  ['pi_578',['pi',['../namespacez_1_1math.html#ab8fdf94bd8614236e8a0c5d307354e07',1,'z::math']]]
 ];

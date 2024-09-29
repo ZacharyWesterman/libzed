@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.9</span>
+   &#160;<span id="projectnumber">1.7.15</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -118,6 +118,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html">circularBuffer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A circular buffer of fixed size. Appending can be done indefinitely, as the index will just loop back around to the beginning.  <a href="classz_1_1core_1_1circularBuffer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1core_1_1yield.html">yield</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The return value for generator functions.  <a href="structz_1_1core_1_1yield.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html">generator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary generator for producing sequential results on-the-fly.  <a href="classz_1_1core_1_1generator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html">indexable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A base interface for all objects whose elements can be directly indexed.  <a href="classz_1_1core_1_1indexable.html#details">More...</a><br /></td></tr>
@@ -218,6 +224,12 @@ Functions</h2></td></tr>
 <tr class="memitem:afc3f2314fb659f045341437363cea7e7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afc3f2314fb659f045341437363cea7e7">joinDeref</a> (const <a class="el" href="classz_1_1core_1_1iterable.html">iterable</a>&lt; T &gt; &amp;list, const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; E &gt; &amp;delim) noexcept</td></tr>
 <tr class="memdesc:afc3f2314fb659f045341437363cea7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference elements in an array and concatenate them into a string, separated by a delimiter.  <a href="namespacez_1_1core.html#afc3f2314fb659f045341437363cea7e7">More...</a><br /></td></tr>
 <tr class="separator:afc3f2314fb659f045341437363cea7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeefc6e7b0c3f4c6b6c76f916b1672169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; long, long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a> (long begin, long end, long step=1) noexcept</td></tr>
+<tr class="memdesc:aeefc6e7b0c3f4c6b6c76f916b1672169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a sequence of integers in a specified range.  <a href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">More...</a><br /></td></tr>
+<tr class="separator:aeefc6e7b0c3f4c6b6c76f916b1672169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a604a5cd78f79c3088c622df2bae7f882"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; long, long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a604a5cd78f79c3088c622df2bae7f882">range</a> (long end) noexcept</td></tr>
+<tr class="memdesc:a604a5cd78f79c3088c622df2bae7f882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a sequence of integers from 0 until the specified end point.  <a href="namespacez_1_1core.html#a604a5cd78f79c3088c622df2bae7f882">More...</a><br /></td></tr>
+<tr class="separator:a604a5cd78f79c3088c622df2bae7f882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43561b0c6ee029a9fcf113b8e1c54910"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a43561b0c6ee029a9fcf113b8e1c54910"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_base_of&lt; <a class="el" href="classz_1_1core_1_1sizable.html">z::core::sizable</a>, T &gt;::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a43561b0c6ee029a9fcf113b8e1c54910">size</a> (const T &amp;object, size_t &amp;bytes) noexcept</td></tr>
 <tr class="memdesc:a43561b0c6ee029a9fcf113b8e1c54910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a sizable object.  <a href="namespacez_1_1core.html#a43561b0c6ee029a9fcf113b8e1c54910">More...</a><br /></td></tr>
@@ -945,6 +957,94 @@ template&lt;typename T , encoding E&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The numeral value of the character. If it is not a numeric character, returns -1. </dd></dl>
+
+</div>
+</div>
+<a id="aeefc6e7b0c3f4c6b6c76f916b1672169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeefc6e7b0c3f4c6b6c76f916b1672169">&#9670;&nbsp;</a></span>range() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt;long, long&gt; z::core::range </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>step</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate a sequence of integers in a specified range. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>The beginning of the range (inclusive). </td></tr>
+    <tr><td class="paramname">end</td><td>The end of the range (exclusive). </td></tr>
+    <tr><td class="paramname">step</td><td>The step size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that outputs a regular sequence of integers in the range. </dd></dl>
+
+</div>
+</div>
+<a id="a604a5cd78f79c3088c622df2bae7f882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a604a5cd78f79c3088c622df2bae7f882">&#9670;&nbsp;</a></span>range() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt;long, long&gt; z::core::range </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>end</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate a sequence of integers from 0 until the specified end point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">end</td><td>The end of the range (exclusive). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that outputs a regular sequence of integers in the range. </dd></dl>
 
 </div>
 </div>
