@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: z/util/genericExceptions.hpp Source File</title>
+<title>libzed: z/util/exceptions.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.8</span>
+   &#160;<span id="projectnumber">1.7.9</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('genericExceptions_8hpp_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('util_2exceptions_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,28 +95,26 @@ $(document).ready(function(){initNavTree('genericExceptions_8hpp_source.html',''
 
 <div class="header">
   <div class="headertitle">
-<div class="title">genericExceptions.hpp</div>  </div>
+<div class="title">exceptions.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>z {</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span>util {</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structz_1_1util_1_1nonNumber.html">    8</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structz_1_1util_1_1nonNumber.html">nonNumber</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structz_1_1util_1_1nonNumber.html#a566049b128ec12687753f4bf8d170661">   13</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structz_1_1util_1_1nonNumber.html#a566049b128ec12687753f4bf8d170661">what</a>() <span class="keyword">const</span> throw() {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Attempted numeric operation on non-number&quot;</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;} <span class="comment">// namespace util</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <span class="comment">// namespace z</span></div>
-<div class="ttc" id="astructz_1_1util_1_1nonNumber_html"><div class="ttname"><a href="structz_1_1util_1_1nonNumber.html">z::util::nonNumber</a></div><div class="ttdoc">Exception to throw when attempting a numeric operation on a non-number.</div><div class="ttdef"><b>Definition:</b> genericExceptions.hpp:8</div></div>
-<div class="ttc" id="astructz_1_1util_1_1nonNumber_html_a566049b128ec12687753f4bf8d170661"><div class="ttname"><a href="structz_1_1util_1_1nonNumber.html#a566049b128ec12687753f4bf8d170661">z::util::nonNumber::what</a></div><div class="ttdeci">const char * what() const</div><div class="ttdoc">Exception description.</div><div class="ttdef"><b>Definition:</b> genericExceptions.hpp:13</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structz_1_1util_1_1nonnumeric.html">    8</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structz_1_1util_1_1nonnumeric.html">nonnumeric</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structz_1_1util_1_1nonnumeric.html#ae2b252280aa0780cf10a2f0e75d643fe">   12</a></span>&#160;    <a class="code" href="structz_1_1util_1_1nonnumeric.html#ae2b252280aa0780cf10a2f0e75d643fe">nonnumeric</a>() : std::runtime_error(<span class="stringliteral">&quot;Attempted numeric operation on non-number&quot;</span>) {}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;} <span class="comment">// namespace util</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="ttc" id="astructz_1_1util_1_1nonnumeric_html"><div class="ttname"><a href="structz_1_1util_1_1nonnumeric.html">z::util::nonnumeric</a></div><div class="ttdoc">Exception thrown when attempting a numeric operation on a non-number.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:8</div></div>
+<div class="ttc" id="astructz_1_1util_1_1nonnumeric_html_ae2b252280aa0780cf10a2f0e75d643fe"><div class="ttname"><a href="structz_1_1util_1_1nonnumeric.html#ae2b252280aa0780cf10a2f0e75d643fe">z::util::nonnumeric::nonnumeric</a></div><div class="ttdeci">nonnumeric()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b1ea3149c562e0da55f16dba37143c92.html">z</a></li><li class="navelem"><a class="el" href="dir_50239ea5284c80da8a9f30041dc8e403.html">util</a></li><li class="navelem"><b>genericExceptions.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_b1ea3149c562e0da55f16dba37143c92.html">z</a></li><li class="navelem"><a class="el" href="dir_50239ea5284c80da8a9f30041dc8e403.html">util</a></li><li class="navelem"><b>exceptions.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

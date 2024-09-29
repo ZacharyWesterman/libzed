@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.8</span>
+   &#160;<span id="projectnumber">1.7.9</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('dictionary_8cpp-example.html',''); ini
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot; Loaded &quot;</span> &lt;&lt; dict.<a name="a2"></a><a class="code" href="classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2">length</a>() &lt;&lt; <span class="stringliteral">&quot; words.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Filtering out words that begin with A... &quot;</span> &lt;&lt; std::flush;</div>
-<div class="line">    dict = dict.<a name="a3"></a>filter([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> <a name="a4"></a><a class="code" href="namespacez_1_1core.html#aa41fa6943e9dafd3326fe786ad9e0faf">z::core::toLower</a>(item[0]) != <span class="charliteral">&#39;a&#39;</span>; });</div>
+<div class="line">    dict = dict.<a name="a3"></a><a class="code" href="classz_1_1util_1_1dictionary.html#a7f727dad2d7d610969796d0ebe85cce5">filter</a>([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> <a name="a4"></a><a class="code" href="namespacez_1_1core.html#aa41fa6943e9dafd3326fe786ad9e0faf">z::core::toLower</a>(item[0]) != <span class="charliteral">&#39;a&#39;</span>; });</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;we now only have &quot;</span> &lt;&lt; dict.<a class="code" href="classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2">length</a>() &lt;&lt; <span class="stringliteral">&quot; words.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; argc; i++) {</div>
@@ -124,8 +124,9 @@ $(document).ready(function(){initNavTree('dictionary_8cpp-example.html',''); ini
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_a614ba0dff2431f71493d3d720c7d3ad2"><div class="ttname"><a href="classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2">z::core::array::length</a></div><div class="ttdeci">int length() const noexcept override</div><div class="ttdoc">Get the length of the array.</div><div class="ttdef"><b>Definition:</b> array.hpp:920</div></div>
-<div class="ttc" id="aclassz_1_1util_1_1dictionary_html"><div class="ttname"><a href="classz_1_1util_1_1dictionary.html">z::util::dictionary</a></div><div class="ttdoc">A class for performing searches on a dictionary of words.</div><div class="ttdef"><b>Definition:</b> dictionary.hpp:65</div></div>
+<div class="ttc" id="aclassz_1_1util_1_1dictionary_html"><div class="ttname"><a href="classz_1_1util_1_1dictionary.html">z::util::dictionary</a></div><div class="ttdoc">A class for performing searches on a dictionary of words.</div><div class="ttdef"><b>Definition:</b> dictionary.hpp:17</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1dictionary_html_a4c970dcbb9203f28a046d1d126752774"><div class="ttname"><a href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">z::util::dictionary::isWord</a></div><div class="ttdeci">bool isWord(const zstring &amp;word) const noexcept</div><div class="ttdoc">Check if the given string is a valid word in the dictionary (case is ignored).</div></div>
+<div class="ttc" id="aclassz_1_1util_1_1dictionary_html_a7f727dad2d7d610969796d0ebe85cce5"><div class="ttname"><a href="classz_1_1util_1_1dictionary.html#a7f727dad2d7d610969796d0ebe85cce5">z::util::dictionary::filter</a></div><div class="ttdeci">dictionary filter(std::function&lt; bool(const zstring &amp;)&gt; lambda) const</div><div class="ttdoc">Filters the dictionary based on a predicate and returns a new dictionary containing the words that sa...</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1dictionary_html_adacd7a1c5b922677f17c51ac8497e129"><div class="ttname"><a href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">z::util::dictionary::read</a></div><div class="ttdeci">int read(std::istream &amp;stream, const core::timeout &amp;time=-1, bool assumePresorted=false) noexcept</div><div class="ttdoc">Read this dictionary's word list as text from a stream.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_aa41fa6943e9dafd3326fe786ad9e0faf"><div class="ttname"><a href="namespacez_1_1core.html#aa41fa6943e9dafd3326fe786ad9e0faf">z::core::toLower</a></div><div class="ttdeci">uint32_t toLower(uint32_t ch, bool alternate=false) noexcept</div><div class="ttdoc">Convert the given character to lowercase.</div></div>
 </div><!-- fragment --> </div><!-- contents -->

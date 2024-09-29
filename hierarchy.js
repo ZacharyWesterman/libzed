@@ -4,9 +4,6 @@ var hierarchy =
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
-    [ "std::exception", null, [
-      [ "z::util::nonNumber", "structz_1_1util_1_1nonNumber.html", null ]
-    ] ],
     [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::core::indexable< T >", "classz_1_1core_1_1indexable.html", [
@@ -43,7 +40,8 @@ var hierarchy =
     [ "z::core::types::no", "classz_1_1core_1_1types_1_1no.html", null ],
     [ "std::runtime_error", null, [
       [ "z::file::unreadable", "classz_1_1file_1_1unreadable.html", null ],
-      [ "z::file::unwritable", "classz_1_1file_1_1unwritable.html", null ]
+      [ "z::file::unwritable", "classz_1_1file_1_1unwritable.html", null ],
+      [ "z::util::nonnumeric", "structz_1_1util_1_1nonnumeric.html", null ]
     ] ],
     [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],
