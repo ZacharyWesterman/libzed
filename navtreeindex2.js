@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"loadLib_8cpp-example.html":[4,6],
+"makeDir_8hpp_source.html":[3,0,0,1,13],
+"math_8hpp.html":[3,0,0,9],
 "math_8hpp_source.html":[3,0,0,9],
 "matrix_8cpp-example.html":[4,7],
 "matrix_8hpp_source.html":[3,0,0,2,6],
@@ -134,8 +137,5 @@ var NAVTREEINDEX2 =
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[1,0,1,0,1,0,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[1,0,1,0,1,0,2],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,20,0,2],
-"zstr_8hpp_source.html":[3,0,0,0,20],
-"":[1,0,1],
-"":[1,0,1,0,0],
-"":[1,0,1,0,1]
+"zstr_8hpp_source.html":[3,0,0,0,20]
 };
