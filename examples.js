@@ -9,6 +9,7 @@ var examples =
     [ "loadLib.cpp", "loadLib_8cpp-example.html", null ],
     [ "matrix.cpp", "matrix_8cpp-example.html", null ],
     [ "numberwang.cpp", "numberwang_8cpp-example.html", null ],
+    [ "range.cpp", "range_8cpp-example.html", null ],
     [ "regexConsole.cpp", "regexConsole_8cpp-example.html", null ],
     [ "rot13.cpp", "rot13_8cpp-example.html", null ]
 ];

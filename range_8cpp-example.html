@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: cpu.cpp</title>
+<title>libzed: range.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('cpu_8cpp-example.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('range_8cpp-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,25 +95,46 @@ $(document).ready(function(){initNavTree('cpu_8cpp-example.html',''); initResiza
 
 <div class="header">
   <div class="headertitle">
-<div class="title">cpu.cpp</div>  </div>
+<div class="title">range.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;z/system/cpuid.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="comment">// This is an example of using the z::core::range() generator to generate a list of numbers.</span></div>
+<div class="line"><span class="comment">// Ranges are a memory-efficient way of creating and looping over a large range.</span></div>
+<div class="line"><span class="comment">// z::core::range(begin = 0, end, step = 1)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using</span> <a name="a0"></a><a class="code" href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">z::core::join</a>;</div>
+<div class="line"><span class="keyword">using</span> <a name="a1"></a><a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">z::core::range</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1system_1_1cpuid.html">z::system::cpuid</a> hardware;</div>
+<div class="line">    <span class="comment">// You can iterate over ranges just like arrays.</span></div>
+<div class="line">    <span class="stringliteral">&quot;short range:&quot;</span>_zs.writeln(std::cout);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(6)) {</div>
+<div class="line">        (<span class="stringliteral">&quot;&gt;&quot;</span>_zs + i).writeln(std::cout);</div>
+<div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    (<span class="stringliteral">&quot;CPU vendor:    &quot;</span>_zs + hardware.<a name="a1"></a><a class="code" href="classz_1_1system_1_1cpuid.html#a5b533cd500d6dd184ee2e3bd2d317202">vendor</a>()).writeln(std::cout);</div>
-<div class="line">    (<span class="stringliteral">&quot;Thread count:  &quot;</span>_zs + hardware.<a name="a2"></a><a class="code" href="classz_1_1system_1_1cpuid.html#ab2f2152a83304b71920693990b1445d3">cpus</a>()).writeln(std::cout);</div>
-<div class="line">    (<span class="stringliteral">&quot;Logical cores: &quot;</span>_zs + hardware.<a name="a3"></a><a class="code" href="classz_1_1system_1_1cpuid.html#ac2424cdee386ee4cfa967787e7fdd050">cores</a>()).writeln(std::cout);</div>
+<div class="line">    <span class="comment">// To convert to an array, use the collect() method.</span></div>
+<div class="line">    <span class="keyword">auto</span> list = <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(15, 100, 5).collect();</div>
+<div class="line">    (<span class="stringliteral">&quot;\narray: &quot;</span>_zs + <a class="code" href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">join</a>(list, <span class="charliteral">&#39;,&#39;</span>)).writeln(std::cout);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Unlike arrays, you can create VERY long ranges with no memory impact.</span></div>
+<div class="line">    <span class="comment">// An array of 1 trillion elements would take a long time to allocate, but the range is instant.</span></div>
+<div class="line">    <span class="stringliteral">&quot;\nlong range:&quot;</span>_zs.writeln(std::cout);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(1&#39;000&#39;000&#39;000&#39;000)) {</div>
+<div class="line">        (<span class="stringliteral">&quot;&gt;&quot;</span>_zs + i).writeln(std::cout);</div>
+<div class="line">        <span class="keywordflow">if</span> (i &gt; 3) {</div>
+<div class="line">            <span class="stringliteral">&quot;Exiting early!&quot;</span>_zs.writeln(std::cout);</div>
+<div class="line">            <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1system_1_1cpuid_html"><div class="ttname"><a href="classz_1_1system_1_1cpuid.html">z::system::cpuid</a></div><div class="ttdoc">A class for easily getting CPU info.</div><div class="ttdef"><b>Definition:</b> cpuid.hpp:10</div></div>
-<div class="ttc" id="aclassz_1_1system_1_1cpuid_html_a5b533cd500d6dd184ee2e3bd2d317202"><div class="ttname"><a href="classz_1_1system_1_1cpuid.html#a5b533cd500d6dd184ee2e3bd2d317202">z::system::cpuid::vendor</a></div><div class="ttdeci">const core::string&lt; ascii &gt; &amp; vendor() noexcept</div><div class="ttdoc">Get the CPU vendor.</div></div>
-<div class="ttc" id="aclassz_1_1system_1_1cpuid_html_ab2f2152a83304b71920693990b1445d3"><div class="ttname"><a href="classz_1_1system_1_1cpuid.html#ab2f2152a83304b71920693990b1445d3">z::system::cpuid::cpus</a></div><div class="ttdeci">int cpus() noexcept</div><div class="ttdoc">Get the number of CPUs.</div></div>
-<div class="ttc" id="aclassz_1_1system_1_1cpuid_html_ac2424cdee386ee4cfa967787e7fdd050"><div class="ttname"><a href="classz_1_1system_1_1cpuid.html#ac2424cdee386ee4cfa967787e7fdd050">z::system::cpuid::cores</a></div><div class="ttdeci">int cores() noexcept</div><div class="ttdoc">Get the number of cores.</div></div>
+<div class="ttc" id="acore_8hpp_html"><div class="ttname"><a href="core_8hpp.html">core.hpp</a></div></div>
+<div class="ttc" id="anamespacez_1_1core_html_ade04fd5e6fc4a7dbfdcadf0ff1126b4f"><div class="ttname"><a href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">z::core::join</a></div><div class="ttdeci">string&lt; E &gt; join(const iterable&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim) noexcept</div><div class="ttdoc">Concatenate elements in an array into a string, separated by a delimiter.</div><div class="ttdef"><b>Definition:</b> join.hpp:19</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_aeefc6e7b0c3f4c6b6c76f916b1672169"><div class="ttname"><a href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

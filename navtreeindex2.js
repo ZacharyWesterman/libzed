@@ -1,8 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"loadLib_8cpp-example.html":[4,6],
-"makeDir_8hpp_source.html":[3,0,0,1,13],
-"math_8hpp.html":[3,0,0,9],
 "math_8hpp_source.html":[3,0,0,9],
 "matrix_8cpp-example.html":[4,7],
 "matrix_8hpp_source.html":[3,0,0,2,6],
@@ -75,12 +72,13 @@ var NAVTREEINDEX2 =
 "pages.html":[],
 "path_8hpp_source.html":[3,0,0,1,14],
 "pause_8hpp_source.html":[3,0,0,3,1],
+"range_8cpp-example.html":[4,9],
 "range_8hpp_source.html":[3,0,0,0,9],
 "read_8hpp_source.html":[3,0,0,1,15],
 "refArray_8hpp_source.html":[3,0,0,0,10],
-"regexConsole_8cpp-example.html":[4,9],
+"regexConsole_8cpp-example.html":[4,10],
 "remainder_8hpp_source.html":[3,0,0,2,7],
-"rot13_8cpp-example.html":[4,10],
+"rot13_8cpp-example.html":[4,11],
 "shorten_8hpp_source.html":[3,0,0,1,16],
 "sizable_8hpp_source.html":[3,0,0,0,11],
 "size_8hpp_source.html":[3,0,0,1,17],
@@ -131,11 +129,14 @@ var NAVTREEINDEX2 =
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[3,0,0,0,20,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[1,0,1,0,1,0,1],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[3,0,0,0,20,0,1],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[1,0,1,0,1,0,3],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[3,0,0,0,20,0,3],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[3,0,0,0,20,0,0],
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[1,0,1,0,1,0,3],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[1,0,1,0,1,0,0],
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[3,0,0,0,20,0,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[1,0,1,0,1,0,2],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,20,0,2],
-"zstr_8hpp_source.html":[3,0,0,0,20]
+"zstr_8hpp_source.html":[3,0,0,0,20],
+"":[1,0,1,0,0],
+"":[1,0,1,0,1],
+"":[1,0,1]
 };
