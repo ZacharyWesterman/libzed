@@ -8,11 +8,11 @@ zpath basename(const zpath &path) noexcept {
 	dir.replace("\\", "/").trimRightIn("/");
 
 	int slash = dir.findLast("/");
-	if (slash > -1 && dir.length() > 1) {
+	if (slash > -1) {
 		return dir.substr(slash + 1, dir.length());
 	}
 
-	return dir;
+	return dir.length() ? dir : "/";
 }
 } // namespace file
 } // namespace z
