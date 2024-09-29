@@ -1054,17 +1054,9 @@ bool string<utf32>::foundAt(const string<utf32> &other, int index) const noexcep
 
 	const int charSz = this->charSize();
 
-	int i = 0;
-	int idx = index * charSz;
 	int end = (other.character_ct * charSz) >> 2;
-	for (i = 0; i < end; i++) {
+	for (int i = 0; i < end; i++) {
 		if (data32[i + index] != other32[i]) {
-			return false;
-		}
-	}
-
-	for (i = (end << 2); i < (other.character_ct * charSz); i++) {
-		if (data[i + idx] != other[i]) {
 			return false;
 		}
 	}
@@ -1074,40 +1066,7 @@ bool string<utf32>::foundAt(const string<utf32> &other, int index) const noexcep
 
 template <>
 bool string<utf32>::foundEndAt(const string<utf32> &other, int index) const noexcept {
-	if (index < 0) {
-		index += character_ct;
-	}
-	if (index < other.character_ct) {
-		return false;
-	}
-	if (index >= character_ct) {
-		return false;
-	}
-
-	const int charSz = this->charSize();
-	const int idx = (index - other.character_ct + 1) * charSz;
-	const int last = other.character_ct * charSz;
-
-	uint32_t *data32 = (uint32_t *)&data[idx];
-	uint32_t *other32 = (uint32_t *)other.data;
-
-	int i = 0;
-	int end = last >> 2;
-	while (i < end) {
-		if (data32[i] != other32[i]) {
-			return false;
-		}
-
-		i++;
-	}
-
-	for (i = (end << 2); i < last; i++) {
-		if (data[i + idx] != other[i]) {
-			return false;
-		}
-	}
-
-	return true;
+	return foundAt(other, index - other.character_ct + 1);
 }
 
 /// mutators
