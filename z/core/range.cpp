@@ -9,7 +9,7 @@ generator<long, long> range(long begin, long end, long step) noexcept {
 		state += step;
 
 		return yield<long>{
-			state > end,
+			(step >= 0) ? state > end : state < end,
 			index,
 		};
 	});
