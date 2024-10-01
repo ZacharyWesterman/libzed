@@ -54,6 +54,7 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 	fractional -= (double)(long)fractional;
 
 	if (fractional || precision) {
+		bool nonZero = false;
 		int length = 0;
 		double mult = base;
 		int i = 0;
@@ -66,8 +67,12 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			fractional -= (double)(long)fractional;
 
 			buf[i] = chr;
-
 			i++;
+
+			if (chr != '0') {
+				nonZero = true;
+			}
+
 			if (chr != '0' || (precision && force)) {
 				length = i;
 			}
@@ -80,7 +85,7 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			*overflow = true;
 		}
 
-		return length;
+		return length - (nonZero && force);
 	} else {
 		return 0;
 	}

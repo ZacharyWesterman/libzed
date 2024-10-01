@@ -41,6 +41,8 @@ TEST_CASE("Constructing strings from various constants", "[z::core::string]") {
 		REQUIRE(string == "1e8");
 		string = z::core::string<enc>::precision(10, 5);
 		REQUIRE(string == "10.00000");
+		string = z::core::string<enc>::precision(10.3, 2);
+		REQUIRE(string == "10.30");
 	);
 
 	SECTION("ASCII") {
