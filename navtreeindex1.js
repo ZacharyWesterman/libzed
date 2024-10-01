@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#aeae8fdb335a58f12e3c5583fbcb053c9":[2,0,0,0,13,75],
+"classz_1_1core_1_1string.html#aec7ee171c8c23c2de9b8e691c557b9da":[2,0,0,0,13,29],
+"classz_1_1core_1_1string.html#aee9e76587629cc1cc42435c1646ef424":[2,0,0,0,13,6],
 "classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8":[2,0,0,0,13,50],
 "classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09":[2,0,0,0,13,107],
 "classz_1_1core_1_1string.html#af9fad872ff436d306447bdb8fbda5650":[2,0,0,0,13,33],
@@ -155,10 +158,10 @@ var NAVTREEINDEX1 =
 "dirname_8hpp_source.html":[3,0,0,1,4],
 "dynamicLib_8cpp-example.html":[4,3],
 "encoding_8hpp.html":[3,0,0,7],
-"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[1,0,1,6],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[3,0,0,7,0],
-"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b":[1,0,1,6,0],
+"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[1,0,1,6],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b":[3,0,0,7,0,0],
+"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b":[1,0,1,6,0],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a665ffa67aa2d03eb2d06f4bc67b4d407":[3,0,0,7,0,2],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a665ffa67aa2d03eb2d06f4bc67b4d407":[1,0,1,6,2],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a99654d1a9c4f36c89708898a496db529":[3,0,0,7,0,1],
@@ -230,8 +233,8 @@ var NAVTREEINDEX1 =
 "generic_8hpp.html#a7f3d9d080d7bb264e2aab2988f46bf57":[1,0,1,5],
 "generic_8hpp_source.html":[3,0,0,4,3],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md0":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md2":[0,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "levenschtein_8hpp_source.html":[3,0,0,2,5],
 "library_8hpp_source.html":[3,0,0,1,10],
 "lines_8hpp_source.html":[3,0,0,1,11],
-"list_8hpp_source.html":[3,0,0,1,12],
-"loadLib_8cpp-example.html":[4,6],
-"makeDir_8hpp_source.html":[3,0,0,1,13],
-"math_8hpp.html":[3,0,0,9]
+"list_8hpp_source.html":[3,0,0,1,12]
 };
