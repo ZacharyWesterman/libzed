@@ -118,6 +118,89 @@ public:
 		}
 		return result;
 	}
+
+	/**
+	 * @brief Applies a transformation function to each item that comes out of the generator.
+	 *
+	 * This function wraps the existing generator in another generator, effectively transforming
+	 * each item on-the-fly as it's generated.
+	 *
+	 * @tparam U The type of items that this new generator yields.
+	 * @param mapLambda A function that takes a constant reference to an element of type `T` and returns an element of type `U`.
+	 * @return A new generator that yields the transformed elements.
+	 */
+	template <typename U>
+	generator<U, S> map(std::function<U(const T &)> mapLambda) {
+		auto lambda = this->lambda;
+
+		return generator<U, S>(state, [lambda, mapLambda](S &state) {
+			auto item = lambda(state);
+			if (item.done) {
+				return yield<U>{true};
+			} else {
+				return yield<U>{false, mapLambda(item.value)};
+			}
+		});
+	}
+
+	/**
+	 * @brief Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.
+	 *
+	 * This function wraps the existing generator in another generator, and as each item is generated,
+	 * applies the given lambda function as a predicate, and only yields items that satisfy the predicate.
+	 *
+	 * @param filterLambda A function that takes a constant reference to an item of type `T` and returns a boolean indicating whether
+	 * the item should be yielded.
+	 * @return A new generator that yields only items that satisfy the predicate.
+	 */
+	generator filter(std::function<T(const T &)> filterLambda) {
+		auto lambda = this->lambda;
+
+		return generator(state, [lambda, filterLambda](S &state) {
+			auto val = lambda(state);
+			while (!val.done) {
+				if (filterLambda(val.value)) {
+					return val;
+				}
+				val = lambda(state);
+			}
+
+			return val;
+		});
+	}
+
+	/**
+	 * @brief Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.
+	 *
+	 * This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value.
+	 * If the generator doesn yield anything, the provided default value is returned.
+	 *
+	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect()and then
+	 * reduce() on the resulting array, as an intermediate array does not need to be constructed.
+	 *
+	 * @param defaultValue The value to return if the array is empty.
+	 * @param reduceLambda A function that takes two elements of type `T` and returns their combined result of type `T`.
+	 * @return The result of the reduction operation.
+	 */
+	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> reduceLambda) {
+		auto result = lambda(state);
+
+		if (result.done) {
+			return defaultValue;
+		}
+
+		auto value = result.value;
+
+		while (true) {
+			result = lambda(state);
+			if (result.done) {
+				break;
+			}
+			value = reduceLambda(value, result.value);
+		}
+
+		return value;
+	}
 };
 
 } // namespace core
