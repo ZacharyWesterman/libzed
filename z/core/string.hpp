@@ -1313,6 +1313,17 @@ public:
 	static string ordinal(long long value) noexcept;
 
 	/**
+	 * @brief Create a string from a number with a fixed number of decimal places.
+	 *
+	 * @param value The value to convert to a string.
+	 * @param precision The number of digits after the decimal point.
+	 * @return A string representation of the number with the specified fractional digits.
+	 */
+	static inline string precision(double value, int precision) noexcept {
+		return string(value, 10, precision);
+	}
+
+	/**
 	 * @brief Concatenate two strings.
 	 *
 	 * @param other The string to append.

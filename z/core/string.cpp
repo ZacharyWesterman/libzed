@@ -51,8 +51,9 @@ int integralBuf(unsigned long integral, int base, uint8_t *buf) noexcept {
 }
 
 int fractionalBuf(double fractional, int base, int precision, bool force, uint8_t *buf, bool *overflow) noexcept {
-	if (fractional) {
-		fractional -= (double)(long)fractional;
+	fractional -= (double)(long)fractional;
+
+	if (fractional || precision) {
 		// return 0;
 		int length = 0;
 		double mult = base;
@@ -68,7 +69,7 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			buf[i] = chr;
 
 			i++;
-			if (chr != '0') {
+			if (chr != '0' || (precision && force)) {
 				length = i;
 			}
 			if (!fractional && !force) {
