@@ -87,6 +87,7 @@ public:
 		 * @return \b false if the generator is finished, \b true otherwise.
 		 */
 		bool operator!=(const iterator &other) const {
+			(void)other;
 			return !current_yield.done;
 		}
 	};
