@@ -54,13 +54,12 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 	fractional -= (double)(long)fractional;
 
 	if (fractional || precision) {
-		// return 0;
 		int length = 0;
 		double mult = base;
 		int i = 0;
 
 		bool cont = true;
-		while ((i < precision) && cont) {
+		while ((i <= precision) && cont) {
 			fractional *= mult;
 
 			uint8_t chr = z::core::numeral((int)fractional);

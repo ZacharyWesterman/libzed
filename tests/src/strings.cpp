@@ -26,14 +26,21 @@
 TEST_CASE("Constructing strings from various constants", "[z::core::string]") {
 	STRTEST(
 		string = L"Test value";
-		REQUIRE(string == "Test value"); string = 12345;
-		REQUIRE(string == "12345"); string = -123.45;
-		REQUIRE(string == "-123.45"); string = std::complex<double>(10, 2.5);
-		REQUIRE(string == "10+2.5i"); string = L'A';
-		REQUIRE(string == 'A'); string = z::core::string<enc>(255, 16, 4);
+		REQUIRE(string == "Test value");
+		string = 12345;
+		REQUIRE(string == "12345");
+		string = -123.45;
+		REQUIRE(string == "-123.45");
+		string = std::complex<double>(10, 2.5);
+		REQUIRE(string == "10+2.5i");
+		string = L'A';
+		REQUIRE(string == 'A');
+		string = z::core::string<enc>(255, 16, 4);
 		REQUIRE(string == "00FF");
-		string = z::core::string<enc>(100000000.0, 10, 6);
+		string = z::core::string<enc>(100000000.0);
 		REQUIRE(string == "1e8");
+		string = z::core::string<enc>::precision(10, 5);
+		REQUIRE(string == "10.00000");
 	);
 
 	SECTION("ASCII") {
@@ -56,7 +63,8 @@ TEST_CASE("Converting strings to various numeric types", "[z::core::string]") {
 		REQUIRE(string.type() == z::core::zstr::floating);
 		string = "-5+2i";
 		REQUIRE(string.complex() == std::complex<double>(-5, 2));
-		REQUIRE(string.type() == z::core::zstr::complex); string = "0.005e3-2.4i";
+		REQUIRE(string.type() == z::core::zstr::complex);
+		string = "0.005e3-2.4i";
 		REQUIRE(string.complex() == std::complex<double>(5, -2.4));
 		REQUIRE(string.type() == z::core::zstr::complex);
 		string = "beans";
