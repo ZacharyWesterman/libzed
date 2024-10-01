@@ -108,6 +108,17 @@ public:
 	}
 
 	/**
+	 * @brief Get the next item from the generator.
+	 *
+	 * If there are no more items, the `.done` field of this yield object will be true.
+	 *
+	 * @return A yield object containing the next value, if any.
+	 */
+	inline yield<T> next() {
+		return lambda(state);
+	}
+
+	/**
 	 * @brief Concatenate all generator elements into an array.
 	 * @return An array containing all elements from the generator.
 	 */

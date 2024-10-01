@@ -1,15 +1,12 @@
-#include <fstream>
 #include <iostream>
 #include <z/util/dictionary.hpp>
 
 int main(int argc, char **argv) {
-	z::util::dictionary dict;
-	std::ifstream file("/usr/share/dict/words");
-
 	std::cout << "Loading..." << std::flush;
 
 	// Load the dictionary, pausing every 1 second to do other processes
-	while (!dict.read(file, 10000, false)) {
+	z::util::dictionary dict;
+	while (dict.read("/usr/share/dict/words", 1'000'000)) {
 		std::cout << '.' << std::flush;
 	}
 
