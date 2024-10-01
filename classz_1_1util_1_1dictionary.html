@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.22</span>
+   &#160;<span id="projectnumber">1.7.23</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -138,9 +138,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a54f763909cb5492132cff2c3532f1740">clear</a> () noexcept</td></tr>
 <tr class="memdesc:a54f763909cb5492132cff2c3532f1740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the word list. <br /></td></tr>
 <tr class="separator:a54f763909cb5492132cff2c3532f1740"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adacd7a1c5b922677f17c51ac8497e129"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">read</a> (std::istream &amp;stream, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false) noexcept</td></tr>
-<tr class="memdesc:adacd7a1c5b922677f17c51ac8497e129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <a href="classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129">More...</a><br /></td></tr>
-<tr class="separator:adacd7a1c5b922677f17c51ac8497e129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac77268b88bb5af7198b02e1719564d4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">read</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;filename, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false)</td></tr>
+<tr class="memdesc:ac77268b88bb5af7198b02e1719564d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <a href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">More...</a><br /></td></tr>
+<tr class="separator:ac77268b88bb5af7198b02e1719564d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c970dcbb9203f28a046d1d126752774"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">isWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) const noexcept</td></tr>
 <tr class="memdesc:a4c970dcbb9203f28a046d1d126752774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a valid word in the dictionary (case is ignored).  <a href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">More...</a><br /></td></tr>
 <tr class="separator:a4c970dcbb9203f28a046d1d126752774"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -853,20 +853,17 @@ template&lt;class archive &gt; </div>
 
 </div>
 </div>
-<a id="adacd7a1c5b922677f17c51ac8497e129"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adacd7a1c5b922677f17c51ac8497e129">&#9670;&nbsp;</a></span>read()</h2>
+<a id="ac77268b88bb5af7198b02e1719564d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac77268b88bb5af7198b02e1719564d4d">&#9670;&nbsp;</a></span>read()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int z::util::dictionary::read </td>
+          <td class="memname">bool z::util::dictionary::read </td>
           <td>(</td>
-          <td class="paramtype">std::istream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -886,25 +883,26 @@ template&lt;class archive &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Read this dictionary's word list as text from a stream. </p>
 <p>Note that for long dictionaries, it may take several seconds for this operation to complete! Hence the timeout method.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stream</td><td>The stream to read from. </td></tr>
+    <tr><td class="paramname">filename</td><td>The file to read from. </td></tr>
     <tr><td class="paramname">time</td><td>Optional param to force return after time out. </td></tr>
     <tr><td class="paramname">assumePresorted</td><td>If false, the word list is sorted while it is read. If true, no sorting is done.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Operating on an un-sorted dictionary may have undefined behavior! Only set assumePresorted to true if you know for sure your data is sorted already!</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>A positive integer if finished reading successfully, 0 if not finished reading, a negative integer if read failed.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>false if finished reading successfully, true if not finished reading, </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classz_1_1file_1_1unreadable.html" title="Exception thrown when a file cannot be opened for reading.">z::file::unreadable</a></td><td>if reading failed.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Re-Entry: Simultaneous calls to this member function on the same object can cause data races.</dt><dd></dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a1">dictionary.cpp</a>.</dd>
 </dl>

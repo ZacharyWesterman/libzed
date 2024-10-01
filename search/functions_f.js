@@ -1,7 +1,7 @@
 var searchData=
 [
   ['range_493',['range',['../classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309',1,'z::util::dictionary::range()'],['../namespacez_1_1core.html#a604a5cd78f79c3088c622df2bae7f882',1,'z::core::range(long end) noexcept'],['../namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169',1,'z::core::range(long begin, long end, long step=1) noexcept']]],
-  ['read_494',['read',['../classz_1_1core_1_1string.html#afab255af3f3e6ddad779dbc37ea71c4f',1,'z::core::string::read()'],['../namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b',1,'z::file::read()'],['../classz_1_1util_1_1dictionary.html#adacd7a1c5b922677f17c51ac8497e129',1,'z::util::dictionary::read()']]],
+  ['read_494',['read',['../classz_1_1core_1_1string.html#afab255af3f3e6ddad779dbc37ea71c4f',1,'z::core::string::read()'],['../namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b',1,'z::file::read()'],['../classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d',1,'z::util::dictionary::read()']]],
   ['readall_495',['readall',['../classz_1_1core_1_1string.html#aaa23875bee3fe62a2b097f7ac0e5cafc',1,'z::core::string']]],
   ['readln_496',['readln',['../classz_1_1core_1_1string.html#add83555e69ff34808f7f78c35ad8590d',1,'z::core::string']]],
   ['reduce_497',['reduce',['../classz_1_1util_1_1generic.html#a2c0af779f718bcf353ac015f92753271',1,'z::util::generic::reduce()'],['../classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518',1,'z::core::array::reduce()']]],
