@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#ae874c9d0a4107c1891b91218068266cd":[2,0,0,0,13,17],
 "classz_1_1core_1_1string.html#ae8a9196e39c9db62eace90b131fb4672":[2,0,0,0,13,79],
 "classz_1_1core_1_1string.html#aeae8fdb335a58f12e3c5583fbcb053c9":[2,0,0,0,13,75],
 "classz_1_1core_1_1string.html#aec7ee171c8c23c2de9b8e691c557b9da":[2,0,0,0,13,29],
@@ -181,15 +182,15 @@ var NAVTREEINDEX1 =
 "file_8hpp.html":[3,0,0,8],
 "file_8hpp_source.html":[3,0,0,8],
 "files.html":[3,0],
-"functions.html":[2,3,0],
 "functions.html":[2,3,0,0],
+"functions.html":[2,3,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "iterable_8hpp_source.html":[3,0,0,0,7],
 "join_8hpp_source.html":[3,0,0,0,8],
 "levenschtein_8hpp_source.html":[3,0,0,2,5],
-"library_8hpp_source.html":[3,0,0,1,10],
-"lines_8hpp_source.html":[3,0,0,1,11]
+"library_8hpp_source.html":[3,0,0,1,10]
 };

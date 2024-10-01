@@ -16,7 +16,7 @@ var searchData=
   ['copy_28',['copy',['../namespacez_1_1file.html#a2fb605ae85a47cc8e0e09c5545828209',1,'z::file']]],
   ['core_2ehpp_29',['core.hpp',['../core_8hpp.html',1,'']]],
   ['cores_30',['cores',['../classz_1_1system_1_1cpuid.html#ac2424cdee386ee4cfa967787e7fdd050',1,'z::system::cpuid']]],
-  ['count_31',['count',['../classz_1_1core_1_1circularBuffer.html#a4f04b3515846ba90368caa471fd523d7',1,'z::core::circularBuffer::count()'],['../classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06',1,'z::core::string::count()']]],
+  ['count_31',['count',['../classz_1_1core_1_1circularBuffer.html#a4f04b3515846ba90368caa471fd523d7',1,'z::core::circularBuffer::count()'],['../classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257',1,'z::core::generator::count()'],['../classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06',1,'z::core::string::count()']]],
   ['cpuid_32',['cpuid',['../classz_1_1system_1_1cpuid.html#a929571c48c601438cc359b1f0d74c4c6',1,'z::system::cpuid::cpuid()'],['../classz_1_1system_1_1cpuid.html',1,'z::system::cpuid']]],
   ['cpus_33',['cpus',['../classz_1_1system_1_1cpuid.html#ab2f2152a83304b71920693990b1445d3',1,'z::system::cpuid']]],
   ['cstring_34',['cstring',['../classz_1_1core_1_1string.html#ac5954e333c390718fe085e930bbf7317',1,'z::core::string']]],
