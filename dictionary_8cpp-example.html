@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.27</span>
+   &#160;<span id="projectnumber">1.7.28</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -98,18 +98,15 @@ $(document).ready(function(){initNavTree('dictionary_8cpp-example.html',''); ini
 <div class="title">dictionary.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/util/dictionary.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1util_1_1dictionary.html">z::util::dictionary</a> dict;</div>
-<div class="line">    std::ifstream file(<span class="stringliteral">&quot;/usr/share/dict/words&quot;</span>);</div>
-<div class="line"> </div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Loading...&quot;</span> &lt;&lt; std::flush;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Load the dictionary, pausing every 1 second to do other processes</span></div>
-<div class="line">    <span class="keywordflow">while</span> (!dict.<a name="a1"></a><a class="code" href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">read</a>(file, 10000, <span class="keyword">false</span>)) {</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1util_1_1dictionary.html">z::util::dictionary</a> dict;</div>
+<div class="line">    <span class="keywordflow">while</span> (dict.<a name="a1"></a><a class="code" href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">read</a>(<span class="stringliteral">&quot;/usr/share/dict/words&quot;</span>, 1&#39;000&#39;000)) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; std::flush;</div>
 <div class="line">    }</div>
 <div class="line"> </div>

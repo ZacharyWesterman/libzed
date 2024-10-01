@@ -1,7 +1,7 @@
 var searchData=
 [
   ['narrow_144',['narrow',['../classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27',1,'z::util::dictionary']]],
-  ['next_145',['next',['../classz_1_1core_1_1circularBuffer.html#a6e3b0f3012be36958481280c8238f895',1,'z::core::circularBuffer']]],
+  ['next_145',['next',['../classz_1_1core_1_1circularBuffer.html#a6e3b0f3012be36958481280c8238f895',1,'z::core::circularBuffer::next()'],['../classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e',1,'z::core::generator::next()']]],
   ['no_146',['no',['../classz_1_1core_1_1types_1_1no.html',1,'z::core::types']]],
   ['nonnumeric_147',['nonnumeric',['../structz_1_1util_1_1nonnumeric.html#ae2b252280aa0780cf10a2f0e75d643fe',1,'z::util::nonnumeric::nonnumeric()'],['../structz_1_1util_1_1nonnumeric.html',1,'z::util::nonnumeric']]],
   ['nstring_148',['nstring',['../classz_1_1core_1_1string.html#ac99b04cc2a3751516f49cb654d213356',1,'z::core::string']]],

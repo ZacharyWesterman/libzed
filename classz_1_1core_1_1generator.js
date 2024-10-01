@@ -7,5 +7,6 @@ var classz_1_1core_1_1generator =
     [ "end", "classz_1_1core_1_1generator.html#adbc6df614071beb3d23c06fe403c3769", null ],
     [ "filter", "classz_1_1core_1_1generator.html#a66d168343d4cbc5c91416fef3d13e565", null ],
     [ "map", "classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e", null ],
+    [ "next", "classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e", null ],
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ]
 ];
