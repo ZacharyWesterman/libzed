@@ -1,7 +1,7 @@
 var searchData=
 [
   ['makedir_439',['makeDir',['../namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470',1,'z::file']]],
-  ['map_440',['map',['../classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2',1,'z::core::array']]],
+  ['map_440',['map',['../classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2',1,'z::core::array::map()'],['../classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e',1,'z::core::generator::map()']]],
   ['maximum_441',['maximum',['../classz_1_1core_1_1circularBuffer.html#a61ffe8804b5467584f8710e04197f797',1,'z::core::circularBuffer']]],
   ['maxwordlength_442',['maxWordLength',['../classz_1_1util_1_1dictionary.html#a1d67c78ab491ecc3d6155d9c277f49a9',1,'z::util::dictionary']]],
   ['micros_443',['micros',['../classz_1_1core_1_1timer.html#a84347725b9618f43a09fde67fe5b0394',1,'z::core::timer']]],

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['makedir_132',['makeDir',['../namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470',1,'z::file']]],
-  ['map_133',['map',['../classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2',1,'z::core::array']]],
+  ['map_133',['map',['../classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2',1,'z::core::array::map()'],['../classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e',1,'z::core::generator::map()']]],
   ['math_2ehpp_134',['math.hpp',['../math_8hpp.html',1,'']]],
   ['matrix_135',['matrix',['../classz_1_1math_1_1matrix.html',1,'z::math']]],
   ['maximum_136',['maximum',['../classz_1_1core_1_1circularBuffer.html#a61ffe8804b5467584f8710e04197f797',1,'z::core::circularBuffer']]],
