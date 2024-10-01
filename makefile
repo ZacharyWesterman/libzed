@@ -178,14 +178,18 @@ cleandox:
 
 rebuild: clean default
 
-lint:
+lint: lint.log
+	@cat $^
+
+lint.log: $(HEADERS) $(wildcard examples/src/*.cpp)
 	find z/ -type f -name '*.cpp' -not -name 'catch.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- $(CCFLAGS) -Wno-unused-private-field > lint.log
 
 format:
 	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
 
-dox: html
+dox: docs
 docs: html
+	@cat doxygen.log
 
 html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) $(wildcard examples/src/*.cpp)
 	$(RMDIR) html
