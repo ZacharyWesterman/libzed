@@ -119,6 +119,19 @@ public:
 	}
 
 	/**
+	 * @brief Consume all items from the generator, getting the total count.
+	 * @return The number of items that were generated.
+	 */
+	inline long count() {
+		return this
+			->map<long>([](const T &state) {
+				(void)state;
+				return 1;
+			})
+			.reduce(0, std::plus());
+	}
+
+	/**
 	 * @brief Concatenate all generator elements into an array.
 	 * @return An array containing all elements from the generator.
 	 */
