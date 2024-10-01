@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.21</span>
+   &#160;<span id="projectnumber">1.7.22</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -160,11 +160,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab8bed0f235b563c4c200bcb7a24f6374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a pointer.  <a href="classz_1_1core_1_1string.html#ab8bed0f235b563c4c200bcb7a24f6374">More...</a><br /></td></tr>
 <tr class="separator:ab8bed0f235b563c4c200bcb7a24f6374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a884576fbd00bc546b858771288041d42"><td class="memTemplParams" colspan="2">template&lt;typename FLT , typename  = typename std::enable_if&lt;std::is_floating_point&lt;FLT&gt;::value, FLT&gt;::type&gt; </td></tr>
-<tr class="memitem:a884576fbd00bc546b858771288041d42"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a884576fbd00bc546b858771288041d42">string</a> (FLT value, int base=10, int precision=0, bool scientific=true, int padSize=0) noexcept</td></tr>
+<tr class="memitem:a884576fbd00bc546b858771288041d42"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a884576fbd00bc546b858771288041d42">string</a> (FLT value, int base=10, int <a class="el" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>=0, bool scientific=true, int padSize=0) noexcept</td></tr>
 <tr class="memdesc:a884576fbd00bc546b858771288041d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from floating-point.  <a href="classz_1_1core_1_1string.html#a884576fbd00bc546b858771288041d42">More...</a><br /></td></tr>
 <tr class="separator:a884576fbd00bc546b858771288041d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0271bd586225ca6a9a0492ed66b4ae82"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = typename std::enable_if&lt;std::is_arithmetic&lt;T&gt;::value, T&gt;::type&gt; </td></tr>
-<tr class="memitem:a0271bd586225ca6a9a0492ed66b4ae82"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a0271bd586225ca6a9a0492ed66b4ae82">string</a> (const std::complex&lt; T &gt; &amp;value, int base=10, int precision=0, bool scientific=true, int padSize=0) noexcept</td></tr>
+<tr class="memitem:a0271bd586225ca6a9a0492ed66b4ae82"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a0271bd586225ca6a9a0492ed66b4ae82">string</a> (const std::complex&lt; T &gt; &amp;value, int base=10, int <a class="el" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>=0, bool scientific=true, int padSize=0) noexcept</td></tr>
 <tr class="memdesc:a0271bd586225ca6a9a0492ed66b4ae82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from complex number.  <a href="classz_1_1core_1_1string.html#a0271bd586225ca6a9a0492ed66b4ae82">More...</a><br /></td></tr>
 <tr class="separator:a0271bd586225ca6a9a0492ed66b4ae82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a1d79e87ce3f2c0a5d92a97c598216f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a2a1d79e87ce3f2c0a5d92a97c598216f">string</a> (const <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; ascii &gt; &amp;other) noexcept</td></tr>
@@ -487,6 +487,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a52a3104204697efd905a5f3e84f811a1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1">ordinal</a> (long long value) noexcept</td></tr>
 <tr class="memdesc:a52a3104204697efd905a5f3e84f811a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ordinal suffix of a given integer.  <a href="classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1">More...</a><br /></td></tr>
 <tr class="separator:a52a3104204697efd905a5f3e84f811a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286eedcb77bf09a8583440102a50269d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a> (double value, int precision) noexcept</td></tr>
+<tr class="memdesc:a286eedcb77bf09a8583440102a50269d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a string from a number with a fixed number of decimal places.  <a href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">More...</a><br /></td></tr>
+<tr class="separator:a286eedcb77bf09a8583440102a50269d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -3888,6 +3891,54 @@ template&lt;encoding E = utf8&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this string after padding.</dd></dl>
 <p>If the given string contains more than one character, then some of that string's characters may be cut off in the resultant string. If the pad size is equal or less than the current chracter count, then no padding will be added. </p>
+
+</div>
+</div>
+<a id="a286eedcb77bf09a8583440102a50269d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a286eedcb77bf09a8583440102a50269d">&#9670;&nbsp;</a></span>precision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;encoding E = utf8&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classz_1_1core_1_1string.html">string</a> <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt;::precision </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>precision</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a string from a number with a fixed number of decimal places. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to convert to a string. </td></tr>
+    <tr><td class="paramname">precision</td><td>The number of digits after the decimal point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the number with the specified fractional digits. </dd></dl>
 
 </div>
 </div>
