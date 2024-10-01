@@ -42,3 +42,15 @@ TEST_CASE("Check file size", "[file]") {
 	// Reading a nonexistent file throws the correct exception.
 	REQUIRE_THROWS_AS(z::file::size("THIS FILE DOES NOT EXIST"), z::file::unreadable);
 }
+
+TEST_CASE("Iterate over lines of a file with a generator", "[file]") {
+	const zpath filename = z::file::execdir() + "/../data/file2.txt";
+
+	int total = 0;
+	for (auto line : z::file::lines(filename)) {
+		total++;
+		REQUIRE(line == "test");
+	}
+
+	REQUIRE(total == 5);
+}
