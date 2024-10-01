@@ -1154,3 +1154,5 @@ T array<T>::reduce(const T &defaultValue, std::function<T(const T &, const T &)>
 
 } // namespace core
 } // namespace z
+
+#define zarray z::core::array
