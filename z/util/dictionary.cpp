@@ -1,8 +1,9 @@
 #include "dictionary.hpp"
 #include "../core/charFunctions.hpp"
+#include "../file/exceptions.hpp"
 
 #include <algorithm>
-#include <iostream>
+#include <fstream>
 
 namespace z {
 namespace util {
@@ -31,12 +32,14 @@ void dictionary::clear() noexcept {
 	array_data.clear();
 }
 
-int dictionary::read(std::istream &stream, const core::timeout &time, bool assumePresorted) noexcept {
+bool dictionary::read(const zstring &filename, const core::timeout &time, bool assumePresorted) {
+	std::ifstream stream(filename.str());
+
 	if (stream.fail()) {
-		return -1;
+		throw z::file::unreadable(filename);
 	}
 	if (stream.eof()) {
-		return 1;
+		return false;
 	}
 
 	if (!readingStream) {
@@ -65,7 +68,7 @@ int dictionary::read(std::istream &stream, const core::timeout &time, bool assum
 		}
 	}
 
-	return stream.eof();
+	return !stream.eof();
 }
 
 bool dictionary::isWord(const zstring &word) const noexcept {

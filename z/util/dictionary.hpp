@@ -7,8 +7,6 @@
 #include "../core/sortedRefArray.hpp"
 #include "dictionary/dictRange.hpp"
 
-#include <istream>
-
 namespace z {
 namespace util {
 /**
@@ -48,7 +46,7 @@ public:
 	 * several seconds for this operation to complete!
 	 * Hence the timeout method.
 	 *
-	 * @param stream The stream to read from.
+	 * @param filename The file to read from.
 	 * @param time Optional param to force return after time out.
 	 * @param assumePresorted If false, the word list is sorted while it is read.
 	 * If true, no sorting is done.
@@ -56,12 +54,12 @@ public:
 	 * @note Operating on an un-sorted dictionary may have undefined behavior!
 	 * Only set assumePresorted to true if you know for sure your data is sorted already!
 	 *
-	 * @return A positive integer if finished reading successfully, 0 if not finished reading,
-	 * a negative integer if read failed.
+	 * @return false if finished reading successfully, true if not finished reading,
+	 * @throws z::file::unreadable if reading failed.
 	 *
 	 * @threadsafe_member_no
 	 */
-	int read(std::istream &stream, const core::timeout &time = -1, bool assumePresorted = false) noexcept;
+	bool read(const zstring &filename, const core::timeout &time = -1, bool assumePresorted = false);
 
 	/**
 	 * @brief Check if the given string is a valid word in the dictionary (case is ignored).
