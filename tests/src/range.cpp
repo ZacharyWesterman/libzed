@@ -18,3 +18,25 @@ TEST_CASE("Range, reverse iteration", "[range]") {
 
 	REQUIRE(x == 0);
 }
+
+TEST_CASE("Range, map", "[range]") {
+	int x = 0;
+	for (auto i : z::core::range(5).map<int>([](auto i) { return i * 2; })) {
+		REQUIRE(i == x);
+		x += 2;
+	}
+}
+
+TEST_CASE("Range, filter", "[range]") {
+	for (auto i : z::core::range(50).filter([](auto i) { return i % 5 == 0; })) {
+		REQUIRE(i % 5 == 0);
+	}
+}
+
+TEST_CASE("Range, reduce", "[range]") {
+	auto sum = z::core::range(10).reduce(0, [](auto a, auto b) { return a + b; });
+	REQUIRE(sum == 45);
+
+	auto mult = z::core::range(1, 10).reduce(1, [](auto a, auto b) { return a * b; });
+	REQUIRE(sum == 45);
+}

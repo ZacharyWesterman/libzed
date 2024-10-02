@@ -53,4 +53,5 @@ TEST_CASE("Iterate over lines of a file with a generator", "[file]") {
 	}
 
 	REQUIRE(total == 5);
+	REQUIRE(z::file::lines(filename).count() == 5);
 }
