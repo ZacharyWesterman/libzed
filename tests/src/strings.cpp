@@ -23,7 +23,7 @@
 		a; \
 	}
 
-TEST_CASE("Constructing strings from various constants", "[z::core::string]") {
+TEST_CASE("Constructing strings from various constants", "[string]") {
 	STRTEST(
 		string = L"Test value";
 		REQUIRE(string == "Test value");
@@ -52,7 +52,7 @@ TEST_CASE("Constructing strings from various constants", "[z::core::string]") {
 	}
 }
 
-TEST_CASE("Converting strings to various numeric types", "[z::core::string]") {
+TEST_CASE("Converting strings to various numeric types", "[string]") {
 	STRTEST(
 		string = "12345";
 		REQUIRE(string.integer() == 12345);
@@ -74,7 +74,7 @@ TEST_CASE("Converting strings to various numeric types", "[z::core::string]") {
 	);
 }
 
-TEST_CASE("Sub-strings", "[z::core::string]") {
+TEST_CASE("Sub-strings", "[string]") {
 	STRTEST(
 		string = "This is an example string.";
 		REQUIRE(string.substr(11, 7) == "example");
@@ -85,7 +85,7 @@ TEST_CASE("Sub-strings", "[z::core::string]") {
 	);
 }
 
-TEST_CASE("String iterators", "[z::core::string]") {
+TEST_CASE("String iterators", "[string]") {
 	const char text[] = "Example string";
 	STRTEST(
 		string = text;
@@ -94,5 +94,27 @@ TEST_CASE("String iterators", "[z::core::string]") {
 			REQUIRE(chr == text[i]);
 			++i;
 		}
+	);
+}
+
+TEST_CASE("String replacement", "[string]") {
+	const char value1[] = "The quick brown fox jumps over the lazy dog.";
+	const char value2[] = u8"The˽quick˽brown˽fox˽jumps˽over˽the˽lazy˽dog.";
+
+	STRTEST(
+		string = value1;
+
+		// Replace all occurrences
+		string.replace(' ', "˽");
+		REQUIRE(string == value2);
+
+		string = "I like frogs";
+		// Replace the same number of characters
+		REQUIRE(string.replace(2, 4, "hate") == "I hate frogs");
+		// Replace with fewer characters
+		REQUIRE(string.replace(2, 4, "eat") == "I eat frogs");
+		// Replace with more characters
+
+		REQUIRE(string.replace(2, 3, "consume") == "I consume frogs");
 	);
 }
