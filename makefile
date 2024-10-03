@@ -21,10 +21,11 @@ ICLDIR = /usr/include
 
 D0 = $(sort $(dir $(wildcard z/*/)))
 D1 = $(sort $(dir $(wildcard $(D0)*/)))
-DIRS = $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
-SRCS = $(wildcard $(addsuffix *.cpp, $(DIRS)))
-HEADERS = $(wildcard $(addsuffix *.hpp, $(DIRS)))
-OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+DIRS := $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
+SRCS := $(wildcard $(addsuffix *.cpp, $(DIRS)))
+HEADERS := $(wildcard $(addsuffix *.hpp, $(DIRS)))
+OBJS := $(patsubst %.cpp,%.o,$(SRCS))
+DEPENDS := $(patsubst %.cpp,%.d,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VER_MAJOR).$(VER_MINOR)
 
@@ -150,21 +151,23 @@ $(STATIC_LIB): $(OBJS)
 	ar rcs $@ $^
 	ranlib $@
 
-%.o: %.cpp %.hpp
-	$(CC) $(CCFLAGS) -o $@ -c $<
+-include $(DEPENDS)
+
+%.o: %.cpp %.hpp makefile
+	$(CC) $(CCFLAGS) -MMD -MP -o $@ -c $<
 
 z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
-	$(CC) $(CCFLAGS) $(Z_STRING_FLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) $(Z_STRING_FLAGS) -MMD -MP -o $@ -c $<
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
-	$(CC) $(CCFLAGS) -o $@ -c $<
+	$(CC) $(CCFLAGS) -MMD -MP -o $@ -c $<
 
 clean: cleanbin cleanobjs cleandox cleancov
 	$(MAKE) clean -C examples/
 	$(MAKE) clean -C tests/
 
 cleanobjs:
-	$(RM) $(RMOBJS)
+	$(RM) $(RMOBJS) $(DEPENDS)
 
 cleanbin:
 	$(RM) driver *.so *.dll *.a
