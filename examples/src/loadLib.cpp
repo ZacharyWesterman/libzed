@@ -1,4 +1,5 @@
 // Example to load symbols from a dynamic library.
+// This executable loads a DLL/SO file whose name can be be unknown until run-time.
 
 #include <iostream>
 #include <z/file/execdir.hpp>
@@ -7,7 +8,9 @@
 int main() {
 	z::file::library lib;
 
-	// assume library is in same dir as executable, not necessarily the working dir.
+	// Assume library is in same dir as executable, not necessarily the working dir.
+	// Note that you do not have to specify the file extension of the library;
+	// by default, the correct extension will be appended based on your OS.
 	auto libName = z::file::execdir() + "/dynamicLib";
 	if (!lib.load(libName)) {
 		std::cout << "Unable to load lib!" << std::endl;
@@ -24,9 +27,8 @@ int main() {
 	std::cout << "Loaded symbol \"test\" as function. Result:" << std::endl;
 	func();
 
-	// It's a good habit to unload the library when we no longer need it, and to null out any symbols.
+	// It's a good habit to unload the library when we no longer need it.
 	lib.unload();
-	func = nullptr;
 
 	return 0;
 }

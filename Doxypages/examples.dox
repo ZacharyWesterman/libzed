@@ -3,7 +3,7 @@
 @example cpu.cpp
 @example dictionary.cpp
 @example dynamicLib.cpp
-@example fileStream.cpp
+@example file.cpp
 @example generic.cpp
 @example loadLib.cpp
 @example matrix.cpp
