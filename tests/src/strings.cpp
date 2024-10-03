@@ -25,24 +25,42 @@
 
 TEST_CASE("Constructing strings from various constants", "[string]") {
 	STRTEST(
-		string = L"Test value";
-		REQUIRE(string == "Test value");
-		string = 12345;
-		REQUIRE(string == "12345");
-		string = -123.45;
-		REQUIRE(string == "-123.45");
-		string = std::complex<double>(10, 2.5);
-		REQUIRE(string == "10+2.5i");
-		string = L'A';
-		REQUIRE(string == 'A');
-		string = z::core::string<enc>(255, 16, 4);
-		REQUIRE(string == "00FF");
-		string = z::core::string<enc>(100000000.0);
-		REQUIRE(string == "1e8");
-		string = z::core::string<enc>::precision(10, 5);
-		REQUIRE(string == "10.00000");
-		string = z::core::string<enc>::precision(10.3, 2);
-		REQUIRE(string == "10.30");
+		THEN("Constructing from a wide string") {
+			string = L"Test value";
+			REQUIRE(string == "Test value");
+		}
+		THEN("Constructing from an integer") {
+			string = 12345;
+			REQUIRE(string == "12345");
+		}
+		THEN("Constructing from a float") {
+			string = -123.45;
+			REQUIRE(string == "-123.45");
+		}
+		THEN("Constructing from a complex number") {
+			string = std::complex<double>(10, 2.5);
+			REQUIRE(string == "10+2.5i");
+		}
+		THEN("Constructing from a wide character") {
+			string = L'A';
+			REQUIRE(string == 'A');
+		}
+		THEN("Constructing from an integer, using a different base") {
+			string = z::core::string<enc>(255, 16, 4);
+			REQUIRE(string == "00FF");
+		}
+		THEN("Constructing from a float, using scientific notation") {
+			string = z::core::string<enc>(100000000.0);
+			REQUIRE(string == "1e8");
+		}
+		THEN("Constructing from an integer, with a specific precision") {
+			string = z::core::string<enc>::precision(10, 5);
+			REQUIRE(string == "10.00000");
+		}
+		THEN("Constructing from a float, with a specific precision") {
+			string = z::core::string<enc>::precision(10.3, 2);
+			REQUIRE(string == "10.30");
+		}
 	);
 
 	SECTION("ASCII") {
@@ -54,23 +72,38 @@ TEST_CASE("Constructing strings from various constants", "[string]") {
 
 TEST_CASE("Converting strings to various numeric types", "[string]") {
 	STRTEST(
-		string = "12345";
-		REQUIRE(string.integer() == 12345);
-		REQUIRE(string.type() == z::core::zstr::integer);
-		string = "-123.45";
-		REQUIRE(string.floating() == -123.45);
-		REQUIRE(string.type() == z::core::zstr::floating);
-		string = "1.2345e3";
-		REQUIRE(string.floating() == 1234.5);
-		REQUIRE(string.type() == z::core::zstr::floating);
-		string = "-5+2i";
-		REQUIRE(string.complex() == std::complex<double>(-5, 2));
-		REQUIRE(string.type() == z::core::zstr::complex);
-		string = "0.005e3-2.4i";
-		REQUIRE(string.complex() == std::complex<double>(5, -2.4));
-		REQUIRE(string.type() == z::core::zstr::complex);
-		string = "beans";
-		REQUIRE(string.type() == z::core::zstr::string);
+		THEN("Integer strings are detected correctly") {
+			string = "12345";
+			REQUIRE(string.integer() == 12345);
+			REQUIRE(string.type() == z::core::zstr::integer);
+		}
+		THEN("Floating point strings are detected correctly") {
+			string = "-123.45";
+			REQUIRE(string.floating() == -123.45);
+			REQUIRE(string.type() == z::core::zstr::floating);
+		}
+		THEN("Floating point (scientific notation) strings are detected correctly") {
+			string = "1.2345e3";
+			REQUIRE(string.floating() == 1234.5);
+			REQUIRE(string.type() == z::core::zstr::floating);
+		}
+		THEN("Complex strings are detected correctly") {
+			string = "-5+2i";
+			REQUIRE(string.complex() == std::complex<double>(-5, 2));
+			REQUIRE(string.type() == z::core::zstr::complex);
+		}
+		THEN("Complex floating point strings are detected correctly") {
+			string = "0.005e3-2.4i";
+			REQUIRE(string.complex() == std::complex<double>(5, -2.4));
+			REQUIRE(string.type() == z::core::zstr::complex);
+		}
+		THEN("Non-numeric strings are detected correctly") {
+			string = "beans";
+			REQUIRE(string.type() == z::core::zstr::string);
+			REQUIRE(string.integer() == 0);
+			REQUIRE(string.floating() == 0.0);
+			REQUIRE(string.complex() == std::complex<double>(0,0));
+		}
 	);
 }
 
@@ -102,19 +135,25 @@ TEST_CASE("String replacement", "[string]") {
 	const char value2[] = u8"The˽quick˽brown˽fox˽jumps˽over˽the˽lazy˽dog.";
 
 	STRTEST(
-		string = value1;
+		GIVEN("A string with many substrings to replace") {
+			string = value1;
+			THEN("Replace all occurrences") {
+				REQUIRE(string.replace(' ', "˽") == value2);
+			}
+		}
 
-		// Replace all occurrences
-		string.replace(' ', "˽");
-		REQUIRE(string == value2);
+		GIVEN("A simple string") {
+			string = "I like frogs";
 
-		string = "I like frogs";
-		// Replace the same number of characters
-		REQUIRE(string.replace(2, 4, "hate") == "I hate frogs");
-		// Replace with fewer characters
-		REQUIRE(string.replace(2, 4, "eat") == "I eat frogs");
-		// Replace with more characters
-
-		REQUIRE(string.replace(2, 3, "consume") == "I consume frogs");
+			THEN("Replacing a substring with a string of the same length should work") {
+				REQUIRE(string.replace(2, 4, "hate") == "I hate frogs");
+			}
+			THEN("Replacing a substring with a shorter string should work") {
+				REQUIRE(string.replace(2, 4, "eat") == "I eat frogs");
+			}
+			THEN("Replacing a substring with a longer string should work") {
+				REQUIRE(string.replace(2, 4, "consume") == "I consume frogs");
+			}
+		}
 	);
 }
