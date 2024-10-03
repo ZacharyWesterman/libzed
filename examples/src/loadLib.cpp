@@ -1,5 +1,6 @@
 // Example to load symbols from a dynamic library.
 // This executable loads a DLL/SO file whose name can be be unknown until run-time.
+// See the dynamicLib.cpp example for how to define symbols in a library.
 
 #include <iostream>
 #include <z/file/execdir.hpp>
