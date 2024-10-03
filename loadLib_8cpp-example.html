@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.33</span>
+   &#160;<span id="projectnumber">1.7.35</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('loadLib_8cpp-example.html',''); initRe
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="comment">// Example to load symbols from a dynamic library.</span></div>
+<div class="line"><span class="comment">// This executable loads a DLL/SO file whose name can be be unknown until run-time.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/file/execdir.hpp&gt;</span></div>
@@ -107,7 +108,9 @@ $(document).ready(function(){initNavTree('loadLib_8cpp-example.html',''); initRe
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1file_1_1library.html">z::file::library</a> lib;</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// assume library is in same dir as executable, not necessarily the working dir.</span></div>
+<div class="line">    <span class="comment">// Assume library is in same dir as executable, not necessarily the working dir.</span></div>
+<div class="line">    <span class="comment">// Note that you do not have to specify the file extension of the library;</span></div>
+<div class="line">    <span class="comment">// by default, the correct extension will be appended based on your OS.</span></div>
 <div class="line">    <span class="keyword">auto</span> libName = <a name="a1"></a><a class="code" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">z::file::execdir</a>() + <span class="stringliteral">&quot;/dynamicLib&quot;</span>;</div>
 <div class="line">    <span class="keywordflow">if</span> (!lib.<a name="a2"></a><a class="code" href="classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02">load</a>(libName)) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Unable to load lib!&quot;</span> &lt;&lt; std::endl;</div>
@@ -124,9 +127,8 @@ $(document).ready(function(){initNavTree('loadLib_8cpp-example.html',''); initRe
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Loaded symbol \&quot;test\&quot; as function. Result:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    func();</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// It&#39;s a good habit to unload the library when we no longer need it, and to null out any symbols.</span></div>
+<div class="line">    <span class="comment">// It&#39;s a good habit to unload the library when we no longer need it.</span></div>
 <div class="line">    lib.<a name="a4"></a><a class="code" href="classz_1_1file_1_1library.html#a1162df171e1f876a7e38a970d6809c82">unload</a>();</div>
-<div class="line">    func = <span class="keyword">nullptr</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>

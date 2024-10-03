@@ -4,7 +4,7 @@ var examples =
     [ "cpu.cpp", "cpu_8cpp-example.html", null ],
     [ "dictionary.cpp", "dictionary_8cpp-example.html", null ],
     [ "dynamicLib.cpp", "dynamicLib_8cpp-example.html", null ],
-    [ "fileStream.cpp", "fileStream_8cpp-example.html", null ],
+    [ "file.cpp", "file_8cpp-example.html", null ],
     [ "generic.cpp", "generic_8cpp-example.html", null ],
     [ "loadLib.cpp", "loadLib_8cpp-example.html", null ],
     [ "matrix.cpp", "matrix_8cpp-example.html", null ],

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: rot13.cpp</title>
+<title>libzed: file.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('rot13_8cpp-example.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('file_8cpp-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,40 +95,45 @@ $(document).ready(function(){initNavTree('rot13_8cpp-example.html',''); initResi
 
 <div class="header">
   <div class="headertitle">
-<div class="title">rot13.cpp</div>  </div>
+<div class="title">file.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Demonstrate the common &quot;ROT13&quot; version of the Caesar cipher.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Read all lines from a file, applying an ad-hoc mutation to them</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/all.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="classz_1_1core_1_1string.html">zstring</a> from = <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</div>
-<div class="line">    <a class="code" href="classz_1_1core_1_1string.html">zstring</a> to = <span class="stringliteral">&quot;nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM&quot;</span>;</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; argc; ++i) {</div>
-<div class="line">        <span class="comment">// The easiest way is to use a set of characters to perform the cipher.</span></div>
-<div class="line">        (<a class="code" href="classz_1_1core_1_1string.html">zstring</a>(argv[i]) + <span class="stringliteral">&quot; &quot;</span>).cipher(from, to).<a name="a1"></a><a class="code" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::cout);</div>
+<div class="line"><span class="keyword">using</span> <a name="a0"></a><a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a>, <a name="a1"></a><a class="code" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">z::file::execdir</a>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="comment">// Alternatively, you can pass a function in to perform the cipher.</span></div>
-<div class="line">        <span class="comment">// This is almost guaranteed to be faster.</span></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">        (zstring(argv[i]) + &quot; &quot;).cipher([](auto chr) {</span></div>
-<div class="line"><span class="comment">            if (z::core::isLowerAlpha(chr)) {</span></div>
-<div class="line"><span class="comment">                return ((chr - &#39;a&#39;) + 13) % 26 + &#39;a&#39;;</span></div>
-<div class="line"><span class="comment">            } else if (z::core::isUpperAlpha(chr)) {</span></div>
-<div class="line"><span class="comment">                return ((chr - &#39;A&#39;) + 13) % 26 + &#39;A&#39;;</span></div>
-<div class="line"><span class="comment">            }</span></div>
-<div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment">            return chr;</span></div>
-<div class="line"><span class="comment">        }).write(std::cout);</span></div>
-<div class="line"><span class="comment">        */</span></div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> filename = <a class="code" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">execdir</a>() + <span class="stringliteral">&quot;/../data/in1.txt&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="stringliteral">&quot;Original file contents:&quot;</span>_zs.<a name="a2"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line : <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(filename)) {</div>
+<div class="line">        line.writeln(std::cout);</div>
 <div class="line">    }</div>
-<div class="line">    <a class="code" href="classz_1_1core_1_1string.html">zstring</a>().<a name="a2"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Create a lambda that mutates each line of the file while they&#39;re read.</span></div>
+<div class="line">    <span class="keyword">auto</span> mutated_lines = <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(filename).map&lt;<a name="_a3"></a><a class="code" href="classz_1_1core_1_1string.html">zstring</a>&gt;([](<span class="keyword">auto</span> line) {</div>
+<div class="line">        <span class="keyword">auto</span> result = line;</div>
+<div class="line">        result.replace(<span class="charliteral">&#39; &#39;</span>, <span class="stringliteral">&quot;˽&quot;</span>);</div>
+<div class="line">        result.replace(<span class="charliteral">&#39;\n&#39;</span>, <span class="stringliteral">&quot;˥\n&quot;</span>);</div>
+<div class="line">        result.replace(<span class="charliteral">&#39;\r&#39;</span>, <span class="stringliteral">&quot;˿&quot;</span>);</div>
+<div class="line">        result.replace(<span class="charliteral">&#39;\t&#39;</span>, <span class="stringliteral">&quot;˾&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> result;</div>
+<div class="line">    });</div>
+<div class="line"> </div>
+<div class="line">    <span class="stringliteral">&quot;Mutated file contents:&quot;</span>_zs.<a name="a4"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line : mutated_lines) {</div>
+<div class="line">        line.writeln(std::cout);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html_a688c43a5c734afd91175627f9ed52172"><div class="ttname"><a href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">z::core::string::write</a></div><div class="ttdeci">void write(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in that stream's encoding.</div><div class="ttdef"><b>Definition:</b> string.hpp:1482</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_af2a16811f381346862dad279bdb8cd09"><div class="ttname"><a href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">z::core::string::writeln</a></div><div class="ttdeci">void writeln(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in its format, appending a newline.</div><div class="ttdef"><b>Definition:</b> string.hpp:1493</div></div>
+<div class="ttc" id="anamespacez_1_1file_html_a392ba677167ff1404e042fd0eadd0b91"><div class="ttname"><a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a></div><div class="ttdeci">core::generator&lt; zstring, fileHandle &gt; lines(const zpath &amp;filename)</div><div class="ttdoc">Reads the contents of a file line-by-line.</div></div>
+<div class="ttc" id="anamespacez_1_1file_html_a497fc168cc1b68e5f10e51e7a40a914b"><div class="ttname"><a href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">z::file::execdir</a></div><div class="ttdeci">zpath execdir() noexcept</div><div class="ttdoc">Get the directory path of the running executable.</div><div class="ttdef"><b>Definition:</b> execdir.hpp:11</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.33</span>
+   &#160;<span id="projectnumber">1.7.35</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -99,9 +99,12 @@ $(document).ready(function(){initNavTree('dynamicLib_8cpp-example.html',''); ini
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="comment">// Example for defining symbols in a dynamic library.</span></div>
+<div class="line"><span class="comment">// This file gets compiled into a DLL/SO file that can be loaded into a program dynamically at run-time.</span></div>
+<div class="line"><span class="comment">// See the loadLib.cpp example for how to load it.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="comment">// `extern &quot;C&quot;` is required to expose the interface without C++&#39;s name mangling getting in the way.</span></div>
 <div class="line"><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><span class="keywordtype">void</span> test() {</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;In Dynamic Library.\n&quot;</span>;</div>
