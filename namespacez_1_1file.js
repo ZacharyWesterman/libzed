@@ -23,5 +23,5 @@ var namespacez_1_1file =
     [ "read", "namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b", null ],
     [ "shorten", "namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb", null ],
     [ "size", "namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a", null ],
-    [ "write", "namespacez_1_1file.html#a8330480adb4f0bbec621ef01a3be8883", null ]
+    [ "write", "namespacez_1_1file.html#af5591ecd6550ce0c937bbb7bf8236cf8", null ]
 ];
