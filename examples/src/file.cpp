@@ -23,7 +23,7 @@ int main() {
 		return result;
 	});
 
-	"Mutated file contents:"_zs.writeln(std::cout);
+	"\nMutated file contents:"_zs.writeln(std::cout);
 	for (auto line : mutated_lines) {
 		line.writeln(std::cout);
 	}
