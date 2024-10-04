@@ -3,8 +3,8 @@
 namespace z {
 namespace file {
 
-void write(const zstring &contents, const zpath &filename) {
-	std::ofstream file(filename.cstring());
+void write(const zstring &contents, const zpath &filename, bool append) {
+	std::ofstream file(filename.cstring(), append ? std::ios_base::app : std::ios_base::out);
 
 	if (!file) {
 		throw unwritable(filename);
