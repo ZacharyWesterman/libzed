@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.39</span>
+   &#160;<span id="projectnumber">1.7.40</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -579,7 +579,7 @@ $(document).ready(function(){initNavTree('string_8hpp_source.html',''); initResi
 <div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;        std::string s;</div>
 <div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;        istr &gt;&gt; s;</div>
 <div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160; </div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;        <span class="keywordflow">if</span> (istr.eof() &amp;&amp; !s.length()) {</div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;        <span class="keywordflow">if</span> (s.length()) {</div>
 <div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;            <a class="code" href="classz_1_1core_1_1string.html#a20b02bcd4f40fc6252a022e5eb3cbb42">str</a> = s.c_str(); <span class="comment">// not efficient to cast strings back &amp; forth, but it works for now.</span></div>
 <div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;        }</div>
 <div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;        <span class="keywordflow">return</span> istr;</div>
