@@ -74,35 +74,54 @@ TEST_CASE("Converting strings to various numeric types", "[string]") {
 	STRTEST(
 		THEN("Integer strings are detected correctly") {
 			string = "12345";
-			REQUIRE(string.integer() == 12345);
 			REQUIRE(string.type() == z::core::zstr::integer);
+			REQUIRE(string.complex() == std::complex<double>(12345, 0));
+			REQUIRE(string.floating() == 12345.0);
+			REQUIRE(string.integer() == 12345);
 		}
 		THEN("Floating point strings are detected correctly") {
 			string = "-123.45";
-			REQUIRE(string.floating() == -123.45);
 			REQUIRE(string.type() == z::core::zstr::floating);
+			REQUIRE(string.complex() == std::complex<double>(-123.45, 0)); //Complex casting only gets a real part
+			REQUIRE(string.floating() == -123.45);
+			REQUIRE(string.integer() == -123); // Fractional part gets truncated
 		}
 		THEN("Floating point (scientific notation) strings are detected correctly") {
 			string = "1.2345e3";
-			REQUIRE(string.floating() == 1234.5);
 			REQUIRE(string.type() == z::core::zstr::floating);
+			REQUIRE(string.complex() == std::complex<double>(1234.5, 0)); //Complex casting only gets a real part
+			REQUIRE(string.floating() == 1234.5);
+			REQUIRE(string.integer() == 1); // Anything after decimal point gets truncated.
 		}
 		THEN("Complex strings are detected correctly") {
 			string = "-5+2i";
-			REQUIRE(string.complex() == std::complex<double>(-5, 2));
 			REQUIRE(string.type() == z::core::zstr::complex);
+			REQUIRE(string.complex() == std::complex<double>(-5, 2));
+			//Non-complex casting only gets the real value
+			REQUIRE(string.floating() == 0.0); //We can't cast this to a float, it's too complicated.
+			REQUIRE(string.integer() == 0); //We can't cast this to an integer, it's too complicated.
 		}
 		THEN("Complex floating point strings are detected correctly") {
 			string = "0.005e3-2.4i";
-			REQUIRE(string.complex() == std::complex<double>(5, -2.4));
 			REQUIRE(string.type() == z::core::zstr::complex);
+			REQUIRE(string.complex() == std::complex<double>(5, -2.4));
+			//Non-complex casting does not work
+			REQUIRE(string.floating() == 0.0); //We can't cast this to a float, it's too complicated.
+			REQUIRE(string.integer() == 0); //We can't cast this to an integer, it's too complicated.
 		}
 		THEN("Non-numeric strings are detected correctly") {
 			string = "beans";
 			REQUIRE(string.type() == z::core::zstr::string);
-			REQUIRE(string.integer() == 0);
-			REQUIRE(string.floating() == 0.0);
 			REQUIRE(string.complex() == std::complex<double>(0,0));
+			REQUIRE(string.floating() == 0.0);
+			REQUIRE(string.integer() == 0);
+		}
+		THEN("Make sure boolean casting is equivalent to checking string length") {
+			REQUIRE((bool)zstring("test") == true);
+			REQUIRE((bool)zstring(" ") == true);
+			REQUIRE((bool)zstring("0") == true);
+			REQUIRE((bool)zstring("123") == true);
+			REQUIRE((bool)zstring() == false);
 		}
 	);
 }
