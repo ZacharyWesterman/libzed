@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.41</span>
+   &#160;<span id="projectnumber">1.7.42</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -109,15 +109,17 @@ $(document).ready(function(){initNavTree('lines_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html">   13</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structz_1_1file_1_1fileHandle.html">fileHandle</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html#a1cb787fb35fd515b5a0328bbc75bd2be">   15</a></span>&#160;    <a class="code" href="classz_1_1core_1_1string.html">zpath</a> <a class="code" href="structz_1_1file_1_1fileHandle.html#a1cb787fb35fd515b5a0328bbc75bd2be">filename</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html#adf006acde8a43ccaa43bc33490709e2a">   17</a></span>&#160;    std::ifstream *<a class="code" href="structz_1_1file_1_1fileHandle.html#adf006acde8a43ccaa43bc33490709e2a">stream</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html#ab7fe9bdfcf16bf1831a8231ffe21ab6c">   17</a></span>&#160;    std::istream *<a class="code" href="structz_1_1file_1_1fileHandle.html#ab7fe9bdfcf16bf1831a8231ffe21ab6c">stream</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html#a4912a7c39929fc0e7d7c8016209c1fc3">   19</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structz_1_1file_1_1fileHandle.html#a4912a7c39929fc0e7d7c8016209c1fc3">used</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structz_1_1file_1_1fileHandle.html#a7908232c7278af2a397640da72b798ba">   21</a></span>&#160;    <a class="code" href="structz_1_1file_1_1fileHandle.html#a7908232c7278af2a397640da72b798ba">~fileHandle</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">   34</a></span>&#160;<a class="code" href="classz_1_1core_1_1generator.html">core::generator&lt;zstring, fileHandle&gt;</a> <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(<span class="keyword">const</span> <a class="code" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <span class="comment">// namespace file</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacez_1_1file.html#ae28f75ab22cca51228f6f627ed7db51d">   44</a></span>&#160;<a class="code" href="classz_1_1core_1_1generator.html">core::generator&lt;zstring, fileHandle&gt;</a> <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(std::istream &amp;stream) noexcept;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <span class="comment">// namespace file</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html"><div class="ttname"><a href="classz_1_1core_1_1generator.html">z::core::generator</a></div><div class="ttdoc">An arbitrary generator for producing sequential results on-the-fly.</div><div class="ttdef"><b>Definition:</b> generator.hpp:37</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string&lt; z::utf8 &gt;</a></div></div>
 <div class="ttc" id="anamespacez_1_1file_html_a392ba677167ff1404e042fd0eadd0b91"><div class="ttname"><a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a></div><div class="ttdeci">core::generator&lt; zstring, fileHandle &gt; lines(const zpath &amp;filename)</div><div class="ttdoc">Reads the contents of a file line-by-line.</div></div>
@@ -125,7 +127,7 @@ $(document).ready(function(){initNavTree('lines_8hpp_source.html',''); initResiz
 <div class="ttc" id="astructz_1_1file_1_1fileHandle_html_a1cb787fb35fd515b5a0328bbc75bd2be"><div class="ttname"><a href="structz_1_1file_1_1fileHandle.html#a1cb787fb35fd515b5a0328bbc75bd2be">z::file::fileHandle::filename</a></div><div class="ttdeci">zpath filename</div><div class="ttdoc">The filename.</div><div class="ttdef"><b>Definition:</b> lines.hpp:15</div></div>
 <div class="ttc" id="astructz_1_1file_1_1fileHandle_html_a4912a7c39929fc0e7d7c8016209c1fc3"><div class="ttname"><a href="structz_1_1file_1_1fileHandle.html#a4912a7c39929fc0e7d7c8016209c1fc3">z::file::fileHandle::used</a></div><div class="ttdeci">bool used</div><div class="ttdoc">Whether the file has been opened yet.</div><div class="ttdef"><b>Definition:</b> lines.hpp:19</div></div>
 <div class="ttc" id="astructz_1_1file_1_1fileHandle_html_a7908232c7278af2a397640da72b798ba"><div class="ttname"><a href="structz_1_1file_1_1fileHandle.html#a7908232c7278af2a397640da72b798ba">z::file::fileHandle::~fileHandle</a></div><div class="ttdeci">~fileHandle()</div><div class="ttdoc">Destructor.</div></div>
-<div class="ttc" id="astructz_1_1file_1_1fileHandle_html_adf006acde8a43ccaa43bc33490709e2a"><div class="ttname"><a href="structz_1_1file_1_1fileHandle.html#adf006acde8a43ccaa43bc33490709e2a">z::file::fileHandle::stream</a></div><div class="ttdeci">std::ifstream * stream</div><div class="ttdoc">The current stream.</div><div class="ttdef"><b>Definition:</b> lines.hpp:17</div></div>
+<div class="ttc" id="astructz_1_1file_1_1fileHandle_html_ab7fe9bdfcf16bf1831a8231ffe21ab6c"><div class="ttname"><a href="structz_1_1file_1_1fileHandle.html#ab7fe9bdfcf16bf1831a8231ffe21ab6c">z::file::fileHandle::stream</a></div><div class="ttdeci">std::istream * stream</div><div class="ttdoc">The current stream.</div><div class="ttdef"><b>Definition:</b> lines.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

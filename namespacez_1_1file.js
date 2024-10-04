@@ -15,6 +15,7 @@ var namespacez_1_1file =
     [ "executable", "namespacez_1_1file.html#a41f863b6ddde6ae39cbb591c38db0e99", null ],
     [ "exists", "namespacez_1_1file.html#aa2db5230e856498aab43ce0f1a5f11e1", null ],
     [ "lines", "namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91", null ],
+    [ "lines", "namespacez_1_1file.html#ae28f75ab22cca51228f6f627ed7db51d", null ],
     [ "listDirs", "namespacez_1_1file.html#a99bbba71414052500cf1e40f76838b7e", null ],
     [ "listFiles", "namespacez_1_1file.html#ae6c51b3c6444b4f3dba24dc55d3df7cc", null ],
     [ "makeDir", "namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470", null ],

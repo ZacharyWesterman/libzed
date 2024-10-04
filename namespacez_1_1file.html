@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.41</span>
+   &#160;<span id="projectnumber">1.7.42</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -155,6 +155,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a392ba677167ff1404e042fd0eadd0b91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zstring</a>, <a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename)</td></tr>
 <tr class="memdesc:a392ba677167ff1404e042fd0eadd0b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the contents of a file line-by-line.  <a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">More...</a><br /></td></tr>
 <tr class="separator:a392ba677167ff1404e042fd0eadd0b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae28f75ab22cca51228f6f627ed7db51d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zstring</a>, <a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ae28f75ab22cca51228f6f627ed7db51d">lines</a> (std::istream &amp;stream) noexcept</td></tr>
+<tr class="memdesc:ae28f75ab22cca51228f6f627ed7db51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the contents of a stream line-by-line.  <a href="namespacez_1_1file.html#ae28f75ab22cca51228f6f627ed7db51d">More...</a><br /></td></tr>
+<tr class="separator:ae28f75ab22cca51228f6f627ed7db51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zpath</a>, <a class="el" href="structz_1_1file_1_1dirscan.html">dirscan</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ae6c51b3c6444b4f3dba24dc55d3df7cc">listFiles</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileType=&quot;*&quot;, bool showAll=true) noexcept</td></tr>
 <tr class="memdesc:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all files of a given type in the given directory.  <a href="namespacez_1_1file.html#ae6c51b3c6444b4f3dba24dc55d3df7cc">More...</a><br /></td></tr>
 <tr class="separator:ae6c51b3c6444b4f3dba24dc55d3df7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -450,7 +453,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a392ba677167ff1404e042fd0eadd0b91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a392ba677167ff1404e042fd0eadd0b91">&#9670;&nbsp;</a></span>lines()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a392ba677167ff1404e042fd0eadd0b91">&#9670;&nbsp;</a></span>lines() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -480,6 +483,41 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="file_8cpp-example.html#a0">file.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ae28f75ab22cca51228f6f627ed7db51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae28f75ab22cca51228f6f627ed7db51d">&#9670;&nbsp;</a></span>lines() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt;<a class="el" href="classz_1_1core_1_1string.html">zstring</a>, <a class="el" href="structz_1_1file_1_1fileHandle.html">fileHandle</a>&gt; z::file::lines </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads the contents of a stream line-by-line. </p>
+<p>This function uses a generator to read from an arbitrary stream, which may or may not be a file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>The input stream to read from. </td></tr>
+  </table>
+  </dd>
 </dl>
 
 </div>
