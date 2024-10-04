@@ -1565,7 +1565,7 @@ public:
 		std::string s;
 		istr >> s;
 
-		if (istr.eof() && !s.length()) {
+		if (s.length()) {
 			str = s.c_str(); // not efficient to cast strings back & forth, but it works for now.
 		}
 		return istr;
