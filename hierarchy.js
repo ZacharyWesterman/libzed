@@ -43,6 +43,7 @@ var hierarchy =
     [ "z::file::library", "classz_1_1file_1_1library.html", null ],
     [ "z::math::matrix< N >", "classz_1_1math_1_1matrix.html", null ],
     [ "z::core::types::no", "classz_1_1core_1_1types_1_1no.html", null ],
+    [ "z::util::progress", "classz_1_1util_1_1progress.html", null ],
     [ "std::runtime_error", null, [
       [ "z::file::unreadable", "classz_1_1file_1_1unreadable.html", null ],
       [ "z::file::unwritable", "classz_1_1file_1_1unwritable.html", null ],
@@ -57,6 +58,7 @@ var hierarchy =
       [ "z::file::info", "classz_1_1file_1_1info.html", null ]
     ] ],
     [ "z::core::stringIterator< E >", "classz_1_1core_1_1stringIterator.html", null ],
+    [ "z::system::termsize", "structz_1_1system_1_1termsize.html", null ],
     [ "z::core::timer", "classz_1_1core_1_1timer.html", [
       [ "z::core::timeout", "classz_1_1core_1_1timeout.html", null ]
     ] ],

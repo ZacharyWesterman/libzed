@@ -37,13 +37,15 @@ var annotated_dup =
         [ "matrix", "classz_1_1math_1_1matrix.html", "classz_1_1math_1_1matrix" ]
       ] ],
       [ "system", "namespacez_1_1system.html", [
-        [ "cpuid", "classz_1_1system_1_1cpuid.html", "classz_1_1system_1_1cpuid" ]
+        [ "cpuid", "classz_1_1system_1_1cpuid.html", "classz_1_1system_1_1cpuid" ],
+        [ "termsize", "structz_1_1system_1_1termsize.html", "structz_1_1system_1_1termsize" ]
       ] ],
       [ "util", "namespacez_1_1util.html", [
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
         [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
         [ "nonnumeric", "structz_1_1util_1_1nonnumeric.html", "structz_1_1util_1_1nonnumeric" ],
-        [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ]
+        [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
+        [ "progress", "classz_1_1util_1_1progress.html", "classz_1_1util_1_1progress" ]
       ] ]
     ] ]
 ];

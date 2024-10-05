@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.44</span>
+   &#160;<span id="projectnumber">1.7.46</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -501,7 +501,7 @@ $(document).ready(function(){initNavTree('string_8hpp_source.html',''); initResi
 <div class="line"><a name="l01313"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1"> 1313</a></span>&#160;    static <span class="keywordtype">string</span> <a class="code" href="classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1">ordinal</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> value) noexcept;</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160; </div>
 <div class="line"><a name="l01322"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d"> 1322</a></span>&#160;    static inline <span class="keywordtype">string</span> <a class="code" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>(<span class="keywordtype">double</span> value, <span class="keywordtype">int</span> <a class="code" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>) noexcept {</div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classz_1_1core_1_1string.html#a73b71c3ef2cf068929580628839d2903">string</a>(value, 10, <a class="code" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>);</div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classz_1_1core_1_1string.html#a73b71c3ef2cf068929580628839d2903">string</a>(value, 10, <a class="code" href="classz_1_1core_1_1string.html#a286eedcb77bf09a8583440102a50269d">precision</a>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;    }</div>
 <div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160; </div>
 <div class="line"><a name="l01338"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab"> 1338</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab">concat</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;other) <span class="keyword">const</span> noexcept {</div>
@@ -539,7 +539,7 @@ $(document).ready(function(){initNavTree('string_8hpp_source.html',''); initResi
 <div class="line"><a name="l01475"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#aaa23875bee3fe62a2b097f7ac0e5cafc"> 1475</a></span>&#160;    <span class="keywordtype">string</span> &amp;<a class="code" href="classz_1_1core_1_1string.html#aaa23875bee3fe62a2b097f7ac0e5cafc">readall</a>(std::istream &amp;stream) noexcept;</div>
 <div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160; </div>
 <div class="line"><a name="l01482"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172"> 1482</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::ostream &amp;stream) const noexcept {</div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;        stream &lt;&lt; *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;        stream &lt;&lt; *<span class="keyword">this</span> &lt;&lt; std::flush;</div>
 <div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;    }</div>
 <div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160; </div>
 <div class="line"><a name="l01493"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09"> 1493</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::ostream &amp;stream) <span class="keyword">const</span> noexcept {</div>
