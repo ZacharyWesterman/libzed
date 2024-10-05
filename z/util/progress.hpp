@@ -30,7 +30,7 @@ public:
 	 * @param message An optional message to display in front of the percent.
 	 * @param force If true, ignore frequency limit and force the stream to be updated.
 	 */
-	void set(std::ostream &stream, float percent, const zstring &message = "", bool force = false) noexcept;
+	void set(std::ostream &stream, long item, long max, const zstring &message = "", bool force = false) noexcept;
 
 	/**
 	 * @brief Mark the progress bar as finished.

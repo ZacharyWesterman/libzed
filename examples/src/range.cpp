@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <z/core.hpp>
+#include <z/util/progress.hpp>
 
 using z::core::join;
 using z::core::range;
@@ -28,6 +29,20 @@ int main() {
 			"Exiting early!"_zs.writeln(std::cout);
 			break;
 		}
+	}
+
+	// A fun feature of generators is that they can have extra functionality bound to them.
+	// Here, we are taking a long range, and binding a progress bar be updated while we iterate through it.
+	z::util::progress progress;
+	long max = 10'000'000;
+	auto numbers = range(max).map<long>([max, &progress](auto i) {
+		progress.set(std::cout, i + 1, max);
+		return i;
+	});
+
+	"\nIterate over a long range with progress:"_zs.writeln(std::cout);
+	for (auto i : numbers) {
+		// See how in here, we're not directly calling progress.set!
 	}
 
 	return 0;

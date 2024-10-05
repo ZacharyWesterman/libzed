@@ -7,10 +7,12 @@ namespace util {
 
 progress::progress(unsigned int update_freq_micros) noexcept : timer(update_freq_micros), displayed(false) {}
 
-void progress::set(std::ostream &stream, float percent, const zstring &message, bool force) noexcept {
-	if (force || !displayed || percent >= 100 || timer.timedOut()) {
+void progress::set(std::ostream &stream, long item, long max, const zstring &message, bool force) noexcept {
+	if (force || !displayed || max == item || timer.timedOut()) {
 		timer.reset();
 		displayed = true;
+
+		double percent = 100 * item / (double)max;
 
 		auto pcnt = zstring::precision(percent, 1);
 		zstring msg = message ? message + ' ' : "";
@@ -22,7 +24,12 @@ void progress::set(std::ostream &stream, float percent, const zstring &message, 
 
 		msg += rep + '-'_zs.repeat(width - rep.length()) + "] ";
 
-		msg.write(stream);
+		if (max == item) {
+			msg.writeln(stream);
+			displayed = false;
+		} else {
+			msg.write(stream);
+		}
 	}
 }
 
