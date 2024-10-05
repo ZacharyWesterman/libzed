@@ -8,6 +8,8 @@ namespace util {
 progress::progress(unsigned int update_freq_micros) noexcept : timer(update_freq_micros), displayed(false) {}
 
 void progress::set(std::ostream &stream, long item, long max, const zstring &message, bool force) noexcept {
+	item++;
+
 	if (force || !displayed || max == item || timer.timedOut()) {
 		timer.reset();
 		displayed = true;

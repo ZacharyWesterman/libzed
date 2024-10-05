@@ -36,14 +36,14 @@ int main() {
 	z::util::progress progress;
 	long max = 10'000'000;
 	auto numbers = range(max).map<long>([max, &progress](auto i) {
-		progress.set(std::cout, i + 1, max);
+		progress.set(std::cout, i, max);
 		return i;
 	});
 
-	"\nIterate over a long range with progress:"_zs.writeln(std::cout);
-	for (auto i : numbers) {
-		// See how in here, we're not directly calling progress.set!
-	}
+	// See how here, we're not directly calling progress.set, but the progress bar displays!
+	"\nSum a long range and display the progress:"_zs.writeln(std::cout);
+	auto sum = numbers.reduce(0, std::plus());
+	("Total: "_zs + sum).writeln(std::cout);
 
 	return 0;
 }
