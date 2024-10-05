@@ -5,11 +5,9 @@
  * @brief Section containing utility classes.
  *
  * This section adds extra classes and functionality
- * for more complicated data manipulation.
+ * for more complicated data manipulation or representation.
  **/
 
-/// Generic class
-#include "util/generic.hpp"
-
-/// Dictionary
 #include "util/dictionary.hpp"
+#include "util/generic.hpp"
+#include "util/progress.hpp"

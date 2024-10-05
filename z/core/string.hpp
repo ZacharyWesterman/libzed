@@ -1320,7 +1320,7 @@ public:
 	 * @return A string representation of the number with the specified fractional digits.
 	 */
 	static inline string precision(double value, int precision) noexcept {
-		return string(value, 10, precision);
+		return string(value, 10, precision, false);
 	}
 
 	/**
@@ -1480,7 +1480,7 @@ public:
 	 * @param stream The stream to write to.
 	 */
 	void write(std::ostream &stream) const noexcept {
-		stream << *this;
+		stream << *this << std::flush;
 	}
 
 	/**
