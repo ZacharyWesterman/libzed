@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.46</span>
+   &#160;<span id="projectnumber">1.7.47</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('progress_8hpp_source.html',''); initRe
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1progress.html#ad9f60a33f5b4125b3053784c46d47a53">   24</a></span>&#160;    <a class="code" href="classz_1_1util_1_1progress.html#ad9f60a33f5b4125b3053784c46d47a53">progress</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> update_freq_micros = 100&#39;000) noexcept;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1progress.html#adfd63538c65b945aa3ee894b94f7b00d">   33</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1progress.html#adfd63538c65b945aa3ee894b94f7b00d">set</a>(std::ostream &amp;stream, <span class="keywordtype">float</span> percent, const <a class="code" href="classz_1_1core_1_1string.html">zstring</a> &amp;message = &quot;&quot;, <span class="keywordtype">bool</span> force = false) noexcept;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1progress.html#a8ce5e13d8a9773096592c795204538f2">   33</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1progress.html#a8ce5e13d8a9773096592c795204538f2">set</a>(std::ostream &amp;stream, <span class="keywordtype">long</span> item, <span class="keywordtype">long</span> max, const <a class="code" href="classz_1_1core_1_1string.html">zstring</a> &amp;message = &quot;&quot;, <span class="keywordtype">bool</span> force = false) noexcept;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classz_1_1util_1_1progress.html#a0a841c53e9cb4b9a944c2a1d49b63e8e">   43</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classz_1_1util_1_1progress.html#a0a841c53e9cb4b9a944c2a1d49b63e8e">done</a>(std::ostream &amp;stream) noexcept;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
@@ -124,8 +124,8 @@ $(document).ready(function(){initNavTree('progress_8hpp_source.html',''); initRe
 <div class="ttc" id="aclassz_1_1core_1_1timeout_html"><div class="ttname"><a href="classz_1_1core_1_1timeout.html">z::core::timeout</a></div><div class="ttdoc">A class for easily managing timing.</div><div class="ttdef"><b>Definition:</b> timeout.hpp:13</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1progress_html"><div class="ttname"><a href="classz_1_1util_1_1progress.html">z::util::progress</a></div><div class="ttdoc">A class for outputting a progress bar to the terminal.</div><div class="ttdef"><b>Definition:</b> progress.hpp:15</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1progress_html_a0a841c53e9cb4b9a944c2a1d49b63e8e"><div class="ttname"><a href="classz_1_1util_1_1progress.html#a0a841c53e9cb4b9a944c2a1d49b63e8e">z::util::progress::done</a></div><div class="ttdeci">void done(std::ostream &amp;stream) noexcept</div><div class="ttdoc">Mark the progress bar as finished.</div></div>
+<div class="ttc" id="aclassz_1_1util_1_1progress_html_a8ce5e13d8a9773096592c795204538f2"><div class="ttname"><a href="classz_1_1util_1_1progress.html#a8ce5e13d8a9773096592c795204538f2">z::util::progress::set</a></div><div class="ttdeci">void set(std::ostream &amp;stream, long item, long max, const zstring &amp;message=&quot;&quot;, bool force=false) noexcept</div><div class="ttdoc">Update the progress bar.</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1progress_html_ad9f60a33f5b4125b3053784c46d47a53"><div class="ttname"><a href="classz_1_1util_1_1progress.html#ad9f60a33f5b4125b3053784c46d47a53">z::util::progress::progress</a></div><div class="ttdeci">progress(unsigned int update_freq_micros=100 '000) noexcept</div><div class="ttdoc">Constructor.</div></div>
-<div class="ttc" id="aclassz_1_1util_1_1progress_html_adfd63538c65b945aa3ee894b94f7b00d"><div class="ttname"><a href="classz_1_1util_1_1progress.html#adfd63538c65b945aa3ee894b94f7b00d">z::util::progress::set</a></div><div class="ttdeci">void set(std::ostream &amp;stream, float percent, const zstring &amp;message=&quot;&quot;, bool force=false) noexcept</div><div class="ttdoc">Update the progress bar.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
