@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.47</span>
+   &#160;<span id="projectnumber">1.7.48</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -136,14 +136,14 @@ $(document).ready(function(){initNavTree('range_8cpp-example.html',''); initResi
 <div class="line">    <a name="_a2"></a><a class="code" href="classz_1_1util_1_1progress.html">z::util::progress</a> progress;</div>
 <div class="line">    <span class="keywordtype">long</span> max = 10&#39;000&#39;000;</div>
 <div class="line">    <span class="keyword">auto</span> numbers = <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(max).map&lt;<span class="keywordtype">long</span>&gt;([max, &amp;progress](<span class="keyword">auto</span> i) {</div>
-<div class="line">        progress.<a name="a3"></a><a class="code" href="classz_1_1util_1_1progress.html#a8ce5e13d8a9773096592c795204538f2">set</a>(std::cout, i + 1, max);</div>
+<div class="line">        progress.<a name="a3"></a><a class="code" href="classz_1_1util_1_1progress.html#a8ce5e13d8a9773096592c795204538f2">set</a>(std::cout, i, max);</div>
 <div class="line">        <span class="keywordflow">return</span> i;</div>
 <div class="line">    });</div>
 <div class="line"> </div>
-<div class="line">    <span class="stringliteral">&quot;\nIterate over a long range with progress:&quot;</span>_zs.writeln(std::cout);</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : numbers) {</div>
-<div class="line">        <span class="comment">// See how in here, we&#39;re not directly calling progress.set!</span></div>
-<div class="line">    }</div>
+<div class="line">    <span class="comment">// See how here, we&#39;re not directly calling progress.set, but the progress bar displays!</span></div>
+<div class="line">    <span class="stringliteral">&quot;\nSum a long range and display the progress:&quot;</span>_zs.writeln(std::cout);</div>
+<div class="line">    <span class="keyword">auto</span> sum = numbers.reduce(0, std::plus());</div>
+<div class="line">    (<span class="stringliteral">&quot;Total: &quot;</span>_zs + sum).writeln(std::cout);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
