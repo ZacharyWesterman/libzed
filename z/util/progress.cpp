@@ -21,7 +21,7 @@ void progress::set(std::ostream &stream, long item, long max, const zstring &mes
 
 		msg = '\r'_zs + msg + pcnt + "% [";
 
-		auto width = std::min(99, z::system::terminal().width - msg.length() - 1);
+		auto width = std::min(99, z::system::terminal(stream).width - msg.length() - 1);
 		auto rep = '#'_zs.repeat((percent / 100) * width);
 
 		msg += rep + '-'_zs.repeat(width - rep.length()) + "] ";

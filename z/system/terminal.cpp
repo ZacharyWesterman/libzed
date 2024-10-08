@@ -1,4 +1,5 @@
 #include "terminal.hpp"
+#include <iostream>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -12,17 +13,23 @@
 namespace z {
 namespace system {
 
-termsize terminal() noexcept {
+termsize terminal(const std::ostream &stream) noexcept {
+	if (&stream != &std::cout && &stream != &std::cerr) {
+		return {80, 24};
+	}
+
 #ifdef _WIN32
+	auto FILE_HANDLE = (&stream == &std::cout) ? STD_OUTPUT_HANDLE : STD_ERROR_HANDLE;
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	GetConsoleScreenBufferInfo(GetStdHandle(FILE_HANDLE), &csbi);
 	return {
 		csbi.srWindow.Right - csbi.srWindow.Left + 1,
 		csbi.srWindow.Bottom - csbi.srWindow.Top + 1,
 	};
 #elif __linux__
+	auto FILE_HANDLE = (&stream == &std::cout) ? STDOUT_FILENO : STDERR_FILENO;
 	winsize w;
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	ioctl(FILE_HANDLE, TIOCGWINSZ, &w);
 	return {
 		w.ws_col,
 		w.ws_row,
