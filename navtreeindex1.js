@@ -89,6 +89,7 @@ var NAVTREEINDEX1 =
 "classz_1_1util_1_1dictionary.html#a7f727dad2d7d610969796d0ebe85cce5":[2,0,0,4,1,5],
 "classz_1_1util_1_1dictionary.html#a82c4b3c88bb90eb35e408075a188af67":[2,0,0,4,1,2],
 "classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309":[2,0,0,4,1,13],
+"classz_1_1util_1_1dictionary.html#a9ee746c8076310a0d43c5d20854fc452":[2,0,0,4,1,17],
 "classz_1_1util_1_1dictionary.html#aafe3c0d726b61410f721f36f94c98876":[2,0,0,4,1,15],
 "classz_1_1util_1_1dictionary.html#ab834eb320860b4e50f87f293e21b4d27":[2,0,0,4,1,10],
 "classz_1_1util_1_1dictionary.html#abbb4920765f53227bf403c9466af36ba":[2,0,0,4,1,3],
@@ -189,8 +190,8 @@ var NAVTREEINDEX1 =
 "file_8hpp.html":[3,0,0,8],
 "file_8hpp_source.html":[3,0,0,8],
 "files.html":[3,0],
-"functions.html":[2,3,0],
 "functions.html":[2,3,0,0],
+"functions.html":[2,3,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
@@ -242,12 +243,11 @@ var NAVTREEINDEX1 =
 "generic_8hpp.html#a7f3d9d080d7bb264e2aab2988f46bf57":[1,0,1,5],
 "generic_8hpp_source.html":[3,0,0,4,3],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md0":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md2":[0,1],
 "index.html#autotoc_md3":[0,2],
-"index.html#autotoc_md4":[0,3],
-"index.html#autotoc_md5":[0,4]
+"index.html#autotoc_md4":[0,3]
 };

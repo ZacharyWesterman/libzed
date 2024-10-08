@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.48</span>
+   &#160;<span id="projectnumber">1.7.49</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -139,8 +139,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a54f763909cb5492132cff2c3532f1740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the word list. <br /></td></tr>
 <tr class="separator:a54f763909cb5492132cff2c3532f1740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac77268b88bb5af7198b02e1719564d4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">read</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;filename, const <a class="el" href="classz_1_1core_1_1timeout.html">core::timeout</a> &amp;time=-1, bool assumePresorted=false)</td></tr>
-<tr class="memdesc:ac77268b88bb5af7198b02e1719564d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a stream.  <a href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">More...</a><br /></td></tr>
+<tr class="memdesc:ac77268b88bb5af7198b02e1719564d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read this dictionary's word list as text from a file.  <a href="classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d">More...</a><br /></td></tr>
 <tr class="separator:ac77268b88bb5af7198b02e1719564d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee746c8076310a0d43c5d20854fc452"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a9ee746c8076310a0d43c5d20854fc452">write</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;filename)</td></tr>
+<tr class="memdesc:a9ee746c8076310a0d43c5d20854fc452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write this dictionary's word list to a file.  <a href="classz_1_1util_1_1dictionary.html#a9ee746c8076310a0d43c5d20854fc452">More...</a><br /></td></tr>
+<tr class="separator:a9ee746c8076310a0d43c5d20854fc452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c970dcbb9203f28a046d1d126752774"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">isWord</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;word) const noexcept</td></tr>
 <tr class="memdesc:a4c970dcbb9203f28a046d1d126752774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a valid word in the dictionary (case is ignored).  <a href="classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774">More...</a><br /></td></tr>
 <tr class="separator:a4c970dcbb9203f28a046d1d126752774"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -885,7 +888,7 @@ template&lt;class archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Read this dictionary's word list as text from a stream. </p>
+<p>Read this dictionary's word list as text from a file. </p>
 <p>Note that for long dictionaries, it may take several seconds for this operation to complete! Hence the timeout method.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -976,6 +979,39 @@ template&lt;typename archive &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a9ee746c8076310a0d43c5d20854fc452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee746c8076310a0d43c5d20854fc452">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void z::util::dictionary::write </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write this dictionary's word list to a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The file to write to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classz_1_1file_1_1unwritable.html" title="Exception thrown when a file cannot be opened for writing.">z::file::unwritable</a></td><td>if writing failed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Re-Entry: Simultaneous calls to this member function on the same object can cause data races.</dt><dd></dd></dl>
 
 </div>
 </div>

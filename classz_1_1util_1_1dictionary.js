@@ -16,5 +16,6 @@ var classz_1_1util_1_1dictionary =
     [ "range", "classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309", null ],
     [ "read", "classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d", null ],
     [ "save", "classz_1_1util_1_1dictionary.html#aafe3c0d726b61410f721f36f94c98876", null ],
-    [ "setCaseSensitive", "classz_1_1util_1_1dictionary.html#a5ef268f57ce950294fb9660861f7962e", null ]
+    [ "setCaseSensitive", "classz_1_1util_1_1dictionary.html#a5ef268f57ce950294fb9660861f7962e", null ],
+    [ "write", "classz_1_1util_1_1dictionary.html#a9ee746c8076310a0d43c5d20854fc452", null ]
 ];
