@@ -1,6 +1,8 @@
 #include "dictionary.hpp"
 #include "../core/charFunctions.hpp"
+#include "../core/join.hpp"
 #include "../file/exceptions.hpp"
+#include "../file/write.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -69,6 +71,10 @@ bool dictionary::read(const zstring &filename, const core::timeout &time, bool a
 	}
 
 	return !stream.eof();
+}
+
+void dictionary::write(const zstring &filename) {
+	z::file::write(z::core::joinDeref(*this, '\n'_zs), filename);
 }
 
 bool dictionary::isWord(const zstring &word) const noexcept {

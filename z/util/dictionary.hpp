@@ -40,7 +40,7 @@ public:
 	void clear() noexcept;
 
 	/**
-	 * @brief Read this dictionary's word list as text from a stream.
+	 * @brief Read this dictionary's word list as text from a file.
 	 *
 	 * Note that for long dictionaries, it may take
 	 * several seconds for this operation to complete!
@@ -60,6 +60,14 @@ public:
 	 * @threadsafe_member_no
 	 */
 	bool read(const zstring &filename, const core::timeout &time = -1, bool assumePresorted = false);
+
+	/**
+	 * @brief Write this dictionary's word list to a file.
+	 * @param filename The file to write to.
+	 * @throws z::file::unwritable if writing failed.
+	 * @threadsafe_member_no
+	 */
+	void write(const zstring &filename);
 
 	/**
 	 * @brief Check if the given string is a valid word in the dictionary (case is ignored).
