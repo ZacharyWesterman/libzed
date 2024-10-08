@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.52</span>
+   &#160;<span id="projectnumber">1.7.53</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -167,7 +167,8 @@ Linking to this library</h3>
 <div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span></div>
 </div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -Wl,--gc-sections</div>
 </div><!-- fragment --><p> Note the effectiveness of this depends on the architecture and the specific compiler used.</p>
-<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
+<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
+<div class="line">$ gzexe example.out &amp;&amp; rm example.out~</div>
 </div><!-- fragment --> <hr  />
 <p> Download or fork: <a href="https://github.com/ZacharyWesterman/libzed">GitHub repo</a>. </p>
 </div></div><!-- PageDoc -->
