@@ -35,10 +35,7 @@ int main() {
 	// Here, we are taking a long range, and binding a progress bar be updated while we iterate through it.
 	z::util::progress progress;
 	long max = 10'000'000;
-	auto numbers = range(max).map<long>([max, &progress](auto i) {
-		progress.set(std::cout, i, max);
-		return i;
-	});
+	auto numbers = range(max).forEach([max, &progress](auto i) { progress.set(std::cout, i, max); });
 
 	// See how here, we're not directly calling progress.set, but the progress bar displays!
 	"\nSum a long range and display the progress:"_zs.writeln(std::cout);

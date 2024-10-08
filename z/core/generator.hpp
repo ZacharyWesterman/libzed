@@ -226,6 +226,28 @@ public:
 
 		return value;
 	}
+
+	/**
+	 * @brief Binds a function to run each time an item comes out of the generator.
+	 *
+	 * This function wraps the existing generator function in another function, effectively binding extra logic to this generator.
+	 * each item on-the-fly as it's generated.
+	 *
+	 * @param newLambda A function that takes a constant reference to an element of type `T` and returns nothing.
+	 * @return A reference to this generator, with the new function bound.
+	 */
+	generator &forEach(std::function<void(const T &)> newLambda) {
+		auto lambda = this->lambda;
+		this->lambda = [lambda, newLambda](S &state) {
+			auto item = lambda(state);
+			if (!item.done) {
+				newLambda(item.value);
+			}
+			return item;
+		};
+
+		return *this;
+	}
 };
 
 } // namespace core
