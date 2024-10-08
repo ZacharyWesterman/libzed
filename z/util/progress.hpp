@@ -26,7 +26,8 @@ public:
 	/**
 	 * @brief Update the progress bar.
 	 * @param stream The stream to write to.
-	 * @param percent The current progress. Assumed to be in the range 0-100 inclusive.
+	 * @param item The current item. Assumed to be in the range `0` to `max-1`, inclusive.
+	 * @param max The total number of items. This will be 1 more than `item` can ever be.
 	 * @param message An optional message to display in front of the percent.
 	 * @param force If true, ignore frequency limit and force the stream to be updated.
 	 */
