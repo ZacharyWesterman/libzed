@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.49</span>
+   &#160;<span id="projectnumber">1.7.52</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -226,10 +226,23 @@ $(document).ready(function(){initNavTree('generator_8hpp_source.html',''); initR
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">return</span> value;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;};</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;} <span class="comment">// namespace core</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2">  239</a></span>&#160;    <a class="code" href="classz_1_1core_1_1generator.html">generator</a> &amp;<a class="code" href="classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2">forEach</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> T &amp;)&gt; newLambda) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keyword">auto</span> lambda = this-&gt;lambda;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        this-&gt;lambda = [lambda, newLambda](S &amp;state) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keyword">auto</span> item = lambda(state);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">if</span> (!item.done) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                newLambda(item.value);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="keywordflow">return</span> item;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        };</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;};</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;} <span class="comment">// namespace core</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition:</b> array.hpp:36</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_a0563b29018ef6aeff5e0abbf33bd87d9"><div class="ttname"><a href="classz_1_1core_1_1array.html#a0563b29018ef6aeff5e0abbf33bd87d9">z::core::array::push</a></div><div class="ttdeci">int push(const T &amp;object) noexcept</div><div class="ttdoc">Add an object to the array.</div><div class="ttdef"><b>Definition:</b> array.hpp:203</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_1_1iterator_html"><div class="ttname"><a href="classz_1_1core_1_1generator_1_1iterator.html">z::core::generator::iterator</a></div><div class="ttdoc">Custom iterator for generators to allow for range-based for loops.</div><div class="ttdef"><b>Definition:</b> generator.hpp:50</div></div>
@@ -245,6 +258,7 @@ $(document).ready(function(){initNavTree('generator_8hpp_source.html',''); initR
 <div class="ttc" id="aclassz_1_1core_1_1generator_html_a6f4a3757e660f83967637fc404d00257"><div class="ttname"><a href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">z::core::generator::count</a></div><div class="ttdeci">long count()</div><div class="ttdoc">Consume all items from the generator, getting the total count.</div><div class="ttdef"><b>Definition:</b> generator.hpp:126</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html_a716ea9e1413f3ba3e9df2e1fbf17d29c"><div class="ttname"><a href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">z::core::generator::reduce</a></div><div class="ttdeci">T reduce(const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; reduceLambda)</div><div class="ttdoc">Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...</div><div class="ttdef"><b>Definition:</b> generator.hpp:210</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html_aa0c3b3426e4edf42d497e424e6647a2e"><div class="ttname"><a href="classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e">z::core::generator::map</a></div><div class="ttdeci">generator&lt; U, S &gt; map(std::function&lt; U(const T &amp;)&gt; mapLambda)</div><div class="ttdoc">Applies a transformation function to each item that comes out of the generator.</div><div class="ttdef"><b>Definition:</b> generator.hpp:158</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1generator_html_ac9ef2bfcfa978d48b4531ba996c731b2"><div class="ttname"><a href="classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2">z::core::generator::forEach</a></div><div class="ttdeci">generator &amp; forEach(std::function&lt; void(const T &amp;)&gt; newLambda)</div><div class="ttdoc">Binds a function to run each time an item comes out of the generator.</div><div class="ttdef"><b>Definition:</b> generator.hpp:239</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html_adbc6df614071beb3d23c06fe403c3769"><div class="ttname"><a href="classz_1_1core_1_1generator.html#adbc6df614071beb3d23c06fe403c3769">z::core::generator::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdoc">End iterator (end of the range)</div><div class="ttdef"><b>Definition:</b> generator.hpp:107</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html_afe06ca01f6a68b6ffa7b16a38d4708a2"><div class="ttname"><a href="classz_1_1core_1_1generator.html#afe06ca01f6a68b6ffa7b16a38d4708a2">z::core::generator::generator</a></div><div class="ttdeci">generator(const S &amp;initial, std::function&lt; const yield&lt; T &gt;(S &amp;)&gt; lambda)</div><div class="ttdoc">Constructor with an initial state.</div><div class="ttdef"><b>Definition:</b> generator.hpp:47</div></div>
 <div class="ttc" id="astructz_1_1core_1_1yield_html"><div class="ttname"><a href="structz_1_1core_1_1yield.html">z::core::yield</a></div><div class="ttdoc">The return value for generator functions.</div><div class="ttdef"><b>Definition:</b> generator.hpp:18</div></div>

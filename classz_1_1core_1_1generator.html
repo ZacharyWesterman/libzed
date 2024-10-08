@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.49</span>
+   &#160;<span id="projectnumber">1.7.52</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -144,6 +144,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">reduce</a> (const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; reduceLambda)</td></tr>
 <tr class="memdesc:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.  <a href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">More...</a><br /></td></tr>
 <tr class="separator:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ef2bfcfa978d48b4531ba996c731b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2">forEach</a> (std::function&lt; void(const T &amp;)&gt; newLambda)</td></tr>
+<tr class="memdesc:ac9ef2bfcfa978d48b4531ba996c731b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds a function to run each time an item comes out of the generator.  <a href="classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2">More...</a><br /></td></tr>
+<tr class="separator:ac9ef2bfcfa978d48b4531ba996c731b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T, typename S&gt;<br />
@@ -362,6 +365,44 @@ template&lt;typename T , typename S &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new generator that yields only items that satisfy the predicate. </dd></dl>
+
+</div>
+</div>
+<a id="ac9ef2bfcfa978d48b4531ba996c731b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9ef2bfcfa978d48b4531ba996c731b2">&#9670;&nbsp;</a></span>forEach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename S &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&amp; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; T, S &gt;::forEach </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const T &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>newLambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Binds a function to run each time an item comes out of the generator. </p>
+<p>This function wraps the existing generator function in another function, effectively binding extra logic to this generator. each item on-the-fly as it's generated.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newLambda</td><td>A function that takes a constant reference to an element of type <code>T</code> and returns nothing. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this generator, with the new function bound. </dd></dl>
 
 </div>
 </div>

@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.49</span>
+   &#160;<span id="projectnumber">1.7.52</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -251,7 +251,8 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stream</td><td>The stream to write to. </td></tr>
-    <tr><td class="paramname">percent</td><td>The current progress. Assumed to be in the range 0-100 inclusive. </td></tr>
+    <tr><td class="paramname">item</td><td>The current item. Assumed to be in the range <code>0</code> to <code>max-1</code>, inclusive. </td></tr>
+    <tr><td class="paramname">max</td><td>The total number of items. This will be 1 more than <code>item</code> can ever be. </td></tr>
     <tr><td class="paramname">message</td><td>An optional message to display in front of the percent. </td></tr>
     <tr><td class="paramname">force</td><td>If true, ignore frequency limit and force the stream to be updated. </td></tr>
   </table>

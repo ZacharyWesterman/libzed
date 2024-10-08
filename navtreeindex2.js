@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"index.html#autotoc_md5":[0,4],
-"index.html#autotoc_md6":[0,5],
 "indexable_8hpp_source.html":[3,0,0,0,6],
 "info_8hpp_source.html":[3,0,0,1,9],
 "iterable_8hpp_source.html":[3,0,0,0,7],
@@ -80,8 +78,8 @@ var NAVTREEINDEX2 =
 "namespacez_1_1math.html#ab8fdf94bd8614236e8a0c5d307354e07":[1,0,1,2,10],
 "namespacez_1_1math.html#ac35db08460fceaec9114f623643ea902":[1,0,1,2,2],
 "namespacez_1_1system.html":[1,0,1,3],
+"namespacez_1_1system.html#a058b8e8ba45f46f4e28c9c3096f85919":[1,0,1,3,3],
 "namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00":[1,0,1,3,2],
-"namespacez_1_1system.html#ae74cca7732c9f860ab1debce15108022":[1,0,1,3,3],
 "namespacez_1_1util.html":[1,0,1,4],
 "numberwang_8cpp-example.html":[4,8],
 "pages.html":[],
@@ -145,15 +143,18 @@ var NAVTREEINDEX2 =
 "write_8hpp_source.html":[3,0,0,1,18],
 "zeta_8hpp_source.html":[3,0,0,2,8],
 "zstr_8hpp.html":[3,0,0,0,20],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[1,0,1,0,1,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[3,0,0,0,20,0],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[1,0,1,0,1,0,1],
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[1,0,1,0,1,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[3,0,0,0,20,0,1],
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[1,0,1,0,1,0,1],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[3,0,0,0,20,0,3],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[1,0,1,0,1,0,3],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[3,0,0,0,20,0,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[1,0,1,0,1,0,0],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,20,0,2],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[1,0,1,0,1,0,2],
-"zstr_8hpp_source.html":[3,0,0,0,20]
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,20,0,2],
+"zstr_8hpp_source.html":[3,0,0,0,20],
+"":[1,0,1],
+"":[1,0,1,0,1],
+"":[1,0,1,0,0]
 };
