@@ -117,8 +117,11 @@ $ g++ -o example.out example.o -lzed -L"/path/to/lib" -Wl,--gc-sections
 Note the effectiveness of this depends on the architecture and the specific compiler used.
 
 Afterwards, if binary size is still an issue, stripping out symbols may help a bit.
+You may also be able to use `gzexe` to compress the binary and reduce size even further.
+Note that these tricks will **NOT** work with dll/so files, only executables!
 ~~~
 $ strip example.out --strip-all
+$ gzexe example.out && rm example.out~
 ~~~
 ___
 Download or fork: [GitHub repo][repo].
