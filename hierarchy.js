@@ -6,7 +6,7 @@ var hierarchy =
     [ "z::file::dirscan", "structz_1_1file_1_1dirscan.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
     [ "z::file::fileHandle", "structz_1_1file_1_1fileHandle.html", null ],
-    [ "z::core::generator< T, S >", "classz_1_1core_1_1generator.html", null ],
+    [ "z::core::generatorIter< T, S >", "classz_1_1core_1_1generatorIter.html", null ],
     [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::core::indexable< T >", "classz_1_1core_1_1indexable.html", [
@@ -38,7 +38,9 @@ var hierarchy =
       [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", null ],
       [ "z::core::arrayLike< T, ITER >", "classz_1_1core_1_1arrayLike.html", null ]
     ] ],
-    [ "z::core::generator< T, S >::iterator", "classz_1_1core_1_1generator_1_1iterator.html", null ],
+    [ "z::core::iterable< generatorIter< T, S > >", "classz_1_1core_1_1iterable.html", [
+      [ "z::core::generator< T, S >", "classz_1_1core_1_1generator.html", null ]
+    ] ],
     [ "z::core::types::lesserExists< T, Arg >", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
     [ "z::file::library", "classz_1_1file_1_1library.html", null ],
     [ "z::math::matrix< N >", "classz_1_1math_1_1matrix.html", null ],

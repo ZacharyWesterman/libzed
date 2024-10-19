@@ -24,6 +24,7 @@ var namespacez_1_1core =
     [ "circularIterator", "classz_1_1core_1_1circularIterator.html", "classz_1_1core_1_1circularIterator" ],
     [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
     [ "yield", "structz_1_1core_1_1yield.html", "structz_1_1core_1_1yield" ],
+    [ "generatorIter", "classz_1_1core_1_1generatorIter.html", "classz_1_1core_1_1generatorIter" ],
     [ "generator", "classz_1_1core_1_1generator.html", "classz_1_1core_1_1generator" ],
     [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
     [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
