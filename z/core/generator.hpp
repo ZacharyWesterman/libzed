@@ -23,6 +23,53 @@ struct yield {
 	T value;
 };
 
+/// Custom iterator for generators to allow for range-based for loops.
+template <typename T, typename S>
+class generatorIter {
+	std::function<const yield<T>(S &)> lambda;
+	S state;
+	yield<T> current_yield;
+
+public:
+	/**
+	 * @brief Constructor.
+	 * @param lambda The generator function.
+	 * @param state The state data that may be mutated by the generator function.
+	 * @param dummy If true, do not generate data. This is here just so range-based loop syntax will work.
+	 */
+	explicit generatorIter(std::function<const yield<T>(S &)> lambda, const S &state, bool dummy = false) : lambda(lambda), state(state), current_yield({false, {}}) {
+		if (!dummy) {
+			++(*this); // Load the first value
+		}
+	}
+
+	/**
+	 * @brief Get the current value from the generator.
+	 * @return The last value that was generated.
+	 */
+	const T &operator*() const {
+		return current_yield.value;
+	}
+
+	/**
+	 * @brief Generate the next value.
+	 * @return This iterator after getting the next value from the generator.
+	 */
+	generatorIter &operator++() {
+		current_yield = lambda(state);
+		return *this;
+	}
+
+	/**
+	 * @brief Check if the generator can get more data.
+	 * @return \b false if the generator is finished, \b true otherwise.
+	 */
+	bool operator!=(const generatorIter &other) const {
+		(void)other;
+		return !current_yield.done;
+	}
+};
+
 /**
  * @brief An arbitrary generator for producing sequential results on-the-fly.
  *
@@ -34,7 +81,7 @@ struct yield {
  * @tparam S The state data for the generator.
  */
 template <typename T, typename S>
-class generator {
+class generator : public iterable<generatorIter<T, S>> {
 	S state;
 	std::function<const yield<T>(S &)> lambda;
 
@@ -46,66 +93,20 @@ public:
 	 */
 	generator(const S &initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
 
-	/// Custom iterator for generators to allow for range-based for loops.
-	class iterator {
-		std::function<const yield<T>(S &)> lambda;
-		yield<T> current_yield;
-		S *state;
-
-	public:
-		/**
-		 * @brief Constructor.
-		 * @param lambda The generator function.
-		 * @param state The state data that may be mutated by the generator function.
-		 * @param dummy If true, do not generate data. This is here just so range-based loop syntax will work.
-		 */
-		explicit iterator(std::function<const yield<T>(S &)> lambda, S *state, bool dummy = false) : lambda(lambda), state(state), current_yield({false, {}}) {
-			if (!dummy) {
-				++(*this); // Load the first value
-			}
-		}
-
-		/**
-		 * @brief Get the current value from the generator.
-		 * @return The last value that was generated.
-		 */
-		const T &operator*() const {
-			return current_yield.value;
-		}
-
-		/**
-		 * @brief Generate the next value.
-		 * @return This iterator after getting the next value from the generator.
-		 */
-		iterator &operator++() {
-			current_yield = lambda(*state);
-			return *this;
-		}
-
-		/**
-		 * @brief Check if the generator can get more data.
-		 * @return \b false if the generator is finished, \b true otherwise.
-		 */
-		bool operator!=(const iterator &other) const {
-			(void)other;
-			return !current_yield.done;
-		}
-	};
-
 	/**
 	 * @brief Begin iterator (start of the range)
 	 * @return An iterator that will give the first value in the generator.
 	 */
-	iterator begin() {
-		return iterator(lambda, &state);
+	generatorIter<T, S> begin() const noexcept override {
+		return generatorIter<T, S>(lambda, state);
 	}
 
 	/**
 	 * @brief End iterator (end of the range)
 	 * @return A dummy iterator indicating the end of the range.
 	 */
-	iterator end() {
-		return iterator(lambda, &state, true);
+	generatorIter<T, S> end() const noexcept override {
+		return generatorIter<T, S>(lambda, state, true);
 	}
 
 	/**
