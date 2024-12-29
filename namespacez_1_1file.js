@@ -21,6 +21,7 @@ var namespacez_1_1file =
     [ "makeDir", "namespacez_1_1file.html#ace9a92a8d06c47199b8e0b9afc21b470", null ],
     [ "path", "namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8", null ],
     [ "read", "namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b", null ],
+    [ "remove", "namespacez_1_1file.html#a9565ebf975f279fe0f3ae5ee03497015", null ],
     [ "shorten", "namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb", null ],
     [ "size", "namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a", null ],
     [ "write", "namespacez_1_1file.html#af5591ecd6550ce0c937bbb7bf8236cf8", null ]

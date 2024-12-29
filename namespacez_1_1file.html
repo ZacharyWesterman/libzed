@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.59</span>
+   &#160;<span id="projectnumber">1.7.60</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -173,6 +173,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a5cca14bedca539f52f5732c15f0a3d6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zstring</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">read</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename)</td></tr>
 <tr class="memdesc:a5cca14bedca539f52f5732c15f0a3d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the entire contents of a specified file.  <a href="namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b">More...</a><br /></td></tr>
 <tr class="separator:a5cca14bedca539f52f5732c15f0a3d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9565ebf975f279fe0f3ae5ee03497015"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a9565ebf975f279fe0f3ae5ee03497015">remove</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename) noexcept</td></tr>
+<tr class="memdesc:a9565ebf975f279fe0f3ae5ee03497015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a file from the filesystem.  <a href="namespacez_1_1file.html#a9565ebf975f279fe0f3ae5ee03497015">More...</a><br /></td></tr>
+<tr class="separator:a9565ebf975f279fe0f3ae5ee03497015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a3d8734325b192871b75dae9514cceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb">shorten</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a>) noexcept</td></tr>
 <tr class="memdesc:a6a3d8734325b192871b75dae9514cceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shorten the given directory string.  <a href="namespacez_1_1file.html#a6a3d8734325b192871b75dae9514cceb">More...</a><br /></td></tr>
 <tr class="separator:a6a3d8734325b192871b75dae9514cceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -724,6 +727,41 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a9565ebf975f279fe0f3ae5ee03497015"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9565ebf975f279fe0f3ae5ee03497015">&#9670;&nbsp;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool z::file::remove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove a file from the filesystem. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the path of the file to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><b>True</b> if the file was removed successfully. <b>False</b> otherwise. </dd></dl>
 
 </div>
 </div>

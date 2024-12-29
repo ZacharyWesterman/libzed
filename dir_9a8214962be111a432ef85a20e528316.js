@@ -16,6 +16,7 @@ var dir_9a8214962be111a432ef85a20e528316 =
     [ "makeDir.hpp", "makeDir_8hpp_source.html", null ],
     [ "path.hpp", "path_8hpp_source.html", null ],
     [ "read.hpp", "read_8hpp_source.html", null ],
+    [ "remove.hpp", "remove_8hpp_source.html", null ],
     [ "shorten.hpp", "shorten_8hpp_source.html", null ],
     [ "size.hpp", "size_8hpp_source.html", null ],
     [ "write.hpp", "write_8hpp_source.html", null ]
