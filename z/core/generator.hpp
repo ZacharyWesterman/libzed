@@ -121,7 +121,8 @@ public:
 	}
 
 	/**
-	 * @brief Consume all items from the generator, getting the total count.
+	 * @brief Get the total count of items that will be generated.
+	 * @warning This function will consume the generator, and it will not be able to be used again.
 	 * @return The number of items that were generated.
 	 */
 	inline long count() {
@@ -135,6 +136,7 @@ public:
 
 	/**
 	 * @brief Concatenate all generator elements into an array.
+	 * @note This function will consume the generator, and it will not be able to be used again.
 	 * @return An array containing all elements from the generator.
 	 */
 	array<T> collect() {
@@ -142,6 +144,29 @@ public:
 		for (auto i : *this) {
 			result.push(i);
 		}
+		return result;
+	}
+
+	/**
+	 * @brief Take a certain number of items from the generator.
+	 *
+	 * This function will take a certain number of items from the generator, or all items if there are fewer than the requested count.
+	 *
+	 * @param count The number of items to take.
+	 * @return An array containing the taken items.
+	 */
+	array<T> take(int count) {
+		array<T> result;
+		result.increase(count);
+
+		for (int i = 0; i < count; i++) {
+			auto item = next();
+			if (item.done) {
+				break;
+			}
+			result.push(item.value);
+		}
+
 		return result;
 	}
 

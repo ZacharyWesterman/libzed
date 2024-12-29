@@ -40,3 +40,29 @@ TEST_CASE("Range, reduce", "[range]") {
 	auto mult = z::core::range(1, 10).reduce(1, [](auto a, auto b) { return a * b; });
 	REQUIRE(sum == 45);
 }
+
+TEST_CASE("Range, take", "[range]") {
+	auto r = z::core::range(10).take(5);
+	REQUIRE(r.length() == 5);
+	for (int i = 0; i < 5; i++) {
+		REQUIRE(r[i] == i);
+	}
+}
+
+TEST_CASE("Range, collect", "[range]") {
+	auto r = z::core::range(10).collect();
+	REQUIRE(r.length() == 10);
+	for (int i = 0; i < 10; i++) {
+		REQUIRE(r[i] == i);
+	}
+}
+
+TEST_CASE("Range, count", "[range]") {
+	auto c = z::core::range(10).count();
+	REQUIRE(c == 10);
+}
+
+TEST_CASE("Range, empty", "[range]") {
+	auto r = z::core::range(0);
+	REQUIRE(r.count() == 0);
+}

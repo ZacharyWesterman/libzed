@@ -84,3 +84,22 @@ TEST_CASE("Load a dynamic library", "[file]") {
 
 	REQUIRE(add(30, 12) == 42);
 }
+
+TEST_CASE("Load a dynamic library with a bad path", "[file]") {
+	z::file::library lib;
+	REQUIRE(lib.load("THIS FILE DOES NOT EXIST") == false);
+
+	REQUIRE(lib.good() == false);
+	REQUIRE(lib.bad() == true);
+}
+
+TEST_CASE("Load a dynamic library with a bad symbol", "[file]") {
+	z::file::library lib;
+	REQUIRE(lib.load(z::file::execdir() + "/libtest") == true);
+
+	REQUIRE(lib.good() == true);
+	REQUIRE(lib.bad() == false);
+
+	auto value_ptr = lib.symbol<int>("THIS SYMBOL DOES NOT EXIST");
+	REQUIRE(value_ptr == nullptr);
+}
