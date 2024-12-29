@@ -9,5 +9,6 @@ var classz_1_1core_1_1generator =
     [ "forEach", "classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2", null ],
     [ "map", "classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e", null ],
     [ "next", "classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e", null ],
-    [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ]
+    [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
+    [ "take", "classz_1_1core_1_1generator.html#a287f47c5c3d66c64e5f2cf280b1e8bfd", null ]
 ];

@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.62</span>
+   &#160;<span id="projectnumber">1.7.63</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -131,11 +131,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2e22af664fd0a6f5cb4a342062e3461e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next item from the generator.  <a href="classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e">More...</a><br /></td></tr>
 <tr class="separator:a2e22af664fd0a6f5cb4a342062e3461e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f4a3757e660f83967637fc404d00257"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a> ()</td></tr>
-<tr class="memdesc:a6f4a3757e660f83967637fc404d00257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consume all items from the generator, getting the total count.  <a href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">More...</a><br /></td></tr>
+<tr class="memdesc:a6f4a3757e660f83967637fc404d00257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total count of items that will be generated.  <a href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">More...</a><br /></td></tr>
 <tr class="separator:a6f4a3757e660f83967637fc404d00257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b188be818c374393b6d586f9cce0f23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a0b188be818c374393b6d586f9cce0f23">collect</a> ()</td></tr>
 <tr class="memdesc:a0b188be818c374393b6d586f9cce0f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate all generator elements into an array.  <a href="classz_1_1core_1_1generator.html#a0b188be818c374393b6d586f9cce0f23">More...</a><br /></td></tr>
 <tr class="separator:a0b188be818c374393b6d586f9cce0f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287f47c5c3d66c64e5f2cf280b1e8bfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a287f47c5c3d66c64e5f2cf280b1e8bfd">take</a> (int <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>)</td></tr>
+<tr class="memdesc:a287f47c5c3d66c64e5f2cf280b1e8bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a certain number of items from the generator.  <a href="classz_1_1core_1_1generator.html#a287f47c5c3d66c64e5f2cf280b1e8bfd">More...</a><br /></td></tr>
+<tr class="separator:a287f47c5c3d66c64e5f2cf280b1e8bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0c3b3426e4edf42d497e424e6647a2e"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
 <tr class="memitem:aa0c3b3426e4edf42d497e424e6647a2e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; U, S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e">map</a> (std::function&lt; U(const T &amp;)&gt; mapLambda)</td></tr>
 <tr class="memdesc:aa0c3b3426e4edf42d497e424e6647a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a transformation function to each item that comes out of the generator.  <a href="classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e">More...</a><br /></td></tr>
@@ -275,6 +278,7 @@ template&lt;typename T , typename S &gt; </div>
 </div><div class="memdoc">
 
 <p>Concatenate all generator elements into an array. </p>
+<dl class="section note"><dt>Note</dt><dd>This function will consume the generator, and it will not be able to be used again. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>An array containing all elements from the generator. </dd></dl>
 
 </div>
@@ -304,7 +308,8 @@ template&lt;typename T , typename S &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Consume all items from the generator, getting the total count. </p>
+<p>Get the total count of items that will be generated. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This function will consume the generator, and it will not be able to be used again. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of items that were generated. </dd></dl>
 
 </div>
@@ -541,6 +546,44 @@ template&lt;typename T , typename S &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result of the reduction operation. </dd></dl>
+
+</div>
+</div>
+<a id="a287f47c5c3d66c64e5f2cf280b1e8bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a287f47c5c3d66c64e5f2cf280b1e8bfd">&#9670;&nbsp;</a></span>take()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename S &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt;T&gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; T, S &gt;::take </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Take a certain number of items from the generator. </p>
+<p>This function will take a certain number of items from the generator, or all items if there are fewer than the requested count.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>The number of items to take. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array containing the taken items. </dd></dl>
 
 </div>
 </div>

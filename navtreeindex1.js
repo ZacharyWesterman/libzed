@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#adb98c8ecf3aa9a78a59d88cf2a94c7bc":[2,0,0,0,14,25],
 "classz_1_1core_1_1string.html#add83555e69ff34808f7f78c35ad8590d":[2,0,0,0,14,84],
 "classz_1_1core_1_1string.html#ae874c9d0a4107c1891b91218068266cd":[2,0,0,0,14,17],
 "classz_1_1core_1_1string.html#ae8a9196e39c9db62eace90b131fb4672":[2,0,0,0,14,79],
@@ -166,8 +167,8 @@ var NAVTREEINDEX1 =
 "dirname_8hpp_source.html":[3,0,0,1,4],
 "dynamicLib_8cpp-example.html":[4,3],
 "encoding_8hpp.html":[3,0,0,7],
-"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[3,0,0,7,0],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[1,0,1,6],
+"encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17":[3,0,0,7,0],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b":[1,0,1,6,0],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a654605c563362afdd5cf77f05424511b":[3,0,0,7,0,0],
 "encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17a665ffa67aa2d03eb2d06f4bc67b4d407":[3,0,0,7,0,2],
@@ -241,13 +242,12 @@ var NAVTREEINDEX1 =
 "generic_8hpp.html#a7f3d9d080d7bb264e2aab2988f46bf57":[1,0,1,5],
 "generic_8hpp_source.html":[3,0,0,4,3],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md0":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md2":[0,1],
 "index.html#autotoc_md3":[0,2],
 "index.html#autotoc_md4":[0,3],
-"index.html#autotoc_md5":[0,4],
-"index.html#autotoc_md6":[0,5]
+"index.html#autotoc_md5":[0,4]
 };
