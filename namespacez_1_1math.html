@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.67</span>
+   &#160;<span id="projectnumber">1.7.68</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -123,12 +123,6 @@ Functions</h2></td></tr>
 <tr class="memitem:aa4d625f8318b48a47999a24fd4edf4bf"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#aa4d625f8318b48a47999a24fd4edf4bf">fibonacci</a> (int n) noexcept</td></tr>
 <tr class="memdesc:aa4d625f8318b48a47999a24fd4edf4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the n<sup>th</sup> number in the Fibonacci sequence.  <a href="namespacez_1_1math.html#aa4d625f8318b48a47999a24fd4edf4bf">More...</a><br /></td></tr>
 <tr class="separator:aa4d625f8318b48a47999a24fd4edf4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cafda6ffe11ce9ebc6c94843b0f1b97"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a2cafda6ffe11ce9ebc6c94843b0f1b97">gcd</a> (long x, long y) noexcept</td></tr>
-<tr class="memdesc:a2cafda6ffe11ce9ebc6c94843b0f1b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the greatest common denominator of two integers.  <a href="namespacez_1_1math.html#a2cafda6ffe11ce9ebc6c94843b0f1b97">More...</a><br /></td></tr>
-<tr class="separator:a2cafda6ffe11ce9ebc6c94843b0f1b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23fc1bcd7cac515aee3761abc73c719b"><td class="memItemLeft" align="right" valign="top">std::complex&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a23fc1bcd7cac515aee3761abc73c719b">gcd</a> (const std::complex&lt; long &gt; &amp;x, const std::complex&lt; long &gt; &amp;y) noexcept</td></tr>
-<tr class="memdesc:a23fc1bcd7cac515aee3761abc73c719b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the greatest common denominator of two complex integers.  <a href="namespacez_1_1math.html#a23fc1bcd7cac515aee3761abc73c719b">More...</a><br /></td></tr>
-<tr class="separator:a23fc1bcd7cac515aee3761abc73c719b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplParams" colspan="2">template&lt;encoding E&gt; </td></tr>
 <tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e">levenschtein</a> (const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word1, const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word2, int max=16) noexcept</td></tr>
 <tr class="memdesc:a0fd66ad1b980886da9c9a4a88193116e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Levenshtein distance between two strings with an optional maximum threshold.  <a href="namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e">More...</a><br /></td></tr>
@@ -282,102 +276,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the n<sup>th</sup> number in the Fibonacci sequence.</dd></dl>
 <dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a23fc1bcd7cac515aee3761abc73c719b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23fc1bcd7cac515aee3761abc73c719b">&#9670;&nbsp;</a></span>gcd() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::complex&lt;long&gt; z::math::gcd </td>
-          <td>(</td>
-          <td class="paramtype">const std::complex&lt; long &gt; &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::complex&lt; long &gt; &amp;&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the greatest common denominator of two complex integers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>the first integer of type <b>std::complex</b>. </td></tr>
-    <tr><td class="paramname">y</td><td>the second integer of type <b>std::complex</b>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The greatest common denominator of both numbers.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacez_1_1math.html#a2cafda6ffe11ce9ebc6c94843b0f1b97" title="Calculate the greatest common denominator of two integers.">gcd(long,long)</a> </dd></dl>
-
-</div>
-</div>
-<a id="a2cafda6ffe11ce9ebc6c94843b0f1b97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cafda6ffe11ce9ebc6c94843b0f1b97">&#9670;&nbsp;</a></span>gcd() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long z::math::gcd </td>
-          <td>(</td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the greatest common denominator of two integers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>the first integer. </td></tr>
-    <tr><td class="paramname">y</td><td>the second integer.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The greatest common denominator of both numbers.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacez_1_1math.html#a23fc1bcd7cac515aee3761abc73c719b" title="Calculate the greatest common denominator of two complex integers.">gcd(const std::complex&lt;long&gt;&amp;,const std::complex&lt;long&gt;&amp;)</a> </dd></dl>
 
 </div>
 </div>

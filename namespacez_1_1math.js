@@ -4,8 +4,6 @@ var namespacez_1_1math =
     [ "factorial", "namespacez_1_1math.html#a6459f179b1f46909be91fac31d5aa047", null ],
     [ "factorial", "namespacez_1_1math.html#ac35db08460fceaec9114f623643ea902", null ],
     [ "fibonacci", "namespacez_1_1math.html#aa4d625f8318b48a47999a24fd4edf4bf", null ],
-    [ "gcd", "namespacez_1_1math.html#a23fc1bcd7cac515aee3761abc73c719b", null ],
-    [ "gcd", "namespacez_1_1math.html#a2cafda6ffe11ce9ebc6c94843b0f1b97", null ],
     [ "levenschtein", "namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e", null ],
     [ "zeta", "namespacez_1_1math.html#aad23d182483378f2ba9c3e2ad2e9ca8c", null ],
     [ "e", "namespacez_1_1math.html#a535fb6bfa1434facff36d8726a4767ec", null ],

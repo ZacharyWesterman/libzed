@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['no_324',['no',['../classz_1_1core_1_1types_1_1no.html',1,'z::core::types']]],
-  ['nonnumeric_325',['nonnumeric',['../structz_1_1util_1_1nonnumeric.html',1,'z::util']]]
+  ['no_323',['no',['../classz_1_1core_1_1types_1_1no.html',1,'z::core::types']]],
+  ['nonnumeric_324',['nonnumeric',['../structz_1_1util_1_1nonnumeric.html',1,'z::util']]]
 ];
