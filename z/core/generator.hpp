@@ -264,6 +264,8 @@ public:
 	 * This function wraps the existing generator function in another function, effectively binding extra logic to this generator.
 	 * each item on-the-fly as it's generated.
 	 *
+	 * @note This function does not consume the generator directly, it just runs the given function each time an item is generated.
+	 *
 	 * @param newLambda A function that takes a constant reference to an element of type `T` and returns nothing.
 	 * @return A reference to this generator, with the new function bound.
 	 */
