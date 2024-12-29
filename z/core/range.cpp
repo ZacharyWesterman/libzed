@@ -17,7 +17,7 @@ generator<long, long> range(long begin, long end, long step) noexcept {
 
 generator<long, long> range(long end) noexcept {
 	return range(0, end, 1);
-};
+}
 
 } // namespace core
 } // namespace z
