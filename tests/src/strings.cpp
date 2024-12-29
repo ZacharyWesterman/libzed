@@ -176,3 +176,70 @@ TEST_CASE("String replacement", "[string]") {
 		}
 	);
 }
+
+TEST_CASE("String splitting", "[string]") {
+	STRTEST(
+		string = "This is a test string.";
+		z::core::string<enc> delim = " ";
+		auto parts = z::core::split(string, delim);
+		REQUIRE(parts.length() == 5);
+		REQUIRE(parts[0] == "This");
+		REQUIRE(parts[1] == "is");
+		REQUIRE(parts[2] == "a");
+		REQUIRE(parts[3] == "test");
+		REQUIRE(parts[4] == "string.");
+	);
+}
+
+TEST_CASE("String joining", "[string]") {
+	STRTEST(
+		z::core::string<enc> delim = " ";
+		z::core::array<z::core::string<enc>> parts ({"This", "is", "a", "test", "string."});
+		REQUIRE(z::core::join(parts, delim) == "This is a test string.");
+	);
+}
+
+TEST_CASE("String comparison", "[string]") {
+	STRTEST(
+		string = "Test string";
+		REQUIRE(string == "Test string");
+		REQUIRE(string != "Test string.");
+		REQUIRE(string < "Test string.");
+		REQUIRE(string <= "Test string.");
+		REQUIRE(string <= "Test string");
+		REQUIRE(string > "Test strinf");
+		REQUIRE(string >= "Test strinf.");
+		REQUIRE(string >= "Test strinf");
+	);
+}
+
+TEST_CASE("String case conversion", "[string]") {
+	STRTEST(
+		string = "This is a test string.";
+		REQUIRE(string.upper() == "THIS IS A TEST STRING.");
+		REQUIRE(string.lower() == "this is a test string.");
+	);
+}
+
+TEST_CASE("String trimming", "[string]") {
+	STRTEST(
+		string = "  This is a test string.  ";
+		REQUIRE(string.trim() == "This is a test string.");
+		REQUIRE(string.trimLeft() == "This is a test string.  ");
+		REQUIRE(string.trimRight() == "  This is a test string.");
+	);
+}
+
+TEST_CASE("String filtering", "[string]") {
+	STRTEST(
+		string = "This is a test string.";
+		REQUIRE(string.filter({'a', 'z'}) == "hisisateststring");
+		REQUIRE(string.filter({'a', 'z'}, true) == "T    .");
+		REQUIRE(string.filter({{'A', 'Z'}, {'a', 'z'}}) == "Thisisateststring");
+		REQUIRE(string.filter({{'A', 'Z'}, {'a', 'z'}}, true) == "    .");
+		REQUIRE(string.filter("aeiouyAEIOUY") == "iiaei");
+
+		auto filter_lambda = [](uint32_t ch) { return ch % 2 == 0; };
+		REQUIRE(string.filter(filter_lambda) == "Th   tt trn.");
+	);
+}

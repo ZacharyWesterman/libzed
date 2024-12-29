@@ -55,3 +55,32 @@ TEST_CASE("Iterate over lines of a file with a generator", "[file]") {
 	REQUIRE(total == 5);
 	REQUIRE(z::file::lines(filename).count() == 5);
 }
+
+TEST_CASE("Copy a file and then remove it", "[file]") {
+	const zpath filename = z::file::execdir() + "/../data/file1.txt";
+	const zpath newFilename = z::file::execdir() + "/../data/file1_copy.txt";
+
+	z::file::copy(filename, newFilename);
+	REQUIRE(z::file::exists(newFilename) == true);
+
+	// Clean up
+	z::file::remove(newFilename);
+	REQUIRE(z::file::exists(newFilename) == false);
+}
+
+TEST_CASE("Load a dynamic library", "[file]") {
+	z::file::library lib;
+	REQUIRE(lib.load(z::file::execdir() + "/libtest") == true);
+
+	REQUIRE(lib.good() == true);
+	REQUIRE(lib.bad() == false);
+
+	auto value_ptr = lib.symbol<int>("value");
+	auto add = lib.function<int(int, int)>("add");
+
+	REQUIRE(add != nullptr);
+	REQUIRE(value_ptr != nullptr);
+	REQUIRE(*value_ptr == 42);
+
+	REQUIRE(add(30, 12) == 42);
+}

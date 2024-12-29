@@ -971,7 +971,7 @@ public:
 			}
 		}
 
-		return substr(0, index);
+		return substr(0, index + 1);
 	}
 
 	/**
