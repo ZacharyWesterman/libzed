@@ -31,6 +31,12 @@ int main() {
 		}
 	}
 
+	// Skipping elements
+	"\nskipping some elements and limiting to 5 total:"_zs.writeln(std::cout);
+	for (auto i : range(100).skip(5).limit(5)) {
+		(">"_zs + i).writeln(std::cout);
+	}
+
 	// A fun feature of generators is that they can have extra functionality bound to them.
 	// Here, we are taking a long range, and binding a progress bar be updated while we iterate through it.
 	z::util::progress progress;

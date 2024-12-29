@@ -7,6 +7,7 @@
 namespace z {
 namespace core {
 
+/// @private
 template <typename T>
 class memoize;
 
@@ -44,7 +45,7 @@ public:
 	 *
 	 * @param lambda The lambda to memoize.
 	 */
-	memoize(R(lambda(Args...))) : lambda(lambda) {}
+	memoize(R lambda(Args...)) : lambda(lambda) {}
 
 	memoize() = delete;
 

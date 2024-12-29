@@ -85,6 +85,11 @@ class generator : public iterable<generatorIter<T, S>> {
 	S state;
 	std::function<const yield<T>(S &)> lambda;
 
+	struct countedState {
+		long count;
+		S state;
+	};
+
 public:
 	/**
 	 * @brief Constructor with an initial state.
@@ -273,6 +278,57 @@ public:
 		};
 
 		return *this;
+	}
+
+	/**
+	 * @brief Skips a certain number of items from the generator.
+	 *
+	 * This function will skip a certain number of items from the generator, or all items if there are fewer than the requested count.
+	 *
+	 * @note This function does not consume the generator directly, it just skips items as they are generated.
+	 *
+	 * @param count The number of items to skip.
+	 * @return A new generator that skips the given number of items.
+	 */
+	generator<T, countedState> skip(long count) {
+		auto lambda = this->lambda;
+
+		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
+			for (long i = 0; i < state.count; i++) {
+				auto item = lambda(state.state);
+				if (item.done) {
+					return item;
+				}
+			}
+			state.count = 0;
+
+			return lambda(state.state);
+		});
+	}
+
+	/**
+	 * @brief Limits the number of items that the generator will yield.
+	 *
+	 * @param count The maximum number of items to yield.
+	 * @return A new generator that yields the given number of items.
+	 */
+	generator<T, countedState> limit(long count) {
+		auto lambda = this->lambda;
+
+		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
+			if (state.count <= 0) {
+				return yield<T>{true};
+			}
+
+			auto item = lambda(state.state);
+			if (item.done) {
+				return item;
+			}
+
+			state.count--;
+
+			return item;
+		});
 	}
 };
 
