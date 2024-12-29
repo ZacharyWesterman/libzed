@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.64</span>
+   &#160;<span id="projectnumber">1.7.65</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('memoize_8cpp-example.html',''); initRe
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    <span class="comment">// Create a memoized version of the function.</span></div>
-<div class="line">    memoize&lt;int(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>)&gt; sum(add);</div>
+<div class="line">    memoize&lt;int(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>)&gt; sum = add;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Call the function multiple times with the same arguments, and see that the value is only calculated once.</span></div>
 <div class="line">    <span class="comment">// If either argument is changed, the value will be recalculated.</span></div>

@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.64</span>
+   &#160;<span id="projectnumber">1.7.65</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -119,11 +119,9 @@ $(document).ready(function(){initNavTree('memoize_8hpp_source.html',''); initRes
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">   38</a></span>&#160;    <a class="code" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">memoize</a>(std::function&lt;R(Args...)&gt; &amp;&amp;lambda) : lambda(lambda) {}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#aba076ad919801258549bf95423d98b24">   45</a></span>&#160;    <a class="code" href="classz_1_1core_1_1memoize.html">memoize</a> &amp;<a class="code" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#aba076ad919801258549bf95423d98b24">operator=</a>(std::function&lt;R(Args...)&gt; &amp;&amp;lambda) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        this-&gt;lambda = lambda;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        cache.clear();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a24a62e656722d6b8377303df0925c487">   47</a></span>&#160;    <a class="code" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a24a62e656722d6b8377303df0925c487">memoize</a>(R(lambda(Args...))) : lambda(lambda) {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classz_1_1core_1_1memoize.html">memoize</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">   56</a></span>&#160;    R <a class="code" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">operator()</a>(Args... args) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">auto</span> arg_list = std::make_tuple(args...);</div>
@@ -137,9 +135,9 @@ $(document).ready(function(){initNavTree('memoize_8hpp_source.html',''); initRes
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace core</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_a24a62e656722d6b8377303df0925c487"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a24a62e656722d6b8377303df0925c487">z::core::memoize&lt; R(Args...)&gt;::memoize</a></div><div class="ttdeci">memoize(R(lambda(Args...)))</div><div class="ttdoc">Constructor with a function pointer.</div><div class="ttdef"><b>Definition:</b> memoize.hpp:47</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_a543656d1175c51294491332ed05679d9"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">z::core::memoize&lt; R(Args...)&gt;::operator()</a></div><div class="ttdeci">R operator()(Args... args)</div><div class="ttdoc">Function call operator.</div><div class="ttdef"><b>Definition:</b> memoize.hpp:56</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_aba076ad919801258549bf95423d98b24"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#aba076ad919801258549bf95423d98b24">z::core::memoize&lt; R(Args...)&gt;::operator=</a></div><div class="ttdeci">memoize &amp; operator=(std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</div><div class="ttdoc">Assignment operator with a function.</div><div class="ttdef"><b>Definition:</b> memoize.hpp:45</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_adc40e251d1ce9da0df95494dc2d782a6"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">z::core::memoize&lt; R(Args...)&gt;::memoize</a></div><div class="ttdeci">memoize(std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</div><div class="ttdoc">Constructor with a function.</div><div class="ttdef"><b>Definition:</b> memoize.hpp:38</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_adc40e251d1ce9da0df95494dc2d782a6"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">z::core::memoize&lt; R(Args...)&gt;::memoize</a></div><div class="ttdeci">memoize(std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</div><div class="ttdoc">Constructor with any function-like object.</div><div class="ttdef"><b>Definition:</b> memoize.hpp:38</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1memoize_html"><div class="ttname"><a href="classz_1_1core_1_1memoize.html">z::core::memoize</a></div><div class="ttdef"><b>Definition:</b> memoize.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

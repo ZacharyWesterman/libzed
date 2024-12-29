@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.64</span>
+   &#160;<span id="projectnumber">1.7.65</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -110,11 +110,11 @@ $(document).ready(function(){initNavTree('classz_1_1core_1_1memoize_3_01R_07Args
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adc40e251d1ce9da0df95494dc2d782a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">memoize</a> (std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</td></tr>
-<tr class="memdesc:adc40e251d1ce9da0df95494dc2d782a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with a function.  <a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">More...</a><br /></td></tr>
+<tr class="memdesc:adc40e251d1ce9da0df95494dc2d782a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with any function-like object.  <a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">More...</a><br /></td></tr>
 <tr class="separator:adc40e251d1ce9da0df95494dc2d782a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba076ad919801258549bf95423d98b24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1memoize.html">memoize</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#aba076ad919801258549bf95423d98b24">operator=</a> (std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</td></tr>
-<tr class="memdesc:aba076ad919801258549bf95423d98b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator with a function.  <a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#aba076ad919801258549bf95423d98b24">More...</a><br /></td></tr>
-<tr class="separator:aba076ad919801258549bf95423d98b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a62e656722d6b8377303df0925c487"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a24a62e656722d6b8377303df0925c487">memoize</a> (R(lambda(Args...)))</td></tr>
+<tr class="memdesc:a24a62e656722d6b8377303df0925c487"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with a function pointer.  <a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a24a62e656722d6b8377303df0925c487">More...</a><br /></td></tr>
+<tr class="separator:a24a62e656722d6b8377303df0925c487"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a543656d1175c51294491332ed05679d9"><td class="memItemLeft" align="right" valign="top">R&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">operator()</a> (Args... args)</td></tr>
 <tr class="memdesc:a543656d1175c51294491332ed05679d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function call operator.  <a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">More...</a><br /></td></tr>
 <tr class="separator:a543656d1175c51294491332ed05679d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +135,7 @@ class z::core::memoize&lt; R(Args...)&gt;</h3>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adc40e251d1ce9da0df95494dc2d782a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc40e251d1ce9da0df95494dc2d782a6">&#9670;&nbsp;</a></span>memoize()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adc40e251d1ce9da0df95494dc2d782a6">&#9670;&nbsp;</a></span>memoize() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,10 +160,47 @@ template&lt;typename R , typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor with a function. </p>
+<p>Constructor with any function-like object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lambda</td><td>The function to memoize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a24a62e656722d6b8377303df0925c487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a62e656722d6b8377303df0925c487">&#9670;&nbsp;</a></span>memoize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1memoize.html">z::core::memoize</a>&lt; R(Args...)&gt;::<a class="el" href="classz_1_1core_1_1memoize.html">memoize</a> </td>
+          <td>(</td>
+          <td class="paramtype">R(lambda(Args...))&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with a function pointer. </p>
+<p>This constructor allows for syntax like <code>memoize&lt;int(int, int)&gt; sum = add;</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The lambda to memoize. </td></tr>
   </table>
   </dd>
 </dl>
@@ -205,43 +242,6 @@ template&lt;typename R , typename... Args&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result of the function. </dd></dl>
-
-</div>
-</div>
-<a id="aba076ad919801258549bf95423d98b24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba076ad919801258549bf95423d98b24">&#9670;&nbsp;</a></span>operator=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1memoize.html">memoize</a>&amp; <a class="el" href="classz_1_1core_1_1memoize.html">z::core::memoize</a>&lt; R(Args...)&gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; R(Args...)&gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>lambda</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Assignment operator with a function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lambda</td><td>The function to memoize. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>This memoize object after the operation. </dd></dl>
 
 </div>
 </div>
