@@ -11,12 +11,8 @@
 /// Functions
 #include "math/factorial.hpp"
 #include "math/fibonacci.hpp"
-#include "math/gcd.hpp"
 #include "math/remainder.hpp"
 #include "math/zeta.hpp"
-
-/// Operators
-#include "math/complexOps.hpp"
 
 /// Matrices
 #include "math/matrix.hpp"
