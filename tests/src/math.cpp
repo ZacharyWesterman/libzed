@@ -5,24 +5,6 @@
 using z::math::factorial;
 using z::math::fibonacci;
 
-/**
- * @brief Less-than comparison for complex values.
- *
- * @param arg1 the left-hand operand.
- * @param arg2 the right-hand operand.
- *
- * @return \b True if the normalization of \b arg1 is
- * less than that of \b arg2. \b False otherwise.
- *
- * @threadsafe_function_yes
- */
-bool operator<(const std::complex<long> &arg1, const std::complex<long> &arg2) {
-	long norm1 = arg1.real() * arg1.real() + arg1.imag() * arg1.imag();
-	long norm2 = arg2.real() * arg2.real() + arg2.imag() * arg2.imag();
-
-	return norm1 < norm2;
-}
-
 TEST_CASE("Computing Fibonacci numbers", "[math]") {
 	REQUIRE(fibonacci(0) == 0);
 	REQUIRE(fibonacci(1) == 1);
