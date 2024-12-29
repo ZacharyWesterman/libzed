@@ -136,7 +136,7 @@ public:
 				(void)state;
 				return 1;
 			})
-			.reduce(0, std::plus());
+			.reduce(0, std::plus<long>());
 	}
 
 	/**
