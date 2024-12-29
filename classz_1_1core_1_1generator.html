@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.66</span>
+   &#160;<span id="projectnumber">1.7.67</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -419,6 +419,7 @@ template&lt;typename T , typename S &gt; </div>
 
 <p>Binds a function to run each time an item comes out of the generator. </p>
 <p>This function wraps the existing generator function in another function, effectively binding extra logic to this generator. each item on-the-fly as it's generated.</p>
+<dl class="section note"><dt>Note</dt><dd>This function does not consume the generator directly, it just runs the given function each time an item is generated.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newLambda</td><td>A function that takes a constant reference to an element of type <code>T</code> and returns nothing. </td></tr>
