@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: array.cpp</title>
+<title>libzed: lines.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('array_8cpp-example.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('lines_8cpp-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,36 +95,32 @@ $(document).ready(function(){initNavTree('array_8cpp-example.html',''); initResi
 
 <div class="header">
   <div class="headertitle">
-<div class="title">array.cpp</div>  </div>
+<div class="title">lines.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="comment">// This is an example of using the z::file::lines() generator to read a file line-by-line.</span></div>
+<div class="line"><span class="comment">// This is a memory-efficient way of reading large files, as the data is only loaded as needed.</span></div>
+<div class="line"><span class="comment">// z::file::lines(zstring&amp; filename) // z::file::lines(std::istream &amp;stream)</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using</span> <a name="_a0"></a><a class="code" href="classz_1_1core_1_1array.html">z::core::array</a>;</div>
-<div class="line"><span class="keyword">using</span> <a name="a1"></a><a class="code" href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">z::core::join</a>;</div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="file_8hpp.html">z/file.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using</span> <a name="a0"></a><a class="code" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">z::file::execdir</a>;</div>
+<div class="line"><span class="keyword">using</span> <a name="a1"></a><a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
-<div class="line">    array&lt;zstring&gt; strings = {<span class="stringliteral">&quot;123&quot;</span>, <span class="stringliteral">&quot;abc&quot;</span>, <span class="stringliteral">&quot;11&quot;</span>, <span class="stringliteral">&quot;-400&quot;</span>};</div>
+<div class="line">    <a name="_a2"></a><a class="code" href="classz_1_1core_1_1string.html">zstring</a> filename = <a class="code" href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">execdir</a>() + <span class="stringliteral">&quot;/../data/in1.txt&quot;</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Convert all the string values to integers.</span></div>
-<div class="line">    <span class="comment">// Note that non-numeric strings all go to zero.</span></div>
-<div class="line">    <span class="keyword">auto</span> numbers = strings.map&lt;<span class="keywordtype">int</span>&gt;([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> item.integer(); });</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Sum all the numbers</span></div>
-<div class="line">    <span class="keyword">auto</span> total_sum = numbers.reduce(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Sum only the non-negative numbers</span></div>
-<div class="line">    <span class="keyword">auto</span> nonneg_sum = numbers.filter([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> item &gt;= 0; }).reduce(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Print output</span></div>
-<div class="line">    (<span class="stringliteral">&quot;Number list = [&quot;</span>_zs + <a class="code" href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">join</a>(numbers, <span class="stringliteral">&quot;, &quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>).writeln(std::cout);</div>
-<div class="line">    (<span class="stringliteral">&quot;Sum of all numbers = &quot;</span>_zs + total_sum).writeln(std::cout);</div>
-<div class="line">    (<span class="stringliteral">&quot;Sum of non-negative numbers = &quot;</span>_zs + nonneg_sum).writeln(std::cout);</div>
+<div class="line">    (<span class="stringliteral">&quot;Printing all lines in &quot;</span>_zs + filename).writeln(std::cout);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line : <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(filename)) {</div>
+<div class="line">        line.<a name="a3"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition:</b> array.hpp:36</div></div>
-<div class="ttc" id="acore_8hpp_html"><div class="ttname"><a href="core_8hpp.html">core.hpp</a></div></div>
-<div class="ttc" id="anamespacez_1_1core_html_ade04fd5e6fc4a7dbfdcadf0ff1126b4f"><div class="ttname"><a href="namespacez_1_1core.html#ade04fd5e6fc4a7dbfdcadf0ff1126b4f">z::core::join</a></div><div class="ttdeci">string&lt; E &gt; join(const iterable&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim) noexcept</div><div class="ttdoc">Concatenate elements in an array into a string, separated by a delimiter.</div><div class="ttdef"><b>Definition:</b> join.hpp:19</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html_af2a16811f381346862dad279bdb8cd09"><div class="ttname"><a href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">z::core::string::writeln</a></div><div class="ttdeci">void writeln(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in its format, appending a newline.</div><div class="ttdef"><b>Definition:</b> string.hpp:1493</div></div>
+<div class="ttc" id="afile_8hpp_html"><div class="ttname"><a href="file_8hpp.html">file.hpp</a></div></div>
+<div class="ttc" id="anamespacez_1_1file_html_a392ba677167ff1404e042fd0eadd0b91"><div class="ttname"><a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a></div><div class="ttdeci">core::generator&lt; zstring, fileHandle &gt; lines(const zpath &amp;filename)</div><div class="ttdoc">Reads the contents of a file line-by-line.</div></div>
+<div class="ttc" id="anamespacez_1_1file_html_a497fc168cc1b68e5f10e51e7a40a914b"><div class="ttname"><a href="namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b">z::file::execdir</a></div><div class="ttdeci">zpath execdir() noexcept</div><div class="ttdoc">Get the directory path of the running executable.</div><div class="ttdef"><b>Definition:</b> execdir.hpp:11</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
