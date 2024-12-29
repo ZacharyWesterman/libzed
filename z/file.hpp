@@ -24,6 +24,7 @@
 #include "file/info.hpp"
 #include "file/lines.hpp"
 #include "file/read.hpp"
+#include "file/remove.hpp"
 #include "file/write.hpp"
 
 /// Dynamic library loading
