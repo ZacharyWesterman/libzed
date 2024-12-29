@@ -140,6 +140,7 @@ uninstall:
 examples: static
 	$(MAKE) -C examples/
 
+test: tests
 tests: static
 	$(MAKE) -C tests/
 	./tests/bin/run_tests
@@ -211,4 +212,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint tests docs dox format count-loc get-version get-revision
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests docs dox format count-loc get-version get-revision
