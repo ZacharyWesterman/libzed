@@ -178,6 +178,7 @@ cleancov:
 cleandox:
 	$(RMDIR) html
 	$(RM) *.log
+	$(RM) Doxypages/examples.dox
 
 rebuild: clean default
 
