@@ -9,6 +9,7 @@
 @example matrix.cpp
 @example numberwang.cpp
 @example range.cpp
+@example lines.cpp
 @example regexConsole.cpp
 @example rot13.cpp
 */
