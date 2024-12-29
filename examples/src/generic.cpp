@@ -1,8 +1,6 @@
 #include <iostream>
 #include <z/util/generic.hpp>
 
-#include <z/core/join.hpp>
-
 int main() {
 // Don't throw error if no generic exists. Just make a dummy executable.
 #ifdef Z_GENERIC_EXISTS
@@ -14,6 +12,6 @@ int main() {
 #else
 
 	"ERROR: This program was compiled without support for z::util:generic!"_zs.writeln(std::cout);
-
+	"To use generics, please compile with STD=c++17 or greater."_zs.writeln(std::cout);
 #endif
 }
