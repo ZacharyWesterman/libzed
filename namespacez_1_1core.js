@@ -28,7 +28,6 @@ var namespacez_1_1core =
     [ "generator", "classz_1_1core_1_1generator.html", "classz_1_1core_1_1generator" ],
     [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
     [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
-    [ "memoize", "classz_1_1core_1_1memoize.html", null ],
     [ "memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4" ],
     [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
     [ "sizable", "classz_1_1core_1_1sizable.html", "classz_1_1core_1_1sizable" ],

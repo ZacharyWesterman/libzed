@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.65</span>
+   &#160;<span id="projectnumber">1.7.66</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -104,12 +104,12 @@ $(document).ready(function(){initNavTree('memoize_8cpp-example.html',''); initRe
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/all.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using</span> <a name="_a0"></a><a class="code" href="classz_1_1core_1_1memoize.html">z::core::memoize</a>;</div>
+<div class="line"><span class="keyword">using</span> z::core::memoize;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// This is the original function that we want to memoize. Calling this directly will recalculate the value each time.</span></div>
 <div class="line"><span class="keywordtype">int</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) noexcept {</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Calculating value, this should only happen once.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">    <a name="a1"></a><a class="code" href="namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00">z::system::pause</a>(1000);</div>
+<div class="line">    <a name="a0"></a><a class="code" href="namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00">z::system::pause</a>(1000);</div>
 <div class="line">    <span class="keywordflow">return</span> a + b;</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -125,7 +125,6 @@ $(document).ready(function(){initNavTree('memoize_8cpp-example.html',''); initRe
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1memoize_html"><div class="ttname"><a href="classz_1_1core_1_1memoize.html">z::core::memoize</a></div><div class="ttdef"><b>Definition:</b> memoize.hpp:11</div></div>
 <div class="ttc" id="anamespacez_1_1system_html_aa2217be4f1624c1a49d27a2767673a00"><div class="ttname"><a href="namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00">z::system::pause</a></div><div class="ttdeci">void pause(double ms) noexcept</div><div class="ttdoc">Delays program execution temporarily.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
