@@ -194,9 +194,12 @@ dox: docs
 docs: html
 	@cat doxygen.log
 
-html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) $(wildcard examples/src/*.cpp)
+html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) Doxypages/examples.dox $(wildcard examples/src/*.cpp)
 	$(RMDIR) html
 	PROJECT_NUMBER=$(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) doxygen
+
+Doxypages/examples.dox: examples/src/*.cpp
+	@{ echo '/**'; for file in $^; do echo "@example $$(basename $$file)"; done; echo '*/'; } > $@
 
 count-loc:
 	@find z -type f \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} +

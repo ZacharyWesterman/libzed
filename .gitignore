@@ -13,3 +13,4 @@ examples/obj
 *.gcda
 *.gcov
 *.d
+Doxypages/examples.dox
