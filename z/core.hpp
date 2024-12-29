@@ -34,3 +34,6 @@
 /// Generators
 #include "core/generator.hpp"
 #include "core/range.hpp"
+
+/// Memoization
+#include "core/memoize.hpp"
