@@ -23,7 +23,7 @@ int main() {
 	// Unlike arrays, you can create VERY long ranges with no memory impact.
 	// An array of 1 trillion elements would take a long time to allocate, but the range is instant.
 	"\nlong range:"_zs.writeln(std::cout);
-	for (auto i : range(1'000'000'000'000)) {
+	for (auto i : range(1'000'000'000)) {
 		(">"_zs + i).writeln(std::cout);
 		if (i > 3) {
 			"Exiting early!"_zs.writeln(std::cout);
