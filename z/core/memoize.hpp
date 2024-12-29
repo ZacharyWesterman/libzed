@@ -32,21 +32,21 @@ private:
 
 public:
 	/**
-	 * @brief Constructor with a function.
+	 * @brief Constructor with any function-like object.
 	 * @param lambda The function to memoize.
 	 */
 	memoize(std::function<R(Args...)> &&lambda) : lambda(lambda) {}
 
 	/**
-	 * @brief Assignment operator with a function.
-	 * @param lambda The function to memoize.
-	 * @return This memoize object after the operation.
+	 * @brief Constructor with a function pointer.
+	 *
+	 * This constructor allows for syntax like `memoize<int(int, int)> sum = add;`.
+	 *
+	 * @param lambda The lambda to memoize.
 	 */
-	memoize &operator=(std::function<R(Args...)> &&lambda) {
-		this->lambda = lambda;
-		cache.clear();
-		return *this;
-	}
+	memoize(R(lambda(Args...))) : lambda(lambda) {}
+
+	memoize() = delete;
 
 	/**
 	 * @brief Function call operator.

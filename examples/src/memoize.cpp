@@ -15,7 +15,7 @@ int add(int a, int b) noexcept {
 
 int main() {
 	// Create a memoized version of the function.
-	memoize<int(int, int)> sum(add);
+	memoize<int(int, int)> sum = add;
 
 	// Call the function multiple times with the same arguments, and see that the value is only calculated once.
 	// If either argument is changed, the value will be recalculated.
