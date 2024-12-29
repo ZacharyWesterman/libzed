@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.58</span>
+   &#160;<span id="projectnumber">1.7.59</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -101,8 +101,6 @@ $(document).ready(function(){initNavTree('generic_8cpp-example.html',''); initRe
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/util/generic.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;z/core/join.hpp&gt;</span></div>
-<div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"><span class="comment">// Don&#39;t throw error if no generic exists. Just make a dummy executable.</span></div>
 <div class="line"><span class="preprocessor">#ifdef Z_GENERIC_EXISTS</span></div>
@@ -114,7 +112,7 @@ $(document).ready(function(){initNavTree('generic_8cpp-example.html',''); initRe
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="stringliteral">&quot;ERROR: This program was compiled without support for z::util:generic!&quot;</span>_zs.<a name="a3"></a><a class="code" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
-<div class="line"> </div>
+<div class="line">    <span class="stringliteral">&quot;To use generics, please compile with STD=c++17 or greater.&quot;</span>_zs.writeln(std::cout);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_af2a16811f381346862dad279bdb8cd09"><div class="ttname"><a href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">z::core::string::writeln</a></div><div class="ttdeci">void writeln(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in its format, appending a newline.</div><div class="ttdef"><b>Definition:</b> string.hpp:1493</div></div>
