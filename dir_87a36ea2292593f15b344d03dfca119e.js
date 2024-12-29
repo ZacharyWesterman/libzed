@@ -9,6 +9,7 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "indexable.hpp", "indexable_8hpp_source.html", null ],
     [ "iterable.hpp", "iterable_8hpp_source.html", null ],
     [ "join.hpp", "join_8hpp_source.html", null ],
+    [ "memoize.hpp", "memoize_8hpp_source.html", null ],
     [ "range.hpp", "range_8hpp_source.html", null ],
     [ "refArray.hpp", "refArray_8hpp_source.html", null ],
     [ "sizable.hpp", "sizable_8hpp_source.html", null ],
