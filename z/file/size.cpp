@@ -21,7 +21,7 @@ size_t size(const zpath &path) {
 #else
 	// Otherwise default to fstream version.
 	std::ifstream in((const char *)path.cstring(), std::ios::binary);
-	if (in.bad()) {
+	if (in.fail()) {
 		throw unreadable(path);
 	}
 	const auto begin = in.tellg();
