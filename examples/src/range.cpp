@@ -38,7 +38,7 @@ int main() {
 	}
 
 	// Ranges can even be infinite!
-	// This will loop forever, so be careful!
+	// This will loop forever, so best not to use it with functions that consume all values (e.g. `count()`).
 	"\ninfinite range (only first 5):"_zs.writeln(std::cout);
 	for (auto i : range(0, z::core::infinity).limit(5)) {
 		(">"_zs + i).writeln(std::cout);
