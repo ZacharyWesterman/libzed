@@ -164,7 +164,7 @@ bool generic::reduce(bool castStrings) noexcept {
 	const int ix = value.index();
 
 	// arrays cannot be downcast.
-	if (ix == generic::ARRAY) {
+	if (ix == generic::ARRAY || ix == generic::VOID || ix == generic::INT) {
 		return false;
 	}
 	// if this is a string, downcast to the lowest numeric value
@@ -196,11 +196,15 @@ bool generic::reduce(bool castStrings) noexcept {
 			} else {
 				value = fval;
 			}
+		} else {
+			return false;
 		}
 	} else if (ix == generic::FLOAT) {
 		const double fval = std::get<generic::FLOAT>(value);
-		if (double(long(fval)) == fval) {
+		if (fval - double(long(fval)) < 1e-9) {
 			value = long(fval);
+		} else {
+			return false;
 		}
 	}
 
@@ -216,6 +220,13 @@ bool generic::promote(generic *other) noexcept {
 	const int ix2 = other->value.index();
 	if (ix1 == ix2) {
 		return true;
+	}
+
+	if (ix1 == generic::ARRAY || ix2 == generic::ARRAY) {
+		return false;
+	}
+	if (ix1 == generic::VOID || ix2 == generic::VOID) {
+		return false;
 	}
 
 	if (ix1 > ix2) {

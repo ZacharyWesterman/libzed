@@ -233,14 +233,14 @@ public:
 	/**
 	 * @brief Downcast a value as low as possible without losing precision.
 	 * @param castStrings Whether to downcast strings to numeric types.
-	 * @return true if downcast was successful or resultant types are the same, false otherwise.
+	 * @return true if downcast changed the type, false otherwise.
 	 */
 	bool reduce(bool castStrings = false) noexcept;
 
 	/**
 	 * @brief Upcast two values as much as is needed for them to be the same type.
 	 * @param other The value to upcast along with this.
-	 * @return true if upcast was successful or resultant types are the same, false otherwise.
+	 * @return true if upcast successfully made the types the same, false otherwise.
 	 */
 	bool promote(generic *other) noexcept; // promote two numeric values to the same type
 
