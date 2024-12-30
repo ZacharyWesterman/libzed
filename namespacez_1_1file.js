@@ -8,7 +8,7 @@ var namespacez_1_1file =
     [ "dirscan", "structz_1_1file_1_1dirscan.html", "structz_1_1file_1_1dirscan" ],
     [ "basename", "namespacez_1_1file.html#a7e6c0a62d8022d4abed584396e650648", null ],
     [ "chdir", "namespacez_1_1file.html#ab4a1197690a6beb3abc06249b74dc441", null ],
-    [ "copy", "namespacez_1_1file.html#a2fb605ae85a47cc8e0e09c5545828209", null ],
+    [ "copy", "namespacez_1_1file.html#ac3be5b01b3fdf5508f4da3acf4403ca9", null ],
     [ "dir", "namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f", null ],
     [ "dirname", "namespacez_1_1file.html#aa49c5bd7df8cf558c70cf2415afaec24", null ],
     [ "execdir", "namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b", null ],

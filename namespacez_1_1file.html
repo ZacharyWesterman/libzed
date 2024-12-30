@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.74</span>
+   &#160;<span id="projectnumber">1.7.75</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -134,9 +134,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ab4a1197690a6beb3abc06249b74dc441"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ab4a1197690a6beb3abc06249b74dc441">chdir</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>) noexcept</td></tr>
 <tr class="memdesc:ab4a1197690a6beb3abc06249b74dc441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the current working directory.  <a href="namespacez_1_1file.html#ab4a1197690a6beb3abc06249b74dc441">More...</a><br /></td></tr>
 <tr class="separator:ab4a1197690a6beb3abc06249b74dc441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fb605ae85a47cc8e0e09c5545828209"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a2fb605ae85a47cc8e0e09c5545828209">copy</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileInput, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileOutput) noexcept</td></tr>
-<tr class="memdesc:a2fb605ae85a47cc8e0e09c5545828209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from one file to another.  <a href="namespacez_1_1file.html#a2fb605ae85a47cc8e0e09c5545828209">More...</a><br /></td></tr>
-<tr class="separator:a2fb605ae85a47cc8e0e09c5545828209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3be5b01b3fdf5508f4da3acf4403ca9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#ac3be5b01b3fdf5508f4da3acf4403ca9">copy</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileInput, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;fileOutput)</td></tr>
+<tr class="memdesc:ac3be5b01b3fdf5508f4da3acf4403ca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy data from one file to another.  <a href="namespacez_1_1file.html#ac3be5b01b3fdf5508f4da3acf4403ca9">More...</a><br /></td></tr>
+<tr class="separator:ac3be5b01b3fdf5508f4da3acf4403ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04e1e094b61e5d83b5ae4497ae65074f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">dir</a> () noexcept</td></tr>
 <tr class="memdesc:a04e1e094b61e5d83b5ae4497ae65074f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current working directory.  <a href="namespacez_1_1file.html#a04e1e094b61e5d83b5ae4497ae65074f">More...</a><br /></td></tr>
 <tr class="separator:a04e1e094b61e5d83b5ae4497ae65074f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,17 +255,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2fb605ae85a47cc8e0e09c5545828209"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fb605ae85a47cc8e0e09c5545828209">&#9670;&nbsp;</a></span>copy()</h2>
+<a id="ac3be5b01b3fdf5508f4da3acf4403ca9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3be5b01b3fdf5508f4da3acf4403ca9">&#9670;&nbsp;</a></span>copy()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool z::file::copy </td>
+          <td class="memname">void z::file::copy </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
           <td class="paramname"><em>fileInput</em>, </td>
@@ -282,11 +279,6 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Copy data from one file to another. </p>
@@ -297,7 +289,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><b>True</b> if the file was copied successfully. <b>False</b> otherwise. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">unreadable</td><td>if the input file could not be read. </td></tr>
+    <tr><td class="paramname">unwritable</td><td>if the output file could not be written. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
