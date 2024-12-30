@@ -103,3 +103,57 @@ TEST_CASE("Load a dynamic library with a bad symbol", "[file]") {
 	auto value_ptr = lib.symbol<int>("THIS SYMBOL DOES NOT EXIST");
 	REQUIRE(value_ptr == nullptr);
 }
+
+TEST_CASE("Load a dynamic library with a bad function", "[file]") {
+	z::file::library lib;
+	REQUIRE(lib.load(z::file::execdir() + "/libtest") == true);
+
+	REQUIRE(lib.good() == true);
+	REQUIRE(lib.bad() == false);
+
+	auto add = lib.function<int(int, int)>("THIS FUNCTION DOES NOT EXIST");
+	REQUIRE(add == nullptr);
+}
+
+TEST_CASE("Load a dynamic library and then unload it", "[file]") {
+	z::file::library lib;
+	REQUIRE(lib.load(z::file::execdir() + "/libtest") == true);
+
+	REQUIRE(lib.good() == true);
+	REQUIRE(lib.bad() == false);
+
+	REQUIRE(lib.unload() == true);
+	REQUIRE(lib.good() == false);
+	REQUIRE(lib.bad() == true);
+}
+
+TEST_CASE("Read file contents with a bad path", "[file]") {
+	REQUIRE_THROWS_AS(z::file::read("THIS FILE DOES NOT EXIST"), z::file::unreadable);
+}
+
+TEST_CASE("Copy a file with a bad path", "[file]") {
+	REQUIRE_THROWS_AS(z::file::copy("THIS FILE DOES NOT EXIST 1", "THIS FILE DOES NOT EXIST 2"), z::file::unreadable);
+	REQUIRE(z::file::exists("THIS FILE DOES NOT EXIST 2") == false);
+}
+
+TEST_CASE("Copy a good file to a file with a bad path", "[file]") {
+	const zpath filename = z::file::execdir() + "/../data/file1.txt";
+
+	REQUIRE_THROWS_AS(z::file::copy(filename, "/THIS/FILE/DOES/NOT/EXIST"), z::file::unwritable);
+	REQUIRE(z::file::exists("/THIS/FILE/DOES/NOT/EXIST") == false);
+}
+
+TEST_CASE("Remove a file that does not exist", "[file]") {
+	REQUIRE(z::file::remove("THIS FILE DOES NOT EXIST") == false);
+}
+
+TEST_CASE("Remove a file", "[file]") {
+	const zpath filename = z::file::execdir() + "/../data/file1.txt";
+	const zpath newFilename = z::file::execdir() + "/../data/file1_copy.txt";
+
+	z::file::copy(filename, newFilename);
+	REQUIRE(z::file::exists(newFilename) == true);
+
+	REQUIRE(z::file::remove(newFilename) == true);
+	REQUIRE(z::file::exists(newFilename) == false);
+}

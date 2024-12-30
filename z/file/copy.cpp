@@ -1,13 +1,21 @@
 #include "copy.hpp"
+#include "exceptions.hpp"
 #include <fstream>
 
 namespace z {
 namespace file {
-bool copy(const zpath &fileInput, const zpath &fileOutput) noexcept {
+void copy(const zpath &fileInput, const zpath &fileOutput) {
 	std::ifstream src((char *)fileInput.cstring(), std::ios::binary);
+	if (!src) {
+		throw unreadable(fileInput);
+	}
+
 	std::ofstream dest((char *)fileOutput.cstring(), std::ios::binary);
+	if (!dest) {
+		throw unwritable(fileOutput);
+	}
+
 	dest << src.rdbuf();
-	return src && dest;
 }
 } // namespace file
 } // namespace z

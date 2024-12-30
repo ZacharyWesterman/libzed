@@ -48,13 +48,15 @@ bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 bool library::unload() noexcept {
 #ifdef _WIN32
 	if (lib_ptr) {
-		return (bool)FreeLibrary((HMODULE)lib_ptr);
+		return !FreeLibrary((HMODULE)lib_ptr);
 	} else {
 		return true;
 	}
 #elif __linux__
 	if (lib_ptr) {
-		return (bool)dlclose(lib_ptr);
+		bool result = !dlclose(lib_ptr);
+		lib_ptr = nullptr;
+		return result;
 	} else {
 		return true;
 	}
