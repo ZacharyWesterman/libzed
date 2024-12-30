@@ -66,3 +66,20 @@ TEST_CASE("Range, empty", "[range]") {
 	auto r = z::core::range(0);
 	REQUIRE(r.count() == 0);
 }
+
+TEST_CASE("Range, infinite", "[range]") {
+	auto r = z::core::range(0, z::core::infinity);
+	for (int i = 0; i < 5; i++) {
+		REQUIRE(r.next().value == i);
+	}
+}
+
+TEST_CASE("Infinite sentinel", "[sentinel]") {
+	auto s = z::core::infinity;
+	REQUIRE_FALSE(s(0, 1));
+	REQUIRE_FALSE(s(1, 1));
+	REQUIRE_FALSE(s(1, 2));
+	REQUIRE_FALSE(s(1, 100));
+	REQUIRE_FALSE(s(100, 100));
+	REQUIRE_FALSE(s(100, 1));
+}

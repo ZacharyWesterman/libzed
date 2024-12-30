@@ -37,6 +37,13 @@ int main() {
 		(">"_zs + i).writeln(std::cout);
 	}
 
+	// Ranges can even be infinite!
+	// This will loop forever, so be careful!
+	"\ninfinite range (only first 5):"_zs.writeln(std::cout);
+	for (auto i : range(0, z::core::infinity).limit(5)) {
+		(">"_zs + i).writeln(std::cout);
+	}
+
 	// A fun feature of generators is that they can have extra functionality bound to them.
 	// Here, we are taking a long range, and binding a progress bar be updated while we iterate through it.
 	z::util::progress progress;
