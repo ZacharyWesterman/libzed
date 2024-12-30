@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.76</span>
+   &#160;<span id="projectnumber">1.7.77</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('range_8cpp-example.html',''); initResi
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Ranges can even be infinite!</span></div>
-<div class="line">    <span class="comment">// This will loop forever, so be careful!</span></div>
+<div class="line">    <span class="comment">// This will loop forever, so best not to use it with functions that consume all values (e.g. `count()`).</span></div>
 <div class="line">    <span class="stringliteral">&quot;\ninfinite range (only first 5):&quot;</span>_zs.writeln(std::cout);</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(0, <a name="a2"></a><a class="code" href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a>).limit(5)) {</div>
 <div class="line">        (<span class="stringliteral">&quot;&gt;&quot;</span>_zs + i).writeln(std::cout);</div>
