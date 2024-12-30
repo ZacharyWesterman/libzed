@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 		(zstring(argv[i]) + " ").cipher(from, to).write(std::cout);
 
 		// Alternatively, you can pass a function in to perform the cipher.
-		// This is almost guaranteed to be faster.
+		// This is almost always faster than mapping with the `to`/`from` strings.
 		/*
 		(zstring(argv[i]) + " ").cipher([](auto chr) {
 			if (z::core::isLowerAlpha(chr)) {

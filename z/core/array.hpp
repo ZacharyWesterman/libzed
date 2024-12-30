@@ -17,6 +17,41 @@
 #endif
 #endif
 
+// Define custom implementation for std::sort and std::shuffle if not available in this C++ version.
+#if __cplusplus < 201703L
+namespace std {
+
+/// @private
+template <typename T>
+class vec_iter : public std::vector<T>::iterator {};
+
+/// @private
+template <typename T>
+void sort(vec_iter<T> _begin, vec_iter<T> _end, std::function<bool(const T &, const T &)> _lambda) noexcept {
+	bool swapped = true;
+	while (swapped) {
+		swapped = false;
+		for (auto i = _begin; i != _end - 1; ++i) {
+			if (_lambda(*i, *(i + 1))) {
+				std::swap(*i, *(i + 1));
+				swapped = true;
+			}
+		}
+	}
+}
+
+/// @private
+template <class _RAIter, class _UGenerator>
+void shuffle(_RAIter _begin, _RAIter _end, _UGenerator &&g) {
+	for (_RAIter i = _end - 1; i > _begin; --i) {
+		std::uniform_int_distribution<std::size_t> d(0, i - _begin);
+		std::iter_swap(i, _begin + d(g));
+	}
+}
+
+} // namespace std
+#endif
+
 namespace z {
 namespace core {
 /**
@@ -344,7 +379,7 @@ public:
 	 * Sorts the array in-place, mutating existing values.
 	 */
 	void sort() noexcept {
-		std::sort(array_data.begin(), array_data.end(), *this);
+		sort(*this);
 	}
 
 	/**
@@ -391,6 +426,7 @@ public:
 	 * Shuffles the array in-place, mutating existing values.
 	 */
 	virtual void shuffle() noexcept {
+		// Use std::shuffle if C++17
 		std::random_device device;
 		std::mt19937 generator(device());
 		std::shuffle(array_data.begin(), array_data.end(), generator);

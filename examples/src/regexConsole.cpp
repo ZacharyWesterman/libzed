@@ -26,7 +26,7 @@ int main() {
 		}
 
 		// Prompt for the string to match to the regex pattern.
-		// Note that zstring is equivalent to z::core::string<z::utf32>
+		// Note that zstring is equivalent to z::core::string<z::utf8>
 		zstring(":").write(std::cout);
 		zstring text;
 		text.readln(std::cin);

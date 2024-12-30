@@ -1,3 +1,4 @@
+// A simple example of the zstring::words() static method.
 // For each integer given as a parameter, this example will print the english representation of that number.
 
 #include <iostream>

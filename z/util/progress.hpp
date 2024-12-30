@@ -21,7 +21,7 @@ public:
 	 * @brief Constructor.
 	 * @param update_freq_micros The shortest time frame between stream writes. The stream will not update more frequently than this.
 	 */
-	progress(unsigned int update_freq_micros = 100'000) noexcept;
+	progress(unsigned int update_freq_micros = 100000) noexcept;
 
 	/**
 	 * @brief Update the progress bar.

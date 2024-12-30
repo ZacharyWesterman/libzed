@@ -2,6 +2,7 @@
 
 #include "iterable.hpp"
 #include "string.hpp"
+#include <vector>
 
 namespace z {
 namespace core {

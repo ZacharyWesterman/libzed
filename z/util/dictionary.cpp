@@ -4,7 +4,6 @@
 #include "../file/exceptions.hpp"
 #include "../file/write.hpp"
 
-#include <algorithm>
 #include <fstream>
 
 namespace z {
