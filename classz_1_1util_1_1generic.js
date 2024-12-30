@@ -12,6 +12,7 @@ var classz_1_1util_1_1generic =
     [ "generic", "classz_1_1util_1_1generic.html#adc881ddbfe0006bc8a9fbfb887908a17", null ],
     [ "array", "classz_1_1util_1_1generic.html#a8144d537bc6a0b26edd8e646339fcf2c", null ],
     [ "array", "classz_1_1util_1_1generic.html#a8d515c8243d82c2ffb83d41ed3ce5056", null ],
+    [ "arrayOr", "classz_1_1util_1_1generic.html#afcc2feaa603a8878af8945cdb6f74b87", null ],
     [ "complex", "classz_1_1util_1_1generic.html#acb6a80d044b7ef63d33e65487e46a99e", null ],
     [ "equals", "classz_1_1util_1_1generic.html#a22f4661f0e4d8b3fb6d093b1eb615a9a", null ],
     [ "equivalent", "classz_1_1util_1_1generic.html#aac43fd0a0df39f8d128c5cf9c96bcb00", null ],

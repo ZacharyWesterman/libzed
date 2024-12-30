@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.78</span>
+   &#160;<span id="projectnumber">1.7.79</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -192,6 +192,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d515c8243d82c2ffb83d41ed3ce5056"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1">list</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#a8d515c8243d82c2ffb83d41ed3ce5056">array</a> () const</td></tr>
 <tr class="memdesc:a8d515c8243d82c2ffb83d41ed3ce5056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a const reference to this array.  <a href="classz_1_1util_1_1generic.html#a8d515c8243d82c2ffb83d41ed3ce5056">More...</a><br /></td></tr>
 <tr class="separator:a8d515c8243d82c2ffb83d41ed3ce5056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc2feaa603a8878af8945cdb6f74b87"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1">list</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#afcc2feaa603a8878af8945cdb6f74b87">arrayOr</a> (const <a class="el" href="classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1">list</a> &amp;def) const noexcept</td></tr>
+<tr class="memdesc:afcc2feaa603a8878af8945cdb6f74b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to this array, or a default value if this is not an array.  <a href="classz_1_1util_1_1generic.html#afcc2feaa603a8878af8945cdb6f74b87">More...</a><br /></td></tr>
+<tr class="separator:afcc2feaa603a8878af8945cdb6f74b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4d2eaf87446d96c2f7ab94f3c8ae22b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1generic.html#af4d2eaf87446d96c2f7ab94f3c8ae22b">numeric</a> () const noexcept</td></tr>
 <tr class="memdesc:af4d2eaf87446d96c2f7ab94f3c8ae22b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether this value is a numeric type.  <a href="classz_1_1util_1_1generic.html#af4d2eaf87446d96c2f7ab94f3c8ae22b">More...</a><br /></td></tr>
 <tr class="separator:af4d2eaf87446d96c2f7ab94f3c8ae22b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -597,6 +600,41 @@ template&lt;typename INT , typename  = typename std::enable_if&lt;std::is_integr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current array value. </dd></dl>
+
+</div>
+</div>
+<a id="afcc2feaa603a8878af8945cdb6f74b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcc2feaa603a8878af8945cdb6f74b87">&#9670;&nbsp;</a></span>arrayOr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1">list</a>&amp; z::util::generic::arrayOr </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1">list</a> &amp;&#160;</td>
+          <td class="paramname"><em>def</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a reference to this array, or a default value if this is not an array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">def</td><td>The default value to return if this is not an array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the current array value, or the default value if this is not an array. </dd></dl>
 
 </div>
 </div>
