@@ -30,6 +30,7 @@ var namespacez_1_1core =
     [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
     [ "memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4" ],
     [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
+    [ "sentinel", "classz_1_1core_1_1sentinel.html", "classz_1_1core_1_1sentinel" ],
     [ "sizable", "classz_1_1core_1_1sizable.html", "classz_1_1core_1_1sizable" ],
     [ "sortedArray", "classz_1_1core_1_1sortedArray.html", "classz_1_1core_1_1sortedArray" ],
     [ "sortedRefArray", "classz_1_1core_1_1sortedRefArray.html", "classz_1_1core_1_1sortedRefArray" ],
@@ -55,6 +56,7 @@ var namespacez_1_1core =
     [ "lenToUTF8", "namespacez_1_1core.html#ae6b3eefa6cb5f87bd29869300854f948", null ],
     [ "numeral", "namespacez_1_1core.html#ae136fee219dec127295eb87d3c112005", null ],
     [ "numeralValue", "namespacez_1_1core.html#aa75c72e14239170eeb10fd7271c345b2", null ],
+    [ "range", "namespacez_1_1core.html#a3f90741358ad5d4e7dbc0524d8d2334a", null ],
     [ "range", "namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169", null ],
     [ "range", "namespacez_1_1core.html#a604a5cd78f79c3088c622df2bae7f882", null ],
     [ "size", "namespacez_1_1core.html#a43561b0c6ee029a9fcf113b8e1c54910", null ],
@@ -62,5 +64,6 @@ var namespacez_1_1core =
     [ "split", "namespacez_1_1core.html#ab3a994b723809e1bf49420c39148ed5a", null ],
     [ "toLower", "namespacez_1_1core.html#aa41fa6943e9dafd3326fe786ad9e0faf", null ],
     [ "toUpper", "namespacez_1_1core.html#a1ae538f3b9c3f72a03d84a95e4246207", null ],
-    [ "toUTF8", "namespacez_1_1core.html#a2482372b407368005d6184c7a2298a71", null ]
+    [ "toUTF8", "namespacez_1_1core.html#a2482372b407368005d6184c7a2298a71", null ],
+    [ "infinity", "namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6", null ]
 ];

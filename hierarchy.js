@@ -52,6 +52,7 @@ var hierarchy =
       [ "z::file::unwritable", "classz_1_1file_1_1unwritable.html", null ],
       [ "z::util::nonnumeric", "structz_1_1util_1_1nonnumeric.html", null ]
     ] ],
+    [ "z::core::sentinel", "classz_1_1core_1_1sentinel.html", null ],
     [ "z::core::sizable", "classz_1_1core_1_1sizable.html", [
       [ "z::core::string< z::utf8 >", "classz_1_1core_1_1string.html", null ],
       [ "z::core::string< ascii >", "classz_1_1core_1_1string.html", null ],

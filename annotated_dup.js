@@ -19,6 +19,7 @@ var annotated_dup =
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4" ],
         [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],
+        [ "sentinel", "classz_1_1core_1_1sentinel.html", "classz_1_1core_1_1sentinel" ],
         [ "sizable", "classz_1_1core_1_1sizable.html", "classz_1_1core_1_1sizable" ],
         [ "sortedArray", "classz_1_1core_1_1sortedArray.html", "classz_1_1core_1_1sortedArray" ],
         [ "sortedRefArray", "classz_1_1core_1_1sortedRefArray.html", "classz_1_1core_1_1sortedRefArray" ],

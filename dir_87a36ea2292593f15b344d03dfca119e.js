@@ -12,6 +12,7 @@ var dir_87a36ea2292593f15b344d03dfca119e =
     [ "memoize.hpp", "memoize_8hpp_source.html", null ],
     [ "range.hpp", "range_8hpp_source.html", null ],
     [ "refArray.hpp", "refArray_8hpp_source.html", null ],
+    [ "sentinel.hpp", "sentinel_8hpp_source.html", null ],
     [ "sizable.hpp", "sizable_8hpp_source.html", null ],
     [ "sortedArray.hpp", "sortedArray_8hpp_source.html", null ],
     [ "sortedRefArray.hpp", "sortedRefArray_8hpp_source.html", null ],
