@@ -8,6 +8,10 @@ var namespaces_dup =
       [ "Installing the dynamic library", "index.html#autotoc_md5", null ],
       [ "Linking to this library", "index.html#autotoc_md6", null ]
     ] ],
+    [ "std", null, [
+      [ "shuffle", "array_8hpp.html#a58ef10c250797193bf5cf37451731aa0", null ],
+      [ "sort", "array_8hpp.html#aa117391f8535e17c6499afacfecaf66e", null ]
+    ] ],
     [ "z", null, [
       [ "core", "namespacez_1_1core.html", "namespacez_1_1core" ],
       [ "file", "namespacez_1_1file.html", "namespacez_1_1file" ],
