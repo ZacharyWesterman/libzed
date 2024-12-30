@@ -1,6 +1,6 @@
-#include "catch.hpp"
-
 #include "../../z/util/generic.hpp"
+#include "catch.hpp"
+#include <iostream>
 
 // Only run these tests if std::variant is available.
 #if __cplusplus >= 201703L
@@ -89,6 +89,38 @@ TEST_CASE("Validate generic type reduction", "[generic]") {
 	// Arrays and void cannot be reduced.
 	REQUIRE(a.reduce() == false);
 	REQUIRE(v.reduce() == false);
+}
+
+TEST_CASE("Validate array type casting", "[generic]") {
+	z::util::generic a = {1, 2, 3};
+	z::util::generic b = {1.0, 2.0, 3.0};
+	z::util::generic c = {"1", "2", "3"};
+	z::util::generic d = {z::cplx(1.0, 0.0), z::cplx(2.0, 0.0), z::cplx(3.0, 0.0)};
+
+	REQUIRE(a.array().length() == 3);
+	REQUIRE(b.array().length() == 3);
+	REQUIRE(c.array().length() == 3);
+	REQUIRE(d.array().length() == 3);
+
+	REQUIRE(a.array()[0] == 1);
+	REQUIRE(b.array()[0] == 1.0);
+	REQUIRE(c.array()[0] == "1");
+	REQUIRE(d.array()[0] == z::cplx(1.0, 0.0));
+}
+
+TEST_CASE("Validate arrayOr method", "[generic]") {
+	z::util::generic a = {1, 2, 3};
+	z::util::generic b = 5; // This will get coerced to an array when passed to arrayOr.
+
+	REQUIRE(a.arrayOr(b).length() == 3);
+	REQUIRE(a.arrayOr(b)[0] == 1);
+	REQUIRE(a.arrayOr(b)[1] == 2);
+	REQUIRE(a.arrayOr(b)[2] == 3);
+
+	REQUIRE(b.arrayOr(a).length() == 3);
+	REQUIRE(b.arrayOr(a)[0] == 1);
+	REQUIRE(b.arrayOr(a)[1] == 2);
+	REQUIRE(b.arrayOr(a)[2] == 3);
 }
 
 #endif

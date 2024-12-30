@@ -1,4 +1,5 @@
 #include "generic.hpp"
+#include <iostream>
 
 // Only compile if std::variant is available
 #if __cplusplus >= 201703L
@@ -94,6 +95,18 @@ generic::list &generic::array() {
 
 const generic::list &generic::array() const {
 	return std::get<generic::ARRAY>(value);
+}
+
+const generic::list &generic::arrayOr(const generic::list &def) const noexcept {
+	if (value.index() == generic::ARRAY) {
+		return std::get<generic::ARRAY>(value);
+	}
+
+	if (def.length() == 1 && def[0].is(generic::ARRAY)) {
+		return def[0].array();
+	}
+
+	return def;
 }
 
 bool generic::numeric() const noexcept {

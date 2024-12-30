@@ -199,6 +199,13 @@ public:
 	const list &array() const;
 
 	/**
+	 * @brief Get a reference to this array, or a default value if this is not an array.
+	 * @param def The default value to return if this is not an array.
+	 * @return A reference to the current array value, or the default value if this is not an array.
+	 */
+	const list &arrayOr(const list &def) const noexcept;
+
+	/**
 	 * @brief Whether this value is a numeric type.
 	 * @return true for integer, floating point and complex types, false otherwise.
 	 */
