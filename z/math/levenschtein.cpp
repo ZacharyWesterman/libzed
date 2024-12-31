@@ -34,7 +34,7 @@ namespace math {
 				row1[j + 1] = std::min(std::min(deletionCost, insertionCost), substitutionCost); \
 \
 				/*If the current distance is greater than the max, just exit*/ \
-				if (row1[j + 1] > max + 2) { \
+				if (row1[j + 1] - 2 > max) { \
 					delete[] row0; \
 					delete[] row1; \
 					return std::numeric_limits<int>::max(); \
