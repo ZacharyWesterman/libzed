@@ -16,6 +16,6 @@ namespace system {
  *
  * @threadsafe_function_yes
  */
-void pause(double ms) noexcept;
+void sleep(double ms) noexcept;
 } // namespace system
 } // namespace z
