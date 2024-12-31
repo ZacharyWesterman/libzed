@@ -18,5 +18,5 @@ var searchData=
   ['trimrightin_572',['trimRightIn',['../classz_1_1core_1_1string.html#a8afaf63293096ee1d74ebc25bffef82e',1,'z::core::string']]],
   ['truncate_573',['truncate',['../classz_1_1core_1_1string.html#a79115a233e715c328a27e051264f9248',1,'z::core::string']]],
   ['type_574',['type',['../classz_1_1core_1_1string.html#a8644b4f7292302682dd4aae86a0c2b4d',1,'z::core::string::type()'],['../classz_1_1util_1_1generic.html#ab9732a1a4814deae02a78b2193cf8e2b',1,'z::util::generic::type() const noexcept']]],
-  ['typestring_575',['typeString',['../classz_1_1util_1_1generic.html#af816d3b39bc19ee4809d537e0f447190',1,'z::util::generic']]]
+  ['typestring_575',['typeString',['../classz_1_1util_1_1generic.html#af448c86b79143a5248eea5aeed2893ce',1,'z::util::generic']]]
 ];
