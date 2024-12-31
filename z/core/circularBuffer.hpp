@@ -1,6 +1,7 @@
 #pragma once
 
 #include "arrayLike.hpp"
+#include "sizable.hpp"
 #include <type_traits>
 
 namespace z {

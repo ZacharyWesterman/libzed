@@ -187,7 +187,7 @@ lint: lint.log
 	@cat $^
 
 lint.log: $(HEADERS) $(wildcard examples/src/*.cpp)
-	find z/ -type f -name '*.cpp' -not -name 'catch.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- $(CCFLAGS) -Wno-unused-private-field > lint.log
+	@find z/ -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name '*Constructors.hpp' -not -name 'utf*.hpp' -not -name 'ascii.hpp' -not -name 'shared.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- -std=c++17 -m64 -W -Wall -Wextra -Wno-psabi -Werror -pedantic -fexceptions -fPIC -fdata-sections -ffunction-sections -O3 -Wno-unused-private-field > lint.log
 
 format:
 	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
