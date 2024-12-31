@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"functions_v.html":[2,3,0,18],
+"functions_vars.html":[2,3,2],
+"functions_w.html":[2,3,0,19],
+"functions_~.html":[2,3,0,20],
 "generator_8hpp_source.html":[3,0,0,0,5],
 "generic_8cpp-example.html":[4,5],
 "generic_8hpp.html#a7f3d9d080d7bb264e2aab2988f46bf57":[1,0,2,5],
@@ -97,12 +101,11 @@ var NAVTREEINDEX2 =
 "namespacez_1_1math.html#ac35db08460fceaec9114f623643ea902":[1,0,2,2,2],
 "namespacez_1_1system.html":[1,0,2,3],
 "namespacez_1_1system.html#a058b8e8ba45f46f4e28c9c3096f85919":[1,0,2,3,3],
-"namespacez_1_1system.html#aa2217be4f1624c1a49d27a2767673a00":[1,0,2,3,2],
+"namespacez_1_1system.html#a555a1e77407a794e5a202525f996697b":[1,0,2,3,2],
 "namespacez_1_1util.html":[1,0,2,4],
 "numberwang_8cpp-example.html":[4,10],
 "pages.html":[],
 "path_8hpp_source.html":[3,0,0,1,14],
-"pause_8hpp_source.html":[3,0,0,3,1],
 "progress_8hpp_source.html":[3,0,0,4,4],
 "range_8cpp-example.html":[4,11],
 "range_8hpp_source.html":[3,0,0,0,10],
@@ -116,6 +119,7 @@ var NAVTREEINDEX2 =
 "shorten_8hpp_source.html":[3,0,0,1,17],
 "sizable_8hpp_source.html":[3,0,0,0,13],
 "size_8hpp_source.html":[3,0,0,1,18],
+"sleep_8hpp_source.html":[3,0,0,3,1],
 "sortedArray_8hpp_source.html":[3,0,0,0,14],
 "sortedRefArray_8hpp_source.html":[3,0,0,0,15],
 "split_8hpp_source.html":[3,0,0,0,16],
@@ -169,13 +173,9 @@ var NAVTREEINDEX2 =
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca3a23ee38c5ed0cd15e082dec902c40da":[1,0,2,0,1,0,1],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[1,0,2,0,1,0,3],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca410651d545a32649fe15caa02395df09":[3,0,0,0,22,0,3],
-"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[3,0,0,0,22,0,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[1,0,2,0,1,0,0],
+"zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dca4cb92ed76d95621c69008e242a31d167":[3,0,0,0,22,0,0],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[3,0,0,0,22,0,2],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dcab523a3214b8aca73c272f269780e8354":[1,0,2,0,1,0,2],
-"zstr_8hpp_source.html":[3,0,0,0,22],
-"":[1,0,2,0,0],
-"":[1,0,1],
-"":[1,0,2,0,1],
-"":[1,0,2]
+"zstr_8hpp_source.html":[3,0,0,0,22]
 };
