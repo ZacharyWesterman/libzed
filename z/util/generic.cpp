@@ -66,7 +66,7 @@ zstring generic::toString(bool printArrays) const noexcept {
 	} else if (ix == generic::STRING) {
 		return std::get<generic::STRING>(value);
 	} else if (printArrays && (ix == generic::ARRAY)) {
-		zstring res = '{';
+		zstring res = '[';
 		const z::core::array<generic> &arr = std::get<generic::ARRAY>(value);
 		for (int i = 0; i < arr.length(); ++i) {
 			if (i) {
@@ -74,7 +74,7 @@ zstring generic::toString(bool printArrays) const noexcept {
 			}
 			res.append(arr[i].toString(true));
 		}
-		res.append('}');
+		res.append(']');
 		return res;
 	}
 
@@ -121,7 +121,7 @@ int generic::type() const noexcept {
 	return value.index();
 }
 
-const char *generic::typeString() const noexcept {
+zstring generic::typeString() const noexcept {
 	const char *typeOpts[6] = {"void", "int", "float", "complex", "string", "array"};
 
 	// shouldn't ever be out of range, just a sanity check.
@@ -264,6 +264,13 @@ bool generic::promote(generic *other) noexcept {
 }
 
 generic &generic::operator+=(const generic &other) {
+	// Strings are concatenated
+	if (type() == STRING && other.type() == STRING) {
+		value = string() + other.string();
+		return *this;
+	}
+
+	// If both are not strings, and one is not numeric, throw an exception.
 	if (!(numeric() && other.numeric())) {
 		throw nonnumeric();
 	}

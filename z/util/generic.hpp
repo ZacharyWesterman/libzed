@@ -228,7 +228,7 @@ public:
 	 * @brief Get a character string representing the current type.
 	 * @return A string representing the type.
 	 */
-	const char *typeString() const noexcept;
+	zstring typeString() const noexcept;
 
 	/**
 	 * @brief Get the lowest type this value can be cast to without losing precision.
@@ -253,7 +253,7 @@ public:
 
 	/**
 	 * @brief Add a value to this numeric value.
-	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric (and both are not strings).
 	 * @param other The value to add.
 	 * @return A reference to this after addition.
 	 */
@@ -261,7 +261,7 @@ public:
 
 	/**
 	 * @brief Add a value to this numeric value.
-	 * @throws nonnumeric if the operation is attempted with either value being non-numeric.
+	 * @throws nonnumeric if the operation is attempted with either value being non-numeric (and both are not strings).
 	 * @param other The value to add.
 	 * @return The addition result.
 	 */
@@ -375,6 +375,15 @@ public:
 	 */
 	bool equals(const generic &other) const {
 		return operator==(other);
+	}
+
+	/**
+	 * @brief Check strict inequality.
+	 * @param other The object to compare against.
+	 * @return True if objects have different types or data.
+	 */
+	inline bool operator!=(const generic &other) const {
+		return !operator==(other);
 	}
 
 	/**
