@@ -9,7 +9,7 @@ using z::core::memoize;
 // This is the original function that we want to memoize. Calling this directly will recalculate the value each time.
 int add(int a, int b) noexcept {
 	std::cout << "Calculating value, this should only happen once." << std::endl;
-	z::system::pause(1000);
+	z::system::sleep(1000);
 	return a + b;
 }
 

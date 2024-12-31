@@ -7,5 +7,5 @@
  **/
 
 #include "system/cpuid.hpp"
-#include "system/pause.hpp"
+#include "system/sleep.hpp"
 #include "system/terminal.hpp"
