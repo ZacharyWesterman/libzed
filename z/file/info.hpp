@@ -8,7 +8,7 @@
 #elif __linux__
 #define _stat stat
 #else
-#error file::info incompatible with target OS.
+#error file::info is incompatible with this OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {

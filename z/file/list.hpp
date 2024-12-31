@@ -8,7 +8,7 @@
 #elif _WIN32
 #include <windows.h>
 #else
-#error file::list is incompatible with target OS.
+#error file::list is incompatible with this OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {
