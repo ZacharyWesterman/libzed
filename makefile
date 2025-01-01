@@ -23,7 +23,7 @@ D0 = $(sort $(dir $(wildcard z/*/)))
 D1 = $(sort $(dir $(wildcard $(D0)*/)))
 DIRS := $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
 SRCS := $(wildcard $(addsuffix *.cpp, $(DIRS)))
-HEADERS := $(wildcard $(addsuffix *.hpp, $(DIRS)))
+HEADERS := $(wildcard $(addsuffix *.hpp, $(DIRS))) $(wildcard z/*.hpp)
 OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 DEPENDS := $(patsubst %.cpp,%.d,$(SRCS))
 
@@ -187,7 +187,7 @@ lint: lint.log
 	@cat $^
 
 lint.log: $(HEADERS) $(wildcard examples/src/*.cpp)
-	@find z/ -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name '*Constructors.hpp' -not -name 'utf*.hpp' -not -name 'ascii.hpp' -not -name 'shared.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- -std=c++17 -m64 -W -Wall -Wextra -Wno-psabi -Werror -pedantic -fexceptions -fPIC -fdata-sections -ffunction-sections -O3 -Wno-unused-private-field > lint.log
+	@find z/ -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name '*Constructors.hpp' -not -name 'utf*.hpp' -not -name 'ascii.hpp' -not -name 'shared.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- -std=c++17 -m64 -W -Wall -Wextra -Wno-psabi -Werror -pedantic -fexceptions -fPIC -fdata-sections -ffunction-sections -O3 -Wno-unused-private-field > lint.log 2>/dev/null || { cat $@; exit 1; }
 
 format:
 	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
