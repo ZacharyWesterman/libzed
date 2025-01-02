@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.89</span>
+   &#160;<span id="projectnumber">1.7.90</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -108,8 +108,6 @@ Examples</h2>
 <p>Strings are chosen by encoding, not character size. In this way, they're consistent across operating systems. They can be implicitly converted between encoding and are done so on-the-fly when interacting with streams. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/core/string.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    <span class="keyword">auto</span> string1 = <span class="stringliteral">&quot;Hello World!&quot;</span>_u32; <span class="comment">//A UTF-32 encoded string.</span></div>
 <div class="line">    <a class="code" href="classz_1_1core_1_1string.html">z::core::string&lt;z::ascii&gt;</a> string2 = string1; <span class="comment">//The same string, but in ASCII.</span></div>
@@ -127,7 +125,7 @@ Examples</h2>
 <p>When dealing with data that may have an unknown type at compile-time, a <a href="https://zacharywesterman.github.io/libzed/classz_1_1util_1_1generic.html">generic datatype</a> may come in handy. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/util/generic.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1util_1_1generic.html">z::util::generic</a></div>
+<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1util_1_1generic.html">z::util::generic</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    <span class="keyword">generic</span> val1 = <span class="stringliteral">&quot;Hello World!&quot;</span>; <span class="comment">//string</span></div>
