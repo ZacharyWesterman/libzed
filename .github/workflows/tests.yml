@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Library and Run Tests
-      run: make tests -j32 TEST_FLAGS='--reporter results' | tail 1 > test_results.txt
+      run: make tests -j32 TEST_FLAGS='--reporter results' | tail -1 > test_results.txt
     
     - name: Parse Test Results
       run: |
