@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: Introduction</title>
+<title>libzed: Libzed</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.86</span>
+   &#160;<span id="projectnumber">1.7.87</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -95,30 +95,83 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Introduction </div>  </div>
+<div class="title">Libzed </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will help decrease development time of other projects.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/c-cpp.yml/badge.svg" alt="build status" style="pointer-events: none;" class="inline"/></p>
+<p>This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will not only take the grunt work out of C++, but it will help decrease development time of other projects.</p>
 <p>In particular, the idea behind rolling a custom string class was to have better built-in support for string manipulation, as well as full support for different string formats.</p>
-<p>Currently only Linux and Windows builds are supported, as those are the only machines I own. Both 64 and 32-bit builds should be fully supported. This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done. </p><hr  />
+<p>Currently only Linux and Windows builds are supported, as those are the only machines I own. Both 64 and 32-bit builds should be fully supported. This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md2"></a>
+Examples</h2>
+<p>Strings are chosen by encoding, not character size. In this way, they're consistent across operating systems. They can be implicitly converted between encoding and are done so on-the-fly when interacting with streams. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/core/string.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">auto</span> string1 = <span class="stringliteral">&quot;Hello World!&quot;</span>_u32; <span class="comment">//A UTF-32 encoded string.</span></div>
+<div class="line">    <a class="code" href="classz_1_1core_1_1string.html">z::core::string&lt;z::ascii&gt;</a> string2 = string1; <span class="comment">//The same string, but in ASCII.</span></div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; string1 &lt;&lt; <span class="stringliteral">&quot; : string1 is &quot;</span> &lt;&lt; string1.<a class="code" href="classz_1_1core_1_1string.html#a19ac810f3cdd61cbcf4bd1e2e7a31eb8">size</a>() &lt;&lt; <span class="stringliteral">&quot; bytes.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; string2 &lt;&lt; <span class="stringliteral">&quot; : string2 is &quot;</span> &lt;&lt; string2.<a class="code" href="classz_1_1core_1_1string.html#a19ac810f3cdd61cbcf4bd1e2e7a31eb8">size</a>() &lt;&lt; <span class="stringliteral">&quot; bytes.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> string3 = <span class="stringliteral">&quot;test1&quot;</span>_zs; <span class="comment">//The default string encoding (UTF-8)</span></div>
+<div class="line">    <a class="code" href="classz_1_1core_1_1string.html">zstring</a> string4 = <span class="stringliteral">&quot;test2&quot;</span>; <span class="comment">//Ditto.</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html_a19ac810f3cdd61cbcf4bd1e2e7a31eb8"><div class="ttname"><a href="classz_1_1core_1_1string.html#a19ac810f3cdd61cbcf4bd1e2e7a31eb8">z::core::string::size</a></div><div class="ttdeci">size_t size() const noexcept override</div><div class="ttdoc">Get the size of the string in memory.</div></div>
+</div><!-- fragment --><p> Strings also have a <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1string.html">full suite of operations</a> that can be done on them, and can be cast to and from many types, including std::complex and floats in scientific notation.</p>
+<hr  />
+<p>When dealing with data that may have an unknown type at compile-time, a <a href="https://zacharywesterman.github.io/libzed/classz_1_1util_1_1generic.html">generic datatype</a> may come in handy. </p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+@code{cpp}</h1>
+<p>#include &lt;<a class="el" href="generic_8hpp_source.html">z/util/generic.hpp</a>&gt; #include &lt;iostream&gt;</p>
+<p>using <a class="el" href="classz_1_1util_1_1generic.html" title="A class for simple storage and manipulation of data regardless of type.">z::util::generic</a></p>
+<p>int main() { generic val1 = "Hello World!"; //string generic val2 = 23; //integer generic val3 = 3.14 //floating point generic val4 = { "Hello!", 10, 123.45 }; //Array of values of different types!</p>
+<p>std::cout &lt;&lt; "val1 = " &lt;&lt; val1.toString() &lt;&lt; std::endl; std::cout &lt;&lt; "val2 = " &lt;&lt; val2.toString() &lt;&lt; std::endl; std::cout &lt;&lt; "val3 = " &lt;&lt; val3.toString() &lt;&lt; std::endl;</p>
+<p>//By default, arrays do not convert to a string (they may be very large!) std::cout &lt;&lt; "val4 (default)   = " &lt;&lt; val4.toString() &lt;&lt; std::endl; //But we can specify that we want to recurse through any arrays. std::cout &lt;&lt; "val4 (recursive) = " &lt;&lt; val4.toString(true) &lt;&lt; std::endl; } </p>
+<p>There is also support for various <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html">generators</a>, and even custom generators can be created. For example, a memory efficient way to read lines in a file is with <code><a class="el" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91" title="Reads the contents of a file line-by-line.">z::file::lines</a></code>: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/file/lines.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using</span> <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">//Get the first 5 lines</span></div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line : <a class="code" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">lines</a>(<span class="stringliteral">&quot;your/file/here&quot;</span>_zs).limit(5)) {</div>
+<div class="line">        line.writeln(std::cout);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacez_1_1file_html_a392ba677167ff1404e042fd0eadd0b91"><div class="ttname"><a href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91">z::file::lines</a></div><div class="ttdeci">core::generator&lt; zstring, fileHandle &gt; lines(const zpath &amp;filename)</div><div class="ttdoc">Reads the contents of a file line-by-line.</div></div>
+</div><!-- fragment --><p>There are also functions for interacting with files, all of which can be found <a href="https://zacharywesterman.github.io/libzed/namespacez_1_1file.html">in the z::file namespace</a>.</p>
+<p>On this note, and in the interest of simplifying things, there also exists a class for dynamically loading and handling libraries at runtime (<a href="https://zacharywesterman.github.io/libzed/classz_1_1file_1_1library.html">documentation is here</a>).</p>
+<p>See the examples/ folder for a small example of dynamic library loading. As with the rest of this library, all the platform-specific stuff is abstracted away.</p>
+<p>Check out the <a href="https://zacharywesterman.github.io/libzed/examples.html">examples/ directory</a> for a longer list of example programs.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md6"></a>
+List of structures</h2>
 <ul>
-<li><a class="el" href="namespacez_1_1core.html" title="Section containing core functions and classes.">z::core</a> Contains core functionality such as strings, arrays, and timers.</li>
-<li><a class="el" href="namespacez_1_1file.html" title="This section contains file management functions and classes.">z::file</a> Has several classes for easy file system management.</li>
-<li><a class="el" href="namespacez_1_1math.html" title="This section contains math-related functions, constants, and datatypes.">z::math</a> Mathematical constants and functions are defined here.</li>
-<li><a class="el" href="namespacez_1_1util.html" title="Section containing utility classes.">z::util</a> Contains classes that provide more complicated functionality.</li>
-<li><a class="el" href="namespacez_1_1system.html" title="This section contains classes and functions relating to system info.">z::system</a> Contains classes that allow interaction with and information about the user's system.</li>
+<li><a class="el" href="namespacez_1_1core.html" title="Section containing core functions and classes.">z::core</a> - Contains core functionality such as strings, arrays, and timers.</li>
+<li><a class="el" href="namespacez_1_1file.html" title="This section contains file management functions and classes.">z::file</a> - Has functions for easy file system management.</li>
+<li><a class="el" href="namespacez_1_1math.html" title="This section contains math-related functions, constants, and datatypes.">z::math</a> - Mathematical constants and functions are defined here.</li>
+<li><a class="el" href="namespacez_1_1util.html" title="Section containing utility classes.">z::util</a> - Contains classes that provide more complicated functionality.</li>
+<li><a class="el" href="namespacez_1_1system.html" title="This section contains classes and functions relating to system info.">z::system</a> - Contains classes that allow interaction with and information about the user's system.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md0"></a>
-Using This Library</h2>
-<h3><a class="anchor" id="autotoc_md1"></a>
-Required dependencies</h3>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Using This Library</h1>
+<p>Currently the Makefile supports compiling on Linux and Windows only, as those are the only systems I have. ¯\_(ツ)_/¯</p>
+<p>It should compile on any 64 or 32-bit flavor of these systems (including the Raspberry Pi!).</p>
+<p>The only requirements are Make and a C++ compiler that supports <em>at least</em> C++11 (C++17 or newer preferred). If <code>g++ --version</code> is 5 or above, chances are you're good.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Required dependencies</h2>
 <ul>
 <li>g++ (or other compliant compiler) supporting at least C++11</li>
 <li>make</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md2"></a>
-Optional dependency</h3>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Optional dependency</h2>
 <p>This library has optional support for serialization via <a href="https://github.com/USCiLab/cereal">cereal</a>. The following classes should be able to be saved and loaded with cereal:</p><ul>
 <li><a class="el" href="classz_1_1core_1_1string.html" title="A template class for character strings.">z::core::string</a></li>
 <li><a class="el" href="classz_1_1core_1_1array.html" title="A wrapper for std::vector.">z::core::array</a></li>
@@ -128,8 +181,8 @@ Optional dependency</h3>
 <li><a class="el" href="classz_1_1util_1_1generic.html" title="A class for simple storage and manipulation of data regardless of type.">z::util::generic</a></li>
 </ul>
 <p>If cereal is not installed however, this library should compile just fine. Again, totally optional.</p>
-<h3><a class="anchor" id="autotoc_md3"></a>
-Build options</h3>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Build options</h2>
 <p>By default, make should pick the best options for your machine. If that's not the case, or you want/need different options for any other reason, here are some example flags you can tweak:</p><ul>
 <li><code>CC=c++</code> to compile with <code>c++</code> instead of <code>g++</code>.</li>
 <li><code>LN=gcc</code> to link with <code>gcc</code> instead of <code>g++</code>.</li>
@@ -139,19 +192,19 @@ Build options</h3>
 <li><code>LIBDIR=/lib/install/dir</code> to set where the library should install under instead of <code>/usr/lib</code>.</li>
 <li><code>ICLDIR=/include/install/dir</code> to set where the headers should be copied to instead of <code>/usr/include</code>.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md4"></a>
-Compiling</h3>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Compiling</h2>
 <p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div>
 </div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead.</p>
 <p>The above will compile as a dynamic library (.so on Linux, .dll on Windows). To compile to a static library: </p><div class="fragment"><div class="line">$ make -j$(nproc) static</div>
 </div><!-- fragment --><p>You should get no errors or warnings. You can open an issue on <a href="https://github.com/ZacharyWesterman/libzed">GitHub</a> if either of those pop up while compiling.</p>
-<h3><a class="anchor" id="autotoc_md5"></a>
-Installing the dynamic library</h3>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Installing the dynamic library</h2>
 <p>In Linux, either run <code>make install</code> as superuser or <code>sudo make install</code>.</p>
 <p>In Windows you can save the DLL into whatever directory you want, just make sure the PATH system variable contains that folder.</p>
 <p>Alternatively, you can copy the DLL/SO into the working directory of your project and tell the linker to load it from there.</p>
-<h3><a class="anchor" id="autotoc_md6"></a>
-Linking to this library</h3>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Linking to this library</h2>
 <p>Suppose you have some simple project called <code>example.cpp</code>. Let's have this file contain the following: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/core/string.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
@@ -160,17 +213,17 @@ Linking to this library</h3>
 <div class="line">    std::cout &lt;&lt; <span class="keywordtype">string</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition:</b> string.hpp:61</div></div>
 </div><!-- fragment --><p>To compile and link to the installed library: </p><div class="fragment"><div class="line">$ g++ -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
 <div class="line">$ g++ -lzed -o example.out example.o</div>
-</div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I<span class="stringliteral">&quot;/path/to/libzed/headers&quot;</span> -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
-<div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span></div>
-</div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L<span class="stringliteral">&quot;/path/to/lib&quot;</span> -Wl,--gc-sections</div>
+</div><!-- fragment --><p>If the DLL/SO and header files are saved in a specific directory that's not in PATH (for example if compiling for Windows): </p><div class="fragment"><div class="line">$ g++ -I&quot;/path/to/libzed/headers&quot; -std=c++17 -Wno-psabi -fPIC -o example.o -c example.cpp</div>
+<div class="line">$ g++ -o example.out example.o -lzed -L&quot;/path/to/lib&quot;</div>
+</div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L&quot;/path/to/lib&quot; -Wl,--gc-sections</div>
 </div><!-- fragment --><p> Note the effectiveness of this depends on the architecture and the specific compiler used.</p>
-<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
-<div class="line">$ gzexe example.out &amp;&amp; rm example.out~</div>
-</div><!-- fragment --> <hr  />
-<p> Download or fork: <a href="https://github.com/ZacharyWesterman/libzed">GitHub repo</a>. </p>
+<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+@code</h1>
+<p>$ strip example.out --strip-all $ gzexe example.out &amp;&amp; rm example.out~ </p>
+<p><a href="https://github.com/ZacharyWesterman/libzed">Download or fork this repo</a> | <a href="https://zacharywesterman.github.io/libzed">Documentation is here</a> | <a class="el" href="md_CONTRIBUTING.html">Look here if you want to contribute</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

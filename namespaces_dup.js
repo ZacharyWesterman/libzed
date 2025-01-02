@@ -1,13 +1,5 @@
 var namespaces_dup =
 [
-    [ "Using This Library", "index.html#autotoc_md0", [
-      [ "Required dependencies", "index.html#autotoc_md1", null ],
-      [ "Optional dependency", "index.html#autotoc_md2", null ],
-      [ "Build options", "index.html#autotoc_md3", null ],
-      [ "Compiling", "index.html#autotoc_md4", null ],
-      [ "Installing the dynamic library", "index.html#autotoc_md5", null ],
-      [ "Linking to this library", "index.html#autotoc_md6", null ]
-    ] ],
     [ "std", null, [
       [ "shuffle", "array_8hpp.html#a58ef10c250797193bf5cf37451731aa0", null ],
       [ "sort", "array_8hpp.html#aa117391f8535e17c6499afacfecaf66e", null ]
