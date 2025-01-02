@@ -1,6 +1,7 @@
 # Libzed
 
-![build status](https://github.com/ZacharyWesterman/libzed/actions/workflows/c-cpp.yml/badge.svg)
+![build](https://github.com/ZacharyWesterman/libzed/actions/workflows/c-cpp.yml/badge.svg)
+![tests](https://github.com/ZacharyWesterman/libzed/actions/workflows/tests.yml/badge.svg)
 
 This library contains useful classes and functions for quick and simple data manipulation.
 The idea is that this will not only take the grunt work out of C++, but it will help decrease
