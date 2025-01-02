@@ -63,6 +63,7 @@ int main() {
 	std::cout << "val4 (recursive) = " << val4.toString(true) << std::endl;
 }
 ```
+
 ---
 
 There is also support for various [generators][generators], and even custom generators can be created.
@@ -204,6 +205,7 @@ Note that these tricks will **NOT** work with dll/so files, only executables!
 $ strip example.out --strip-all
 $ gzexe example.out && rm example.out~
 ```
+
 ---
 
 [Download or fork this repo][repo] |
