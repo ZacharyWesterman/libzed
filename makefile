@@ -1,7 +1,7 @@
 LIBNAME = zed
 VER_MAJOR = 1
-VER_MINOR = 7
-VER_CUTOFF_COMMIT = fdeadf25ecf572dd510104981aaad04a36809d30
+VER_MINOR = 8
+VER_CUTOFF_COMMIT = bf0570cee74e5f24aed8c032dfaab35a0af0153f
 
 #Auto-calculate patch version based on current commit.
 #If patch version can't be calculated, just use the OS name.
@@ -13,7 +13,7 @@ else
 VER_PATCH = Linux
 endif
 else
-VER_PATCH = $(shell git rev-list --count $(VER_CUTOFF_COMMIT)..HEAD)
+VER_PATCH = $(shell git rev-list --count $(VER_CUTOFF_COMMIT)..HEAD^)
 endif
 
 LIBDIR = /usr/lib
