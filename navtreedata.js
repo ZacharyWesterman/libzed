@@ -25,11 +25,9 @@
 var NAVTREE =
 [
   [ "libzed", "index.html", [
-    [ "@code{cpp}", "index.html#autotoc_md4", [
-      [ "Examples", "index.html#autotoc_md2", null ],
-      [ "List of structures", "index.html#autotoc_md6", null ]
-    ] ],
     [ "Using This Library", "index.html#autotoc_md8", [
+      [ "Examples", "index.html#autotoc_md2", null ],
+      [ "List of structures", "index.html#autotoc_md6", null ],
       [ "Required dependencies", "index.html#autotoc_md9", null ],
       [ "Optional dependency", "index.html#autotoc_md10", null ],
       [ "Build options", "index.html#autotoc_md11", null ],
@@ -37,7 +35,6 @@ var NAVTREE =
       [ "Installing the dynamic library", "index.html#autotoc_md13", null ],
       [ "Linking to this library", "index.html#autotoc_md14", null ]
     ] ],
-    [ "@code", "index.html#autotoc_md15", null ],
     [ "CONTRIBUTING", "md_CONTRIBUTING.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

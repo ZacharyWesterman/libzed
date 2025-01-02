@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.7.88</span>
+   &#160;<span id="projectnumber">1.7.89</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -124,14 +124,29 @@ Examples</h2>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_a19ac810f3cdd61cbcf4bd1e2e7a31eb8"><div class="ttname"><a href="classz_1_1core_1_1string.html#a19ac810f3cdd61cbcf4bd1e2e7a31eb8">z::core::string::size</a></div><div class="ttdeci">size_t size() const noexcept override</div><div class="ttdoc">Get the size of the string in memory.</div></div>
 </div><!-- fragment --><p> Strings also have a <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1string.html">full suite of operations</a> that can be done on them, and can be cast to and from many types, including std::complex and floats in scientific notation.</p>
 <hr  />
-<p>When dealing with data that may have an unknown type at compile-time, a <a href="https://zacharywesterman.github.io/libzed/classz_1_1util_1_1generic.html">generic datatype</a> may come in handy. </p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-@code{cpp}</h1>
-<p>#include &lt;<a class="el" href="generic_8hpp_source.html">z/util/generic.hpp</a>&gt; #include &lt;iostream&gt;</p>
-<p>using <a class="el" href="classz_1_1util_1_1generic.html" title="A class for simple storage and manipulation of data regardless of type.">z::util::generic</a></p>
-<p>int main() { generic val1 = "Hello World!"; //string generic val2 = 23; //integer generic val3 = 3.14 //floating point generic val4 = { "Hello!", 10, 123.45 }; //Array of values of different types!</p>
-<p>std::cout &lt;&lt; "val1 = " &lt;&lt; val1.toString() &lt;&lt; std::endl; std::cout &lt;&lt; "val2 = " &lt;&lt; val2.toString() &lt;&lt; std::endl; std::cout &lt;&lt; "val3 = " &lt;&lt; val3.toString() &lt;&lt; std::endl;</p>
-<p>//By default, arrays do not convert to a string (they may be very large!) std::cout &lt;&lt; "val4 (default)   = " &lt;&lt; val4.toString() &lt;&lt; std::endl; //But we can specify that we want to recurse through any arrays. std::cout &lt;&lt; "val4 (recursive) = " &lt;&lt; val4.toString(true) &lt;&lt; std::endl; } </p>
+<p>When dealing with data that may have an unknown type at compile-time, a <a href="https://zacharywesterman.github.io/libzed/classz_1_1util_1_1generic.html">generic datatype</a> may come in handy. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/util/generic.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using</span> <a class="code" href="classz_1_1util_1_1generic.html">z::util::generic</a></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">generic</span> val1 = <span class="stringliteral">&quot;Hello World!&quot;</span>; <span class="comment">//string</span></div>
+<div class="line">    <span class="keyword">generic</span> val2 = 23; <span class="comment">//integer</span></div>
+<div class="line">    <span class="keyword">generic</span> val3 = 3.14 <span class="comment">//floating point</span></div>
+<div class="line">    <span class="keyword">generic</span> val4 = { <span class="stringliteral">&quot;Hello!&quot;</span>, 10, 123.45 }; <span class="comment">//Array of values of different types!</span></div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;val1 = &quot;</span> &lt;&lt; val1.<a class="code" href="classz_1_1util_1_1generic.html#a789162407cbab965e6c9af6a0e958328">toString</a>() &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;val2 = &quot;</span> &lt;&lt; val2.toString() &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;val3 = &quot;</span> &lt;&lt; val3.toString() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">//By default, arrays do not convert to a string (they may be very large!)</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;val4 (default)   = &quot;</span> &lt;&lt; val4.toString() &lt;&lt; std::endl;</div>
+<div class="line">    <span class="comment">//But we can specify that we want to recurse through any arrays.</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;val4 (recursive) = &quot;</span> &lt;&lt; val4.toString(<span class="keyword">true</span>) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassz_1_1util_1_1generic_html"><div class="ttname"><a href="classz_1_1util_1_1generic.html">z::util::generic</a></div><div class="ttdoc">A class for simple storage and manipulation of data regardless of type.</div><div class="ttdef"><b>Definition:</b> generic.hpp:30</div></div>
+<div class="ttc" id="aclassz_1_1util_1_1generic_html_a789162407cbab965e6c9af6a0e958328"><div class="ttname"><a href="classz_1_1util_1_1generic.html#a789162407cbab965e6c9af6a0e958328">z::util::generic::toString</a></div><div class="ttdeci">zstring toString(bool printArrays=false) const noexcept</div><div class="ttdoc">Safely convert to a string.</div></div>
+</div><!-- fragment --><hr  />
 <p>There is also support for various <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html">generators</a>, and even custom generators can be created. For example, a memory efficient way to read lines in a file is with <code><a class="el" href="namespacez_1_1file.html#a392ba677167ff1404e042fd0eadd0b91" title="Reads the contents of a file line-by-line.">z::file::lines</a></code>: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/file/lines.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
@@ -219,10 +234,9 @@ Linking to this library</h2>
 <div class="line">$ g++ -o example.out example.o -lzed -L&quot;/path/to/lib&quot;</div>
 </div><!-- fragment --><p>If linking to the static library (libzed.a), I'd suggest removing unused code to cut down on resultant binary size. The compile step for this is the same, just alter the linker step: </p><div class="fragment"><div class="line">$ g++ -o example.out example.o -lzed -L&quot;/path/to/lib&quot; -Wl,--gc-sections</div>
 </div><!-- fragment --><p> Note the effectiveness of this depends on the architecture and the specific compiler used.</p>
-<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p>
-<h1><a class="anchor" id="autotoc_md15"></a>
-@code</h1>
-<p>$ strip example.out --strip-all $ gzexe example.out &amp;&amp; rm example.out~ </p>
+<p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
+<div class="line">$ gzexe example.out &amp;&amp; rm example.out~</div>
+</div><!-- fragment --><hr  />
 <p><a href="https://github.com/ZacharyWesterman/libzed">Download or fork this repo</a> | <a href="https://zacharywesterman.github.io/libzed">Documentation is here</a> | <a class="el" href="md_CONTRIBUTING.html">Look here if you want to contribute</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
