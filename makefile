@@ -196,7 +196,7 @@ dox: docs
 docs: html
 	@cat doxygen.log
 
-html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) Doxypages/examples.dox $(wildcard examples/src/*.cpp)
+html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) Doxypages/examples.dox $(wildcard examples/src/*.cpp) README.md
 	$(RMDIR) html
 	PROJECT_NUMBER=$(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) doxygen
 
