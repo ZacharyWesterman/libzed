@@ -1,4 +1,4 @@
-name: Run Tests
+name: Tests
 
 on:
   push:
@@ -16,4 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Library and Run Tests
-      run: make tests -j32
+      run: make tests -j32 TEST_FLAGS='--reporter results' | tail 1 > test_results.txt
+    
+    - name: Parse Test Results
+      run: |
+        RESULTS=($(cat test_results.txt))
+        echo "PASSED=${RESULTS[0]}" >> $GITHUB_ENV
+        echo "FAILED=${RESULTS[1]}" >> $GITHUB_ENV

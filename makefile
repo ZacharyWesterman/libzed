@@ -143,7 +143,7 @@ examples: static
 test: tests
 tests: static
 	$(MAKE) -C tests/
-	./tests/bin/run_tests
+	./tests/bin/run_tests $(TEST_FLAGS)
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
