@@ -23,8 +23,6 @@ They can be implicitly converted between encoding and are done so on-the-fly whe
 #include <z/core/string.hpp>
 #include <iostream>
 
-
-
 int main() {
 	auto string1 = "Hello World!"_u32; //A UTF-32 encoded string.
 	z::core::string<z::ascii> string2 = string1; //The same string, but in ASCII.
@@ -45,7 +43,7 @@ When dealing with data that may have an unknown type at compile-time, a [generic
 #include <z/util/generic.hpp>
 #include <iostream>
 
-using z::util::generic
+using z::util::generic;
 
 int main() {
 	generic val1 = "Hello World!"; //string
