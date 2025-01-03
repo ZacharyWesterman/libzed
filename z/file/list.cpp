@@ -33,33 +33,33 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 	searchPath += "/*.";
 	searchPath += fileType;
 
+	WIN32_FIND_DATA fd;
+	HANDLE hFind = FindFirstFile(searchPath.cstring(), &fd);
+
 	return core::generator<zpath, dirscan>(
 		dirscan{
-			nullptr,
-			nullptr,
+			fd,
+			hFind,
 			false,
 			showAll,
 		},
 		[](dirscan &state) {
 			state.used = true;
 
-			if (!state.fd) {
-				state.hFind = FindFirstFile((char *)search_path.cstring(), &state.fd);
-			} else {
-				FindNextFile(state.hFind, &state.fd);
-			}
-
 			while (state.hFind != INVALID_HANDLE_VALUE) {
-				if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+				if (state.fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
 					FindNextFile(state.hFind, &state.fd);
 					continue;
 				}
 
-				if (!state.showAll && fd.cFileName[0] == '.') {
+				if (!state.showAll && state.fd.cFileName[0] == '.') {
 					continue;
 				}
 
-				return core::yield<zpath>{false, fd.cFileName};
+				const zpath filename(state.fd.cFileName);
+				FindNextFile(state.hFind, &state.fd);
+
+				return core::yield<zpath>{false, filename};
 			}
 
 			return core::yield<zpath>{true, ""};
@@ -113,35 +113,34 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 
 #ifdef _WIN32
 	searchPath += "/*";
-	searchPath += fileType;
+
+	WIN32_FIND_DATA fd;
+	HANDLE hFind = FindFirstFile(searchPath.cstring(), &fd);
 
 	return core::generator<zpath, dirscan>(
 		dirscan{
-			nullptr,
-			nullptr,
+			fd,
+			hFind,
 			false,
 			showAll,
 		},
 		[](dirscan &state) {
 			state.used = true;
 
-			if (!state.fd) {
-				state.hFind = FindFirstFile((char *)search_path.cstring(), &state.fd);
-			} else {
-				FindNextFile(state.hFind, &state.fd);
-			}
-
 			while (state.hFind != INVALID_HANDLE_VALUE) {
-				if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+				if (state.fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
 					FindNextFile(state.hFind, &state.fd);
 					continue;
 				}
 
-				if (!state.showAll && fd.cFileName[0] == '.') {
+				if (!state.showAll && state.fd.cFileName[0] == '.') {
 					continue;
 				}
 
-				return core::yield<zpath>{false, fd.cFileName};
+				const zpath filename(state.fd.cFileName);
+				FindNextFile(state.hFind, &state.fd);
+
+				return core::yield<zpath>{false, filename};
 			}
 
 			return core::yield<zpath>{true, ""};

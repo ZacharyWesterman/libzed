@@ -144,7 +144,8 @@ Just run make in the project directory. I do the following:
 $ make -j$(nproc)
 ```
 so that it will compile on as many cores as possible.
-On Windows you may have to run `mingw32-make` instead.
+On Windows you may have to run `mingw32-make` instead,
+or if you are crosspiling for Windows on Linux, use `make TARGET=win64 -j$(nproc)` or `make TARGET=win32 -j$(nproc)`.
 
 The above will compile as a dynamic library (.so on Linux, .dll on Windows).
 To compile to a static library:

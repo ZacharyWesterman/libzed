@@ -29,8 +29,23 @@ DEPENDS := $(patsubst %.cpp,%.d,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VER_MAJOR).$(VER_MINOR)
 
+#default compiler
 CC = g++
+
+#If we're cross-compiling for Windows.
+ifeq ($(TARGET),win64)
+CC = x86_64-w64-mingw32-g++
+endif
+ifeq ($(TARGET),win32)
+CC = i686-w64-mingw32-g++
+endif
+
 LN = $(CC)
+
+#If we're cross-compiling for Windows, set the OS variable to Windows_NT.
+ifneq (,$(findstring mingw,$(CC)))
+OS = Windows_NT
+endif
 
 ARCH = $(shell $(CC) -dumpmachine)
 

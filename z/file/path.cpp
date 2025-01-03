@@ -1,7 +1,6 @@
 #include "path.hpp"
 
 #ifdef _WIN32
-#include <Tchar.h>
 #include <windows.h>
 #elif __linux__
 #include <limits.h>
@@ -14,8 +13,9 @@ namespace z {
 namespace file {
 zpath path(const zpath &filePath) noexcept {
 #ifdef _WIN32
-	TCHAR fullPath[MAX_PATH];
-	(void)GetFullPathName(_T((const char *)filePath.cstring()), MAX_PATH, fullPath, NULL);
+	char fullPath[MAX_PATH];
+
+	(void)GetFullPathName((const char *)filePath.cstring(), MAX_PATH, fullPath, NULL);
 #elif __linux__
 	char fullPath[PATH_MAX];
 	char *ignored __attribute__((unused));
