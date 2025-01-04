@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libzed
-   &#160;<span id="projectnumber">1.8.2</span>
+   &#160;<span id="projectnumber">1.8.3</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -112,8 +112,11 @@ $(document).ready(function(){initNavTree('range_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a3f90741358ad5d4e7dbc0524d8d2334a">   32</a></span>&#160;<a class="code" href="classz_1_1core_1_1generator.html">generator</a>&lt;<span class="keywordtype">long</span>, <span class="keywordtype">long</span>&gt; <a class="code" href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">range</a>(<span class="keywordtype">long</span> begin, const <a class="code" href="classz_1_1core_1_1sentinel.html">sentinel</a> &amp;check, <span class="keywordtype">long</span> step = 1) noexcept;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">// namespace core</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace z</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;template &lt;&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5">   40</a></span>&#160;<a class="code" href="classz_1_1core_1_1generator.html">generator</a>&lt;<span class="keywordtype">long</span>, <a class="code" href="classz_1_1core_1_1generator.html">generator</a>&lt;<span class="keywordtype">long</span>, <span class="keywordtype">long</span>&gt;::countedState&gt; <a class="code" href="classz_1_1core_1_1generator.html">generator</a>&lt;<span class="keywordtype">long</span>, <span class="keywordtype">long</span>&gt;::skip(<span class="keywordtype">long</span> count);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <span class="comment">// namespace core</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1generator_html"><div class="ttname"><a href="classz_1_1core_1_1generator.html">z::core::generator</a></div><div class="ttdoc">An arbitrary generator for producing sequential results on-the-fly.</div><div class="ttdef"><b>Definition:</b> generator.hpp:84</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1sentinel_html"><div class="ttname"><a href="classz_1_1core_1_1sentinel.html">z::core::sentinel</a></div><div class="ttdoc">A sentinel that stops a numeric generator when the value reaches a certain point.</div><div class="ttdef"><b>Definition:</b> sentinel.hpp:10</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_aeefc6e7b0c3f4c6b6c76f916b1672169"><div class="ttname"><a href="namespacez_1_1core.html#aeefc6e7b0c3f4c6b6c76f916b1672169">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>

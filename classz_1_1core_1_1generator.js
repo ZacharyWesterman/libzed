@@ -12,5 +12,6 @@ var classz_1_1core_1_1generator =
     [ "next", "classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e", null ],
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
     [ "skip", "classz_1_1core_1_1generator.html#aa90d88d1746535c9a55c20b5c0f5b30f", null ],
+    [ "skip", "classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5", null ],
     [ "take", "classz_1_1core_1_1generator.html#a287f47c5c3d66c64e5f2cf280b1e8bfd", null ]
 ];
