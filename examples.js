@@ -5,6 +5,7 @@ var examples =
     [ "dictionary.cpp", "dictionary_8cpp-example.html", null ],
     [ "dynamicLib.cpp", "dynamicLib_8cpp-example.html", null ],
     [ "file.cpp", "file_8cpp-example.html", null ],
+    [ "generator.cpp", "generator_8cpp-example.html", null ],
     [ "generic.cpp", "generic_8cpp-example.html", null ],
     [ "lines.cpp", "lines_8cpp-example.html", null ],
     [ "loadLib.cpp", "loadLib_8cpp-example.html", null ],
