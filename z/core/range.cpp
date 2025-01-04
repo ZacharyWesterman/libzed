@@ -31,5 +31,19 @@ generator<long, long> range(long begin, const sentinel &check, long step) noexce
 	});
 }
 
+template <>
+generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count) {
+	auto lambda = this->lambda;
+
+	return generator<long, generator<long, long>::countedState>({count, state}, [lambda](countedState &state) {
+		if (state.count > 0) {
+			state.state += state.count;
+		}
+		state.count = 0;
+
+		return lambda(state.state);
+	});
+}
+
 } // namespace core
 } // namespace z

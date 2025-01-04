@@ -31,5 +31,13 @@ generator<long, long> range(long end) noexcept;
  */
 generator<long, long> range(long begin, const sentinel &check, long step = 1) noexcept;
 
+/**
+ * @brief Template specialization for the skip function with generators that only output longs.
+ * @param count The number of items to skip.
+ * @return A new generator that skips the given number of items.
+ */
+template <>
+generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count);
+
 } // namespace core
 } // namespace z

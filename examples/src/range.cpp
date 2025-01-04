@@ -4,10 +4,12 @@
 
 #include <iostream>
 #include <z/core.hpp>
+#include <z/system/sleep.hpp>
 #include <z/util/progress.hpp>
 
 using z::core::join;
 using z::core::range;
+using z::system::sleep;
 
 int main() {
 	// You can iterate over ranges just like arrays.
@@ -32,8 +34,9 @@ int main() {
 	}
 
 	// Skipping elements
+	// Notice how the range is still instant, even though we're skipping 500,000 elements.
 	"\nskipping some elements and limiting to 5 total:"_zs.writeln(std::cout);
-	for (auto i : range(100).skip(5).limit(5)) {
+	for (auto i : (range(1'000'000).forEach([](long) { sleep(100); })).skip(500'000).limit(5)) {
 		(">"_zs + i).writeln(std::cout);
 	}
 
