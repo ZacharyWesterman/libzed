@@ -1,6 +1,7 @@
 # Libzed
 
-![build](https://github.com/ZacharyWesterman/libzed/actions/workflows/c-cpp.yml/badge.svg)
+![build-linux](https://github.com/ZacharyWesterman/libzed/actions/workflows/build-linux.yml/badge.svg)
+![build-windows](https://github.com/ZacharyWesterman/libzed/actions/workflows/build-windows.yml/badge.svg)
 ![tests](https://github.com/ZacharyWesterman/libzed/actions/workflows/tests.yml/badge.svg)
 
 This library contains useful classes and functions for quick and simple data manipulation.
