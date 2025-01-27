@@ -1,17 +1,17 @@
 var classz_1_1core_1_1generator =
 [
     [ "generator", "classz_1_1core_1_1generator.html#afe06ca01f6a68b6ffa7b16a38d4708a2", null ],
-    [ "begin", "classz_1_1core_1_1generator.html#a880616f6802f7a4ee1ae49fe4b9111e7", null ],
-    [ "collect", "classz_1_1core_1_1generator.html#a0b188be818c374393b6d586f9cce0f23", null ],
+    [ "begin", "classz_1_1core_1_1generator.html#ac87da2070de352b4daed8e2d03ee75db", null ],
+    [ "collect", "classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036", null ],
     [ "count", "classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257", null ],
-    [ "end", "classz_1_1core_1_1generator.html#a362461b0c94193ccc8ca05a1768155ed", null ],
+    [ "end", "classz_1_1core_1_1generator.html#ab12096aae4067dea270547cd343c1671", null ],
     [ "filter", "classz_1_1core_1_1generator.html#a66d168343d4cbc5c91416fef3d13e565", null ],
-    [ "forEach", "classz_1_1core_1_1generator.html#ac9ef2bfcfa978d48b4531ba996c731b2", null ],
-    [ "limit", "classz_1_1core_1_1generator.html#a790b28e4a3bdb35ba183ad1c8b96a1a6", null ],
-    [ "map", "classz_1_1core_1_1generator.html#aa0c3b3426e4edf42d497e424e6647a2e", null ],
-    [ "next", "classz_1_1core_1_1generator.html#a2e22af664fd0a6f5cb4a342062e3461e", null ],
+    [ "forEach", "classz_1_1core_1_1generator.html#a539ac0b1a37ebf91f3dc97b2635cc585", null ],
+    [ "limit", "classz_1_1core_1_1generator.html#a43f4dd869a42f3dd9ebd984354697388", null ],
+    [ "map", "classz_1_1core_1_1generator.html#ab0f562967bef63b024a446fd1bfbf15a", null ],
+    [ "next", "classz_1_1core_1_1generator.html#ab6ea4fba71464c615b73d660afd98f9b", null ],
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
-    [ "skip", "classz_1_1core_1_1generator.html#aa90d88d1746535c9a55c20b5c0f5b30f", null ],
+    [ "skip", "classz_1_1core_1_1generator.html#aa6614f7306396e79c4775ac6723bfc3a", null ],
     [ "skip", "classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5", null ],
-    [ "take", "classz_1_1core_1_1generator.html#a287f47c5c3d66c64e5f2cf280b1e8bfd", null ]
+    [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ]
 ];
