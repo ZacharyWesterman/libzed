@@ -14,8 +14,5 @@
 #include "math/remainder.hpp"
 #include "math/zeta.hpp"
 
-/// Matrices
-#include "math/matrix.hpp"
-
 /// String math
 #include "math/levenschtein.hpp"
