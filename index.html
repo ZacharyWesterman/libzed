@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.8</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.9</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -211,7 +211,7 @@ Build options</h2>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Compiling</h2>
 <p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div>
-</div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead, or if you are crosspiling for Windows on Linux, use <code>make TARGET=win64 -j$(nproc)</code> or <code>make TARGET=win32 -j$(nproc)</code>.</p>
+</div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead, or if you are crosspiling for Windows on Linux, use <code>make TARGET=win64 -j$(nproc)</code> or <code>make TARGET=win32 -j$(nproc)</code>. (Make sure to run <code>make clean</code> if you change the value of <code>TARGET</code>!!)</p>
 <p>The above will compile as a dynamic library (.so on Linux, .dll on Windows). To compile to a static library: </p><div class="fragment"><div class="line">$ make -j$(nproc) static</div>
 </div><!-- fragment --><p>You should get no errors or warnings. You can open an issue on <a href="https://github.com/ZacharyWesterman/libzed">GitHub</a> if either of those pop up while compiling.</p>
 <h2><a class="anchor" id="autotoc_md13"></a>
