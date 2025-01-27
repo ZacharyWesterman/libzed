@@ -147,6 +147,7 @@ $ make -j$(nproc)
 so that it will compile on as many cores as possible.
 On Windows you may have to run `mingw32-make` instead,
 or if you are crosspiling for Windows on Linux, use `make TARGET=win64 -j$(nproc)` or `make TARGET=win32 -j$(nproc)`.
+(Make sure to run `make clean` if you change the value of `TARGET`!!)
 
 The above will compile as a dynamic library (.so on Linux, .dll on Windows).
 To compile to a static library:
