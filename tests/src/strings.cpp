@@ -61,6 +61,10 @@ TEST_CASE("Constructing strings from various constants", "[string]") {
 			string = z::core::string<enc>::precision(10.3, 2);
 			REQUIRE(string == "10.30");
 		}
+		THEN("Constructing from a float, with a very small fractional part that should be ignored") {
+			string = z::core::string<enc>::precision(10.0004, 2);
+			REQUIRE(string == "10.00");
+		}
 	);
 
 	SECTION("ASCII") {

@@ -85,7 +85,7 @@ int fractionalBuf(double fractional, int base, int precision, bool force, uint8_
 			*overflow = true;
 		}
 
-		return length - (nonZero && force);
+		return length - (force && (nonZero || (!nonZero && fractional >= 0.1)));
 	} else {
 		return 0;
 	}
