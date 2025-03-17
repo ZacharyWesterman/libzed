@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.10</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.12</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -98,7 +98,8 @@ $(document).ready(function(){initNavTree('namespacez_1_1util.html',''); initResi
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">z::util Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -123,11 +124,69 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1progress.html">progress</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for outputting a progress bar to the terminal.  <a href="classz_1_1util_1_1progress.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae1ea1dd58ef15b581bb0c8ddf7148d1c" id="r_ae1ea1dd58ef15b581bb0c8ddf7148d1c"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:ae1ea1dd58ef15b581bb0c8ddf7148d1c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1util.html#ae1ea1dd58ef15b581bb0c8ddf7148d1c">chain</a> (<a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, U &gt; &amp;first, <a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, V &gt; &amp;second) noexcept</td></tr>
+<tr class="memdesc:ae1ea1dd58ef15b581bb0c8ddf7148d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains two generators together.  <br /></td></tr>
+<tr class="separator:ae1ea1dd58ef15b581bb0c8ddf7148d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Section containing utility classes. </p>
 <p>This section adds extra classes and functionality for more complicated data manipulation or representation. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae1ea1dd58ef15b581bb0c8ddf7148d1c" name="ae1ea1dd58ef15b581bb0c8ddf7148d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ea1dd58ef15b581bb0c8ddf7148d1c">&#9670;&#160;</a></span>chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, bool &gt; z::util::chain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, U &gt; &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; T, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Chains two generators together. </p>
+<p>This function takes two generators and chains them together, so that the second generator is only called when the first generator is exhausted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>The first generator. </td></tr>
+    <tr><td class="paramname">second</td><td>The second generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="chainGenerators_8cpp-example.html#a4">chainGenerators.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

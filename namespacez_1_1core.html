@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.10</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.12</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -221,6 +221,10 @@ Functions</h2></td></tr>
 <tr class="memitem:abefaf57ef51b10494f79ee76dd5142a7" id="r_abefaf57ef51b10494f79ee76dd5142a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#abefaf57ef51b10494f79ee76dd5142a7">isUTF8</a> (<a class="el" href="classz_1_1core_1_1array.html">uint8_t</a> *<a class="el" href="classz_1_1core_1_1array.html">c</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1array.html">len</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:abefaf57ef51b10494f79ee76dd5142a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether the characters are in valid UTF-8 format.  <br /></td></tr>
 <tr class="separator:abefaf57ef51b10494f79ee76dd5142a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846719da2d8af3765ac6bcc2d2f15e9d" id="r_a846719da2d8af3765ac6bcc2d2f15e9d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
+<tr class="memitem:a846719da2d8af3765ac6bcc2d2f15e9d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a846719da2d8af3765ac6bcc2d2f15e9d">generatorFrom</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">iter</a>)</td></tr>
+<tr class="memdesc:a846719da2d8af3765ac6bcc2d2f15e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an array.  <br /></td></tr>
+<tr class="separator:a846719da2d8af3765ac6bcc2d2f15e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb51f3e5b49bdc9253c9c63df511aec3" id="r_adb51f3e5b49bdc9253c9c63df511aec3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E&gt; </td></tr>
 <tr class="memitem:adb51f3e5b49bdc9253c9c63df511aec3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">E</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">join</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1iterable.html">iterable</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;list, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">string</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">E</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">delim</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:adb51f3e5b49bdc9253c9c63df511aec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate elements in an array into a string, separated by a delimiter.  <br /></td></tr>
@@ -300,6 +304,43 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The character encoded as UTF32. '?' if input is not valid UTF-8. </dd></dl>
+
+</div>
+</div>
+<a id="a846719da2d8af3765ac6bcc2d2f15e9d" name="a846719da2d8af3765ac6bcc2d2f15e9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a846719da2d8af3765ac6bcc2d2f15e9d">&#9670;&#160;</a></span>generatorFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt; z::core::generatorFrom </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a generator from an array. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of data in the array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iter</td><td>The array to create a generator from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that will yield the items from the array. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="chainGenerators_8cpp-example.html#a1">chainGenerators.cpp</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -1084,7 +1125,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A generator that outputs a regular sequence of integers in the range. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="generator_8cpp-example.html#a1">generator.cpp</a>, and <a class="el" href="range_8cpp-example.html#a1">range.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="chainGenerators_8cpp-example.html#a2">chainGenerators.cpp</a>, <a class="el" href="generator_8cpp-example.html#a1">generator.cpp</a>, and <a class="el" href="range_8cpp-example.html#a1">range.cpp</a>.</dd>
 </dl>
 
 </div>
