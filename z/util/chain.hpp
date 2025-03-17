@@ -8,8 +8,8 @@ namespace util {
 /**
  * @brief Chains two generators together.
  *
- * This function takes two generators and chains them together, so that
- * the second generator is only called when the first generator is exhausted.
+ * This function takes two generators and chains them together,
+ * so that multiple generators can be used as a single generator.
  *
  * @param first The first generator.
  * @param second The second generator.
