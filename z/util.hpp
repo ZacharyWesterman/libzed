@@ -8,6 +8,7 @@
  * for more complicated data manipulation or representation.
  **/
 
+#include "util/chain.hpp"
 #include "util/dictionary.hpp"
 #include "util/generic.hpp"
 #include "util/progress.hpp"

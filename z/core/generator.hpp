@@ -334,5 +334,21 @@ public:
 	}
 };
 
+/**
+ * @brief Create a generator from an array.
+ * @tparam T The type of data in the array.
+ * @param iter The array to create a generator from.
+ * @return A generator that will yield the items from the array.
+ */
+template <typename T>
+generator<T, long> generatorFrom(const array<T> &iter) {
+	return generator<T, long>(0, [&iter](long &index) {
+		if (index >= iter.length()) {
+			return yield<T>{true};
+		}
+		return yield<T>{false, iter[index++]};
+	});
+}
+
 } // namespace core
 } // namespace z
