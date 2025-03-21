@@ -1,0 +1,19 @@
+name: Enforce Style Guide
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Verify that code is formatted
+      run: make try-format

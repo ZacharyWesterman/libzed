@@ -225,6 +225,9 @@ lint.log: $(HEADERS) $(wildcard examples/src/*.cpp)
 format:
 	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
 
+try-format:
+	@find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'clang-format --dry-run -Werror -i {}'
+
 dox: docs
 docs: html
 	@cat doxygen.log
@@ -245,4 +248,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests docs dox format count-loc get-version get-revision
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests docs dox format try-format count-loc get-version get-revision
