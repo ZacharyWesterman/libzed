@@ -3,6 +3,7 @@ CC = g++
 LN = g++
 CFLAGS = --std=c++17 --coverage -I..
 LFLAGS = --coverage
+STD = c++17
 
 SRCS = $(wildcard $(addsuffix *.cpp, src/))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
@@ -16,7 +17,7 @@ bin/run_tests: $(OBJS) ../libzed.a
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 bin/%.so: data/%.cpp
-	$(CC) -I"../" -std=c++17 -shared -fPIC -Wl,--gc-sections -o $@ $^
+	$(CC) -I"../" -std=$(STD) -shared -fPIC -Wl,--gc-sections -o $@ $^
 
 clean:
 	rm -f bin/* src/*.o src/*.gcda src/*.gcno *.gcov data/*.so

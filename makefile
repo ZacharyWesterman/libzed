@@ -175,7 +175,7 @@ examples: static
 
 test: tests
 tests: static
-	$(MAKE) -C tests/
+	$(MAKE) -C tests/ STD=$(STD)
 	./tests/bin/run_tests $(TEST_FLAGS)
 
 $(SHARED_LIB): $(OBJS)
