@@ -13,7 +13,7 @@ support for string manipulation, as well as full support for different string fo
 
 Currently only Linux and Windows builds are supported, as those are the only machines I own.
 Both 64 and 32-bit builds should be fully supported.
-This also does compile on the Raspberry Pi and seems stable, though no in-depth testing has been done.
+This also does compile on the Raspberry Pi and seems stable, however, tests currently do not run on that platform.
 
 ---
 
