@@ -1,9 +1,9 @@
 
 CC = g++
 LN = g++
-CFLAGS = --std=c++17 --coverage -I..
-LFLAGS = --coverage
 STD = c++17
+CFLAGS = -std=$(STD) --coverage -I..
+LFLAGS = --coverage
 
 SRCS = $(wildcard $(addsuffix *.cpp, src/))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
