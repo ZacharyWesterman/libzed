@@ -1,6 +1,6 @@
 #include "../../z/util/generic.hpp"
 #include "../../z/util/exceptions.hpp"
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 // Only run these tests if std::variant is available.
 #if __cplusplus >= 201703L

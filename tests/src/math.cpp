@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 #include "../../z/math.hpp"
 

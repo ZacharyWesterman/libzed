@@ -1,5 +1,5 @@
 #include "../../z/core/range.hpp"
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 TEST_CASE("Range, forward iteration", "[range]") {
 	long x = 0;

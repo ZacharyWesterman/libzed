@@ -6,7 +6,7 @@ CFLAGS = -std=$(STD) --coverage -I..
 LFLAGS = --coverage
 
 SRCS = $(wildcard $(addsuffix *.cpp, src/))
-OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+OBJS = $(patsubst %.cpp,%.o,$(SRCS)) src/catch/catch_amalgamated.o
 
 all: bin/libtest.so bin/run_tests
 

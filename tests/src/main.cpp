@@ -3,11 +3,11 @@
 // Catch2 will automatically generate the entry point.
 
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 #include <iostream>
 
-class resultsReporter : public Catch::StreamingReporterBase<resultsReporter> {
+class resultsReporter : public Catch::StreamingReporterBase {
 public:
 	using StreamingReporterBase::StreamingReporterBase;
 
@@ -20,10 +20,6 @@ public:
 	}
 
 	void assertionStarting(Catch::AssertionInfo const &info) override {}
-
-	bool assertionEnded(Catch::AssertionStats const &assertionStats) override {
-		return true;
-	}
 };
 
 CATCH_REGISTER_REPORTER("results", resultsReporter)

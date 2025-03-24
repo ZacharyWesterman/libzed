@@ -1,5 +1,5 @@
 #include "../../z/file.hpp"
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 TEST_CASE("Validate basename", "[file]") {
 	REQUIRE(z::file::basename("/this/is/a/test") == "test");

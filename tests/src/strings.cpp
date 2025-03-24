@@ -1,5 +1,5 @@
 #include "../../z/core.hpp"
-#include "catch.hpp"
+#include "catch/catch_amalgamated.hpp"
 
 #define STRTEST(a) \
 	SECTION("ASCII") { \
