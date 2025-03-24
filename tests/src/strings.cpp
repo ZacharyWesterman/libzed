@@ -154,8 +154,8 @@ TEST_CASE("String iterators", "[string]") {
 }
 
 TEST_CASE("String replacement", "[string]") {
-	const char value1[] = "The quick brown fox jumps over the lazy dog.";
-	const char value2[] = u8"The˽quick˽brown˽fox˽jumps˽over˽the˽lazy˽dog.";
+	const auto value1 = "The quick brown fox jumps over the lazy dog.";
+	const auto value2 = u8"The˽quick˽brown˽fox˽jumps˽over˽the˽lazy˽dog.";
 
 	STRTEST(
 		GIVEN("A string with many substrings to replace") {
