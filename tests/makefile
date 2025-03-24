@@ -20,6 +20,6 @@ bin/%.so: data/%.cpp
 	$(CC) -I"../" -std=$(STD) -shared -fPIC -Wl,--gc-sections -o $@ $^
 
 clean:
-	rm -f bin/* src/*.o src/*.gcda src/*.gcno *.gcov data/*.so
+	rm -f bin/* src/*.o src/*.gcda src/*.gcno *.gcov data/*.so src/catch/*.o src/catch/*.gcda src/catch/*.gcno
 
 .PHONY: all clean
