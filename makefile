@@ -223,10 +223,10 @@ lint.log: $(HEADERS) $(wildcard examples/src/*.cpp)
 	@find z/ -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name '*Constructors.hpp' -not -name 'utf*.hpp' -not -name 'ascii.hpp' -not -name 'shared.hpp' | xargs -P8 -I{} clang-tidy {} -header-filter=.* -- -std=c++17 -m64 -W -Wall -Wextra -Wno-psabi -Werror -pedantic -fexceptions -fPIC -fdata-sections -ffunction-sections -O3 -Wno-unused-private-field > lint.log 2>/dev/null || { cat $@; [ "$$(cat $@)" = '' ] && echo 'ERROR: Is clang-tidy installed?' && rm $@ -f; exit 1; }
 
 format:
-	find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
+	find . -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name 'catch_amalgamated.*' | xargs -P8 -I{} sh -c 'echo Formatting {}; clang-format -i {}'
 
 try-format:
-	@find . -type f -name '*.cpp' -or -name '*.hpp' -not -name 'catch.hpp' | xargs -P8 -I{} sh -c 'clang-format --dry-run -Werror -i {}'
+	@find . -type f \( -name '*.cpp' -or -name '*.hpp' \) -not -name 'catch_amalgamated.*' | xargs -P8 -I{} sh -c 'clang-format --dry-run -Werror -i {}'
 
 dox: docs
 docs: html
