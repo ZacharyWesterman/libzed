@@ -6,6 +6,12 @@
 namespace z {
 namespace math {
 /**
+ * @deprecated This function will be removed in `1.9`.
+ * It's being removed for 2 reasons that basically boil down to
+ * it not being worth the file size it adds to the library.
+ * 1. Highly performant versions of this function are trivial to implement.
+ * 2. The Fibonacci sequence is rarely needed in practice.
+ *
  * @brief Calculate the n<SUP>th</SUP>
  * number in the Fibonacci sequence.
  *

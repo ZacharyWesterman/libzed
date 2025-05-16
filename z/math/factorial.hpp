@@ -3,6 +3,12 @@
 namespace z {
 namespace math {
 /**
+ * @deprecated This function will be removed in `1.9`.
+ * It's being removed for 2 reasons that basically boil down to
+ * it not being worth the file size it adds to the library.
+ * 1. This function is trivial to implement.
+ * 2. The factorial is rarely needed in practice.
+ *
  * @brief Calculate the factorial of the integer \b n.
  * Does not check for overflow.
  *
@@ -16,6 +22,12 @@ namespace math {
 long long factorial(long long n) noexcept;
 
 /**
+ * @deprecated This function will be removed in `1.9`.
+ * It's being removed for 2 reasons that basically boil down to
+ * it not being worth the file size it adds to the library.
+ * 1. This function is trivial to implement.
+ * 2. The factorial is rarely needed in practice.
+ *
  * @brief Calculate the factorial of the integer \b n, but let
  * us know if it overflowed.
  *
