@@ -36,6 +36,7 @@ var NAVTREE =
       [ "Linking to this library", "index.html#autotoc_md14", null ]
     ] ],
     [ "CONTRIBUTING", "md_CONTRIBUTING.html", null ],
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", null ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -67,7 +68,7 @@ var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
 "classz_1_1core_1_1string.html#ab81636d4790a5f15b15e188a906cedfb",
-"index.html#autotoc_md14"
+"index.html#autotoc_md13"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
