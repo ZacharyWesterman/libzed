@@ -43,6 +43,8 @@ var classz_1_1core_1_1array =
     [ "pop", "classz_1_1core_1_1array.html#afcfd0aa51e50a19ed774017792d1bcd8", null ],
     [ "push", "classz_1_1core_1_1array.html#a912677dc5a506bd5215d88ec97082af4", null ],
     [ "push", "classz_1_1core_1_1array.html#a0563b29018ef6aeff5e0abbf33bd87d9", null ],
+    [ "randomElement", "classz_1_1core_1_1array.html#a8ccc4fac147ca1708f622f908eda9451", null ],
+    [ "randomElements", "classz_1_1core_1_1array.html#a73b1bbf83b7dc3dac46f60479912be1b", null ],
     [ "reduce", "classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518", null ],
     [ "remove", "classz_1_1core_1_1array.html#aa0c5687a4cced6de20ed24e410f02833", null ],
     [ "remove", "classz_1_1core_1_1array.html#ae9929b10e5e0473551da4e120d3a3735", null ],

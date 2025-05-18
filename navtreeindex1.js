@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#aad85554f78e55c0f0b618877f623a8e2":[4,0,0,0,15,74],
+"classz_1_1core_1_1string.html#ab0b59dd1ca9c56818ab5479984eb85bc":[4,0,0,0,15,31],
 "classz_1_1core_1_1string.html#ab81636d4790a5f15b15e188a906cedfb":[4,0,0,0,15,28],
 "classz_1_1core_1_1string.html#ab858ad0c918d33c423295aa9cdb8943a":[4,0,0,0,15,96],
 "classz_1_1core_1_1string.html#ab8bed0f235b563c4c200bcb7a24f6374":[4,0,0,0,15,10],
@@ -194,8 +196,8 @@ var NAVTREEINDEX1 =
 "file_8hpp.html":[5,0,0,8],
 "file_8hpp_source.html":[5,0,0,8],
 "files.html":[5,0],
-"functions.html":[4,3,0,0],
 "functions.html":[4,3,0],
+"functions.html":[4,3,0,0],
 "functions_b.html":[4,3,0,1],
 "functions_c.html":[4,3,0,2],
 "functions_d.html":[4,3,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "generic_8hpp_source.html":[5,0,0,4,4],
 "hierarchy.html":[4,2],
 "index.html":[],
-"index.html#autotoc_md10":[0,3],
-"index.html#autotoc_md11":[0,4],
-"index.html#autotoc_md12":[0,5]
+"index.html#autotoc_md10":[0,3]
 };
