@@ -3,6 +3,7 @@
 #include <functional>
 #include <initializer_list>
 #include <random>
+#include <stdexcept>
 #include <vector>
 
 #include "arrayLike.hpp"
@@ -422,6 +423,7 @@ public:
 
 	/**
 	 * @brief Shuffle the elements of the array into a random order.
+	 * @threadsafe_member_no
 	 *
 	 * Shuffles the array in-place, mutating existing values.
 	 */
@@ -434,6 +436,7 @@ public:
 
 	/**
 	 * @brief Shuffle the elements of the array into a random order.
+	 * @threadsafe_member_yes
 	 *
 	 * Creates a new, shuffled version of the array, without mutating existing values.
 	 *
@@ -447,6 +450,7 @@ public:
 
 	/**
 	 * @brief Reverse the order of all elements in the array.
+	 * @threadsafe_member_no
 	 *
 	 * Reverses the array in-place, mutating existing values.
 	 */
@@ -459,6 +463,7 @@ public:
 
 	/**
 	 * @brief Reverse the order of all elements in the array.
+	 * @threadsafe_member_yes
 	 *
 	 * Creates a new, reversed version of the array, without mutating existing values.
 	 *
@@ -546,6 +551,56 @@ public:
 	 * @return The result of the reduction operation.
 	 */
 	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const;
+
+	/**
+	 * @brief Get a random element from the array.
+	 * @threadsafe_member_yes
+	 *
+	 * Selects a random element from the array, if one exists.
+	 *
+	 * @return A random element from the array.
+	 * @exception std::out_of_range if the array is empty.
+	 */
+	T randomElement() const {
+		if (array_data.empty()) {
+			throw std::out_of_range("Array is empty");
+		}
+
+		std::random_device device;
+		std::mt19937 generator(device());
+		std::uniform_int_distribution<int> distribution(0, array_data.size() - 1);
+		return array_data[distribution(generator)];
+	}
+
+	/**
+	 * @brief Get N random elements from the array.
+	 * @threadsafe_member_yes
+	 *
+	 * Selects up to N random elements from the array.
+	 * If N is greater than the size of the array, all elements are returned in a random order.
+	 *
+	 * @param count The number of random elements to select.
+	 * @return A new array containing the selected random elements.
+	 */
+	array randomElements(int count) const noexcept {
+		if (array_data.empty()) {
+			return array();
+		}
+
+		std::random_device device;
+		std::mt19937 generator(device());
+		std::uniform_int_distribution<int> distribution(0, array_data.size() - 1);
+
+		const int numElements = std::min(count, length());
+
+		array randomArray;
+		randomArray.increase(numElements);
+		for (int i = 0; i < numElements; ++i) {
+			randomArray.push(array_data[distribution(generator)]);
+		}
+
+		return randomArray;
+	}
 
 	/**
 	 * @brief Get pointer to the beginning of the array.
