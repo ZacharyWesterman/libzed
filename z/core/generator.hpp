@@ -361,6 +361,14 @@ public:
 		});
 	}
 
+	/**
+	 * @brief Enumerate the items in this generator.
+	 *
+	 * This function wraps the existing generator in another generator that yields pairs of indices and items.
+	 * The first item will have index 0, the second item will have index 1, and so on.
+	 *
+	 * @return A new generator that yields pairs of indices and items.
+	 */
 	generator<std::pair<long, T>, std::pair<long, generator<T, S>>> enumerate() {
 		return generator<std::pair<long, T>, std::pair<long, generator<T, S>>>({0, *this}, [](std::pair<long, generator<T, S>> &state) {
 			auto item = state.second.next();
@@ -372,9 +380,19 @@ public:
 	}
 };
 
+/**
+ * @brief The type of the dereferenced value from an iterable.
+ * This is used to determine the type of value that the generator will yield.
+ * @tparam T
+ */
 template <typename T>
 using deref_type = std::remove_const_t<std::remove_reference_t<decltype(*std::declval<decltype(std::declval<T>().begin())>())>>;
 
+/**
+ * @brief The type of the iterator for an iterable.
+ * This is used to determine the type of iterator that the generator will use.
+ * @tparam T
+ */
 template <typename T>
 using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
 
@@ -417,14 +435,20 @@ generator<deref_type<T>, std::pair<T, iter_type<T>>> generatorFrom(const T &&lis
 }
 
 /**
- * @brief Create a generator from a temporary initializer list.
- * @tparam T The type of data in the list.
- * @param list The list to create a generator from.
- * @return A generator that will yield the items from the list.
+ * @brief Create a generator from an initializer list.
+ * @tparam T The type of value that the iterable returns.
+ * @param list The initializer list to create a generator from.
+ * @return A generator that will yield the items from the initializer list.
  */
 template <typename T>
-generator<deref_type<array<T>>, std::pair<array<T>, iter_type<array<T>>>> generatorFrom(const std::initializer_list<T> &&list) {
-	return generatorFrom(array<T>(list));
+generator<T, std::pair<array<T>, long>> generatorFrom(std::initializer_list<T> list) {
+	return generator<T, std::pair<array<T>, long>>({list, 0}, [&list](std::pair<array<T>, long> &state) {
+		if (state.second < state.first.length()) {
+			return yield<T>{false, state.first[state.second++]};
+		}
+
+		return yield<T>{true};
+	});
 }
 
 } // namespace core

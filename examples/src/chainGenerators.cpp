@@ -58,9 +58,9 @@ int main() {
 
 	// Technically, you can implement your own enumerate() function,
 	// but there is a built-in one that does this for you.
-	auto gen8 = generatorFrom({"a", "b", "c", "d", "e"});
+	auto gen8 = generatorFrom({"a", "b", "c", "d", "e"}).enumerate();
 	std::cout << "\nEnumerated range:" << std::endl;
-	for (auto [index, value] : gen8.enumerate()) {
+	for (auto [index, value] : gen8) {
 		std::cout << '(' << index << ": " << value << ") ";
 	}
 	std::cout << std::endl;
