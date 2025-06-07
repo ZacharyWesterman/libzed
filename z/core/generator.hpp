@@ -417,6 +417,33 @@ public:
 			}
 		});
 	}
+
+	/**
+	 * @brief Get chunks of items from the generator.
+	 *
+	 * This function will yield chunks of items from the generator,
+	 * where each chunk is an array of items of *at most* the specified size.
+	 * If the generator runs out of items, the last chunk may contain fewer items.
+	 *
+	 * @param chunkSize The size of each chunk.
+	 * @return A new generator that yields arrays of items, each of *at most* the specified size.
+	 */
+	generator<array<T>, generator> chunk(long chunkSize) {
+		return generator<array<T>, generator>(*this, [chunkSize](generator &state) {
+			array<T> chunk;
+			for (long i = 0; i < chunkSize; i++) {
+				auto item = state.next();
+				if (item.done) {
+					if (chunk.length() == 0) {
+						return yield<array<T>>{true}; // No more items, end the generator
+					}
+					break; // The chunk has data, yield it
+				}
+				chunk.push(item.value);
+			}
+			return yield<array<T>>{false, chunk}; // Return the current chunk
+		});
+	}
 };
 
 /**

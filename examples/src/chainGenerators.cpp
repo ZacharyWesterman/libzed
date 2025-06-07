@@ -7,6 +7,7 @@
 
 using z::core::array;
 using z::core::generatorFrom;
+using z::core::join;
 using z::core::range;
 using z::core::string;
 using z::util::chain;
@@ -71,6 +72,14 @@ int main() {
 	std::cout << "\nItems in the first generator but not the second:" << std::endl;
 	for (auto item : gen9.diff(gen10)) {
 		std::cout << item << ' ';
+	}
+	std::cout << std::endl;
+
+	// You can also use generators to create chunks of items.
+	auto gen11 = range(0, 20).chunk(5);
+	std::cout << "\nChunks of 5 items from 0 to 19:" << std::endl;
+	for (auto chunk : gen11) {
+		std::cout << "[" << join(chunk, ", ") << "] ";
 	}
 	std::cout << std::endl;
 
