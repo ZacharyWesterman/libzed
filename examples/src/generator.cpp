@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <z/core.hpp>
+#include <z/system/interval.hpp>
 
 using z::core::join;
 using z::core::range;
@@ -72,5 +73,16 @@ int main() {
 		auto array2 = numbers.collect();
 		("Taken items = ["_zs + join(array1, ',') + ']').writeln(std::cout);
 		("Remaining items = ["_zs + join(array2, ',') + ']').writeln(std::cout);
+	}
+
+	// You can also use a generator to trigger over an interval.
+	{
+		// By default, the interval generator will run indefinitely,
+		// but you can specify a maximum number of triggers.
+		// In this case, it will run 5 times, every 100ms.
+		for (auto _ : z::system::interval(100, 5)) {
+			("Tick every 100ms"_zs).writeln(std::cout);
+		}
+		("Interval generator finished"_zs).writeln(std::cout);
 	}
 }
