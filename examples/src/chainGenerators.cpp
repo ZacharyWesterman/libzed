@@ -1,3 +1,7 @@
+// This example demonstrates more advanced generator usage.
+// In particular the z::core::generatorFrom() function, which allows you to create a generator from any iterable object.
+// This includes arrays, strings, and anything else that C++ can treat as an iterable.
+
 #include <iostream>
 #include <z/all.hpp>
 
@@ -33,6 +37,18 @@ int main() {
 	}
 	std::cout << std::endl;
 
+	// You can also zip generators together to create pairs of items.
+	std::cout << "\nZipped pairs:" << std::endl;
+
+	auto gen5 = range(1, 6);
+	auto gen6 = generatorFrom({"one", "two", "three", "four", "five"});
+	auto zipped = gen5.zip(gen6);
+	for (auto [first, second] : zipped) {
+		std::cout << '(' << first << ", " << second << ") ";
+	}
+	std::cout << std::endl;
+
+	// Of course, you can also use generators with strings.
 	std::cout << "\nLetters in a string:" << std::endl;
 	auto gen7 = generatorFrom(zstring("Hello, World!"));
 	for (char chr : gen7) {

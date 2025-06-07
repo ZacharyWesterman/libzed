@@ -3,8 +3,6 @@
 #include "array.hpp"
 #include <functional>
 
-#include <iostream>
-
 namespace z {
 namespace core {
 
@@ -334,6 +332,34 @@ public:
 			return item;
 		});
 	}
+
+	/**
+	 * @brief Zip this generator with another generator.
+	 *
+	 * This function combines two generators into a single generator that yields pairs of items from both generators.
+	 * If one generator runs out of items, the resulting generator will stop yielding items.
+	 *
+	 * @param other The other generator to zip with.
+	 * @return A new generator that yields pairs of items from both generators.
+	 */
+	template <typename U, typename S2>
+	generator<std::pair<T, U>, generator<U, S2>> zip(generator<U, S2> &other) {
+		typedef std::pair<T, U> pair_type;
+
+		return generator<pair_type, generator<U, S2>>(other, [this](generator<U, S2> &otherGen) {
+			auto item1 = next();
+			if (item1.done) {
+				return yield<pair_type>{true};
+			}
+
+			auto item2 = otherGen.next();
+			if (item2.done) {
+				return yield<pair_type>{true};
+			}
+
+			return yield<pair_type>{false, {item1.value, item2.value}};
+		});
+	}
 };
 
 template <typename T>
@@ -381,45 +407,14 @@ generator<deref_type<T>, std::pair<T, iter_type<T>>> generatorFrom(const T &&lis
 }
 
 /**
- * @brief Create a generator from an initializer list.
- * @tparam T The type of data in the list.
- * @param list The list to create a generator from.
- * @return A generator that will yield the items from the list.
- */
-template <typename T>
-generator<T, long> generatorFrom(const std::initializer_list<T> &list) {
-	return generator<T, long>(0, [&list](long &index) {
-		auto iter = list.begin() + index;
-
-		if (iter == list.end()) {
-			return yield<T>{true};
-		}
-
-		index++;
-		return yield<T>{false, *iter};
-	});
-}
-
-template <typename T>
-using pair_iter_type = std::pair<std::initializer_list<T>, iter_type<std::initializer_list<T>>>;
-
-/**
  * @brief Create a generator from a temporary initializer list.
  * @tparam T The type of data in the list.
  * @param list The list to create a generator from.
  * @return A generator that will yield the items from the list.
  */
 template <typename T>
-generator<T, pair_iter_type<T>> generatorFrom(const std::initializer_list<T> &&list) {
-	return generator<T, pair_iter_type<T>>({list, list.begin()}, [](pair_iter_type<T> &state) {
-		if (state.second != state.first.end()) {
-			auto ret = yield<T>{false, *state.second};
-			++state.second; // Move to the next item
-			return ret;
-		}
-
-		return yield<T>{true};
-	});
+generator<deref_type<array<T>>, std::pair<array<T>, iter_type<array<T>>>> generatorFrom(const std::initializer_list<T> &&list) {
+	return generatorFrom(array<T>(list));
 }
 
 } // namespace core
