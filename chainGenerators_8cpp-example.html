@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.25</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.29</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -100,11 +100,15 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
   <div class="headertitle"><div class="title">chainGenerators.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="fragment"><div class="line"><span class="comment">// This example demonstrates more advanced generator usage.</span></div>
+<div class="line"><span class="comment">// In particular the z::core::generatorFrom() function, which allows you to create a generator from any iterable object.</span></div>
+<div class="line"><span class="comment">// This includes arrays, strings, and anything else that C++ can treat as an iterable.</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/all.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span><a id="_a0" name="_a0"></a><a class="code hl_class" href="classz_1_1core_1_1array.html">z::core::array</a>;</div>
-<div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#a846719da2d8af3765ac6bcc2d2f15e9d">z::core::generatorFrom</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#a4e5ffeedc1e230e70557bd750306515e">z::core::generatorFrom</a>;</div>
 <div class="line"><span class="keyword">using </span><a id="a2" name="a2"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
 <div class="line"><span class="keyword">using </span><a id="_a3" name="_a3"></a><a class="code hl_class" href="classz_1_1core_1_1string.html">z::core::string</a>;</div>
 <div class="line"><span class="keyword">using </span><a id="a4" name="a4"></a><a class="code hl_function" href="namespacez_1_1util.html#ae1ea1dd58ef15b581bb0c8ddf7148d1c">z::util::chain</a>;</div>
@@ -114,6 +118,7 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
 <div class="line">    <span class="keyword">auto</span> gen1 = range(0, 5);</div>
 <div class="line">    <span class="keyword">auto</span> gen2 = range(5, 10);</div>
 <div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Numbers from 0 to 9:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;i : chain(gen1, gen2)) {</div>
 <div class="line">        std::cout &lt;&lt; i &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
 <div class="line">    }</div>
@@ -128,8 +133,37 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
 <div class="line">    <span class="keyword">auto</span> gen3 = generatorFrom(arr1);</div>
 <div class="line">    <span class="keyword">auto</span> gen4 = generatorFrom(arr2);</div>
 <div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;\nLetters from a to j:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;i : chain(gen3, gen4)) {</div>
 <div class="line">        std::cout &lt;&lt; i &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// You can also zip generators together to create pairs of items.</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;\nZipped pairs:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> gen5 = range(1, 6);</div>
+<div class="line">    <span class="keyword">auto</span> gen6 = generatorFrom({<span class="stringliteral">&quot;one&quot;</span>, <span class="stringliteral">&quot;two&quot;</span>, <span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;four&quot;</span>, <span class="stringliteral">&quot;five&quot;</span>});</div>
+<div class="line">    <span class="keyword">auto</span> zipped = gen5.zip(gen6);</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> [first, second] : zipped) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="charliteral">&#39;(&#39;</span> &lt;&lt; first &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; second &lt;&lt; <span class="stringliteral">&quot;) &quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Of course, you can also use generators with strings.</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;\nLetters in a string:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keyword">auto</span> gen7 = generatorFrom(<a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a>(<span class="stringliteral">&quot;Hello, World!&quot;</span>));</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">char</span> chr : gen7) {</div>
+<div class="line">        std::cout &lt;&lt; chr &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Technically, you can implement your own enumerate() function,</span></div>
+<div class="line">    <span class="comment">// but there is a built-in one that does this for you.</span></div>
+<div class="line">    <span class="keyword">auto</span> gen8 = generatorFrom({<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>, <span class="stringliteral">&quot;d&quot;</span>, <span class="stringliteral">&quot;e&quot;</span>});</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;\nEnumerated range:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, value] : gen8.enumerate()) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="charliteral">&#39;(&#39;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;) &quot;</span>;</div>
 <div class="line">    }</div>
 <div class="line">    std::cout &lt;&lt; std::endl;</div>
 <div class="line"> </div>
@@ -137,7 +171,7 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:61</div></div>
-<div class="ttc" id="anamespacez_1_1core_html_a846719da2d8af3765ac6bcc2d2f15e9d"><div class="ttname"><a href="namespacez_1_1core.html#a846719da2d8af3765ac6bcc2d2f15e9d">z::core::generatorFrom</a></div><div class="ttdeci">generator&lt; T, long &gt; generatorFrom(const array&lt; T &gt; &amp;iter)</div><div class="ttdoc">Create a generator from an array.</div><div class="ttdef"><b>Definition</b> generator.hpp:344</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_a4e5ffeedc1e230e70557bd750306515e"><div class="ttname"><a href="namespacez_1_1core.html#a4e5ffeedc1e230e70557bd750306515e">z::core::generatorFrom</a></div><div class="ttdeci">generator&lt; deref_type&lt; T &gt;, iter_type&lt; T &gt; &gt; generatorFrom(const T &amp;list)</div><div class="ttdoc">Create a generator from an arbitrary iterable.</div><div class="ttdef"><b>Definition</b> generator.hpp:388</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 <div class="ttc" id="anamespacez_1_1util_html_ae1ea1dd58ef15b581bb0c8ddf7148d1c"><div class="ttname"><a href="namespacez_1_1util.html#ae1ea1dd58ef15b581bb0c8ddf7148d1c">z::util::chain</a></div><div class="ttdeci">core::generator&lt; T, bool &gt; chain(core::generator&lt; T, U &gt; &amp;first, core::generator&lt; T, V &gt; &amp;second) noexcept</div><div class="ttdoc">Chains two generators together.</div><div class="ttdef"><b>Definition</b> chain.hpp:18</div></div>
 </div><!-- fragment --> </div><!-- contents -->

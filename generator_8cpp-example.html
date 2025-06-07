@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.25</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.29</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('generator_8cpp-example.html',''); init
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;z/system/interval.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_function" href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">z::core::join</a>;</div>
 <div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
@@ -174,6 +175,17 @@ $(document).ready(function(){initNavTree('generator_8cpp-example.html',''); init
 <div class="line">        <span class="keyword">auto</span> array2 = numbers.collect();</div>
 <div class="line">        (<span class="stringliteral">&quot;Taken items = [&quot;</span>_zs + join(array1, <span class="charliteral">&#39;,&#39;</span>) + <span class="charliteral">&#39;]&#39;</span>).writeln(std::cout);</div>
 <div class="line">        (<span class="stringliteral">&quot;Remaining items = [&quot;</span>_zs + join(array2, <span class="charliteral">&#39;,&#39;</span>) + <span class="charliteral">&#39;]&#39;</span>).writeln(std::cout);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// You can also use a generator to trigger over an interval.</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// By default, the interval generator will run indefinitely,</span></div>
+<div class="line">        <span class="comment">// but you can specify a maximum number of triggers.</span></div>
+<div class="line">        <span class="comment">// In this case, it will run 5 times, every 100ms.</span></div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : z::system::interval(100, 5)) {</div>
+<div class="line">            (<span class="stringliteral">&quot;Tick every 100ms&quot;</span>_zs).writeln(std::cout);</div>
+<div class="line">        }</div>
+<div class="line">        (<span class="stringliteral">&quot;Interval generator finished&quot;</span>_zs).writeln(std::cout);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>

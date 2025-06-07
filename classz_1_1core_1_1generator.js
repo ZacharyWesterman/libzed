@@ -13,5 +13,6 @@ var classz_1_1core_1_1generator =
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
     [ "skip", "classz_1_1core_1_1generator.html#aa6614f7306396e79c4775ac6723bfc3a", null ],
     [ "skip", "classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5", null ],
-    [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ]
+    [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
+    [ "zip", "classz_1_1core_1_1generator.html#a0955b389744d22cd0c9d3ddbf41d190c", null ]
 ];
