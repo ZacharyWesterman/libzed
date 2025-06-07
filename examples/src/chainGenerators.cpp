@@ -65,5 +65,14 @@ int main() {
 	}
 	std::cout << std::endl;
 
+	// Generators can also be used to grab distinct items from two iterables.
+	auto gen9 = generatorFrom({"apple", "banana", "cherry", "melon"});
+	auto gen10 = generatorFrom({"banana", "cherry", "date", "fig"});
+	std::cout << "\nItems in the first generator but not the second:" << std::endl;
+	for (auto item : gen9.diff(gen10)) {
+		std::cout << item << ' ';
+	}
+	std::cout << std::endl;
+
 	return 0;
 }

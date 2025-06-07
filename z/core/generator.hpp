@@ -378,6 +378,45 @@ public:
 			return yield<std::pair<long, T>>{false, {state.first++, item.value}};
 		});
 	}
+
+	/**
+	 * @brief List the items in this generator which differ from another generator.
+	 *
+	 * This function is only useful for generators that yield items of the same type.
+	 * (if the generators yielded different types, ALL items would be considered different!)
+	 *
+	 * As an example of how this works, if you have two generators that yield strings,
+	 * generator1 yields "apple", "banana", "cherry", "melon",
+	 * and generator2 yields "banana", "cherry", "date", "fig",
+	 * then calling generator1.diff(generator2) will yield "apple" and "melon".
+	 *
+	 * @note If the other generator runs out of items, the rest of the items from this generator will be yielded,
+	 * as they are considered different from nothing.
+	 *
+	 * @param other The other generator to compare against.
+	 * @return A new generator that yields only items that are different from the items in the other generator.
+	 */
+	generator<T, std::pair<generator, yield<T>>> diff(generator &other) {
+		return generator<T, std::pair<generator, yield<T>>>({other, other.next()}, [this](std::pair<generator, yield<T>> &state) {
+			while (true) {
+				auto item1 = next();
+				if (item1.done) {
+					return yield<T>{true};
+				}
+
+				if (state.second.done) {
+					return yield<T>{false, item1.value}; // Yield the item from this generator, as the other generator is done
+				}
+
+				if (item1.value != state.second.value) {
+					return yield<T>{false, item1.value}; // Yield the item from this generator, as it is different
+				}
+
+				// Move to the next item in the other generator
+				state.second = state.first.next();
+			}
+		});
+	}
 };
 
 /**
