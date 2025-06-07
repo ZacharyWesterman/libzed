@@ -360,6 +360,16 @@ public:
 			return yield<pair_type>{false, {item1.value, item2.value}};
 		});
 	}
+
+	generator<std::pair<long, T>, std::pair<long, generator<T, S>>> enumerate() {
+		return generator<std::pair<long, T>, std::pair<long, generator<T, S>>>({0, *this}, [](std::pair<long, generator<T, S>> &state) {
+			auto item = state.second.next();
+			if (item.done) {
+				return yield<std::pair<long, T>>{true};
+			}
+			return yield<std::pair<long, T>>{false, {state.first++, item.value}};
+		});
+	}
 };
 
 template <typename T>
