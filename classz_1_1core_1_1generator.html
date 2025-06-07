@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.30</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.32</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -168,6 +168,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b1942f6d8f1ca007a8469b7ba58047d" id="r_a2b1942f6d8f1ca007a8469b7ba58047d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a2b1942f6d8f1ca007a8469b7ba58047d">enumerate</a> ()</td></tr>
 <tr class="memdesc:a2b1942f6d8f1ca007a8469b7ba58047d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate the items in this generator.  <br /></td></tr>
 <tr class="separator:a2b1942f6d8f1ca007a8469b7ba58047d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa0916cd3e8aceb983827faf69e82942" id="r_afa0916cd3e8aceb983827faf69e82942"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, std::pair&lt; <a class="el" href="classz_1_1core_1_1generator.html">generator</a>, <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#afa0916cd3e8aceb983827faf69e82942">diff</a> (<a class="el" href="classz_1_1core_1_1generator.html">generator</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>)</td></tr>
+<tr class="memdesc:afa0916cd3e8aceb983827faf69e82942"><td class="mdescLeft">&#160;</td><td class="mdescRight">List the items in this generator which differ from another generator.  <br /></td></tr>
+<tr class="separator:afa0916cd3e8aceb983827faf69e82942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06e96e75875cadc2a1d5961bdbd6be6" id="r_ac06e96e75875cadc2a1d5961bdbd6be6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#ac06e96e75875cadc2a1d5961bdbd6be6">chunk</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1array.html">chunkSize</a>)</td></tr>
+<tr class="memdesc:ac06e96e75875cadc2a1d5961bdbd6be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get chunks of items from the generator.  <br /></td></tr>
+<tr class="separator:ac06e96e75875cadc2a1d5961bdbd6be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aa6cee917a44d7714816cb5680dd1e5" id="r_a9aa6cee917a44d7714816cb5680dd1e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt;::countedState &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5">skip</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>)</td></tr>
 <tr class="memdesc:a9aa6cee917a44d7714816cb5680dd1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template specialization for the skip function with generators that only output longs.  <br /></td></tr>
 <tr class="separator:a9aa6cee917a44d7714816cb5680dd1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -269,6 +275,44 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
+<a id="ac06e96e75875cadc2a1d5961bdbd6be6" name="ac06e96e75875cadc2a1d5961bdbd6be6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06e96e75875cadc2a1d5961bdbd6be6">&#9670;&#160;</a></span>chunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::chunk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">long</a>&#160;</td>
+          <td class="paramname"><em>chunkSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get chunks of items from the generator. </p>
+<p>This function will yield chunks of items from the generator, where each chunk is an array of items of <em>at most</em> the specified size. If the generator runs out of items, the last chunk may contain fewer items.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunkSize</td><td>The size of each chunk. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields arrays of items, each of <em>at most</em> the specified size. </dd></dl>
+
+</div>
+</div>
 <a id="a2f4c5598acdb9b1fd6a7016360028036" name="a2f4c5598acdb9b1fd6a7016360028036"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f4c5598acdb9b1fd6a7016360028036">&#9670;&#160;</a></span>collect()</h2>
 
@@ -328,6 +372,46 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <p>Get the total count of items that will be generated. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This function will consume the generator, and it will not be able to be used again. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of items that were generated. </dd></dl>
+
+</div>
+</div>
+<a id="afa0916cd3e8aceb983827faf69e82942" name="afa0916cd3e8aceb983827faf69e82942"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa0916cd3e8aceb983827faf69e82942">&#9670;&#160;</a></span>diff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, std::pair&lt; <a class="el" href="classz_1_1core_1_1generator.html">generator</a>, <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::diff </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List the items in this generator which differ from another generator. </p>
+<p>This function is only useful for generators that yield items of the same type. (if the generators yielded different types, ALL items would be considered different!)</p>
+<p>As an example of how this works, if you have two generators that yield strings, generator1 yields "apple", "banana", "cherry", "melon", and generator2 yields "banana", "cherry", "date", "fig", then calling generator1.diff(generator2) will yield "apple" and "melon".</p>
+<dl class="section note"><dt>Note</dt><dd>If the other generator runs out of items, the rest of the items from this generator will be yielded, as they are considered different from nothing.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other generator to compare against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields only items that are different from the items in the other generator. </dd></dl>
 
 </div>
 </div>
