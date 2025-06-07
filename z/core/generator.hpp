@@ -465,7 +465,7 @@ using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
 /**
  * @brief Create a generator from an arbitrary iterable.
  * @tparam T The type of value that the iterable returns.
- * @param iter The iterable to create a generator from.
+ * @param list The iterable to create a generator from.
  * @return A generator that will yield the items from the iterable.
  */
 template <typename T>
@@ -484,7 +484,7 @@ generator<deref_type<T>, iter_type<T>> generatorFrom(const T &list) {
 /**
  * @brief Create a generator from an arbitrary temporary iterable.
  * @tparam T The type of value that the iterable returns.
- * @param iter The iterable to create a generator from.
+ * @param list The iterable to create a generator from.
  * @return A generator that will yield the items from the iterable.
  */
 template <typename T>
