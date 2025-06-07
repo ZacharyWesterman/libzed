@@ -66,7 +66,7 @@ int main() {
 
 ---
 
-There is also support for various [generators][generators], and even custom generators can be created.
+Another powerful feature is the support for various [generators][generators], with many useful built-ins and support for easy custom generators.
 For example, a memory efficient way to read lines in a file is with `z::file::lines`:
 ```cpp
 #include <z/file/lines.hpp>
@@ -82,11 +82,30 @@ int main() {
 }
 ```
 
-There are also functions for interacting with files, all of which can be found [in the z::file namespace][file].
+Map, filter, and reduce are of course supported, which makes building custom generators extremely easy.
+```cpp
+#include <z/core/range.hpp>
+#include <iostream>
 
-On this note, and in the interest of simplifying things, there also exists a class for dynamically loading and handling libraries at runtime ([documentation is here][libraries]).
+using z::core::range;
 
-See the examples/ folder for a small example of dynamic library loading.
+int main() {
+	//Generator for getting 1/n^2. See how the range goes from 1 to infinity, so this generator can be used forever.
+	auto reciprocalSquares = range(1, z::core::infinity).map<double>([](auto n) { return 1.0 / (n * n); });
+
+	//Generator for getting the max value from a list.
+	auto items = generatorFrom({1, 10, 5, 42, 6, 3});
+	auto max = items.reduce([](auto a, auto b) { return a > b ? a : b; });
+}
+```
+
+There are **MANY** more features of generators, so be sure and check out the examples for more use cases!
+
+---
+
+There are a good handful of functions for interacting with files, all of which can be found [in the z::file namespace][file].
+
+This includes a class for dynamically loading shared libraries at runtime ([documentation is here][libraries])!
 As with the rest of this library, all the platform-specific stuff is abstracted away.
 
 Check out the [examples/ directory][examples] for a longer list of example programs.
