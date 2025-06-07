@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.29</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.30</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -160,9 +160,9 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Technically, you can implement your own enumerate() function,</span></div>
 <div class="line">    <span class="comment">// but there is a built-in one that does this for you.</span></div>
-<div class="line">    <span class="keyword">auto</span> gen8 = generatorFrom({<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>, <span class="stringliteral">&quot;d&quot;</span>, <span class="stringliteral">&quot;e&quot;</span>});</div>
+<div class="line">    <span class="keyword">auto</span> gen8 = generatorFrom({<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>, <span class="stringliteral">&quot;d&quot;</span>, <span class="stringliteral">&quot;e&quot;</span>}).enumerate();</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;\nEnumerated range:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, value] : gen8.enumerate()) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, value] : gen8) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="charliteral">&#39;(&#39;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;) &quot;</span>;</div>
 <div class="line">    }</div>
 <div class="line">    std::cout &lt;&lt; std::endl;</div>
@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('chainGenerators_8cpp-example.html','')
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:61</div></div>
-<div class="ttc" id="anamespacez_1_1core_html_a4e5ffeedc1e230e70557bd750306515e"><div class="ttname"><a href="namespacez_1_1core.html#a4e5ffeedc1e230e70557bd750306515e">z::core::generatorFrom</a></div><div class="ttdeci">generator&lt; deref_type&lt; T &gt;, iter_type&lt; T &gt; &gt; generatorFrom(const T &amp;list)</div><div class="ttdoc">Create a generator from an arbitrary iterable.</div><div class="ttdef"><b>Definition</b> generator.hpp:388</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_a4e5ffeedc1e230e70557bd750306515e"><div class="ttname"><a href="namespacez_1_1core.html#a4e5ffeedc1e230e70557bd750306515e">z::core::generatorFrom</a></div><div class="ttdeci">generator&lt; deref_type&lt; T &gt;, iter_type&lt; T &gt; &gt; generatorFrom(const T &amp;list)</div><div class="ttdoc">Create a generator from an arbitrary iterable.</div><div class="ttdef"><b>Definition</b> generator.hpp:406</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 <div class="ttc" id="anamespacez_1_1util_html_ae1ea1dd58ef15b581bb0c8ddf7148d1c"><div class="ttname"><a href="namespacez_1_1util.html#ae1ea1dd58ef15b581bb0c8ddf7148d1c">z::util::chain</a></div><div class="ttdeci">core::generator&lt; T, bool &gt; chain(core::generator&lt; T, U &gt; &amp;first, core::generator&lt; T, V &gt; &amp;second) noexcept</div><div class="ttdoc">Chains two generators together.</div><div class="ttdef"><b>Definition</b> chain.hpp:18</div></div>
 </div><!-- fragment --> </div><!-- contents -->

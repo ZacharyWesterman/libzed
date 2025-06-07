@@ -29,11 +29,12 @@ var searchData=
   ['isvalid_26',['isValid',['../classz_1_1core_1_1array.html#a02af6ec248de2098739f6c50048cff47',1,'z::core::array']]],
   ['iswhitespace_27',['isWhiteSpace',['../namespacez_1_1core.html#a673f0c15a680f35884ed7b78991b7778',1,'z::core']]],
   ['isword_28',['isword',['../classz_1_1util_1_1dictRange.html#a6d67258a94bb6d658bc2b3cf855a9850',1,'z::util::dictRange::isWord'],['../classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774',1,'z::util::dictionary::isWord()']]],
-  ['iterable_29',['iterable',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20circulariterator_3c_20type_2c_20len_20_3e_20_3e_30',['iterable&lt; circularIterator&lt; TYPE, LEN &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20generatoriter_3c_20t_2c_20s_20_3e_20_3e_31',['iterable&lt; generatorIter&lt; T, S &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20stringiterator_3c_20e_20_3e_20_3e_32',['iterable&lt; stringIterator&lt; E &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20stringiterator_3c_20utf8_20_3e_20_3e_33',['iterable&lt; stringIterator&lt; utf8 &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20t_20_2a_20_3e_34',['iterable&lt; T * &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
-  ['iterable_3c_20zstring_20_2a_2a_20_3e_35',['iterable&lt; zstring ** &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]]
+  ['iter_5ftype_29',['iter_type',['../namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6',1,'z::core']]],
+  ['iterable_30',['iterable',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20circulariterator_3c_20type_2c_20len_20_3e_20_3e_31',['iterable&lt; circularIterator&lt; TYPE, LEN &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20generatoriter_3c_20t_2c_20s_20_3e_20_3e_32',['iterable&lt; generatorIter&lt; T, S &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20stringiterator_3c_20e_20_3e_20_3e_33',['iterable&lt; stringIterator&lt; E &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20stringiterator_3c_20utf8_20_3e_20_3e_34',['iterable&lt; stringIterator&lt; utf8 &gt; &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20t_20_2a_20_3e_35',['iterable&lt; T * &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]],
+  ['iterable_3c_20zstring_20_2a_2a_20_3e_36',['iterable&lt; zstring ** &gt;',['../classz_1_1core_1_1iterable.html',1,'z::core']]]
 ];

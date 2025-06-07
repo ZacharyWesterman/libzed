@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list_0',['list',['../classz_1_1util_1_1generic.html#a072ad2b0f016b4268a4a8791c44ac6d1',1,'z::util::generic']]]
+  ['deref_5ftype_0',['deref_type',['../namespacez_1_1core.html#afbd408260041173278c3228d75f51d49',1,'z::core']]]
 ];

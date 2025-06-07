@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"generic_8hpp_source.html":[5,0,0,4,4],
 "hierarchy.html":[4,2],
 "index.html":[],
 "index.html#autotoc_md10":[0,3],
@@ -30,6 +31,7 @@ var NAVTREEINDEX2 =
 "memoize_8hpp_source.html":[5,0,0,0,9],
 "namespacemembers.html":[3,1,0],
 "namespacemembers_func.html":[3,1,1],
+"namespacemembers_type.html":[3,1,3],
 "namespacemembers_vars.html":[3,1,2],
 "namespaces.html":[3,0],
 "numberwang_8cpp-example.html":[6,11],

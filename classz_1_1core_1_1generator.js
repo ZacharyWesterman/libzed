@@ -5,6 +5,7 @@ var classz_1_1core_1_1generator =
     [ "collect", "classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036", null ],
     [ "count", "classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257", null ],
     [ "end", "classz_1_1core_1_1generator.html#ab12096aae4067dea270547cd343c1671", null ],
+    [ "enumerate", "classz_1_1core_1_1generator.html#a2b1942f6d8f1ca007a8469b7ba58047d", null ],
     [ "filter", "classz_1_1core_1_1generator.html#a66d168343d4cbc5c91416fef3d13e565", null ],
     [ "forEach", "classz_1_1core_1_1generator.html#a539ac0b1a37ebf91f3dc97b2635cc585", null ],
     [ "limit", "classz_1_1core_1_1generator.html#a43f4dd869a42f3dd9ebd984354697388", null ],
