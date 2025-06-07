@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['of_20structures_0',['List of structures',['../index.html#autotoc_md6',1,'']]],
+  ['of_20structures_0',['List of structures',['../index.html#autotoc_md7',1,'']]],
   ['operator_20bool_1',['operator bool',['../classz_1_1core_1_1string.html#aa5d8c32069ca4ecb0fade7b6227aab0d',1,'z::core::string']]],
   ['operator_20double_2',['operator double',['../classz_1_1core_1_1string.html#acfe2be987f0a6972683f1b84b2fc0754',1,'z::core::string::operator double()'],['../classz_1_1util_1_1generic.html#a3381c514d6c923f3fcdc1f7fa5ccbd6b',1,'z::util::generic::operator double() const noexcept']]],
   ['operator_20float_3',['operator float',['../classz_1_1util_1_1generic.html#acb3ee476f5fd1427d0f5da9ff0c05fd7',1,'z::util::generic::operator float()'],['../classz_1_1core_1_1string.html#a04d8e2bc02221468f5526f5739b0ec9d',1,'z::core::string::operator float() const noexcept']]],
@@ -27,7 +27,7 @@ var searchData=
   ['operator_3e_3d_24',['operator&gt;=',['../classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780',1,'z::core::array::operator&gt;=()'],['../classz_1_1core_1_1string.html#a27ab0b269111dc5a51da7583d1da9358',1,'z::core::string::operator&gt;=(const string &amp;other) const noexcept']]],
   ['operator_3e_3e_25',['operator&gt;&gt;',['../classz_1_1core_1_1string.html#a611329e7f77ed342914ca4d2e4787c70',1,'z::core::string']]],
   ['operator_5b_5d_26',['operator[]',['../classz_1_1core_1_1array.html#a53898d4cdcd8deca56222d91fbac56ea',1,'z::core::array::operator[](int index) const override'],['../classz_1_1core_1_1array.html#a5b7826865b60c95fc4980ee755a289a5',1,'z::core::array::operator[](int index)'],['../classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a',1,'z::core::indexable::operator[]()']]],
-  ['optional_20dependency_27',['Optional dependency',['../index.html#autotoc_md10',1,'']]],
-  ['options_28',['Build options',['../index.html#autotoc_md11',1,'']]],
+  ['optional_20dependency_27',['Optional dependency',['../index.html#autotoc_md11',1,'']]],
+  ['options_28',['Build options',['../index.html#autotoc_md12',1,'']]],
   ['ordinal_29',['ordinal',['../classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1',1,'z::core::string']]]
 ];

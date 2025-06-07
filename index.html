@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.33</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.34</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -148,7 +148,7 @@ Examples</h2>
 <div class="ttc" id="aclassz_1_1util_1_1generic_html"><div class="ttname"><a href="classz_1_1util_1_1generic.html">z::util::generic</a></div><div class="ttdoc">A class for simple storage and manipulation of data regardless of type.</div><div class="ttdef"><b>Definition</b> generic.hpp:30</div></div>
 <div class="ttc" id="aclassz_1_1util_1_1generic_html_a789162407cbab965e6c9af6a0e958328"><div class="ttname"><a href="classz_1_1util_1_1generic.html#a789162407cbab965e6c9af6a0e958328">z::util::generic::toString</a></div><div class="ttdeci">zstring toString(bool printArrays=false) const noexcept</div><div class="ttdoc">Safely convert to a string.</div></div>
 </div><!-- fragment --><hr  />
-<p>There is also support for various <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html">generators</a>, and even custom generators can be created. For example, a memory efficient way to read lines in a file is with <code><a class="el" href="namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee" title="Reads the contents of a file line-by-line.">z::file::lines</a></code>: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/file/lines.hpp&gt;</span></div>
+<p>Another powerful feature is the support for various <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html">generators</a>, with many useful built-ins and support for easy custom generators. For example, a memory efficient way to read lines in a file is with <code><a class="el" href="namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee" title="Reads the contents of a file line-by-line.">z::file::lines</a></code>: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/file/lines.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using </span><a class="code hl_function" href="namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee">z::file::lines</a>;</div>
@@ -160,12 +160,30 @@ Examples</h2>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacez_1_1file_html_ab9558d9c2412deec9cd0c57ae5b0a5ee"><div class="ttname"><a href="namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee">z::file::lines</a></div><div class="ttdeci">core::generator&lt; zstring, fileHandle &gt; lines(const zpath &amp;filename)</div><div class="ttdoc">Reads the contents of a file line-by-line.</div></div>
-</div><!-- fragment --><p>There are also functions for interacting with files, all of which can be found <a href="https://zacharywesterman.github.io/libzed/namespacez_1_1file.html">in the z::file namespace</a>.</p>
-<p>On this note, and in the interest of simplifying things, there also exists a class for dynamically loading and handling libraries at runtime (<a href="https://zacharywesterman.github.io/libzed/classz_1_1file_1_1library.html">documentation is here</a>).</p>
-<p>See the examples/ folder for a small example of dynamic library loading. As with the rest of this library, all the platform-specific stuff is abstracted away.</p>
+</div><!-- fragment --><p>Map, filter, and reduce are of course supported, which makes building custom generators extremely easy. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/core/range.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">//Generator for getting 1/n^2. See how the range goes from 1 to infinity, so this generator can be used forever.</span></div>
+<div class="line">    <span class="keyword">auto</span> reciprocalSquares = range(1, <a class="code hl_variable" href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a>).<a class="code hl_function" href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">map</a>&lt;<span class="keywordtype">double</span>&gt;([](<span class="keyword">auto</span> n) { <span class="keywordflow">return</span> 1.0 / (n * n); });</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">//Generator for getting the max value from a list.</span></div>
+<div class="line">    <span class="keyword">auto</span> items = generatorFrom({1, 10, 5, 42, 6, 3});</div>
+<div class="line">    <span class="keyword">auto</span> max = items.<a class="code hl_function" href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">reduce</a>([](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a &gt; b ? a : b; });</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_aaabbf3842555634a6a51b76a383b5518"><div class="ttname"><a href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">z::core::array::reduce</a></div><div class="ttdeci">T reduce(const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; lambda) const</div><div class="ttdoc">Reduces the array to a single value by applying a binary operation cumulatively to the elements.</div><div class="ttdef"><b>Definition</b> array.hpp:1232</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_af3812e9c00a7fccd4a9ef59f74c7cfe2"><div class="ttname"><a href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">z::core::array::map</a></div><div class="ttdeci">array&lt; U &gt; map(std::function&lt; U(const T &amp;)&gt; lambda) const</div><div class="ttdoc">Applies a transformation function to each element of the array and returns a new array with the resul...</div><div class="ttdef"><b>Definition</b> array.hpp:1206</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_ac3bcefde86d3d53a18b8cfd1c91dd9f6"><div class="ttname"><a href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a></div><div class="ttdeci">const sentinel infinity</div><div class="ttdoc">A sentinel that tells numeric generators to run forever.</div></div>
+</div><!-- fragment --><p>There are <b>MANY</b> more features of generators, so be sure and check out the examples for more use cases!</p>
+<hr  />
+<p>There are a good handful of functions for interacting with files, all of which can be found <a href="https://zacharywesterman.github.io/libzed/namespacez_1_1file.html">in the z::file namespace</a>.</p>
+<p>This includes a class for dynamically loading shared libraries at runtime (<a href="https://zacharywesterman.github.io/libzed/classz_1_1file_1_1library.html">documentation is here</a>)! As with the rest of this library, all the platform-specific stuff is abstracted away.</p>
 <p>Check out the <a href="https://zacharywesterman.github.io/libzed/examples.html">examples/ directory</a> for a longer list of example programs.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 List of structures</h2>
 <ul>
 <li><a class="el" href="namespacez_1_1core.html" title="Section containing core functions and classes.">z::core</a> - Contains core functionality such as strings, arrays, and timers.</li>
@@ -175,18 +193,18 @@ List of structures</h2>
 <li><a class="el" href="namespacez_1_1system.html" title="This section contains classes and functions relating to system info.">z::system</a> - Contains classes that allow interaction with and information about the user's system.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Using This Library</h1>
 <p>Currently the Makefile supports compiling on Linux and Windows only, as those are the only systems I have. ¯\_(ツ)_/¯</p>
 <p>It should compile on any 64 or 32-bit flavor of these systems (including the Raspberry Pi!).</p>
 <p>The only requirements are Make and a C++ compiler that supports <em>at least</em> C++11 (C++17 or newer preferred). If <code>g++ --version</code> is 5 or above, chances are you're good.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Required dependencies</h2>
 <ul>
 <li>g++ (or other compliant compiler) supporting at least C++11</li>
 <li>make</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Optional dependency</h2>
 <p>This library has optional support for serialization via <a href="https://github.com/USCiLab/cereal">cereal</a>. The following classes should be able to be saved and loaded with cereal:</p><ul>
 <li><a class="el" href="classz_1_1core_1_1string.html" title="A template class for character strings.">z::core::string</a></li>
@@ -197,7 +215,7 @@ Optional dependency</h2>
 <li><a class="el" href="classz_1_1util_1_1generic.html" title="A class for simple storage and manipulation of data regardless of type.">z::util::generic</a></li>
 </ul>
 <p>If cereal is not installed however, this library should compile just fine. Again, totally optional.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Build options</h2>
 <p>By default, make should pick the best options for your machine. If that's not the case, or you want/need different options for any other reason, here are some example flags you can tweak:</p><ul>
 <li><code>CC=c++</code> to compile with <code>c++</code> instead of <code>g++</code>.</li>
@@ -208,18 +226,18 @@ Build options</h2>
 <li><code>LIBDIR=/lib/install/dir</code> to set where the library should install under instead of <code>/usr/lib</code>.</li>
 <li><code>ICLDIR=/include/install/dir</code> to set where the headers should be copied to instead of <code>/usr/include</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Compiling</h2>
 <p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div>
 </div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead, or if you are crosspiling for Windows on Linux, use <code>make TARGET=win64 -j$(nproc)</code> or <code>make TARGET=win32 -j$(nproc)</code>. (Make sure to run <code>make clean</code> if you change the value of <code>TARGET</code>!!)</p>
 <p>The above will compile as a dynamic library (.so on Linux, .dll on Windows). To compile to a static library: </p><div class="fragment"><div class="line">$ make -j$(nproc) static</div>
 </div><!-- fragment --><p>You should get no errors or warnings. You can open an issue on <a href="https://github.com/ZacharyWesterman/libzed">GitHub</a> if either of those pop up while compiling.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Installing the dynamic library</h2>
 <p>In Linux, either run <code>make install</code> as superuser or <code>sudo make install</code>.</p>
 <p>In Windows you can save the DLL into whatever directory you want, just make sure the PATH system variable contains that folder.</p>
 <p>Alternatively, you can copy the DLL/SO into the working directory of your project and tell the linker to load it from there.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Linking to this library</h2>
 <p>Suppose you have some simple project called <code>example.cpp</code>. Let's have this file contain the following: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;z/core/string.hpp&gt;</span></div>
 <div class="line"> </div>

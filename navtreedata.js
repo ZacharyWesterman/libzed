@@ -25,15 +25,15 @@
 var NAVTREE =
 [
   [ "libzed", "index.html", [
-    [ "Using This Library", "index.html#autotoc_md8", [
+    [ "Using This Library", "index.html#autotoc_md9", [
       [ "Examples", "index.html#autotoc_md2", null ],
-      [ "List of structures", "index.html#autotoc_md6", null ],
-      [ "Required dependencies", "index.html#autotoc_md9", null ],
-      [ "Optional dependency", "index.html#autotoc_md10", null ],
-      [ "Build options", "index.html#autotoc_md11", null ],
-      [ "Compiling", "index.html#autotoc_md12", null ],
-      [ "Installing the dynamic library", "index.html#autotoc_md13", null ],
-      [ "Linking to this library", "index.html#autotoc_md14", null ]
+      [ "List of structures", "index.html#autotoc_md7", null ],
+      [ "Required dependencies", "index.html#autotoc_md10", null ],
+      [ "Optional dependency", "index.html#autotoc_md11", null ],
+      [ "Build options", "index.html#autotoc_md12", null ],
+      [ "Compiling", "index.html#autotoc_md13", null ],
+      [ "Installing the dynamic library", "index.html#autotoc_md14", null ],
+      [ "Linking to this library", "index.html#autotoc_md15", null ]
     ] ],
     [ "CONTRIBUTING", "md_CONTRIBUTING.html", null ],
     [ "Deprecated List", "deprecated.html", null ],

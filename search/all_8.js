@@ -11,7 +11,7 @@ var searchData=
   ['info_8',['info',['../classz_1_1file_1_1info.html',1,'z::file::info'],['../classz_1_1file_1_1info.html#aeb4d545c42083739c34e834a4b7016dd',1,'z::file::info::info()']]],
   ['init_9',['init',['../classz_1_1core_1_1array.html#a8baac7448507925fc559e1d310809c6e',1,'z::core::array::init(const T &amp;arg1, const Args &amp;...args)'],['../classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3',1,'z::core::array::init(const T &amp;arg1)']]],
   ['insert_10',['insert',['../classz_1_1core_1_1string.html#aef7a2f1f19646da680ff76db8f744ebf',1,'z::core::string::insert()'],['../classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d',1,'z::core::array::insert()']]],
-  ['installing_20the_20dynamic_20library_11',['Installing the dynamic library',['../index.html#autotoc_md13',1,'']]],
+  ['installing_20the_20dynamic_20library_11',['Installing the dynamic library',['../index.html#autotoc_md14',1,'']]],
   ['integer_12',['integer',['../classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a',1,'z::core::string::integer()'],['../classz_1_1util_1_1generic.html#adc841964eb03fbb344356931acdbd5d6',1,'z::util::generic::integer()']]],
   ['interval_13',['interval',['../namespacez_1_1system.html#a5686b4567238cb19d7a8aafa5156c3be',1,'z::system']]],
   ['is_14',['is',['../classz_1_1util_1_1generic.html#a9571a5652422f3d0c572924f35d7713c',1,'z::util::generic']]],

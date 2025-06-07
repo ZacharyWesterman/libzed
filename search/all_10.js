@@ -30,7 +30,7 @@ var searchData=
   ['string_3c_20ascii_20_3e_27',['string&lt; ascii &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]],
   ['string_3c_20z_3a_3autf8_20_3e_28',['string&lt; z::utf8 &gt;',['../classz_1_1core_1_1string.html',1,'z::core']]],
   ['stringiterator_29',['stringiterator',['../classz_1_1core_1_1stringIterator.html',1,'z::core::stringIterator&lt; E &gt;'],['../classz_1_1core_1_1stringIterator.html#a0f114d9e406204643544a460e51931e1',1,'z::core::stringIterator::stringIterator()']]],
-  ['structures_30',['List of structures',['../index.html#autotoc_md6',1,'']]],
+  ['structures_30',['List of structures',['../index.html#autotoc_md7',1,'']]],
   ['subset_31',['subset',['../classz_1_1core_1_1array.html#ad36d40b612d36b011cb8d5bec6b166c0',1,'z::core::array']]],
   ['substr_32',['substr',['../classz_1_1core_1_1string.html#aaa571037a910a6408277e5d823a15fa8',1,'z::core::string']]],
   ['swap_33',['swap',['../classz_1_1core_1_1array.html#af55a33c67b23883ffeb8d35cb5e9ad6a',1,'z::core::array']]],
