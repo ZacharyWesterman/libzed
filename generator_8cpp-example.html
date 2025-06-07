@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.32</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.33</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('generator_8cpp-example.html',''); init
 <div class="line">        <span class="comment">// By default, the interval generator will run indefinitely,</span></div>
 <div class="line">        <span class="comment">// but you can specify a maximum number of triggers.</span></div>
 <div class="line">        <span class="comment">// In this case, it will run 5 times, every 100ms.</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : z::system::interval(100, 5)) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : <a id="a3" name="a3"></a><a class="code hl_function" href="namespacez_1_1system.html#a5686b4567238cb19d7a8aafa5156c3be">z::system::interval</a>(100, 5)) {</div>
 <div class="line">            (<span class="stringliteral">&quot;Tick every 100ms&quot;</span>_zs).writeln(std::cout);</div>
 <div class="line">        }</div>
 <div class="line">        (<span class="stringliteral">&quot;Interval generator finished&quot;</span>_zs).writeln(std::cout);</div>
@@ -192,6 +192,7 @@ $(document).ready(function(){initNavTree('generator_8cpp-example.html',''); init
 <div class="ttc" id="acore_8hpp_html"><div class="ttname"><a href="core_8hpp.html">core.hpp</a></div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_adb51f3e5b49bdc9253c9c63df511aec3"><div class="ttname"><a href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">z::core::join</a></div><div class="ttdeci">string&lt; E &gt; join(const iterable&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim) noexcept</div><div class="ttdoc">Concatenate elements in an array into a string, separated by a delimiter.</div><div class="ttdef"><b>Definition</b> join.hpp:20</div></div>
+<div class="ttc" id="anamespacez_1_1system_html_a5686b4567238cb19d7a8aafa5156c3be"><div class="ttname"><a href="namespacez_1_1system.html#a5686b4567238cb19d7a8aafa5156c3be">z::system::interval</a></div><div class="ttdeci">core::generator&lt; bool, long &gt; interval(double millis, long maxTriggers=-1) noexcept</div><div class="ttdoc">Create a generator that triggers at regular intervals.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.32</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.33</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -118,9 +118,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa72e6cc4f760213aa8c261f6fad4e024" id="r_aa72e6cc4f760213aa8c261f6fad4e024"><td class="memItemLeft" align="right" valign="top"><a id="aa72e6cc4f760213aa8c261f6fad4e024" name="aa72e6cc4f760213aa8c261f6fad4e024"></a>
-<a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; bool, long &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interval</b> (double ms, long maxTriggers=-1) noexcept</td></tr>
-<tr class="separator:aa72e6cc4f760213aa8c261f6fad4e024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5686b4567238cb19d7a8aafa5156c3be" id="r_a5686b4567238cb19d7a8aafa5156c3be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; bool, long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1system.html#a5686b4567238cb19d7a8aafa5156c3be">interval</a> (double millis, long maxTriggers=-1) noexcept</td></tr>
+<tr class="memdesc:a5686b4567238cb19d7a8aafa5156c3be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator that triggers at regular intervals.  <br /></td></tr>
+<tr class="separator:a5686b4567238cb19d7a8aafa5156c3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a555a1e77407a794e5a202525f996697b" id="r_a555a1e77407a794e5a202525f996697b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1system.html#a555a1e77407a794e5a202525f996697b">sleep</a> (double ms) noexcept</td></tr>
 <tr class="memdesc:a555a1e77407a794e5a202525f996697b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delays program execution temporarily.  <br /></td></tr>
 <tr class="separator:a555a1e77407a794e5a202525f996697b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +131,56 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This section contains classes and functions relating to system info. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a5686b4567238cb19d7a8aafa5156c3be" name="a5686b4567238cb19d7a8aafa5156c3be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5686b4567238cb19d7a8aafa5156c3be">&#9670;&#160;</a></span>interval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">core::generator</a>&lt; bool, long &gt; z::system::interval </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>maxTriggers</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a generator that triggers at regular intervals. </p>
+<p>This generator will yield a dummy value every <code>millis</code> milliseconds. The generator can be limited to a certain number of triggers using the <code>maxTriggers</code> parameter, or by default, it will run indefinitely.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">millis</td><td>The interval in milliseconds between triggers. </td></tr>
+    <tr><td class="paramname">maxTriggers</td><td>The maximum number of times the generator will yield before stopping. Use -1 for unlimited. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A generator that yields every <code>millis</code> milliseconds.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This generator will block the thread for the specified interval, so it should not be used where blocking is not acceptable. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="generator_8cpp-example.html#a3">generator.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
 <a id="a555a1e77407a794e5a202525f996697b" name="a555a1e77407a794e5a202525f996697b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a555a1e77407a794e5a202525f996697b">&#9670;&#160;</a></span>sleep()</h2>
 
