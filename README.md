@@ -95,7 +95,7 @@ int main() {
 
 	//Generator for getting the max value from a list.
 	auto items = generatorFrom({1, 10, 5, 42, 6, 3});
-	auto max = items.reduce([](auto a, auto b) { return a > b ? a : b; });
+	auto max = items.reduce(0, [](auto a, auto b) { return a > b ? a : b; });
 }
 ```
 
