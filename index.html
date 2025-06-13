@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.35</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.36</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -171,7 +171,7 @@ Examples</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">//Generator for getting the max value from a list.</span></div>
 <div class="line">    <span class="keyword">auto</span> items = generatorFrom({1, 10, 5, 42, 6, 3});</div>
-<div class="line">    <span class="keyword">auto</span> max = items.<a class="code hl_function" href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">reduce</a>([](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a &gt; b ? a : b; });</div>
+<div class="line">    <span class="keyword">auto</span> max = items.<a class="code hl_function" href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">reduce</a>(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a &gt; b ? a : b; });</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_aaabbf3842555634a6a51b76a383b5518"><div class="ttname"><a href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">z::core::array::reduce</a></div><div class="ttdeci">T reduce(const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; lambda) const</div><div class="ttdoc">Reduces the array to a single value by applying a binary operation cumulatively to the elements.</div><div class="ttdef"><b>Definition</b> array.hpp:1232</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_af3812e9c00a7fccd4a9ef59f74c7cfe2"><div class="ttname"><a href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">z::core::array::map</a></div><div class="ttdeci">array&lt; U &gt; map(std::function&lt; U(const T &amp;)&gt; lambda) const</div><div class="ttdoc">Applies a transformation function to each element of the array and returns a new array with the resul...</div><div class="ttdef"><b>Definition</b> array.hpp:1206</div></div>
