@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.47</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.0</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -109,22 +109,10 @@ $(document).ready(function(){initNavTree('namespacez_1_1math.html',''); initResi
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6459f179b1f46909be91fac31d5aa047" id="r_a6459f179b1f46909be91fac31d5aa047"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a6459f179b1f46909be91fac31d5aa047">factorial</a> (long long n) noexcept</td></tr>
-<tr class="memdesc:a6459f179b1f46909be91fac31d5aa047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the factorial of the integer <b>n</b>. Does not check for overflow.  <br /></td></tr>
-<tr class="separator:a6459f179b1f46909be91fac31d5aa047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac35db08460fceaec9114f623643ea902" id="r_ac35db08460fceaec9114f623643ea902"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#ac35db08460fceaec9114f623643ea902">factorial</a> (long long n, bool &amp;did_overflow) noexcept</td></tr>
-<tr class="memdesc:ac35db08460fceaec9114f623643ea902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the factorial of the integer <b>n</b>, but let us know if it overflowed.  <br /></td></tr>
-<tr class="separator:ac35db08460fceaec9114f623643ea902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4d625f8318b48a47999a24fd4edf4bf" id="r_aa4d625f8318b48a47999a24fd4edf4bf"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#aa4d625f8318b48a47999a24fd4edf4bf">fibonacci</a> (int n) noexcept</td></tr>
-<tr class="memdesc:aa4d625f8318b48a47999a24fd4edf4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the n<sup>th</sup> number in the Fibonacci sequence.  <br /></td></tr>
-<tr class="separator:aa4d625f8318b48a47999a24fd4edf4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e" id="r_a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E&gt; </td></tr>
 <tr class="memitem:a0fd66ad1b980886da9c9a4a88193116e"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e">levenschtein</a> (const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word1, const <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; E &gt; &amp;word2, int max=16) noexcept</td></tr>
 <tr class="memdesc:a0fd66ad1b980886da9c9a4a88193116e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Levenshtein distance between two strings with an optional maximum threshold.  <br /></td></tr>
 <tr class="separator:a0fd66ad1b980886da9c9a4a88193116e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad23d182483378f2ba9c3e2ad2e9ca8c" id="r_aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1math.html#aad23d182483378f2ba9c3e2ad2e9ca8c">zeta</a> (const int s) noexcept</td></tr>
-<tr class="memdesc:aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function for approximating Reimann-zeta sums.  <br /></td></tr>
-<tr class="separator:aad23d182483378f2ba9c3e2ad2e9ca8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -152,143 +140,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>phi</b> = 1.6
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This section contains math-related functions, constants, and datatypes. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a6459f179b1f46909be91fac31d5aa047" name="a6459f179b1f46909be91fac31d5aa047"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6459f179b1f46909be91fac31d5aa047">&#9670;&#160;</a></span>factorial() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long long z::math::factorial </td>
-          <td>(</td>
-          <td class="paramtype">long long&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the factorial of the integer <b>n</b>. Does not check for overflow. </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>This function will be removed in <code>1.9</code>. It's being removed for 2 reasons that basically boil down to it not being worth the file size it adds to the library.<ol type="1">
-<li>This function is trivial to implement.</li>
-<li>The factorial is rarely needed in practice.</li>
-</ol>
-</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>a positive integer.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="ac35db08460fceaec9114f623643ea902" name="ac35db08460fceaec9114f623643ea902"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac35db08460fceaec9114f623643ea902">&#9670;&#160;</a></span>factorial() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long long z::math::factorial </td>
-          <td>(</td>
-          <td class="paramtype">long long&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>did_overflow</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the factorial of the integer <b>n</b>, but let us know if it overflowed. </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This function will be removed in <code>1.9</code>. It's being removed for 2 reasons that basically boil down to it not being worth the file size it adds to the library.<ol type="1">
-<li>This function is trivial to implement.</li>
-<li>The factorial is rarely needed in practice.</li>
-</ol>
-</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>a positive integer. </td></tr>
-    <tr><td class="paramname">did_overflow</td><td>whether the calculation overflowed, returned by reference.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The factorial of <b>n</b>, if <b>n&gt;0</b> and the factorial is able to be represented. <b>0</b> otherwise.</dd></dl>
-<dl class="section user"><dt>Re-Entry: Simultaneous calls to this function with the same parameters may cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="aa4d625f8318b48a47999a24fd4edf4bf" name="aa4d625f8318b48a47999a24fd4edf4bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4d625f8318b48a47999a24fd4edf4bf">&#9670;&#160;</a></span>fibonacci()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long long z::math::fibonacci </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calculate the n<sup>th</sup> number in the Fibonacci sequence. </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>This function will be removed in <code>1.9</code>. It's being removed for 2 reasons that basically boil down to it not being worth the file size it adds to the library.<ol type="1">
-<li>Highly performant versions of this function are trivial to implement.</li>
-<li>The Fibonacci sequence is rarely needed in practice.</li>
-</ol>
-</dd></dl>
-<p>To avoid recursion and for the sake of performance, this function uses Binet's formula. <br  />
- Additionally, doubles are used to allow for very large output values, but anything up to fibonacci(46) number safely be cast to a (long), up to the fibonacci(92) can be cast to (unsigned long) or a (long long). However, the result is only accurate up to fibonacci(71). <br  />
- Note: this function will return <b>NaN</b> if the parameter is anything other than a whole number. It does, however, work with negatives.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>the index of the desired number in the Fibonacci sequence.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the n<sup>th</sup> number in the Fibonacci sequence.</dd></dl>
-<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-
-</div>
-</div>
 <a id="a0fd66ad1b980886da9c9a4a88193116e" name="a0fd66ad1b980886da9c9a4a88193116e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0fd66ad1b980886da9c9a4a88193116e">&#9670;&#160;</a></span>levenschtein()</h2>
 
@@ -343,49 +194,6 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The Levenshtein distance between the two strings. </dd></dl>
-
-</div>
-</div>
-<a id="aad23d182483378f2ba9c3e2ad2e9ca8c" name="aad23d182483378f2ba9c3e2ad2e9ca8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad23d182483378f2ba9c3e2ad2e9ca8c">&#9670;&#160;</a></span>zeta()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double z::math::zeta </td>
-          <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A function for approximating Reimann-zeta sums. </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000004">Deprecated:</a></b></dt><dd>This function will be removed in <code>1.9</code>. It's being removed for 3 reasons that basically boil down to it not being worth the file size it adds to the library.<ol type="1">
-<li>This function is trivial to implement.</li>
-<li>The Riemann zeta function is rarely needed in practice.</li>
-<li>This implementation is neither fast nor all that accurate.</li>
-</ol>
-</dd></dl>
-<p>Computes zeta(s) with reasonable precision.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">s</td><td>An integer greater than 1</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An approximation of zeta(s)</dd></dl>
-<dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
 
 </div>
 </div>
