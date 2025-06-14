@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['yield_0',['yield',['../structz_1_1core_1_1yield.html',1,'z::core']]]
+  ['unreadable_0',['unreadable',['../classz_1_1file_1_1unreadable.html',1,'z::file']]],
+  ['unwritable_1',['unwritable',['../classz_1_1file_1_1unwritable.html',1,'z::file']]]
 ];

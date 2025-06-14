@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['memoize_3c_20r_28args_2e_2e_2e_29_3e_0',['memoize&lt; R(Args...)&gt;',['../classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html',1,'z::core']]]
+  ['lesserexists_0',['lesserExists',['../structz_1_1core_1_1types_1_1lesserExists.html',1,'z::core::types']]],
+  ['library_1',['library',['../classz_1_1file_1_1library.html',1,'z::file']]]
 ];

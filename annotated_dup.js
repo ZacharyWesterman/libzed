@@ -14,6 +14,8 @@ var annotated_dup =
         [ "circularIterator", "classz_1_1core_1_1circularIterator.html", "classz_1_1core_1_1circularIterator" ],
         [ "generator", "classz_1_1core_1_1generator.html", "classz_1_1core_1_1generator" ],
         [ "generatorIter", "classz_1_1core_1_1generatorIter.html", "classz_1_1core_1_1generatorIter" ],
+        [ "hash32", "structz_1_1core_1_1hash32.html", null ],
+        [ "hash32< size, size, dummy >", "structz_1_1core_1_1hash32_3_01size_00_01size_00_01dummy_01_4.html", null ],
         [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4" ],

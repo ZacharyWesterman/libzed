@@ -13,7 +13,7 @@ var searchData=
   ['clear_10',['clear',['../classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692',1,'z::core::array::clear()'],['../classz_1_1core_1_1string.html#ab81636d4790a5f15b15e188a906cedfb',1,'z::core::string::clear()'],['../classz_1_1util_1_1dictionary.html#a54f763909cb5492132cff2c3532f1740',1,'z::util::dictionary::clear()']]],
   ['collect_11',['collect',['../classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036',1,'z::core::generator']]],
   ['compiling_12',['Compiling',['../index.html#autotoc_md13',1,'']]],
-  ['complex_13',['complex',['../classz_1_1util_1_1generic.html#a9d0b56627b1d8a3181c34b5c67a58e57',1,'z::util::generic::complex()'],['../classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c',1,'z::core::string::complex(int base=10, uint32_t decimal=&apos;.&apos;) const noexcept']]],
+  ['complex_13',['complex',['../classz_1_1core_1_1string.html#aab77b1f497faf69a7ecf6ac419f7889c',1,'z::core::string::complex()'],['../classz_1_1util_1_1generic.html#a9d0b56627b1d8a3181c34b5c67a58e57',1,'z::util::generic::complex()']]],
   ['concat_14',['concat',['../classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab',1,'z::core::string']]],
   ['consume_15',['consume',['../classz_1_1core_1_1generator.html#a8de49515c34b28f026e1a2f631263ed3',1,'z::core::generator']]],
   ['contains_16',['contains',['../classz_1_1core_1_1array.html#a0c339681af40a2d14e88ebff2e89cd07',1,'z::core::array::contains()'],['../classz_1_1core_1_1string.html#a681fe4167410b67fc551ba110ab05caf',1,'z::core::string::contains(uint32_t first, uint32_t last, bool exclusive=false) const noexcept'],['../classz_1_1core_1_1string.html#a47eb35c738fc945653b681f9ad833289',1,'z::core::string::contains(const std::pair&lt; uint32_t, uint32_t &gt; &amp;range, bool exclusive=false) const noexcept'],['../classz_1_1core_1_1string.html#ab0b59dd1ca9c56818ab5479984eb85bc',1,'z::core::string::contains(const std::initializer_list&lt; const std::pair&lt; uint32_t, uint32_t &gt; &gt; &amp;list, bool exclusive=false) const noexcept'],['../classz_1_1core_1_1string.html#af9fad872ff436d306447bdb8fbda5650',1,'z::core::string::contains(const string &amp;list, bool exclusive=false) const noexcept']]],
@@ -21,10 +21,11 @@ var searchData=
   ['copy_18',['copy',['../namespacez_1_1file.html#ac3be5b01b3fdf5508f4da3acf4403ca9',1,'z::file']]],
   ['core_2ehpp_19',['core.hpp',['../core_8hpp.html',1,'']]],
   ['cores_20',['cores',['../classz_1_1system_1_1cpuid.html#ac2424cdee386ee4cfa967787e7fdd050',1,'z::system::cpuid']]],
-  ['count_21',['count',['../classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06',1,'z::core::string::count()'],['../classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257',1,'z::core::generator::count()'],['../classz_1_1core_1_1circularBuffer.html#a4f04b3515846ba90368caa471fd523d7',1,'z::core::circularBuffer::count()']]],
-  ['cpuid_22',['cpuid',['../classz_1_1system_1_1cpuid.html#a929571c48c601438cc359b1f0d74c4c6',1,'z::system::cpuid::cpuid()'],['../classz_1_1system_1_1cpuid.html',1,'z::system::cpuid']]],
+  ['count_21',['count',['../classz_1_1core_1_1circularBuffer.html#a4f04b3515846ba90368caa471fd523d7',1,'z::core::circularBuffer::count()'],['../classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257',1,'z::core::generator::count()'],['../classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06',1,'z::core::string::count()']]],
+  ['cpuid_22',['cpuid',['../classz_1_1system_1_1cpuid.html',1,'z::system::cpuid'],['../classz_1_1system_1_1cpuid.html#a929571c48c601438cc359b1f0d74c4c6',1,'z::system::cpuid::cpuid() noexcept']]],
   ['cpus_23',['cpus',['../classz_1_1system_1_1cpuid.html#ab2f2152a83304b71920693990b1445d3',1,'z::system::cpuid']]],
-  ['cstring_24',['cstring',['../classz_1_1core_1_1string.html#a5cc03bcfc11b629f98d62c8aba2d5d96',1,'z::core::string']]],
-  ['current_25',['current',['../classz_1_1core_1_1circularBuffer.html#a151c3dcf3fbdf9b92d8b4fb98665ee2b',1,'z::core::circularBuffer']]],
-  ['cutduplicates_26',['cutDuplicates',['../classz_1_1core_1_1string.html#a145eb2d04dac518776b95cf50e2ce0e9',1,'z::core::string']]]
+  ['crc32_24',['crc32',['../structz_1_1core_1_1hash32_3_01size_00_01size_00_01dummy_01_4.html#a0018ee88768b7f7cc7b7832dee4e5221',1,'z::core::hash32&lt; size, size, dummy &gt;::crc32()'],['../structz_1_1core_1_1hash32.html#a41feecb94120b953590dee0e3b425635',1,'z::core::hash32::crc32()']]],
+  ['cstring_25',['cstring',['../classz_1_1core_1_1string.html#a5cc03bcfc11b629f98d62c8aba2d5d96',1,'z::core::string']]],
+  ['current_26',['current',['../classz_1_1core_1_1circularBuffer.html#a151c3dcf3fbdf9b92d8b4fb98665ee2b',1,'z::core::circularBuffer']]],
+  ['cutduplicates_27',['cutDuplicates',['../classz_1_1core_1_1string.html#a145eb2d04dac518776b95cf50e2ce0e9',1,'z::core::string']]]
 ];

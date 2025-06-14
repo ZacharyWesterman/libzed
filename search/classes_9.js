@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['no_0',['no',['../classz_1_1core_1_1types_1_1no.html',1,'z::core::types']]],
-  ['nonnumeric_1',['nonnumeric',['../structz_1_1util_1_1nonnumeric.html',1,'z::util']]]
+  ['memoize_3c_20r_28args_2e_2e_2e_29_3e_0',['memoize&lt; R(Args...)&gt;',['../classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html',1,'z::core']]]
 ];
