@@ -180,8 +180,8 @@ tests: static
 
 benchmark: benchmarks
 benchmarks: static
-	$(MAKE) -C tests/ STD=$(STD)
-	./tests/bin/run_tests $(TEST_FLAGS) '[!benchmark]'
+	$(MAKE) -C benchmarks/ STD=$(STD)
+	./benchmarks/bin/run_benchmarks $(TEST_FLAGS)
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)

@@ -13,7 +13,7 @@ long fib_naive(long n) {
 	return fib_naive(n - 1) + fib_naive(n - 2);
 }
 
-TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[!benchmark]") {
+TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[memoization][fibonacci]") {
 	const int fib_n = 30; // The Fibonacci number to compute
 
 	memoize<long(long)> fib([&fib](long n) -> long {
@@ -69,18 +69,27 @@ TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[!bench
 
 // A slow function that simulates a long computation
 long slow_function(long n) {
-	sleep(100);		// Simulate a slow function
+	sleep(10);		// Simulate a slow function
 	return n * n; // Just return the square of the number
 }
 
-TEST_CASE("Memoization of a very slow function", "[!benchmark]") {
+TEST_CASE("Memoization of a very slow function", "[memoization][slow_function]") {
 	memoize<long(long)> memoized_slow_function = slow_function;
+	int func_param = 10; // Example parameter for the slow function
 
+	BENCHMARK("Memoized slow function first invocation") {
+		memoize<long(long)> memoized_slow_function_first = slow_function;
+		return memoized_slow_function_first(func_param);
+	};
+
+	// Get the first invocation of the memoized function,
+	// so that the cache is populated for subsequent benchmarks.
+	memoized_slow_function(func_param);
 	BENCHMARK("Repeated invocations of memoized slow function") {
-		return memoized_slow_function(10);
+		return memoized_slow_function(func_param);
 	};
 
 	BENCHMARK("Slow function without memoization") {
-		return slow_function(10);
+		return slow_function(func_param);
 	};
 }
