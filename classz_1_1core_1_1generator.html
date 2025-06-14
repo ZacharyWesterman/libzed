@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.36</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.8.37</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -139,6 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2f4c5598acdb9b1fd6a7016360028036" id="r_a2f4c5598acdb9b1fd6a7016360028036"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036">collect</a> ()</td></tr>
 <tr class="memdesc:a2f4c5598acdb9b1fd6a7016360028036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenate all generator elements into an array.  <br /></td></tr>
 <tr class="separator:a2f4c5598acdb9b1fd6a7016360028036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de49515c34b28f026e1a2f631263ed3" id="r_a8de49515c34b28f026e1a2f631263ed3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a8de49515c34b28f026e1a2f631263ed3">consume</a> ()</td></tr>
+<tr class="memdesc:a8de49515c34b28f026e1a2f631263ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consume and discard all items from the generator.  <br /></td></tr>
+<tr class="separator:a8de49515c34b28f026e1a2f631263ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef9b00a9a865980d73bc30ee03f1b9e1" id="r_aef9b00a9a865980d73bc30ee03f1b9e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1">take</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>)</td></tr>
 <tr class="memdesc:aef9b00a9a865980d73bc30ee03f1b9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a certain number of items from the generator.  <br /></td></tr>
 <tr class="separator:aef9b00a9a865980d73bc30ee03f1b9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -341,6 +344,37 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <p>Concatenate all generator elements into an array. </p>
 <dl class="section note"><dt>Note</dt><dd>This function will consume the generator, and it will not be able to be used again. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>An array containing all elements from the generator. </dd></dl>
+
+</div>
+</div>
+<a id="a8de49515c34b28f026e1a2f631263ed3" name="a8de49515c34b28f026e1a2f631263ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de49515c34b28f026e1a2f631263ed3">&#9670;&#160;</a></span>consume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::consume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Consume and discard all items from the generator. </p>
+<dl class="section note"><dt>Note</dt><dd>This function will consume the generator, and it will not be able to be used again. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of items that were generated. </dd></dl>
 
 </div>
 </div>

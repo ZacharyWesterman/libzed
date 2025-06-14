@@ -6,7 +6,7 @@ var searchData=
   ['init_3',['init',['../classz_1_1core_1_1array.html#a3e92206f09413a1724056a4a290baed3',1,'z::core::array::init(const T &amp;arg1)'],['../classz_1_1core_1_1array.html#a8baac7448507925fc559e1d310809c6e',1,'z::core::array::init(const T &amp;arg1, const Args &amp;...args)']]],
   ['insert_4',['insert',['../classz_1_1core_1_1array.html#a6c4816347d389719d52a78d4d233510d',1,'z::core::array::insert()'],['../classz_1_1core_1_1string.html#aef7a2f1f19646da680ff76db8f744ebf',1,'z::core::string::insert(const string &amp;other, int index) noexcept']]],
   ['integer_5',['integer',['../classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a',1,'z::core::string::integer()'],['../classz_1_1util_1_1generic.html#adc841964eb03fbb344356931acdbd5d6',1,'z::util::generic::integer()']]],
-  ['interval_6',['interval',['../namespacez_1_1system.html#a5686b4567238cb19d7a8aafa5156c3be',1,'z::system']]],
+  ['interval_6',['interval',['../namespacez_1_1system.html#afad296cc73e1048d763d25cd6f0a4785',1,'z::system']]],
   ['is_7',['is',['../classz_1_1util_1_1generic.html#a9571a5652422f3d0c572924f35d7713c',1,'z::util::generic']]],
   ['isalpha_8',['isAlpha',['../namespacez_1_1core.html#adc4a1f3409405255f808fa875bfa619f',1,'z::core']]],
   ['isalphanumeric_9',['isAlphaNumeric',['../namespacez_1_1core.html#aff4e89007eb193afb81b79b3fe61eb84',1,'z::core']]],

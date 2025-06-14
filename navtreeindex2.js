@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"generator_8cpp-example.html":[6,6],
 "generator_8hpp_source.html":[5,0,0,0,5],
 "generic_8cpp-example.html":[6,7],
 "generic_8hpp_source.html":[5,0,0,4,4],
