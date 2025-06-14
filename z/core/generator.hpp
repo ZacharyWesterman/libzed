@@ -153,6 +153,19 @@ public:
 	}
 
 	/**
+	 * @brief Consume and discard all items from the generator.
+	 * @note This function will consume the generator, and it will not be able to be used again.
+	 * @return The number of items that were generated.
+	 */
+	long consume() {
+		long count = 0;
+		for (auto _ : *this) {
+			count++;
+		}
+		return count;
+	}
+
+	/**
 	 * @brief Take a certain number of items from the generator.
 	 *
 	 * This function will take a certain number of items from the generator, or all items if there are fewer than the requested count.

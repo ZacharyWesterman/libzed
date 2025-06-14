@@ -80,9 +80,15 @@ int main() {
 		// By default, the interval generator will run indefinitely,
 		// but you can specify a maximum number of triggers.
 		// In this case, it will run 5 times, every 100ms.
-		for (auto _ : z::system::interval(100, 5)) {
+		for (auto _ : z::system::interval(100).limit(5)) {
 			("Tick every 100ms"_zs).writeln(std::cout);
 		}
 		("Interval generator finished"_zs).writeln(std::cout);
+
+		// An alternative invocation is to use a lambda function that will be called each time the interval triggers.
+		// Note the consume() call, which tells the generator to run and consume all items.
+		auto gen = z::system::interval(10).limit(5).forEach([](auto) { ("Tick every 10ms"_zs).writeln(std::cout); });
+		auto count = gen.consume(); // This will consume all items in the generator.
+		(zstring(count) + " items were consumed"_zs).writeln(std::cout);
 	}
 }
