@@ -103,9 +103,11 @@ There are **MANY** more features of generators, so be sure and check out the exa
 
 ---
 
-There are a good handful of functions for interacting with files, all of which can be found [in the z::file namespace][file].
+Other features include:
+- A class for [memoizing functions][memoization]. (Also see https://en.wikipedia.org/wiki/Memoization)
+- A class for loading and using [dynamic libraries][libraries].
+- Several functions for interacting with [files][file].
 
-This includes a class for dynamically loading shared libraries at runtime ([documentation is here][libraries])!
 As with the rest of this library, all the platform-specific stuff is abstracted away.
 
 Check out the [examples/ directory][examples] for a longer list of example programs.
@@ -241,3 +243,4 @@ $ gzexe example.out && rm example.out~
 [libraries]: https://zacharywesterman.github.io/libzed/classz_1_1file_1_1library.html
 [examples]: https://zacharywesterman.github.io/libzed/examples.html
 [generators]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html
+[memoization]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1memoize.html
