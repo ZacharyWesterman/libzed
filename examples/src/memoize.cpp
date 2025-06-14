@@ -28,7 +28,7 @@ int main() {
 	std::cout << std::endl;
 
 	// Another good example is to use a lambda to implement a recursive function.
-	memoize<int(int)> fib([&](int n) -> int {
+	memoize<int(int)> fib([&fib](int n) -> int {
 		if (n <= 1) {
 			return n;
 		}
