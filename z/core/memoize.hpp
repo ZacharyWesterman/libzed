@@ -18,9 +18,10 @@ class memoize;
  * based on the arguments passed to it. If the function is called with the same
  * arguments again, the cached result is returned instead of recalculating it.
  *
- * @note Recursive functions will not have every call memoized, only the initial call.
- * E.g. calling a recursive Fibonacci with fib(5) will memoize fib(5), but not fib(4), fib(3), etc.
- * As well, the initial call to fib(5) will do the full calculation, including all redundant recursive calls.
+ * @note Naively memoizing recursive functions will not result in every call being memoized, only the top-level call.
+ * In order to implement a truly memoized recursive function, you must pass the memoized function as a lambda *that captures itself*, e.g.
+ * `memoize<int(int)> fib([&fib](int n) -> int { ... });`.
+ *
  *
  * @tparam R The return type of the function.
  * @tparam Args The argument types of the function.
