@@ -178,6 +178,11 @@ tests: static
 	$(MAKE) -C tests/ STD=$(STD)
 	./tests/bin/run_tests $(TEST_FLAGS)
 
+benchmark: benchmarks
+benchmarks: static
+	$(MAKE) -C tests/ STD=$(STD)
+	./tests/bin/run_tests $(TEST_FLAGS) '[!benchmark]'
+
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
@@ -248,4 +253,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests docs dox format try-format count-loc get-version get-revision
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision
