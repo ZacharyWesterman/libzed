@@ -123,3 +123,26 @@ TEST_CASE("Generator chunk", "[generator]") {
 	REQUIRE(numbers_array.length() == 1);
 	REQUIRE(numbers_array[0].length() == 10);
 }
+
+TEST_CASE("Generator from std::map", "[generator]") {
+	auto my_map = std::map<int, std::string>{{1, "one"}, {2, "two"}, {3, "three"}};
+	auto generator = generatorFrom(my_map);
+
+	auto result = generator.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0].first == 1);
+	REQUIRE(result[0].second == "one");
+	REQUIRE(result[1].first == 2);
+	REQUIRE(result[1].second == "two");
+	REQUIRE(result[2].first == 3);
+	REQUIRE(result[2].second == "three");
+
+	// Use a map that only exists as an rvalue
+	auto rvalue_map = generatorFrom(std::map<int, std::string>{{4, "four"}, {5, "five"}});
+	auto rvalue_result = rvalue_map.collect();
+	REQUIRE(rvalue_result.length() == 2);
+	REQUIRE(rvalue_result[0].first == 4);
+	REQUIRE(rvalue_result[0].second == "four");
+	REQUIRE(rvalue_result[1].first == 5);
+	REQUIRE(rvalue_result[1].second == "five");
+}

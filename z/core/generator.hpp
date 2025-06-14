@@ -2,6 +2,7 @@
 
 #include "array.hpp"
 #include <functional>
+#include <map>
 
 namespace z {
 namespace core {
@@ -527,6 +528,46 @@ generator<T, std::pair<array<T>, long>> generatorFrom(std::initializer_list<T> l
 		}
 
 		return yield<T>{true};
+	});
+}
+
+/**
+ * @brief Create a generator from a map.
+ * @tparam K The type of the key in the map.
+ * @tparam V The type of the value in the map.
+ * @param map The map to create a generator from.
+ * @return A generator that will yield pairs of key-value from the map.
+ */
+template <typename K, typename V>
+generator<std::pair<K, V>, typename std::map<K, V>::const_iterator> generatorFrom(const std::map<K, V> &map) {
+	return generator<std::pair<K, V>, typename std::map<K, V>::const_iterator>(map.begin(), [&map](auto &iter) {
+		if (iter != map.end()) {
+			auto ret = yield<std::pair<K, V>>{false, *iter};
+			++iter; // Move to the next item
+			return ret;
+		}
+
+		return yield<std::pair<K, V>>{true};
+	});
+}
+
+/**
+ * @brief Create a generator from a temporary map.
+ * @tparam K The type of the key in the map.
+ * @tparam V The type of the value in the map.
+ * @param map The map to create a generator from.
+ * @return A generator that will yield pairs of key-value from the map.
+ */
+template <typename K, typename V>
+generator<std::pair<K, V>, std::pair<typename std::map<K, V>::const_iterator, std::map<K, V>>> generatorFrom(std::map<K, V> &&map) {
+	return generator<std::pair<K, V>, std::pair<typename std::map<K, V>::const_iterator, std::map<K, V>>>({map.begin(), map}, [](auto &state) {
+		if (state.first != state.second.end()) {
+			auto ret = yield<std::pair<K, V>>{false, *state.first};
+			++state.first; // Move to the next item
+			return ret;
+		}
+
+		return yield<std::pair<K, V>>{true};
 	});
 }
 
