@@ -1,7 +1,9 @@
 #include "../../z/core/memoize.hpp"
+#include "../../z/system/sleep.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 using z::core::memoize;
+using z::system::sleep;
 
 // Naive implementation of Fibonacci
 long fib_naive(long n) {
@@ -12,7 +14,7 @@ long fib_naive(long n) {
 }
 
 TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[!benchmark]") {
-	const int fib_n = 40; // The Fibonacci number to compute
+	const int fib_n = 30; // The Fibonacci number to compute
 
 	memoize<long(long)> fib([&fib](long n) -> long {
 		if (n <= 1) {
@@ -62,5 +64,23 @@ TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[!bench
 
 	BENCHMARK("Naive recursive Fibonacci") {
 		return fib_naive(fib_n);
+	};
+}
+
+// A slow function that simulates a long computation
+long slow_function(long n) {
+	sleep(100);		// Simulate a slow function
+	return n * n; // Just return the square of the number
+}
+
+TEST_CASE("Memoization of a very slow function", "[!benchmark]") {
+	memoize<long(long)> memoized_slow_function = slow_function;
+
+	BENCHMARK("Repeated invocations of memoized slow function") {
+		return memoized_slow_function(10);
+	};
+
+	BENCHMARK("Slow function without memoization") {
+		return slow_function(10);
 	};
 }
