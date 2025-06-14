@@ -11,6 +11,7 @@
  **/
 
 /// Strings
+#include "core/hash32.hpp"
 #include "core/string.hpp"
 
 /// Arrays
