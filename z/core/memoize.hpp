@@ -51,6 +51,11 @@ public:
 
 	/**
 	 * @brief Function call operator.
+	 *
+	 * If the results for the given arguments are already cached,
+	 * it returns the cached result. Otherwise, it calls the function,
+	 * caches the result, and then returns it.
+	 *
 	 * @param args The arguments to pass to the function.
 	 * @return The result of the function.
 	 */
