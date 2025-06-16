@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"generic_8cpp-example.html":[5,7],
 "generic_8hpp_source.html":[4,0,0,4,4],
 "hash32_8hpp_source.html":[4,0,0,0,6],
 "hierarchy.html":[3,2],

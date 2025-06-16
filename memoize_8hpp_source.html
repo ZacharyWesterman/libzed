@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.0</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.1</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -136,16 +136,24 @@ $(document).ready(function(){initNavTree('memoize_8hpp_source.html',''); initRes
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> cache[<a class="code hl_class" href="classz_1_1core_1_1array.html">arg_list</a>];</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a85dd6357ea06074e084bfcfeab2290c3">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a85dd6357ea06074e084bfcfeab2290c3">clear</a>() {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        cache.<a class="code hl_function" href="classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692">clear</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <span class="comment">// namespace core</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>} <span class="comment">// namespace z</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace core</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_a40863d5a8c5134a849e13f84a11889e6"><div class="ttname"><a href="classz_1_1core_1_1array.html#a40863d5a8c5134a849e13f84a11889e6">z::core::array::find</a></div><div class="ttdeci">virtual int find(const T &amp;object) const</div><div class="ttdoc">Find the index of a given object in the array.</div><div class="ttdef"><b>Definition</b> array.hpp:356</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html_af1f9e1261e762890f03307911b90bc14"><div class="ttname"><a href="classz_1_1core_1_1array.html#af1f9e1261e762890f03307911b90bc14">z::core::array::end</a></div><div class="ttdeci">T * end() const noexcept override</div><div class="ttdoc">Get pointer to the end of the array.</div><div class="ttdef"><b>Definition</b> array.hpp:625</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_afb00cc3926eb5f222662169692f62692"><div class="ttname"><a href="classz_1_1core_1_1array.html#afb00cc3926eb5f222662169692f62692">z::core::array::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the data in the array.</div><div class="ttdef"><b>Definition</b> array.hpp:884</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_a213296710a15d38f903c0aee65f7d5f9"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a213296710a15d38f903c0aee65f7d5f9">z::core::memoize&lt; R(Args...)&gt;::memoize</a></div><div class="ttdeci">memoize(R lambda(Args...))</div><div class="ttdoc">Constructor with a function pointer.</div><div class="ttdef"><b>Definition</b> memoize.hpp:49</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_a543656d1175c51294491332ed05679d9"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">z::core::memoize&lt; R(Args...)&gt;::operator()</a></div><div class="ttdeci">R operator()(Args... args)</div><div class="ttdoc">Function call operator.</div><div class="ttdef"><b>Definition</b> memoize.hpp:63</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_a85dd6357ea06074e084bfcfeab2290c3"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a85dd6357ea06074e084bfcfeab2290c3">z::core::memoize&lt; R(Args...)&gt;::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clears the cache.</div><div class="ttdef"><b>Definition</b> memoize.hpp:78</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4_html_adc40e251d1ce9da0df95494dc2d782a6"><div class="ttname"><a href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#adc40e251d1ce9da0df95494dc2d782a6">z::core::memoize&lt; R(Args...)&gt;::memoize</a></div><div class="ttdeci">memoize(std::function&lt; R(Args...)&gt; &amp;&amp;lambda)</div><div class="ttdoc">Constructor with any function-like object.</div><div class="ttdef"><b>Definition</b> memoize.hpp:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
