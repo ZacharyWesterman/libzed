@@ -68,6 +68,16 @@ public:
 		}
 		return cache[arg_list];
 	}
+
+	/**
+	 * @brief Clears the cache.
+	 *
+	 * This function clears the cache, allowing the memoized function to
+	 * recalculate results for all arguments.
+	 */
+	void clear() {
+		cache.clear();
+	}
 };
 
 } // namespace core
