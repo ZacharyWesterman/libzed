@@ -1,11 +1,51 @@
 #pragma once
 
 #include <functional>
-#include <map>
 #include <tuple>
+#include <unordered_map>
 
 namespace z {
 namespace core {
+
+// Hashing helper
+namespace memoization {
+
+/// @private
+template <typename T>
+inline void hash_combine(std::size_t &seed, const T &val) {
+	seed ^= std::hash<T>()(val) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+}
+
+/// @private
+template <typename tuple, std::size_t index = std::tuple_size<tuple>::value - 1>
+struct tupleHasher {
+	/// @private
+	static void apply(std::size_t &seed, const tuple &tup) {
+		tupleHasher<tuple, index - 1>::apply(seed, tup);
+		hash_combine(seed, std::get<index>(tup));
+	}
+};
+
+/// @private
+template <typename tuple>
+struct tupleHasher<tuple, 0> {
+	/// @private
+	static void apply(std::size_t &seed, const tuple &tup) {
+		hash_combine(seed, std::get<0>(tup));
+	}
+};
+
+/// @private
+struct tupleHash {
+	/// @private
+	template <typename... T>
+	std::size_t operator()(const std::tuple<T...> &t) const {
+		std::size_t seed = 0;
+		tupleHasher<std::tuple<T...>>::apply(seed, t);
+		return seed;
+	}
+};
+} // namespace memoization
 
 /// @private
 template <typename T>
@@ -30,7 +70,7 @@ template <typename R, typename... Args>
 class memoize<R(Args...)> {
 private:
 	std::function<R(Args...)> lambda;
-	std::map<std::tuple<Args...>, R> cache;
+	std::unordered_map<std::tuple<Args...>, R, memoization::tupleHash> cache;
 
 public:
 	/**
