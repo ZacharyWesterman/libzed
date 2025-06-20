@@ -9,8 +9,8 @@ var hierarchy =
     [ "z::core::generatorIter< T, S >", "classz_1_1core_1_1generatorIter.html", null ],
     [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
-    [ "z::core::hash32< size, idx, dummy >", "structz_1_1core_1_1hash32.html", null ],
-    [ "z::core::hash32< size, size, dummy >", "structz_1_1core_1_1hash32_3_01size_00_01size_00_01dummy_01_4.html", null ],
+    [ "z::core::hash32gen< size, idx, dummy >", "structz_1_1core_1_1hash32gen.html", null ],
+    [ "z::core::hash32gen< size, size, dummy >", "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html", null ],
     [ "z::core::indexable< T >", "classz_1_1core_1_1indexable.html", [
       [ "z::core::arrayLike< const T &, T * >", "classz_1_1core_1_1arrayLike.html", [
         [ "z::core::array< T >", "classz_1_1core_1_1array.html", [
