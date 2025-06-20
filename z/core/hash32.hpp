@@ -3,6 +3,9 @@
 #include <cstdint>
 
 namespace z {
+
+typedef uint32_t hash32;
+
 namespace core {
 
 // This specific CRC32 implementation was written by Stack Overflow user "tower120".
@@ -24,7 +27,7 @@ static constexpr uint32_t crc_table[256] = {
  * but the result will of course be computed at runtime.
  */
 template <int size, int idx = 0, class dummy = void>
-struct hash32 {
+struct hash32gen {
 	/**
 	 * @brief Computes the CRC32 hash of a string at compile time.
 	 *
@@ -32,8 +35,8 @@ struct hash32 {
 	 * @param prev_crc The previous CRC value, default is 0xFFFFFFFF.
 	 * @return The computed CRC32 hash.
 	 */
-	static constexpr unsigned int crc32(const char *str, unsigned int prev_crc = 0xFFFFFFFF) {
-		return hash32<size, idx + 1>::crc32(str, (prev_crc >> 8) ^ crc_table[(prev_crc ^ str[idx]) & 0xFF]);
+	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
+		return hash32gen<size, idx + 1>::crc32(str, (prev_crc >> 8) ^ crc_table[(prev_crc ^ str[idx]) & 0xFF]);
 	}
 };
 
@@ -41,7 +44,7 @@ struct hash32 {
  * @brief The stopping specialization for the hash32 template.
  */
 template <int size, class dummy>
-struct hash32<size, size, dummy> {
+struct hash32gen<size, size, dummy> {
 	/**
 	 * @brief Returns the final CRC32 hash value.
 	 *
@@ -49,7 +52,7 @@ struct hash32<size, size, dummy> {
 	 * @param prev_crc The previous CRC value, default is 0xFFFFFFFF.
 	 * @return The computed CRC32 hash.
 	 */
-	static constexpr unsigned int crc32(const char *str, unsigned int prev_crc = 0xFFFFFFFF) {
+	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
 		return prev_crc ^ 0xFFFFFFFF;
 	}
 };
@@ -58,4 +61,4 @@ struct hash32<size, size, dummy> {
 } // namespace z
 
 // Macro to compute the CRC32 hash of a string literal at compile time.
-#define HASH32(x) (z::core::hash32<sizeof(x) - 1>::crc32(x))
+#define HASH32(x) (z::core::hash32gen<sizeof(x) - 1>::crc32(x))
