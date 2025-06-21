@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.4</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.5</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -136,18 +136,26 @@ $(document).ready(function(){initNavTree('hash32_8hpp_source.html',''); initResi
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html">   47</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structz_1_1core_1_1hash32gen.html">hash32gen</a>&lt;<a class="code hl_function" href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">size</a>, <a class="code hl_function" href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">size</a>, <a class="code hl_class" href="classz_1_1core_1_1array.html">dummy</a>&gt; {</div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b">   55</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> hash32 <a class="code hl_function" href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b">crc32</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, hash32 <a class="code hl_class" href="classz_1_1core_1_1array.html">prev_crc</a> = 0xFFFFFFFF) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classz_1_1core_1_1array.html">prev_crc</a> ^ 0xFFFFFFFF;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        (<a class="code hl_class" href="classz_1_1core_1_1array.html">void</a>)str;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classz_1_1core_1_1array.html">prev_crc</a> ^ 0xFFFFFFFF;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>} <span class="comment">// namespace core</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace z</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// Macro to compute the CRC32 hash of a string literal at compile time.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#define HASH32(x) (z::core::hash32gen&lt;sizeof(x) - 1&gt;::crc32(x))</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">   70</a></span>hash32 <a class="code hl_function" href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">crc32</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> <a class="code hl_function" href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">size</a>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">constexpr</span> <span class="keyword">inline</span> hash32 <a class="code hl_function" href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">crc32</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="structz_1_1core_1_1hash32gen.html">hash32gen</a>&lt;<span class="keyword">sizeof</span>(str) - 1&gt;<a class="code hl_function" href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">::crc32</a>(str);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace core</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace z</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">// Macro to compute the CRC32 hash of a string literal at compile time.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#define HASH32(x) (z::core::hash32gen&lt;sizeof(x) - 1&gt;::crc32(x))</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_a86f77db6ea69e8b33b5261e0c74b1043"><div class="ttname"><a href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">z::core::crc32</a></div><div class="ttdeci">hash32 crc32(const char *str, int size) noexcept</div><div class="ttdoc">Computes the CRC32 hash of a string at runtime.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ae24d2d7940342449f4248b0df4dcb245"><div class="ttname"><a href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">z::core::size</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::sizable, T &gt;::value &gt;::type size(const T &amp;object, size_t &amp;bytes) noexcept</div><div class="ttdoc">Get the size of a sizable object.</div><div class="ttdef"><b>Definition</b> sizable.hpp:34</div></div>
 <div class="ttc" id="astructz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4_html_a417bf4f6ee26b00ff593f3e4a69e527b"><div class="ttname"><a href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b">z::core::hash32gen&lt; size, size, dummy &gt;::crc32</a></div><div class="ttdeci">static constexpr hash32 crc32(const char *str, hash32 prev_crc=0xFFFFFFFF)</div><div class="ttdoc">Returns the final CRC32 hash value.</div><div class="ttdef"><b>Definition</b> hash32.hpp:55</div></div>
 <div class="ttc" id="astructz_1_1core_1_1hash32gen_html"><div class="ttname"><a href="structz_1_1core_1_1hash32gen.html">z::core::hash32gen</a></div><div class="ttdoc">A compile-time CRC32 hash function.</div><div class="ttdef"><b>Definition</b> hash32.hpp:30</div></div>

@@ -54,6 +54,7 @@ var classz_1_1core_1_1string =
     [ "found", "classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672", null ],
     [ "foundAt", "classz_1_1core_1_1string.html#ad88d54285e20d23be6bb69edfef9ebbc", null ],
     [ "foundEndAt", "classz_1_1core_1_1string.html#a2e23641e0457fa6c3b371e6b5d5e30dc", null ],
+    [ "hash", "classz_1_1core_1_1string.html#af961e6ffe4c5ea1182a7b02f64513da6", null ],
     [ "increase", "classz_1_1core_1_1string.html#ac428c7c81a4b4b76cfa8b68eafa00076", null ],
     [ "insert", "classz_1_1core_1_1string.html#aef7a2f1f19646da680ff76db8f744ebf", null ],
     [ "integer", "classz_1_1core_1_1string.html#a41ea919808135fd2ac1e19231e6eb94a", null ],

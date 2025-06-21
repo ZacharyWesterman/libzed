@@ -8,6 +8,7 @@ var examples =
     [ "file.cpp", "file_8cpp-example.html", null ],
     [ "generator.cpp", "generator_8cpp-example.html", null ],
     [ "generic.cpp", "generic_8cpp-example.html", null ],
+    [ "hash32.cpp", "hash32_8cpp-example.html", null ],
     [ "lines.cpp", "lines_8cpp-example.html", null ],
     [ "loadLib.cpp", "loadLib_8cpp-example.html", null ],
     [ "memoize.cpp", "memoize_8cpp-example.html", null ],
