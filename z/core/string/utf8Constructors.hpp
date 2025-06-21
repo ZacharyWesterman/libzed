@@ -223,5 +223,11 @@ string<utf8>::string(const string<utf32> &other) noexcept {
 
 	character_ct = len;
 }
+
+template <>
+hash32 string<utf8>::hash() const noexcept {
+	return crc32(reinterpret_cast<const char *>(data), character_ct);
+}
+
 } // namespace core
 } // namespace z

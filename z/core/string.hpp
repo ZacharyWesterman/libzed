@@ -12,6 +12,7 @@
 
 #include "../encoding.hpp"
 #include "charFunctions.hpp"
+#include "hash32.hpp"
 #include "zstr.hpp"
 
 #include "arrayLike.hpp"
@@ -1575,9 +1576,15 @@ public:
 	 * @brief Convert to a std::string.
 	 * @return A std::string representation, always in UTF-8.
 	 */
-	std::string str() const noexcept {
+	inline std::string str() const noexcept {
 		return string<utf8>(*this).cstring();
 	}
+
+	/**
+	 * @brief Compute the CRC32 hash of this string.
+	 * @return The CRC32 hash of this string.
+	 */
+	hash32 hash() const noexcept;
 };
 } // namespace core
 } // namespace z

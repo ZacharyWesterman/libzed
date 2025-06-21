@@ -1244,5 +1244,10 @@ bool string<utf16>::operator<(const string<utf16> &other) const noexcept {
 	return character_ct < other.character_ct;
 }
 
+template <>
+hash32 string<utf16>::hash() const noexcept {
+	return string<utf8>(*this).hash();
+}
+
 } // namespace core
 } // namespace z

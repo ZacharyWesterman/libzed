@@ -1123,5 +1123,10 @@ bool string<ascii>::operator<(const string<ascii> &other) const noexcept {
 	return character_ct < other.character_ct;
 }
 
+template <>
+hash32 string<ascii>::hash() const noexcept {
+	return crc32(reinterpret_cast<const char *>(data), character_ct);
+}
+
 } // namespace core
 } // namespace z

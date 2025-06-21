@@ -53,9 +53,25 @@ struct hash32gen<size, size, dummy> {
 	 * @return The computed CRC32 hash.
 	 */
 	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
+		(void)str;
 		return prev_crc ^ 0xFFFFFFFF;
 	}
 };
+
+/**
+ * @brief Computes the CRC32 hash of a string at runtime.
+ *
+ * This function is not constexpr and can be used for strings that are not known at compile time.
+ *
+ * @param str The string to hash.
+ * @param size The size of the string.
+ * @return The computed CRC32 hash.
+ */
+hash32 crc32(const char *str, int size) noexcept;
+
+constexpr inline hash32 crc32(const char *str) noexcept {
+	return hash32gen<sizeof(str) - 1>::crc32(str);
+}
 
 } // namespace core
 } // namespace z
