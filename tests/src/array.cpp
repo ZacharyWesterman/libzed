@@ -100,3 +100,13 @@ TEST_CASE("Compare arrays", "[array]") {
 	REQUIRE(arr1 == arr2);
 	REQUIRE_FALSE(arr1 == arr3);
 }
+
+TEST_CASE("Array equality", "[array]") {
+	array<int> arr1 = {1, 2, 3};
+	array<int> arr2 = {1, 2, 3};
+
+	REQUIRE(arr1 == arr2);
+
+	array<int> arr3 = {4, 5, 6};
+	REQUIRE_FALSE(arr1 == arr3);
+}
