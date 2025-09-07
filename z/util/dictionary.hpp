@@ -175,6 +175,18 @@ public:
 	 */
 	dictionary &operator=(const dictionary &other) noexcept;
 
+	/**
+	 * @brief Find all permutations of a given scrambled word that are valid words in the dictionary.
+	 *
+	 * This function generates all possible permutations of the input scrambled word and checks each permutation
+	 * against the dictionary to determine if it is a valid word. It returns an array of valid words found.
+	 *
+	 * @param scrambled The scrambled word to find permutations for.
+	 * @return An array of valid words that are permutations of the input scrambled word.
+	 * @warning This function may be computationally intensive for longer words due to the factorial growth of permutations.
+	 */
+	z::core::array<zstring> findPermutations(const zstring &scrambled) const noexcept;
+
 #ifdef __has_include
 #if __has_include(<cereal/cereal.hpp>)
 	/**

@@ -5,6 +5,7 @@
 #include "../file/write.hpp"
 
 #include <fstream>
+#include <iostream>
 
 namespace z {
 namespace util {
@@ -217,6 +218,27 @@ dictionary &dictionary::operator=(dictionary &&other) noexcept {
 	other.array_data.clear();
 
 	return *this;
+}
+
+z::core::array<zstring> dictionary::findPermutations(const zstring &scrambled) const noexcept {
+	z::core::array<zstring> validWords;
+
+	if (scrambled.length() > maxWordLen) {
+		return validWords; // No words this long
+	}
+
+	std::vector<char> chars(scrambled.cstring(), scrambled.cstring() + scrambled.length());
+	std::sort(chars.begin(), chars.end());
+
+	do {
+		zstring candidate(chars.data(), chars.size());
+
+		if (isWord(candidate)) {
+			validWords.append(candidate);
+		}
+	} while (std::next_permutation(chars.begin(), chars.end()));
+
+	return validWords;
 }
 
 } // namespace util
