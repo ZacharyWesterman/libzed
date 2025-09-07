@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 		std::cerr << "ERROR: Failed to read dictionary file!" << std::endl;
 		return 1;
 	} else {
-		std::cout << dict.length() << " words.\n";
+		std::cout << zstring::numberFormat(dict.length()) << " words.\n";
 	}
 
 	for (int i = 1; i < argc; i++) {

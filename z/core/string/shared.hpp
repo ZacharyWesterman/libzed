@@ -207,6 +207,29 @@ string<ENCODING> string<ENCODING>::words(long long value, bool ordinal) noexcept
 	}
 	return result;
 }
+
+template <>
+string<ENCODING> string<ENCODING>::numberFormat(double value, int precision, bool forcePrecision, char decimal, char thousands) noexcept {
+	string<ENCODING> result(value, 10, precision, false, forcePrecision ? precision : 0);
+	int radix_index = result.find('.');
+	if (radix_index == -1) {
+		radix_index = result.character_ct;
+	} else {
+		// If the decimal is different than '.', replace it.
+		if (decimal != '.') {
+			result.replace(radix_index, 1, string(decimal));
+		}
+	}
+
+	int index = radix_index - 3;
+	while (index > 0) {
+		result.insert(thousands, index);
+		index -= 3;
+	}
+
+	return result;
+}
+
 } // namespace core
 } // namespace z
 

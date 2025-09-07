@@ -1318,11 +1318,24 @@ public:
 	 *
 	 * @param value The value to convert to a string.
 	 * @param precision The number of digits after the decimal point.
+	 * @param forcePrecision If true, always show the specified number of digits after the decimal point, even if they are zeroes.
 	 * @return A string representation of the number with the specified fractional digits.
 	 */
-	static inline string precision(double value, int precision) noexcept {
-		return string(value, 10, precision, false);
+	static inline string precision(double value, int precision, bool forcePrecision = false) noexcept {
+		return string(value, 10, precision, false, forcePrecision ? precision : 0);
 	}
+
+	/**
+	 * @brief Create a string from a number with thousands separators.
+	 *
+	 * @param value The value to convert to a string.
+	 * @param precision The number of digits after the decimal point.
+	 * @param forcePrecision If true, always show the specified number of digits after the decimal point, even if they are zeroes.
+	 * @param decimal The character to use as a decimal separator.
+	 * @param thousands The character to use as a thousands separator.
+	 * @return A string representation of the number with thousands separators and the specified fractional digits.
+	 */
+	static string numberFormat(double value, int precision = 0, bool forcePrecision = false, char decimal = '.', char thousands = ',') noexcept;
 
 	/**
 	 * @brief Concatenate two strings.
