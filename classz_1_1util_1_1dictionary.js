@@ -6,6 +6,7 @@ var classz_1_1util_1_1dictionary =
     [ "addWord", "classz_1_1util_1_1dictionary.html#abbb4920765f53227bf403c9466af36ba", null ],
     [ "clear", "classz_1_1util_1_1dictionary.html#a54f763909cb5492132cff2c3532f1740", null ],
     [ "filter", "classz_1_1util_1_1dictionary.html#a7f727dad2d7d610969796d0ebe85cce5", null ],
+    [ "findPermutations", "classz_1_1util_1_1dictionary.html#a0ef68a6c6d94ea37d5eecea064dd6695", null ],
     [ "isCaseSensitive", "classz_1_1util_1_1dictionary.html#ac758d4aa61da2d29f39a5be5f37857ba", null ],
     [ "isWord", "classz_1_1util_1_1dictionary.html#a4c970dcbb9203f28a046d1d126752774", null ],
     [ "load", "classz_1_1util_1_1dictionary.html#a53498a8a2746edede125f102014277c0", null ],

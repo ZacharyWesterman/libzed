@@ -15,5 +15,6 @@ var examples =
     [ "numberwang.cpp", "numberwang_8cpp-example.html", null ],
     [ "range.cpp", "range_8cpp-example.html", null ],
     [ "regexConsole.cpp", "regexConsole_8cpp-example.html", null ],
-    [ "rot13.cpp", "rot13_8cpp-example.html", null ]
+    [ "rot13.cpp", "rot13_8cpp-example.html", null ],
+    [ "word_unscramble.cpp", "word_unscramble_8cpp-example.html", null ]
 ];

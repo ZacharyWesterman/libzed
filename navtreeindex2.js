@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"generator_8cpp-example.html":[5,6],
 "generator_8hpp_source.html":[4,0,0,0,5],
 "generic_8cpp-example.html":[5,7],
 "generic_8hpp_source.html":[4,0,0,4,4],
@@ -96,6 +97,7 @@ var NAVTREEINDEX2 =
 "util_2exceptions_8hpp_source.html":[4,0,0,4,3],
 "util_8hpp.html":[4,0,0,11],
 "util_8hpp_source.html":[4,0,0,11],
+"word_unscramble_8cpp-example.html":[5,16],
 "write_8hpp_source.html":[4,0,0,1,19],
 "zstr_8hpp.html":[4,0,0,0,23],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[4,0,0,0,23,0],

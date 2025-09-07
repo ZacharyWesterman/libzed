@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.7</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.8</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -176,6 +176,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d19aeeaf143d113f0cec631fec3ac80" id="r_a1d19aeeaf143d113f0cec631fec3ac80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a1d19aeeaf143d113f0cec631fec3ac80">operator=</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1util_1_1dictionary.html">dictionary</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">other</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
 <tr class="memdesc:a1d19aeeaf143d113f0cec631fec3ac80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary assignment operator.  <br /></td></tr>
 <tr class="separator:a1d19aeeaf143d113f0cec631fec3ac80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef68a6c6d94ea37d5eecea064dd6695" id="r_a0ef68a6c6d94ea37d5eecea064dd6695"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#a0ef68a6c6d94ea37d5eecea064dd6695">findPermutations</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">scrambled</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">noexcept</a></td></tr>
+<tr class="memdesc:a0ef68a6c6d94ea37d5eecea064dd6695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find all permutations of a given scrambled word that are valid words in the dictionary.  <br /></td></tr>
+<tr class="separator:a0ef68a6c6d94ea37d5eecea064dd6695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafe3c0d726b61410f721f36f94c98876" id="r_aafe3c0d726b61410f721f36f94c98876"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">typename</a> <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &gt; </td></tr>
 <tr class="memitem:aafe3c0d726b61410f721f36f94c98876"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1util_1_1dictionary.html#aafe3c0d726b61410f721f36f94c98876">save</a> (<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">ar</a>) <a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a></td></tr>
 <tr class="memdesc:aafe3c0d726b61410f721f36f94c98876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization output.  <br /></td></tr>
@@ -447,7 +450,7 @@ std::vector&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;&#16
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for performing searches on a dictionary of words. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#_a0">dictionary.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#_a0">dictionary.cpp</a>, and <a class="el" href="word_unscramble_8cpp-example.html#_a0">word_unscramble.cpp</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acc61f8957af8f878e40d2342a29ff533" name="acc61f8957af8f878e40d2342a29ff533"></a>
@@ -581,6 +584,45 @@ std::vector&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;&#16
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new dictionary containing the words that satisfy the predicate. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a3">dictionary.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ef68a6c6d94ea37d5eecea064dd6695" name="a0ef68a6c6d94ea37d5eecea064dd6695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef68a6c6d94ea37d5eecea064dd6695">&#9670;&#160;</a></span>findPermutations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &gt; z::util::dictionary::findPermutations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">const</a> <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;&#160;</td>
+          <td class="paramname"><em>scrambled</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find all permutations of a given scrambled word that are valid words in the dictionary. </p>
+<p>This function generates all possible permutations of the input scrambled word and checks each permutation against the dictionary to determine if it is a valid word. It returns an array of valid words found.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scrambled</td><td>The scrambled word to find permutations for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array of valid words that are permutations of the input scrambled word. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This function may be computationally intensive for longer words due to the factorial growth of permutations. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="word_unscramble_8cpp-example.html#a3">word_unscramble.cpp</a>.</dd>
 </dl>
 
 </div>
@@ -915,7 +957,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9
   </dd>
 </dl>
 <dl class="section user"><dt>Re-Entry: Simultaneous calls to this member function on the same object can cause data races.</dt><dd></dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a1">dictionary.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dictionary_8cpp-example.html#a1">dictionary.cpp</a>, and <a class="el" href="word_unscramble_8cpp-example.html#a1">word_unscramble.cpp</a>.</dd>
 </dl>
 
 </div>
