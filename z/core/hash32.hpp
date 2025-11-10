@@ -69,6 +69,14 @@ struct hash32gen<size, size, dummy> {
  */
 hash32 crc32(const char *str, int size) noexcept;
 
+/**
+ * @brief Computes the CRC32 hash of a string at compile time.
+ *
+ * This function will be used for strings that are known at compile time, so the hash will not be calculated at run time.
+ *
+ * @param str The string to hash.
+ * @return The computed CRC32 hash.
+ */
 constexpr inline hash32 crc32(const char *str) noexcept {
 	return hash32gen<sizeof(str) - 1>::crc32(str);
 }
