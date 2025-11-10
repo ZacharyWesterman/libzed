@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.10</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.11</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -156,7 +156,7 @@ $(document).ready(function(){initNavTree('hash32_8hpp_source.html',''); initResi
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">// Macro to compute the CRC32 hash of a string literal at compile time.</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#define HASH32(x) (z::core::hash32gen&lt;sizeof(x) - 1&gt;::crc32(x))</span></div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:75</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_a86f77db6ea69e8b33b5261e0c74b1043"><div class="ttname"><a href="namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043">z::core::crc32</a></div><div class="ttdeci">hash32 crc32(const char *str, int size) noexcept</div><div class="ttdoc">Computes the CRC32 hash of a string at runtime.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ae24d2d7940342449f4248b0df4dcb245"><div class="ttname"><a href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">z::core::size</a></div><div class="ttdeci">std::enable_if&lt; std::is_base_of&lt; z::core::sizable, T &gt;::value &gt;::type size(const T &amp;object, size_t &amp;bytes) noexcept</div><div class="ttdoc">Get the size of a sizable object.</div><div class="ttdef"><b>Definition</b> sizable.hpp:34</div></div>
 <div class="ttc" id="astructz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4_html_a417bf4f6ee26b00ff593f3e4a69e527b"><div class="ttname"><a href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b">z::core::hash32gen&lt; size, size, dummy &gt;::crc32</a></div><div class="ttdeci">static constexpr hash32 crc32(const char *str, hash32 prev_crc=0xFFFFFFFF)</div><div class="ttdoc">Returns the final CRC32 hash value.</div><div class="ttdef"><b>Definition</b> hash32.hpp:55</div></div>

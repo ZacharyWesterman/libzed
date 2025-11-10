@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.10</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.11</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -120,8 +120,8 @@ Examples</h2>
 <div class="line">    <span class="keyword">auto</span> string3 = <span class="stringliteral">&quot;test1&quot;</span>_zs; <span class="comment">//The default string encoding (UTF-8)</span></div>
 <div class="line">    <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a> string4 = <span class="stringliteral">&quot;test2&quot;</span>; <span class="comment">//Ditto.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:72</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html_a5c28cb77f36ef85f4902c0f0ed5643c2"><div class="ttname"><a href="classz_1_1core_1_1array.html#a5c28cb77f36ef85f4902c0f0ed5643c2">z::core::array::size</a></div><div class="ttdeci">size_t size() const noexcept override</div><div class="ttdoc">Get the size of the array.</div><div class="ttdef"><b>Definition</b> array.hpp:1000</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:75</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_a5c28cb77f36ef85f4902c0f0ed5643c2"><div class="ttname"><a href="classz_1_1core_1_1array.html#a5c28cb77f36ef85f4902c0f0ed5643c2">z::core::array::size</a></div><div class="ttdeci">size_t size() const noexcept override</div><div class="ttdoc">Get the size of the array.</div><div class="ttdef"><b>Definition</b> array.hpp:1003</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:62</div></div>
 </div><!-- fragment --><p> Strings also have a <a href="https://zacharywesterman.github.io/libzed/classz_1_1core_1_1string.html">full suite of operations</a> that can be done on them, and can be cast to and from many types, including std::complex and floats in scientific notation.</p>
 <hr  />
@@ -173,8 +173,8 @@ Examples</h2>
 <div class="line">    <span class="keyword">auto</span> items = generatorFrom({1, 10, 5, 42, 6, 3});</div>
 <div class="line">    <span class="keyword">auto</span> max = items.<a class="code hl_function" href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">reduce</a>(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a &gt; b ? a : b; });</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html_aaabbf3842555634a6a51b76a383b5518"><div class="ttname"><a href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">z::core::array::reduce</a></div><div class="ttdeci">T reduce(const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; lambda) const</div><div class="ttdoc">Reduces the array to a single value by applying a binary operation cumulatively to the elements.</div><div class="ttdef"><b>Definition</b> array.hpp:1232</div></div>
-<div class="ttc" id="aclassz_1_1core_1_1array_html_af3812e9c00a7fccd4a9ef59f74c7cfe2"><div class="ttname"><a href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">z::core::array::map</a></div><div class="ttdeci">array&lt; U &gt; map(std::function&lt; U(const T &amp;)&gt; lambda) const</div><div class="ttdoc">Applies a transformation function to each element of the array and returns a new array with the resul...</div><div class="ttdef"><b>Definition</b> array.hpp:1206</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_aaabbf3842555634a6a51b76a383b5518"><div class="ttname"><a href="classz_1_1core_1_1array.html#aaabbf3842555634a6a51b76a383b5518">z::core::array::reduce</a></div><div class="ttdeci">T reduce(const T &amp;defaultValue, std::function&lt; T(const T &amp;, const T &amp;)&gt; lambda) const</div><div class="ttdoc">Reduces the array to a single value by applying a binary operation cumulatively to the elements.</div><div class="ttdef"><b>Definition</b> array.hpp:1235</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1array_html_af3812e9c00a7fccd4a9ef59f74c7cfe2"><div class="ttname"><a href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">z::core::array::map</a></div><div class="ttdeci">array&lt; U &gt; map(std::function&lt; U(const T &amp;)&gt; lambda) const</div><div class="ttdoc">Applies a transformation function to each element of the array and returns a new array with the resul...</div><div class="ttdef"><b>Definition</b> array.hpp:1209</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ac3bcefde86d3d53a18b8cfd1c91dd9f6"><div class="ttname"><a href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a></div><div class="ttdeci">const sentinel infinity</div><div class="ttdoc">A sentinel that tells numeric generators to run forever.</div></div>
 </div><!-- fragment --><p>There are <b>MANY</b> more features of generators, so be sure and check out the examples for more use cases!</p>
