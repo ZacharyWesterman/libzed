@@ -51,6 +51,9 @@ void shuffle(_RAIter _begin, _RAIter _end, _UGenerator &&g) {
 }
 
 } // namespace std
+#else
+// Use std::sort and std::shuffle if available
+#include <algorithm>
 #endif
 
 namespace z {
