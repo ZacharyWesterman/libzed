@@ -14,6 +14,7 @@ var classz_1_1core_1_1generator =
     [ "limit", "classz_1_1core_1_1generator.html#a43f4dd869a42f3dd9ebd984354697388", null ],
     [ "map", "classz_1_1core_1_1generator.html#ab0f562967bef63b024a446fd1bfbf15a", null ],
     [ "next", "classz_1_1core_1_1generator.html#ab6ea4fba71464c615b73d660afd98f9b", null ],
+    [ "peek", "classz_1_1core_1_1generator.html#aac21195f03e77c391691f3f31a509fca", null ],
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
     [ "skip", "classz_1_1core_1_1generator.html#aa6614f7306396e79c4775ac6723bfc3a", null ],
     [ "skip", "classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5", null ],

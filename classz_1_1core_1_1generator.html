@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.11</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.12</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -177,6 +177,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac06e96e75875cadc2a1d5961bdbd6be6" id="r_ac06e96e75875cadc2a1d5961bdbd6be6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#ac06e96e75875cadc2a1d5961bdbd6be6">chunk</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1array.html">chunkSize</a>)</td></tr>
 <tr class="memdesc:ac06e96e75875cadc2a1d5961bdbd6be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get chunks of items from the generator.  <br /></td></tr>
 <tr class="separator:ac06e96e75875cadc2a1d5961bdbd6be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac21195f03e77c391691f3f31a509fca" id="r_aac21195f03e77c391691f3f31a509fca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt;, std::pair&lt; <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#aac21195f03e77c391691f3f31a509fca">peek</a> ()</td></tr>
+<tr class="memdesc:aac21195f03e77c391691f3f31a509fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow peeking at the next item in the generator as items are generated.  <br /></td></tr>
+<tr class="separator:aac21195f03e77c391691f3f31a509fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aa6cee917a44d7714816cb5680dd1e5" id="r_a9aa6cee917a44d7714816cb5680dd1e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt;::countedState &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5">skip</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>)</td></tr>
 <tr class="memdesc:a9aa6cee917a44d7714816cb5680dd1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template specialization for the skip function with generators that only output longs.  <br /></td></tr>
 <tr class="separator:a9aa6cee917a44d7714816cb5680dd1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -700,6 +703,37 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <p>Get the next item from the generator. </p>
 <p>If there are no more items, the <code>.done</code> field of this yield object will be true.</p>
 <dl class="section return"><dt>Returns</dt><dd>A yield object containing the next value, if any. </dd></dl>
+
+</div>
+</div>
+<a id="aac21195f03e77c391691f3f31a509fca" name="aac21195f03e77c391691f3f31a509fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac21195f03e77c391691f3f31a509fca">&#9670;&#160;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt;, std::pair&lt; <a class="el" href="structz_1_1core_1_1yield.html">yield</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt; &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::peek </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allow peeking at the next item in the generator as items are generated. </p>
+<p>The generator that this function produces will yield std::pairs containing (1) the current value, and (2) a yield object containing the next value, if any. It is up to the programmer to properly check that the yield has a value.</p>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields a pair of (item, z::core::yield&lt;item&gt;). </dd></dl>
 
 </div>
 </div>
