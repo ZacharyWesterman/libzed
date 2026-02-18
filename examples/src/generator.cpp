@@ -91,4 +91,15 @@ int main() {
 		auto count = gen.consume(); // This will consume all items in the generator.
 		(zstring(count) + " items were consumed"_zs).writeln(std::cout);
 	}
+
+	// Lastly, generators can also be allowed to "peek" at the next upcoming item.
+	// Under the hood, this just fetches each item 1 iteration earlier,
+	// and then each iteration returns both the old value, and the current one.
+	{
+		"Peeking at a generator"_zs.writeln(std::cout);
+		for (auto i : range(5).peek()) {
+			auto msg = zstring(i.first) + " -> " + (i.second ? zstring(i.second.value) : "END");
+			msg.writeln(std::cout);
+		}
+	}
 }

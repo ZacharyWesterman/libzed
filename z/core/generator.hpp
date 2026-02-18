@@ -22,6 +22,14 @@ struct yield {
 
 	/// The next value that the generator will return.
 	T value;
+
+	/**
+	 * @brief Check if the yield object contains a value.
+	 * @return True if it contains a value, false otherwise.
+	 */
+	operator bool() const {
+		return !done;
+	}
 };
 
 /// Custom iterator for generators to allow for range-based for loops.
@@ -456,6 +464,31 @@ public:
 				chunk.push(item.value);
 			}
 			return yield<array<T>>{false, chunk}; // Return the current chunk
+		});
+	}
+
+	/**
+	 * @brief Allow peeking at the next item in the generator as items are generated.
+	 *
+	 * The generator that this function produces will yield std::pairs containing (1) the
+	 * current value, and (2) a yield object containing the next value, if any.
+	 * It is up to the programmer to properly check that the yield has a value.
+	 *
+	 * @return A new generator that yields a pair of (item, z::core::yield<item>).
+	 */
+	generator<std::pair<T, yield<T>>, std::pair<yield<T>, generator>> peek() {
+		return generator<std::pair<T, yield<T>>, std::pair<yield<T>, generator>>({next(), *this}, [](std::pair<yield<T>, generator> &state) {
+			const auto prevValue = state.first;
+			auto &gen = state.second;
+
+			if (prevValue.done) {
+				// No more items, end the generator
+				return yield<std::pair<T, yield<T>>>{true};
+			}
+			auto nextValue = gen.next();
+			state.first = nextValue;
+
+			return yield<std::pair<T, yield<T>>>{false, std::pair<T, yield<T>>(prevValue.value, nextValue)};
 		});
 	}
 };
