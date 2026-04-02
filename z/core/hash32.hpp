@@ -1,6 +1,7 @@
 #pragma once
 #include <cstddef>
 #include <cstdint>
+#include <iostream>
 
 namespace z {
 
@@ -36,7 +37,7 @@ struct hash32gen {
 	 * @return The computed CRC32 hash.
 	 */
 	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
-		return hash32gen<size, idx + 1>::crc32(str, (prev_crc >> 8) ^ crc_table[(prev_crc ^ str[idx]) & 0xFF]);
+		return str[idx] ? hash32gen<size, idx + 1>::crc32(str, (prev_crc >> 8) ^ crc_table[(prev_crc ^ str[idx]) & 0xFF]) : 0;
 	}
 };
 
@@ -68,18 +69,6 @@ struct hash32gen<size, size, dummy> {
  * @return The computed CRC32 hash.
  */
 hash32 crc32(const char *str, int size) noexcept;
-
-/**
- * @brief Computes the CRC32 hash of a string at compile time.
- *
- * This function will be used for strings that are known at compile time, so the hash will not be calculated at run time.
- *
- * @param str The string to hash.
- * @return The computed CRC32 hash.
- */
-constexpr inline hash32 crc32(const char *str) noexcept {
-	return hash32gen<sizeof(str) - 1>::crc32(str);
-}
 
 } // namespace core
 } // namespace z
