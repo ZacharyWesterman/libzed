@@ -266,7 +266,11 @@ public:
 	 * @exception std::out_of_range if there are no elements in the array.
 	 */
 	T pop() {
-		T element = at(length());
+		if (!length()) {
+			throw std::out_of_range("No more elements in array.");
+		}
+
+		T element = at(length() - 1);
 		array_data.pop_back();
 		return element;
 	}
@@ -284,10 +288,10 @@ public:
 	/**
 	 * @brief Get a contiguous subset of the elements in the array.
 	 *
-	 * Copies all elements in the given range, inclusive. If either
-	 * of the parameters is \b -1, gives an empty array. If the
-	 * @b stop parameter is less than \b start, then the subset is
-	 * copied in reverse order.
+	 * Copies `count` elements from the array, starting at `index`.
+	 * If `index` is negative, offsets that many elements from the end
+	 * of the array (e.g. -1 is the last element, -2 is the second to last, etc).
+	 * If `count` is negative, then `index` is treated as the *last* element in the subset.
 	 *
 	 * @param index the index of the first object to copy.
 	 * @param count the number of objects to copy.
@@ -484,6 +488,7 @@ public:
 	bool operator==(const array &other) const;
 	bool operator>(const array &other) const;
 	bool operator<(const array &other) const;
+	inline bool operator!=(const array &other) const;
 	inline bool operator>=(const array &other) const;
 	inline bool operator<=(const array &other) const;
 
@@ -855,6 +860,20 @@ bool array<T>::operator<(const array &other) const {
 }
 
 /**
+ * @brief Check whether two arrays' contents are different.
+ *
+ * @param other the array to compare with this one.
+ *
+ * @return \b False if both arrays contain the same
+ * contents in the same order, and the same number of
+ * contents. \b True otherwise.
+ */
+template <typename T>
+inline bool array<T>::operator!=(const array &other) const {
+	return !operator==(other);
+}
+
+/**
  * @brief Array greater-than-or-equal operator
  *
  * @param other the array to compare with this one.
@@ -892,6 +911,8 @@ inline void array<T>::clear() {
  * @brief Insert an object into the array.
  *
  * Inserts an object into the given index in the array, if possible.
+ * If the index is negative, insert starting at the end of the array.
+ * (e.g. -1 inserts at the end, -2 inserts *before* the last element, etc.)
  *
  * @param object the data to add to the array.
  * @param index the index in the array to insert the object.
