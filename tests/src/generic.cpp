@@ -300,7 +300,133 @@ TEST_CASE("Test math operations", "[generic]") {
 	// Subtraction
 	REQUIRE((a - a) == 0);
 	REQUIRE((a - b) == 0.0);
-	REQUIRE((a - c) == z::cplx(0.0, 0));
+	REQUIRE((a - c) == z::cplx(0.0, 0.0));
+	REQUIRE_THROWS_AS((a - d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((a - e), z::util::nonnumeric);
+
+	REQUIRE((b - a) == 0.0);
+	REQUIRE((b - b) == 0.0);
+	REQUIRE((b - c) == z::cplx(0.0, 0.0));
+	REQUIRE_THROWS_AS((b - d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((b - e), z::util::nonnumeric);
+
+	REQUIRE((c - a) == z::cplx(0.0, 0.0));
+	REQUIRE((c - b) == z::cplx(0.0, 0.0));
+	REQUIRE((c - c) == z::cplx(0.0, 0.0));
+	REQUIRE_THROWS_AS((c - d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((c - e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((d - a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d - b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d - c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d - d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d - e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((e - a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e - b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e - c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e - d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e - e), z::util::nonnumeric);
+
+	// Multiplication
+	REQUIRE((a * a) == 25);
+	REQUIRE((a * b) == 25.0);
+	REQUIRE((a * c) == z::cplx(25.0, 0.0));
+	REQUIRE_THROWS_AS((a * d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((a * e), z::util::nonnumeric);
+
+	REQUIRE((b * a) == 25.0);
+	REQUIRE((b * b) == 25.0);
+	REQUIRE((b * c) == z::cplx(25.0, 0.0));
+	REQUIRE_THROWS_AS((b * d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((b * e), z::util::nonnumeric);
+
+	REQUIRE((c * a) == z::cplx(25.0, 0.0));
+	REQUIRE((c * b) == z::cplx(25.0, 0.0));
+	REQUIRE((c * c) == z::cplx(25.0, 0.0));
+	REQUIRE_THROWS_AS((c * d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((c * e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((d * a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d * b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d * c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d * d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d * e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((e * a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e * b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e * c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e * d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e * e), z::util::nonnumeric);
+
+	// Division
+	REQUIRE((a / a) == 1);
+	REQUIRE((a / b) == 1.0);
+	REQUIRE((a / c) == z::cplx(1.0, 0.0));
+	REQUIRE_THROWS_AS((a / d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((a / e), z::util::nonnumeric);
+
+	REQUIRE((b / a) == 1.0);
+	REQUIRE((b / b) == 1.0);
+	REQUIRE((b / c) == z::cplx(1.0, 0.0));
+	REQUIRE_THROWS_AS((b / d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((b / e), z::util::nonnumeric);
+
+	REQUIRE((c / a) == z::cplx(1.0, 0.0));
+	REQUIRE((c / b) == z::cplx(1.0, 0.0));
+	REQUIRE((c / c) == z::cplx(1.0, 0.0));
+	REQUIRE_THROWS_AS((c / d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((c / e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((d / a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d / b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d / c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d / d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d / e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((e / a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e / b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e / c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e / d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e / e), z::util::nonnumeric);
+
+	// Modulo
+	REQUIRE((a % a) == 0);
+	REQUIRE((a % b) == 0);
+	REQUIRE((a % c) == 0);
+	REQUIRE_THROWS_AS((a % d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((a % e), z::util::nonnumeric);
+
+	REQUIRE((b % a) == 0);
+	REQUIRE((b % b) == 0);
+	REQUIRE((b % c) == 0);
+	REQUIRE_THROWS_AS((b % d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((b % e), z::util::nonnumeric);
+
+	REQUIRE((c % a) == 0);
+	REQUIRE((c % b) == 0);
+	REQUIRE((c % c) == 0);
+	REQUIRE_THROWS_AS((c % d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((c % e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((d % a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d % b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d % c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d % d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((d % e), z::util::nonnumeric);
+
+	REQUIRE_THROWS_AS((e % a), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e % b), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e % c), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e % d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((e % e), z::util::nonnumeric);
+
+	// Unary negation
+	REQUIRE((-a) == -5);
+	REQUIRE((-b) == -5.0);
+	REQUIRE((-c) == z::cplx(-5.0, 0.0));
+	REQUIRE_THROWS_AS((-d), z::util::nonnumeric);
+	REQUIRE_THROWS_AS((-e), z::util::nonnumeric);
 }
 
 TEST_CASE("Test generic type casting", "[generic]") {
@@ -334,6 +460,92 @@ TEST_CASE("Test generic type casting", "[generic]") {
 	REQUIRE(e.floating() == 0.0);
 	REQUIRE(e.complex() == z::cplx(0.0, 0.0));
 	REQUIRE(e.toString(true) == "[1,2,3]");
+}
+
+TEST_CASE("Validate string and array access", "[generic]") {
+	z::util::generic str = "hello";
+	z::util::generic arr = {1, 2, 3};
+	z::util::generic num = 5;
+
+	REQUIRE(str.string() == "hello");
+	REQUIRE(arr.array().length() == 3);
+	REQUIRE(arr.array()[0] == 1);
+
+	REQUIRE_THROWS_AS(num.string(), std::exception);
+	REQUIRE_THROWS_AS(num.array(), std::exception);
+
+	REQUIRE_THROWS_AS(str.array(), std::exception);
+	REQUIRE_THROWS_AS(arr.string(), std::exception);
+}
+
+TEST_CASE("Validate type method", "[generic]") {
+	z::util::generic v;
+	z::util::generic i = 5;
+	z::util::generic f = 5.0;
+	z::util::generic c = z::cplx(5.0, 0.0);
+	z::util::generic s = "test";
+	z::util::generic a = {1, 2, 3};
+
+	REQUIRE(v.type() == z::util::generic::VOID);
+	REQUIRE(i.type() == z::util::generic::INT);
+	REQUIRE(f.type() == z::util::generic::FLOAT);
+	REQUIRE(c.type() == z::util::generic::COMPLEX);
+	REQUIRE(s.type() == z::util::generic::STRING);
+	REQUIRE(a.type() == z::util::generic::ARRAY);
+}
+
+TEST_CASE("Validate equivalent with arrays", "[generic]") {
+	z::util::generic a1 = {1, 2, 3};
+	z::util::generic a2 = {1, 2, 3};
+	z::util::generic a3 = {1, 2, 4};
+	z::util::generic a4 = {1, 2};
+	z::util::generic num = 5;
+
+	REQUIRE(a1.equivalent(a2) == true);
+	REQUIRE(a1.equivalent(a3) == false);
+	REQUIRE(a1.equivalent(a4) == false);
+	REQUIRE(a1.equivalent(num) == false);
+}
+
+TEST_CASE("Validate reducesTo method", "[generic]") {
+	z::util::generic i = 5;
+	z::util::generic f1 = 5.0;
+	z::util::generic f2 = 5.1;
+	z::util::generic c1 = z::cplx(5.0, 0.0);
+	z::util::generic c2 = z::cplx(5.1, 0.0);
+	z::util::generic c3 = z::cplx(5.0, 5.0);
+	z::util::generic s1 = "5";
+	z::util::generic s2 = "5.0";
+	z::util::generic s3 = "5+i";
+	z::util::generic s4 = "test";
+	z::util::generic a = {1, 2, 3};
+	z::util::generic v;
+
+	REQUIRE(i.reducesTo() == z::util::generic::INT);
+	REQUIRE(f1.reducesTo() == z::util::generic::INT);
+	REQUIRE(f2.reducesTo() == z::util::generic::FLOAT);
+	REQUIRE(c1.reducesTo() == z::util::generic::INT);
+	REQUIRE(c2.reducesTo() == z::util::generic::FLOAT);
+	REQUIRE(c3.reducesTo() == z::util::generic::COMPLEX);
+	REQUIRE(s1.reducesTo() == z::util::generic::VOID);
+	REQUIRE(s1.reducesTo(true) == z::util::generic::INT);
+	REQUIRE(s2.reducesTo(true) == z::util::generic::FLOAT);
+	REQUIRE(s3.reducesTo(true) == z::util::generic::COMPLEX);
+	REQUIRE(s4.reducesTo(true) == z::util::generic::STRING);
+	REQUIRE(a.reducesTo() == z::util::generic::VOID);
+	REQUIRE(v.reducesTo() == z::util::generic::INT);
+}
+
+TEST_CASE("Validate arrayOr method with non-arrays", "[generic]") {
+	z::util::generic arr = {1, 2, 3};
+	z::util::generic num = 5;
+	z::util::generic def = {4, 5, 6};
+
+	REQUIRE(arr.arrayOr(def).length() == 3);
+	REQUIRE(arr.arrayOr(def)[0] == 1);
+
+	REQUIRE(num.arrayOr(def).length() == 3);
+	REQUIRE(num.arrayOr(def)[0] == 4);
 }
 
 #endif
