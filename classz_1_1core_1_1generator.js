@@ -2,6 +2,7 @@ var classz_1_1core_1_1generator =
 [
     [ "generator", "classz_1_1core_1_1generator.html#a2f3a8e8bf60179f7ffc94b16ba5e367a", null ],
     [ "begin", "classz_1_1core_1_1generator.html#ac87da2070de352b4daed8e2d03ee75db", null ],
+    [ "chain", "classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520", null ],
     [ "chunk", "classz_1_1core_1_1generator.html#ac06e96e75875cadc2a1d5961bdbd6be6", null ],
     [ "collect", "classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036", null ],
     [ "consume", "classz_1_1core_1_1generator.html#a8de49515c34b28f026e1a2f631263ed3", null ],

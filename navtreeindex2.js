@@ -27,7 +27,7 @@ var NAVTREEINDEX2 =
 "timeout_8hpp_source.html":[4,0,0,0,20],
 "timer_8hpp_source.html":[4,0,0,0,21],
 "typeChecks_8hpp_source.html":[4,0,0,0,22],
-"util_2exceptions_8hpp_source.html":[4,0,0,4,3],
+"util_2exceptions_8hpp_source.html":[4,0,0,4,2],
 "util_8hpp.html":[4,0,0,11],
 "util_8hpp_source.html":[4,0,0,11],
 "word_unscramble_8cpp-example.html":[5,17],

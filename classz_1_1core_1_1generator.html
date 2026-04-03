@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.22</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.23</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -180,6 +180,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa4708e96963b5fe306800b8167669f52" id="r_aa4708e96963b5fe306800b8167669f52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, std::optional&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt;, std::pair&lt; std::optional&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1generator.html">generator</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#aa4708e96963b5fe306800b8167669f52">peek</a> ()</td></tr>
 <tr class="memdesc:aa4708e96963b5fe306800b8167669f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow peeking at the next item in the generator as items are generated.  <br /></td></tr>
 <tr class="separator:aa4708e96963b5fe306800b8167669f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87eccc7e530a182e7a47d9e8cc92d520" id="r_a87eccc7e530a182e7a47d9e8cc92d520"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:a87eccc7e530a182e7a47d9e8cc92d520"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520">chain</a> (<a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a87eccc7e530a182e7a47d9e8cc92d520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains two generators together.  <br /></td></tr>
+<tr class="separator:a87eccc7e530a182e7a47d9e8cc92d520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aa6cee917a44d7714816cb5680dd1e5" id="r_a9aa6cee917a44d7714816cb5680dd1e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt;::countedState &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a9aa6cee917a44d7714816cb5680dd1e5">skip</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>)</td></tr>
 <tr class="memdesc:a9aa6cee917a44d7714816cb5680dd1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template specialization for the skip function with generators that only output longs.  <br /></td></tr>
 <tr class="separator:a9aa6cee917a44d7714816cb5680dd1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,6 +282,53 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <dl class="section return"><dt>Returns</dt><dd>An iterator that will give the first value in the generator. </dd></dl>
 
 <p>Implements <a class="el" href="classz_1_1core_1_1iterable.html#a915ccd164445b40cb2097fe3a8d0d3a3">z::core::iterable&lt; generatorIter&lt; T, S &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a87eccc7e530a182e7a47d9e8cc92d520" name="a87eccc7e530a182e7a47d9e8cc92d520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87eccc7e530a182e7a47d9e8cc92d520">&#9670;&#160;</a></span>chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::chain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Chains two generators together. </p>
+<p>This function takes two generators and chains them together, so that multiple generators can be used as a single generator. That is, the items from this are generated first, and once this generator is exhausted, items from the other generator are generated until exhaustion.</p>
+<dl class="section note"><dt>Note</dt><dd>Generators chained together this way <b>must</b> yield values of the same type.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>The state type of the other generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The generator to chain after this generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that first yields items from this generator and then the other. </dd></dl>
 
 </div>
 </div>
