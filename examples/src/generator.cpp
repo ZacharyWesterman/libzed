@@ -98,7 +98,7 @@ int main() {
 	{
 		"Peeking at a generator"_zs.writeln(std::cout);
 		for (auto i : range(5).peek()) {
-			auto msg = zstring(i.first) + " -> " + (i.second ? zstring(i.second.value) : "END");
+			auto msg = zstring(i.first) + " -> " + (i.second ? zstring(i.second.value()) : "END");
 			msg.writeln(std::cout);
 		}
 	}

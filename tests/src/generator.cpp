@@ -150,16 +150,16 @@ TEST_CASE("Generator from std::map", "[generator]") {
 TEST_CASE("Generator next", "[generator]") {
 	auto gen = range(1, 4);
 	auto y1 = gen.next();
-	REQUIRE(!y1.done);
-	REQUIRE(y1.value == 1);
+	REQUIRE(y1.has_value());
+	REQUIRE(y1.value() == 1);
 	auto y2 = gen.next();
-	REQUIRE(!y2.done);
-	REQUIRE(y2.value == 2);
+	REQUIRE(y2.has_value());
+	REQUIRE(y2.value() == 2);
 	auto y3 = gen.next();
-	REQUIRE(!y3.done);
-	REQUIRE(y3.value == 3);
+	REQUIRE(y3.has_value());
+	REQUIRE(y3.value() == 3);
 	auto y4 = gen.next();
-	REQUIRE(y4.done);
+	REQUIRE(!y4.has_value());
 }
 
 TEST_CASE("Generator collect", "[generator]") {
@@ -225,10 +225,10 @@ TEST_CASE("Generator peek", "[generator]") {
 	auto arr = peeked.collect();
 	REQUIRE(arr.length() == 3);
 	REQUIRE(arr[0].first == 1);
-	REQUIRE(!arr[0].second.done);
-	REQUIRE(arr[0].second.value == 2);
+	REQUIRE(arr[0].second.has_value());
+	REQUIRE(arr[0].second.value() == 2);
 	REQUIRE(arr[2].first == 3);
-	REQUIRE(arr[2].second.done);
+	REQUIRE(!arr[2].second.has_value());
 }
 
 TEST_CASE("Generator from array lvalue", "[generator]") {
@@ -258,8 +258,8 @@ TEST_CASE("Generator empty", "[generator]") {
 TEST_CASE("Generator single item", "[generator]") {
 	auto gen = generatorFrom({42});
 	auto y = gen.next();
-	REQUIRE(!y.done);
-	REQUIRE(y.value == 42);
+	REQUIRE(y.has_value());
+	REQUIRE(y.value() == 42);
 	y = gen.next();
-	REQUIRE(y.done);
+	REQUIRE(!y.has_value());
 }
