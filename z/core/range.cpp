@@ -25,7 +25,7 @@ generator<long, long> range(long begin, const sentinel &check, long step) noexce
 		const long index = state;
 		state += step;
 
-		if (check(state, step)) {
+		if (check(index, step)) {
 			return {};
 		}
 
