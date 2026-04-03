@@ -8,7 +8,7 @@ var searchData=
   ['levenschtein_5',['levenschtein',['../namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e',1,'z::math']]],
   ['library_6',['library',['../index.html#autotoc_md14',1,'Installing the dynamic library'],['../classz_1_1file_1_1library.html',1,'z::file::library'],['../classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7',1,'z::file::library::library()'],['../index.html#autotoc_md15',1,'Linking to this library'],['../index.html#autotoc_md9',1,'Using This Library']]],
   ['libzed_7',['Libzed',['../index.html',1,'']]],
-  ['limit_8',['limit',['../classz_1_1core_1_1generator.html#a43f4dd869a42f3dd9ebd984354697388',1,'z::core::generator']]],
+  ['limit_8',['limit',['../classz_1_1core_1_1generator.html#ad8b1388677d26c4638462a82c23288d0',1,'z::core::generator']]],
   ['lines_9',['lines',['../namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee',1,'z::file::lines(const zpath &amp;filename)'],['../namespacez_1_1file.html#ae90375dfecef1a06e0bb9bb9dd8ece1a',1,'z::file::lines(std::istream &amp;stream) noexcept']]],
   ['linking_20to_20this_20library_10',['Linking to this library',['../index.html#autotoc_md15',1,'']]],
   ['list_20of_20structures_11',['List of structures',['../index.html#autotoc_md7',1,'']]],
