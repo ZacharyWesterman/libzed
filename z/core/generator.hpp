@@ -4,40 +4,145 @@
 #include <functional>
 #include <map>
 
-namespace z {
-namespace core {
+#if (__cplusplus >= 201402L) || (defined(_MSVC_LANG) && _MSVC_LANG >= 201402L)
+// If C++14 or greater, use stdlib optional class.
+#include <optional>
+#elif !defined(DOXYGEN)
+// Otherwise, polyfill our own implementation of std::optional
 
-/**
- * @brief The return value for generator functions.
- *
- * Generator functions use this struct to both return values,
- * and to indicate when the generator is finished.
- *
- * @tparam T The type of data that the generator returns.
- */
-template <typename T>
-struct yield {
-	/// Whether the generator has run out of values to return.
-	bool done;
+namespace std {
 
-	/// The next value that the generator will return.
-	T value;
+struct nullopt_t {
+	explicit constexpr nullopt_t(int) noexcept {}
+};
+inline constexpr nullopt_t nullopt{0};
 
-	/**
-	 * @brief Check if the yield object contains a value.
-	 * @return True if it contains a value, false otherwise.
-	 */
-	operator bool() const {
-		return !done;
+class bad_optional_access : public exception {
+public:
+	bad_optional_access() = default;
+	virtual ~bad_optional_access() = default;
+
+	const char *what() const noexcept override {
+		return "bad optional access";
 	}
 };
+
+template <typename T>
+class optional {
+	union {
+		char dummy;
+		T val;
+	};
+	bool engaged;
+
+public:
+	constexpr optional() noexcept : dummy(0), engaged(false) {}
+	constexpr optional(nullopt_t) noexcept : dummy(0), engaged(false) {}
+
+	optional(const optional &other) {
+		engaged = other.engaged;
+		if (engaged) {
+			val = other.val;
+		} else {
+			dummy = 0;
+		}
+	};
+	optional(optional &&other) noexcept(is_nothrow_move_constructible_v<T>) {
+		engaged = other.engaged;
+		if (engaged) {
+			val = other.val;
+		} else {
+			dummy = 0;
+		}
+	}
+	optional(T &&u) : val(std::forward<T>(u)), engaged(true) {}
+
+	optional(const T &t) : val(t), engaged(true) {}
+
+	optional &operator=(const optional &other) {
+		engaged = other.engaged;
+		if (engaged) {
+			val = other.val;
+		} else {
+			dummy = 0;
+		}
+		return *this;
+	}
+	optional &operator=(const T &other) {
+		if (engaged) {
+			val.~T();
+		}
+		val.T(other);
+		engaged = true;
+		return *this;
+	};
+	optional &operator=(T &&other) {
+		if (engaged) {
+			val.~T();
+		}
+		val.T(other);
+		engaged = true;
+		return *this;
+	}
+
+	~optional() {
+		if (engaged) {
+			val.~T();
+		}
+	}
+
+	constexpr operator bool() const {
+		return engaged;
+	}
+	constexpr bool has_value() const {
+		return engaged;
+	}
+
+	constexpr T &operator*() & {
+		return val;
+	}
+	constexpr const T &operator*() const & {
+		return val;
+	}
+	constexpr T &&operator*() && {
+		return std::move(val);
+	}
+	constexpr const T &&operator*() const && {
+		return std::move(val);
+	}
+
+	T &value() & {
+		return engaged ? val : throw bad_optional_access();
+	}
+	const T &value() const & {
+		return engaged ? val : throw bad_optional_access();
+	}
+	T &&value() && {
+		return engaged ? std::move(val) : throw bad_optional_access();
+	}
+	const T &&value() const && {
+		return engaged ? std::move(val) : throw bad_optional_access();
+	}
+
+	template <class U>
+	T value_or(U &&u) const {
+		return engaged ? val : static_cast<T>(std::forward<U>(u));
+	}
+};
+
+} // namespace std
+
+#endif
+
+namespace z {
+namespace core {
 
 /// Custom iterator for generators to allow for range-based for loops.
 template <typename T, typename S>
 class generatorIter {
-	std::function<const yield<T>(S &)> lambda;
+	std::function<const std::optional<T>(S &)> lambda;
 	S state;
-	yield<T> current_yield;
+	std::optional<T> current_yield;
 
 public:
 	/**
@@ -46,7 +151,7 @@ public:
 	 * @param state The state data that may be mutated by the generator function.
 	 * @param dummy If true, do not generate data. This is here just so range-based loop syntax will work.
 	 */
-	explicit generatorIter(std::function<const yield<T>(S &)> lambda, const S &state, bool dummy = false) : lambda(lambda), state(state), current_yield({false, {}}) {
+	explicit generatorIter(std::function<const std::optional<T>(S &)> lambda, const S &state, bool dummy = false) : lambda(lambda), state(state), current_yield(T()) {
 		if (!dummy) {
 			++(*this); // Load the first value
 		}
@@ -57,7 +162,7 @@ public:
 	 * @return The last value that was generated.
 	 */
 	const T &operator*() const {
-		return current_yield.value;
+		return current_yield.value();
 	}
 
 	/**
@@ -75,7 +180,7 @@ public:
 	 */
 	bool operator!=(const generatorIter &other) const {
 		(void)other;
-		return !current_yield.done;
+		return current_yield.has_value();
 	}
 };
 
@@ -92,7 +197,7 @@ public:
 template <typename T, typename S>
 class generator : public iterable<generatorIter<T, S>> {
 	S state;
-	std::function<const yield<T>(S &)> lambda;
+	std::function<const std::optional<T>(S &)> lambda;
 
 	struct countedState {
 		long count;
@@ -105,7 +210,7 @@ public:
 	 * @param initial The initial value of the generator's state.
 	 * @param lambda The generator function.
 	 */
-	generator(const S &initial, std::function<const yield<T>(S &)> lambda) : state(initial), lambda(lambda) {}
+	generator(const S &initial, std::function<const std::optional<T>(S &)> lambda) : state(initial), lambda(lambda) {}
 
 	/**
 	 * @brief Begin iterator (start of the range)
@@ -126,11 +231,11 @@ public:
 	/**
 	 * @brief Get the next item from the generator.
 	 *
-	 * If there are no more items, the `.done` field of this yield object will be true.
+	 * If there are no more items, the optional object will not contain anything.
 	 *
-	 * @return A yield object containing the next value, if any.
+	 * @return A std::optional object containing the next value, if any.
 	 */
-	inline yield<T> next() {
+	inline std::optional<T> next() {
 		return lambda(state);
 	}
 
@@ -188,10 +293,10 @@ public:
 
 		for (int i = 0; i < count; i++) {
 			auto item = next();
-			if (item.done) {
+			if (!item.has_value()) {
 				break;
 			}
-			result.push(item.value);
+			result.push(item.value());
 		}
 
 		return result;
@@ -211,12 +316,12 @@ public:
 	generator<U, S> map(std::function<U(const T &)> mapLambda) {
 		auto lambda = this->lambda;
 
-		return generator<U, S>(state, [lambda, mapLambda](S &state) {
+		return generator<U, S>(state, [lambda, mapLambda](S &state) -> std::optional<U> {
 			auto item = lambda(state);
-			if (item.done) {
-				return yield<U>{true};
+			if (!item.has_value()) {
+				return {};
 			} else {
-				return yield<U>{false, mapLambda(item.value)};
+				return mapLambda(item.value());
 			}
 		});
 	}
@@ -236,8 +341,8 @@ public:
 
 		return generator(state, [lambda, filterLambda](S &state) {
 			auto val = lambda(state);
-			while (!val.done) {
-				if (filterLambda(val.value)) {
+			while (val.has_value()) {
+				if (filterLambda(val.value())) {
 					return val;
 				}
 				val = lambda(state);
@@ -251,7 +356,7 @@ public:
 	 * @brief Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.
 	 *
 	 * This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value.
-	 * If the generator doesn yield anything, the provided default value is returned.
+	 * If the generator doesn't yield anything, the provided default value is returned.
 	 *
 	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect()and then
 	 * reduce() on the resulting array, as an intermediate array does not need to be constructed.
@@ -263,18 +368,18 @@ public:
 	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> reduceLambda) {
 		auto result = lambda(state);
 
-		if (result.done) {
+		if (!result.has_value()) {
 			return defaultValue;
 		}
 
-		auto value = result.value;
+		auto value = result.value();
 
 		while (true) {
 			result = lambda(state);
-			if (result.done) {
+			if (!result.has_value()) {
 				break;
 			}
-			value = reduceLambda(value, result.value);
+			value = reduceLambda(value, result.value());
 		}
 
 		return value;
@@ -295,8 +400,8 @@ public:
 		auto lambda = this->lambda;
 		this->lambda = [lambda, newLambda](S &state) {
 			auto item = lambda(state);
-			if (!item.done) {
-				newLambda(item.value);
+			if (item.has_value()) {
+				newLambda(item.value());
 			}
 			return item;
 		};
@@ -320,7 +425,7 @@ public:
 		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
 			for (long i = 0; i < state.count; i++) {
 				auto item = lambda(state.state);
-				if (item.done) {
+				if (!item.has_value()) {
 					return item;
 				}
 			}
@@ -331,9 +436,9 @@ public:
 	}
 
 	/**
-	 * @brief Limits the number of items that the generator will yield.
+	 * @brief Limits the number of items that the generator will std::optional.
 	 *
-	 * @param count The maximum number of items to yield.
+	 * @param count The maximum number of items to std::optional.
 	 * @return A new generator that yields the given number of items.
 	 */
 	generator<T, countedState> limit(long count) {
@@ -341,11 +446,11 @@ public:
 
 		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
 			if (state.count <= 0) {
-				return yield<T>{true};
+				return std::optional<T>();
 			}
 
 			auto item = lambda(state.state);
-			if (item.done) {
+			if (!item.has_value()) {
 				return item;
 			}
 
@@ -370,16 +475,16 @@ public:
 
 		return generator<pair_type, generator<U, S2>>(other, [this](generator<U, S2> &otherGen) {
 			auto item1 = next();
-			if (item1.done) {
-				return yield<pair_type>{true};
+			if (!item1.has_value()) {
+				return std::optional<pair_type>();
 			}
 
 			auto item2 = otherGen.next();
-			if (item2.done) {
-				return yield<pair_type>{true};
+			if (!item2.has_value()) {
+				return std::optional<pair_type>();
 			}
 
-			return yield<pair_type>{false, {item1.value, item2.value}};
+			return std::optional<pair_type>({item1.value(), item2.value()});
 		});
 	}
 
@@ -392,12 +497,12 @@ public:
 	 * @return A new generator that yields pairs of indices and items.
 	 */
 	generator<std::pair<long, T>, std::pair<long, generator<T, S>>> enumerate() {
-		return generator<std::pair<long, T>, std::pair<long, generator<T, S>>>({0, *this}, [](std::pair<long, generator<T, S>> &state) {
+		return generator<std::pair<long, T>, std::pair<long, generator<T, S>>>({0, *this}, [](std::pair<long, generator<T, S>> &state) -> std::optional<std::pair<long, T>> {
 			auto item = state.second.next();
-			if (item.done) {
-				return yield<std::pair<long, T>>{true};
+			if (!item.has_value()) {
+				return {};
 			}
-			return yield<std::pair<long, T>>{false, {state.first++, item.value}};
+			return std::pair<long, T>{state.first++, item.value()};
 		});
 	}
 
@@ -418,20 +523,20 @@ public:
 	 * @param other The other generator to compare against.
 	 * @return A new generator that yields only items that are different from the items in the other generator.
 	 */
-	generator<T, std::pair<generator, yield<T>>> diff(generator &other) {
-		return generator<T, std::pair<generator, yield<T>>>({other, other.next()}, [this](std::pair<generator, yield<T>> &state) {
+	generator<T, std::pair<generator, std::optional<T>>> diff(generator &other) {
+		return generator<T, std::pair<generator, std::optional<T>>>({other, other.next()}, [this](std::pair<generator, std::optional<T>> &state) -> std::optional<T> {
 			while (true) {
 				auto item1 = next();
-				if (item1.done) {
-					return yield<T>{true};
+				if (!item1.has_value()) {
+					return {};
 				}
 
-				if (state.second.done) {
-					return yield<T>{false, item1.value}; // Yield the item from this generator, as the other generator is done
+				if (!state.second.has_value()) {
+					return item1.value(); // Yield the item from this generator, as the other generator is done
 				}
 
-				if (item1.value != state.second.value) {
-					return yield<T>{false, item1.value}; // Yield the item from this generator, as it is different
+				if (item1.value() != state.second.value()) {
+					return item1.value(); // Yield the item from this generator, as it is different
 				}
 
 				// Move to the next item in the other generator
@@ -451,19 +556,19 @@ public:
 	 * @return A new generator that yields arrays of items, each of *at most* the specified size.
 	 */
 	generator<array<T>, generator> chunk(long chunkSize) {
-		return generator<array<T>, generator>(*this, [chunkSize](generator &state) {
+		return generator<array<T>, generator>(*this, [chunkSize](generator &state) -> std::optional<array<T>> {
 			array<T> chunk;
 			for (long i = 0; i < chunkSize; i++) {
 				auto item = state.next();
-				if (item.done) {
+				if (!item.has_value()) {
 					if (chunk.length() == 0) {
-						return yield<array<T>>{true}; // No more items, end the generator
+						return {}; // No more items, end the generator
 					}
 					break; // The chunk has data, yield it
 				}
-				chunk.push(item.value);
+				chunk.push(item.value());
 			}
-			return yield<array<T>>{false, chunk}; // Return the current chunk
+			return chunk; // Return the current chunk
 		});
 	}
 
@@ -474,28 +579,28 @@ public:
 	 * current value, and (2) a yield object containing the next value, if any.
 	 * It is up to the programmer to properly check that the yield has a value.
 	 *
-	 * @return A new generator that yields a pair of (item, z::core::yield<item>).
+	 * @return A new generator that yields a pair of (item, z::core::std::optional<item>).
 	 */
-	generator<std::pair<T, yield<T>>, std::pair<yield<T>, generator>> peek() {
-		return generator<std::pair<T, yield<T>>, std::pair<yield<T>, generator>>({next(), *this}, [](std::pair<yield<T>, generator> &state) {
+	generator<std::pair<T, std::optional<T>>, std::pair<std::optional<T>, generator>> peek() {
+		return generator<std::pair<T, std::optional<T>>, std::pair<std::optional<T>, generator>>({next(), *this}, [](std::pair<std::optional<T>, generator> &state) -> std::optional<std::pair<T, std::optional<T>>> {
 			const auto prevValue = state.first;
 			auto &gen = state.second;
 
-			if (prevValue.done) {
+			if (!prevValue.has_value()) {
 				// No more items, end the generator
-				return yield<std::pair<T, yield<T>>>{true};
+				return {};
 			}
 			auto nextValue = gen.next();
 			state.first = nextValue;
 
-			return yield<std::pair<T, yield<T>>>{false, std::pair<T, yield<T>>(prevValue.value, nextValue)};
+			return std::pair<T, std::optional<T>>(prevValue.value(), nextValue);
 		});
 	}
 };
 
 /**
  * @brief The type of the dereferenced value from an iterable.
- * This is used to determine the type of value that the generator will yield.
+ * This is used to determine the type of value that the generator will std::optional.
  * @tparam T
  */
 template <typename T>
@@ -517,14 +622,14 @@ using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
  */
 template <typename T>
 generator<deref_type<T>, iter_type<T>> generatorFrom(const T &list) {
-	return generator<deref_type<T>, iter_type<T>>(list.begin(), [&list](iter_type<T> &iter) {
+	return generator<deref_type<T>, iter_type<T>>(list.begin(), [&list](iter_type<T> &iter) -> std::optional<deref_type<T>> {
 		if (iter != list.end()) {
-			auto ret = yield<deref_type<T>>{false, *iter};
+			auto ret = *iter;
 			++iter; // Move to the next item
 			return ret;
 		}
 
-		return yield<deref_type<T>>{true};
+		return {};
 	});
 }
 
@@ -536,14 +641,14 @@ generator<deref_type<T>, iter_type<T>> generatorFrom(const T &list) {
  */
 template <typename T>
 generator<deref_type<T>, std::pair<T, iter_type<T>>> generatorFrom(const T &&list) {
-	return generator<deref_type<T>, std::pair<T, iter_type<T>>>({list, list.begin()}, [](std::pair<T, iter_type<T>> &state) {
+	return generator<deref_type<T>, std::pair<T, iter_type<T>>>({list, list.begin()}, [](std::pair<T, iter_type<T>> &state) -> std::optional<deref_type<T>> {
 		if (state.second != state.first.end()) {
-			auto ret = yield<deref_type<T>>{false, *state.second};
+			auto ret = *state.second;
 			++state.second; // Move to the next item
 			return ret;
 		}
 
-		return yield<deref_type<T>>{true};
+		return {};
 	});
 }
 
@@ -555,12 +660,12 @@ generator<deref_type<T>, std::pair<T, iter_type<T>>> generatorFrom(const T &&lis
  */
 template <typename T>
 generator<T, std::pair<array<T>, long>> generatorFrom(std::initializer_list<T> list) {
-	return generator<T, std::pair<array<T>, long>>({list, 0}, [&list](std::pair<array<T>, long> &state) {
+	return generator<T, std::pair<array<T>, long>>({list, 0}, [&list](std::pair<array<T>, long> &state) -> std::optional<T> {
 		if (state.second < state.first.length()) {
-			return yield<T>{false, state.first[state.second++]};
+			return state.first[state.second++];
 		}
 
-		return yield<T>{true};
+		return {};
 	});
 }
 
@@ -573,14 +678,14 @@ generator<T, std::pair<array<T>, long>> generatorFrom(std::initializer_list<T> l
  */
 template <typename K, typename V>
 generator<std::pair<K, V>, typename std::map<K, V>::const_iterator> generatorFrom(const std::map<K, V> &map) {
-	return generator<std::pair<K, V>, typename std::map<K, V>::const_iterator>(map.begin(), [&map](auto &iter) {
+	return generator<std::pair<K, V>, typename std::map<K, V>::const_iterator>(map.begin(), [&map](auto &iter) -> std::optional<std::pair<K, V>> {
 		if (iter != map.end()) {
-			auto ret = yield<std::pair<K, V>>{false, *iter};
+			auto ret = *iter;
 			++iter; // Move to the next item
 			return ret;
 		}
 
-		return yield<std::pair<K, V>>{true};
+		return {};
 	});
 }
 
@@ -593,14 +698,14 @@ generator<std::pair<K, V>, typename std::map<K, V>::const_iterator> generatorFro
  */
 template <typename K, typename V>
 generator<std::pair<K, V>, std::pair<typename std::map<K, V>::const_iterator, std::map<K, V>>> generatorFrom(std::map<K, V> &&map) {
-	return generator<std::pair<K, V>, std::pair<typename std::map<K, V>::const_iterator, std::map<K, V>>>({map.begin(), map}, [](auto &state) {
+	return generator<std::pair<K, V>, std::pair<typename std::map<K, V>::const_iterator, std::map<K, V>>>({map.begin(), map}, [](auto &state) -> std::optional<std::pair<K, V>> {
 		if (state.first != state.second.end()) {
-			auto ret = yield<std::pair<K, V>>{false, *state.first};
+			auto ret = *state.first;
 			++state.first; // Move to the next item
 			return ret;
 		}
 
-		return yield<std::pair<K, V>>{true};
+		return {};
 	});
 }
 

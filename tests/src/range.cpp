@@ -70,7 +70,7 @@ TEST_CASE("Range, empty", "[range]") {
 TEST_CASE("Range, infinite", "[range]") {
 	auto r = z::core::range(0, z::core::infinity);
 	for (int i = 0; i < 5; i++) {
-		REQUIRE(r.next().value == i);
+		REQUIRE(r.next().value_or(-1) == i);
 	}
 }
 

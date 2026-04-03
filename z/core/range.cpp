@@ -4,14 +4,15 @@ namespace z {
 namespace core {
 
 generator<long, long> range(long begin, long end, long step) noexcept {
-	return generator<long, long>(begin, [end, step](long &state) {
+	return generator<long, long>(begin, [end, step](long &state) -> std::optional<long> {
 		const long index = state;
 		state += step;
 
-		return yield<long>{
-			(step >= 0) ? state > end : state < end,
-			index,
-		};
+		if ((step >= 0) ? state > end : state < end) {
+			return {};
+		}
+
+		return index;
 	});
 }
 
@@ -20,14 +21,15 @@ generator<long, long> range(long end) noexcept {
 }
 
 generator<long, long> range(long begin, const sentinel &check, long step) noexcept {
-	return generator<long, long>(begin, [&check, step](long &state) {
+	return generator<long, long>(begin, [&check, step](long &state) -> std::optional<long> {
 		const long index = state;
 		state += step;
 
-		return yield<long>{
-			check(state, step),
-			index,
-		};
+		if (check(state, step)) {
+			return {};
+		}
+
+		return index;
 	});
 }
 

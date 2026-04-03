@@ -43,7 +43,7 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 			false,
 			showAll,
 		},
-		[](dirscan &state) {
+		[](dirscan &state) -> std::optional<zstring> {
 			state.used = true;
 
 			while (state.hFind != INVALID_HANDLE_VALUE) {
@@ -59,10 +59,10 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 				const zpath filename(state.fd.cFileName);
 				FindNextFile(state.hFind, &state.fd);
 
-				return core::yield<zpath>{false, filename};
+				return filename;
 			}
 
-			return core::yield<zpath>{true, ""};
+			return {};
 		});
 #else
 	return core::generator<zpath, dirscan>(
@@ -73,7 +73,7 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 			false,
 			showAll,
 		},
-		[](dirscan &state) {
+		[](dirscan &state) -> std::optional<zstring> {
 			state.used = true;
 
 			// Get the next file
@@ -92,10 +92,10 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 					continue;
 				}
 
-				return core::yield<zpath>{false, filename};
+				return filename;
 			}
 
-			return core::yield<zpath>{true, ""};
+			return {};
 		});
 #endif
 }
@@ -124,7 +124,7 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 			false,
 			showAll,
 		},
-		[](dirscan &state) {
+		[](dirscan &state) -> std::optional<zstring> {
 			state.used = true;
 
 			while (state.hFind != INVALID_HANDLE_VALUE) {
@@ -140,10 +140,10 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 				const zpath filename(state.fd.cFileName);
 				FindNextFile(state.hFind, &state.fd);
 
-				return core::yield<zpath>{false, filename};
+				return filename;
 			}
 
-			return core::yield<zpath>{true, ""};
+			return {};
 		});
 #else
 	return core::generator<zpath, dirscan>(
@@ -154,7 +154,7 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 			false,
 			showAll,
 		},
-		[](dirscan &state) {
+		[](dirscan &state) -> std::optional<zstring> {
 			state.used = true;
 
 			// Get the next file
@@ -169,10 +169,10 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 					continue;
 				}
 
-				return core::yield<zpath>{false, filename};
+				return filename;
 			}
 
-			return core::yield<zpath>{true, ""};
+			return {};
 		});
 #endif
 }

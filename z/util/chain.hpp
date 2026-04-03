@@ -19,7 +19,7 @@ core::generator<T, bool> chain(core::generator<T, U> &first, core::generator<T, 
 	return core::generator<T, bool>(false, [&first, &second](bool &first_exhausted) {
 		if (!first_exhausted) {
 			auto item = first.next();
-			if (item.done) {
+			if (!item.has_value()) {
 				first_exhausted = true;
 			} else {
 				return item;

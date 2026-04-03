@@ -17,11 +17,11 @@ core::generator<zstring, fileHandle> lines(const zpath &filename) {
 			new std::ifstream(filename.cstring()),
 			false,
 		},
-		[](fileHandle &file) {
+		[](fileHandle &file) -> std::optional<zstring> {
 			file.used = true;
 
 			if (file.stream->eof()) {
-				return core::yield<zstring>{true, ""};
+				return {};
 			}
 
 			if (file.stream->fail()) {
@@ -30,10 +30,12 @@ core::generator<zstring, fileHandle> lines(const zpath &filename) {
 
 			const auto result = zstring().readln(*file.stream);
 
-			return core::yield<zstring>{
-				(!result.length() && file.stream->eof()), // If a file ends with a line ending, ignore that last one.
-				result,
-			};
+			// If a stream ends with a line ending, ignore that last one.
+			if (!result.length() && file.stream->eof()) {
+				return {};
+			}
+
+			return result;
 		});
 }
 
@@ -44,17 +46,19 @@ core::generator<zstring, fileHandle> lines(std::istream &stream) noexcept {
 			&stream,
 			false,
 		},
-		[](fileHandle &file) {
+		[](fileHandle &file) -> std::optional<zstring> {
 			if (file.stream->eof() || file.stream->fail()) {
-				return core::yield<zstring>{true, ""};
+				return {};
 			}
 
 			const auto result = zstring().readln(*file.stream);
 
-			return core::yield<zstring>{
-				(!result.length() && file.stream->eof()), // If a stream ends with a line ending, ignore that last one.
-				result,
-			};
+			// If a stream ends with a line ending, ignore that last one.
+			if (!result.length() && file.stream->eof()) {
+				return {};
+			}
+
+			return result;
 		});
 }
 
