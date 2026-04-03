@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.12</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.13</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -260,6 +260,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a70552b7a320b77bc4cf47f7e73cfcfed" id="r_a70552b7a320b77bc4cf47f7e73cfcfed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a70552b7a320b77bc4cf47f7e73cfcfed">operator&lt;</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
 <tr class="memdesc:a70552b7a320b77bc4cf47f7e73cfcfed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array less-than operator.  <br /></td></tr>
 <tr class="separator:a70552b7a320b77bc4cf47f7e73cfcfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7ff8e5f1944c99acde48a8f78ca75b" id="r_a5a7ff8e5f1944c99acde48a8f78ca75b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#a5a7ff8e5f1944c99acde48a8f78ca75b">operator!=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
+<tr class="memdesc:a5a7ff8e5f1944c99acde48a8f78ca75b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether two arrays' contents are different.  <br /></td></tr>
+<tr class="separator:a5a7ff8e5f1944c99acde48a8f78ca75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacd7c706a961a5bbb018f73de106e780" id="r_aacd7c706a961a5bbb018f73de106e780"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780">operator&gt;=</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
 <tr class="memdesc:aacd7c706a961a5bbb018f73de106e780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array greater-than-or-equal operator.  <br /></td></tr>
 <tr class="separator:aacd7c706a961a5bbb018f73de106e780"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1081,7 +1084,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 </div><div class="memdoc">
 
 <p>Insert an object into the array. </p>
-<p>Inserts an object into the given index in the array, if possible.</p>
+<p>Inserts an object into the given index in the array, if possible. If the index is negative, insert starting at the end of the array. (e.g. -1 inserts at the end, -2 inserts <em>before</em> the last element, etc.)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>the data to add to the array. </td></tr>
@@ -1354,6 +1357,43 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <dl class="section return"><dt>Returns</dt><dd>A new array containing the transformed elements. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="array_8cpp-example.html#a2">array.cpp</a>, and <a class="el" href="file_8cpp-example.html#a3">file.cpp</a>.</dd>
 </dl>
+
+</div>
+</div>
+<a id="a5a7ff8e5f1944c99acde48a8f78ca75b" name="a5a7ff8e5f1944c99acde48a8f78ca75b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7ff8e5f1944c99acde48a8f78ca75b">&#9670;&#160;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">bool</a> <a class="el" href="classz_1_1core_1_1array.html">z::core::array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;<a class="el" href="classz_1_1core_1_1array.html#a6074006593c1f776b9bc4cbedcb88dd9">::operator!</a>= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check whether two arrays' contents are different. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the array to compare with this one.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><b>False</b> if both arrays contain the same contents in the same order, and the same number of contents. <b>True</b> otherwise. </dd></dl>
 
 </div>
 </div>
@@ -2551,7 +2591,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 </div><div class="memdoc">
 
 <p>Get a contiguous subset of the elements in the array. </p>
-<p>Copies all elements in the given range, inclusive. If either of the parameters is <b>-1</b>, gives an empty array. If the <b>stop</b> parameter is less than <b>start</b>, then the subset is copied in reverse order.</p>
+<p>Copies <code>count</code> elements from the array, starting at <code>index</code>. If <code>index</code> is negative, offsets that many elements from the end of the array (e.g. -1 is the last element, -2 is the second to last, etc). If <code>count</code> is negative, then <code>index</code> is treated as the <em>last</em> element in the subset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>the index of the first object to copy. </td></tr>
