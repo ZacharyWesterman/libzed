@@ -7,6 +7,7 @@ var examples =
     [ "dynamicLib.cpp", "dynamicLib_8cpp-example.html", null ],
     [ "file.cpp", "file_8cpp-example.html", null ],
     [ "generator.cpp", "generator_8cpp-example.html", null ],
+    [ "generatorSentinel.cpp", "generatorSentinel_8cpp-example.html", null ],
     [ "generic.cpp", "generic_8cpp-example.html", null ],
     [ "hash32.cpp", "hash32_8cpp-example.html", null ],
     [ "lines.cpp", "lines_8cpp-example.html", null ],

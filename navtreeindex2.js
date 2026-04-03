@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"stringIterator_8hpp_source.html":[4,0,0,0,19],
 "string_8hpp_source.html":[4,0,0,0,18],
 "structz_1_1core_1_1hash32gen.html":[3,0,0,0,7],
 "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html":[3,0,0,0,8],
@@ -29,7 +30,7 @@ var NAVTREEINDEX2 =
 "util_2exceptions_8hpp_source.html":[4,0,0,4,3],
 "util_8hpp.html":[4,0,0,11],
 "util_8hpp_source.html":[4,0,0,11],
-"word_unscramble_8cpp-example.html":[5,16],
+"word_unscramble_8cpp-example.html":[5,17],
 "write_8hpp_source.html":[4,0,0,1,19],
 "zstr_8hpp.html":[4,0,0,0,23],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[4,0,0,0,23,0],
