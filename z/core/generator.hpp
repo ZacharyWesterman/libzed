@@ -596,6 +596,37 @@ public:
 			return std::pair<T, std::optional<T>>(prevValue.value(), nextValue);
 		});
 	}
+
+	/**
+	 * @brief Chains two generators together.
+	 *
+	 * This function takes two generators and chains them together,
+	 * so that multiple generators can be used as a single generator.
+	 * That is, the items from this are generated first, and once this
+	 * generator is exhausted, items from the other generator are
+	 * generated until exhaustion.
+	 *
+	 * @note Generators chained together this way \b must yield values of the same type.
+	 *
+	 * @tparam U The state type of the other generator.
+	 * @param other The generator to chain after this generator.
+	 * @return A new generator that first yields items from this generator and then the other.
+	 */
+	template <typename U>
+	generator<T, bool> chain(generator<T, U> &other) noexcept {
+		return generator<T, bool>(false, [this, &other](bool &first_exhausted) {
+			if (!first_exhausted) {
+				auto item = this->next();
+				if (!item.has_value()) {
+					first_exhausted = true;
+				} else {
+					return item;
+				}
+			}
+
+			return other.next();
+		});
+	}
 };
 
 /**

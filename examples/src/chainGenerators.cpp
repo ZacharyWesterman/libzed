@@ -10,7 +10,6 @@ using z::core::generatorFrom;
 using z::core::join;
 using z::core::range;
 using z::core::string;
-using z::util::chain;
 
 int main() {
 	// Print the numbers from 0 to 9
@@ -18,7 +17,7 @@ int main() {
 	auto gen2 = range(5, 10);
 
 	std::cout << "Numbers from 0 to 9:" << std::endl;
-	for (auto &i : chain(gen1, gen2)) {
+	for (auto &i : gen1.chain(gen2)) {
 		std::cout << i << ' ';
 	}
 	std::cout << std::endl;
@@ -33,7 +32,7 @@ int main() {
 	auto gen4 = generatorFrom(arr2);
 
 	std::cout << "\nLetters from a to j:" << std::endl;
-	for (auto &&i : chain(gen3, gen4)) {
+	for (auto &&i : gen3.chain(gen4)) {
 		std::cout << i << ' ';
 	}
 	std::cout << std::endl;
