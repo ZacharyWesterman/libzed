@@ -7,7 +7,7 @@
 #if (__cplusplus >= 201402L) || (defined(_MSVC_LANG) && _MSVC_LANG >= 201402L)
 // If C++14 or greater, use stdlib optional class.
 #include <optional>
-#else
+#elif !defined(DOXYGEN)
 // Otherwise, polyfill our own implementation of std::optional
 
 namespace std {
