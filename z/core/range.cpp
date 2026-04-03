@@ -34,7 +34,7 @@ generator<long, long> range(long begin, const sentinel &check, long step) noexce
 }
 
 template <>
-generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count) {
+generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count) noexcept {
 	auto lambda = this->lambda;
 
 	return generator<long, generator<long, long>::countedState>({count, state}, [lambda](countedState &state) {

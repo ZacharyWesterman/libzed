@@ -313,7 +313,7 @@ public:
 	 * @return A new generator that yields the transformed elements.
 	 */
 	template <typename U>
-	generator<U, S> map(std::function<U(const T &)> mapLambda) {
+	generator<U, S> map(std::function<U(const T &)> mapLambda) noexcept {
 		auto lambda = this->lambda;
 
 		return generator<U, S>(state, [lambda, mapLambda](S &state) -> std::optional<U> {
@@ -336,7 +336,7 @@ public:
 	 * the item should be yielded.
 	 * @return A new generator that yields only items that satisfy the predicate.
 	 */
-	generator filter(std::function<T(const T &)> filterLambda) {
+	generator filter(std::function<T(const T &)> filterLambda) noexcept {
 		auto lambda = this->lambda;
 
 		return generator(state, [lambda, filterLambda](S &state) {
@@ -396,7 +396,7 @@ public:
 	 * @param newLambda A function that takes a constant reference to an element of type `T` and returns nothing.
 	 * @return A reference to this generator, with the new function bound.
 	 */
-	generator &forEach(std::function<void(const T &)> newLambda) {
+	generator &forEach(std::function<void(const T &)> newLambda) noexcept {
 		auto lambda = this->lambda;
 		this->lambda = [lambda, newLambda](S &state) {
 			auto item = lambda(state);
@@ -419,7 +419,7 @@ public:
 	 * @param count The number of items to skip.
 	 * @return A new generator that skips the given number of items.
 	 */
-	generator<T, countedState> skip(long count) {
+	generator<T, countedState> skip(long count) noexcept {
 		auto lambda = this->lambda;
 
 		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
@@ -441,7 +441,7 @@ public:
 	 * @param count The maximum number of items to std::optional.
 	 * @return A new generator that yields the given number of items.
 	 */
-	generator<T, countedState> limit(long count) {
+	generator<T, countedState> limit(long count) noexcept {
 		auto lambda = this->lambda;
 
 		return generator<T, countedState>({count, state}, [lambda](countedState &state) {
@@ -470,7 +470,7 @@ public:
 	 * @return A new generator that yields pairs of items from both generators.
 	 */
 	template <typename U, typename S2>
-	generator<std::pair<T, U>, generator<U, S2>> zip(generator<U, S2> &other) {
+	generator<std::pair<T, U>, generator<U, S2>> zip(generator<U, S2> &other) noexcept {
 		typedef std::pair<T, U> pair_type;
 
 		return generator<pair_type, generator<U, S2>>(other, [this](generator<U, S2> &otherGen) {
@@ -496,7 +496,7 @@ public:
 	 *
 	 * @return A new generator that yields pairs of indices and items.
 	 */
-	generator<std::pair<long, T>, std::pair<long, generator<T, S>>> enumerate() {
+	generator<std::pair<long, T>, std::pair<long, generator<T, S>>> enumerate() noexcept {
 		return generator<std::pair<long, T>, std::pair<long, generator<T, S>>>({0, *this}, [](std::pair<long, generator<T, S>> &state) -> std::optional<std::pair<long, T>> {
 			auto item = state.second.next();
 			if (!item.has_value()) {
@@ -523,7 +523,7 @@ public:
 	 * @param other The other generator to compare against.
 	 * @return A new generator that yields only items that are different from the items in the other generator.
 	 */
-	generator<T, std::pair<generator, std::optional<T>>> diff(generator &other) {
+	generator<T, std::pair<generator, std::optional<T>>> diff(generator &other) noexcept {
 		return generator<T, std::pair<generator, std::optional<T>>>({other, other.next()}, [this](std::pair<generator, std::optional<T>> &state) -> std::optional<T> {
 			while (true) {
 				auto item1 = next();
@@ -555,7 +555,7 @@ public:
 	 * @param chunkSize The size of each chunk.
 	 * @return A new generator that yields arrays of items, each of *at most* the specified size.
 	 */
-	generator<array<T>, generator> chunk(long chunkSize) {
+	generator<array<T>, generator> chunk(long chunkSize) noexcept {
 		return generator<array<T>, generator>(*this, [chunkSize](generator &state) -> std::optional<array<T>> {
 			array<T> chunk;
 			for (long i = 0; i < chunkSize; i++) {
@@ -581,7 +581,7 @@ public:
 	 *
 	 * @return A new generator that yields a pair of (item, z::core::std::optional<item>).
 	 */
-	generator<std::pair<T, std::optional<T>>, std::pair<std::optional<T>, generator>> peek() {
+	generator<std::pair<T, std::optional<T>>, std::pair<std::optional<T>, generator>> peek() noexcept {
 		return generator<std::pair<T, std::optional<T>>, std::pair<std::optional<T>, generator>>({next(), *this}, [](std::pair<std::optional<T>, generator> &state) -> std::optional<std::pair<T, std::optional<T>>> {
 			const auto prevValue = state.first;
 			auto &gen = state.second;

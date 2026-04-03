@@ -37,7 +37,7 @@ generator<long, long> range(long begin, const sentinel &check, long step = 1) no
  * @return A new generator that skips the given number of items.
  */
 template <>
-generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count);
+generator<long, generator<long, long>::countedState> generator<long, long>::skip(long count) noexcept;
 
 } // namespace core
 } // namespace z
