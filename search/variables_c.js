@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['value',['../structz_1_1core_1_1yield.html#a2cf9680c577f2ef3b83883f89921e23c',1,'z::core::yield']]]
+  ['width_0',['width',['../structz_1_1system_1_1termsize.html#a02ef70e97534528fcf3c80fe36936c19',1,'z::system::termsize']]]
 ];

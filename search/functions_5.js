@@ -7,7 +7,7 @@ var searchData=
   ['findinsert_4',['findInsert',['../classz_1_1core_1_1sortedArray.html#ac6dfb18cdfcffdbaea58277aa8afb473',1,'z::core::sortedArray']]],
   ['findlast_5',['findLast',['../classz_1_1core_1_1string.html#a515118a25d1706ee8e91754c30d55218',1,'z::core::string']]],
   ['findpermutations_6',['findPermutations',['../classz_1_1util_1_1dictionary.html#a0ef68a6c6d94ea37d5eecea064dd6695',1,'z::util::dictionary']]],
-  ['floating_7',['floating',['../classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1',1,'z::core::string::floating()'],['../classz_1_1util_1_1generic.html#aaa2a34b19d6b8929b42d36465301120f',1,'z::util::generic::floating()']]],
+  ['floating_7',['floating',['../classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1',1,'z::core::string']]],
   ['foreach_8',['forEach',['../classz_1_1core_1_1generator.html#a539ac0b1a37ebf91f3dc97b2635cc585',1,'z::core::generator']]],
   ['format_9',['format',['../classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8',1,'z::core::string']]],
   ['found_10',['found',['../classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672',1,'z::core::string']]],

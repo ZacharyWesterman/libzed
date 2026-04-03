@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.13</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.18</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -146,14 +146,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0380bc41093cca7c73a4cd7880459234" id="r_a0380bc41093cca7c73a4cd7880459234"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">unsigned</a> <a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1timer.html#a0380bc41093cca7c73a4cd7880459234">hours</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a0380bc41093cca7c73a4cd7880459234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the elapsed time in <b>minutes</b>.  <br /></td></tr>
 <tr class="separator:a0380bc41093cca7c73a4cd7880459234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d6df92f91336cfb38e8b2f2a342cd9d" id="r_a0d6df92f91336cfb38e8b2f2a342cd9d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">Archive</a> &gt; </td></tr>
-<tr class="memitem:a0d6df92f91336cfb38e8b2f2a342cd9d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1timer.html#a0d6df92f91336cfb38e8b2f2a342cd9d">save</a> (<a class="el" href="classz_1_1core_1_1array.html">Archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
-<tr class="memdesc:a0d6df92f91336cfb38e8b2f2a342cd9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization output.  <br /></td></tr>
-<tr class="separator:a0d6df92f91336cfb38e8b2f2a342cd9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb0963fcd642f2db6d04e648cbf7f46b" id="r_acb0963fcd642f2db6d04e648cbf7f46b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">Archive</a> &gt; </td></tr>
-<tr class="memitem:acb0963fcd642f2db6d04e648cbf7f46b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1timer.html#acb0963fcd642f2db6d04e648cbf7f46b">load</a> (<a class="el" href="classz_1_1core_1_1array.html">Archive</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">ar</a>)</td></tr>
-<tr class="memdesc:acb0963fcd642f2db6d04e648cbf7f46b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialization input.  <br /></td></tr>
-<tr class="separator:acb0963fcd642f2db6d04e648cbf7f46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for easily managing timers. </p>
@@ -219,42 +211,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the elapsed time in <b>minutes</b>. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of <b>minutes</b> that have passed since the timer was last reset. </dd></dl>
-
-</div>
-</div>
-<a id="acb0963fcd642f2db6d04e648cbf7f46b" name="acb0963fcd642f2db6d04e648cbf7f46b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb0963fcd642f2db6d04e648cbf7f46b">&#9670;&#160;</a></span>load()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">Archive</a> &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">void</a> z::core::timer::load </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">Archive</a> &amp;&#160;</td>
-          <td class="paramname"><em>ar</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Serialization input. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ar</td><td>The input archive. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -339,42 +295,6 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class
 
 <p>Get the elapsed time in <b>minutes</b>. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of <b>minutes</b> that have passed since the timer was last reset. </dd></dl>
-
-</div>
-</div>
-<a id="a0d6df92f91336cfb38e8b2f2a342cd9d" name="a0d6df92f91336cfb38e8b2f2a342cd9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d6df92f91336cfb38e8b2f2a342cd9d">&#9670;&#160;</a></span>save()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">Archive</a> &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">void</a> z::core::timer::save </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">Archive</a> &amp;&#160;</td>
-          <td class="paramname"><em>ar</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Serialization output. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ar</td><td>The output archive. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

@@ -7,7 +7,6 @@ var hierarchy =
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
     [ "z::file::fileHandle", "structz_1_1file_1_1fileHandle.html", null ],
     [ "z::core::generatorIter< T, S >", "classz_1_1core_1_1generatorIter.html", null ],
-    [ "z::util::generic", "classz_1_1util_1_1generic.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::core::hash32gen< size, idx, dummy >", "structz_1_1core_1_1hash32gen.html", null ],
     [ "z::core::hash32gen< size, size, dummy >", "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html", null ],
@@ -82,6 +81,5 @@ var hierarchy =
     [ "z::system::termsize", "structz_1_1system_1_1termsize.html", null ],
     [ "z::core::timer", "classz_1_1core_1_1timer.html", [
       [ "z::core::timeout", "classz_1_1core_1_1timeout.html", null ]
-    ] ],
-    [ "z::core::yield< T >", "structz_1_1core_1_1yield.html", null ]
+    ] ]
 ];
