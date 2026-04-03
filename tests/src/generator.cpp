@@ -146,3 +146,120 @@ TEST_CASE("Generator from std::map", "[generator]") {
 	REQUIRE(rvalue_result[1].first == 5);
 	REQUIRE(rvalue_result[1].second == "five");
 }
+
+TEST_CASE("Generator next", "[generator]") {
+	auto gen = range(1, 4);
+	auto y1 = gen.next();
+	REQUIRE(!y1.done);
+	REQUIRE(y1.value == 1);
+	auto y2 = gen.next();
+	REQUIRE(!y2.done);
+	REQUIRE(y2.value == 2);
+	auto y3 = gen.next();
+	REQUIRE(!y3.done);
+	REQUIRE(y3.value == 3);
+	auto y4 = gen.next();
+	REQUIRE(y4.done);
+}
+
+TEST_CASE("Generator collect", "[generator]") {
+	auto gen = range(1, 6);
+	auto arr = gen.collect();
+	REQUIRE(arr.length() == 5);
+	REQUIRE(arr[0] == 1);
+	REQUIRE(arr[4] == 5);
+}
+
+TEST_CASE("Generator consume", "[generator]") {
+	auto gen = range(1, 11);
+	auto count = gen.consume();
+	REQUIRE(count == 10);
+}
+
+TEST_CASE("Generator forEach", "[generator]") {
+	array<int> result;
+	// Make sure to call collect() to actually run the generator!
+	range(1, 6).forEach([&result](int i) { result.push(i * 2); }).collect();
+	REQUIRE(result.length() == 5);
+	REQUIRE(result[0] == 2);
+	REQUIRE(result[4] == 10);
+}
+
+TEST_CASE("Generator zip", "[generator]") {
+	auto gen1 = range(1, 4);
+	auto gen2 = range(10, 13);
+	auto zipped = gen1.zip(gen2);
+	auto arr = zipped.collect();
+	REQUIRE(arr.length() == 3);
+	REQUIRE(arr[0].first == 1);
+	REQUIRE(arr[0].second == 10);
+	REQUIRE(arr[2].first == 3);
+	REQUIRE(arr[2].second == 12);
+}
+
+TEST_CASE("Generator enumerate", "[generator]") {
+	auto gen = range(1, 4);
+	auto enumerated = gen.enumerate();
+	auto arr = enumerated.collect();
+	REQUIRE(arr.length() == 3);
+	REQUIRE(arr[0].first == 0);
+	REQUIRE(arr[0].second == 1);
+	REQUIRE(arr[2].first == 2);
+	REQUIRE(arr[2].second == 3);
+}
+
+TEST_CASE("Generator diff", "[generator]") {
+	auto gen1 = generatorFrom({1, 2, 3, 4, 5});
+	auto gen2 = generatorFrom({2, 3, 6});
+	auto diff_gen = gen1.diff(gen2);
+	auto arr = diff_gen.collect();
+	REQUIRE(arr.length() == 3);
+	REQUIRE(arr[0] == 1);
+	REQUIRE(arr[1] == 4);
+	REQUIRE(arr[2] == 5);
+}
+
+TEST_CASE("Generator peek", "[generator]") {
+	auto gen = range(1, 4);
+	auto peeked = gen.peek();
+	auto arr = peeked.collect();
+	REQUIRE(arr.length() == 3);
+	REQUIRE(arr[0].first == 1);
+	REQUIRE(!arr[0].second.done);
+	REQUIRE(arr[0].second.value == 2);
+	REQUIRE(arr[2].first == 3);
+	REQUIRE(arr[2].second.done);
+}
+
+TEST_CASE("Generator from array lvalue", "[generator]") {
+	array<int> arr = {1, 2, 3, 4, 5};
+	auto gen = generatorFrom(arr);
+	auto collected = gen.collect();
+	REQUIRE(collected.length() == 5);
+	REQUIRE(collected[0] == 1);
+	REQUIRE(collected[4] == 5);
+}
+
+TEST_CASE("Generator from array rvalue", "[generator]") {
+	auto gen = generatorFrom(array<int>{1, 2, 3});
+	auto collected = gen.collect();
+	REQUIRE(collected.length() == 3);
+	REQUIRE(collected[0] == 1);
+	REQUIRE(collected[2] == 3);
+}
+
+TEST_CASE("Generator empty", "[generator]") {
+	auto gen = range(0);
+	REQUIRE(gen.count() == 0);
+	auto arr = gen.collect();
+	REQUIRE(arr.length() == 0);
+}
+
+TEST_CASE("Generator single item", "[generator]") {
+	auto gen = generatorFrom({42});
+	auto y = gen.next();
+	REQUIRE(!y.done);
+	REQUIRE(y.value == 42);
+	y = gen.next();
+	REQUIRE(y.done);
+}
