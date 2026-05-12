@@ -184,6 +184,12 @@ public:
 	}
 };
 
+template <typename T, typename = void>
+struct has_iterator : std::false_type {};
+
+template <typename T>
+struct has_iterator<T, std::void_t<decltype(std::declval<T>().begin())>> : std::true_type {};
+
 /**
  * @brief An arbitrary generator for producing sequential results on-the-fly.
  *
@@ -571,6 +577,9 @@ public:
 			return chunk; // Return the current chunk
 		});
 	}
+
+	// template <typename U = T, typename std::enable_if<z::core::has_iterator<U>::value, int>::type = 0>
+	// TODO: unchunk member function here!
 
 	/**
 	 * @brief Allow peeking at the next item in the generator as items are generated.
