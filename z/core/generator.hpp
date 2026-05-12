@@ -203,7 +203,7 @@ using deref_type = std::remove_const_t<std::remove_reference_t<decltype(*std::de
  * This is used to determine the type of iterator that the generator will use.
  * @tparam T
  */
-template <typename T>
+template <typename T, typename std::enable_if<z::core::has_iterator<T>::value, int>::type = 0>
 using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
 
 /**
