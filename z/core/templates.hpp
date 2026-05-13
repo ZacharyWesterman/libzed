@@ -31,7 +31,7 @@ using iterator_value = std::remove_const_t<decltype(std::declval<T>().begin())>;
  * @tparam T
  */
 template <typename T>
-using const_iterator_value = decltype(std::declval<const T&>().begin());
+using const_iterator_value = decltype(std::declval<const T &>().begin());
 
 /**
  * @brief The default specialization for types that are not iterators.
