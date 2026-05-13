@@ -176,12 +176,12 @@ examples: static
 test: tests
 tests: static
 	$(MAKE) -C tests/ STD=$(STD)
-	./tests/bin/run_tests $(TEST_FLAGS)
+	./tests/bin/run_tests "$(FILTER)"
 
 benchmark: benchmarks
 benchmarks: static
 	$(MAKE) -C benchmarks/ STD=$(STD)
-	./benchmarks/bin/run_benchmarks $(TEST_FLAGS)
+	./benchmarks/bin/run_benchmarks "$(FILTER)"
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
