@@ -1,10 +1,11 @@
 #pragma once
 
-#include "../polyfill/std_optional.hpp"
-#include "array.hpp"
-
 #include <functional>
 #include <map>
+
+#include "../polyfill/std_optional.hpp"
+#include "array.hpp"
+#include "templates.hpp"
 
 namespace z {
 namespace core {
@@ -445,6 +446,49 @@ public:
 	}
 
 	/**
+	 * @brief Break up a chunked generator into its constituent generated items.
+	 * @return A new generator that yields the individual items that were previously yielded in chunks.
+	 * @note This member function is only enabled if the current generator yields iterables.
+	 */
+	template <typename U = T, typename std::enable_if<is_iterator<U>::value, int>::type = 0>
+	auto unchunk() noexcept {
+		struct unchunkData {
+			std::optional<T> data;
+			std::optional<iterator_value<T>> iter;
+			generator<T, S> gen;
+		};
+
+		auto unchunkFn = [](unchunkData &state) -> std::optional<dereference<T>> {
+			// If the generator has not been initialized,
+			// or there is no more data in the chunk,
+			// then try to generate another chunk.
+			if (!state.data || (state.iter.value() == state.data.value().end())) {
+				// If there's nothing left, we're done.
+				auto chunkData = state.gen.next();
+				if (!chunkData) {
+					return {};
+				}
+
+				auto &val = chunkData.value();
+				// Make sure we didn't just get an empty iterator.
+				if (val.begin() == val.end()) {
+					return {};
+				}
+
+				state.data = chunkData;
+				state.iter = state.data.value().begin();
+			}
+
+			// At this point the generator has been initialized, and current chunk has data in it,
+			// so spit out the next value on the chunk.
+
+			return *state.iter.value()++;
+		};
+
+		return generator<dereference<T>, unchunkData>({{}, {}, *this}, unchunkFn);
+	}
+
+	/**
 	 * @brief Allow peeking at the next item in the generator as items are generated.
 	 *
 	 * The generator that this function produces will yield std::pairs containing (1) the
@@ -502,30 +546,14 @@ public:
 };
 
 /**
- * @brief The type of the dereferenced value from an iterable.
- * This is used to determine the type of value that the generator will std::optional.
- * @tparam T
- */
-template <typename T>
-using deref_type = std::remove_const_t<std::remove_reference_t<decltype(*std::declval<decltype(std::declval<T>().begin())>())>>;
-
-/**
- * @brief The type of the iterator for an iterable.
- * This is used to determine the type of iterator that the generator will use.
- * @tparam T
- */
-template <typename T>
-using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
-
-/**
  * @brief Create a generator from an arbitrary iterable.
  * @tparam T The type of value that the iterable returns.
  * @param list The iterable to create a generator from.
  * @return A generator that will yield the items from the iterable.
  */
 template <typename T>
-generator<deref_type<T>, iter_type<T>> generatorFrom(const T &list) {
-	return generator<deref_type<T>, iter_type<T>>(list.begin(), [&list](iter_type<T> &iter) -> std::optional<deref_type<T>> {
+generator<dereference<T>, iterator_value<T>> generatorFrom(const T &list) {
+	return generator<dereference<T>, iterator_value<T>>(list.begin(), [&list](iterator_value<T> &iter) -> std::optional<dereference<T>> {
 		if (iter != list.end()) {
 			auto ret = *iter;
 			++iter; // Move to the next item
@@ -543,8 +571,8 @@ generator<deref_type<T>, iter_type<T>> generatorFrom(const T &list) {
  * @return A generator that will yield the items from the iterable.
  */
 template <typename T>
-generator<deref_type<T>, std::pair<T, iter_type<T>>> generatorFrom(const T &&list) {
-	return generator<deref_type<T>, std::pair<T, iter_type<T>>>({list, list.begin()}, [](std::pair<T, iter_type<T>> &state) -> std::optional<deref_type<T>> {
+generator<dereference<T>, std::pair<T, iterator_value<T>>> generatorFrom(const T &&list) {
+	return generator<dereference<T>, std::pair<T, iterator_value<T>>>({list, list.begin()}, [](std::pair<T, iterator_value<T>> &state) -> std::optional<dereference<T>> {
 		if (state.second != state.first.end()) {
 			auto ret = *state.second;
 			++state.second; // Move to the next item
