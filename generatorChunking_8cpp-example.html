@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.31</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.35</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -105,19 +105,37 @@ $(document).ready(function(){initNavTree('generatorChunking_8cpp-example.html','
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/all.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_function" href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">z::core::join</a>;</div>
-<div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_function" href="namespacez_1_1core.html#a59fd9b125b48c8157cfd9b52d2be9b63">z::core::generatorFrom</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">z::core::join</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a2" name="a2"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Chunking a generator:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> chunk : range(10).chunk(5)) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="charliteral">&#39;[&#39;</span> &lt;&lt; join(chunk, <span class="stringliteral">&quot;,&quot;</span>) &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Unchunking from a chunked generator:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keyword">auto</span> gen = range(10).chunk(5);</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : gen.unchunk()) {</div>
-<div class="line">        std::cout &lt;&lt; item &lt;&lt; std::endl;</div>
+<div class="line">        std::cout &lt;&lt; item &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Technically, the generator doesn&#39;t need to have been chunked</span></div>
+<div class="line">    <span class="comment">// in order to be unchunked; it just needs to yield objects with an iterator.</span></div>
+<div class="line">    <span class="comment">// In this example, the yield from notChunked would be pairs of numbers,</span></div>
+<div class="line">    <span class="comment">// but we can call `unchunk()` to just yield individual numbers from the list.</span></div>
+<div class="line">    std::vector&lt;std::vector&lt;int&gt;&gt; listOfLists{{0, 1}, {2, 3}, {4, 5}, {6, 7}, {8, 9}};</div>
+<div class="line">    <span class="keyword">auto</span> notChunked = generatorFrom(listOfLists);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Unchunking from an arbitrary iterator:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : notChunked.unchunk()) {</div>
+<div class="line">        std::cout &lt;&lt; item &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacez_1_1core_html_a59fd9b125b48c8157cfd9b52d2be9b63"><div class="ttname"><a href="namespacez_1_1core.html#a59fd9b125b48c8157cfd9b52d2be9b63">z::core::generatorFrom</a></div><div class="ttdeci">generator&lt; dereference&lt; T &gt;, const_iterator_value&lt; T &gt; &gt; generatorFrom(const T &amp;list)</div><div class="ttdoc">Create a generator from an arbitrary iterable.</div><div class="ttdef"><b>Definition</b> generator.hpp:555</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
 <div class="ttc" id="anamespacez_1_1core_html_adb51f3e5b49bdc9253c9c63df511aec3"><div class="ttname"><a href="namespacez_1_1core.html#adb51f3e5b49bdc9253c9c63df511aec3">z::core::join</a></div><div class="ttdeci">string&lt; E &gt; join(const iterable&lt; T &gt; &amp;list, const string&lt; E &gt; &amp;delim) noexcept</div><div class="ttdoc">Concatenate elements in an array into a string, separated by a delimiter.</div><div class="ttdef"><b>Definition</b> join.hpp:20</div></div>
 </div><!-- fragment --> </div><!-- contents -->

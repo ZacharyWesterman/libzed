@@ -3,6 +3,7 @@ var examples =
     [ "array.cpp", "array_8cpp-example.html", null ],
     [ "chainGenerators.cpp", "chainGenerators_8cpp-example.html", null ],
     [ "cpu.cpp", "cpu_8cpp-example.html", null ],
+    [ "customGenerator.cpp", "customGenerator_8cpp-example.html", null ],
     [ "dictionary.cpp", "dictionary_8cpp-example.html", null ],
     [ "dynamicLib.cpp", "dynamicLib_8cpp-example.html", null ],
     [ "file.cpp", "file_8cpp-example.html", null ],

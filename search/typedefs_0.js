@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dereference_0',['dereference',['../namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c',1,'z::core']]]
+  ['const_5fiterator_5fvalue_0',['const_iterator_value',['../namespacez_1_1core.html#a72245592302421f8f3950e88f35dc641',1,'z::core']]]
 ];

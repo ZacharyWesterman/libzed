@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"sleep_8hpp_source.html":[4,0,0,4,2],
 "sortedArray_8hpp_source.html":[4,0,0,0,15],
 "sortedRefArray_8hpp_source.html":[4,0,0,0,16],
 "split_8hpp_source.html":[4,0,0,0,17],
@@ -30,8 +31,9 @@ var NAVTREEINDEX2 =
 "system_8hpp.html":[4,0,0,11],
 "system_8hpp_source.html":[4,0,0,11],
 "templates_8hpp.html":[4,0,0,0,20],
-"templates_8hpp.html#a688f17fa185dc12108c00589496f584c":[4,0,0,0,20,2],
-"templates_8hpp.html#af4787259b26eb6edc9cc58dcdf8ed594":[4,0,0,0,20,3],
+"templates_8hpp.html#a688f17fa185dc12108c00589496f584c":[4,0,0,0,20,3],
+"templates_8hpp.html#a72245592302421f8f3950e88f35dc641":[4,0,0,0,20,2],
+"templates_8hpp.html#af4787259b26eb6edc9cc58dcdf8ed594":[4,0,0,0,20,4],
 "templates_8hpp_source.html":[4,0,0,0,20],
 "terminal_8hpp_source.html":[4,0,0,4,3],
 "timeout_8hpp_source.html":[4,0,0,0,21],
@@ -40,7 +42,7 @@ var NAVTREEINDEX2 =
 "util_2exceptions_8hpp_source.html":[4,0,0,5,2],
 "util_8hpp.html":[4,0,0,12],
 "util_8hpp_source.html":[4,0,0,12],
-"word_unscramble_8cpp-example.html":[5,18],
+"word_unscramble_8cpp-example.html":[5,19],
 "write_8hpp_source.html":[4,0,0,1,19],
 "zstr_8hpp.html":[4,0,0,0,24],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[4,0,0,0,24,0],
