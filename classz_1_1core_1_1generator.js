@@ -20,5 +20,6 @@ var classz_1_1core_1_1generator =
     [ "skip", "classz_1_1core_1_1generator.html#a5a66da1ecceb029682b08d2a71a75e79", null ],
     [ "skip", "classz_1_1core_1_1generator.html#abe1e55d1a360b9e0cd63c8199d3d258b", null ],
     [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
+    [ "unchunk", "classz_1_1core_1_1generator.html#a33cd0c625be499808bfcd8f3c6198939", null ],
     [ "zip", "classz_1_1core_1_1generator.html#a04f8632cb95ca278669cfe68e2f8d081", null ]
 ];

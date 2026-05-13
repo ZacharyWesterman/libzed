@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iter_5ftype_0',['iter_type',['../namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6',1,'z::core']]]
+  ['iterator_5fvalue_0',['iterator_value',['../namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594',1,'z::core']]]
 ];

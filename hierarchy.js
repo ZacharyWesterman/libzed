@@ -5,6 +5,9 @@ var hierarchy =
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::file::dirscan", "structz_1_1file_1_1dirscan.html", null ],
     [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
+    [ "std::false_type", null, [
+      [ "z::core::is_iterator< T, typename >", "structz_1_1core_1_1is__iterator.html", null ]
+    ] ],
     [ "z::file::fileHandle", "structz_1_1file_1_1fileHandle.html", null ],
     [ "z::core::generatorIter< T, S >", "classz_1_1core_1_1generatorIter.html", null ],
     [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
@@ -81,5 +84,8 @@ var hierarchy =
     [ "z::system::termsize", "structz_1_1system_1_1termsize.html", null ],
     [ "z::core::timer", "classz_1_1core_1_1timer.html", [
       [ "z::core::timeout", "classz_1_1core_1_1timeout.html", null ]
+    ] ],
+    [ "std::true_type", null, [
+      [ "z::core::is_iterator< T, std::void_t< decltype(std::begin(std::declval< T >()))> >", "structz_1_1core_1_1is__iterator_3_01T_00_01std_1_1void__t_3_01decltype_07std_1_1begin_07std_1_1d848d53b0547377a95bd0934574864c0e.html", null ]
     ] ]
 ];

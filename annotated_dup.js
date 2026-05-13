@@ -17,6 +17,8 @@ var annotated_dup =
         [ "hash32gen", "structz_1_1core_1_1hash32gen.html", null ],
         [ "hash32gen< size, size, dummy >", "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html", null ],
         [ "indexable", "classz_1_1core_1_1indexable.html", "classz_1_1core_1_1indexable" ],
+        [ "is_iterator", "structz_1_1core_1_1is__iterator.html", null ],
+        [ "is_iterator< T, std::void_t< decltype(std::begin(std::declval< T >()))> >", "structz_1_1core_1_1is__iterator_3_01T_00_01std_1_1void__t_3_01decltype_07std_1_1begin_07std_1_1d848d53b0547377a95bd0934574864c0e.html", null ],
         [ "iterable", "classz_1_1core_1_1iterable.html", "classz_1_1core_1_1iterable" ],
         [ "memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4" ],
         [ "refArray", "classz_1_1core_1_1refArray.html", "classz_1_1core_1_1refArray" ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deref_5ftype_0',['deref_type',['../namespacez_1_1core.html#afbd408260041173278c3228d75f51d49',1,'z::core']]]
+  ['dereference_0',['dereference',['../namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c',1,'z::core']]]
 ];

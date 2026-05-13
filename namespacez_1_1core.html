@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.24</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.25</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -138,6 +138,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html">indexable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A base interface for all objects whose elements can be directly indexed.  <a href="classz_1_1core_1_1indexable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1core_1_1is__iterator.html">is_iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default specialization for types that are not iterators.  <a href="structz_1_1core_1_1is__iterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1core_1_1is__iterator_3_01T_00_01std_1_1void__t_3_01decltype_07std_1_1begin_07std_1_1d848d53b0547377a95bd0934574864c0e.html">is_iterator&lt; T, std::void_t&lt; decltype(std::begin(std::declval&lt; T &gt;()))&gt; &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template specialization for types that are iterators.  <a href="structz_1_1core_1_1is__iterator_3_01T_00_01std_1_1void__t_3_01decltype_07std_1_1begin_07std_1_1d848d53b0547377a95bd0934574864c0e.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1iterable.html">iterable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A base interface for all objects that can be iterated over.  <a href="classz_1_1core_1_1iterable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,14 +180,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:afbd408260041173278c3228d75f51d49" id="r_afbd408260041173278c3228d75f51d49"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
-<tr class="memitem:afbd408260041173278c3228d75f51d49"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">deref_type</a> = std::remove_const_t&lt; std::remove_reference_t&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(*std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;().begin())&gt;())&gt; &gt;</td></tr>
-<tr class="memdesc:afbd408260041173278c3228d75f51d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the dereferenced value from an iterable. This is used to determine the type of value that the generator will std::optional.  <br /></td></tr>
-<tr class="separator:afbd408260041173278c3228d75f51d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc68cd4e3164b3173321582824a981e6" id="r_adc68cd4e3164b3173321582824a981e6"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
-<tr class="memitem:adc68cd4e3164b3173321582824a981e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">iter_type</a> = std::remove_const_t&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;().begin())&gt;</td></tr>
-<tr class="memdesc:adc68cd4e3164b3173321582824a981e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the iterator for an iterable. This is used to determine the type of iterator that the generator will use.  <br /></td></tr>
-<tr class="separator:adc68cd4e3164b3173321582824a981e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a688f17fa185dc12108c00589496f584c" id="r_a688f17fa185dc12108c00589496f584c"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
+<tr class="memitem:a688f17fa185dc12108c00589496f584c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">dereference</a> = std::remove_const_t&lt; std::remove_reference_t&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(*std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;().begin())&gt;())&gt; &gt;</td></tr>
+<tr class="memdesc:a688f17fa185dc12108c00589496f584c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the dereferenced value from an iterable. This is used to determine the type of value that the generator will std::optional.  <br /></td></tr>
+<tr class="separator:a688f17fa185dc12108c00589496f584c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4787259b26eb6edc9cc58dcdf8ed594" id="r_af4787259b26eb6edc9cc58dcdf8ed594"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
+<tr class="memitem:af4787259b26eb6edc9cc58dcdf8ed594"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">iterator_value</a> = std::remove_const_t&lt; <a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;().begin())&gt;</td></tr>
+<tr class="memdesc:af4787259b26eb6edc9cc58dcdf8ed594"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the value that an iterator generates. This is used to determine the type of iterator that the generator will use.  <br /></td></tr>
+<tr class="separator:af4787259b26eb6edc9cc58dcdf8ed594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -236,14 +242,14 @@ Functions</h2></td></tr>
 <tr class="memitem:abefaf57ef51b10494f79ee76dd5142a7" id="r_abefaf57ef51b10494f79ee76dd5142a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#abefaf57ef51b10494f79ee76dd5142a7">isUTF8</a> (<a class="el" href="classz_1_1core_1_1array.html">uint8_t</a> *<a class="el" href="classz_1_1core_1_1array.html">c</a>, <a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1array.html">len</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:abefaf57ef51b10494f79ee76dd5142a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether the characters are in valid UTF-8 format.  <br /></td></tr>
 <tr class="separator:abefaf57ef51b10494f79ee76dd5142a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5ffeedc1e230e70557bd750306515e" id="r_a4e5ffeedc1e230e70557bd750306515e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
-<tr class="memitem:a4e5ffeedc1e230e70557bd750306515e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">deref_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">iter_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a4e5ffeedc1e230e70557bd750306515e">generatorFrom</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">list</a>)</td></tr>
-<tr class="memdesc:a4e5ffeedc1e230e70557bd750306515e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an arbitrary iterable.  <br /></td></tr>
-<tr class="separator:a4e5ffeedc1e230e70557bd750306515e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f246c0b6a2829cb6dd6fc42643a1eb8" id="r_a5f246c0b6a2829cb6dd6fc42643a1eb8"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
-<tr class="memitem:a5f246c0b6a2829cb6dd6fc42643a1eb8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">deref_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">iter_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a5f246c0b6a2829cb6dd6fc42643a1eb8">generatorFrom</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&amp;<a class="el" href="classz_1_1core_1_1array.html">list</a>)</td></tr>
-<tr class="memdesc:a5f246c0b6a2829cb6dd6fc42643a1eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an arbitrary temporary iterable.  <br /></td></tr>
-<tr class="separator:a5f246c0b6a2829cb6dd6fc42643a1eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f718f7e607de02a893abc57c5ca77eb" id="r_a2f718f7e607de02a893abc57c5ca77eb"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
+<tr class="memitem:a2f718f7e607de02a893abc57c5ca77eb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">dereference</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">iterator_value</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a2f718f7e607de02a893abc57c5ca77eb">generatorFrom</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">list</a>)</td></tr>
+<tr class="memdesc:a2f718f7e607de02a893abc57c5ca77eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an arbitrary iterable.  <br /></td></tr>
+<tr class="separator:a2f718f7e607de02a893abc57c5ca77eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73061e6487be2958a271fc2f13de722a" id="r_a73061e6487be2958a271fc2f13de722a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
+<tr class="memitem:a73061e6487be2958a271fc2f13de722a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">dereference</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">iterator_value</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#a73061e6487be2958a271fc2f13de722a">generatorFrom</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&amp;<a class="el" href="classz_1_1core_1_1array.html">list</a>)</td></tr>
+<tr class="memdesc:a73061e6487be2958a271fc2f13de722a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an arbitrary temporary iterable.  <br /></td></tr>
+<tr class="separator:a73061e6487be2958a271fc2f13de722a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae24a96ef3b3eb94ad9586ab5380d93d2" id="r_ae24a96ef3b3eb94ad9586ab5380d93d2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </td></tr>
 <tr class="memitem:ae24a96ef3b3eb94ad9586ab5380d93d2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">array</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacez_1_1core.html#ae24a96ef3b3eb94ad9586ab5380d93d2">generatorFrom</a> (std::initializer_list&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; <a class="el" href="classz_1_1core_1_1array.html">list</a>)</td></tr>
 <tr class="memdesc:ae24a96ef3b3eb94ad9586ab5380d93d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generator from an initializer list.  <br /></td></tr>
@@ -306,8 +312,8 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Section containing core functions and classes. </p>
 <p>This section adds core functionality and is required as it is often referenced by other parts of the library. It can be used by itself, however, as it does not require any libraries besides STL. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="afbd408260041173278c3228d75f51d49" name="afbd408260041173278c3228d75f51d49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbd408260041173278c3228d75f51d49">&#9670;&#160;</a></span>deref_type</h2>
+<a id="a688f17fa185dc12108c00589496f584c" name="a688f17fa185dc12108c00589496f584c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a688f17fa185dc12108c00589496f584c">&#9670;&#160;</a></span>dereference</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +321,7 @@ Variables</h2></td></tr>
 template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">using</a> <a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">z::core::deref_type</a> = <a class="el" href="classz_1_1core_1_1array.html">typedef</a> std::remove_const_t&lt;std::remove_reference_t&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(*std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">T</a>&gt;().begin())&gt;())&gt; &gt;</td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">using</a> <a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">z::core::dereference</a> = <a class="el" href="classz_1_1core_1_1array.html">typedef</a> std::remove_const_t&lt;std::remove_reference_t&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(*std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">T</a>&gt;().begin())&gt;())&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -330,8 +336,8 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
-<a id="adc68cd4e3164b3173321582824a981e6" name="adc68cd4e3164b3173321582824a981e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc68cd4e3164b3173321582824a981e6">&#9670;&#160;</a></span>iter_type</h2>
+<a id="af4787259b26eb6edc9cc58dcdf8ed594" name="af4787259b26eb6edc9cc58dcdf8ed594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4787259b26eb6edc9cc58dcdf8ed594">&#9670;&#160;</a></span>iterator_value</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,12 +345,12 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">using</a> <a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">z::core::iter_type</a> = <a class="el" href="classz_1_1core_1_1array.html">typedef</a> std::remove_const_t&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">T</a>&gt;().begin())&gt;</td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">using</a> <a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">z::core::iterator_value</a> = <a class="el" href="classz_1_1core_1_1array.html">typedef</a> std::remove_const_t&lt;<a class="el" href="classz_1_1core_1_1array.html">decltype</a>(std::declval&lt;<a class="el" href="classz_1_1core_1_1array.html">T</a>&gt;().begin())&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The type of the iterator for an iterable. This is used to determine the type of iterator that the generator will use. </p>
+<p>The type of the value that an iterator generates. This is used to determine the type of iterator that the generator will use. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td></td></tr>
@@ -473,8 +479,8 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
-<a id="a5f246c0b6a2829cb6dd6fc42643a1eb8" name="a5f246c0b6a2829cb6dd6fc42643a1eb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f246c0b6a2829cb6dd6fc42643a1eb8">&#9670;&#160;</a></span>generatorFrom() <span class="overload">[2/5]</span></h2>
+<a id="a73061e6487be2958a271fc2f13de722a" name="a73061e6487be2958a271fc2f13de722a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73061e6487be2958a271fc2f13de722a">&#9670;&#160;</a></span>generatorFrom() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -482,7 +488,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">deref_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">iter_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt; z::core::generatorFrom </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">dereference</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, std::pair&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">iterator_value</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; &gt; z::core::generatorFrom </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
@@ -508,8 +514,8 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
-<a id="a4e5ffeedc1e230e70557bd750306515e" name="a4e5ffeedc1e230e70557bd750306515e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e5ffeedc1e230e70557bd750306515e">&#9670;&#160;</a></span>generatorFrom() <span class="overload">[3/5]</span></h2>
+<a id="a2f718f7e607de02a893abc57c5ca77eb" name="a2f718f7e607de02a893abc57c5ca77eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f718f7e607de02a893abc57c5ca77eb">&#9670;&#160;</a></span>generatorFrom() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -517,7 +523,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#afbd408260041173278c3228d75f51d49">deref_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="namespacez_1_1core.html#adc68cd4e3164b3173321582824a981e6">iter_type</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; z::core::generatorFrom </td>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c">dereference</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt;, <a class="el" href="namespacez_1_1core.html#af4787259b26eb6edc9cc58dcdf8ed594">iterator_value</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a> &gt; &gt; z::core::generatorFrom </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
@@ -1001,7 +1007,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string containing all elements in order, separated by the delimiter.</dd></dl>
 <dl class="section user"><dt>Re-Entry: This function is thread-safe. Simultaneous calls will not cause data races.</dt><dd></dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="array_8cpp-example.html#a1">array.cpp</a>, <a class="el" href="chainGenerators_8cpp-example.html#a2">chainGenerators.cpp</a>, <a class="el" href="generator_8cpp-example.html#a0">generator.cpp</a>, and <a class="el" href="range_8cpp-example.html#a0">range.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="array_8cpp-example.html#a1">array.cpp</a>, <a class="el" href="chainGenerators_8cpp-example.html#a2">chainGenerators.cpp</a>, <a class="el" href="generator_8cpp-example.html#a0">generator.cpp</a>, <a class="el" href="generatorChunking_8cpp-example.html#a0">generatorChunking.cpp</a>, and <a class="el" href="range_8cpp-example.html#a0">range.cpp</a>.</dd>
 </dl>
 
 </div>
@@ -1397,7 +1403,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A generator that outputs a regular sequence of integers in the range. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="chainGenerators_8cpp-example.html#a3">chainGenerators.cpp</a>, <a class="el" href="generator_8cpp-example.html#a1">generator.cpp</a>, <a class="el" href="generatorSentinel_8cpp-example.html#a0">generatorSentinel.cpp</a>, and <a class="el" href="range_8cpp-example.html#a1">range.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="chainGenerators_8cpp-example.html#a3">chainGenerators.cpp</a>, <a class="el" href="generator_8cpp-example.html#a1">generator.cpp</a>, <a class="el" href="generatorChunking_8cpp-example.html#a1">generatorChunking.cpp</a>, <a class="el" href="generatorSentinel_8cpp-example.html#a0">generatorSentinel.cpp</a>, and <a class="el" href="range_8cpp-example.html#a1">range.cpp</a>.</dd>
 </dl>
 
 </div>
