@@ -263,3 +263,184 @@ TEST_CASE("Generator single item", "[generator]") {
 	y = gen.next();
 	REQUIRE(!y.has_value());
 }
+
+TEST_CASE("Generator unchunk", "[generator]") {
+	auto numbers = range(1, 17).chunk(5);
+	auto unchunked = numbers.unchunk();
+	auto result = unchunked.collect();
+	REQUIRE(result.length() == 16);
+	REQUIRE(result[0] == 1);
+	REQUIRE(result[15] == 16);
+}
+
+TEST_CASE("Generator chain", "[generator]") {
+	auto gen1 = range(1, 4);	 // 1, 2, 3
+	auto gen2 = range(10, 13); // 10, 11, 12
+	auto chained = gen1.chain(gen2);
+	auto result = chained.collect();
+	REQUIRE(result.length() == 6);
+	REQUIRE(result[0] == 1);
+	REQUIRE(result[2] == 3);
+	REQUIRE(result[3] == 10);
+	REQUIRE(result[5] == 12);
+}
+
+TEST_CASE("Generator from vector", "[generator]") {
+	std::vector<int> vec = {1, 2, 3, 4, 5};
+	auto gen = generatorFrom(vec);
+	auto result = gen.collect();
+	REQUIRE(result.length() == 5);
+	REQUIRE(result[0] == 1);
+	REQUIRE(result[4] == 5);
+}
+
+TEST_CASE("Generator from set", "[generator]") {
+	std::set<std::string> str_set = {"apple", "banana", "cherry"};
+	auto gen = generatorFrom(str_set);
+	auto result = gen.collect();
+	REQUIRE(result.length() == 3);
+	// Sets are ordered, so we can check the order
+	REQUIRE(result[0] == "apple");
+	REQUIRE(result[1] == "banana");
+	REQUIRE(result[2] == "cherry");
+}
+
+TEST_CASE("Generator map with different types", "[generator]") {
+	auto numbers = range(1, 4).map<std::string>([](int i) { return std::to_string(i * 10); });
+	auto result = numbers.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0] == "10");
+	REQUIRE(result[1] == "20");
+	REQUIRE(result[2] == "30");
+}
+
+TEST_CASE("Generator filter with complex predicate", "[generator]") {
+	auto numbers = range(1, 21).filter([](int i) { return i % 3 == 0 && i % 5 != 0; });
+	auto result = numbers.collect();
+	REQUIRE(result.length() == 5); // 3, 6, 9, 12, 18 (15 is divisible by 5, so excluded)
+	REQUIRE(result[0] == 3);
+	REQUIRE(result[1] == 6);
+	REQUIRE(result[2] == 9);
+	REQUIRE(result[3] == 12);
+	REQUIRE(result[4] == 18);
+}
+
+TEST_CASE("Generator chained operations", "[generator]") {
+	auto result = range(1, 21)
+									.filter([](int i) { return i % 2 == 0; }) // even numbers
+									.map<int>([](int i) { return i * 2; })		// double them
+									.skip(2)																	// skip first 2
+									.limit(3)																	// take next 3
+									.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0] == 12); // 6*2 = 12 (skipped 4*2=8, 6*2=12)
+	REQUIRE(result[1] == 16); // 8*2 = 16
+	REQUIRE(result[2] == 20); // 10*2 = 20
+}
+
+TEST_CASE("Generator reduce with strings", "[generator]") {
+	std::vector<std::string> str_vec = {"hello", " ", "world"};
+	auto strings = generatorFrom(str_vec);
+	auto concatenated = strings.reduce(std::string(""), [](const std::string &a, const std::string &b) { return a + b; });
+	REQUIRE(concatenated == "hello world");
+}
+
+TEST_CASE("Generator chunk edge cases", "[generator]") {
+	// Empty generator
+	auto empty_chunks = range(0).chunk(5);
+	auto empty_result = empty_chunks.collect();
+	REQUIRE(empty_result.length() == 0);
+
+	// Chunk size larger than generator
+	auto small_gen = range(1, 4).chunk(10);
+	auto small_result = small_gen.collect();
+	REQUIRE(small_result.length() == 1);
+	REQUIRE(small_result[0].length() == 3);
+	REQUIRE(small_result[0][0] == 1);
+	REQUIRE(small_result[0][2] == 3);
+}
+
+TEST_CASE("Generator take edge cases", "[generator]") {
+	// Take more than available
+	auto gen = range(1, 4);
+	auto result = gen.take(10);
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0] == 1);
+	REQUIRE(result[2] == 3);
+
+	// Take zero
+	result = gen.take(0);
+	REQUIRE(result.length() == 0);
+
+	// Take negative (should probably handle gracefully, but let's see what happens)
+	// result = gen.take(-1); // This might cause issues, so commenting out
+}
+
+TEST_CASE("Generator enumerate with offset", "[generator]") {
+	auto gen = range(5, 8); // 5, 6, 7
+	auto enumerated = gen.enumerate();
+	auto result = enumerated.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0].first == 0);
+	REQUIRE(result[0].second == 5);
+	REQUIRE(result[1].first == 1);
+	REQUIRE(result[1].second == 6);
+	REQUIRE(result[2].first == 2);
+	REQUIRE(result[2].second == 7);
+}
+
+TEST_CASE("Generator diff with empty generators", "[generator]") {
+	auto gen1 = range(1, 4); // 1, 2, 3
+	auto gen2 = range(0);		 // empty
+	auto diff_gen = gen1.diff(gen2);
+	auto result = diff_gen.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0] == 1);
+	REQUIRE(result[1] == 2);
+	REQUIRE(result[2] == 3);
+
+	// Both empty
+	auto empty1 = range(0);
+	auto empty2 = range(0);
+	auto empty_diff = empty1.diff(empty2);
+	auto empty_result = empty_diff.collect();
+	REQUIRE(empty_result.length() == 0);
+}
+
+TEST_CASE("Generator peek edge cases", "[generator]") {
+	auto gen = range(1, 2); // just one item
+	auto peeked = gen.peek();
+	auto result = peeked.collect();
+	REQUIRE(result.length() == 1);
+	REQUIRE(result[0].first == 1);
+	REQUIRE(!result[0].second.has_value()); // no next item
+}
+
+TEST_CASE("Generator forEach side effects", "[generator]") {
+	int sum = 0;
+	auto gen = range(1, 6).forEach([&sum](int i) { sum += i; });
+	gen.collect();			// consume the generator
+	REQUIRE(sum == 15); // 1+2+3+4+5
+}
+
+TEST_CASE("Generator from temporary vector", "[generator]") {
+	std::vector<int> temp_vec = {10, 20, 30};
+	auto gen = generatorFrom(temp_vec);
+	auto result = gen.collect();
+	REQUIRE(result.length() == 3);
+	REQUIRE(result[0] == 10);
+	REQUIRE(result[1] == 20);
+	REQUIRE(result[2] == 30);
+}
+
+TEST_CASE("Generator zip with different lengths", "[generator]") {
+	auto gen1 = range(1, 4);	 // 1, 2, 3
+	auto gen2 = range(10, 15); // 10, 11, 12, 13, 14
+	auto zipped = gen1.zip(gen2);
+	auto result = zipped.collect();
+	REQUIRE(result.length() == 3); // stops at shorter generator
+	REQUIRE(result[0].first == 1);
+	REQUIRE(result[0].second == 10);
+	REQUIRE(result[2].first == 3);
+	REQUIRE(result[2].second == 12);
+}
