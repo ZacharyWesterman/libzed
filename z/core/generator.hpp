@@ -552,8 +552,8 @@ public:
  * @return A generator that will yield the items from the iterable.
  */
 template <typename T>
-generator<dereference<T>, iterator_value<T>> generatorFrom(const T &list) {
-	return generator<dereference<T>, iterator_value<T>>(list.begin(), [&list](iterator_value<T> &iter) -> std::optional<dereference<T>> {
+generator<dereference<T>, const_iterator_value<T>> generatorFrom(const T &list) {
+	return generator<dereference<T>, const_iterator_value<T>>(list.begin(), [&list](const_iterator_value<T> &iter) -> std::optional<dereference<T>> {
 		if (iter != list.end()) {
 			auto ret = *iter;
 			++iter; // Move to the next item
@@ -591,7 +591,7 @@ generator<dereference<T>, std::pair<T, iterator_value<T>>> generatorFrom(const T
  */
 template <typename T>
 generator<T, std::pair<array<T>, long>> generatorFrom(std::initializer_list<T> list) {
-	return generator<T, std::pair<array<T>, long>>({list, 0}, [&list](std::pair<array<T>, long> &state) -> std::optional<T> {
+	return generator<T, std::pair<array<T>, long>>({list, 0}, [](std::pair<array<T>, long> &state) -> std::optional<T> {
 		if (state.second < state.first.length()) {
 			return state.first[state.second++];
 		}

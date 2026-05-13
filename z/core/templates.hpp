@@ -26,6 +26,14 @@ template <typename T>
 using iterator_value = std::remove_const_t<decltype(std::declval<T>().begin())>;
 
 /**
+ * @brief The type of a const iterator from a const reference to a container.
+ * This is used when iterating over a const reference to ensure proper const_iterator deduction.
+ * @tparam T
+ */
+template <typename T>
+using const_iterator_value = decltype(std::declval<const T&>().begin());
+
+/**
  * @brief The default specialization for types that are not iterators.
  * @tparam T
  */
