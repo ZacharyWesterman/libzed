@@ -188,7 +188,7 @@ template <typename T, typename = void>
 struct has_iterator : std::false_type {};
 
 template <typename T>
-struct has_iterator<T, std::void_t<decltype(std::declval<T>().begin())>> : std::true_type {};
+struct has_iterator<T, std::void_t<decltype(std::begin(std::declval<T>()))>> : std::true_type {};
 
 /**
  * @brief The type of the dereferenced value from an iterable.
@@ -203,8 +203,18 @@ using deref_type = std::remove_const_t<std::remove_reference_t<decltype(*std::de
  * This is used to determine the type of iterator that the generator will use.
  * @tparam T
  */
-template <typename T, typename std::enable_if<z::core::has_iterator<T>::value, int>::type = 0>
+template <typename T>
 using iter_type = std::remove_const_t<decltype(std::declval<T>().begin())>;
+
+template <typename T, typename S>
+class generator;
+
+template <typename T, typename S>
+struct unchunkData {
+	std::optional<T> data;
+	std::optional<iter_type<T>> iter;
+	generator<T, S> gen;
+};
 
 /**
  * @brief An arbitrary generator for producing sequential results on-the-fly.
@@ -594,20 +604,14 @@ public:
 		});
 	}
 
-	template <typename U = T, typename std::enable_if<z::core::has_iterator<U>::value, int>::type = 0>
-	struct unchunkData {
-		std::optional<T> data;
-		std::optional<iter_type<T>> iter;
-		generator gen;
-	};
-
 	/**
 	 * @brief Break up a chunked generator into its constituent generated items.
+	 * @return A new generator that yields the individual items that were previously yielded in chunks.
+	 * @note This member function is only enabled if the current generator yields iterables.
 	 */
-	template <typename U = T, typename std::enable_if<z::core::has_iterator<U>::value, int>::type = 0>
-	generator<iter_type<T>, unchunkData<T>> unchunk() noexcept {
-
-		auto unchunkFn = [](unchunkData<T> &state) -> std::optional<iter_type<T>> {
+	template <typename U = T, typename std::enable_if<has_iterator<U>::value, int>::type = 0>
+	auto unchunk() noexcept {
+		auto unchunkFn = [](unchunkData<T, S> &state) -> std::optional<deref_type<T>> {
 			// If the generator has not been initialized,
 			// or there is no more data in the chunk,
 			// then try to generate another chunk.
@@ -624,18 +628,24 @@ public:
 					return {};
 				}
 
-				state.data = val;
-				state.iter = val.begin();
+				state.data = chunkData;
+				state.iter = state.data.value().begin();
 			}
 
 			// At this point the generator has been initialized, and current chunk has data in it,
 			// so spit out the next value on the chunk.
-			auto &iter = state.iter.value();
-			return *(iter++);
+
+			return *state.iter.value()++;
 		};
 
-		return generator<iter_type<T>, unchunkData<T>>({{}, {}, *this}, unchunkFn);
+		return generator<deref_type<T>, unchunkData<T, S>>({{}, {}, *this}, unchunkFn);
 	}
+
+	// template <typename U = T, typename std::enable_if<has_iterator<U>::value, int>::type = 0>
+	// auto foo() {
+	// 	static_assert(has_iterator<U>::value, "AAAAAA");
+	// 	return next().value().begin();
+	// }
 
 	/**
 	 * @brief Allow peeking at the next item in the generator as items are generated.
