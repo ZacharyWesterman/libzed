@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.39</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.40</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('customGenerator_8cpp-example.html','')
 <div class="line">    <span class="comment">// Build the generator and unchunk it.</span></div>
 <div class="line">    <span class="comment">// This generator yields one post/value at a time,</span></div>
 <div class="line">    <span class="comment">// only fetching the next page when it needs to.</span></div>
-<div class="line">    <span class="keyword">auto</span> myGenerator = generator&lt;std::array&lt;int, 5&gt;, <span class="keywordtype">int</span>&gt;(0, getNextPage).unchunk();</div>
+<div class="line">    <span class="keyword">auto</span> myGenerator = generator&lt;std::array&lt;int, 5&gt;, <span class="keywordtype">int</span>&gt;(0, getNextPage).flatten();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> value : myGenerator) {</div>
 <div class="line">        std::cout &lt;&lt; value &lt;&lt; std::endl;</div>

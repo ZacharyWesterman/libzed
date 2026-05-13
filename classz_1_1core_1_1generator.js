@@ -11,6 +11,7 @@ var classz_1_1core_1_1generator =
     [ "end", "classz_1_1core_1_1generator.html#ab12096aae4067dea270547cd343c1671", null ],
     [ "enumerate", "classz_1_1core_1_1generator.html#aeb2c3c3969709b1846e3d80ea68d4682", null ],
     [ "filter", "classz_1_1core_1_1generator.html#a199cb0acbf05782f7ea518f59ee2bb53", null ],
+    [ "flatten", "classz_1_1core_1_1generator.html#ab145f434041830c7422fb9c4e7bd41cc", null ],
     [ "forEach", "classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8", null ],
     [ "limit", "classz_1_1core_1_1generator.html#ad8b1388677d26c4638462a82c23288d0", null ],
     [ "map", "classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077", null ],
@@ -20,6 +21,5 @@ var classz_1_1core_1_1generator =
     [ "skip", "classz_1_1core_1_1generator.html#a5a66da1ecceb029682b08d2a71a75e79", null ],
     [ "skip", "classz_1_1core_1_1generator.html#abe1e55d1a360b9e0cd63c8199d3d258b", null ],
     [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
-    [ "unchunk", "classz_1_1core_1_1generator.html#a33cd0c625be499808bfcd8f3c6198939", null ],
     [ "zip", "classz_1_1core_1_1generator.html#a04f8632cb95ca278669cfe68e2f8d081", null ]
 ];

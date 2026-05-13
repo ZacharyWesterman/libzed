@@ -7,12 +7,13 @@ var searchData=
   ['findinsert_4',['findInsert',['../classz_1_1core_1_1sortedArray.html#ac6dfb18cdfcffdbaea58277aa8afb473',1,'z::core::sortedArray']]],
   ['findlast_5',['findLast',['../classz_1_1core_1_1string.html#a515118a25d1706ee8e91754c30d55218',1,'z::core::string']]],
   ['findpermutations_6',['findPermutations',['../classz_1_1util_1_1dictionary.html#a0ef68a6c6d94ea37d5eecea064dd6695',1,'z::util::dictionary']]],
-  ['floating_7',['floating',['../classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1',1,'z::core::string']]],
-  ['foreach_8',['forEach',['../classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8',1,'z::core::generator']]],
-  ['format_9',['format',['../classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8',1,'z::core::string']]],
-  ['found_10',['found',['../classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672',1,'z::core::string']]],
-  ['foundat_11',['foundAt',['../classz_1_1core_1_1string.html#ad88d54285e20d23be6bb69edfef9ebbc',1,'z::core::string']]],
-  ['foundendat_12',['foundEndAt',['../classz_1_1core_1_1string.html#a2e23641e0457fa6c3b371e6b5d5e30dc',1,'z::core::string']]],
-  ['fromutf8_13',['fromUTF8',['../namespacez_1_1core.html#a2fd5b12deff70252359c9969ba92c35e',1,'z::core']]],
-  ['function_14',['function',['../classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7',1,'z::file::library']]]
+  ['flatten_7',['flatten',['../classz_1_1core_1_1generator.html#ab145f434041830c7422fb9c4e7bd41cc',1,'z::core::generator']]],
+  ['floating_8',['floating',['../classz_1_1core_1_1string.html#a3d27dfd8e5df8288d8859c087fe67cc1',1,'z::core::string']]],
+  ['foreach_9',['forEach',['../classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8',1,'z::core::generator']]],
+  ['format_10',['format',['../classz_1_1core_1_1string.html#af080f57c9f262b48e15e7d85d500e3f8',1,'z::core::string']]],
+  ['found_11',['found',['../classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672',1,'z::core::string']]],
+  ['foundat_12',['foundAt',['../classz_1_1core_1_1string.html#ad88d54285e20d23be6bb69edfef9ebbc',1,'z::core::string']]],
+  ['foundendat_13',['foundEndAt',['../classz_1_1core_1_1string.html#a2e23641e0457fa6c3b371e6b5d5e30dc',1,'z::core::string']]],
+  ['fromutf8_14',['fromUTF8',['../namespacez_1_1core.html#a2fd5b12deff70252359c9969ba92c35e',1,'z::core']]],
+  ['function_15',['function',['../classz_1_1file_1_1library.html#ab2a64f6aa686ce7b9b8653c02d7f9ab7',1,'z::file::library']]]
 ];
