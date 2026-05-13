@@ -451,7 +451,7 @@ public:
 	 * @note This member function is only enabled if the current generator yields iterables.
 	 */
 	template <typename U = T, typename std::enable_if<is_iterator<U>::value, int>::type = 0>
-	auto unchunk() noexcept {
+	auto flatten() noexcept {
 		struct unchunkData {
 			std::optional<T> data;
 			std::optional<iterator_value<T>> iter;

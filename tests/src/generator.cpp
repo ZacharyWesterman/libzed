@@ -266,7 +266,7 @@ TEST_CASE("Generator single item", "[generator]") {
 
 TEST_CASE("Generator unchunk", "[generator]") {
 	auto numbers = range(1, 17).chunk(5);
-	auto unchunked = numbers.unchunk();
+	auto unchunked = numbers.flatten();
 	auto result = unchunked.collect();
 	REQUIRE(result.length() == 16);
 	REQUIRE(result[0] == 1);

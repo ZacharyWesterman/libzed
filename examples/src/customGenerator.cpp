@@ -35,7 +35,7 @@ int main() {
 	// Build the generator and unchunk it.
 	// This generator yields one post/value at a time,
 	// only fetching the next page when it needs to.
-	auto myGenerator = generator<std::array<int, 5>, int>(0, getNextPage).unchunk();
+	auto myGenerator = generator<std::array<int, 5>, int>(0, getNextPage).flatten();
 
 	for (auto value : myGenerator) {
 		std::cout << value << std::endl;
