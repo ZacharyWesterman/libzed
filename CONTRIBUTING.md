@@ -9,4 +9,4 @@ If you want to add support for more operating systems, or any new features, bugf
 |I use [Doxygen](http://www.doxygen.org/) to document my code. All public classes, structs, enums, functions, etc. should have some documentation.|
 |Private or static entities do not *have to* have any consistency or documentation. Just no spaghetti code please, reading it physically hurts me.|
 |I use [Catch2](https://github.com/catchorg/Catch2) for unit testing. If you add new features, make sure to write tests for them! If you want to write tests for existing code, please do!|
-|I use `clang-format` to enforce code styling. Before you can make commits, you will have to have that installed.|
+|I use `clang-format` to enforce code styling, and `clang-tidy` for linting. Before you can make commits, you will at least have to have the former installed.|
