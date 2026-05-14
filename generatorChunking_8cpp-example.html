@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.40</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.41</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -117,20 +117,20 @@ $(document).ready(function(){initNavTree('generatorChunking_8cpp-example.html','
 <div class="line"> </div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Unchunking from a chunked generator:&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keyword">auto</span> gen = range(10).chunk(5);</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : gen.unchunk()) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : gen.flatten()) {</div>
 <div class="line">        std::cout &lt;&lt; item &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line">    }</div>
 <div class="line">    std::cout &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Technically, the generator doesn&#39;t need to have been chunked</span></div>
-<div class="line">    <span class="comment">// in order to be unchunked; it just needs to yield objects with an iterator.</span></div>
+<div class="line">    <span class="comment">// in order to be flattened; it just needs to yield objects with an iterator.</span></div>
 <div class="line">    <span class="comment">// In this example, the yield from notChunked would be pairs of numbers,</span></div>
-<div class="line">    <span class="comment">// but we can call `unchunk()` to just yield individual numbers from the list.</span></div>
+<div class="line">    <span class="comment">// but we can call `flatten()` to just yield individual numbers from the list.</span></div>
 <div class="line">    std::vector&lt;std::vector&lt;int&gt;&gt; listOfLists{{0, 1}, {2, 3}, {4, 5}, {6, 7}, {8, 9}};</div>
 <div class="line">    <span class="keyword">auto</span> notChunked = generatorFrom(listOfLists);</div>
 <div class="line"> </div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Unchunking from an arbitrary iterator:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : notChunked.unchunk()) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> item : notChunked.flatten()) {</div>
 <div class="line">        std::cout &lt;&lt; item &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line">    }</div>
 <div class="line">    std::cout &lt;&lt; std::endl;</div>
