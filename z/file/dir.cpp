@@ -1,13 +1,13 @@
 #include "dir.hpp"
 
 #include <stdio.h>
-#ifdef _WIN32
+#if defined(_WIN32)
 #include <direct.h>
-#elif __linux__
+#elif defined(__linux__)
 #include <unistd.h>
 #define _getcwd getcwd
 #else
-#warning file::dir is incompatible with target OS!
+#warning file::dir is incompatible with target OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {

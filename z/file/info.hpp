@@ -4,8 +4,8 @@
 #include "../core/string.hpp"
 #include <sys/stat.h>
 
-#ifdef _WIN32
-#elif __linux__
+#if defined(_WIN32)
+#elif defined(__linux__)
 #define _stat stat
 #else
 #error file::info is incompatible with this OS! Please create a pull request or open an issue on GitHub.

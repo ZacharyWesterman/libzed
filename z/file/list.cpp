@@ -6,11 +6,11 @@ namespace file {
 
 dirscan::~dirscan() {
 	if (used) {
-#ifdef __linux__
+#if defined(__linux__)
 		if (dpdf) {
 			closedir(dpdf);
 		}
-#elif _WIN32
+#elif defined(_WIN32)
 		if (hFind != INVALID_HANDLE_VALUE) {
 			FindClose(hFind);
 		}
@@ -29,7 +29,7 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 		searchPath += "/";
 	}
 
-#ifdef _WIN32
+#if defined(_WIN32)
 	searchPath += "/*.";
 	searchPath += fileType;
 
@@ -111,7 +111,7 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 		searchPath += "/";
 	}
 
-#ifdef _WIN32
+#if defined(_WIN32)
 	searchPath += "/*";
 
 	WIN32_FIND_DATA fd;

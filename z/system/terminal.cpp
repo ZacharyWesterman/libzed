@@ -1,9 +1,9 @@
 #include "terminal.hpp"
 #include <iostream>
 
-#ifdef _WIN32
+#if defined(_WIN32)
 #include <windows.h>
-#elif __linux__
+#elif defined(__linux__)
 #include <sys/ioctl.h>
 #include <unistd.h>
 #else
@@ -18,7 +18,7 @@ termsize terminal(const std::ostream &stream) noexcept {
 		return {80, 24};
 	}
 
-#ifdef _WIN32
+#if defined(_WIN32)
 	auto FILE_HANDLE = (&stream == &std::cout) ? STD_OUTPUT_HANDLE : STD_ERROR_HANDLE;
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	GetConsoleScreenBufferInfo(GetStdHandle(FILE_HANDLE), &csbi);
@@ -26,7 +26,7 @@ termsize terminal(const std::ostream &stream) noexcept {
 		csbi.srWindow.Right - csbi.srWindow.Left + 1,
 		csbi.srWindow.Bottom - csbi.srWindow.Top + 1,
 	};
-#elif __linux__
+#elif defined(__linux__)
 	auto FILE_HANDLE = (&stream == &std::cout) ? STDOUT_FILENO : STDERR_FILENO;
 	winsize w;
 	ioctl(FILE_HANDLE, TIOCGWINSZ, &w);

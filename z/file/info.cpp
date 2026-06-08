@@ -39,7 +39,7 @@ bool info::directory() const noexcept {
 }
 
 bool info::symlink() const noexcept {
-#ifdef _WIN32
+#if defined(_WIN32)
 	return false;
 #else
 	return does_exist ? S_ISLNK(fileStat.st_mode) : false;

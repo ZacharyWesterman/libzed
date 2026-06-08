@@ -3,12 +3,12 @@
 #include "../core/generator.hpp"
 #include "../core/string.hpp"
 
-#ifdef __linux__
+#if defined(__linux__)
 #include <dirent.h>
-#elif _WIN32
+#elif defined(_WIN32)
 #include <windows.h>
 #else
-#error file::list is incompatible with this OS! Please create a pull request or open an issue on GitHub.
+#warning file::list is incompatible with this OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {
@@ -18,14 +18,14 @@ namespace file {
  * @brief State management struct for directory scanning generators.
  */
 struct dirscan {
-#ifdef __linux__
+#if defined(__linux__)
 	/// Directory handle.
 	DIR *dpdf;
 	/// File handle.
 	dirent *epdf;
 	/// The file type to filter by.
 	zpath fileType;
-#elif _WIN32
+#elif defined(_WIN32)
 	/// Directory handle.
 	WIN32_FIND_DATA fd;
 	/// File handle.

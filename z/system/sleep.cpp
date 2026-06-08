@@ -1,19 +1,19 @@
 #include "sleep.hpp"
 
-#ifdef __linux__
+#if defined(__linux__)
 #include <unistd.h>
-#elif _WIN32
+#elif defined(_WIN32)
 #include <windows.h>
 #else
-#error "system::sleep() is incompatible with this OS! Please create a pull request or open an issue on GitHub."
+#warning system::sleep() is incompatible with this OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {
 namespace system {
 void sleep(double ms) noexcept {
-#ifdef _WIN32
+#if defined(_WIN32)
 	Sleep(ms);
-#else
+#elif defined(__linux__)
 	usleep(ms * 1000);
 #endif
 }

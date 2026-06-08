@@ -2,12 +2,12 @@
 
 #include <stdint.h>
 
-#ifdef _WIN32
+#if defined(_WIN32)
 #include <windows.h>
-#elif __linux__
+#elif defined(__linux__)
 #include <dlfcn.h>
 #else
-#warning file::library is incompatible with target OS!
+#warning file::library is incompatible with target OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {
@@ -22,7 +22,7 @@ library::~library() noexcept {
 
 bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 	auto fname = fileName;
-#ifdef _WIN32
+#if defined(_WIN32)
 	if (autoExtension) {
 		fname.append(".dll");
 	}
@@ -31,7 +31,7 @@ bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 	}
 	lib_ptr = (void *)LoadLibrary((char *)fname.cstring());
 	return (bool)lib_ptr;
-#elif __linux__
+#elif defined(__linux__)
 	if (autoExtension) {
 		fname.append(".so");
 	}
@@ -46,13 +46,13 @@ bool library::load(const zpath &fileName, bool autoExtension) noexcept {
 }
 
 bool library::unload() noexcept {
-#ifdef _WIN32
+#if defined(_WIN32)
 	if (lib_ptr) {
 		return !FreeLibrary((HMODULE)lib_ptr);
 	} else {
 		return true;
 	}
-#elif __linux__
+#elif defined(__linux__)
 	if (lib_ptr) {
 		bool result = !dlclose(lib_ptr);
 		lib_ptr = nullptr;
@@ -75,11 +75,11 @@ bool library::bad() noexcept {
 
 void *library::getRawSymbol(const zpath &symbol_name) noexcept {
 	void *symbol_pointer = NULL;
-#ifdef _WIN32
+#if defined(_WIN32)
 	if (lib_ptr) {
 		symbol_pointer = (void *)GetProcAddress((HMODULE)lib_ptr, (const char *)symbol_name.cstring());
 	}
-#elif __linux__
+#elif defined(__linux__)
 	if (lib_ptr) {
 		symbol_pointer = dlsym(lib_ptr, (const char *)symbol_name.cstring());
 	}

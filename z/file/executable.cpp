@@ -6,7 +6,7 @@
 #include <unistd.h>
 #define _getcwd getcwd
 #else
-#warning file::dir is incompatible with target OS!
+#warning file::dir is incompatible with target OS! Please create a pull request or open an issue on GitHub.
 #endif
 
 namespace z {
