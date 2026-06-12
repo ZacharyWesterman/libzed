@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.42</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.43</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -105,32 +105,43 @@ $(document).ready(function(){initNavTree('rot13_8cpp-example.html',''); initResi
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;z/all.hpp&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="comment">// Caesar cipher function</span></div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keywordtype">int</span> N&gt;</div>
+<div class="line"><span class="keyword">auto</span> rot(uint32_t chr) -&gt; uint32_t {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a id="a0" name="a0"></a><a class="code hl_function" href="namespacez_1_1core.html#aa86737949f8bfaf7e1dea7521844dcc2">z::core::isLowerAlpha</a>(chr)) {</div>
+<div class="line">        <span class="keywordflow">return</span> ((chr - <span class="charliteral">&#39;a&#39;</span>) + N) % 26 + <span class="charliteral">&#39;a&#39;</span>;</div>
+<div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#addca9f54924ac118f2d95943e465522a">z::core::isUpperAlpha</a>(chr)) {</div>
+<div class="line">        <span class="keywordflow">return</span> ((chr - <span class="charliteral">&#39;A&#39;</span>) + N) % 26 + <span class="charliteral">&#39;A&#39;</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> chr;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Alias strings that can also perform rot13.</span></div>
+<div class="line"><span class="keyword">const</span> <a id="_a2" name="_a2"></a><a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a> from = <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a> to = <span class="stringliteral">&quot;nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM&quot;</span>;</div>
+<div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">    <a id="_a0" name="_a0"></a><a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a> from = <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</div>
-<div class="line">    <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a> to = <span class="stringliteral">&quot;nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM&quot;</span>;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; argc; ++i) {</div>
-<div class="line">        <span class="comment">// The easiest way is to use a set of characters to perform the cipher.</span></div>
-<div class="line">        (<a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a>(argv[i]) + <span class="stringliteral">&quot; &quot;</span>).cipher(from, to).<a id="a1" name="a1"></a><a class="code hl_function" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::cout);</div>
+<div class="line">        <span class="keyword">auto</span> str = <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a>(argv[i]) + <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// The easiest way is to use two sets of characters to perform the cipher.</span></div>
+<div class="line">        <span class="comment">// These just map characters from one to the other.</span></div>
+<div class="line">        str.<a id="a3" name="a3"></a><a class="code hl_function" href="classz_1_1core_1_1string.html#a72ae5d2fc435785b37d925ed97362c12">cipher</a>(from, to).<a id="a4" name="a4"></a><a class="code hl_function" href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">write</a>(std::cout);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Alternatively, you can pass a function in to perform the cipher.</span></div>
-<div class="line">        <span class="comment">// This is almost always faster than mapping with the `to`/`from` strings.</span></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">        (zstring(argv[i]) + &quot; &quot;).cipher([](auto chr) {</span></div>
-<div class="line"><span class="comment">            if (z::core::isLowerAlpha(chr)) {</span></div>
-<div class="line"><span class="comment">                return ((chr - &#39;a&#39;) + 13) % 26 + &#39;a&#39;;</span></div>
-<div class="line"><span class="comment">            } else if (z::core::isUpperAlpha(chr)) {</span></div>
-<div class="line"><span class="comment">                return ((chr - &#39;A&#39;) + 13) % 26 + &#39;A&#39;;</span></div>
-<div class="line"><span class="comment">            }</span></div>
-<div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment">            return chr;</span></div>
-<div class="line"><span class="comment">        }).write(std::cout);</span></div>
-<div class="line"><span class="comment">        */</span></div>
+<div class="line">        <span class="comment">// This is almost always faster than mapping with the `to`/`from` strings,</span></div>
+<div class="line">        <span class="comment">// And allows for more dynamic ciphers.</span></div>
+<div class="line">        str.cipher(rot&lt;13&gt;).write(std::cout);</div>
 <div class="line">    }</div>
-<div class="line">    <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a>().<a id="a2" name="a2"></a><a class="code hl_function" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
+<div class="line">    <a class="code hl_class" href="classz_1_1core_1_1string.html">zstring</a>().<a id="a5" name="a5"></a><a class="code hl_function" href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">writeln</a>(std::cout);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html"><div class="ttname"><a href="classz_1_1core_1_1string.html">z::core::string</a></div><div class="ttdoc">A template class for character strings.</div><div class="ttdef"><b>Definition</b> string.hpp:62</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_a688c43a5c734afd91175627f9ed52172"><div class="ttname"><a href="classz_1_1core_1_1string.html#a688c43a5c734afd91175627f9ed52172">z::core::string::write</a></div><div class="ttdeci">void write(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in that stream's encoding.</div><div class="ttdef"><b>Definition</b> string.hpp:1496</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1string_html_a72ae5d2fc435785b37d925ed97362c12"><div class="ttname"><a href="classz_1_1core_1_1string.html#a72ae5d2fc435785b37d925ed97362c12">z::core::string::cipher</a></div><div class="ttdeci">string cipher(const string &amp;keys, const string &amp;values) const noexcept</div><div class="ttdoc">Convert this string from one set of characters to another.</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1string_html_af2a16811f381346862dad279bdb8cd09"><div class="ttname"><a href="classz_1_1core_1_1string.html#af2a16811f381346862dad279bdb8cd09">z::core::string::writeln</a></div><div class="ttdeci">void writeln(std::ostream &amp;stream) const noexcept</div><div class="ttdoc">Write string data to a stream in its format, appending a newline.</div><div class="ttdef"><b>Definition</b> string.hpp:1507</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_aa86737949f8bfaf7e1dea7521844dcc2"><div class="ttname"><a href="namespacez_1_1core.html#aa86737949f8bfaf7e1dea7521844dcc2">z::core::isLowerAlpha</a></div><div class="ttdeci">bool isLowerAlpha(uint32_t ch) noexcept</div><div class="ttdoc">Check if the given character is a lowercase alphabetic character.</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_addca9f54924ac118f2d95943e465522a"><div class="ttname"><a href="namespacez_1_1core.html#addca9f54924ac118f2d95943e465522a">z::core::isUpperAlpha</a></div><div class="ttdeci">bool isUpperAlpha(uint32_t ch) noexcept</div><div class="ttdoc">Check if the given character is an uppercase alphabetic character.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
