@@ -1,4 +1,5 @@
-// Unlike arrays, generators are not stored in memory. They are evaluated on the fly.
+// Unlike arrays, generators may not have their entire contents stored in memory.
+// Instead, they're designed to be evaluated on the fly when needed.
 // This makes them significantly more memory-efficient for large ranges of data.
 // Both arrays and generators can be iterated over, and have similar functions like map, filter, and reduce.
 // However, generators do not have all the functions that arrays do;
