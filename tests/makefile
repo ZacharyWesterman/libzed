@@ -27,18 +27,25 @@ pristine: clean
 	rm -rf venv
 
 coverage: coverage.txt
+
+coverage.svg: coverage.txt
+coverage.html: coverage.txt
 coverage.txt: $(COVS) venv/bin/gcovr
 	( \
 		. venv/bin/activate; \
-		gcovr -r .. src --exclude src/catch --exclude src --txt $@ \
+		gcovr -r .. src --exclude src/catch --exclude src --txt $@ --html coverage.html \
 	)
-coverage.html: $(COVS) venv/bin/gcovr
 	( \
-		. venv/bin/activate; \
-		gcovr -r .. src --exclude src/catch --exclude src --html $@ \
+		percent="$$(grep TOTAL coverage.txt | awk '{print $$4}')"; \
+		percent="$${percent%?}"; \
+		color=red; \
+		[ "$$percent" -ge 60 ] && color=orange \
+		[ "$$percent" -ge 75 ] && color=yellow; \
+		[ "$$percent" -ge 90 ] && color=green; \
+		wget "https://img.shields.io/badge/Coverage-$$percent%25-$$color" -O coverage.svg; \
 	)
 
-%.gcov: % makefile src/array.gcda
+%.gcov: % src/array.gcda
 	gcov $< -t >$@
 
 src/array.gcda: bin/run_tests

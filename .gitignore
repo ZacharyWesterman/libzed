@@ -17,3 +17,4 @@ Doxypages/examples.dox
 venv/
 coverage.txt
 coverage.html
+coverage.svg

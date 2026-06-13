@@ -14,11 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Dependencies
-      run: sudo apt-get install -y --no-install-recommends doxygen graphviz
+      run: sudo apt-get install -y --no-install-recommends doxygen graphviz python3
+    - name: Fetch Repo
+      run: git fetch --unshallow
+    - name: Generate Code Coverage Page
+      run: make coverage -j32
     - name: Build Documentation
-      run: |
-        git fetch --unshallow
-        make docs
+      run: make docs
     - name: Deploy Documentation
       uses: peaceiris/actions-gh-pages@v3.9.3
       with:
