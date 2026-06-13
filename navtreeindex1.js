@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#aac2d440a910caf4f4bc2b8d6e503ea0a":[3,0,0,0,19,71],
 "classz_1_1core_1_1string.html#aac3d553c79a0a897becf916d6d2c5469":[3,0,0,0,19,87],
 "classz_1_1core_1_1string.html#aad85554f78e55c0f0b618877f623a8e2":[3,0,0,0,19,74],
 "classz_1_1core_1_1string.html#ab0b59dd1ca9c56818ab5479984eb85bc":[3,0,0,0,19,31],
@@ -152,8 +153,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[3,3,0,3],
 "functions_e.html":[3,3,0,4],
 "functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1,0],
 "functions_func.html":[3,3,1],
+"functions_func.html":[3,3,1,0],
 "functions_func_b.html":[3,3,1,1],
 "functions_func_c.html":[3,3,1,2],
 "functions_func_d.html":[3,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "rot13_8cpp-example.html":[5,18],
 "sentinel_8hpp_source.html":[4,0,0,0,13],
 "shorten_8hpp_source.html":[4,0,0,1,17],
-"sizable_8hpp_source.html":[4,0,0,0,14],
-"size_8hpp_source.html":[4,0,0,1,18]
+"sizable_8hpp_source.html":[4,0,0,0,14]
 };

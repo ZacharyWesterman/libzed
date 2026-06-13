@@ -16,10 +16,11 @@ var classz_1_1core_1_1generator =
     [ "limit", "classz_1_1core_1_1generator.html#ad8b1388677d26c4638462a82c23288d0", null ],
     [ "map", "classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077", null ],
     [ "next", "classz_1_1core_1_1generator.html#ac1139cc0222d45acbd1dca4aa4e157d1", null ],
+    [ "pair", "classz_1_1core_1_1generator.html#afc9b4441d10c88cf15b7c529ad0dd7e2", null ],
     [ "peek", "classz_1_1core_1_1generator.html#af5afa8a3d38d2da6802faa14c5d92a27", null ],
     [ "reduce", "classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c", null ],
     [ "skip", "classz_1_1core_1_1generator.html#a5a66da1ecceb029682b08d2a71a75e79", null ],
     [ "skip", "classz_1_1core_1_1generator.html#abe1e55d1a360b9e0cd63c8199d3d258b", null ],
     [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
-    [ "zip", "classz_1_1core_1_1generator.html#a04f8632cb95ca278669cfe68e2f8d081", null ]
+    [ "zip", "classz_1_1core_1_1generator.html#aa9a94c0016c0aa760433b1f6fd1459f8", null ]
 ];
