@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.44</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.45</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Libzed </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/build-linux.yml/badge.svg" alt="build-linux" style="pointer-events: none;" class="inline"/> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/build-windows.yml/badge.svg" alt="build-windows" style="pointer-events: none;" class="inline"/> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/tests.yml/badge.svg" alt="tests" style="pointer-events: none;" class="inline"/></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/build-linux.yml/badge.svg" alt="build-linux" style="pointer-events: none;" class="inline"/> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/build-windows.yml/badge.svg" alt="build-windows" style="pointer-events: none;" class="inline"/> <img src="https://github.com/ZacharyWesterman/libzed/actions/workflows/tests.yml/badge.svg" alt="tests" style="pointer-events: none;" class="inline"/> <img src="https://zacharywesterman.github.io/libzed/coverage.svg" alt="coverage" style="pointer-events: none;" class="inline"/></p>
 <p>This library contains useful classes and functions for quick and simple data manipulation. The idea is that this will not only take the grunt work out of C++, but it will help decrease development time of other projects.</p>
 <p>In particular, the idea behind rolling a custom string class was to have better built-in support for string manipulation, as well as full support for different string formats.</p>
 <p>Currently only Linux and Windows builds are supported, as those are the only machines I own. Both 64 and 32-bit builds should be fully supported. This also does compile on the Raspberry Pi and seems stable, however, tests currently do not run on that platform.</p>
@@ -258,7 +258,8 @@ Linking to this library</h2>
 <p>Afterwards, if binary size is still an issue, stripping out symbols may help a bit. You may also be able to use <code>gzexe</code> to compress the binary and reduce size even further. Note that these tricks will <b>NOT</b> work with dll/so files, only executables! </p><div class="fragment"><div class="line">$ strip example.out --strip-all</div>
 <div class="line">$ gzexe example.out &amp;&amp; rm example.out~</div>
 </div><!-- fragment --><hr  />
-<p><a href="https://github.com/ZacharyWesterman/libzed">Download or fork this repo</a> | <a href="https://zacharywesterman.github.io/libzed">Documentation is here</a> | <a class="el" href="md_CONTRIBUTING.html">Look here if you want to contribute</a> </p>
+<p><a href="https://github.com/ZacharyWesterman/libzed">Download or fork this repo</a> | <a href="https://zacharywesterman.github.io/libzed">Documentation is here</a> | <a class="el" href="md_CONTRIBUTING.html">Look here if you want to contribute</a></p>
+<p>I use <a href="https://github.com/catchorg/Catch2">Catch2</a> for unit testing. Full test coverage is still ongoing, but you can see the <a href="https://zacharywesterman.github.io/libzed/coverage.html">current coverage report here</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
