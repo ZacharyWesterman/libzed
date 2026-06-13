@@ -3,6 +3,7 @@
 ![build-linux](https://github.com/ZacharyWesterman/libzed/actions/workflows/build-linux.yml/badge.svg)
 ![build-windows](https://github.com/ZacharyWesterman/libzed/actions/workflows/build-windows.yml/badge.svg)
 ![tests](https://github.com/ZacharyWesterman/libzed/actions/workflows/tests.yml/badge.svg)
+![coverage](https://zacharywesterman.github.io/libzed/coverage.svg)
 
 This library contains useful classes and functions for quick and simple data manipulation.
 The idea is that this will not only take the grunt work out of C++, but it will help decrease
@@ -235,6 +236,8 @@ $ gzexe example.out && rm example.out~
 [Documentation is here][docs] |
 [Look here if you want to contribute](CONTRIBUTING.md)
 
+I use [Catch2](https://github.com/catchorg/Catch2) for unit testing. Full test coverage is still ongoing, but you can see the [current coverage report here][coverage].
+
 [docs]: https://zacharywesterman.github.io/libzed
 [repo]: https://github.com/ZacharyWesterman/libzed
 [strings]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1string.html
@@ -244,3 +247,4 @@ $ gzexe example.out && rm example.out~
 [examples]: https://zacharywesterman.github.io/libzed/examples.html
 [generators]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1generator.html
 [memoization]: https://zacharywesterman.github.io/libzed/classz_1_1core_1_1memoize.html
+[coverage]: https://zacharywesterman.github.io/libzed/coverage.html

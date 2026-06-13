@@ -1,4 +1,4 @@
-#include "../../z/core.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 #define STRTEST(a) \

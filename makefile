@@ -183,6 +183,11 @@ benchmarks: static
 	$(MAKE) -C benchmarks/ STD=$(STD)
 	./benchmarks/bin/run_benchmarks "$(FILTER)"
 
+coverage-html: tests
+	make -C tests coverage.html
+coverage: tests
+	make -C tests coverage
+
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
@@ -240,6 +245,7 @@ docs: html
 html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) Doxypages/examples.dox $(wildcard examples/src/*.cpp) README.md
 	$(RMDIR) html
 	PROJECT_NUMBER=$(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) doxygen
+	cp tests/coverage.html html/ 2>/dev/null || :
 
 Doxypages/examples.dox: examples/src/*.cpp
 	@{ echo '/**'; for file in $^; do echo "@example $$(basename $$file)"; done; echo '*/'; } > $@
@@ -253,4 +259,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision coverage coverage-html

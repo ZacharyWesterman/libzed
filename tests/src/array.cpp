@@ -1,4 +1,4 @@
-#include "../../z/core/array.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 using z::core::array;
