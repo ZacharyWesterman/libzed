@@ -11,3 +11,6 @@
 #include "util/dictionary.hpp"
 #include "util/generic.hpp"
 #include "util/progress.hpp"
+
+/// Exceptions
+#include "util/exceptions.hpp"

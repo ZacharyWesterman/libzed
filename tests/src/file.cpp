@@ -1,4 +1,4 @@
-#include "../../z/file.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 TEST_CASE("Validate basename", "[file]") {

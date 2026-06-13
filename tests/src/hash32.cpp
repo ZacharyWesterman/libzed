@@ -1,5 +1,4 @@
-#include "../../z/core/hash32.hpp"
-#include "../../z/core/string.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 TEST_CASE("Compile-time CRC32 hash", "[hash32]") {

@@ -1,6 +1,6 @@
 #include "catch/catch_amalgamated.hpp"
 
-#include "../../z/math.hpp"
+#include "../../z/all.hpp"
 
 using z::math::levenschtein;
 

@@ -1,4 +1,4 @@
-#include "../../z/core/range.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 TEST_CASE("Range, forward iteration", "[range]") {

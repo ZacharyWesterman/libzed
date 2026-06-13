@@ -4,8 +4,7 @@
 // However, generators do not have all the functions that arrays do;
 // They are meant to be iterated over once, and then discarded.
 
-#include "../../z/core/join.hpp"
-#include "../../z/core/range.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 #include <iostream>
 

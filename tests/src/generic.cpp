@@ -1,5 +1,4 @@
-#include "../../z/util/generic.hpp"
-#include "../../z/util/exceptions.hpp"
+#include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
 
 // Only run these tests if std::variant is available.

@@ -29,3 +29,6 @@
 
 /// Dynamic library loading
 #include "file/library.hpp"
+
+/// Exceptions
+#include "file/exceptions.hpp"

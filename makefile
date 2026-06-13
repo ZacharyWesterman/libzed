@@ -183,6 +183,9 @@ benchmarks: static
 	$(MAKE) -C benchmarks/ STD=$(STD)
 	./benchmarks/bin/run_benchmarks "$(FILTER)"
 
+coverage: tests
+	make -C tests coverage
+
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
 
@@ -253,4 +256,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision coverage
