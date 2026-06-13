@@ -185,16 +185,32 @@ TEST_CASE("Generator forEach", "[generator]") {
 	REQUIRE(result[4] == 10);
 }
 
-TEST_CASE("Generator zip", "[generator]") {
+TEST_CASE("Generator pair", "[generator]") {
 	auto gen1 = range(1, 4);
 	auto gen2 = range(10, 13);
-	auto zipped = gen1.zip(gen2);
-	auto arr = zipped.collect();
+	auto paired = gen1.pair(gen2);
+	auto arr = paired.collect();
 	REQUIRE(arr.length() == 3);
 	REQUIRE(arr[0].first == 1);
 	REQUIRE(arr[0].second == 10);
 	REQUIRE(arr[2].first == 3);
 	REQUIRE(arr[2].second == 12);
+}
+
+TEST_CASE("Generator zip", "[generator]") {
+	auto gen1 = range(0, 5);
+	auto gen2 = range(100, 103);
+	auto zipped = gen1.zip(gen2);
+	auto arr = zipped.collect();
+	REQUIRE(arr.length() == 8);
+	REQUIRE(arr[0] == 0);
+	REQUIRE(arr[1] == 100);
+	REQUIRE(arr[2] == 1);
+	REQUIRE(arr[3] == 101);
+	REQUIRE(arr[4] == 2);
+	REQUIRE(arr[5] == 102);
+	REQUIRE(arr[6] == 3);
+	REQUIRE(arr[7] == 4);
 }
 
 TEST_CASE("Generator enumerate", "[generator]") {
@@ -433,11 +449,11 @@ TEST_CASE("Generator from temporary vector", "[generator]") {
 	REQUIRE(result[2] == 30);
 }
 
-TEST_CASE("Generator zip with different lengths", "[generator]") {
+TEST_CASE("Generator pair with different lengths", "[generator]") {
 	auto gen1 = range(1, 4);	 // 1, 2, 3
 	auto gen2 = range(10, 15); // 10, 11, 12, 13, 14
-	auto zipped = gen1.zip(gen2);
-	auto result = zipped.collect();
+	auto paired = gen1.pair(gen2);
+	auto result = paired.collect();
 	REQUIRE(result.length() == 3); // stops at shorter generator
 	REQUIRE(result[0].first == 1);
 	REQUIRE(result[0].second == 10);

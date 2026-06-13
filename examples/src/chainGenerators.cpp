@@ -37,12 +37,12 @@ int main() {
 	}
 	std::cout << std::endl;
 
-	// You can also zip generators together to create pairs of items.
-	std::cout << "\nZipped pairs:" << std::endl;
+	// You can also join generators together to create pairs of items.
+	std::cout << "\nPaired generators:" << std::endl;
 
 	auto gen5 = range(1, 6);
 	auto gen6 = generatorFrom({"one", "two", "three", "four", "five"});
-	auto zipped = gen5.zip(gen6);
+	auto zipped = gen5.pair(gen6);
 	for (auto [first, second] : zipped) {
 		std::cout << '(' << first << ", " << second << ") ";
 	}
@@ -79,6 +79,16 @@ int main() {
 	std::cout << "\nChunks of 5 items from 0 to 19:" << std::endl;
 	for (auto chunk : gen11) {
 		std::cout << "[" << join(chunk, ", ") << "] ";
+	}
+	std::cout << std::endl;
+
+	// And lastly, you can chain generators in an alternating pattern by zipping them.
+	// This example results in just printing all numbers from 0 to 9.
+	std::cout << "\nEvens zipped with odds:" << std::endl;
+	auto evens = range(0, 10, 2);
+	auto odds = range(1, 11, 2);
+	for (auto i : evens.zip(odds)) {
+		std::cout << i << " ";
 	}
 	std::cout << std::endl;
 

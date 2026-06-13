@@ -334,16 +334,16 @@ public:
 	}
 
 	/**
-	 * @brief Zip this generator with another generator.
+	 * @brief Pair items from this generator with those of another generator.
 	 *
 	 * This function combines two generators into a single generator that yields pairs of items from both generators.
 	 * If one generator runs out of items, the resulting generator will stop yielding items.
 	 *
-	 * @param other The other generator to zip with.
+	 * @param other The other generator to pair with.
 	 * @return A new generator that yields pairs of items from both generators.
 	 */
 	template <typename U, typename S2>
-	generator<std::pair<T, U>, generator<U, S2>> zip(generator<U, S2> &other) noexcept {
+	generator<std::pair<T, U>, generator<U, S2>> pair(generator<U, S2> &other) noexcept {
 		typedef std::pair<T, U> pair_type;
 
 		return generator<pair_type, generator<U, S2>>(other, [this](generator<U, S2> &otherGen) {
@@ -358,6 +358,38 @@ public:
 			}
 
 			return std::optional<pair_type>({item1.value(), item2.value()});
+		});
+	}
+
+	/**
+	 * @brief Zip this generator with another generator.
+	 *
+	 * This function combines two generators into a single generator that yields items from each
+	 * generator in an alternating pattern.
+	 * If one generator runs out of items, then only items from the other generator will be yielded.
+	 *
+	 * @param other The other generator to zip with.
+	 * @return A new generator that yields alternating items from both generators.
+	 */
+	generator<T, std::pair<bool, generator &>> zip(generator &other) noexcept {
+		return generator<T, std::pair<bool, generator &>>({false, other}, [this](std::pair<bool, generator &> &state) {
+			state.first = !state.first;
+
+			// Draw from first generator
+			if (state.first) {
+				auto item = next();
+				if (item.has_value()) {
+					return item;
+				}
+				return state.second.next();
+			}
+
+			// Draw from second generator
+			auto item = state.second.next();
+			if (item.has_value()) {
+				return item;
+			}
+			return next();
 		});
 	}
 
