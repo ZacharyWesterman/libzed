@@ -245,7 +245,7 @@ docs: html
 html: $(HEADERS) Doxyfile $(wildcard Doxypages/*.dox) Doxypages/examples.dox $(wildcard examples/src/*.cpp) README.md
 	$(RMDIR) html
 	PROJECT_NUMBER=$(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) doxygen
-	cp tests/coverage.html html/ 2>/dev/null || :
+	cp tests/coverage.html tests/coverage.svg html/ 2>/dev/null || :
 
 Doxypages/examples.dox: examples/src/*.cpp
 	@{ echo '/**'; for file in $^; do echo "@example $$(basename $$file)"; done; echo '*/'; } > $@
