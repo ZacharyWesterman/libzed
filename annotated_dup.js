@@ -2,12 +2,6 @@ var annotated_dup =
 [
     [ "z", null, [
       [ "core", "namespacez_1_1core.html", [
-        [ "types", null, [
-          [ "equalExists", "structz_1_1core_1_1types_1_1equalExists.html", null ],
-          [ "greaterExists", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
-          [ "lesserExists", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
-          [ "no", "classz_1_1core_1_1types_1_1no.html", null ]
-        ] ],
         [ "array", "classz_1_1core_1_1array.html", "classz_1_1core_1_1array" ],
         [ "arrayLike", "classz_1_1core_1_1arrayLike.html", "classz_1_1core_1_1arrayLike" ],
         [ "circularBuffer", "classz_1_1core_1_1circularBuffer.html", "classz_1_1core_1_1circularBuffer" ],
@@ -48,6 +42,16 @@ var annotated_dup =
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
         [ "nonnumeric", "structz_1_1util_1_1nonnumeric.html", "structz_1_1util_1_1nonnumeric" ],
         [ "progress", "classz_1_1util_1_1progress.html", "classz_1_1util_1_1progress" ]
+      ] ]
+    ] ],
+    [ "z ", null, [
+      [ "core", null, [
+        [ "types", null, [
+          [ "equalExists", "structz_01_1_1core_1_1types_1_1equalExists.html", null ],
+          [ "greaterExists", "structz_01_1_1core_1_1types_1_1greaterExists.html", null ],
+          [ "lesserExists", "structz_01_1_1core_1_1types_1_1lesserExists.html", null ],
+          [ "no", "structz_01_1_1core_1_1types_1_1no.html", null ]
+        ] ]
       ] ]
     ] ]
 ];

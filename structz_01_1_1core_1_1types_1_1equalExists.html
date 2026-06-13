@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libzed: z::core::types::lesserExists&lt; T, Arg &gt; Struct Template Reference</title>
+<title>libzed: z ::core::types::equalExists&lt; T, Arg &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.48</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.9.49</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structz_1_1core_1_1types_1_1lesserExists.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structz_01_1_1core_1_1types_1_1equalExists.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -99,26 +99,18 @@ $(document).ready(function(){initNavTree('structz_1_1core_1_1types_1_1lesserExis
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
-<a href="structz_1_1core_1_1types_1_1lesserExists-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">z::core::types::lesserExists&lt; T, Arg &gt; Struct Template Reference</div></div>
+<a href="structz_01_1_1core_1_1types_1_1equalExists-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">z ::core::types::equalExists&lt; T, Arg &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Template check if operator&lt; exists.  
- <a href="structz_1_1core_1_1types_1_1lesserExists.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="typeChecks_8hpp_source.html">typeChecks.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a3c1d6947879ab487975b28981b0fb2c3" id="r_a3c1d6947879ab487975b28981b0fb2c3"><td class="memItemLeft" align="right" valign="top"><a id="a3c1d6947879ab487975b28981b0fb2c3" name="a3c1d6947879ab487975b28981b0fb2c3"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>value</b> = (sizeof(check(*(T *)(0) &lt; *(Arg *)(0))) != sizeof(no))
+<tr class="memitem:aed211a062b2f17f7e07ab1423092bc39" id="r_aed211a062b2f17f7e07ab1423092bc39"><td class="memItemLeft" align="right" valign="top"><a id="aed211a062b2f17f7e07ab1423092bc39" name="aed211a062b2f17f7e07ab1423092bc39"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>value</b> = !std::is_same&lt;decltype(std::declval&lt;T&gt;() == std::declval&lt;Arg&gt;()), no&gt;::value
  }</td></tr>
-<tr class="separator:a3c1d6947879ab487975b28981b0fb2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aed211a062b2f17f7e07ab1423092bc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">Arg</a> = T&gt;<br />
-struct z::core::types::lesserExists&lt; T, Arg &gt;</div><p>Template check if operator&lt; exists. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>z/core/<a class="el" href="typeChecks_8hpp_source.html">typeChecks.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -126,7 +118,7 @@ struct z::core::types::lesserExists&lt; T, Arg &gt;</div><p>Template check if op
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>z</b></li><li class="navelem"><a class="el" href="namespacez_1_1core.html">core</a></li><li class="navelem"><b>types</b></li><li class="navelem"><a class="el" href="structz_1_1core_1_1types_1_1lesserExists.html">lesserExists</a></li>
+    <li class="navelem"><b>z </b></li><li class="navelem"><b>core</b></li><li class="navelem"><b>types</b></li><li class="navelem"><a class="el" href="structz_01_1_1core_1_1types_1_1equalExists.html">equalExists</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

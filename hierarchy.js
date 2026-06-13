@@ -4,13 +4,13 @@ var hierarchy =
     [ "z::system::cpuid", "classz_1_1system_1_1cpuid.html", null ],
     [ "z::util::dictRange", "classz_1_1util_1_1dictRange.html", null ],
     [ "z::file::dirscan", "structz_1_1file_1_1dirscan.html", null ],
-    [ "z::core::types::equalExists< T, Arg >", "structz_1_1core_1_1types_1_1equalExists.html", null ],
+    [ "z ::core::types::equalExists< T, Arg >", "structz_01_1_1core_1_1types_1_1equalExists.html", null ],
     [ "std::false_type", null, [
       [ "z::core::is_iterator< T, typename >", "structz_1_1core_1_1is__iterator.html", null ]
     ] ],
     [ "z::file::fileHandle", "structz_1_1file_1_1fileHandle.html", null ],
     [ "z::core::generatorIter< T, S >", "classz_1_1core_1_1generatorIter.html", null ],
-    [ "z::core::types::greaterExists< T, Arg >", "structz_1_1core_1_1types_1_1greaterExists.html", null ],
+    [ "z ::core::types::greaterExists< T, Arg >", "structz_01_1_1core_1_1types_1_1greaterExists.html", null ],
     [ "z::core::hash32gen< size, idx, dummy >", "structz_1_1core_1_1hash32gen.html", null ],
     [ "z::core::hash32gen< size, size, dummy >", "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html", null ],
     [ "z::core::indexable< T >", "classz_1_1core_1_1indexable.html", [
@@ -60,10 +60,10 @@ var hierarchy =
     [ "z::core::iterable< stringIterator< utf8 > >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< T * >", "classz_1_1core_1_1iterable.html", null ],
     [ "z::core::iterable< zstring ** >", "classz_1_1core_1_1iterable.html", null ],
-    [ "z::core::types::lesserExists< T, Arg >", "structz_1_1core_1_1types_1_1lesserExists.html", null ],
+    [ "z ::core::types::lesserExists< T, Arg >", "structz_01_1_1core_1_1types_1_1lesserExists.html", null ],
     [ "z::file::library", "classz_1_1file_1_1library.html", null ],
     [ "z::core::memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", null ],
-    [ "z::core::types::no", "classz_1_1core_1_1types_1_1no.html", null ],
+    [ "z ::core::types::no", "structz_01_1_1core_1_1types_1_1no.html", null ],
     [ "z::util::progress", "classz_1_1util_1_1progress.html", null ],
     [ "std::runtime_error", null, [
       [ "z::file::unreadable", "classz_1_1file_1_1unreadable.html", null ],

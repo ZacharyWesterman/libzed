@@ -7,7 +7,7 @@ var searchData=
   ['endswith_4',['endsWith',['../classz_1_1core_1_1string.html#a410f2a23a73f84f5f3c0194587a57697',1,'z::core::string']]],
   ['enumerate_5',['enumerate',['../classz_1_1core_1_1generator.html#aeb2c3c3969709b1846e3d80ea68d4682',1,'z::core::generator']]],
   ['eq_6',['eq',['../classz_1_1core_1_1refArray.html#a619d672fc0dfeeab00e2dfba8ec9ab8b',1,'z::core::refArray::eq()'],['../classz_1_1core_1_1sortedRefArray.html#a2ae6ab402df9ad59084b919e154ac99d',1,'z::core::sortedRefArray::eq()'],['../classz_1_1core_1_1array.html#a05eecf0dc1fb018480e2f5d5b9ae3faa',1,'z::core::array::eq()']]],
-  ['equalexists_7',['equalExists',['../structz_1_1core_1_1types_1_1equalExists.html',1,'z::core::types']]],
+  ['equalexists_7',['equalExists',['../structz_01_1_1core_1_1types_1_1equalExists.html',1,'z ::core::types']]],
   ['examples_8',['Examples',['../index.html#autotoc_md2',1,'']]],
   ['execdir_9',['execdir',['../namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b',1,'z::file']]],
   ['executable_10',['executable',['../namespacez_1_1file.html#a41f863b6ddde6ae39cbb591c38db0e99',1,'z::file']]],
