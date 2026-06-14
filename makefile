@@ -1,7 +1,7 @@
 LIBNAME = zed
 VER_MAJOR = 1
-VER_MINOR = 9
-VER_CUTOFF_COMMIT = 8ef9abcd3e99a59f1dc0ea489b0c38b416ca82fb
+VER_MINOR = 10
+VER_CUTOFF_COMMIT = f9067d32690426fcd592175d05fc9f110bc4db86
 
 #Auto-calculate patch version based on current commit.
 #If patch version can't be calculated, just use the OS name.
