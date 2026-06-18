@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.1</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.2</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -102,8 +102,8 @@ $(document).ready(function(){initNavTree('std__optional_8hpp_source.html',''); i
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if (__cplusplus &gt;= 201402L) || (defined(_MSVC_LANG) &amp;&amp; _MSVC_LANG &gt;= 201402L)</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// If C++14 or greater, use stdlib optional class.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if (__cplusplus &gt;= 201703L) || (defined(_MSVC_LANG) &amp;&amp; _MSVC_LANG &gt;= 201703L)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// If C++17 or greater, use stdlib optional class.</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#elif !defined(DOXYGEN)</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Otherwise, polyfill our own implementation of std::optional</span></div>
