@@ -93,6 +93,9 @@ CCFLAGS = -std=$(STD) $(CCTARGET) \
 	-fdata-sections -ffunction-sections \
 	$(EXTRA_CFLAGS)
 
+#Some versions of GCC will falsely complain about "writing 1 byte into a region of size 0". Disable this warning.
+Z_STRING_FLAGS = -Wno-stringop-overflow
+
 LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 
 STD = c++17
@@ -134,8 +137,6 @@ endif
 ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
-#In Windows, some versions of GCC will falsely complain about "writing 1 byte into a region of size 0". Disable this warning.
-Z_STRING_FLAGS = -Wno-stringop-overflow
 else
 # link to std::filesystem if c++17 and linux
 ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
