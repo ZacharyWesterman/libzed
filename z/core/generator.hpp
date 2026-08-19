@@ -77,6 +77,11 @@ class generator : public iterable<generatorIter<T, S>> {
 		S state;
 	};
 
+	struct reducePair {
+		const T &defaultValue;
+		std::function<T(const T &, const T &)> reduceLambda;
+	};
+
 public:
 	/**
 	 * @brief Constructor with an initial state.
@@ -574,6 +579,64 @@ public:
 
 			return other.next();
 		});
+	}
+
+	/**
+	 * @see chain()
+	 *
+	 * @copydoc chain()
+	 */
+	template <typename U>
+	inline generator<T, bool> operator+(generator<T, U> &other) noexcept {
+		return chain(other);
+	}
+
+	/**
+	 * @see chain()
+	 *
+	 * @copydoc chain()
+	 */
+	template <typename U>
+	inline generator<T, bool> operator+(generator<T, U> other) noexcept {
+		return chain(other);
+	}
+
+	/**
+	 * @see map()
+	 *
+	 * @copydoc map()
+	 */
+	template <typename U>
+	inline generator<U, S> operator|(std::function<U(T)> mapLambda) noexcept {
+		return map<U>(mapLambda);
+	}
+
+	/**
+	 * @see map()
+	 *
+	 * @copydoc map()
+	 */
+	template <typename U>
+	inline generator<U, S> operator|(U (*mapLambda)(T)) noexcept {
+		return map<U>(mapLambda);
+	}
+
+	/**
+	 * @see filter()
+	 *
+	 * @copydoc filter()
+	 */
+	inline generator operator&(std::function<T(const T &)> filterLambda) noexcept {
+		return filter(filterLambda);
+	}
+
+	/**
+	 * @see reduce()
+	 *
+	 * @copydoc reduce()
+	 */
+	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
+		return reduce({}, reduceLambda);
 	}
 };
 
