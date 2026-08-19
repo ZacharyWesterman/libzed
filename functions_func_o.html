@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.3</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.4</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -105,9 +105,10 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 <li>operator float()&#160;:&#160;<a class="el" href="classz_1_1core_1_1string.html#a04d8e2bc02221468f5526f5739b0ec9d">z::core::string&lt; E &gt;</a></li>
 <li>operator INT()&#160;:&#160;<a class="el" href="classz_1_1core_1_1string.html#afe8b8c3e5d8cf56e10ea6ef2f19f8acc">z::core::string&lt; E &gt;</a></li>
 <li>operator!=()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#a5a7ff8e5f1944c99acde48a8f78ca75b">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1circularIterator.html#aa08c23d40eee0e494b30f94965a3e124">z::core::circularIterator&lt; TYPE, LEN &gt;</a>, <a class="el" href="classz_1_1core_1_1generatorIter.html#a106febe5a495c53189270c5825963aa8">z::core::generatorIter&lt; T, S &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a19e986e795ba9985a3faff3d56cf300e">z::core::string&lt; E &gt;</a>, <a class="el" href="classz_1_1core_1_1stringIterator.html#a8f9c9a3e4853b17037614186809e0384">z::core::stringIterator&lt; E &gt;</a></li>
+<li>operator&amp;()&#160;:&#160;<a class="el" href="classz_1_1core_1_1generator.html#a63039d77f7f91c4dfd8aec05d550f812">z::core::generator&lt; T, S &gt;</a></li>
 <li>operator()()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#a6f0418c5928ff1fd9618500a700066b8">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html#a543656d1175c51294491332ed05679d9">z::core::memoize&lt; R(Args...)&gt;</a>, <a class="el" href="classz_1_1core_1_1refArray.html#ab8b7fb0d685a2842b78d77fc013e55ec">z::core::refArray&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1sentinel.html#a9768f1550531d9b8e525ab8b89093f7e">z::core::sentinel</a>, <a class="el" href="classz_1_1core_1_1sortedRefArray.html#a4c04c540cb40c7c776e59511ec4556e9">z::core::sortedRefArray&lt; T &gt;</a></li>
 <li>operator*()&#160;:&#160;<a class="el" href="classz_1_1core_1_1circularIterator.html#abdb53306a38dd15cccd69838aa395539">z::core::circularIterator&lt; TYPE, LEN &gt;</a>, <a class="el" href="classz_1_1core_1_1generatorIter.html#ac75d566328e65d9bff10a91ba354bf7c">z::core::generatorIter&lt; T, S &gt;</a>, <a class="el" href="classz_1_1core_1_1stringIterator.html#a9bba4fe915e1162ee1524851dec51e6a">z::core::stringIterator&lt; E &gt;</a></li>
-<li>operator+()&#160;:&#160;<a class="el" href="classz_1_1core_1_1string.html#a27ea52347a2d0a44dad9e0cccda1449f">z::core::string&lt; E &gt;</a></li>
+<li>operator+()&#160;:&#160;<a class="el" href="classz_1_1core_1_1generator.html#addcb212a02183618e3ec3b32f2a65ef2">z::core::generator&lt; T, S &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a27ea52347a2d0a44dad9e0cccda1449f">z::core::string&lt; E &gt;</a></li>
 <li>operator++()&#160;:&#160;<a class="el" href="classz_1_1core_1_1circularIterator.html#a5eedf077e91dd10f8660e30be69252e3">z::core::circularIterator&lt; TYPE, LEN &gt;</a>, <a class="el" href="classz_1_1core_1_1generatorIter.html#a7511d6e0f87694e35fdf5b173c3ab7e7">z::core::generatorIter&lt; T, S &gt;</a>, <a class="el" href="classz_1_1core_1_1stringIterator.html#a7cadf7ee50f8a820e9440a10ec1a0a5d">z::core::stringIterator&lt; E &gt;</a></li>
 <li>operator+=()&#160;:&#160;<a class="el" href="classz_1_1core_1_1string.html#a7ce654ed8d4c17cb97d18e2abec5fb48">z::core::string&lt; E &gt;</a></li>
 <li>operator&lt;()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#a70552b7a320b77bc4cf47f7e73cfcfed">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#aac2d440a910caf4f4bc2b8d6e503ea0a">z::core::string&lt; E &gt;</a></li>
@@ -116,7 +117,9 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 <li>operator==()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#af318e6ae029afb8edf19c0001ec839da">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#aeae8fdb335a58f12e3c5583fbcb053c9">z::core::string&lt; E &gt;</a></li>
 <li>operator&gt;()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#a130988c06198f98bf7b2eab6b94de5af">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a52b71a49ce01ad6de4b49d7fb8f90f6f">z::core::string&lt; E &gt;</a></li>
 <li>operator&gt;=()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#aacd7c706a961a5bbb018f73de106e780">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1string.html#a27ab0b269111dc5a51da7583d1da9358">z::core::string&lt; E &gt;</a></li>
+<li>operator&gt;&gt;()&#160;:&#160;<a class="el" href="classz_1_1core_1_1generator.html#a3f2130871d8960404053de5834042d5b">z::core::generator&lt; T, S &gt;</a></li>
 <li>operator[]()&#160;:&#160;<a class="el" href="classz_1_1core_1_1array.html#a53898d4cdcd8deca56222d91fbac56ea">z::core::array&lt; T &gt;</a>, <a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a">z::core::indexable&lt; T &gt;</a></li>
+<li>operator|()&#160;:&#160;<a class="el" href="classz_1_1core_1_1generator.html#a31555f6331a3e1ea0082d9eae9ad5114">z::core::generator&lt; T, S &gt;</a></li>
 <li>ordinal()&#160;:&#160;<a class="el" href="classz_1_1core_1_1string.html#a52a3104204697efd905a5f3e84f811a1">z::core::string&lt; E &gt;</a></li>
 </ul>
 </div><!-- contents -->

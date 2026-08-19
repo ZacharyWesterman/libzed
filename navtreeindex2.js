@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"remainder_8hpp_source.html":[4,0,0,2,2],
+"remove_8hpp_source.html":[4,0,0,1,16],
+"rot13_8cpp-example.html":[5,19],
+"sentinel_8hpp_source.html":[4,0,0,0,13],
+"shorten_8hpp_source.html":[4,0,0,1,17],
+"sizable_8hpp_source.html":[4,0,0,0,14],
+"size_8hpp_source.html":[4,0,0,1,18],
 "sleep_8hpp_source.html":[4,0,0,4,2],
 "sortedArray_8hpp_source.html":[4,0,0,0,15],
 "sortedRefArray_8hpp_source.html":[4,0,0,0,16],
@@ -43,7 +50,7 @@ var NAVTREEINDEX2 =
 "util_2exceptions_8hpp_source.html":[4,0,0,5,2],
 "util_8hpp.html":[4,0,0,12],
 "util_8hpp_source.html":[4,0,0,12],
-"word_unscramble_8cpp-example.html":[5,19],
+"word_unscramble_8cpp-example.html":[5,20],
 "write_8hpp_source.html":[4,0,0,1,19],
 "zstr_8hpp.html":[4,0,0,0,24],
 "zstr_8hpp.html#af9243e0a6983d6ca9d172de33efa36dc":[4,0,0,0,24,0],

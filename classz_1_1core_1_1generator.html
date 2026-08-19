@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.3</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.4</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -152,7 +152,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a199cb0acbf05782f7ea518f59ee2bb53" id="r_a199cb0acbf05782f7ea518f59ee2bb53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a199cb0acbf05782f7ea518f59ee2bb53">filter</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">filterLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a199cb0acbf05782f7ea518f59ee2bb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.  <br /></td></tr>
 <tr class="separator:a199cb0acbf05782f7ea518f59ee2bb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a716ea9e1413f3ba3e9df2e1fbf17d29c" id="r_a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">reduce</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">defaultValue</a>, std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">reduceLambda</a>)</td></tr>
+<tr class="memitem:a716ea9e1413f3ba3e9df2e1fbf17d29c" id="r_a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">reduce</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;defaultValue, std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; reduceLambda)</td></tr>
 <tr class="memdesc:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.  <br /></td></tr>
 <tr class="separator:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dee6bfbf3955cc07dd0d35d6cfc99b8" id="r_a2dee6bfbf3955cc07dd0d35d6cfc99b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8">forEach</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">void</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">newLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
@@ -191,6 +191,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a87eccc7e530a182e7a47d9e8cc92d520"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520">chain</a> (<a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a87eccc7e530a182e7a47d9e8cc92d520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chains two generators together.  <br /></td></tr>
 <tr class="separator:a87eccc7e530a182e7a47d9e8cc92d520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addcb212a02183618e3ec3b32f2a65ef2" id="r_addcb212a02183618e3ec3b32f2a65ef2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:addcb212a02183618e3ec3b32f2a65ef2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#addcb212a02183618e3ec3b32f2a65ef2">operator+</a> (<a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="separator:addcb212a02183618e3ec3b32f2a65ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92de7b487a651e2d7771de1740705d16" id="r_a92de7b487a651e2d7771de1740705d16"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:a92de7b487a651e2d7771de1740705d16"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a92de7b487a651e2d7771de1740705d16">operator+</a> (<a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; <a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="separator:a92de7b487a651e2d7771de1740705d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31555f6331a3e1ea0082d9eae9ad5114" id="r_a31555f6331a3e1ea0082d9eae9ad5114"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:a31555f6331a3e1ea0082d9eae9ad5114"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a31555f6331a3e1ea0082d9eae9ad5114">operator|</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>(<a class="el" href="classz_1_1core_1_1array.html">T</a>)&gt; <a class="el" href="classz_1_1core_1_1array.html">mapLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="separator:a31555f6331a3e1ea0082d9eae9ad5114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec123ef70902a3c896414e89fd89f4e" id="r_a7ec123ef70902a3c896414e89fd89f4e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </td></tr>
+<tr class="memitem:a7ec123ef70902a3c896414e89fd89f4e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a7ec123ef70902a3c896414e89fd89f4e">operator|</a> (<a class="el" href="classz_1_1core_1_1array.html">U</a>(*<a class="el" href="classz_1_1core_1_1array.html">mapLambda</a>)(<a class="el" href="classz_1_1core_1_1array.html">T</a>)) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="separator:a7ec123ef70902a3c896414e89fd89f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63039d77f7f91c4dfd8aec05d550f812" id="r_a63039d77f7f91c4dfd8aec05d550f812"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a63039d77f7f91c4dfd8aec05d550f812">operator&amp;</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">filterLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="separator:a63039d77f7f91c4dfd8aec05d550f812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2130871d8960404053de5834042d5b" id="r_a3f2130871d8960404053de5834042d5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a3f2130871d8960404053de5834042d5b">operator&gt;&gt;</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; reduceLambda)</td></tr>
+<tr class="separator:a3f2130871d8960404053de5834042d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe1e55d1a360b9e0cd63c8199d3d258b" id="r_abe1e55d1a360b9e0cd63c8199d3d258b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">long</a>, <a class="el" href="classz_1_1core_1_1array.html">long</a> &gt;::countedState &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#abe1e55d1a360b9e0cd63c8199d3d258b">skip</a> (<a class="el" href="classz_1_1core_1_1array.html">long</a> <a class="el" href="classz_1_1core_1_1generator.html#a6f4a3757e660f83967637fc404d00257">count</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:abe1e55d1a360b9e0cd63c8199d3d258b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template specialization for the skip function with generators that only output longs.  <br /></td></tr>
 <tr class="separator:abe1e55d1a360b9e0cd63c8199d3d258b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -796,6 +812,270 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 <p>Get the next item from the generator. </p>
 <p>If there are no more items, the optional object will not contain anything.</p>
 <dl class="section return"><dt>Returns</dt><dd>A std::optional object containing the next value, if any. </dd></dl>
+
+</div>
+</div>
+<a id="a63039d77f7f91c4dfd8aec05d550f812" name="a63039d77f7f91c4dfd8aec05d550f812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63039d77f7f91c4dfd8aec05d550f812">&#9670;&#160;</a></span>operator&amp;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a> <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator&amp; </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>filterLambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a199cb0acbf05782f7ea518f59ee2bb53" title="Filters the generatred items based on a predicate and returns a new generator that yields only the it...">filter()</a></dd></dl>
+<p>Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.  </p>
+<p>This function wraps the existing generator in another generator, and as each item is generated, applies the given lambda function as a predicate, and only yields items that satisfy the predicate.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filterLambda</td><td>A function that takes a constant reference to an item of type <code>T</code> and returns a boolean indicating whether the item should be yielded. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields only items that satisfy the predicate.   </dd></dl>
+
+</div>
+</div>
+<a id="addcb212a02183618e3ec3b32f2a65ef2" name="addcb212a02183618e3ec3b32f2a65ef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addcb212a02183618e3ec3b32f2a65ef2">&#9670;&#160;</a></span>operator+() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520" title="Chains two generators together.">chain()</a></dd></dl>
+<p>Chains two generators together.  </p>
+<p>This function takes two generators and chains them together, so that multiple generators can be used as a single generator. That is, the items from this are generated first, and once this generator is exhausted, items from the other generator are generated until exhaustion.</p>
+<dl class="section note"><dt>Note</dt><dd>Generators chained together this way <b>must</b> yield values of the same type.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>The state type of the other generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The generator to chain after this generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that first yields items from this generator and then the other.   </dd></dl>
+
+</div>
+</div>
+<a id="a92de7b487a651e2d7771de1740705d16" name="a92de7b487a651e2d7771de1740705d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92de7b487a651e2d7771de1740705d16">&#9670;&#160;</a></span>operator+() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">bool</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520" title="Chains two generators together.">chain()</a></dd></dl>
+<p>Chains two generators together.  </p>
+<p>This function takes two generators and chains them together, so that multiple generators can be used as a single generator. That is, the items from this are generated first, and once this generator is exhausted, items from the other generator are generated until exhaustion.</p>
+<dl class="section note"><dt>Note</dt><dd>Generators chained together this way <b>must</b> yield values of the same type.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>The state type of the other generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The generator to chain after this generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that first yields items from this generator and then the other.   </dd></dl>
+
+</div>
+</div>
+<a id="a3f2130871d8960404053de5834042d5b" name="a3f2130871d8960404053de5834042d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f2130871d8960404053de5834042d5b">&#9670;&#160;</a></span>operator&gt;&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">T</a> <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>reduceLambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a></dd></dl>
+<p>Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.  </p>
+<p>This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value. If the generator doesn't yield anything, the provided default value is returned.</p>
+<dl class="section note"><dt>Note</dt><dd>Especially for long lists of items, this is significantly more memory-efficient than calling <a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036" title="Concatenate all generator elements into an array.">collect()</a>and then <a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a> on the resulting array, as an intermediate array does not need to be constructed.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defaultValue</td><td>The value to return if the array is empty. </td></tr>
+    <tr><td class="paramname">reduceLambda</td><td>A function that takes two elements of type <code>T</code> and returns their combined result of type <code>T</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the reduction operation.   </dd></dl>
+
+</div>
+</div>
+<a id="a31555f6331a3e1ea0082d9eae9ad5114" name="a31555f6331a3e1ea0082d9eae9ad5114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31555f6331a3e1ea0082d9eae9ad5114">&#9670;&#160;</a></span>operator|() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator| </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>(<a class="el" href="classz_1_1core_1_1array.html">T</a>)&gt;&#160;</td>
+          <td class="paramname"><em>mapLambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077" title="Applies a transformation function to each item that comes out of the generator.">map()</a></dd></dl>
+<p>Applies a transformation function to each item that comes out of the generator.  </p>
+<p>This function wraps the existing generator in another generator, effectively transforming each item on-the-fly as it's generated.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>The type of items that this new generator yields. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mapLambda</td><td>A function that takes a constant reference to an element of type <code>T</code> and returns an element of type <code>U</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields the transformed elements.   </dd></dl>
+
+</div>
+</div>
+<a id="a7ec123ef70902a3c896414e89fd89f4e" name="a7ec123ef70902a3c896414e89fd89f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec123ef70902a3c896414e89fd89f4e">&#9670;&#160;</a></span>operator|() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> , <a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">U</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt; <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::operator| </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">U</a>(*)(<a class="el" href="classz_1_1core_1_1array.html">T</a>)&#160;</td>
+          <td class="paramname"><em>mapLambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077" title="Applies a transformation function to each item that comes out of the generator.">map()</a></dd></dl>
+<p>Applies a transformation function to each item that comes out of the generator.  </p>
+<p>This function wraps the existing generator in another generator, effectively transforming each item on-the-fly as it's generated.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>The type of items that this new generator yields. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mapLambda</td><td>A function that takes a constant reference to an element of type <code>T</code> and returns an element of type <code>U</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new generator that yields the transformed elements.   </dd></dl>
 
 </div>
 </div>
