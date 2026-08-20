@@ -9,9 +9,6 @@ namespace core {
 template <typename T>
 class indexable {
 public:
-	/// Virtual destructor
-	virtual ~indexable() noexcept {}
-
 	/**
 	 * @brief Function to get the object at the given index.
 	 * @param index the index of the desired object.

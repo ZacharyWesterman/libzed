@@ -1,10 +1,6 @@
 #include "../../z/all.hpp"
 #include "catch/catch_amalgamated.hpp"
-#include <iostream>
 
-using z::core::array;
-using z::core::generatorFrom;
-using z::core::join;
 using z::core::range;
 
 TEST_CASE("Generator iterator tests", "[generator]") {

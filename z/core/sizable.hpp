@@ -12,9 +12,6 @@ namespace core {
  */
 class sizable {
 public:
-	/// Virtual destructor
-	virtual ~sizable() noexcept {}
-
 	/**
 	 * @brief Get the size of the object in memory
 	 *
