@@ -33,7 +33,7 @@ coverage.html: coverage.txt
 coverage.txt: $(COVS) venv/bin/gcovr
 	( \
 		. venv/bin/activate; \
-		gcovr -r .. src --exclude src/catch --exclude src --txt $@ --html coverage.html \
+		gcovr --exclude-unreachable-branches -r .. src --exclude src/catch --exclude src --txt $@ --html coverage.html \
 	)
 	( \
 		percent="$$(grep TOTAL coverage.txt | awk '{print $$4}')"; \

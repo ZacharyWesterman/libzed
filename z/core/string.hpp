@@ -314,7 +314,7 @@ public:
 	}
 
 	/// Destructor
-	~string() noexcept {
+	virtual ~string() noexcept final {
 		if (data) {
 			delete[] data;
 		}

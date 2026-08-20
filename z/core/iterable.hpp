@@ -9,9 +9,6 @@ namespace core {
 template <typename ITER>
 class iterable {
 public:
-	/// Virtual destructor
-	virtual ~iterable() noexcept {}
-
 	/**
 	 * @brief Get an iterator for the first element in this object.
 	 *
