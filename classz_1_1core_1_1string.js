@@ -18,7 +18,7 @@ var classz_1_1core_1_1string =
     [ "string", "classz_1_1core_1_1string.html#a78e0a419764c155d24f17d6b76239909", null ],
     [ "string", "classz_1_1core_1_1string.html#a5858ead5f3e043184af3ae731d87ad85", null ],
     [ "string", "classz_1_1core_1_1string.html#ae874c9d0a4107c1891b91218068266cd", null ],
-    [ "~string", "classz_1_1core_1_1string.html#a9dd573f2d72a4ff5e26ec80db53c2da2", null ],
+    [ "~string", "classz_1_1core_1_1string.html#a63330bb4cd06265520bd062cffba446b", null ],
     [ "append", "classz_1_1core_1_1string.html#a5bed4437d2f9240b20845975972f47de", null ],
     [ "append", "classz_1_1core_1_1string.html#a9620de47fdca587eebfad0fbd1398ec4", null ],
     [ "at", "classz_1_1core_1_1string.html#a4c6dcadcd303920268c85374e69d6787", null ],
