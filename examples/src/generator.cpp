@@ -9,6 +9,7 @@
 #include <z/core.hpp>
 #include <z/system/interval.hpp>
 
+using z::core::infinity;
 using z::core::join;
 using z::core::range;
 
@@ -76,6 +77,24 @@ int main() {
 		("Remaining items = ["_zs + join(array2, ',') + ']').writeln(std::cout);
 	}
 
+	// Some generators might, by necessity, be able to generate items forever (or at least a very long time).
+	// It's possible to explicitly stop those generators when a specific value is found,
+	// or when a given predicate returns true.
+	{
+		{
+			// See how this would normally run forever, but `.until(10)` stops it when 10 is found.
+			// Note that if the item is never found, it will run forever!
+			auto first_10 = range(0, infinity).until(10);
+			("First 10 numbers (1) = ["_zs + join(first_10.collect(), ',') + ']').writeln(std::cout);
+		}
+		{
+			// In this specific instance, a safer way would be to run until the items are >= 10, instead of == 10.
+			// Using a predicate instead of a literal value also allows for more complex logic.
+			auto first_10 = range(0, infinity).until([](auto i) { return i >= 10; });
+			("First 10 numbers (2) = ["_zs + join(first_10.collect(), ',') + ']').writeln(std::cout);
+		}
+	}
+
 	// You can also use a generator to trigger over an interval.
 	{
 		// By default, the interval generator will run indefinitely,
@@ -98,8 +117,8 @@ int main() {
 	// and then each iteration returns both the old value, and the current one.
 	{
 		"Peeking at a generator"_zs.writeln(std::cout);
-		for (auto i : range(5).peek()) {
-			auto msg = zstring(i.first) + " -> " + (i.second ? zstring(i.second.value()) : "END");
+		for (auto [first, second] : range(5).peek()) {
+			auto msg = zstring(first) + " -> " + (second ? zstring(second.value()) : "END");
 			msg.writeln(std::cout);
 		}
 	}

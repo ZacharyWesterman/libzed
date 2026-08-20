@@ -118,17 +118,16 @@ public:
 	}
 
 	/**
-	 * @brief Get the total count of items that will be generated.
+	 * @brief Consume and discard all items from the generator, getting only the number of items generated.
 	 * @warning This function will consume the generator, and it will not be able to be used again.
 	 * @return The number of items that were generated.
 	 */
-	inline long count() {
-		return this
-			->map<long>([](const T &state) {
-				(void)state;
-				return 1;
-			})
-			.reduce(0, std::plus<long>());
+	long count() {
+		long count = 0;
+		for (auto _ : *this) {
+			count++;
+		}
+		return count;
 	}
 
 	/**
@@ -145,16 +144,11 @@ public:
 	}
 
 	/**
-	 * @brief Consume and discard all items from the generator.
-	 * @note This function will consume the generator, and it will not be able to be used again.
-	 * @return The number of items that were generated.
+	 * @see count()
+	 * @copydoc count()
 	 */
-	long consume() {
-		long count = 0;
-		for (auto _ : *this) {
-			count++;
-		}
-		return count;
+	inline long consume() {
+		return count();
 	}
 
 	/**
@@ -566,12 +560,12 @@ public:
 	 * @return A new generator that first yields items from this generator and then the other.
 	 */
 	template <typename U>
-	generator<T, bool> chain(generator<T, U> &other) noexcept {
-		return generator<T, bool>(false, [this, &other](bool &first_exhausted) {
-			if (!first_exhausted) {
-				auto item = this->next();
+	generator<T, std::pair<generator, bool>> chain(generator<T, U> &other) noexcept {
+		return generator<T, std::pair<generator, bool>>({*this, false}, [&other](std::pair<generator, bool> &state) {
+			if (!state.second) {
+				auto item = state.first.next();
 				if (!item.has_value()) {
-					first_exhausted = true;
+					state.second = true;
 				} else {
 					return item;
 				}
@@ -582,12 +576,72 @@ public:
 	}
 
 	/**
+	 * @copydoc chain()
+	 */
+	template <typename U>
+	generator<T, std::pair<std::pair<generator, bool>, generator<T, U>>> chain(generator<T, U> &&other) noexcept {
+		return generator<T, std::pair<std::pair<generator, bool>, generator<T, U>>>({{*this, false}, other}, [&other](std::pair<std::pair<generator, bool>, generator<T, U>> &state) {
+			if (!state.first.second) {
+				auto item = state.first.first.next();
+				if (!item.has_value()) {
+					state.first.second = true;
+				} else {
+					return item;
+				}
+			}
+
+			return state.second.next();
+		});
+	}
+
+	/**
+	 * @brief End the generator when the given predicate returns true.
+	 *
+	 * @note This does \b not yield the item for which the predicate was true.
+	 *
+	 * @param predicate A function or lambda that returns true if the generator should
+	 * stop yielding items, or false if it should continue.
+	 * @return A new generator that stops when the predicate returns true.
+	 */
+	generator until(std::function<bool(T)> predicate) noexcept {
+		auto lambda = this->lambda;
+
+		return generator(state, [lambda, predicate](S &state) {
+			auto val = lambda(state);
+			if (val.has_value() && predicate(val.value())) {
+				return std::optional<T>{};
+			}
+			return val;
+		});
+	}
+
+	/**
+	 * @brief End the generator when the given value is yielded from the generator.
+	 *
+	 * @note This does \b not yield the item that matches the sentinel.
+	 *
+	 * @param sentinel The value to check for.
+	 * @return A new generator that stops when it finds the given value.
+	 */
+	generator until(const T &sentinel) noexcept {
+		auto lambda = this->lambda;
+
+		return generator(state, [lambda, sentinel](S &state) {
+			auto val = lambda(state);
+			if (val.has_value() && val.value() == sentinel) {
+				return std::optional<T>{};
+			}
+			return val;
+		});
+	}
+
+	/**
 	 * @see chain()
 	 *
 	 * @copydoc chain()
 	 */
 	template <typename U>
-	inline generator<T, bool> operator+(generator<T, U> &other) noexcept {
+	inline generator<T, std::pair<generator, bool>> operator+(generator<T, U> &other) noexcept {
 		return chain(other);
 	}
 
@@ -597,8 +651,19 @@ public:
 	 * @copydoc chain()
 	 */
 	template <typename U>
-	inline generator<T, bool> operator+(generator<T, U> other) noexcept {
-		return chain(other);
+	inline generator<T, std::pair<std::pair<generator, bool>, generator<T, U>>> operator+(generator<T, U> &&other) noexcept {
+		return generator<T, std::pair<std::pair<generator, bool>, generator<T, U>>>({{*this, false}, other}, [&other](std::pair<std::pair<generator, bool>, generator<T, U>> &state) {
+			if (!state.first.second) {
+				auto item = state.first.first.next();
+				if (!item.has_value()) {
+					state.first.second = true;
+				} else {
+					return item;
+				}
+			}
+
+			return state.second.next();
+		});
 	}
 
 	/**

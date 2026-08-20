@@ -459,3 +459,66 @@ TEST_CASE("Generator pair with different lengths", "[generator]") {
 	REQUIRE(result[2].first == 3);
 	REQUIRE(result[2].second == 12);
 }
+
+TEST_CASE("Generator until", "[generator]") {
+	auto list1 = range(10).until(5).collect();
+	REQUIRE(list1.length() == 5);
+	REQUIRE(list1[4] == 4);
+
+	auto list2 = range(10).until([](auto i) { return i >= 5; }).collect();
+	REQUIRE(list2.length() == 5);
+	REQUIRE(list2[4] == 4);
+}
+
+TEST_CASE("Generator operator+ matches the chain method", "[generator]") {
+	auto r1 = range(5, 10);
+	auto r2 = range(5, 10);
+
+	auto gen1 = range(0, 5) + range(5, 10);
+	auto gen2 = range(0, 5) + r1;
+	auto gen3 = range(0, 5).chain(range(5, 10));
+	auto gen4 = range(0, 5).chain(r2);
+
+	auto list1 = gen1.collect();
+	auto list2 = gen2.collect();
+	auto list3 = gen3.collect();
+	auto list4 = gen4.collect();
+
+	REQUIRE(list1 == list3);
+	REQUIRE(list2 == list4);
+}
+
+auto plus3(long i) -> long {
+	return i + 3;
+}
+
+TEST_CASE("Generator operator| matches the map method", "[generator]") {
+	std::function<long(long)> plus2 = [](long i) { return i + 2; };
+
+	auto gen1 = range(10).map<long>(plus2);
+	auto gen2 = range(10) | plus2;
+	REQUIRE(gen1.collect() == gen2.collect());
+
+	auto gen3 = range(10).map<long>(plus3);
+	auto gen4 = range(10) | plus3;
+	REQUIRE(gen3.collect() == gen4.collect());
+}
+
+TEST_CASE("Generator operator& matches the filter method", "[generator]") {
+	auto is_even = [](long i) { return i % 2 == 0; };
+
+	auto gen1 = range(10).filter(is_even);
+	auto gen2 = range(10) & is_even;
+
+	REQUIRE(gen1.collect() == gen2.collect());
+}
+
+TEST_CASE("Generator operator>> matches the reduce method", "[generator]") {
+	auto sum = [](long a, long b) { return a + b; };
+
+	auto val1 = range(10).reduce({}, sum);
+	auto val2 = range(10) >> sum;
+
+	REQUIRE(val1 == val2);
+	REQUIRE(val2 == 45);
+}
