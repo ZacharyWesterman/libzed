@@ -59,7 +59,7 @@ namespace core {
  * @see zstr.h
  */
 template <encoding E = utf8>
-class string : public sizable, public arrayLike<uint32_t, stringIterator<E>> {
+class string final : public sizable, public arrayLike<uint32_t, stringIterator<E>> {
 	friend string<ascii>;
 	friend string<utf8>;
 	friend string<utf16>;
@@ -314,7 +314,7 @@ public:
 	}
 
 	/// Destructor
-	virtual ~string() noexcept final {
+	~string() noexcept {
 		if (data) {
 			delete[] data;
 		}
@@ -1606,32 +1606,32 @@ typedef z::core::string<> zstring;
 typedef z::core::string<z::utf8> zpath;
 
 // Custom literals for simple string construction
-z::core::string<z::utf32> operator"" _u32(char value);
-z::core::string<z::utf32> operator"" _u32(wchar_t value);
-z::core::string<z::utf32> operator"" _u32(const char *value);
-z::core::string<z::utf32> operator"" _u32(const char *value, size_t);
-z::core::string<z::utf32> operator"" _u32(const wchar_t * value, size_t);
+z::core::string<z::utf32> operator""_u32(char value);
+z::core::string<z::utf32> operator""_u32(wchar_t value);
+z::core::string<z::utf32> operator""_u32(const char *value);
+z::core::string<z::utf32> operator""_u32(const char *value, size_t);
+z::core::string<z::utf32> operator""_u32(const wchar_t *value, size_t);
 
-z::core::string<z::utf16> operator"" _u16(char value);
-z::core::string<z::utf16> operator"" _u16(wchar_t value);
-z::core::string<z::utf16> operator"" _u16(const char *value);
-z::core::string<z::utf16> operator"" _u16(const char *value, size_t);
-z::core::string<z::utf16> operator"" _u16(const wchar_t * value, size_t);
+z::core::string<z::utf16> operator""_u16(char value);
+z::core::string<z::utf16> operator""_u16(wchar_t value);
+z::core::string<z::utf16> operator""_u16(const char *value);
+z::core::string<z::utf16> operator""_u16(const char *value, size_t);
+z::core::string<z::utf16> operator""_u16(const wchar_t *value, size_t);
 
-z::core::string<z::utf8> operator"" _u8(char value);
-z::core::string<z::utf8> operator"" _u8(wchar_t value);
-z::core::string<z::utf8> operator"" _u8(const char *value);
-z::core::string<z::utf8> operator"" _u8(const char *value, size_t);
-z::core::string<z::utf8> operator"" _u8(const wchar_t * value, size_t);
+z::core::string<z::utf8> operator""_u8(char value);
+z::core::string<z::utf8> operator""_u8(wchar_t value);
+z::core::string<z::utf8> operator""_u8(const char *value);
+z::core::string<z::utf8> operator""_u8(const char *value, size_t);
+z::core::string<z::utf8> operator""_u8(const wchar_t *value, size_t);
 
-z::core::string<z::ascii> operator"" _asc(char value);
-z::core::string<z::ascii> operator"" _asc(wchar_t value);
-z::core::string<z::ascii> operator"" _asc(const char *value);
-z::core::string<z::ascii> operator"" _asc(const char *value, size_t);
-z::core::string<z::ascii> operator"" _asc(const wchar_t * value, size_t);
+z::core::string<z::ascii> operator""_asc(char value);
+z::core::string<z::ascii> operator""_asc(wchar_t value);
+z::core::string<z::ascii> operator""_asc(const char *value);
+z::core::string<z::ascii> operator""_asc(const char *value, size_t);
+z::core::string<z::ascii> operator""_asc(const wchar_t *value, size_t);
 
-zstring operator"" _zs(char value);
-zstring operator"" _zs(wchar_t value);
-zstring operator"" _zs(const char *value);
-zstring operator"" _zs(const char *value, size_t);
-zstring operator"" _zs(const wchar_t *value, size_t);
+zstring operator""_zs(char value);
+zstring operator""_zs(wchar_t value);
+zstring operator""_zs(const char *value);
+zstring operator""_zs(const char *value, size_t);
+zstring operator""_zs(const wchar_t *value, size_t);

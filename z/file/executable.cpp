@@ -12,12 +12,11 @@
 namespace z {
 namespace file {
 zpath executable() noexcept {
-	char buf[FILENAME_MAX];
-	int length = 0;
+	char buf[FILENAME_MAX + 1];
 #if defined(_WIN32)
-	length = GetModuleFileNameA(nullptr, buf, FILENAME_MAX);
+	long length = GetModuleFileNameA(nullptr, buf, FILENAME_MAX);
 #elif defined(__linux__)
-	length = readlink("/proc/self/exe", buf, FILENAME_MAX);
+	size_t length = readlink("/proc/self/exe", buf, FILENAME_MAX);
 #endif
 	buf[length] = '\0';
 	return buf;

@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <limits>
 
+// NOLINTBEGIN
+
 namespace z {
 namespace math {
 #define GENERATE \
@@ -56,3 +58,5 @@ namespace math {
 GENERATE
 } // namespace math
 } // namespace z
+
+// NOLINTEND
