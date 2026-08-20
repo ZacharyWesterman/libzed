@@ -2,7 +2,8 @@ var classz_1_1core_1_1generator =
 [
     [ "generator", "classz_1_1core_1_1generator.html#a2f3a8e8bf60179f7ffc94b16ba5e367a", null ],
     [ "begin", "classz_1_1core_1_1generator.html#ac87da2070de352b4daed8e2d03ee75db", null ],
-    [ "chain", "classz_1_1core_1_1generator.html#a87eccc7e530a182e7a47d9e8cc92d520", null ],
+    [ "chain", "classz_1_1core_1_1generator.html#a6c1b36fc37f0f5313a05a723fcd7d1b8", null ],
+    [ "chain", "classz_1_1core_1_1generator.html#a268c2b7054c7d5612e872a91816e8bf2", null ],
     [ "chunk", "classz_1_1core_1_1generator.html#a1ed08d1e5efb53ee56d0c6a11cefd6cd", null ],
     [ "collect", "classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036", null ],
     [ "consume", "classz_1_1core_1_1generator.html#a8de49515c34b28f026e1a2f631263ed3", null ],
@@ -17,8 +18,8 @@ var classz_1_1core_1_1generator =
     [ "map", "classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077", null ],
     [ "next", "classz_1_1core_1_1generator.html#ac1139cc0222d45acbd1dca4aa4e157d1", null ],
     [ "operator&", "classz_1_1core_1_1generator.html#a63039d77f7f91c4dfd8aec05d550f812", null ],
-    [ "operator+", "classz_1_1core_1_1generator.html#addcb212a02183618e3ec3b32f2a65ef2", null ],
-    [ "operator+", "classz_1_1core_1_1generator.html#a92de7b487a651e2d7771de1740705d16", null ],
+    [ "operator+", "classz_1_1core_1_1generator.html#a9b7e39fcca332781165daabd8c33e6e7", null ],
+    [ "operator+", "classz_1_1core_1_1generator.html#a403579ac77fc494ef5f2deef949ae5e3", null ],
     [ "operator>>", "classz_1_1core_1_1generator.html#a3f2130871d8960404053de5834042d5b", null ],
     [ "operator|", "classz_1_1core_1_1generator.html#a31555f6331a3e1ea0082d9eae9ad5114", null ],
     [ "operator|", "classz_1_1core_1_1generator.html#a7ec123ef70902a3c896414e89fd89f4e", null ],
@@ -28,5 +29,7 @@ var classz_1_1core_1_1generator =
     [ "skip", "classz_1_1core_1_1generator.html#a5a66da1ecceb029682b08d2a71a75e79", null ],
     [ "skip", "classz_1_1core_1_1generator.html#abe1e55d1a360b9e0cd63c8199d3d258b", null ],
     [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
+    [ "until", "classz_1_1core_1_1generator.html#ab1a552670a705836822d1a9461a98ca8", null ],
+    [ "until", "classz_1_1core_1_1generator.html#acbf0ae74a7d7b40c7db9114659c729b9", null ],
     [ "zip", "classz_1_1core_1_1generator.html#aa9a94c0016c0aa760433b1f6fd1459f8", null ]
 ];
