@@ -4,6 +4,7 @@
 #include <iostream>
 #include <z/core.hpp>
 
+using z::core::infinity;
 using z::core::range;
 
 auto factorial(long n) -> long {
@@ -36,9 +37,9 @@ int main() {
 	auto mapped_generator = range(5) | plus2 | factorial | tochar;
 
 	// Instead of calling `range(50).filter(is_even).filter(is_below_10)`,
-	// you can just put an ampersand `&` between filter functions.
+	// you can just put an ampersand `&&` or `and` between filter functions.
 	// Unlike `|`, these can be lambdas, functions or `std::function`s.
-	auto evens = range(50) & is_even & is_below_10;
+	auto evens = range(50) && is_even && is_below_10;
 
 	// Instead of calling `range(2,6).reduce({}, multiply)`,
 	// you can put `>>` in between the generator and the reduction function.
@@ -47,4 +48,9 @@ int main() {
 	// So if you need something like `range(2,6).reduce(-1, multiply)`,
 	// you cannot use this operator.
 	auto factorial = range(2, 6) >> multiply;
+
+	// Instead of calling `range(0, infinity).until(50)`,
+	// you can use `!=` to stop a generator once either a value (50 in this case) is found,
+	// or a predicate function returns true.
+	auto limited_generator = range(0, infinity) != 50;
 }

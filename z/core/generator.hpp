@@ -691,7 +691,7 @@ public:
 	 *
 	 * @copydoc filter()
 	 */
-	inline generator operator&(std::function<T(const T &)> filterLambda) noexcept {
+	inline generator operator&&(std::function<T(const T &)> filterLambda) noexcept {
 		return filter(filterLambda);
 	}
 
@@ -702,6 +702,24 @@ public:
 	 */
 	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
 		return reduce({}, reduceLambda);
+	}
+
+	/**
+	 * @see until(std::function<bool(T)>)
+	 *
+	 * @copydoc until(std::function<bool(T)>)
+	 */
+	inline generator operator!=(std::function<bool(T)> predicate) {
+		return until(predicate);
+	}
+
+	/**
+	 * @see until(const T&)
+	 *
+	 * @copydoc until(const T&)
+	 */
+	inline generator operator!=(const T &sentinel) {
+		return until(sentinel);
 	}
 };
 
