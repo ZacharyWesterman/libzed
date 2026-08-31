@@ -230,7 +230,7 @@ public:
 	 * This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value.
 	 * If the generator doesn't yield anything, the provided default value is returned.
 	 *
-	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect()and then
+	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect() and then
 	 * reduce() on the resulting array, as an intermediate array does not need to be constructed.
 	 *
 	 * @param defaultValue The value to return if the array is empty.
@@ -698,7 +698,16 @@ public:
 	/**
 	 * @see reduce()
 	 *
-	 * @copydoc reduce()
+	 * @brief Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.
+	 *
+	 * This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value.
+	 * If the generator doesn't yield anything, a default value (created via the default `{}` constructor) is returned.
+	 *
+	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect() and then
+	 * reduce() on the resulting array, as an intermediate array does not need to be constructed.
+	 *
+	 * @param reduceLambda A function that takes two elements of type `T` and returns their combined result of type `T`.
+	 * @return The result of the reduction operation.
 	 */
 	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
 		return reduce({}, reduceLambda);
