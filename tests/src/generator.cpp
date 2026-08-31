@@ -508,7 +508,7 @@ TEST_CASE("Generator operator& matches the filter method", "[generator]") {
 	auto is_even = [](long i) { return i % 2 == 0; };
 
 	auto gen1 = range(10).filter(is_even);
-	auto gen2 = range(10) & is_even;
+	auto gen2 = range(10) && is_even;
 
 	REQUIRE(gen1.collect() == gen2.collect());
 }
@@ -521,4 +521,13 @@ TEST_CASE("Generator operator>> matches the reduce method", "[generator]") {
 
 	REQUIRE(val1 == val2);
 	REQUIRE(val2 == 45);
+}
+
+TEST_CASE("Generator operator!= matches the until method", "[generator]") {
+	long max = 10;
+
+	auto gen1 = range(0, 100).until(max);
+	auto gen2 = range(0, 100) != max;
+
+	REQUIRE(gen1.collect() == gen2.collect());
 }
