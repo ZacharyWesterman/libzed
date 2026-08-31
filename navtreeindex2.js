@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"refArray_8hpp_source.html":[4,0,0,0,12],
+"regexConsole_8cpp-example.html":[5,18],
 "remainder_8hpp_source.html":[4,0,0,2,2],
 "remove_8hpp_source.html":[4,0,0,1,16],
 "rot13_8cpp-example.html":[5,19],

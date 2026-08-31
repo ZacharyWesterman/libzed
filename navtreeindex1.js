@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#a9efc67ef09fa81866f53cd27ea4194f5":[3,0,0,0,18,40],
+"classz_1_1core_1_1string.html#a9f8da0a78e38d9b7abb145721f78ad29":[3,0,0,0,18,100],
 "classz_1_1core_1_1string.html#aa135c96d46f5a5bb74a9a4bb32292672":[3,0,0,0,18,51],
 "classz_1_1core_1_1string.html#aa2b95769c45ad095646684d1155d4a36":[3,0,0,0,18,5],
 "classz_1_1core_1_1string.html#aa5d8c32069ca4ecb0fade7b6227aab0d":[3,0,0,0,18,64],
@@ -158,8 +160,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[3,3,0,3],
 "functions_e.html":[3,3,0,4],
 "functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1],
 "functions_func.html":[3,3,1,0],
+"functions_func.html":[3,3,1],
 "functions_func_b.html":[3,3,1,1],
 "functions_func_c.html":[3,3,1,2],
 "functions_func_d.html":[3,3,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "progress_8hpp_source.html":[4,0,0,5,4],
 "range_8cpp-example.html":[5,17],
 "range_8hpp_source.html":[4,0,0,0,11],
-"read_8hpp_source.html":[4,0,0,1,15],
-"refArray_8hpp_source.html":[4,0,0,0,12],
-"regexConsole_8cpp-example.html":[5,18]
+"read_8hpp_source.html":[4,0,0,1,15]
 };

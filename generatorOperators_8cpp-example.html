@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.9</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.12</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -106,7 +106,8 @@ $(document).ready(function(){initNavTree('generatorOperators_8cpp-example.html',
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="core_8hpp.html">z/core.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_variable" href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">auto</span> factorial(<span class="keywordtype">long</span> n) -&gt; <span class="keywordtype">long</span> {</div>
 <div class="line">    <span class="keywordtype">long</span> result = 1;</div>
@@ -138,9 +139,9 @@ $(document).ready(function(){initNavTree('generatorOperators_8cpp-example.html',
 <div class="line">    <span class="keyword">auto</span> mapped_generator = <a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">range</a>(5) | plus2 | factorial | tochar;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Instead of calling `range(50).filter(is_even).filter(is_below_10)`,</span></div>
-<div class="line">    <span class="comment">// you can just put an ampersand `&amp;` between filter functions.</span></div>
+<div class="line">    <span class="comment">// you can just put an ampersand `&amp;&amp;` or `and` between filter functions.</span></div>
 <div class="line">    <span class="comment">// Unlike `|`, these can be lambdas, functions or `std::function`s.</span></div>
-<div class="line">    <span class="keyword">auto</span> evens = <a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">range</a>(50) &amp; is_even &amp; is_below_10;</div>
+<div class="line">    <span class="keyword">auto</span> evens = <a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">range</a>(50) &amp;&amp; is_even &amp;&amp; is_below_10;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Instead of calling `range(2,6).reduce({}, multiply)`,</span></div>
 <div class="line">    <span class="comment">// you can put `&gt;&gt;` in between the generator and the reduction function.</span></div>
@@ -149,9 +150,15 @@ $(document).ready(function(){initNavTree('generatorOperators_8cpp-example.html',
 <div class="line">    <span class="comment">// So if you need something like `range(2,6).reduce(-1, multiply)`,</span></div>
 <div class="line">    <span class="comment">// you cannot use this operator.</span></div>
 <div class="line">    <span class="keyword">auto</span> factorial = <a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">range</a>(2, 6) &gt;&gt; multiply;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Instead of calling `range(0, infinity).until(50)`,</span></div>
+<div class="line">    <span class="comment">// you can use `!=` to stop a generator once either a value (50 in this case) is found,</span></div>
+<div class="line">    <span class="comment">// or a predicate function returns true.</span></div>
+<div class="line">    <span class="keyword">auto</span> limited_generator = <a class="code hl_function" href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">range</a>(0, infinity) != 50;</div>
 <div class="line">}</div>
 <div class="ttc" id="acore_8hpp_html"><div class="ttname"><a href="core_8hpp.html">core.hpp</a></div></div>
 <div class="ttc" id="anamespacez_1_1core_html_ab8a6fe8f97fb004fce9c15934b3e6e1b"><div class="ttname"><a href="namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b">z::core::range</a></div><div class="ttdeci">generator&lt; long, long &gt; range(long begin, long end, long step=1) noexcept</div><div class="ttdoc">Generate a sequence of integers in a specified range.</div></div>
+<div class="ttc" id="anamespacez_1_1core_html_ac3bcefde86d3d53a18b8cfd1c91dd9f6"><div class="ttname"><a href="namespacez_1_1core.html#ac3bcefde86d3d53a18b8cfd1c91dd9f6">z::core::infinity</a></div><div class="ttdeci">const sentinel infinity</div><div class="ttdoc">A sentinel that tells numeric generators to run forever.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
