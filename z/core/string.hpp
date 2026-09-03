@@ -724,6 +724,17 @@ public:
 	string substr(int index, int count) const noexcept;
 
 	/**
+	 * @brief Get a sub-string from this string, starting at the given index and going to the end.
+	 *
+	 * @param index The sub-string starting index.
+	 *
+	 * @return A subset of the original string.
+	 */
+	inline string substr(int index) const noexcept {
+		return substr(index, character_ct - index);
+	}
+
+	/**
 	 * @brief Append another string to the end of this one.
 	 *
 	 * @param other The string to append.
