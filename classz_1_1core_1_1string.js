@@ -92,6 +92,7 @@ var classz_1_1core_1_1string =
     [ "replace", "classz_1_1core_1_1string.html#ad1e0b33101b2b8f94297a25bd8612b0c", null ],
     [ "size", "classz_1_1core_1_1string.html#a19ac810f3cdd61cbcf4bd1e2e7a31eb8", null ],
     [ "str", "classz_1_1core_1_1string.html#a20b02bcd4f40fc6252a022e5eb3cbb42", null ],
+    [ "substr", "classz_1_1core_1_1string.html#a4b9cc5a51836a8ac806459bcf458ca02", null ],
     [ "substr", "classz_1_1core_1_1string.html#aaa571037a910a6408277e5d823a15fa8", null ],
     [ "toCamel", "classz_1_1core_1_1string.html#a2c91321592069c6e469f316ed4768161", null ],
     [ "toLower", "classz_1_1core_1_1string.html#a107966535eeea6ce8a56cde347c4115e", null ],

@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.12</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.13</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -285,6 +285,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaa571037a910a6408277e5d823a15fa8" id="r_aaa571037a910a6408277e5d823a15fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#aaa571037a910a6408277e5d823a15fa8">substr</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index, <a class="el" href="classz_1_1core_1_1array.html">int</a> <a class="el" href="classz_1_1core_1_1string.html#a12b0f9f2dc434e125a09f9d0b41b4d06">count</a>) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:aaa571037a910a6408277e5d823a15fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sub-string from this string.  <br /></td></tr>
 <tr class="separator:aaa571037a910a6408277e5d823a15fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9cc5a51836a8ac806459bcf458ca02" id="r_a4b9cc5a51836a8ac806459bcf458ca02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a4b9cc5a51836a8ac806459bcf458ca02">substr</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index) <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a4b9cc5a51836a8ac806459bcf458ca02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sub-string from this string, starting at the given index and going to the end.  <br /></td></tr>
+<tr class="separator:a4b9cc5a51836a8ac806459bcf458ca02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bed4437d2f9240b20845975972f47de" id="r_a5bed4437d2f9240b20845975972f47de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1string.html#a5bed4437d2f9240b20845975972f47de">append</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1string.html">string</a> &amp;<a class="el" href="classz_1_1core_1_1array.html">other</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a5bed4437d2f9240b20845975972f47de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append another string to the end of this one.  <br /></td></tr>
 <tr class="separator:a5bed4437d2f9240b20845975972f47de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4430,8 +4433,45 @@ template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb6
 
 </div>
 </div>
+<a id="a4b9cc5a51836a8ac806459bcf458ca02" name="a4b9cc5a51836a8ac806459bcf458ca02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9cc5a51836a8ac806459bcf458ca02">&#9670;&#160;</a></span>substr() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="encoding_8hpp.html#abb9b3bdd67c870c617a43438ebb64c17">encoding</a> E = utf8&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">string</a> <a class="el" href="classz_1_1core_1_1string.html">z::core::string</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">E</a> &gt;::substr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">int</a>&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a sub-string from this string, starting at the given index and going to the end. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The sub-string starting index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A subset of the original string. </dd></dl>
+
+</div>
+</div>
 <a id="aaa571037a910a6408277e5d823a15fa8" name="aaa571037a910a6408277e5d823a15fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa571037a910a6408277e5d823a15fa8">&#9670;&#160;</a></span>substr()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa571037a910a6408277e5d823a15fa8">&#9670;&#160;</a></span>substr() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
