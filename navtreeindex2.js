@@ -21,6 +21,8 @@ var NAVTREEINDEX2 =
 "structz_01_1_1core_1_1types_1_1greaterExists.html":[3,0,1,0,0,1],
 "structz_01_1_1core_1_1types_1_1lesserExists.html":[3,0,1,0,0,2],
 "structz_01_1_1core_1_1types_1_1no.html":[3,0,1,0,0,3],
+"structz_1_1core_1_1generator_1_1countedState.html":[3,0,0,0,4,0],
+"structz_1_1core_1_1generator_1_1reducePair.html":[3,0,0,0,4,1],
 "structz_1_1core_1_1hash32gen.html":[3,0,0,0,6],
 "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html":[3,0,0,0,7],
 "structz_1_1core_1_1is__iterator.html":[3,0,0,0,9],

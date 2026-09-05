@@ -1,5 +1,7 @@
 var classz_1_1core_1_1generator =
 [
+    [ "countedState", "structz_1_1core_1_1generator_1_1countedState.html", null ],
+    [ "reducePair", "structz_1_1core_1_1generator_1_1reducePair.html", null ],
     [ "generator", "classz_1_1core_1_1generator.html#a2f3a8e8bf60179f7ffc94b16ba5e367a", null ],
     [ "begin", "classz_1_1core_1_1generator.html#ac87da2070de352b4daed8e2d03ee75db", null ],
     [ "chain", "classz_1_1core_1_1generator.html#a6c1b36fc37f0f5313a05a723fcd7d1b8", null ],
