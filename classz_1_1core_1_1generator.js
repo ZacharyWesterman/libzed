@@ -18,7 +18,7 @@ var classz_1_1core_1_1generator =
     [ "forEach", "classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8", null ],
     [ "limit", "classz_1_1core_1_1generator.html#ad8b1388677d26c4638462a82c23288d0", null ],
     [ "map", "classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077", null ],
-    [ "next", "classz_1_1core_1_1generator.html#ac1139cc0222d45acbd1dca4aa4e157d1", null ],
+    [ "next", "classz_1_1core_1_1generator.html#a2a6b29e6e2dc131d73781f9d08eb3701", null ],
     [ "operator!=", "classz_1_1core_1_1generator.html#ad07590ec9cc08f1f1f8c663dc0aaceb8", null ],
     [ "operator!=", "classz_1_1core_1_1generator.html#ad46dd3d2c64a839403dafbeecb845e17", null ],
     [ "operator&&", "classz_1_1core_1_1generator.html#a412f27cd8daa7b07d5654354b3563ced", null ],
