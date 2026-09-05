@@ -69,6 +69,7 @@ public:
  */
 template <typename T, typename S>
 class generator : public iterable<generatorIter<T, S>> {
+protected:
 	S state;
 	std::function<const std::optional<T>(S &)> lambda;
 
