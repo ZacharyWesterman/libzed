@@ -114,7 +114,7 @@ public:
 	 *
 	 * @return A std::optional object containing the next value, if any.
 	 */
-	inline std::optional<T> next() {
+	inline virtual std::optional<T> next() {
 		return lambda(state);
 	}
 
