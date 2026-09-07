@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab":[3,0,0,0,18,30],
+"classz_1_1core_1_1string.html#a9620de47fdca587eebfad0fbd1398ec4":[3,0,0,0,18,20],
+"classz_1_1core_1_1string.html#a9c11a8382545cf60d73e6b698476ef4e":[3,0,0,0,18,83],
+"classz_1_1core_1_1string.html#a9d2f2d957cc32c166bfb80b3b701ee08":[3,0,0,0,18,46],
 "classz_1_1core_1_1string.html#a9e7221c8193852126febe812132eaa86":[3,0,0,0,18,22],
 "classz_1_1core_1_1string.html#a9efc67ef09fa81866f53cd27ea4194f5":[3,0,0,0,18,40],
 "classz_1_1core_1_1string.html#a9f8da0a78e38d9b7abb145721f78ad29":[3,0,0,0,18,101],
@@ -161,8 +165,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[3,3,0,3],
 "functions_e.html":[3,3,0,4],
 "functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1,0],
 "functions_func.html":[3,3,1],
+"functions_func.html":[3,3,1,0],
 "functions_func_b.html":[3,3,1,1],
 "functions_func_c.html":[3,3,1,2],
 "functions_func_d.html":[3,3,1,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "namespacemembers_vars.html":[2,1,2],
 "namespaces.html":[2,0],
 "numberwang_8cpp-example.html":[5,16],
-"pages.html":[],
-"path_8hpp_source.html":[4,0,0,1,14],
-"progress_8hpp_source.html":[4,0,0,5,4],
-"range_8cpp-example.html":[5,17],
-"range_8hpp_source.html":[4,0,0,0,11]
+"pages.html":[]
 };

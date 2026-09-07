@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.15</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.18</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -156,12 +156,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a804227ac9c66a537e5d5e86a64f31077"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a804227ac9c66a537e5d5e86a64f31077">map</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">U</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">mapLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a804227ac9c66a537e5d5e86a64f31077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a transformation function to each item that comes out of the generator.  <br /></td></tr>
 <tr class="separator:a804227ac9c66a537e5d5e86a64f31077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a199cb0acbf05782f7ea518f59ee2bb53" id="r_a199cb0acbf05782f7ea518f59ee2bb53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a199cb0acbf05782f7ea518f59ee2bb53">filter</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">filterLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
-<tr class="memdesc:a199cb0acbf05782f7ea518f59ee2bb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.  <br /></td></tr>
-<tr class="separator:a199cb0acbf05782f7ea518f59ee2bb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a716ea9e1413f3ba3e9df2e1fbf17d29c" id="r_a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c">reduce</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;defaultValue, std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; reduceLambda)</td></tr>
-<tr class="memdesc:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.  <br /></td></tr>
-<tr class="separator:a716ea9e1413f3ba3e9df2e1fbf17d29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0b97814672f2232763f5975820dee1" id="r_a5c0b97814672f2232763f5975820dee1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a5c0b97814672f2232763f5975820dee1">filter</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">bool</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">filterLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:a5c0b97814672f2232763f5975820dee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.  <br /></td></tr>
+<tr class="separator:a5c0b97814672f2232763f5975820dee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4e9978907f3f2a7bbd5dda5dfed700" id="r_a2c4e9978907f3f2a7bbd5dda5dfed700"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a2c4e9978907f3f2a7bbd5dda5dfed700">reduce</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; reduceLambda, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;defaultValue={})</td></tr>
+<tr class="memdesc:a2c4e9978907f3f2a7bbd5dda5dfed700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values.  <br /></td></tr>
+<tr class="separator:a2c4e9978907f3f2a7bbd5dda5dfed700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dee6bfbf3955cc07dd0d35d6cfc99b8" id="r_a2dee6bfbf3955cc07dd0d35d6cfc99b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1generator.html">generator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1generator.html#a2dee6bfbf3955cc07dd0d35d6cfc99b8">forEach</a> (std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">void</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt; <a class="el" href="classz_1_1core_1_1array.html">newLambda</a>) <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a2dee6bfbf3955cc07dd0d35d6cfc99b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds a function to run each time an item comes out of the generator.  <br /></td></tr>
 <tr class="separator:a2dee6bfbf3955cc07dd0d35d6cfc99b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -664,8 +664,8 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
-<a id="a199cb0acbf05782f7ea518f59ee2bb53" name="a199cb0acbf05782f7ea518f59ee2bb53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a199cb0acbf05782f7ea518f59ee2bb53">&#9670;&#160;</a></span>filter()</h2>
+<a id="a5c0b97814672f2232763f5975820dee1" name="a5c0b97814672f2232763f5975820dee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0b97814672f2232763f5975820dee1">&#9670;&#160;</a></span>filter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -678,7 +678,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
         <tr>
           <td class="memname"><a class="el" href="classz_1_1core_1_1generator.html">generator</a> <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::filter </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">bool</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
           <td class="paramname"><em>filterLambda</em></td><td>)</td>
           <td></td>
         </tr>
@@ -989,7 +989,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a199cb0acbf05782f7ea518f59ee2bb53" title="Filters the generatred items based on a predicate and returns a new generator that yields only the it...">filter()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a5c0b97814672f2232763f5975820dee1" title="Filters the generatred items based on a predicate and returns a new generator that yields only the it...">filter()</a></dd></dl>
 <p>Filters the generatred items based on a predicate and returns a new generator that yields only the items that satisfy the predicate.  </p>
 <p>This function wraps the existing generator in another generator, and as each item is generated, applies the given lambda function as a predicate, and only yields items that satisfy the predicate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1123,9 +1123,9 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 </div><div class="memdoc">
 
 <p>Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classz_1_1core_1_1generator.html#a2c4e9978907f3f2a7bbd5dda5dfed700" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a></dd></dl>
 <p>This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value. If the generator doesn't yield anything, a default value (created via the default <code>{}</code> constructor) is returned.</p>
-<dl class="section note"><dt>Note</dt><dd>Especially for long lists of items, this is significantly more memory-efficient than calling <a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036" title="Concatenate all generator elements into an array.">collect()</a> and then <a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a> on the resulting array, as an intermediate array does not need to be constructed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Especially for long lists of items, this is significantly more memory-efficient than calling <a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036" title="Concatenate all generator elements into an array.">collect()</a> and then <a class="el" href="classz_1_1core_1_1generator.html#a2c4e9978907f3f2a7bbd5dda5dfed700" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a> on the resulting array, as an intermediate array does not need to be constructed.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">reduceLambda</td><td>A function that takes two elements of type <code>T</code> and returns their combined result of type <code>T</code>. </td></tr>
@@ -1299,8 +1299,8 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 </div>
 </div>
-<a id="a716ea9e1413f3ba3e9df2e1fbf17d29c" name="a716ea9e1413f3ba3e9df2e1fbf17d29c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a716ea9e1413f3ba3e9df2e1fbf17d29c">&#9670;&#160;</a></span>reduce()</h2>
+<a id="a2c4e9978907f3f2a7bbd5dda5dfed700" name="a2c4e9978907f3f2a7bbd5dda5dfed700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4e9978907f3f2a7bbd5dda5dfed700">&#9670;&#160;</a></span>reduce()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1313,14 +1313,14 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
         <tr>
           <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">T</a> <a class="el" href="classz_1_1core_1_1generator.html">z::core::generator</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>, <a class="el" href="classz_1_1core_1_1array.html">S</a> &gt;::reduce </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td>
-          <td class="paramname"><em>defaultValue</em>, </td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>reduceLambda</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; <a class="el" href="classz_1_1core_1_1array.html">T</a>(<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;, <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;)&gt;&#160;</td>
-          <td class="paramname"><em>reduceLambda</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">T</a> &amp;&#160;</td>
+          <td class="paramname"><em>defaultValue</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1337,11 +1337,11 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
 
 <p>Reduces the generator to a single value by applying a binary operation cumulatively to all yielded values. </p>
 <p>This function applies a binary operation (provided as a lambda) to combine all yielded items into a single value. If the generator doesn't yield anything, the provided default value is returned.</p>
-<dl class="section note"><dt>Note</dt><dd>Especially for long lists of items, this is significantly more memory-efficient than calling <a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036" title="Concatenate all generator elements into an array.">collect()</a> and then <a class="el" href="classz_1_1core_1_1generator.html#a716ea9e1413f3ba3e9df2e1fbf17d29c" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a> on the resulting array, as an intermediate array does not need to be constructed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Especially for long lists of items, this is significantly more memory-efficient than calling <a class="el" href="classz_1_1core_1_1generator.html#a2f4c5598acdb9b1fd6a7016360028036" title="Concatenate all generator elements into an array.">collect()</a> and then <a class="el" href="classz_1_1core_1_1generator.html#a2c4e9978907f3f2a7bbd5dda5dfed700" title="Reduces the generator to a single value by applying a binary operation cumulatively to all yielded va...">reduce()</a> on the resulting array, as an intermediate array does not need to be constructed.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">defaultValue</td><td>The value to return if the array is empty. </td></tr>
     <tr><td class="paramname">reduceLambda</td><td>A function that takes two elements of type <code>T</code> and returns their combined result of type <code>T</code>. </td></tr>
+    <tr><td class="paramname">defaultValue</td><td>The value to return if the array is empty. </td></tr>
   </table>
   </dd>
 </dl>
