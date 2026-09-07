@@ -56,13 +56,13 @@ TEST_CASE("Select N random elements from an array with fewer elements than N", "
 
 TEST_CASE("Sum of an array", "[array]") {
 	array<int> arr = {1, 2, 3, 4, 5};
-	int sum = arr.reduce(0, [](const int &a, const int &b) { return a + b; });
+	int sum = arr.reduce([](const int &a, const int &b) { return a + b; });
 	REQUIRE(sum == 15);
 }
 
 TEST_CASE("Sum of an empty array", "[array]") {
 	array<int> arr;
-	int sum = arr.reduce(0, [](const int &a, const int &b) { return a + b; });
+	int sum = arr.reduce([](const int &a, const int &b) { return a + b; });
 	REQUIRE(sum == 0);
 }
 

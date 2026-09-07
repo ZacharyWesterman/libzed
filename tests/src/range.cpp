@@ -34,10 +34,10 @@ TEST_CASE("Range, filter", "[range]") {
 }
 
 TEST_CASE("Range, reduce", "[range]") {
-	auto sum = z::core::range(10).reduce(0, [](auto a, auto b) { return a + b; });
+	auto sum = z::core::range(10).reduce([](auto a, auto b) { return a + b; }, 0);
 	REQUIRE(sum == 45);
 
-	auto mult = z::core::range(1, 10).reduce(1, [](auto a, auto b) { return a * b; });
+	auto mult = z::core::range(1, 10).reduce([](auto a, auto b) { return a * b; }, 1);
 	REQUIRE(sum == 45);
 }
 
