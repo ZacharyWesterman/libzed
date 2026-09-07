@@ -209,7 +209,7 @@ public:
 	 * the item should be yielded.
 	 * @return A new generator that yields only items that satisfy the predicate.
 	 */
-	generator filter(std::function<T(const T &)> filterLambda) noexcept {
+	generator filter(std::function<bool(const T &)> filterLambda) noexcept {
 		auto lambda = this->lambda;
 
 		return generator(state, [lambda, filterLambda](S &state) {
@@ -234,11 +234,11 @@ public:
 	 * @note Especially for long lists of items, this is significantly more memory-efficient than calling collect() and then
 	 * reduce() on the resulting array, as an intermediate array does not need to be constructed.
 	 *
-	 * @param defaultValue The value to return if the array is empty.
 	 * @param reduceLambda A function that takes two elements of type `T` and returns their combined result of type `T`.
+	 * @param defaultValue The value to return if the array is empty.
 	 * @return The result of the reduction operation.
 	 */
-	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> reduceLambda) {
+	T reduce(std::function<T(const T &, const T &)> reduceLambda, const T &defaultValue = {}) {
 		auto result = lambda(state);
 
 		if (!result.has_value()) {
@@ -711,7 +711,7 @@ public:
 	 * @return The result of the reduction operation.
 	 */
 	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
-		return reduce({}, reduceLambda);
+		return reduce(reduceLambda);
 	}
 
 	/**

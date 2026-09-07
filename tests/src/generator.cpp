@@ -14,16 +14,16 @@ using z::core::join;
 using z::core::range;
 
 TEST_CASE("Generator reduce", "[generator]") {
-	auto sum10 = range(1, 11).reduce(0, [](auto a, auto b) { return a + b; });
+	auto sum10 = range(1, 11).reduce([](auto a, auto b) { return a + b; }, 0);
 	REQUIRE(sum10 == 55);
 
-	auto mult10 = range(1, 11).reduce(1, [](auto a, auto b) { return a * b; });
+	auto mult10 = range(1, 11).reduce([](auto a, auto b) { return a * b; }, 1);
 	REQUIRE(mult10 == 3628800);
 
-	auto max = range(1, 11).reduce(0, [](auto a, auto b) { return a > b ? a : b; });
+	auto max = range(1, 11).reduce([](auto a, auto b) { return a > b ? a : b; }, 0);
 	REQUIRE(max == 10);
 
-	auto min = range(1, 11).reduce(100, [](auto a, auto b) { return a < b ? a : b; });
+	auto min = range(1, 11).reduce([](auto a, auto b) { return a < b ? a : b; }, 100);
 	REQUIRE(min == 1);
 }
 
@@ -356,7 +356,7 @@ TEST_CASE("Generator chained operations", "[generator]") {
 TEST_CASE("Generator reduce with strings", "[generator]") {
 	std::vector<std::string> str_vec = {"hello", " ", "world"};
 	auto strings = generatorFrom(str_vec);
-	auto concatenated = strings.reduce(std::string(""), [](const std::string &a, const std::string &b) { return a + b; });
+	auto concatenated = strings.reduce([](const std::string &a, const std::string &b) { return a + b; }, std::string(""));
 	REQUIRE(concatenated == "hello world");
 }
 
@@ -516,7 +516,7 @@ TEST_CASE("Generator operator& matches the filter method", "[generator]") {
 TEST_CASE("Generator operator>> matches the reduce method", "[generator]") {
 	auto sum = [](long a, long b) { return a + b; };
 
-	auto val1 = range(10).reduce({}, sum);
+	auto val1 = range(10).reduce(sum);
 	auto val2 = range(10) >> sum;
 
 	REQUIRE(val1 == val2);

@@ -558,7 +558,51 @@ public:
 	 * @param lambda A function that takes two elements of type `T` and returns their combined result of type `T`.
 	 * @return The result of the reduction operation.
 	 */
-	T reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const;
+	T reduce(std::function<T(const T &, const T &)> lambda, const T &defaultValue = {}) const;
+
+	/**
+	 * @see map()
+	 *
+	 * @copydoc map()
+	 */
+	template <typename U>
+	inline generator<U, S> operator|(std::function<U(T)> mapLambda) noexcept {
+		return map<U>(mapLambda);
+	}
+
+	/**
+	 * @see map()
+	 *
+	 * @copydoc map()
+	 */
+	template <typename U>
+	inline generator<U, S> operator|(U (*mapLambda)(T)) noexcept {
+		return map<U>(mapLambda);
+	}
+
+	/**
+	 * @see filter()
+	 *
+	 * @copydoc filter()
+	 */
+	inline generator operator&&(std::function<T(const T &)> filterLambda) noexcept {
+		return filter(filterLambda);
+	}
+
+	/**
+	 * @see reduce()
+	 *
+	 * @brief Reduces the array to a single value by applying a binary operation cumulatively to the elements.
+	 *
+	 * This function applies a binary operation (provided as a lambda) to combine the elements of the array into a single value.
+	 * If the array is empty, a default value (created via the default `{}` constructor) is returned.
+	 *
+	 * @param lambda A function that takes two elements of type `T` and returns their combined result of type `T`.
+	 * @return The result of the reduction operation.
+	 */
+	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
+		return reduce(reduceLambda);
+	}
 
 	/**
 	 * @brief Get a random element from the array.
@@ -1253,7 +1297,7 @@ array<T> array<T>::filter(std::function<bool(const T &)> lambda) const {
 }
 
 template <typename T>
-T array<T>::reduce(const T &defaultValue, std::function<T(const T &, const T &)> lambda) const {
+T array<T>::reduce(std::function<T(const T &, const T &)> lambda, const T &defaultValue) const {
 	const auto len = array_data.size();
 	if (len == 0) {
 		return defaultValue;
