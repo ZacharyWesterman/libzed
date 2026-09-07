@@ -55,7 +55,7 @@ int main() {
 
 	// See how here, we're not directly calling progress.set, but the progress bar displays!
 	"\nSum a long range and display the progress:"_zs.writeln(std::cout);
-	auto sum = numbers.reduce(0, std::plus<long>());
+	auto sum = numbers.reduce(std::plus<long>());
 	("Total: "_zs + sum).writeln(std::cout);
 
 	return 0;

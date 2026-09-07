@@ -22,14 +22,14 @@ int main() {
 	// Array
 	{
 		auto numbers = z::core::array<int>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-		auto total_sum = numbers.reduce(0, [](auto a, auto b) { return a + b; });
+		auto total_sum = numbers.reduce([](auto a, auto b) { return a + b; });
 		("Sum of all numbers = "_zs + total_sum).writeln(std::cout);
 	}
 
 	// Generator
 	{
 		auto numbers = range(10);
-		auto total_sum = numbers.reduce(0, [](auto a, auto b) { return a + b; });
+		auto total_sum = numbers.reduce([](auto a, auto b) { return a + b; });
 		("Sum of all numbers = "_zs + total_sum).writeln(std::cout);
 	}
 

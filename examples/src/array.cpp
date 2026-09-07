@@ -12,10 +12,10 @@ int main() {
 	auto numbers = strings.map<int>([](auto item) { return item.integer(); });
 
 	// Sum all the numbers
-	auto total_sum = numbers.reduce(0, [](auto a, auto b) { return a + b; });
+	auto total_sum = numbers.reduce([](auto a, auto b) { return a + b; });
 
 	// Sum only the non-negative numbers
-	auto nonneg_sum = numbers.filter([](auto item) { return item >= 0; }).reduce(0, [](auto a, auto b) { return a + b; });
+	auto nonneg_sum = numbers.filter([](auto item) { return item >= 0; }).reduce([](auto a, auto b) { return a + b; });
 
 	// Print output
 	("Number list = ["_zs + join(numbers, ", ") + "]").writeln(std::cout);
