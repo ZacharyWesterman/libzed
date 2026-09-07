@@ -566,7 +566,7 @@ public:
 	 * @copydoc map()
 	 */
 	template <typename U>
-	inline generator<U, S> operator|(std::function<U(T)> mapLambda) noexcept {
+	inline array<U> operator|(std::function<U(T)> mapLambda) noexcept {
 		return map<U>(mapLambda);
 	}
 
@@ -576,7 +576,7 @@ public:
 	 * @copydoc map()
 	 */
 	template <typename U>
-	inline generator<U, S> operator|(U (*mapLambda)(T)) noexcept {
+	inline array<U> operator|(U (*mapLambda)(T)) noexcept {
 		return map<U>(mapLambda);
 	}
 
@@ -585,7 +585,7 @@ public:
 	 *
 	 * @copydoc filter()
 	 */
-	inline generator operator&&(std::function<T(const T &)> filterLambda) noexcept {
+	inline array operator&&(std::function<T(const T &)> filterLambda) noexcept {
 		return filter(filterLambda);
 	}
 
