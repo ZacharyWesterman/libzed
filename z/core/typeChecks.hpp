@@ -4,7 +4,7 @@
 
 #include <type_traits>
 
-namespace z ::core::types {
+namespace z::core::types {
 /// Internal class to do template check if method exists.
 struct no {};
 

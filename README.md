@@ -131,11 +131,11 @@ Currently the Makefile supports compiling on Linux and Windows only, as those ar
 
 It should compile on any 64 or 32-bit flavor of these systems (including the Raspberry Pi!).
 
-The only requirements are Make and a C++ compiler that supports *at least* C++11 (C++17 or newer preferred).
-If `g++ --version` is 5 or above, chances are you're good.
+The only requirements are Make and a C++ compiler that supports *at least* C++17.
+If `g++ --version` is 7 or above, chances are you're good.
 
 ### Required dependencies
-- g++ (or other compliant compiler) supporting at least C++11
+- g++ (or other compliant compiler) supporting at least C++17
 - make
 
 ### Optional dependency

@@ -2,8 +2,8 @@
 
 #include <functional>
 #include <map>
+#include <optional>
 
-#include "../polyfill/std_optional.hpp"
 #include "array.hpp"
 #include "templates.hpp"
 

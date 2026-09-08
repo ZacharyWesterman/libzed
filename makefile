@@ -104,9 +104,9 @@ STD = $(shell scripts\cxx_latest_version.bat $(CC))
 else
 STD = $(shell scripts/cxx_latest_version.sh $(CC))
 endif
-#Fallback to 11 if nothing else.
+#Fallback to 17 if nothing else.
 ifeq ($(STD),)
-STD = c++11
+STD = c++17
 endif
 
 STATIC_LIB = lib$(LIBNAME).a
