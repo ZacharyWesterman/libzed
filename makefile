@@ -137,7 +137,7 @@ endif
 ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
-VERSION_SCRIPT = scripts/build_version.bat
+VERSION_SCRIPT = scripts\build_version.bat
 else
 # link to std::filesystem if c++17 and linux
 ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
