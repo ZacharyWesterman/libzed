@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.18</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.21</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -114,10 +114,10 @@ $(document).ready(function(){initNavTree('array_8cpp-example.html',''); initResi
 <div class="line">    <span class="keyword">auto</span> numbers = strings.<a id="a2" name="a2"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#af3812e9c00a7fccd4a9ef59f74c7cfe2">map</a>&lt;<span class="keywordtype">int</span>&gt;([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> item.integer(); });</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Sum all the numbers</span></div>
-<div class="line">    <span class="keyword">auto</span> total_sum = numbers.<a id="a3" name="a3"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#ad7faa1fe3d240c51971e643b5933bc60">reduce</a>(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
+<div class="line">    <span class="keyword">auto</span> total_sum = numbers.<a id="a3" name="a3"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#ad7faa1fe3d240c51971e643b5933bc60">reduce</a>([](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Sum only the non-negative numbers</span></div>
-<div class="line">    <span class="keyword">auto</span> nonneg_sum = numbers.<a id="a4" name="a4"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#a1b1418510943837a800e71d7025265c6">filter</a>([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> item &gt;= 0; }).reduce(0, [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
+<div class="line">    <span class="keyword">auto</span> nonneg_sum = numbers.<a id="a4" name="a4"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#a1b1418510943837a800e71d7025265c6">filter</a>([](<span class="keyword">auto</span> item) { <span class="keywordflow">return</span> item &gt;= 0; }).reduce([](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keywordflow">return</span> a + b; });</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Print output</span></div>
 <div class="line">    (<span class="stringliteral">&quot;Number list = [&quot;</span>_zs + join(numbers, <span class="stringliteral">&quot;, &quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>).writeln(std::cout);</div>

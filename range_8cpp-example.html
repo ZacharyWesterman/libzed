@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.18</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.21</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('range_8cpp-example.html',''); initResi
 <div class="line"> </div>
 <div class="line">    <span class="comment">// See how here, we&#39;re not directly calling progress.set, but the progress bar displays!</span></div>
 <div class="line">    <span class="stringliteral">&quot;\nSum a long range and display the progress:&quot;</span>_zs.writeln(std::cout);</div>
-<div class="line">    <span class="keyword">auto</span> sum = numbers.<a id="a6" name="a6"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#ad7faa1fe3d240c51971e643b5933bc60">reduce</a>(0, std::plus&lt;long&gt;());</div>
+<div class="line">    <span class="keyword">auto</span> sum = numbers.<a id="a6" name="a6"></a><a class="code hl_function" href="classz_1_1core_1_1array.html#ad7faa1fe3d240c51971e643b5933bc60">reduce</a>(std::plus&lt;long&gt;());</div>
 <div class="line">    (<span class="stringliteral">&quot;Total: &quot;</span>_zs + sum).writeln(std::cout);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>

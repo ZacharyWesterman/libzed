@@ -29,5 +29,6 @@ var searchData=
   ['crc32_26',['crc32',['../structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b',1,'z::core::hash32gen&lt; size, size, dummy &gt;::crc32()'],['../structz_1_1core_1_1hash32gen.html#a0a5dbfe9bb856dfafd52a27727e868e5',1,'z::core::hash32gen::crc32()'],['../namespacez_1_1core.html#a86f77db6ea69e8b33b5261e0c74b1043',1,'z::core::crc32()']]],
   ['cstring_27',['cstring',['../classz_1_1core_1_1string.html#a5cc03bcfc11b629f98d62c8aba2d5d96',1,'z::core::string']]],
   ['current_28',['current',['../classz_1_1core_1_1circularBuffer.html#a151c3dcf3fbdf9b92d8b4fb98665ee2b',1,'z::core::circularBuffer']]],
-  ['cutduplicates_29',['cutDuplicates',['../classz_1_1core_1_1string.html#a145eb2d04dac518776b95cf50e2ce0e9',1,'z::core::string']]]
+  ['cutduplicates_29',['cutDuplicates',['../classz_1_1core_1_1string.html#a145eb2d04dac518776b95cf50e2ce0e9',1,'z::core::string']]],
+  ['cxx_5fversion_30',['CXX_VERSION',['../version_8hpp.html#a78752c3e486e9842c68ebe82912c6600',1,'z']]]
 ];

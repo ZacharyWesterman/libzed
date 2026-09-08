@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../structz_1_1system_1_1termsize.html#a02ef70e97534528fcf3c80fe36936c19',1,'z::system::termsize']]]
+  ['version_0',['VERSION',['../version_8hpp.html#a2743ca4d7bd0fb00648e798188de27e9',1,'z']]]
 ];
