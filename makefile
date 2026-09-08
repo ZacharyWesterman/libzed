@@ -98,7 +98,16 @@ Z_STRING_FLAGS = -Wno-stringop-overflow
 
 LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 
-STD = c++17
+#Automatically use latest std supported, if not manually specified.
+ifeq ($(OS),Windows_NT)
+STD = $(shell scripts\cxx_latest_version.bat $(CC))
+else
+STD = $(shell scripts/cxx_latest_version.sh $(CC))
+endif
+#Fallback to 11 if nothing else.
+ifeq ($(STD),)
+STD = c++11
+endif
 
 STATIC_LIB = lib$(LIBNAME).a
 

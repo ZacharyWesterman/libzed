@@ -155,8 +155,8 @@ By default, make should pick the best options for your machine. If that's not th
 or you want/need different options for any other reason, here are some example flags you can tweak:
 - `CC=c++` to compile with `c++` instead of `g++`.
 - `LN=gcc` to link with `gcc` instead of `g++`.
-- `BITS=64` to target 64-bit architecture instead of that of the host machine. Available options are 64, 32, or null.
-- `STD=c++11` to use the C++11 standard instead of the default C++17. This is the same as the `-std=...` flag.
+- `BITS=64` to target 64-bit architecture instead of the host machine's architecture. Available options are 64 or 32.
+- `STD=c++17` to specifically use the C++17 standard. If not specified, this defaults to the latest standard supported by your compiler.
 - `OPT=X` to set the optimization level. X should be a non-negative integer, (`s` or `size`), or (`f` or `fast`).
 - `LIBDIR=/lib/install/dir` to set where the library should install under instead of `/usr/lib`.
 - `ICLDIR=/include/install/dir` to set where the headers should be copied to instead of `/usr/include`.
@@ -168,8 +168,9 @@ $ make -j$(nproc)
 ```
 so that it will compile on as many cores as possible.
 On Windows you may have to run `mingw32-make` instead,
-or if you are crosspiling for Windows on Linux, use `make TARGET=win64 -j$(nproc)` or `make TARGET=win32 -j$(nproc)`.
-(Make sure to run `make clean` if you change the value of `TARGET`!!)
+or if you are crosspiling for Windows on Linux, use `make TARGET=win64 -j$(nproc)` or `make TARGET=win32 -j$(nproc)`
+(the former requires the `x86_64-w64-mingw32-g++` compiler, latter requires `i686-w64-mingw32-g++`).
+**Make sure to run `make clean` if you change the value of `TARGET`!!**
 
 The above will compile as a dynamic library (.so on Linux, .dll on Windows).
 To compile to a static library:
