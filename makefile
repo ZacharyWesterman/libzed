@@ -24,7 +24,7 @@ D1 = $(sort $(dir $(wildcard $(D0)*/)))
 DIRS := $(sort $(dir $(wildcard $(D1)*/)) $(D0) $(D1) )
 SRCS := $(wildcard $(addsuffix *.cpp, $(DIRS)))
 HEADERS := $(wildcard $(addsuffix *.hpp, $(DIRS))) $(wildcard z/*.hpp)
-OBJS := $(patsubst %.cpp,%.o,$(SRCS))
+OBJS := $(patsubst %.cpp,%.o,$(SRCS)) z/version.o
 DEPENDS := $(patsubst %.cpp,%.d,$(SRCS))
 
 LIBFULL = $(LIBNAME).$(VER_MAJOR).$(VER_MINOR)
@@ -137,6 +137,7 @@ endif
 ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
+VERSION_SCRIPT = scripts/build_version.bat
 else
 # link to std::filesystem if c++17 and linux
 ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
@@ -145,6 +146,7 @@ endif
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 SHARED_LIB = lib$(LIBNAME)-$(VER_MAJOR).$(VER_MINOR).so
+VERSION_SCRIPT = scripts/build_version.sh
 endif
 
 SONAME1 = lib$(LIBNAME).so.$(VER_MAJOR)
@@ -206,6 +208,9 @@ z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.
 
 z/file/library.o: z/file/library.cpp z/file/library.hpp
 	$(CC) $(CCFLAGS) -MMD -MP -o $@ -c $<
+
+z/version.cpp: $(VERSION_SCRIPT) z/version.hpp
+	$< $@ $(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) $(STD)
 
 clean: cleanbin cleanobjs cleandox cleancov
 	$(MAKE) clean -C examples/

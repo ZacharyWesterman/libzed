@@ -18,3 +18,4 @@ venv/
 coverage.txt
 coverage.html
 coverage.svg
+version.cpp
