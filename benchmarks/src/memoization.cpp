@@ -3,7 +3,6 @@
 #include "catch/catch_amalgamated.hpp"
 
 using z::core::memoize;
-using z::system::sleep;
 
 // Naive implementation of Fibonacci
 long fib_naive(long n) {
@@ -69,8 +68,8 @@ TEST_CASE("Benchmark memoization of Fibonacci vs naive implementation", "[memoiz
 
 // A slow function that simulates a long computation
 long slow_function(long n) {
-	sleep(10);		// Simulate a slow function
-	return n * n; // Just return the square of the number
+	z::system::sleep(10); // Simulate a slow function
+	return n * n;					// Just return the square of the number
 }
 
 TEST_CASE("Memoization of a very slow function", "[memoization][slow_function]") {
