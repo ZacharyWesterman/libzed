@@ -14,5 +14,6 @@ var searchData=
   ['precision_11',['precision',['../classz_1_1core_1_1string.html#ae15cbef274699bdde8e6dc795071497e',1,'z::core::string']]],
   ['prev_12',['prev',['../classz_1_1core_1_1circularBuffer.html#a8b0b47af151214890dfdb594de3dd295',1,'z::core::circularBuffer']]],
   ['progress_13',['progress',['../classz_1_1util_1_1progress.html#aa4ba03de8f81fff9ab9e3e2bdd10b11a',1,'z::util::progress::progress()'],['../classz_1_1util_1_1progress.html',1,'z::util::progress']]],
-  ['push_14',['push',['../classz_1_1core_1_1array.html#a0563b29018ef6aeff5e0abbf33bd87d9',1,'z::core::array::push(const T &amp;object) noexcept'],['../classz_1_1core_1_1array.html#a912677dc5a506bd5215d88ec97082af4',1,'z::core::array::push(const array &amp;other) noexcept']]]
+  ['promote_14',['promote',['../classz_1_1util_1_1generic.html#a8f82bda02b1c61fba018f166611a29f1',1,'z::util::generic']]],
+  ['push_15',['push',['../classz_1_1core_1_1array.html#a0563b29018ef6aeff5e0abbf33bd87d9',1,'z::core::array::push(const T &amp;object) noexcept'],['../classz_1_1core_1_1array.html#a912677dc5a506bd5215d88ec97082af4',1,'z::core::array::push(const array &amp;other) noexcept']]]
 ];

@@ -46,6 +46,7 @@ var annotated_dup =
       [ "util", "namespacez_1_1util.html", [
         [ "dictionary", "classz_1_1util_1_1dictionary.html", "classz_1_1util_1_1dictionary" ],
         [ "dictRange", "classz_1_1util_1_1dictRange.html", "classz_1_1util_1_1dictRange" ],
+        [ "generic", "classz_1_1util_1_1generic.html", "classz_1_1util_1_1generic" ],
         [ "nonnumeric", "structz_1_1util_1_1nonnumeric.html", "structz_1_1util_1_1nonnumeric" ],
         [ "progress", "classz_1_1util_1_1progress.html", "classz_1_1util_1_1progress" ]
       ] ]

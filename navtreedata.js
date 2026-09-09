@@ -53,6 +53,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -67,7 +68,7 @@ var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
 "classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab",
-"progress_8hpp_source.html"
+"functions_~.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
