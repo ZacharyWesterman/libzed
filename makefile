@@ -102,7 +102,7 @@ LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 ifeq ($(OS),Windows_NT)
 STD = $(shell scripts\cxx_latest_version.bat $(CC))
 else
-STD = $(shell scripts/cxx_latest_version.sh $(CC))
+STD = c++17
 endif
 #Fallback to 17 if nothing else.
 ifeq ($(STD),)
