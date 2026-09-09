@@ -470,10 +470,6 @@ string<utf16> &string<utf16>::read(std::istream &stream, uint32_t delim) noexcep
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof() && last && (delim ? (last == delim) : isWhiteSpace(last))) {
-		last = stream.get();
-	}
-
 	while (!stream.eof() && last && !(delim ? (last == delim) : isWhiteSpace(last))) {
 		uint8_t c[4];
 		c[0] = last;

@@ -1486,7 +1486,6 @@ public:
 	 *
 	 * Reads until the delimiting character is encountered, or the stream is exhausted.
 	 * If the delimiter is 0 or not given, the delimiter is assumed to be any white space character.
-	 * Leading delimiter characters are skipped over until a non-delimiter character is encountered or the stream is exhausted.
 	 * Any data this string contains is wiped when this function is called.
 	 *
 	 * @param stream The stream to read from.
@@ -1500,7 +1499,6 @@ public:
 	 * @brief Read string data from a stream until a newline is encountered.
 	 *
 	 * Reads until a newline is encountered (either `\r\n` or `\n`), or the stream is exhausted.
-	 * Leading newlines are not skipped, so as to allow for empty lines.
 	 * Any data this string contains is wiped when this function is called.
 	 *
 	 * @param stream The stream to read from.

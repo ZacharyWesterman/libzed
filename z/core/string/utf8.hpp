@@ -989,10 +989,6 @@ string<utf8> &string<utf8>::read(std::istream &stream, uint32_t delim) noexcept 
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof() && (delim ? (last == delim) : isWhiteSpace(last))) {
-		last = stream.get();
-	}
-
 	while (!stream.eof() && !(delim ? (last == delim) : isWhiteSpace(last))) {
 		increase(character_ct);
 		data[character_ct++] = last;
