@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.25</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.29</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -111,21 +111,24 @@ $(document).ready(function(){initNavTree('structz_1_1core_1_1hash32gen_3_01size_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a417bf4f6ee26b00ff593f3e4a69e527b" id="r_a417bf4f6ee26b00ff593f3e4a69e527b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">static</a> <a class="el" href="classz_1_1core_1_1array.html">constexpr</a> hash32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a417bf4f6ee26b00ff593f3e4a69e527b">crc32</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">char</a> *str, hash32 <a class="el" href="classz_1_1core_1_1array.html">prev_crc</a>=0xFFFFFFFF)</td></tr>
-<tr class="memdesc:a417bf4f6ee26b00ff593f3e4a69e527b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the final CRC32 hash value.  <br /></td></tr>
-<tr class="separator:a417bf4f6ee26b00ff593f3e4a69e527b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b9e03630c8c648e843e5e924570d6c4" id="r_a6b9e03630c8c648e843e5e924570d6c4"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">chartype</a> &gt; </td></tr>
+<tr class="memitem:a6b9e03630c8c648e843e5e924570d6c4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">static</a> <a class="el" href="classz_1_1core_1_1array.html">constexpr</a> hash32&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html#a6b9e03630c8c648e843e5e924570d6c4">crc32</a> (<a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">chartype</a> *str, hash32 <a class="el" href="classz_1_1core_1_1array.html">prev_crc</a>=0xFFFFFFFF)</td></tr>
+<tr class="memdesc:a6b9e03630c8c648e843e5e924570d6c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the final CRC32 hash value.  <br /></td></tr>
+<tr class="separator:a6b9e03630c8c648e843e5e924570d6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="classz_1_1core_1_1array.html">int</a> size, <a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">dummy</a>&gt;<br />
 struct z::core::hash32gen&lt; size, size, dummy &gt;</div><p>The stopping specialization for the hash32 template. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a417bf4f6ee26b00ff593f3e4a69e527b" name="a417bf4f6ee26b00ff593f3e4a69e527b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a417bf4f6ee26b00ff593f3e4a69e527b">&#9670;&#160;</a></span>crc32()</h2>
+<a id="a6b9e03630c8c648e843e5e924570d6c4" name="a6b9e03630c8c648e843e5e924570d6c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b9e03630c8c648e843e5e924570d6c4">&#9670;&#160;</a></span>crc32()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;<a class="el" href="classz_1_1core_1_1array.html">int</a> size, <a class="el" href="classz_1_1core_1_1array.html">class</a> <a class="el" href="classz_1_1core_1_1array.html">dummy</a> &gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">chartype</a> &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -133,7 +136,7 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">int</a> size, <a c
         <tr>
           <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">static</a> <a class="el" href="classz_1_1core_1_1array.html">constexpr</a> hash32 <a class="el" href="structz_1_1core_1_1hash32gen.html">z::core::hash32gen</a>&lt; <a class="el" href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">size</a>, <a class="el" href="namespacez_1_1core.html#ae24d2d7940342449f4248b0df4dcb245">size</a>, <a class="el" href="classz_1_1core_1_1array.html">dummy</a> &gt;::crc32 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">char</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">chartype</a> *&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
