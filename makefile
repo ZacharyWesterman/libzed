@@ -16,6 +16,14 @@ else
 VER_PATCH = $(shell git rev-list --count $(VER_CUTOFF_COMMIT)..HEAD^)
 endif
 
+ifeq ($(VER_PATCH),)
+ifeq ($(OS),Windows_NT)
+VER_PATCH = Windows
+else
+VER_PATCH = Linux
+endif
+endif
+
 LIBDIR = /usr/lib
 ICLDIR = /usr/include
 
