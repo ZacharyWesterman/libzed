@@ -67,7 +67,6 @@ var hierarchy =
     [ "z::core::memoize< R(Args...)>", "classz_1_1core_1_1memoize_3_01R_07Args_8_8_8_08_4.html", null ],
     [ "z::core::types::no", "structz_1_1core_1_1types_1_1no.html", null ],
     [ "z::util::progress", "classz_1_1util_1_1progress.html", null ],
-    [ "z::core::generator< T, S >::reducePair", "structz_1_1core_1_1generator_1_1reducePair.html", null ],
     [ "std::runtime_error", null, [
       [ "z::file::unreadable", "classz_1_1file_1_1unreadable.html", null ],
       [ "z::file::unwritable", "classz_1_1file_1_1unwritable.html", null ],

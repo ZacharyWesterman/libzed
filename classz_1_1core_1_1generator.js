@@ -1,7 +1,6 @@
 var classz_1_1core_1_1generator =
 [
-    [ "countedState", "structz_1_1core_1_1generator_1_1countedState.html", null ],
-    [ "reducePair", "structz_1_1core_1_1generator_1_1reducePair.html", null ],
+    [ "countedState", "structz_1_1core_1_1generator_1_1countedState.html", "structz_1_1core_1_1generator_1_1countedState" ],
     [ "generator", "classz_1_1core_1_1generator.html#a2f3a8e8bf60179f7ffc94b16ba5e367a", null ],
     [ "begin", "classz_1_1core_1_1generator.html#ac87da2070de352b4daed8e2d03ee75db", null ],
     [ "chain", "classz_1_1core_1_1generator.html#a6c1b36fc37f0f5313a05a723fcd7d1b8", null ],
@@ -35,5 +34,7 @@ var classz_1_1core_1_1generator =
     [ "take", "classz_1_1core_1_1generator.html#aef9b00a9a865980d73bc30ee03f1b9e1", null ],
     [ "until", "classz_1_1core_1_1generator.html#ab1a552670a705836822d1a9461a98ca8", null ],
     [ "until", "classz_1_1core_1_1generator.html#acbf0ae74a7d7b40c7db9114659c729b9", null ],
-    [ "zip", "classz_1_1core_1_1generator.html#aa9a94c0016c0aa760433b1f6fd1459f8", null ]
+    [ "zip", "classz_1_1core_1_1generator.html#aa9a94c0016c0aa760433b1f6fd1459f8", null ],
+    [ "lambda", "classz_1_1core_1_1generator.html#aee90399341388cad36384e46704667d0", null ],
+    [ "state", "classz_1_1core_1_1generator.html#a68de04ecc03184837007260f68f3904c", null ]
 ];

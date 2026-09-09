@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"functions_w.html":[3,3,0,19],
+"functions_z.html":[3,3,0,20],
 "functions_~.html":[3,3,0,21],
 "generatorChunking_8cpp-example.html":[5,8],
 "generatorOperators_8cpp-example.html":[5,9],
@@ -66,7 +68,8 @@ var NAVTREEINDEX2 =
 "stringIterator_8hpp_source.html":[4,0,0,0,19],
 "string_8hpp_source.html":[4,0,0,0,18],
 "structz_1_1core_1_1generator_1_1countedState.html":[3,0,0,0,5,0],
-"structz_1_1core_1_1generator_1_1reducePair.html":[3,0,0,0,5,1],
+"structz_1_1core_1_1generator_1_1countedState.html#a21db4a951d16e662ed2a07760a6ad667":[3,0,0,0,5,0,0],
+"structz_1_1core_1_1generator_1_1countedState.html#acd7257cfb9ed045bae6acb9493921181":[3,0,0,0,5,0,1],
 "structz_1_1core_1_1hash32gen.html":[3,0,0,0,7],
 "structz_1_1core_1_1hash32gen_3_01size_00_01size_00_01dummy_01_4.html":[3,0,0,0,8],
 "structz_1_1core_1_1is__iterator.html":[3,0,0,0,10],
