@@ -1,12 +1,6 @@
 #include "generic.hpp"
-#include <iostream>
-
-// Only compile if std::variant is available
-#if __cplusplus >= 201703L
-
-#include "exceptions.hpp"
-
 #include "../core/join.hpp"
+#include "exceptions.hpp"
 
 namespace z {
 namespace util {
@@ -435,5 +429,3 @@ bool generic::equivalent(const generic &other) const {
 
 } // namespace util
 } // namespace z
-
-#endif // End if std::variant is available

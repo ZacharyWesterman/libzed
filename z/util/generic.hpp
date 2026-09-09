@@ -1,10 +1,5 @@
 #pragma once
 
-#if __cplusplus < 201703L
-#pragma message("\nNote: std::variant is not available so z::util::generic is disabled.\nCompile with STD=c++17 or greater to enable this feature.")
-#else // Otherwise std::variant is available
-#define Z_GENERIC_EXISTS
-
 #include "../core/array.hpp"
 #include "../core/string.hpp"
 #include <variant>
@@ -460,5 +455,3 @@ public:
 
 } // namespace util
 } // namespace z
-
-#endif // End if std::variant is available

@@ -191,7 +191,7 @@ uninstall:
 	rm -rf $(ICLDIR)/z
 
 examples: static
-	$(MAKE) -C examples/
+	$(MAKE) -C examples/ STD=$(STD)
 
 test: tests
 tests: static
@@ -204,9 +204,9 @@ benchmarks: static
 	./benchmarks/bin/run_benchmarks "$(FILTER)"
 
 coverage-html: tests
-	make -C tests coverage.html
+	$(MAKE) -C tests coverage.html STD=$(STD)
 coverage: tests
-	make -C tests coverage
+	$(MAKE) -C tests coverage STD=$(STD)
 
 $(SHARED_LIB): $(OBJS)
 	$(LN) -o $@ $^ $(LFLAGS)
