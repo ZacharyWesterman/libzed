@@ -68,6 +68,23 @@ endif
 
 LN = $(CC)
 
+#Automatically use latest std supported, if not manually specified.
+ifeq ($(OS),Windows_NT)
+STD = c++17
+else
+STD = $(shell scripts/cxx_latest_version.sh $(CC))
+endif
+#Fallback to 17 if nothing else.
+ifeq ($(STD),)
+STD = c++17
+endif
+
+ifeq ($(OS),Windows_NT)
+VERSION_SCRIPT = scripts\build_version.bat
+else
+VERSION_SCRIPT = scripts/build_version.sh
+endif
+
 #If we're cross-compiling for Windows, set the OS variable to Windows_NT.
 ifneq (,$(findstring mingw,$(CC)))
 OS = Windows_NT
@@ -106,17 +123,6 @@ Z_STRING_FLAGS = -Wno-stringop-overflow
 
 LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 
-#Automatically use latest std supported, if not manually specified.
-ifeq ($(OS),Windows_NT)
-STD = c++17
-else
-STD = $(shell scripts/cxx_latest_version.sh $(CC))
-endif
-#Fallback to 17 if nothing else.
-ifeq ($(STD),)
-STD = c++17
-endif
-
 STATIC_LIB = lib$(LIBNAME).a
 
 OLEVEL = $(OPT)
@@ -154,7 +160,6 @@ endif
 ifeq ($(OS),Windows_NT)
 RMOBJS = $(subst /,\,$(OBJS))
 SHARED_LIB = $(LIBNAME).dll
-VERSION_SCRIPT = scripts\build_version.bat
 else
 # link to std::filesystem if c++17 and linux
 ifneq (,$(findstring $(STD),c++17 gnu++17 c++20 gnu++20))
@@ -163,7 +168,6 @@ endif
 LFLAGS += -ldl
 RMOBJS = $(OBJS)
 SHARED_LIB = lib$(LIBNAME)-$(VER_MAJOR).$(VER_MINOR).so
-VERSION_SCRIPT = scripts/build_version.sh
 endif
 
 SONAME1 = lib$(LIBNAME).so.$(VER_MAJOR)
