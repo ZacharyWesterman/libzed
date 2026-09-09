@@ -528,8 +528,8 @@ public:
 	 * @copydoc map()
 	 */
 	template <typename U>
-	inline array<U> operator|(std::function<U(T)> mapLambda) noexcept {
-		return map<U>(mapLambda);
+	inline array<U> operator|(std::function<U(T)> lambda) noexcept {
+		return map<U>(lambda);
 	}
 
 	/**
@@ -538,8 +538,8 @@ public:
 	 * @copydoc map()
 	 */
 	template <typename U>
-	inline array<U> operator|(U (*mapLambda)(T)) noexcept {
-		return map<U>(mapLambda);
+	inline array<U> operator|(U (*lambda)(T)) noexcept {
+		return map<U>(lambda);
 	}
 
 	/**
@@ -547,8 +547,8 @@ public:
 	 *
 	 * @copydoc filter()
 	 */
-	inline array operator&&(std::function<T(const T &)> filterLambda) noexcept {
-		return filter(filterLambda);
+	inline array operator&&(std::function<T(const T &)> lambda) noexcept {
+		return filter(lambda);
 	}
 
 	/**
@@ -562,8 +562,8 @@ public:
 	 * @param lambda A function that takes two elements of type `T` and returns their combined result of type `T`.
 	 * @return The result of the reduction operation.
 	 */
-	inline T operator>>(std::function<T(const T &, const T &)> reduceLambda) {
-		return reduce(reduceLambda);
+	inline T operator>>(std::function<T(const T &, const T &)> lambda) {
+		return reduce(lambda);
 	}
 
 	/**

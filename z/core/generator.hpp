@@ -70,17 +70,18 @@ public:
 template <typename T, typename S>
 class generator : public iterable<generatorIter<T, S>> {
 protected:
+	/// The state data of this generator.
 	S state;
+
+	/// The function that gets run every time an item is generated.
 	std::function<const std::optional<T>(S &)> lambda;
 
+	/// A specialized state for generator::enumerate()
 	struct countedState {
+		/// The current index.
 		long count;
+		/// The state data of the original generator.
 		S state;
-	};
-
-	struct reducePair {
-		const T &defaultValue;
-		std::function<T(const T &, const T &)> reduceLambda;
 	};
 
 public:
