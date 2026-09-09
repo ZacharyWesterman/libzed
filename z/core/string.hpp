@@ -130,6 +130,11 @@ public:
 	 */
 	string(const char *str, size_t len) noexcept;
 
+#if __cplusplus >= 202002L
+	inline string(const char8_t *const str) noexcept : string((const char *)str) {}
+	string(const char8_t *const str, size_t len) noexcept : string((const char *)str, len) {}
+#endif
+
 	/**
 	 * @brief Construct from a cstring of wide characters.
 	 *
@@ -178,6 +183,7 @@ public:
 		this->initInt((long long)value, base, padSize);
 	}
 
+#if __cplusplus < 202002L
 	/**
 	 * @brief Construct from a pointer.
 	 *
@@ -192,6 +198,22 @@ public:
 	string(PTR pointer) noexcept {
 		this->initPointer((void *)pointer);
 	}
+#else
+	/**
+	 * @brief Construct from a pointer.
+	 *
+	 * @param pointer A pointer.
+	 *
+	 * Creates a string representation from a pointer, of the form
+	 * `0xFFFFFFFF`. If `Z_STR_POINTER_FORCE` is defined as `true`,
+	 * then the hex part of the string is padded up to
+	 * `Z_STR_POINTER_CHARS` characters (default is 8).
+	 */
+	template <typename PTR, typename = typename std::enable_if<std::is_pointer<PTR>::value && !std::is_same<PTR, char *>::value && !std::is_same<PTR, wchar_t *>::value && !std::is_same<PTR, char8_t *>::value, PTR>::type>
+	string(PTR pointer) noexcept {
+		this->initPointer((void *)pointer);
+	}
+#endif
 
 	/**
 	 * @brief Construct from floating-point.

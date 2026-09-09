@@ -36,7 +36,8 @@ struct hash32gen {
 	 * @param prev_crc The previous CRC value, default is 0xFFFFFFFF.
 	 * @return The computed CRC32 hash.
 	 */
-	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
+	template <typename chartype>
+	static constexpr hash32 crc32(const chartype *str, hash32 prev_crc = 0xFFFFFFFF) {
 		return str[idx] ? hash32gen<size, idx + 1>::crc32(str, (prev_crc >> 8) ^ crc_table[(prev_crc ^ str[idx]) & 0xFF]) : 0;
 	}
 };
@@ -53,7 +54,8 @@ struct hash32gen<size, size, dummy> {
 	 * @param prev_crc The previous CRC value, default is 0xFFFFFFFF.
 	 * @return The computed CRC32 hash.
 	 */
-	static constexpr hash32 crc32(const char *str, hash32 prev_crc = 0xFFFFFFFF) {
+	template <typename chartype>
+	static constexpr hash32 crc32(const chartype *str, hash32 prev_crc = 0xFFFFFFFF) {
 		(void)str;
 		return prev_crc ^ 0xFFFFFFFF;
 	}
