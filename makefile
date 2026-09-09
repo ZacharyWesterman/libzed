@@ -100,9 +100,9 @@ LFLAGS = -shared $(CCTARGET) $(EXTRA_LFLAGS)
 
 #Automatically use latest std supported, if not manually specified.
 ifeq ($(OS),Windows_NT)
-STD = $(shell scripts\cxx_latest_version.bat $(CC))
-else
 STD = c++17
+else
+STD = $(shell scripts/cxx_latest_version.sh $(CC))
 endif
 #Fallback to 17 if nothing else.
 ifeq ($(STD),)
