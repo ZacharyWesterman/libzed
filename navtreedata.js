@@ -67,7 +67,7 @@ var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
 "classz_1_1core_1_1string.html#a93a181ccdea18613f032a2eb6477b4ab",
-"path_8hpp_source.html"
+"progress_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

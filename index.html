@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.22</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.10.25</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -199,11 +199,11 @@ List of structures</h2>
 Using This Library</h1>
 <p>Currently the Makefile supports compiling on Linux and Windows only, as those are the only systems I have. ¯\_(ツ)_/¯</p>
 <p>It should compile on any 64 or 32-bit flavor of these systems (including the Raspberry Pi!).</p>
-<p>The only requirements are Make and a C++ compiler that supports <em>at least</em> C++11 (C++17 or newer preferred). If <code>g++ --version</code> is 5 or above, chances are you're good.</p>
+<p>The only requirements are Make and a C++ compiler that supports <em>at least</em> C++17. If <code>g++ --version</code> is 7 or above, chances are you're good.</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Required dependencies</h2>
 <ul>
-<li>g++ (or other compliant compiler) supporting at least C++11</li>
+<li>g++ (or other compliant compiler) supporting at least C++17</li>
 <li>make</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md11"></a>
@@ -222,8 +222,8 @@ Build options</h2>
 <p>By default, make should pick the best options for your machine. If that's not the case, or you want/need different options for any other reason, here are some example flags you can tweak:</p><ul>
 <li><code>CC=c++</code> to compile with <code>c++</code> instead of <code>g++</code>.</li>
 <li><code>LN=gcc</code> to link with <code>gcc</code> instead of <code>g++</code>.</li>
-<li><code>BITS=64</code> to target 64-bit architecture instead of that of the host machine. Available options are 64, 32, or null.</li>
-<li><code>STD=c++11</code> to use the C++11 standard instead of the default C++17. This is the same as the <code>-std=...</code> flag.</li>
+<li><code>BITS=64</code> to target 64-bit architecture instead of the host machine's architecture. Available options are 64 or 32.</li>
+<li><code>STD=c++17</code> to specifically use the C++17 standard. If not specified, this defaults to the latest standard supported by your compiler.</li>
 <li><code>OPT=X</code> to set the optimization level. X should be a non-negative integer, (<code>s</code> or <code>size</code>), or (<code>f</code> or <code>fast</code>).</li>
 <li><code>LIBDIR=/lib/install/dir</code> to set where the library should install under instead of <code>/usr/lib</code>.</li>
 <li><code>ICLDIR=/include/install/dir</code> to set where the headers should be copied to instead of <code>/usr/include</code>.</li>
@@ -231,7 +231,7 @@ Build options</h2>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Compiling</h2>
 <p>Just run make in the project directory. I do the following: </p><div class="fragment"><div class="line">$ make -j$(nproc)</div>
-</div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead, or if you are crosspiling for Windows on Linux, use <code>make TARGET=win64 -j$(nproc)</code> or <code>make TARGET=win32 -j$(nproc)</code>. (Make sure to run <code>make clean</code> if you change the value of <code>TARGET</code>!!)</p>
+</div><!-- fragment --><p> so that it will compile on as many cores as possible. On Windows you may have to run <code>mingw32-make</code> instead, or if you are crosspiling for Windows on Linux, use <code>make TARGET=win64 -j$(nproc)</code> or <code>make TARGET=win32 -j$(nproc)</code> (the former requires the <code>x86_64-w64-mingw32-g++</code> compiler, latter requires <code>i686-w64-mingw32-g++</code>). <b>Make sure to run <code>make clean</code> if you change the value of <code>TARGET</code>!!</b></p>
 <p>The above will compile as a dynamic library (.so on Linux, .dll on Windows). To compile to a static library: </p><div class="fragment"><div class="line">$ make -j$(nproc) static</div>
 </div><!-- fragment --><p>You should get no errors or warnings. You can open an issue on <a href="https://github.com/ZacharyWesterman/libzed">GitHub</a> if either of those pop up while compiling.</p>
 <h2><a class="anchor" id="autotoc_md14"></a>
