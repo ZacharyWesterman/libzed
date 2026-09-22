@@ -17,8 +17,11 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v6
   
+    - name: Update apt repository
+      run: sudo apt-get update
+
     - name: Require clang-format
-      run: apt install clang-format
+      run: sudo apt install clang-format
 
     - name: Verify that code is formatted
       run: make try-format
