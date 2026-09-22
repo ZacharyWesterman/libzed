@@ -14,6 +14,11 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repo
+      uses: actions/checkout@v6
+  
+    - name: Require clang-format
+      run: apt install clang-format
+
     - name: Verify that code is formatted
       run: make try-format
