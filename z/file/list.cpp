@@ -4,20 +4,6 @@
 namespace z {
 namespace file {
 
-dirscan::~dirscan() {
-	if (used) {
-#if defined(__linux__)
-		if (dpdf) {
-			closedir(dpdf);
-		}
-#elif defined(_WIN32)
-		if (hFind != INVALID_HANDLE_VALUE) {
-			FindClose(hFind);
-		}
-#endif
-	}
-}
-
 core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileType, bool showAll) noexcept {
 	core::array<zpath> output;
 
@@ -62,6 +48,10 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 				return filename;
 			}
 
+			if (state.hFind != INVALID_HANDLE_VALUE) {
+				FindClose(state.hFind);
+				state.hFind = INVALID_HANDLE_VALUE;
+			}
 			return {};
 		});
 #else
@@ -95,6 +85,10 @@ core::generator<zpath, dirscan> listFiles(const zpath &dir, const zpath &fileTyp
 				return filename;
 			}
 
+			if (state.dpdf) {
+				closedir(state.dpdf);
+				state.dpdf = nullptr;
+			}
 			return {};
 		});
 #endif
@@ -143,6 +137,10 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 				return filename;
 			}
 
+			if (state.hFind != INVALID_HANDLE_VALUE) {
+				FindClose(state.hFind);
+				state.hFind = INVALID_HANDLE_VALUE;
+			}
 			return {};
 		});
 #else
@@ -172,6 +170,10 @@ core::generator<zpath, dirscan> listDirs(const zpath &dir, bool showAll) noexcep
 				return filename;
 			}
 
+			if (state.dpdf) {
+				closedir(state.dpdf);
+				state.dpdf = nullptr;
+			}
 			return {};
 		});
 #endif

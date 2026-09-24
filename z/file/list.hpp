@@ -35,9 +35,6 @@ struct dirscan {
 	bool showAll;
 	/// Whether the directory has been opened yet.
 	bool used;
-
-	/// Destructor.
-	~dirscan();
 };
 
 /**
