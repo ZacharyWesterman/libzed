@@ -185,8 +185,8 @@ public:
 	 * @see append()
 	 */
 	void add(const array &other) noexcept {
-		for (int i = 0; i < other.size(); i++) {
-			add(other.array_data[i]);
+		for (auto i : other.array_data) {
+			array_data.push_back(i);
 		}
 	}
 
