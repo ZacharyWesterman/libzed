@@ -334,6 +334,27 @@ public:
 	}
 
 	/**
+	 * @brief Find the index of the first element in the array that satisfies a given predicate.
+	 *
+	 * Locates the desired index using a linear search,
+	 * as the search condition may not be ordered in the same way the elements are.
+	 *
+	 * @param predicate The predicate to run on each element.
+	 *
+	 * @return The first index where the predicate returned true.
+	 * @b -1 if the predicate never returned true.
+	 */
+	int find(std::function<bool(const T &)> predicate) const {
+		for (int i = 0; i < (int)array_data.size(); i++) {
+			if (predicate(array_data.at(i))) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	/**
 	 * @brief Check if a given object is in the array.
 	 *
 	 * @param object the object to search for.
@@ -342,6 +363,20 @@ public:
 	 */
 	bool contains(const T &object) const noexcept {
 		return find(object) > -1;
+	}
+
+	/**
+	 * @brief Check if an element in the array satisfies a given predicate.
+	 *
+	 * Locates the relevant element using a linear search,
+	 * as the search condition may not be ordered in the same way the elements are.
+	 *
+	 * @param predicate The predicate to run on each element.
+	 *
+	 * @return \b true if the predicate returned true on one of the elements, \b false otherwise.
+	 */
+	bool contains(std::function<bool(const T &)> predicate) const {
+		return find(predicate) > -1;
 	}
 
 	/**
