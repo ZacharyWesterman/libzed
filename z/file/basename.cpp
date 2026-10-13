@@ -1,5 +1,4 @@
 #include "basename.hpp"
-#include <iostream>
 
 namespace z {
 namespace file {

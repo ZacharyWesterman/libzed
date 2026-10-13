@@ -1,5 +1,4 @@
 #include "list.hpp"
-#include <iostream>
 
 namespace z {
 namespace file {

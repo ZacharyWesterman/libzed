@@ -5,7 +5,6 @@
 #include "../file/write.hpp"
 
 #include <fstream>
-#include <iostream>
 
 namespace z {
 namespace util {
