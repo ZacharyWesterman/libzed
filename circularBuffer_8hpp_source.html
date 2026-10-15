@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.16</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.17</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -285,10 +285,22 @@ $(document).ready(function(){initNavTree('circularBuffer_8hpp_source.html',''); 
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">return</span> value;</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    }</div>
 </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>};</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="foldopen" id="foldopen00249" data-start="{" data-end="}">
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno"><a class="line" href="classz_1_1core_1_1circularBuffer.html#ae153c264dd5af18877d4b9a808a06f54">  249</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classz_1_1core_1_1circularBuffer.html#ae153c264dd5af18877d4b9a808a06f54">average</a>() <a class="code hl_class" href="classz_1_1core_1_1array.html">const</a> <a class="code hl_class" href="classz_1_1core_1_1array.html">noexcept</a> {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keyword">static_assert</span>(std::is_arithmetic&lt;TYPE&gt;::value, <span class="stringliteral">&quot;circularBuffer::average() is only defined for arithmetic types.&quot;</span>);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="keywordtype">double</span> <a class="code hl_class" href="classz_1_1core_1_1array.html">avg</a> = 0.0;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="classz_1_1core_1_1array.html">i</a> = 0; <a class="code hl_class" href="classz_1_1core_1_1array.html">i</a> &lt; <a class="code hl_class" href="classz_1_1core_1_1array.html">LEN</a>; ++<a class="code hl_class" href="classz_1_1core_1_1array.html">i</a>) {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <a class="code hl_class" href="classz_1_1core_1_1array.html">avg</a> += (<a class="code hl_class" href="classz_1_1core_1_1array.html">double</a>)data[<a class="code hl_class" href="classz_1_1core_1_1array.html">i</a>] / (<span class="keywordtype">double</span>)<a class="code hl_class" href="classz_1_1core_1_1array.html">LEN</a>;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classz_1_1core_1_1array.html">avg</a>;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    }</div>
 </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>} <span class="comment">// namespace core</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>} <span class="comment">// namespace z</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>};</div>
+</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>} <span class="comment">// namespace core</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>} <span class="comment">// namespace z</span></div>
 <div class="ttc" id="aclassz_1_1core_1_1arrayLike_html"><div class="ttname"><a href="classz_1_1core_1_1arrayLike.html">z::core::arrayLike</a></div><div class="ttdoc">An interface for all objects that can be both iterated over and directly indexed.</div><div class="ttdef"><b>Definition</b> arrayLike.hpp:13</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1array_html"><div class="ttname"><a href="classz_1_1core_1_1array.html">z::core::array</a></div><div class="ttdoc">A wrapper for std::vector.</div><div class="ttdef"><b>Definition</b> array.hpp:38</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a></div><div class="ttdoc">A circular buffer of fixed size. Appending can be done indefinitely, as the index will just loop back...</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:60</div></div>
@@ -309,6 +321,7 @@ $(document).ready(function(){initNavTree('circularBuffer_8hpp_source.html',''); 
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_aa85cd49896c2c74994b8a03952d77b0a"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#aa85cd49896c2c74994b8a03952d77b0a">z::core::circularBuffer::circularBuffer</a></div><div class="ttdeci">circularBuffer(TYPE default_value) noexcept</div><div class="ttdoc">Initialize all elements with a single value.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:88</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_abdf607e69fb54b98d2d2cea6e0664983"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#abdf607e69fb54b98d2d2cea6e0664983">z::core::circularBuffer::length</a></div><div class="ttdeci">int length() const noexcept override</div><div class="ttdoc">Get the length of the array.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:98</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_ac6227d3314b1bc548b721e923c61e05c"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#ac6227d3314b1bc548b721e923c61e05c">z::core::circularBuffer::circularBuffer</a></div><div class="ttdeci">circularBuffer() noexcept</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:69</div></div>
+<div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_ae153c264dd5af18877d4b9a808a06f54"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#ae153c264dd5af18877d4b9a808a06f54">z::core::circularBuffer::average</a></div><div class="ttdeci">double average() const noexcept</div><div class="ttdoc">Get the average (mean) value contained in this buffer.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:249</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_af106af809bad5eaf336a90695565acbf"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#af106af809bad5eaf336a90695565acbf">z::core::circularBuffer::circularBuffer</a></div><div class="ttdeci">circularBuffer(const ARGS &amp;...args) noexcept</div><div class="ttdoc">Initialize the buffer with the contents of an array.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:80</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularBuffer_html_af7240e7713ee7ba048df536c1ac91120"><div class="ttname"><a href="classz_1_1core_1_1circularBuffer.html#af7240e7713ee7ba048df536c1ac91120">z::core::circularBuffer::at</a></div><div class="ttdeci">TYPE &amp; at(const int index) noexcept</div><div class="ttdoc">Get a modifiable element from the buffer.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:125</div></div>
 <div class="ttc" id="aclassz_1_1core_1_1circularIterator_html"><div class="ttname"><a href="classz_1_1core_1_1circularIterator.html">z::core::circularIterator</a></div><div class="ttdoc">A custom iterator for circular buffers.</div><div class="ttdef"><b>Definition</b> circularBuffer.hpp:15</div></div>

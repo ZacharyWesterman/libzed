@@ -6,6 +6,7 @@ var classz_1_1core_1_1circularBuffer =
     [ "append", "classz_1_1core_1_1circularBuffer.html#a96b1fd44cd4ad4913deb1e5002665f19", null ],
     [ "at", "classz_1_1core_1_1circularBuffer.html#a2e164d5ba6f0d3bffd3879640e0698a0", null ],
     [ "at", "classz_1_1core_1_1circularBuffer.html#af7240e7713ee7ba048df536c1ac91120", null ],
+    [ "average", "classz_1_1core_1_1circularBuffer.html#ae153c264dd5af18877d4b9a808a06f54", null ],
     [ "begin", "classz_1_1core_1_1circularBuffer.html#a15df3882634638a3d1d35be98dc5d156", null ],
     [ "count", "classz_1_1core_1_1circularBuffer.html#a4f04b3515846ba90368caa471fd523d7", null ],
     [ "current", "classz_1_1core_1_1circularBuffer.html#a151c3dcf3fbdf9b92d8b4fb98665ee2b", null ],

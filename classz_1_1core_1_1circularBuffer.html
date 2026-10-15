@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.16</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.17</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -185,6 +185,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61ffe8804b5467584f8710e04197f797" id="r_a61ffe8804b5467584f8710e04197f797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">TYPE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#a61ffe8804b5467584f8710e04197f797">maximum</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
 <tr class="memdesc:a61ffe8804b5467584f8710e04197f797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum value contained in this buffer.  <br /></td></tr>
 <tr class="separator:a61ffe8804b5467584f8710e04197f797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae153c264dd5af18877d4b9a808a06f54" id="r_ae153c264dd5af18877d4b9a808a06f54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1circularBuffer.html#ae153c264dd5af18877d4b9a808a06f54">average</a> () <a class="el" href="classz_1_1core_1_1array.html">const</a> <a class="el" href="classz_1_1core_1_1array.html">noexcept</a></td></tr>
+<tr class="memdesc:ae153c264dd5af18877d4b9a808a06f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the average (mean) value contained in this buffer.  <br /></td></tr>
+<tr class="separator:ae153c264dd5af18877d4b9a808a06f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classz_1_1core_1_1indexable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classz_1_1core_1_1indexable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classz_1_1core_1_1indexable.html">z::core::indexable&lt; T &gt;</a></td></tr>
 <tr class="memitem:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable" id="r_a2e791ea6904cbd35b79e4ad87cff4a3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1array.html">virtual</a> <a class="el" href="classz_1_1core_1_1array.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classz_1_1core_1_1indexable.html#a2e791ea6904cbd35b79e4ad87cff4a3a">operator[]</a> (<a class="el" href="classz_1_1core_1_1array.html">int</a> index) <a class="el" href="classz_1_1core_1_1array.html">const</a></td></tr>
 <tr class="memdesc:a2e791ea6904cbd35b79e4ad87cff4a3a inherit pub_methods_classz_1_1core_1_1indexable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the object at the given index.  <br /></td></tr>
@@ -380,6 +383,37 @@ template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a cl
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value at that index. </dd></dl>
+
+</div>
+</div>
+<a id="ae153c264dd5af18877d4b9a808a06f54" name="ae153c264dd5af18877d4b9a808a06f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae153c264dd5af18877d4b9a808a06f54">&#9670;&#160;</a></span>average()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="classz_1_1core_1_1array.html">typename</a> <a class="el" href="classz_1_1core_1_1array.html">TYPE</a> , <a class="el" href="classz_1_1core_1_1array.html">unsigned</a> <a class="el" href="classz_1_1core_1_1array.html">int</a> LEN&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1array.html">double</a> <a class="el" href="classz_1_1core_1_1circularBuffer.html">z::core::circularBuffer</a>&lt; <a class="el" href="classz_1_1core_1_1array.html">TYPE</a>, <a class="el" href="classz_1_1core_1_1array.html">LEN</a> &gt;::average </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the average (mean) value contained in this buffer. </p>
+<dl class="section note"><dt>Note</dt><dd>This method is only available for arithmetic types. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The average of the values in the buffer. </dd></dl>
 
 </div>
 </div>
