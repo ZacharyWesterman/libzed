@@ -393,7 +393,7 @@ public:
 	 *
 	 * Sorts the array in-place, mutating existing values.
 	 *
-	 * @param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 * @param lambda A function that takes two elements, and returns \b true if the first item comes before the second (e.g. A less than B).
 	 */
 	void sort(std::function<bool(const T &, const T &)> lambda) noexcept {
 		std::sort(array_data.begin(), array_data.end(), lambda);
@@ -417,7 +417,7 @@ public:
 	 *
 	 * Creates a new, sorted version of the array, without mutating existing values.
 	 *
-	 * @param lambda A function that takes two elements, and returns \b true if the first item comes after the second (e.g. A greater than B).
+	 * @param lambda A function that takes two elements, and returns \b true if the first item comes before the second (e.g. A less than B).
 	 * @return A copy of this array, sorted.
 	 */
 	array sorted(std::function<bool(const T &, const T &)> lambda) const noexcept {

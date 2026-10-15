@@ -240,6 +240,21 @@ public:
 		}
 		return value;
 	}
+
+	/**
+	 * @brief Get the average (mean) value contained in this buffer.
+	 * @note This method is only available for arithmetic types.
+	 * @return The average of the values in the buffer.
+	 */
+	double average() const noexcept {
+		static_assert(std::is_arithmetic<TYPE>::value, "circularBuffer::average() is only defined for arithmetic types.");
+
+		double avg = 0.0;
+		for (int i = 0; i < LEN; ++i) {
+			avg += (double)data[i] / (double)LEN;
+		}
+		return avg;
+	}
 };
 } // namespace core
 } // namespace z
