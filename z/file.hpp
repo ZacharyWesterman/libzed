@@ -18,6 +18,7 @@
 #include "file/path.hpp"
 #include "file/shorten.hpp"
 #include "file/size.hpp"
+#include "file/stem.hpp"
 
 /// Manage file contents
 #include "file/copy.hpp"
