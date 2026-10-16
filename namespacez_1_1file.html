@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.18</span>
+   <div id="projectname">libzed<span id="projectnumber">&#160;1.11.19</span>
    </div>
    <div id="projectbrief">A general-purpose library for quick and simple data manipulation.</div>
   </td>
@@ -184,6 +184,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4f8eff2e02ed88ca3b04d76c1008885a" id="r_a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a4f8eff2e02ed88ca3b04d76c1008885a">size</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>)</td></tr>
 <tr class="memdesc:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a file in bytes.  <br /></td></tr>
 <tr class="separator:a4f8eff2e02ed88ca3b04d76c1008885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a49881e5ffc510e3a90e1800c001cce" id="r_a9a49881e5ffc510e3a90e1800c001cce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classz_1_1core_1_1string.html">zpath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#a9a49881e5ffc510e3a90e1800c001cce">stem</a> (const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;<a class="el" href="namespacez_1_1file.html#a6ad404e75472a7ea87b52f98cdad7ce8">path</a>)</td></tr>
+<tr class="memdesc:a9a49881e5ffc510e3a90e1800c001cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the stem of a file name.  <br /></td></tr>
+<tr class="separator:a9a49881e5ffc510e3a90e1800c001cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5591ecd6550ce0c937bbb7bf8236cf8" id="r_af5591ecd6550ce0c937bbb7bf8236cf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacez_1_1file.html#af5591ecd6550ce0c937bbb7bf8236cf8">write</a> (const <a class="el" href="classz_1_1core_1_1string.html">zstring</a> &amp;contents, const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;filename, bool append=false)</td></tr>
 <tr class="memdesc:af5591ecd6550ce0c937bbb7bf8236cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the contents of a string to a specified file.  <br /></td></tr>
 <tr class="separator:af5591ecd6550ce0c937bbb7bf8236cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -832,6 +835,34 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a9a49881e5ffc510e3a90e1800c001cce" name="a9a49881e5ffc510e3a90e1800c001cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a49881e5ffc510e3a90e1800c001cce">&#9670;&#160;</a></span>stem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classz_1_1core_1_1string.html">zpath</a> z::file::stem </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classz_1_1core_1_1string.html">zpath</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the stem of a file name. </p>
+<p>For example, given a file <code>/path/to/file.ext</code>, this function will output <code>file</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The stem of the file name. </dd></dl>
 
 </div>
 </div>

@@ -19,5 +19,6 @@ var dir_9a8214962be111a432ef85a20e528316 =
     [ "remove.hpp", "remove_8hpp_source.html", null ],
     [ "shorten.hpp", "shorten_8hpp_source.html", null ],
     [ "size.hpp", "size_8hpp_source.html", null ],
+    [ "stem.hpp", "stem_8hpp_source.html", null ],
     [ "write.hpp", "write_8hpp_source.html", null ]
 ];
