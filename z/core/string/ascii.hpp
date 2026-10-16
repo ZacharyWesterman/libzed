@@ -971,7 +971,7 @@ string<ascii> &string<ascii>::read(std::istream &stream, uint32_t delim) noexcep
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof() && last && !(delim ? (last == delim) : isWhiteSpace(last))) {
+	while (!stream.eof() && stream.good() && last && !(delim ? (last == delim) : isWhiteSpace(last))) {
 		uint8_t c[4];
 		c[0] = last;
 
@@ -1007,7 +1007,7 @@ string<ascii> &string<ascii>::readln(std::istream &stream) noexcept {
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof()) {
+	while (!stream.eof() && stream.good()) {
 		if ((last == '\n') || (last == '\r')) {
 			break;
 		}
@@ -1047,7 +1047,7 @@ string<ascii> &string<ascii>::readall(std::istream &stream) noexcept {
 
 	uint32_t last = stream.get();
 
-	while (!stream.eof()) {
+	while (!stream.eof() && stream.good()) {
 		uint8_t c[4];
 		c[0] = last;
 
