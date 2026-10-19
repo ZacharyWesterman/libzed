@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classz_1_1core_1_1string.html#a78e0a419764c155d24f17d6b76239909":[3,0,0,0,19,15],
+"classz_1_1core_1_1string.html#a7ce654ed8d4c17cb97d18e2abec5fb48":[3,0,0,0,19,70],
 "classz_1_1core_1_1string.html#a821f01f16ec004c5dab9ea138db652de":[3,0,0,0,19,7],
 "classz_1_1core_1_1string.html#a82a2a849ddf3158fec364ef614308857":[3,0,0,0,19,98],
 "classz_1_1core_1_1string.html#a8644b4f7292302682dd4aae86a0c2b4d":[3,0,0,0,19,104],
@@ -214,8 +216,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[3,3,0,3],
 "functions_e.html":[3,3,0,4],
 "functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1],
 "functions_func.html":[3,3,1,0],
+"functions_func.html":[3,3,1],
 "functions_func_b.html":[3,3,1,1],
 "functions_func_c.html":[3,3,1,2],
 "functions_func_d.html":[3,3,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "functions_p.html":[3,3,0,13],
 "functions_r.html":[3,3,0,14],
 "functions_rela.html":[3,3,4],
-"functions_s.html":[3,3,0,15],
-"functions_t.html":[3,3,0,16],
-"functions_type.html":[3,3,3]
+"functions_s.html":[3,3,0,15]
 };
