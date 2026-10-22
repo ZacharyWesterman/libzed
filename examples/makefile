@@ -1,3 +1,6 @@
+STATICLIB = ../libzed.a
+STD = c++17
+CCFLAGS := -std=$(STD) -Wno-psabi -fPIC
 
 ifeq ($(OS),Windows_NT)
 LIBEXT = dll
@@ -7,6 +10,26 @@ LIBEXT = so
 LFLAGS = -ldl -Wl,--gc-sections
 endif
 
+OLEVEL = $(OPT)
+# opt defaults to -O3
+ifndef OPT
+OLEVEL = 3
+endif
+ifneq (,$(findstring $(OPT),F f Fast FAST))
+OLEVEL = fast
+endif
+ifneq (,$(findstring $(OPT),S s size Size SIZE))
+OLEVEL = s
+endif
+
+# if debug flag is not set
+ifndef DEBUG
+CCFLAGS += -O$(OLEVEL)
+LFLAGS += -s
+endif
+ifdef DEBUG
+CCFLAGS += -g$(DEBUG) -O$(OLEVEL) -DDEBUG
+endif
 
 ifeq (, $(shell rm --version))
 RM = rd /s /q
@@ -17,9 +40,6 @@ RM = rm -rf
 MV = mv
 CP = cp "../zed.dll"
 endif
-
-STATICLIB = ../libzed.a
-STD = c++17
 
 SRCS := $(wildcard src/*.cpp)
 SRCS := $(filter-out src/dynamicLib.cpp,$(SRCS))
@@ -34,13 +54,13 @@ obj:
 	mkdir $@
 
 obj/%.o: src/%.cpp
-	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $^
+	g++ -I"../" $(CCFLAGS) -Wno-psabi -o $@ -c $^
 
 obj/loadLib.o: src/loadLib.cpp bin/dynamicLib.$(LIBEXT)
-	g++ -I"../" -std=$(STD) -Wno-psabi -fPIC -o $@ -c $<
+	g++ -I"../" $(CCFLAGS) -Wno-psabi -o $@ -c $<
 
 bin/dynamicLib.$(LIBEXT): src/dynamicLib.cpp $(STATICLIB)
-	g++ -I"../" -std=$(STD) -shared -fPIC -Wl,--gc-sections -o $@ $^
+	g++ -I"../" $(CCFLAGS) -shared -Wl,--gc-sections -o $@ $^
 
 bin/%: obj/%.o $(STATICLIB)
 	g++ -o $@ $^ $(LFLAGS)
