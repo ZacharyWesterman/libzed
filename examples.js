@@ -13,6 +13,7 @@ var examples =
     [ "generatorSentinel.cpp", "generatorSentinel_8cpp-example.html", null ],
     [ "generic.cpp", "generic_8cpp-example.html", null ],
     [ "hash32.cpp", "hash32_8cpp-example.html", null ],
+    [ "hello_world.cpp", "hello_world_8cpp-example.html", null ],
     [ "lines.cpp", "lines_8cpp-example.html", null ],
     [ "loadLib.cpp", "loadLib_8cpp-example.html", null ],
     [ "memoize.cpp", "memoize_8cpp-example.html", null ],
