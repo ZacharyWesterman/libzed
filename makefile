@@ -173,7 +173,7 @@ endif
 SONAME1 = lib$(LIBNAME).so.$(VER_MAJOR)
 SONAME2 = lib$(LIBNAME).so
 
-default: dynamic
+default: dynamic static
 
 all: dynamic static examples lint tests
 
@@ -182,6 +182,7 @@ dynamic: $(SHARED_LIB)
 shared: $(SHARED_LIB)
 
 install: $(SHARED_LIB)
+	cp $(STATIC_LIB) $(LIBDIR)/
 	cp $(SHARED_LIB) $(LIBDIR)/$(SHARED_LIB)
 	rm -f $(LIBDIR)/$(SONAME1) $(LIBDIR)/$(SONAME2)
 	ln -s $(LIBDIR)/$(SHARED_LIB) $(LIBDIR)/$(SONAME1)
@@ -221,7 +222,7 @@ $(STATIC_LIB): $(OBJS)
 
 -include $(DEPENDS)
 
-%.o: %.cpp %.hpp makefile
+%.o: %.cpp %.hpp
 	$(CC) $(CCFLAGS) -MMD -MP -o $@ -c $<
 
 z/core/string.o: z/core/string.cpp z/core/string.hpp $(wildcard z/core/string/*.hpp)
