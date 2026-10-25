@@ -882,7 +882,7 @@ long string<utf16>::integer(int base, uint32_t decimal) const noexcept {
 	for (int i = start; i < character_ct; i++) {
 		uint32_t chr = data16[i];
 
-		if (isNumeric(chr)) {
+		if (isNumeric(chr, base)) {
 			result *= base;
 			result += numeralValue(chr);
 		} else if (chr == decimal) {

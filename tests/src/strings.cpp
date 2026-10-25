@@ -247,3 +247,14 @@ TEST_CASE("String filtering", "[string]") {
 		REQUIRE(string.filter(filter_lambda) == "Th   tt trn.");
 	);
 }
+
+TEST_CASE("Converting strings integers of different bases", "[string]") {
+	STRTEST(
+		string = "ff";
+		REQUIRE(string.integer(16) == 255);
+		string = "777";
+		REQUIRE(string.integer(8) == 511);
+		string = "10101";
+		REQUIRE(string.integer(2) == 21);
+	);
+}
