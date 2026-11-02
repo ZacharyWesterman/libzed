@@ -173,13 +173,18 @@ endif
 SONAME1 = lib$(LIBNAME).so.$(VER_MAJOR)
 SONAME2 = lib$(LIBNAME).so
 
-default: dynamic static
+default: dynamic static headers
 
-all: dynamic static examples lint tests
+all: dynamic static headers examples lint tests
 
 static: $(STATIC_LIB)
 dynamic: $(SHARED_LIB)
 shared: $(SHARED_LIB)
+
+headers: headers.zip
+
+headers.zip: $(HEADERS)
+	zip -r $@ z -i '*.hpp'
 
 install: $(SHARED_LIB)
 	cp $(STATIC_LIB) $(LIBDIR)/
@@ -288,4 +293,4 @@ get-version:
 get-revision:
 	git rev-parse HEAD
 
-.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision coverage coverage-html
+.PHONY: rebuild clean cleanobjs cleanbin cleancov cleandox default headers install uninstall examples static dynamic shared all lint test tests benchmark benchmarks docs dox format try-format count-loc get-version get-revision coverage coverage-html
