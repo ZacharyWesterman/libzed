@@ -181,9 +181,9 @@ static: $(STATIC_LIB)
 dynamic: $(SHARED_LIB)
 shared: $(SHARED_LIB)
 
-headers: headers.zip
+headers: libzed-headers.zip
 
-headers.zip: $(HEADERS)
+libzed-headers.zip: $(HEADERS)
 	zip -r $@ z -i '*.hpp'
 
 install: $(SHARED_LIB)
@@ -240,7 +240,7 @@ z/version.cpp: $(VERSION_SCRIPT) z/version.hpp
 	$< $@ $(VER_MAJOR).$(VER_MINOR).$(VER_PATCH) $(STD)
 
 clean: cleanbin cleanobjs cleandox cleancov
-	$(RM) z/version.cpp
+	$(RM) z/version.cpp libzed-headers.zip
 	$(MAKE) clean -C examples/
 	$(MAKE) clean -C tests/
 
