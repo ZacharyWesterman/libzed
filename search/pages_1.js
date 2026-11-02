@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['libzed_0',['Libzed',['../index.html',1,'']]]
+  ['compiling_0',['Compiling',['../index.html#autotoc_md13',1,'']]],
+  ['contributing_1',['CONTRIBUTING',['../md_CONTRIBUTING.html',1,'']]]
 ];

@@ -1,15 +1,15 @@
 var searchData=
 [
   ['lenfromutf8_0',['lenFromUTF8',['../namespacez_1_1core.html#ade9b103cf3cd4b562c3799027f5fd51f',1,'z::core']]],
-  ['length_1',['length',['../classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5',1,'z::core::arrayLike::length()'],['../classz_1_1core_1_1circularBuffer.html#abdf607e69fb54b98d2d2cea6e0664983',1,'z::core::circularBuffer::length()'],['../classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9',1,'z::core::string::length()'],['../classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2',1,'z::core::array::length()']]],
+  ['length_1',['length',['../classz_1_1core_1_1array.html#a614ba0dff2431f71493d3d720c7d3ad2',1,'z::core::array::length()'],['../classz_1_1core_1_1arrayLike.html#a30c8a17bf72dfc917e57b2a7b0960cd5',1,'z::core::arrayLike::length()'],['../classz_1_1core_1_1circularBuffer.html#abdf607e69fb54b98d2d2cea6e0664983',1,'z::core::circularBuffer::length()'],['../classz_1_1core_1_1string.html#a2ee096fbead55283d629f20b8cf648a9',1,'z::core::string::length()']]],
   ['lentoutf8_2',['lenToUTF8',['../namespacez_1_1core.html#ae6b3eefa6cb5f87bd29869300854f948',1,'z::core']]],
   ['levenschtein_3',['levenschtein',['../namespacez_1_1math.html#a0fd66ad1b980886da9c9a4a88193116e',1,'z::math']]],
   ['library_4',['library',['../classz_1_1file_1_1library.html#a8f3da2f213a7e5f83a75448256c001b7',1,'z::file::library']]],
   ['limit_5',['limit',['../classz_1_1core_1_1generator.html#ad8b1388677d26c4638462a82c23288d0',1,'z::core::generator']]],
-  ['lines_6',['lines',['../namespacez_1_1file.html#ae90375dfecef1a06e0bb9bb9dd8ece1a',1,'z::file::lines(std::istream &amp;stream) noexcept'],['../namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee',1,'z::file::lines(const zpath &amp;filename)']]],
+  ['lines_6',['lines',['../namespacez_1_1file.html#ab9558d9c2412deec9cd0c57ae5b0a5ee',1,'z::file::lines(const zpath &amp;filename)'],['../namespacez_1_1file.html#ae90375dfecef1a06e0bb9bb9dd8ece1a',1,'z::file::lines(std::istream &amp;stream) noexcept']]],
   ['listdirs_7',['listDirs',['../namespacez_1_1file.html#a2234182aa790ff4ec8e5c7a98b851990',1,'z::file']]],
   ['listfiles_8',['listFiles',['../namespacez_1_1file.html#ade6821ea2f330867983699d1a7d371ef',1,'z::file']]],
   ['load_9',['load',['../classz_1_1file_1_1library.html#aa2f463c8136fc0a31f7db650f5be7a02',1,'z::file::library']]],
   ['lower_10',['lower',['../classz_1_1core_1_1string.html#a5a1628e28d262fc80c69e89473500c93',1,'z::core::string']]],
-  ['lt_11',['lt',['../classz_1_1core_1_1sortedRefArray.html#a44d39fd667f8da914ebcc73e8dc5b79d',1,'z::core::sortedRefArray::lt()'],['../classz_1_1core_1_1refArray.html#a22afd011aea40615f3fc8f70cfceb173',1,'z::core::refArray::lt()'],['../classz_1_1core_1_1array.html#aec8b916d493639f1265ce405a5265466',1,'z::core::array::lt()']]]
+  ['lt_11',['lt',['../classz_1_1core_1_1array.html#aec8b916d493639f1265ce405a5265466',1,'z::core::array::lt()'],['../classz_1_1core_1_1refArray.html#a22afd011aea40615f3fc8f70cfceb173',1,'z::core::refArray::lt()'],['../classz_1_1core_1_1sortedRefArray.html#a44d39fd667f8da914ebcc73e8dc5b79d',1,'z::core::sortedRefArray::lt()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dereference_0',['dereference',['../namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c',1,'z::core']]]
+  ['dereference_0',['dereference',['../namespacez_1_1core.html#a99844eb4f1142520dbb61af3a6e9eaaa',1,'z::core']]]
 ];

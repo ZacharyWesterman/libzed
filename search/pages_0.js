@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['contributing_0',['CONTRIBUTING',['../md_CONTRIBUTING.html',1,'']]]
+  ['build_20options_0',['Build options',['../index.html#autotoc_md12',1,'']]]
 ];

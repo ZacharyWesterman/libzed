@@ -37,7 +37,7 @@ var NAVTREE =
     ] ],
     [ "CONTRIBUTING", "md_CONTRIBUTING.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", null ],
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
@@ -67,9 +67,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "all_8hpp_source.html",
-"classz_1_1core_1_1string.html#a78e0a419764c155d24f17d6b76239909",
-"functions_t.html"
+"classz_1_1core_1_1generator.html#aa9a94c0016c0aa760433b1f6fd1459f8",
+"classz_1_1core_1_1string.html#a884576fbd00bc546b858771288041d42",
+"classz_1_1util_1_1generic.html#a34459a6ad1899d0c3a7d099ac12d075a",
+"namespacez_1_1file.html#a497fc168cc1b68e5f10e51e7a40a914b"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

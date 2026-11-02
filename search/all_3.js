@@ -2,7 +2,7 @@ var searchData=
 [
   ['dependencies_0',['Required dependencies',['../index.html#autotoc_md10',1,'']]],
   ['dependency_1',['Optional dependency',['../index.html#autotoc_md11',1,'']]],
-  ['dereference_2',['dereference',['../namespacez_1_1core.html#a688f17fa185dc12108c00589496f584c',1,'z::core']]],
+  ['dereference_2',['dereference',['../namespacez_1_1core.html#a99844eb4f1142520dbb61af3a6e9eaaa',1,'z::core']]],
   ['device_3',['device',['../classz_1_1file_1_1info.html#a3cdc295fa453378c36b23e6ce5770e09',1,'z::file::info']]],
   ['dictionary_4',['dictionary',['../classz_1_1util_1_1dictionary.html',1,'z::util::dictionary'],['../classz_1_1util_1_1dictRange.html#a71976d3aee915c7d8a365e5a7b8491be',1,'z::util::dictRange::dictionary'],['../classz_1_1util_1_1dictionary.html#acc61f8957af8f878e40d2342a29ff533',1,'z::util::dictionary::dictionary(bool caseSensitive=false) noexcept'],['../classz_1_1util_1_1dictionary.html#a74f1edb780ad70fed66def54926db23a',1,'z::util::dictionary::dictionary(const dictionary &amp;other) noexcept']]],
   ['dictrange_5',['dictRange',['../classz_1_1util_1_1dictRange.html',1,'z::util']]],
