@@ -145,6 +145,14 @@ public:
 	inline void clear();
 
 	/**
+	 * @brief Get a pointer to the raw array data.
+	 * @returns A pointer to the data.
+	 */
+	inline T const *raw() const {
+		return array_data.data();
+	}
+
+	/**
 	 * @brief Increase the space allocated for this array.
 	 *
 	 * If this array currently has fewer than newSize elements allocated,
