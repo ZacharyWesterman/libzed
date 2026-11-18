@@ -3,7 +3,7 @@ var searchData=
   ['randomelement_0',['randomElement',['../classz_1_1core_1_1array.html#a8ccc4fac147ca1708f622f908eda9451',1,'z::core::array']]],
   ['randomelements_1',['randomElements',['../classz_1_1core_1_1array.html#a73b1bbf83b7dc3dac46f60479912be1b',1,'z::core::array']]],
   ['range_2',['range',['../classz_1_1util_1_1dictionary.html#a96f0b4179ed46656dbad142f6dabb309',1,'z::util::dictionary::range()'],['../namespacez_1_1core.html#ab8a6fe8f97fb004fce9c15934b3e6e1b',1,'z::core::range(long begin, long end, long step=1) noexcept'],['../namespacez_1_1core.html#a7f8a7226d8d06b1b9c01ddd80a166a33',1,'z::core::range(long end) noexcept'],['../namespacez_1_1core.html#a50fc4432e07ed8cdae6a2ceee4d72839',1,'z::core::range(long begin, const sentinel &amp;check, long step=1) noexcept']]],
-  ['raw_3',['raw',['../classz_1_1core_1_1array.html#a91d112e6a2ce9ac97e8025e92d609506',1,'z::core::array']]],
+  ['raw_3',['raw',['../classz_1_1core_1_1array.html#a8021e64b3611d0e236cdbf6ed6c08230',1,'z::core::array']]],
   ['read_4',['read',['../classz_1_1core_1_1string.html#acf1dfdbb3edc08ceda8bd1c5763df214',1,'z::core::string::read()'],['../classz_1_1util_1_1dictionary.html#ac77268b88bb5af7198b02e1719564d4d',1,'z::util::dictionary::read()'],['../namespacez_1_1file.html#a5cca14bedca539f52f5732c15f0a3d6b',1,'z::file::read()']]],
   ['readall_5',['readall',['../classz_1_1core_1_1string.html#a9c11a8382545cf60d73e6b698476ef4e',1,'z::core::string']]],
   ['readln_6',['readln',['../classz_1_1core_1_1string.html#a4d740a2849ffb1ce941d0c1e8610a434',1,'z::core::string']]],
